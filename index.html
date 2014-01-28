@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>My Octopress Blog</title>
-  <meta name="author" content="Your Name">
+  <title>RockPaperScissors</title>
+  <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content=" Blog Archives Recent Posts ">
+  <meta name="description" content="always_ff @(posedge clk or negedge rst_n) begin if (~rst_n) begin end else begin end
+end ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,24 +22,37 @@
   <link rel="canonical" href="http://morganp.github.io">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="RockPaperScissors" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47010631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">My Octopress Blog</a></h1>
+  <h1><a href="/">RockPaperScissors</a></h1>
   
-    <h2>A blogging framework for hackers.</h2>
+    <h2>LizardSpock</h2>
   
 </hgroup>
 
@@ -56,9 +70,14 @@
 </form>
   
 <ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Latest</a></li>
+  <li><a href="/blog/archives">All</a></li>
+  <li><a href="/">Categories</a></li>
+  <li><a href="/tag">Tags</a></li>
+  <li><a href="/license">License</a></li>
 </ul>
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
 
 </nav>
   <div id="main">
@@ -66,7 +85,794 @@
       <div class="blog-index">
   
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/flip-flop/">Flip-flop</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-09T19:15:10+00:00" pubdate data-updated="true">Jan 9<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/flip-flop/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/engineering/flip-flop/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>always_ff @(posedge clk or negedge rst_n) begin
+  if (~rst_n) begin
+  end
+  else begin
+  end
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/reverting-in-git/">Reverting in Git</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-08T20:10:31+00:00" pubdate data-updated="true">Jan 8<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/reverting-in-git/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/reverting-in-git/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I use to use <code>svn revert</code> to roll back local modification and get back to the state I was in last time I checked out.</p>
+
+<p>to do the same in git  I use :</p>
+
+<pre><code>git checkout -- filename
+</code></pre>
+
+<p>As git does not automatically push to a server the way subversion does you have an opportunity to revert local commits.</p>
+
+<pre><code>git reset --soft HEAD^
+</code></pre>
+
+<p>Here the <code>^</code> means previous. ie go back 1 commit. Using soft the files will still appear modified and we can use the previous command to reset the files as required.</p>
+
+<p>Further reading <a href="http://stackoverflow.com/q/2530060/97073">what “git reset” does in plain english?</a>, <a href="http://marklodato.github.io/visual-git-guide/index-en.html">Visual Git Reference</a> and <a href="http://git-scm.com/blog/2011/07/11/reset.html">Reset Demystified</a></p>
+
+<p>&mdash;
+<a href="http://www.norbauer.com/rails-consulting/notes/git-revert-reset-a-single-file.html">git checkout source</a>.  <br/>
+<a href="http://stackoverflow.com/questions/2845731/how-to-uncommit-my-last-commit-in-git">git reset source</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-08T19:53:02+00:00" pubdate data-updated="true">Jan 8<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/rtorrent-move-on-download-completion/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/rtorrent-move-on-download-completion/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>rtorrent moving torrents upon completion:</p>
+
+<pre><code># Torrents go in ~/Torrents
+# Incomplete Downloads in ~/Incomplete
+# Upon Completion Data is moved to ~/Seeding
+
+schedule = watch_directory_standard,10,10,"load_start=~/Torrents/*.torrent,d.set_directory=~/Incomplete/,d.set_custom1=~/Seeding/
+
+#Move upon download completion.
+system.method.set_key =event.download.finished,move_complete,"d.set_directory=$d.get_custom1= ;execute=mv,-n,$d.get_base_path=,$d.get_custom1="
+</code></pre>
+
+<p><a href="https://gist.github.com/morganp/8323448">Link to gist on github</a>.</p>
+
+<p><a href="http://libtorrent.rakshasa.no/wiki/RTorrentCommonTasks#Movecompletedtorrentstodifferentdirectorydependingonwatchdirectory">Recipe</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-20T19:43:16+00:00" pubdate data-updated="true">Dec 20<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/check-you-current-vim-colorscheme/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/check-you-current-vim-colorscheme/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is not a foolproof method, as vim colorschemes are juct vim commands but by default they set:</p>
+
+<pre><code>let g:colors_name = "ir_black"
+</code></pre>
+
+<p>so to find out from vim just run</p>
+
+<pre><code>:echo g:colors_name
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-19T22:04:45+00:00" pubdate data-updated="true">Dec 19<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/cshrc-alias-loop/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/cshrc-alias-loop/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Here are some aliased commands which stop line wrapping on really long lines, making the output much more readable:</p>
+
+<pre><code># Stop line wrapping
+alias ll '(tput rmam; ls -lFh  \!*; tput smam)'
+alias la '(tput rmam; ls -lAFh \!*; tput smam)'
+
+alias tree '(tput rmam; tree \!*; tput smam)'
+</code></pre>
+
+<p>In use:</p>
+
+<pre><code>$ tree
+Alias loop
+</code></pre>
+
+<p>The trick is to pre-pend &ldquo;&rdquo; to the command</p>
+
+<pre><code>alias tree '(tput rmam; ""tree \!*; tput smam)'
+</code></pre>
+
+<p><a href="http://docstore.mik.ua/orelly/unix/upt/ch10_06.htm">source</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vim-status-line/">Vim: Status Line</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-17T19:04:42+00:00" pubdate data-updated="true">Dec 17<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/vim-status-line/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/vim-status-line/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Deciding to see if I could make my vim status line a bit more practical for myself. I decided to try having the modification &lsquo;[+]&rsquo; warning as the first thing on the line. I do not want the rest of the line jumping about when it changes from empty to +, using min widths that should be no problem:</p>
+
+<pre><code>" m is the [+] when modified
+set statusline=-%-01h-%10m-%-01r
+</code></pre>
+
+<p>This becomes empty except the  &lsquo;&ndash; &ndash; &ndash;&rsquo; when no flags are set, from :help statusline</p>
+
+<blockquote><p>When all items in a group becomes an empty string (i.e. flags that are
+not set) and a minwid is not set for the group, the whole group will
+become empty.  This will make a group like the following disappear
+completely from the statusline when none of the flags are set. ></p>
+
+<pre><code>     :set statusline=...%(\ [%M%R%H]%)...
+</code></pre></blockquote>
+
+<p><a href="http://got-ravings.blogspot.co.uk/2008/08/vim-pr0n-making-statuslines-that-own.html">The answer (source)</a></p>
+
+<pre><code>You can also group several items together and apply formatting 
+to the group as a whole. To do this, use the %(...%) syntax. 
+For example: %20(%l/%L%) would display&lt;current-line&gt;/&lt;total-lines&gt; 
+at a minimum width of 20 characters.
+</code></pre>
+
+<p>Winner: create a group with %width( &hellip; %)</p>
+
+<pre><code>" m is the [+] when modified
+set statusline=%10(-%h-%m-%r%)
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/cooking/tray-bake-chicken-dinner/">Tray Bake Chicken Dinner</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-12T12:59:00+00:00" pubdate data-updated="true">Dec 12<span>th</span>, 2013</time>
+        
+           | <a href="/blog/cooking/tray-bake-chicken-dinner/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/cooking/tray-bake-chicken-dinner/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Tray Bake Chicken Dinner.</p>
+
+<p><img class="centre" src="/images/TrayBakeChickenDinner/morganp-20130703-TrayBakeChickenDinner-IMG_2247.jpg"></p>
+
+<p>Based on recipe from &ldquo;Jamie Oliver&rsquo;s Recipe&rdquo; iOS app.</p>
+
+<p>Ingredients (for 2)</p>
+
+<pre><code>2          Chicken thighs
+2          Rashers of bacon
+2          Chipolatas
+1          Red onion
+2          Potatoes
+2          Carrots
+50g        Frozen peas
+50g        Broad beans
+
+1/2 Cube   Chicken Stock
+knob       Butter
+1/2 tbsp   Plain flour
+           sage
+</code></pre>
+
+<p><img class="centre" src="/images/TrayBakeChickenDinner/morganp-20130703-TrayBakeChickenDinner-IMG_2210-Edit.jpg"></p>
+
+<p>Pre-heat oven to 200.</p>
+
+<p>Make tin foil pocket and fill with peas, broad beens, a sprig of mint and the knob of butter. Now seal up the pocket ready for putting in the oven later.</p>
+
+<pre><code>50g        Frozen peas
+50g        Broad beans
+knob       Butter
+</code></pre>
+
+<p>Peal carrots and cut into 2cm chunks, quarter potatoes. Boil for 10 minutes.</p>
+
+<pre><code>2          Potatoes
+2          Carrots
+</code></pre>
+
+<p>Place Chicken thighs in a bowl and coat in olive oil with a little salt.
+Peel and quarter the onion.</p>
+
+<pre><code>2          Chicken thighs
+1          Red onion
+</code></pre>
+
+<p><img class="centre" src="/images/TrayBakeChickenDinner/morganp-20130703-TrayBakeChickenDinner-IMG_2219.jpg"></p>
+
+<p>Now wrap up chipolatas with the bacon to make the pigs in blankets. I prefer pancetta but streaky bacon will do.</p>
+
+<pre><code>2          Rashers of bacon
+2          Chipolatas
+</code></pre>
+
+<p><img class="centre" src="/images/TrayBakeChickenDinner/morganp-20130703-TrayBakeChickenDinner-IMG_2223.jpg"></p>
+
+<p>Place chicken in a baking tray skin side down with the pigs in blankets, put in the oven for 15 minutes.</p>
+
+<p>Removing the potatoes and carrots from the pan using a slotted spoon, placing in a colander, keep 250ml of water for the gravy. Shake potatoes and carrots around in the colander to chuff up the edges for nice crispy roast vegetables.</p>
+
+<p>Once the initial 15 minutes is up on the chicken and pigs in blankets remove from the oven and add the potatoes, carrots and quartered onion. Make sure everything is coated from the oil and fats. Turn the chicken skin side up. Cover in sage.</p>
+
+<p><img class="centre" src="/images/TrayBakeChickenDinner/morganp-20130703-TrayBakeChickenDinner-IMG_2231.jpg"></p>
+
+<p>Place in oven for an additional 30 minutes, turn oven up to 220 degrees.
+ 10 minutes to go add the peas and broad beans to the oven.</p>
+
+<p>Plate up on warm plates while you make the gravy. Place roasting tray on a medium heat, add flour mixing to a paste scraping everything from the bottom of the pan. Add 250ml of water from the potato and carrot pan, bring to the boil. Then spoon over the plates, or place in a jug.
+<img class="centre" src="/images/TrayBakeChickenDinner/morganp-20130703-TrayBakeChickenDinner-IMG_2241.jpg"></p>
+
+<p><img class="centre" src="/images/TrayBakeChickenDinner/morganp-20130703-TrayBakeChickenDinner-IMG_2247.jpg"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/cooking/cowboy-chilli/">Cowboy Chilli</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-08T21:04:00+00:00" pubdate data-updated="true">Dec 8<span>th</span>, 2013</time>
+        
+           | <a href="/blog/cooking/cowboy-chilli/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/cooking/cowboy-chilli/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Cowboy Style Chilli
+<img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3968.jpg"></p>
+
+<p>Based on recipe from &ldquo;Jamie Oliver&rsquo;s Recipe&rdquo; iOS app.</p>
+
+<p>Ingredients (for 6)</p>
+
+<pre><code>1KG            Diced stewing beef
+4              Red chillies
+2              Red onions
+3 sticks       Celery
+1 bunch        Spring onions
+1 bunch        Fresh coriander
+2              Green peppers
+2              Red peppers
+1              Lime
+2 teaspoon     Cumin seeds
+1 teaspoon     Cayenne pepper
+1 tin 400g     Chopped tomatoes
+4 tablespoon   Ground coffee
+1.5L           Beef stock
+Splash         Red wine vinegar
+</code></pre>
+
+<p><img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3948.jpg">
+Pre-heat oven 180.<br/>
+Put a griddle pan on high heat add red peppers for 15 minutes. Turn peppers occasionally until they start to blacken/blister.</p>
+
+<pre><code>2              Red peppers
+</code></pre>
+
+<p><img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3951.jpg"></p>
+
+<p>Add Chillies to griddle, with peppers and cook for 15 minutes.</p>
+
+<pre><code>4              Red chillies
+</code></pre>
+
+<p>Transfer Chillies and red peppers to bowl and allow to cool.<br/>
+Mix beef with salt and 1 tablespoon of coffee.</p>
+
+<pre><code>1KG            Diced stewing beef
+1 tablespoon   Ground coffee
+</code></pre>
+
+<p><img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3949.jpg"></p>
+
+<p>Brown beef (around 10 minutes) in a large pan. While roughly chopping celery and onion.</p>
+
+<pre><code>3 sticks       Celery
+2              Red onions
+</code></pre>
+
+<p>Add Celery and Onions to the pan, cook for additional 10 minutes. While removing the blistered skin and seeds from the red peppers.</p>
+
+<p><img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3952.jpg"></p>
+
+<p>Remove leaves from coriander then roughly chop the stalks. Add coriander stalks, cumin seeds and cayenne pepper to the pan.</p>
+
+<pre><code>1 bunch        Fresh coriander (stalks)
+2 teaspoon     Cumin seeds
+1 teaspoon     Cayenne pepper
+</code></pre>
+
+<p>Brew the remaining coffee with 400ml of boiling water. Make the 1.5 litres of stock.</p>
+
+<pre><code>3 tablespoon   Ground coffee
+</code></pre>
+
+<p>Add filtered coffee, chopped peppers, tomatoes and the stock to pan.</p>
+
+<pre><code>1 tin 400g     Chopped tomatoes
+1.5L           Beef stock
+</code></pre>
+
+<p><img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3955.jpg"></p>
+
+<p>Place lid on pan and place in the preheated oven for 2 hours.</p>
+
+<h2>Salsa</h2>
+
+<p>Remove seeds and finely chop green peppers. Finely chop the spring onions. Place green peppers, spring onions and coriander leaves in a bowl.</p>
+
+<pre><code>2              Green peppers
+1 bunch        Spring onions
+1 bunch        Fresh coriander (leaves)
+</code></pre>
+
+<p><img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3957.jpg"></p>
+
+<p>Add 2 tables spoons of olive oil and add the juice of a lime, mix well.</p>
+
+<pre><code>1              Lime
+</code></pre>
+
+<p><img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3958.jpg">
+<img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3964.jpg"></p>
+
+<p>After 2 hours remove the chilli from the oven add a splash of red wine vinegar. Serve with rice.</p>
+
+<p><img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3968.jpg"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/cooking/sweet-and-sour-pork/">Sweet and Sour Pork</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-08T19:51:00+00:00" pubdate data-updated="true">Dec 8<span>th</span>, 2013</time>
+        
+           | <a href="/blog/cooking/sweet-and-sour-pork/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/cooking/sweet-and-sour-pork/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sweet and Sour Pork</p>
+
+<p><img class="centre" src="/images/SweetSourPork/morganp-20130925-SweetSour-IMG_4134.jpg"></p>
+
+<p>Based on recipe from &ldquo;Jamie&rsquo;s Ministry of Food&rdquo;</p>
+
+<p>Ingredients (for 2)</p>
+
+<pre><code>200g            Basmati Rice
+200g            Pork Fillet
+
+1               Red Onion
+1               Red or Yellow Pepper
+1               Chilli
+227G            Pineapple Chunks
+thumb           Ginger
+
+2 cloves        Garlic
+
+                Coriander
+1 teaspoon      5-spice
+1 teaspoon      cornflour
+
+2 tablespoons   Soy Sauce
+2 tablespoons   Balsamic Vinegar
+                Sesame Seeds
+</code></pre>
+
+<p><img class="centre" src="/images/SweetSourPork/morganp-20130925-SweetSour-IMG_4112.jpg"></p>
+
+<p>Cut pork into 2cm strips or cubes.<br/>
+Peel half and dice onion into 2 cm cubes.<br/>
+Quarter pepper remove seeds and cut into 2cm cubes.<br/>
+Finely slice ginger, garlic and chilli.
+Remove the coriander leaves and leave to one side, finely dice the stalks.</p>
+
+<p>In a large pan or wok cook pork and 5-spice for a few minutes until pork is browned.</p>
+
+<pre><code>200g            Pork Fillet
+1 teaspoon      5-spice
+</code></pre>
+
+<p><img class="centre" src="/images/SweetSourPork/morganp-20130925-SweetSour-IMG_4115.jpg"></p>
+
+<p>Remove pork from pan and put to one side, quickly wipe pan down with kitchen roll. Add more oil and when hot add Onion, pepper, ginger, garlic, chilli and coriander stalks. Cook for 2 minutes.</p>
+
+<pre><code>1               Red Onion
+1               Red or Yellow Pepper
+1               Chilli
+thumb           Ginger
+2 cloves        Garlic
+                Coriander stalks
+</code></pre>
+
+<p><img class="centre" src="/images/SweetSourPork/morganp-20130925-SweetSour-IMG_4120.jpg"></p>
+
+<p>Add cornflour and soy sauce.</p>
+
+<pre><code>1 teaspoon      cornflour
+2 tablespoons   Soy Sauce
+</code></pre>
+
+<p>After 30 seconds add Pineapple chunks with juice, browned pork and Balsamic Vinegar.</p>
+
+<pre><code>227G            Pineapple Chunks
+2 tablespoons   Balsamic Vinegar
+</code></pre>
+
+<p><img class="centre" src="/images/SweetSourPork/morganp-20130925-SweetSour-IMG_4127.jpg"></p>
+
+<p>Keep simmering until sauce reduced to desired consistency. Suggest serving with rice. You can start now if it is quick cook (10-15  minutes) rice.</p>
+
+<p><img class="centre" src="/images/SweetSourPork/morganp-20130925-SweetSour-IMG_4134.jpg"></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/cooking/chicken-tikka-masala/">Chicken Tikka Masala</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-08T16:44:00+00:00" pubdate data-updated="true">Dec 8<span>th</span>, 2013</time>
+        
+           | <a href="/blog/cooking/chicken-tikka-masala/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/cooking/chicken-tikka-masala/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Chicken Tikka Masala</p>
+
+<p><img class="centre" src="/images/ChickenTikkaMasala/morganp-20130910-ChickenTikkaMasala-IMG_3991.jpg"></p>
+
+<p>Based on recipe from &ldquo;Jamie&rsquo;s Ministry of Food&rdquo;</p>
+
+<p>Ingredients (for 4)</p>
+
+<pre><code>4             Chicken breasts
+2             Onions 
+1             Red chilli
+thumb         Ginger
+bunch         Coriander
+
+15g(knob)     Butter
+1/2 Jar       Tikka masala curry paste (pataks)
+1 tin (400g)  Chopped tomatoes
+1 tin (400g)  Coconut milk
+1             Lemon 
+</code></pre>
+
+<p><img class="centre" src="/images/ChickenTikkaMasala/morganp-20130910-ChickenTikkaMasala-IMG_3973.jpg">
+Cut chicken breast into 2cm strips then cut in half.<br/>
+Half and finely slice the onion.<br/>
+Finely chop Chilli.<br/>
+Peel and slice ginger.<br/>
+Pick coriander leaves and leave to one side, finely chop stalks.</p>
+
+<p><img class="centre" src="/images/ChickenTikkaMasala/morganp-20130910-ChickenTikkaMasala-IMG_3975.jpg"></p>
+
+<p>Large pan on medium to high heat add oil and butter. Once butter has melted add the onions, chilli, ginger and coriander stalks.</p>
+
+<pre><code>2             Onions 
+1             Red chilli
+thumb         Ginger
+bunch         Coriander stalks
+</code></pre>
+
+<p><img class="centre" src="/images/ChickenTikkaMasala/morganp-20130910-ChickenTikkaMasala-IMG_3977.jpg"></p>
+
+<p>Cook for 10 minutes until onions have softened. Add Tikka Masala paste and chicken, making sure everyithing gets coated with the curry paste.</p>
+
+<pre><code>1/2 Jar       Tikka masala curry paste
+4             Chicken breasts
+</code></pre>
+
+<p><img class="centre" src="/images/ChickenTikkaMasala/morganp-20130910-ChickenTikkaMasala-IMG_3983.jpg"></p>
+
+<p>Add tomatoes and Coconut milk. Stir then simmer for 20 minutes.</p>
+
+<pre><code>1 tin (400g)  Chopped tomatoes
+1 tin (400g)  Coconut milk
+</code></pre>
+
+<p><img class="centre" src="/images/ChickenTikkaMasala/morganp-20130910-ChickenTikkaMasala-IMG_3984.jpg"></p>
+
+<p>Serve with Rice, and lemon wedges to squeeze over it.</p>
+
+<p><img class="centre" src="/images/ChickenTikkaMasala/morganp-20130910-ChickenTikkaMasala-IMG_3991.jpg"></p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -75,14 +881,64 @@
 <aside class="sidebar">
   
     <section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+</section>
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/flip-flop/">Flip-flop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
+      </li>
     
   </ul>
 </section>
 
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/morganp">@morganp</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
 
-
+        github.showRepos({
+            user: 'morganp',
+            count: 1,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
 
 
   
@@ -91,12 +947,25 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Your Name -
+  Copyright &copy; 2014 - Morgan Prior -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'morganpgithubio';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 

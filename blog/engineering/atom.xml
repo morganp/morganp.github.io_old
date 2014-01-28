@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Engineering | RockPaperScissors]]></title>
+  <link href="http://morganp.github.io/blog/engineering/atom.xml" rel="self"/>
+  <link href="http://morganp.github.io/"/>
+  <updated>2014-01-28T19:20:49+00:00</updated>
+  <id>http://morganp.github.io/</id>
+  <author>
+    <name><![CDATA[Morgan Prior]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Flip-flop]]></title>
+    <link href="http://morganp.github.io/blog/engineering/flip-flop/"/>
+    <updated>2014-01-09T19:15:10+00:00</updated>
+    <id>http://morganp.github.io/blog/engineering/flip-flop</id>
+    <content type="html"><![CDATA[<pre><code>always_ff @(posedge clk or negedge rst_n) begin
+  if (~rst_n) begin
+  end
+  else begin
+  end
+end
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab Repeat a Matrix N Times]]></title>
+    <link href="http://morganp.github.io/blog/engineering/matlab-repeat-a-matrix-n-times/"/>
+    <updated>2013-11-27T10:57:36+00:00</updated>
+    <id>http://morganp.github.io/blog/engineering/Matlab-repeat-a-matrix-n-times</id>
+    <content type="html"><![CDATA[<p>repmat(matrix, [repeat_y, repeat_x])</p>
+
+<p>Horizontal</p>
+
+<pre><code>repmat([1 2 3],[1,4])
+
+ans =
+
+     1     2     3     1     2     3     1     2     3     1     2     3
+</code></pre>
+
+<p>Vertical</p>
+
+<pre><code>repmat([1; 2; 3],[4,1])
+
+ans =
+
+     1
+     2
+     3
+     1
+     2
+     3
+     1
+     2
+     3
+     1
+     2
+     3
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab Setting Simulink Simulation Stop Time]]></title>
+    <link href="http://morganp.github.io/blog/engineering/matlab-setting-simulink-simulation-stop-time/"/>
+    <updated>2013-10-29T19:17:44+00:00</updated>
+    <id>http://morganp.github.io/blog/engineering/Matlab-setting-Simulink-simulation-stop-time</id>
+    <content type="html"><![CDATA[<p>Running the Simulink model model.mdl from matlab for a specified time:</p>
+
+<pre><code>sim('model', stoptime)
+</code></pre>
+
+<p>Where stoptime is a number. To mix with other options such eg. SimulationMode, things get a little trickier.</p>
+
+<pre><code>sim( 'model', 'SimulationMode', 'normal')
+</code></pre>
+
+<p>you would expect:</p>
+
+<pre><code>sim( 'model', 'SimulationMode', 'normal', 'StopTime', 1)
+</code></pre>
+
+<p>but this results in :</p>
+
+<pre><code>Invalid setting in block_diagram 'model' for parameter 'StopTime'
+</code></pre>
+
+<p>The trick is that parameter, value pairs must be strings, what you actually need to do is:</p>
+
+<pre><code>sim( 'model', 'SimulationMode', 'normal', 'StopTime', num2str(1) )
+</code></pre>
+
+<p>Or you can create an ParameterStruct,</p>
+
+<pre><code>SimOpts.SimulationMode = 'normal';
+SimOpts.StopTime       = num2str(1);
+sim( 'model', SimOpts )
+</code></pre>
+
+<p>Both of these methods change the way in which the to_workspace blocks work, instead of just outputting a variable to the workspace or available in the calling function sim now returns an &lsquo;Simulink.SimulationOutput&rsquo; object.</p>
+
+<p>Instead of just accessing &lsquo;simout&rsquo; you know need to capture the sim output and use the get command to retrieve the data :</p>
+
+<pre><code>simdata = sim( 'model', SimOpts ) ;
+simdata.get('simout' )
+</code></pre>
+
+<p><a href="http://www.mathworks.co.uk/help/simulink/ug/using-the-sim-command.html">Further Info on the sim command</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Testing Matlab Arrays for Equality.]]></title>
+    <link href="http://morganp.github.io/blog/engineering/testing-matlab-arrays-for-equality/"/>
+    <updated>2013-02-16T21:22:07+00:00</updated>
+    <id>http://morganp.github.io/blog/engineering/Testing-Matlab-Arrays-for-Equality</id>
+    <content type="html"><![CDATA[<p>Testing a matlab array for equality can be doen a few different was some have surprising side effects if your not use to working with vectorised testing.</p>
+
+<p>Initial test :</p>
+
+<pre><code>a = [1,2,3];
+if (a == [1,2,3])
+  disp('equal')
+end
+
+&gt; equal
+</code></pre>
+
+<p>Seems easy, But what happens if the dimensions of the array are incorrect?</p>
+
+<pre><code>a = [1,2,3];
+if (a == [1,2,3,4])
+  disp('equal')
+end
+
+Error using  == 
+Matrix dimensions must agree
+</code></pre>
+
+<p>May be if we check dimensions first using short-circuiting (<code>&amp;&amp;</code>) operators. NB: Short circuiting operators only execute if required, if it failed on the left hand side the right side will not be evaluated.</p>
+
+<pre><code>a = [1,2,3];
+if ((length(a) == 4) &amp;&amp; (a == [1,2,3,4]))
+  disp('equal')
+end
+</code></pre>
+
+<p>So far so good, but lets check it will also pass:</p>
+
+<pre><code>a = [1,2,3];
+if ((length(a) == 3) &amp;&amp; (a == [1,2,3]))
+  disp('equal')
+end
+
+Operands to the || and &amp;&amp; operators must be convertible to logical scalar
+values.
+</code></pre>
+
+<p>This is where it got interesting for me:</p>
+
+<pre><code>a ==[1,2,3]
+ans =
+
+ 1     1     1
+</code></pre>
+
+<p>The basic equality <code>==</code>  test for arrays is vectorised. When this is the only test it gets reduced down to true or false, but can not be combined with scalars.</p>
+
+<p>Then I the discovered the <a href="http://www.mathworks.co.uk/help/matlab/ref/isequal.html">isequal</a> function.</p>
+
+<pre><code>a = [1,2,3];
+isequal(a, [1,2,3])
+
+ans =
+
+     1
+
+a = [1,2,3];
+isequal(a, [1,2,3,4])
+
+ans =
+
+     0
+</code></pre>
+
+<p>For direct comparisons of arrays use <code>isequal(a,b)</code> for vectorised operations use <code>a==b</code>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab Scripting Axes Properties]]></title>
+    <link href="http://morganp.github.io/blog/engineering/matlab-scripting-axes-properties/"/>
+    <updated>2010-05-03T06:47:06+01:00</updated>
+    <id>http://morganp.github.io/blog/engineering/Matlab-Scripting-Axes-Properties</id>
+    <content type="html"><![CDATA[<p>Matlab figure properties which can be set through the properties editor can also be set by scripts. My main stumbling block was not realising that gca is a builtin function which returns the current axes. A list of <a href="http://www.mathworks.co.uk/access/helpdesk/help/techdoc/ref/axes_props.html">all properties</a>.</p>
+
+<p>Below is a example matlab script which plots a graph then adds minor ticks to the X-axis:</p>
+
+<pre><code>a =   1:100 ;
+b = 101:200 ;
+
+figure
+plot(a, b)
+% gca : get current axes
+set(gca, 'XMinorTick','on')
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

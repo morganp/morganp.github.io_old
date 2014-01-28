@@ -1,0 +1,768 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>RockPaperScissors</title>
+  <meta name="author" content="Morgan Prior">
+
+  
+  <meta name="description" content="Watir is a web testing framework implemented in ruby, but can be used for testing or automating any web service. gem install watir-webdriver
+#or in &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://morganp.github.io/blog/page/9">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="RockPaperScissors" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47010631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">RockPaperScissors</a></h1>
+  
+    <h2>LizardSpock</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:morganp.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Latest</a></li>
+  <li><a href="/blog/archives">All</a></li>
+  <li><a href="/">Categories</a></li>
+  <li><a href="/tag">Tags</a></li>
+  <li><a href="/license">License</a></li>
+</ul>
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/web-automation-with-watir/">Web Automation With Watir</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-06T13:30:06+01:00" pubdate data-updated="true">Aug 6<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/web-automation-with-watir/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/web-automation-with-watir/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://watir.com/">Watir</a> is a web testing framework implemented in ruby, but can be used for testing or automating any web service.</p>
+
+<pre><code>gem install watir-webdriver
+#or in your Gemfile
+gem "watir-webdriver"
+</code></pre>
+
+<h2>For Internet Explorer on Windows</h2>
+
+<pre><code>require 'watir'
+browser = Watir::Browser.new :ie
+</code></pre>
+
+<h2>Firefox or Chrome</h2>
+
+<pre><code>require 'watir-webdriver'
+browser = Watir::Browser.new :firefox
+# OR
+browser = Watir::Browser.new :chrome
+</code></pre>
+
+<p>For OS X and Automating chrome I had to install the chrome driver from <a href="http://code.google.com/p/chromedriver/downloads/list">chromedriver</a> or using <a href="http://mxcl.github.com/homebrew/">homebrew</a>.</p>
+
+<pre><code>brew install chromedriver
+</code></pre>
+
+<p>A simple script might be:</p>
+
+<pre><code>require 'watir-webdriver'
+browser = Watir::Browser.new :chrome
+browser = Watir::Browser.start 'www.google.com'
+puts browser.title
+browser.close
+</code></pre>
+
+<p>This launches a graphical browser and performs the actions requested.</p>
+
+<h1>Headless</h1>
+
+<p>There is a way to make these compatible with severs which do not have a graphics system, by installing the headless gem.</p>
+
+<pre><code>gem install watir-webdriver
+gem install headless
+#or in your Gemfile
+gem "watir-webdriver"
+gem "healdess"
+</code></pre>
+
+<p>The headless gem uses xvfb to perform graphical actions. If you are not on headless machine these will still be visible.</p>
+
+<pre><code>require 'watir-webdriver'
+require 'headless'
+
+headless = Headless.new
+headless.start
+
+browser = Watir::Browser.start 'www.google.com'
+puts browser.title
+browser.close
+
+headless.destroy
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/transferring-a-memory-map-2012-map-to-ios/">Transferring a Memory Map 2012 Map to iOS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-17T21:34:30+01:00" pubdate data-updated="true">Jul 17<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/transferring-a-memory-map-2012-map-to-ios/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/transferring-a-memory-map-2012-map-to-ios/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have specifically been trying to find out how to transfer my full GB Memory Map OS 1:50K 2012 GB map to an iPad, finally found <a href="http://www.memory-map.co.uk/kb/questions.php?questionid=86">a working solution here</a>.</p>
+
+<p>Basically find your *.qct and *.qc3 file and transfer them to memory map through the iTunes app section. Memory Map must not be running on the device while doing this.</p>
+
+<p>To view the maps start Memory Map then go to Folder, More Maps, All Maps on Device.</p>
+
+<p>It is worth checking Map Types as new detected types seem to default with a disabled view, the 2012 GB is type &lsquo;Land&rsquo;. Turn this on and then then &lsquo;OS 1:50k Great Britain&rsquo; should show up. on first view it will ask to use one of your 5 enables.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mac-mountain-lion-compatibility/">Mac Mountain Lion Compatibility</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-16T06:52:09+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/mac-mountain-lion-compatibility/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/mac-mountain-lion-compatibility/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>One of the limitations of mountain lion is that they are only going to support 64 bit Kernel extensions, the graphics drivers are are loaded as a kernel extension and some of the older macs (mac pro, iMac, MacBook, MacBook pro) only have a 32bit graphics driver (Kernel extension) avilable and so will not be supported by Mountain Lion.</p>
+
+<p>To check just run this from your terminal (/Applications/Utilities/Terminal.app) :</p>
+
+<pre><code>ioreg -l -p IODeviceTree | grep firmware-abi
+</code></pre>
+
+<p>If it is supported the result should look some thing like:</p>
+
+<pre><code>    | |   "firmware-abi" = &lt;"EFI64"&gt;
+</code></pre>
+
+<p>If you device is not supported you will get:</p>
+
+<pre><code>    | |   "firmware-abi" = &lt;"EFI32"&gt;
+</code></pre>
+
+<p><a href="http://arstechnica.com/apple/2012/07/confirmed-mountain-lion-sends-some-64-bit-macs-gently-into-that-good-night/">Source</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/pragmatic-programmers-dropbox-integration/">Pragmatic Programmers, Dropbox Integration</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-19T09:13:07+01:00" pubdate data-updated="true">Jun 19<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/pragmatic-programmers-dropbox-integration/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/pragmatic-programmers-dropbox-integration/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After deciding to try out epub on the kindle, as I noticed people are listing epub as an apple format. I thought it was an open version of mobi, for other ebook readers, and since the iPad is good with pdfs did not really think apple would have been to interested.</p>
+
+<p>I noticed in my <a href="http://db.tt/WdYABF0y">Dropbox</a> when I first paired it with my <a href="http://pragprog.com/">PragProg</a> I had only selected pdfs, as I planned to send mobi to my kindle and would only need pdfs portable. Since then I have changed that decision and get all formats delivered to <a href="http://db.tt/WdYABF0y">Dropbox</a>. So I thought I would go through my old titles download the missing files and uploaded them to Dropbox. Where they would magically appear on my iPad.</p>
+
+<p><a href="http://pragprog.com/">PragProg</a> have done an amazing job with their [Drobbox][] integration, after selecting &ldquo;Download eBook&rdquo; just under the format download links is a &ldquo;Send to Dropbox&rdquo; which send all the currently selected formats. Brilliant no need for me to download from <a href="http://pragprog.com/">PragProg</a> and re-upload to <a href="http://db.tt/WdYABF0y">Dropbox</a> just to get them onto the ipad, <a href="http://pragprog.com/">PragProg</a> do all the heavy lifting making it really easy to get their content on to the iPad.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/lightroom-41-available/">Lightroom 4.1 Available</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-18T19:28:53+01:00" pubdate data-updated="true">Jun 18<span>th</span>, 2012</time>
+        
+           | <a href="/blog/photography/lightroom-41-available/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/photography/lightroom-41-available/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Lightroom 4.1 is <a href="http://blogs.adobe.com/lightroomjournal/2012/05/lr41nowavailable.html">now available</a>. Not much looks like it has changed between this and the RC1 release version. But the <a href="http://blogs.adobe.com/lightroomjournal/2012/05/lr41nowavailable.html">adobe page</a> lists the changes and added camera support since 4.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/subscribe-to-a-channel-on-youtube-ipad/">Subscribe to a Channel on YouTube iPad</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-10T09:40:13+01:00" pubdate data-updated="true">Jun 10<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/subscribe-to-a-channel-on-youtube-ipad/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/subscribe-to-a-channel-on-youtube-ipad/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The subscribe button on the iPad youtube app is quite well hidden.</p>
+
+<p>View a video from the channel you are interested in in the non-fullscreen mode, from the left column select &ldquo;More From&rdquo; Subscribe/Unsubscribe should be the first option.</p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/7357055670/" title="iPad YouTube Subscribe by munky morgy, on Flickr"><img src="http://farm8.staticflickr.com/7226/7357055670_3b8706d846.jpg" width="500" height="375" alt="iPad YouTube Subscribe"></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/gelaskins-ipad-cases/">Gelaskins iPad Cases</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-07T18:27:40+01:00" pubdate data-updated="true">Jun 7<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/gelaskins-ipad-cases/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/gelaskins-ipad-cases/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Got the steam punk Gelaskins case yesterday, they can be a fiddle to fit but incredibly thin and adds grippines to the iPad.</p>
+
+<p>Not all of the iPad 2 styles are labeled as compatible with the new iPad on amazon. From the offial site though ipad2 cases are all compatible.</p>
+
+<p>Some other nice designs are: <a href="http://www.gelaskins.com/store/tablets_and_ereaders/iPad_3rd_2nd_Gen/Starry_Night">Starry night by Vincent Van Gogh</a>, <a href="http://www.gelaskins.com/store/tablets_and_ereaders/iPad_3rd_2nd_Gen/The_Loneliness_Of_Autumn">The Loneliness of Autum by Leonid Afremov</a> and <a href="http://www.gelaskins.com/store/tablets_and_ereaders/iPad_3rd_2nd_Gen/Blue_Willow">Blue Willow by Colin Thompson</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/itunes-match-and-genius-why-cant-we-have-both/">iTunes Match and Genius, Why Cant We Have Both?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-06T20:54:56+01:00" pubdate data-updated="true">Jun 6<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/itunes-match-and-genius-why-cant-we-have-both/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/itunes-match-and-genius-why-cant-we-have-both/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In iOS 5 If you have iTunes Match enabled ie to download your songs from the iCloud while on the go then you can not have genius.</p>
+
+<p>iTunes Match on iOS does not stream but downloads the song and starts to play it. This minimises your bandwidth usage for repeated plays. I believe that there is some caching limit setup so that once full your device will delete the older songs.</p>
+
+<p>With this setup Genius has been disabled! Genius use to be a great feature that I used a lot, find a song I like then get a new playlist created. I am not sure what the difference from downloading and playing every song in an album is to downloading and playing songs from a playlist. The device already has the full list of tracks and should be abel to get sync genius matches, I do not see any real reason for this.</p>
+
+<p>The only reason I can think of is that if you have downloaded a couple of albums replaying hem uses no bandwidth. but if we had the ability to use genius and refresh the playlist we would be constantly playing new songs. Using lots of bandwidth.</p>
+
+<p>There is a Genius button but does not seem to work with song only in the iCloud, only local which generally means that I do not have enough songs available for Genius to work. Quite disappointed with this set of features. Hoping the iOS 6 Fixes this.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ipad-docks-cradles/">iPad Docks / Cradles</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-30T20:58:27+01:00" pubdate data-updated="true">May 30<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/ipad-docks-cradles/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ipad-docks-cradles/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Around up of nice looking ipad docks / cradles</p>
+
+<p>From <a href="http://xtand.net/">Just Mobile</a></p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center"> UpStand </th>
+<th align="center"> Encore Desktop </th>
+<th align="center"> Slide </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td align="center">  <a href="http://www.amazon.co.uk/gp/product/B003X0BHP6/ref=as_li_ss_tl?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B003X0BHP6"> <img src="https://images-na.ssl-images-amazon.com/images/I/31ioCujSu7L._SL160_.jpg" alt="UpStand" /> </a> </td>
+<td align="center"> [ <img src="https://images-na.ssl-images-amazon.com/images/I/31bxW7P6wXL._SL160_.jpg" alt="Encore Desktop" /> ][ encore] </td>
+<td align="center">  [ <img src="https://images-na.ssl-images-amazon.com/images/I/31TP9Z5rqmL._SL160_.jpg" alt="Slide" /> ][ slide ] |</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"> <a href="http://www.amazon.co.uk/gp/product/B003X0BHP6/ref=as_li_ss_tl?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B003X0BHP6">£32.50</a> </td>
+<td align="center"> <a href="http://www.amazon.co.uk/gp/product/B004CQMXDA/ref=as_li_ss_tl?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B004CQMXDA">£48.99</a> </td>
+<td align="center"> <a href="http://www.amazon.co.uk/gp/product/B004CQKZXK/ref=as_li_ss_tl?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B004CQKZXK">£33.99</a> | </td>
+</tr>
+</tbody>
+</table>
+
+
+<p>From <a href="http://www.stumpstore.com/">Stump</a></p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center"> Stump Stand </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td align="center"> [ <img src="https://images-na.ssl-images-amazon.com/images/I/412%2BJ6T3YIL._SL160_.jpg" alt="Stump Stand" />][ stump ] |</td>
+</tr>
+<tr>
+<td></td>
+<td align="center"> <a href="http://www.amazon.co.uk/gp/product/B004TSAMFM/ref=as_li_ss_tl?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B004TSAMFM">£19.99</a> |</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/device-ownership-password/">Device Ownership Password</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-29T09:19:24+01:00" pubdate data-updated="true">May 29<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/device-ownership-password/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/device-ownership-password/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>While using a pool laptop from work and trying to connect to my home wifi I am prompted for my Device Ownership Password. It will only accept numerics, I believe this is requesting the &lsquo;Security Pin&rsquo; which is stamped on the bottom of my netgear router.</p>
+
+<p>This is only happening because the laptop is using Intel&reg; PROSet/Wireless Software, no other devices I have ever ask for this.</p>
+
+<p>It can be disabled by:</p>
+
+<pre><code>Control Panel -&gt; 
+  add or remove programs -&gt; 
+    Intel(R) PROSet/Wireless Software -&gt; 
+      Repair -&gt; 
+        Modify -&gt; 
+          WI-FI PROTECTED SETUP (change to not installed)
+</code></pre>
+
+<p>Now connecting to the WiFi I am just prompted for my network password, like all other devices.</p>
+
+<p>Answer originally found <a href="http://forums.anandtech.com/showthread.php?t=274465">here</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/10/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/8/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/flip-flop/">Flip-flop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/morganp">@morganp</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'morganp',
+            count: 1,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Morgan Prior -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'morganpgithubio';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

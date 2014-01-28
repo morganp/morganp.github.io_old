@@ -1,0 +1,1015 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>RockPaperScissors</title>
+  <meta name="author" content="Morgan Prior">
+
+  
+  <meta name="description" content="Sometime a script needs to now the directory that it is executing from, the best solution for this is: DIR="$( cd "$( dirname "${BASH_SOURCE[0 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://morganp.github.io/blog/page/12">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="RockPaperScissors" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47010631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">RockPaperScissors</a></h1>
+  
+    <h2>LizardSpock</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:morganp.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Latest</a></li>
+  <li><a href="/blog/archives">All</a></li>
+  <li><a href="/">Categories</a></li>
+  <li><a href="/tag">Tags</a></li>
+  <li><a href="/license">License</a></li>
+</ul>
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/bash-script-get-current-script-directory/">Bash Script Get Current Script Directory</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-07T13:45:37+01:00" pubdate data-updated="true">Apr 7<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/bash-script-get-current-script-directory/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/bash-script-get-current-script-directory/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sometime a script needs to now the directory that it is executing from, the best solution for this is:</p>
+
+<pre><code>DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &amp;&amp; pwd )"
+</code></pre>
+
+<p>Although the simpler version below should work for most cases the version above is preferred for shell portability.</p>
+
+<pre><code>DIR=`dirname $0` 
+</code></pre>
+
+<p>The usage of this could be for creating shell scripts that a user can double click to execute or drag on to the terminal to execute, as the working directory could change. Uses the scripts folder means that if a user copies the script to a new project it will work in the new project rather than having absolute paths to the old project.</p>
+
+<pre><code>#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &amp;&amp; pwd )"
+CSS_COLLATION=$DIR/screen.css
+
+#Clean File
+echo '' &gt; $CSS_COLLATION
+
+#Append CSS
+cat $DIR/reset.css &gt;&gt; $CSS_COLLATION
+cat $DIR/960.css &gt;&gt; $CSS_COLLATION
+</code></pre>
+
+<p><a href="http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in">From StackOverflow</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/encodingundefinedconversionerror-/">Encoding::UndefinedConversionError -</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-04T20:37:01+01:00" pubdate data-updated="true">Apr 4<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/encodingundefinedconversionerror-/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/encodingundefinedconversionerror-/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Are you running into the following error</p>
+
+<pre><code>Encoding::UndefinedConversionError - "\xE2" from ASCII-8BIT to UTF-8:
+</code></pre>
+
+<p>If you are using Ruby and SASS for your stylesheets then it might help to start your stylesheets with:</p>
+
+<pre><code>@charset "UTF-8"
+</code></pre>
+
+<p>In my main sinatra app I had</p>
+
+<pre><code>before do
+  content_type 'text/html', :charset =&gt; 'utf-8'
+end
+
+get '/base.css' do
+  sass :'stylesheets/base'
+end
+</code></pre>
+
+<p>Now the before route forces it to be utf-8 so stylesheets/base.sass also needs a charset defining:</p>
+
+<pre><code>@charset "UTF-8"
+
+body
+  font:
+    family: Helvetica, Arial, sans-serif
+
+#head
+  margin: 0
+  padding: 1em
+  background-color: #ccc
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/trying-to-disable-caps-lock-on-unix-systems/">Trying to Disable Caps Lock on Unix Systems</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-02T09:45:19+01:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2012</time>
+        
+           | <a href="/blog/tech/trying-to-disable-caps-lock-on-unix-systems/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/trying-to-disable-caps-lock-on-unix-systems/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Entering the following command in to your .bashrc seems like a simple way forward.</p>
+
+<pre><code>xmodmap -e "remove lock = Caps_Lock"
+</code></pre>
+
+<p>However generates the following error when loading multiple terminals</p>
+
+<pre><code>xmodmap:  commandline:0:  bad keysym in remove modifier list 'Caps_Lock', no corresponding keycodes
+xmodmap:  1 error encountered, aborting.
+</code></pre>
+
+<p>This appear to be a safer variant with out the errors when reloading your .bashrc</p>
+
+<pre><code>xmodmap -e "clear lock"
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/css-via-sass-seperating-colour-and-position/">CSS (via SASS) Seperating Colour and Position</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-01T16:15:15+01:00" pubdate data-updated="true">Apr 1<span>st</span>, 2012</time>
+        
+           | <a href="/blog/tech/css-via-sass-seperating-colour-and-position/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/css-via-sass-seperating-colour-and-position/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>While working on this site I wanted to find a simple way of trying out multiple stylesheets for different colour schemes. I originally thought a simple way to do this would be split it in to multiple stylesheets, one for position and another for colour.</p>
+
+<p>Style/Colour (SASS)</p>
+
+<pre><code>body
+  font-family: 'Droid Sans',sans-serif
+
+h1, h2, h3
+  font-family: 'Droid Serif',serif
+
+pre, code, tt 
+  font-family: 'Droid Sans Mono','andale mono','lucida console',monospace
+
+h1
+  font-size: 2em
+  line-height: 1.5em
+  margin-bottom: 0
+  border-bottom-style: solid
+  border-bottom-width: 1px
+
+h2
+  font-size: 1.5em
+  line-height: 1em
+  margin-top: 4px
+  margin-bottom: 10px
+
+p
+  font-size: 1.5em
+</code></pre>
+
+<p>Colour (SASS formatting)</p>
+
+<pre><code>h1
+  color: #3E7697
+
+h2, h3
+  border-color: #3E7697
+  color: #3E7697
+
+p
+  color: #333300
+</code></pre>
+
+<p>However I ran into problems with some of the new css3 features, box shadows in particular. box-shadow does not seem to be able to separate position and colour.</p>
+
+<pre><code>.box_shadow {
+ -webkit-box-shadow: 0px 0px 4px 0px #ffffff; /* Saf3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 0px 0px 4px 0px #ffffff; /* FF3.5 - 3.6 */
+  box-shadow: 0px 0px 4px 0px #ffffff; /* Opera 10.5, IE9, FF4+, Chrome 6+, iOS 5 */
+}
+</code></pre>
+
+<p>SASS allows variables to be introduced and has a system of partials or combining multiple SASS files to render the finished CSS. Using both of these techniques allows a semantic colour scheme to be introduced before combining it with the Styling which applies the style (Colour and Position).</p>
+
+<p>If I was to have two variants of my stylesheet light_text_on_dark_background and dark_text_on_light_background the sass files might look like:</p>
+
+<p>light_on_dark.sass</p>
+
+<pre><code>@import _base.sass
+@import _light_color.sass
+@import _position_after_color.sass
+</code></pre>
+
+<p>dark_on_light.sass</p>
+
+<pre><code>@import _base.sass
+@import _dark_color.sass
+@import _position_after_color.sass
+</code></pre>
+
+<p>Now the colours, first I give hex colours a mnemonic variable name (black, dark_blue etc) so you know roughly what it looks like, since most colour schemes are only made up of 3 to 4 main colours this relatively easy. I then assign the mnemonic colours to semantic variable names. Every colour scheme must use the same semantic names.</p>
+
+<p>_light_color.sass</p>
+
+<pre><code>//Mnemonic Colours
+$dark:            #333300
+$darker:          #664411
+$very_light_grey: #F0F0F0
+$light_grey:      #97A4A6
+$dark_blue:       #3E7697
+
+//Semantic Colours - Every colour scheme file implements these
+$back:           $very_light_grey
+$text:           $dark
+$title:          $dark_blue 
+$header:         $dark_blue
+$currentnav:     $title
+$link:           $darker
+$hoverlink:      $title
+$lightlink:      $text
+$lighthoverlink: $title
+$menulink:       $text
+$menuhoverlink:  $title
+
+// Radius for nice looking corners
+$shadow_color:  $header
+</code></pre>
+
+<p>_dark_color.sass</p>
+
+<pre><code>//Mnemonic Colours
+$black:        #000000
+$dark:         #333300
+$darker:       #664411
+$light_grey:   #97A4A6
+$light_blue:   #3E7697
+$dark_blue:    #105984
+
+//Semantic Colours - Every colour scheme file implements these
+$back:           $black
+$text:           $light_grey
+$title:          $light_blue
+$header:         $dark_blue
+$currentnav:     $title
+$link:           $darker
+$hoverlink:      $title
+$lightlink:      $text
+$lighthoverlink: $title
+$menulink:       $text
+$menuhoverlink:  $title
+
+// Radius for nice looking corners
+$shadow_color:   $header
+</code></pre>
+
+<p>The position and styling can then be applied using these semantic names.</p>
+
+<p>_position_after_color.sass</p>
+
+<pre><code>$radius: 12px
+$shadow_right: 0px
+$shadow_top: 0px
+$shadow_width: 4px
+
+=radius
+  -moz-border-radius: #{$radius}
+  -webkit-border-radius: #{$radius}
+  border-radius: #{$radius}
+  -moz-box-shadow: #{$shadow_right} #{$shadow_top} #{$shadow_width} #{$shadow_color}
+  -webkit-box-shadow: #{$shadow_right} #{$shadow_top} #{$shadow_width} #{$shadow_color}
+  box-shadow: #{$shadow_right} #{$shadow_top} #{$shadow_width} #{$shadow_color}
+
+body
+  color: #{$text}
+  background-color: #{$back}
+  width: 100%
+
+h1
+  color: #{$header}
+
+h2, h3
+  border-color: #{$title}
+  color: #{$title}
+
+p
+  font-size: 1.5em
+  color: #{$text}
+
+pre.prettyprint
+  +radius
+  padding: 0px 10px
+</code></pre>
+
+<p>Some of the Sass setup in Sinatra:</p>
+
+<pre><code>require 'compass' #Must be before Sinatra
+require 'sinatra' 
+require 'haml'
+require 'sass'
+
+configure :development do
+ Compass.configuration do |config|
+    config.project_path = File.dirname(__FILE__)
+    config.sass_dir = 'views/stylesheets'
+    config.output_style = :expanded
+  end
+end
+
+ configure :production do
+ Compass.configuration do |config|
+    config.project_path = File.dirname(__FILE__)
+    config.sass_dir = 'views/stylesheets'
+    config.output_style = :compressed
+  end
+end
+
+configure do
+  set :haml, { :format =&gt; :html5 }
+  set :sass, Compass.sass_engine_options
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/user-selectable-stylesheets-using-sinatra/">User Selectable Stylesheets (Using Sinatra)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-29T21:49:23+01:00" pubdate data-updated="true">Mar 29<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/user-selectable-stylesheets-using-sinatra/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/user-selectable-stylesheets-using-sinatra/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Working on my site design I thought it would be nice to have user selectable stylesheets, say a black text on white background or white text on black background. Once I had this working in development mode I ran into the problem with the stylesheet being cached.</p>
+
+<p>In my implementation the user sets a cookie by visiting a url and being redirected back to the original page. The routing then returned different content for the /stylesheet/screen.css based on the cookie.</p>
+
+<p>From my <a href="http://www.sinatrarb.com/">Sinatra</a> routes:</p>
+
+<pre><code>get '/set_css/:style' do
+   ## Set style with /set_css/light?ref=/article
+  response.set_cookie("style", { :value =&gt; params[:style], :path =&gt; '/'} ) 
+
+  if params[:ref].nil? or params[:ref] == '' 
+    redirect '/'
+  else
+    redirect params[:ref]
+  end
+end
+</code></pre>
+
+<p>The CSS routes, using sass for rendering</p>
+
+<pre><code>get '/stylesheets/screen.css' do
+  content_type 'text/css', :charset =&gt; 'utf-8'
+  response['Expires'] = (Time.now + 60*60*24*356).httpdate
+  if request.cookies['style'] == 'light'
+    sass(:"stylesheets/light_screen" ) 
+  else
+    sass(:"stylesheets/dark_screen" ) 
+  end
+end
+</code></pre>
+
+<p>The problem mentioned earlier is that the header is set to cache the page for a year. This means that the user would need to force a full webpage refresh. This does not happen automatically using the route which sets the cookie and redirect.</p>
+
+<p>An easy solution to for this is using the cookie to directly load a different named stylesheet. Each stylesheet will get cached but they are different assets to the browser. For my web app I move the if statment into layouts.erb.</p>
+
+<p>Stylesheet routes back to:</p>
+
+<pre><code>get '/stylesheets/:name.css' do
+  content_type 'text/css', :charset =&gt; 'utf-8'
+  response['Expires'] = (Time.now + 60*60*24*356).httpdate
+  sass(:"stylesheets/#{params[:name]}" ) 
+end
+</code></pre>
+
+<p>Inside my layout.erb</p>
+
+<pre><code>&lt;head&gt;
+  &lt;% if request.cookies['style'] == 'light' -%&gt;
+  &lt;link href="/stylesheets/light_screen.css" rel="stylesheet" type="text/css" media="screen, projection"/&gt;
+  &lt;% else -%&gt;
+  &lt;link href="/stylesheets/dark_screen.css" rel="stylesheet" type="text/css" media="screen, projection"/&gt;
+  &lt;% end -%&gt;
+ &lt;/head&gt;
+</code></pre>
+
+<p>The style selection menu:</p>
+
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;&lt;a href="/set_css/light?ref=&lt;%=request.fullpath%&gt;"&gt;Light&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="/set_css/dark?ref=&lt;%=request.fullpath%&gt;"&gt;Dark&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/what-shell-am-i-using/">What Shell Am I Using?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-28T20:43:20+01:00" pubdate data-updated="true">Mar 28<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/what-shell-am-i-using/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/what-shell-am-i-using/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you are working on a new system or with multiple environments it is good to know what type of shell you are using. the answer is in the $0 variable.</p>
+
+<pre><code>echo $0
+&gt; bash
+</code></pre>
+
+<p>The default shell is $SHELL</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/svn-multi-line-comments-on-the-command-line-/">SVN Multi-line Comments on the Command Line</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-28T13:32:53+01:00" pubdate data-updated="true">Mar 28<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/svn-multi-line-comments-on-the-command-line-/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/svn-multi-line-comments-on-the-command-line-/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Answer:</p>
+
+<pre><code>svn commit -m $'Line 1 \nLine 2'
+</code></pre>
+
+<h2>The Problem</h2>
+
+<p>Committing to subversion on the command line and using escaped line returns for multi line comments:</p>
+
+<pre><code>svn commit -m $'Line 1 \nLine 2'
+</code></pre>
+
+<p>svn log will show some thing like</p>
+
+<pre><code>------------------------------------------------------------------------
+r1 | user | 2012-03-28 13:37:48 +0100 (Wed, 28 Mar 2012) | 1 lines
+
+Line 1 \nLine 2
+</code></pre>
+
+<p>Answer originally posted on <a href="http://serverfault.com/questions/148917/use-linefeed-or-carriage-return-in-subversion-commit-message-from-the-command-li">ServerFault</a>. Strings contained in \&lsquo;\&rsquo; should not be interpreted by the command line but:</p>
+
+<pre><code>svn commit -m "Line 1 \nLine 2"
+</code></pre>
+
+<p>Shows the same errors. Starting the comment with a $ does seem to fix it.</p>
+
+<pre><code>svn commit -m $'Line 1 \nLine 2'
+</code></pre>
+
+<p>Will give:</p>
+
+<pre><code>------------------------------------------------------------------------
+r1 | user | 2012-03-28 13:37:48 +0100 (Wed, 28 Mar 2012) | 1 lines
+
+Line 1 
+Line 2
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/unix-mail-command-delete-all-messages/">Unix Mail Command, Delete All Messages</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-01T20:44:36+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2012</time>
+        
+           | <a href="/blog/tech/unix-mail-command-delete-all-messages/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/unix-mail-command-delete-all-messages/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Cron jobs can have there results returned as mail via the unix mail system. If left unchecked for a while the number of mails can mount up and you probably do not care about the old results. the command <code>d *</code> will delete all mails</p>
+
+<pre><code>$ mail
+Mail version 8.1 6/6/93.  Type ? for help.
+"/var/mail/lounge": 2726 messages 25 new 2726 unread
+? d *
+? quit
+
+$ mail
+No mail for user
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/list_temp_files-script/">List_temp_files Script</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-20T12:18:21+00:00" pubdate data-updated="true">Feb 20<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/list_temp_files-script/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/list_temp_files-script/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A simple script for finding temp files from the current directory and below. I often run this before adding a new project to a revision control system to ensure temp files do not get added into the repo.</p>
+
+<pre><code>#!/bin/sh
+
+echo "Searching for temp local files/directories"
+#vim accidental saves
+find . -name "1" -type f 
+
+#Other Temp files
+find . -name "*.log" -type f 
+find . -name "*.key" -type f
+find . -name "*.swp" -type f 
+find . -name "results" -type d 
+find . -name "waveforms" -type d  
+
+echo "Searching for temp links"
+find . -name "results" -type l 
+find . -name "waveforms" -type l 
+
+#Accidental checkins
+find . -name "*.log" -type l
+find . -name "*.key" -type l
+find . -name "*.swp" -type l
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/irb-as-a-megapixels-calculator/">Irb as a Megapixels Calculator</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-12T18:56:40+00:00" pubdate data-updated="true">Feb 12<span>th</span>, 2012</time>
+        
+           | <a href="/blog/photography/irb-as-a-megapixels-calculator/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/photography/irb-as-a-megapixels-calculator/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have just added the method below to my ruby .irbrc file for quickly calculating image megapixels. from OS X the info panel gives the form of &lsquo;23309 × 4412&rsquo; this becomes &lsquo;23309???4412&rsquo; when pasted into iTerm.</p>
+
+<pre><code>def megapixels( dimensions )
+  if dimensions.match(/\d*x\d*/)
+    x,y = dimensions.split('x')
+  end
+  if dimensions.match(/\d*\?\?\?\d*/)
+    x,y = dimensions.split('???')
+  end    
+
+  if x.nil? or y.nil? 
+    $stderr.puts "The input #{dimensions} could not be parsed in to megapixels"
+    exit -1
+  end
+  x = x.to_i
+  y = y.to_i
+
+  megapixels = (x*y)/10.0**6
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/13/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/11/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/flip-flop/">Flip-flop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/morganp">@morganp</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'morganp',
+            count: 1,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Morgan Prior -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'morganpgithubio';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

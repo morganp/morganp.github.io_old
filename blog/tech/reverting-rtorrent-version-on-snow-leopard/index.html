@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Reverting Rtorrent Version on Snow Leopard - RockPaperScissors</title>
+  <meta name="author" content="Morgan Prior">
+
+  
+  <meta name="description" content="After running a brew upgrade rtorrent was plagued with segmentation faults. Which look something like : Caught Segmentation fault, dumping stack:B] [ &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://morganp.github.io/blog/tech/reverting-rtorrent-version-on-snow-leopard">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="RockPaperScissors" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47010631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">RockPaperScissors</a></h1>
+  
+    <h2>LizardSpock</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:morganp.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Latest</a></li>
+  <li><a href="/blog/archives">All</a></li>
+  <li><a href="/">Categories</a></li>
+  <li><a href="/tag">Tags</a></li>
+  <li><a href="/license">License</a></li>
+</ul>
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Reverting Rtorrent Version on Snow Leopard</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-06T20:22:33+00:00" pubdate data-updated="true">Dec 6<span>th</span>, 2012</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>After running  a <code>brew upgrade</code> rtorrent was plagued with segmentation faults. Which look something like :</p>
+
+<pre><code>Caught Segmentation fault, dumping stack:B] [Port: 16006]                                                                    [U 0/14]    [D 0/30] [H 28/32] [S 196/198/208] [F 15/16]
+0 0   rtorrent                            0x0000000100001c8c _Z8do_panici + 130
+1 1   rtorrent                            0x0000000100044d48 _ZN13SignalHandler6caughtEi + 234
+2 2   libSystem.B.dylib                   0x00007fff872b51ba _sigtramp + 26
+3 3   libcrypto.0.9.8.dylib               0x00007fff81414491 ERR_get_state + 65
+4 4   libtorrent.14.dylib                 0x00000001002a75a9 _ZN7torrent13DiffieHellman13store_pub_keyEPhj + 45
+5 5   libtorrent.14.dylib                 0x0000000100292fb0 _ZN7torrent9Handshake20prepare_key_plus_padEv + 74
+6 6   libtorrent.14.dylib                 0x00000001002932ac _ZN7torrent9Handshake11event_writeEv + 284
+7 7   libtorrent.14.dylib                 0x0000000100247322 _ZN7torrent10PollKQueue7performEv + 236
+8 8   libtorrent.14.dylib                 0x0000000100247d69 _ZN7torrent10PollKQueue7do_pollExi + 383
+9 9   libtorrent.14.dylib                 0x000000010026b608 _ZN7torrent11thread_base10event_loopEPS0_ + 330
+10 10  rtorrent                            0x0000000100005af4 main + 12976
+11 11  rtorrent                            0x0000000100001820 start + 52
+12 12  ???                                 0x0000000000000001 0x0 + 1
+Abort trap
+</code></pre>
+
+<p>Since mid 2011 brew has added a versions command. Lets check what versions are available:</p>
+
+<pre><code>$ brew versions rtorrent
+0.9.2 git checkout 6b8d25f /usr/local/Library/Formula/rtorrent.rb
+0.8.9 git checkout e459d51 /usr/local/Library/Formula/rtorrent.rb
+0.9.0 git checkout 9b5cba7 /usr/local/Library/Formula/rtorrent.rb
+0.8.6 git checkout b782d9d /usr/local/Library/Formula/rtorrent.rb
+0.8.5 git checkout b92799d /usr/local/Library/Formula/rtorrent.rb
+
+$ brew versions libtorrent
+0.13.2 git checkout 8d5b242 /usr/local/Library/Formula/libtorrent.rb
+0.12.9 git checkout edd213c /usr/local/Library/Formula/libtorrent.rb
+0.13.0 git checkout 130b408 /usr/local/Library/Formula/libtorrent.rb
+0.12.6 git checkout 0476235 /usr/local/Library/Formula/libtorrent.rb
+0.12.5 git checkout d0ec1e6 /usr/local/Library/Formula/libtorrent.rb
+</code></pre>
+
+<p>The version giving me the segmentation faults is 0.9.2 with libtorrent 0.13.2, lets roll back to the previous version 0.8.9/0.12.9.</p>
+
+<pre><code>brew uninstall rtorrent libtorrent
+cd /usr/local/Library/Formula/
+git checkout edd213c
+# Not sure why brew thinks these are installed again but I had to run
+brew uninstall rtorrent libtorrent 
+brew install rtorrent libtorrent 
+</code></pre>
+
+<p>Once that has completed rtorrent should run as 0.8.9/0.12.9, which seems a whole lot more reliable on a mid 2010 Mac mini running snow leopard.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Morgan Prior</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-06T20:22:33+00:00" pubdate data-updated="true">Dec 6<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/tech/'>Tech</a>
+  
+</span>
+
+
+      
+
+<span class="tags">
+  
+    <a class='tag' href='/tag/apple/'>Apple</a>, <a class='tag' href='/tag/bittorrent/'>BitTorrent</a>, <a class='tag' href='/tag/homebrew/'>Homebrew</a>, <a class='tag' href='/tag/leopard/'>Leopard</a>, <a class='tag' href='/tag/os-x/'>OS X</a>, <a class='tag' href='/tag/snow-leopard/'>Snow Leopard</a>, <a class='tag' href='/tag/rtorrent/'>rtorrent</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://morganp.github.io/blog/tech/reverting-rtorrent-version-on-snow-leopard/" data-via="" data-counturl="http://morganp.github.io/blog/tech/reverting-rtorrent-version-on-snow-leopard/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/photography/lightroom-43-rc1-support-for-hidpi-retina-displays/" title="Previous Post: Lightroom 4.3 RC1, Support for HiDPI (Retina) Displays">&laquo; Lightroom 4.3 RC1, Support for HiDPI (Retina) Displays</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/tech/ruby-duck-typing-strings-and-arrays/" title="Next Post: Ruby duck typing Strings and Arrays">Ruby duck typing Strings and Arrays &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/flip-flop/">Flip-flop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/morganp">@morganp</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'morganp',
+            count: 1,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Morgan Prior -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'morganpgithubio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://morganp.github.io/blog/tech/reverting-rtorrent-version-on-snow-leopard/';
+        var disqus_url = 'http://morganp.github.io/blog/tech/reverting-rtorrent-version-on-snow-leopard/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

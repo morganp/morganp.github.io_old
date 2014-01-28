@@ -1,0 +1,810 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>RockPaperScissors</title>
+  <meta name="author" content="Morgan Prior">
+
+  
+  <meta name="description" content="CSS or Cascading Style Sheets are used for styling html elements. HTML elements can have id&rsquo;s, which must be unique to all other elements on &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://morganp.github.io/blog/page/21">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="RockPaperScissors" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47010631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">RockPaperScissors</a></h1>
+  
+    <h2>LizardSpock</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:morganp.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Latest</a></li>
+  <li><a href="/blog/archives">All</a></li>
+  <li><a href="/">Categories</a></li>
+  <li><a href="/tag">Tags</a></li>
+  <li><a href="/license">License</a></li>
+</ul>
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/philip_roberts-taught-me-a-thing-or-two-about-css/">@philip_roberts Taught Me a Thing or Two About CSS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-22T10:15:50+01:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2010</time>
+        
+           | <a href="/blog/tech/philip_roberts-taught-me-a-thing-or-two-about-css/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/philip_roberts-taught-me-a-thing-or-two-about-css/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>CSS or Cascading Style Sheets are used for styling html elements. HTML elements can have id&rsquo;s, which must be unique to all other elements on the page. HTML elements can also have a type class, an item can belong to multiple classes and a page can have multiple items in a class.</p>
+
+<p>Example page:</p>
+
+<pre><code>&lt;html&gt;
+   &lt;head&gt;
+   &lt;/head&gt;
+   &lt;body id="about"&gt;
+      &lt;div id="nav"&gt;
+        &lt;a href="next"&gt;next&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div id="body"&gt;
+        &lt;a class="small, underline"href="a"&gt;something&lt;/a&gt;
+        &lt;a class="small" href="b"&gt;something&lt;/a&gt;
+        &lt;a class="small" href="c"&gt;something&lt;/a&gt;
+      &lt;/div&gt;
+   &lt;/body&gt;
+&lt;html&gt;
+</code></pre>
+
+<p>To refer to id&rsquo;s use a # symbol and . for classes. eg</p>
+
+<pre><code>div#nav
+a.small
+</code></pre>
+
+<p>If you want to apply the same style to multiple elements they can be written in a list before the style. Make h1 h2 and h3 all text 2x normal:</p>
+
+<pre><code>h1, h2, h3 {
+    test-size: 200%;
+}
+</code></pre>
+
+<p>Now for the new stuff, if the &lsquo;,&rsquo; are removed from the list it specifies a hierarchy which for the element which you are matching:</p>
+
+<pre><code>body#about div#nav a {
+   background-color:yellow;
+}
+</code></pre>
+
+<p>The second thing that I had not realised is that the more specific the higher the precedent.</p>
+
+<pre><code>a { 
+  background-color:black;
+}
+body#about div#nav a {
+  background-color:yellow;
+}
+</code></pre>
+
+<p>Will render the same as</p>
+
+<pre><code>body#about div#nav a {
+   background-color:yellow;
+}
+a { 
+   background-color:black;
+}
+</code></pre>
+
+<p>I had previously assumed in the last example that the last a define would have been all encompassing.</p>
+
+<p>NB: For debugging CSS I think that the <a href="http://getfirebug.com/">FireBug plugin</a> for firefox is great. Watch the Video to get the most out of it.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/turn-a-jar-file-into-a-mac-app/">Turn a .jar File Into a Mac .app</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-18T05:59:31+01:00" pubdate data-updated="true">Jul 18<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/turn-a-jar-file-into-a-mac-app/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/turn-a-jar-file-into-a-mac-app/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Following <a href="http://www.centerkey.com/mac/java/">this article</a> lets you turn a executable java .jar into a mac appliction (.app). The Tools are only available on Mac OS with Xcode installed.</p>
+
+<p>Basically create a 512x512px png for your logo. then use &lsquo;/Developer/Applications/Utilities/Icon Composer.app&rsquo; to create a someFileName.icns, Just drag the png into each of the different size boxes and Icon Composer will resize it correctly.
+Then Save.</p>
+
+<p>Second Stage is to start &lsquo;/Developer/Applications/Utilities/Jar Bundler.app&#8217;<br/>
+For the main class choose your executable .jar for the icon load the icns created in the previous step. Then press the create application button, chose location then your .app should be created.</p>
+
+<p>The only complaint I have about these to applications is there is no ability to save the set-up, so every time you want to rebuild you have to enter all the settings again, I do not know many other applications which do not allow you to save.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/adding-usb-drives-to-a-headless-ubuntu-linux-box/">Adding USB Drives to a Headless Ubuntu Linux Box</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-17T04:03:10+01:00" pubdate data-updated="true">Jul 17<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/adding-usb-drives-to-a-headless-ubuntu-linux-box/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/adding-usb-drives-to-a-headless-ubuntu-linux-box/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After adding some USB2 (NTFS formatted) drives to a headless Ubuntu server, they were not auto-mounted so I had to find them and mount them, with only remote terminal access.</p>
+
+<p>List Hard Drive Devices:</p>
+
+<pre><code>sudo fdisk -l
+</code></pre>
+
+<p>Create a mount point:</p>
+
+<pre><code>sudo mkdir /mnt/starbug1/terra06
+</code></pre>
+
+<p>and run this command to mount (NTFS formatted):</p>
+
+<pre><code>sudo mount /dev/sdc1 /mnt/starbug1/terra06 -t ntfs
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/installing-git-on-a-clean-build-of-os-x/">Installing Git on a Clean Build of OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-16T11:44:11+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/installing-git-on-a-clean-build-of-os-x/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/installing-git-on-a-clean-build-of-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Having a clean build of Mac OS X Snow Leopard I thought I would give the <a href="http://github.com/mxcl/homebrew">Homebrew</a> method of installing git a try.</p>
+
+<p>First of all Install <a href="http://github.com/mxcl/homebrew">Homebrew</a>. I did it by executing:</p>
+
+<pre><code>ruby -e "$(curl -fsS http://gist.github.com/raw/323731/install_homebrew.rb)"
+</code></pre>
+
+<p>This does some commands as sudo but we trust Homebrew right?<br/>
+NB: Since Leopard sudo will require a password if you do not have a password set it will not except empty or no password so you must have a password set for your user account.</p>
+
+<p>Then install <a href="http://developer.apple.com/technologies/xcode.html">Xcode</a>. 3.2.3 was the latest when writing this but came with the iphone 4 sdk (~2GB) I chose to go with the slightly older 3.2.2 at ~750MB.</p>
+
+<p>Last <a href="http://help.github.com/mac-git-installation/">install git via Homebrew</a>:</p>
+
+<pre><code>brew install git
+==&gt; Downloading http://kernel.org/pub/software/scm/git/git-1.7.1.1.tar.bz2
+######################################################################## 100.0%
+==&gt; make prefix=/usr/local/Cellar/git/1.7.1.1 install
+==&gt; Downloading http://kernel.org/pub/software/scm/git/git-manpages-1.7.1.1.tar.bz2
+######################################################################## 100.0%
+==&gt; Downloading http://kernel.org/pub/software/scm/git/git-htmldocs-1.7.1.1.tar.bz2
+######################################################################## 100.0%
+/usr/local/Cellar/git/1.7.1.1: 916 files, 18M, built in 82 seconds
+
+git --version
+&gt; git version 1.7.1.1
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/get-client-ip-on-heroku/">Get Client IP on Heroku</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-12T07:41:32+01:00" pubdate data-updated="true">Jul 12<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/get-client-ip-on-heroku/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/get-client-ip-on-heroku/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have been trying to use the <a href="http://coderack.org/users/hosiawak/middlewares/36-geoip-country">GeoIP Rack App</a>, by copying this <a href="http://gist.github.com/208774">gist</a> in my Rack stack with a Sinatra Application. Heroku has a lot of redirection in there Server farm so I have added the following lines to my instance of GeoIP:Rack to make it Heroku safe.</p>
+
+<pre><code>env['HTTP_X_REAL_IP'] ||= env['REMOTE_ADDR']
+res = @db.country(env['HTTP_X_REAL_IP'])
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/sinatra-running-on-heroku/">Sinatra Running on Heroku</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-09T08:37:13+01:00" pubdate data-updated="true">Jul 9<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/sinatra-running-on-heroku/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/sinatra-running-on-heroku/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For running small webapps <a href="http://heroku.com/">heroku</a> is free. The real attraction is the simplicity of deployment, if you are use to git you just push to heroku.</p>
+
+<p><a href="http://blog.heroku.com/archives/2009/3/5/32_deploy_merb_sinatra_or_any_rack_app_to_heroku/">Current instructions</a> are missing the step of creating the .gems file. So here is my quick walk through. Register on <a href="http://heroku.com/">heroku</a> first.</p>
+
+<pre><code>mkdir new_web_app
+cd new_web_app
+gem install heroku
+touch config.ru
+touch app.rb
+touch .gems
+</code></pre>
+
+<p>config.ru</p>
+
+<pre><code>require 'app'
+run Sinatra::Application
+</code></pre>
+
+<p>app.rb</p>
+
+<pre><code>require 'rubygems'
+require 'sinatra'
+
+get '/' do
+   "Hello from Sinatra on Heroku!"
+end
+</code></pre>
+
+<p>.gems</p>
+
+<pre><code>sinatra --version '&gt;=1.0'
+</code></pre>
+
+<p>Now run these commands to finish off and deploy</p>
+
+<pre><code>git init
+git add config.ru app.rb .gems 
+git commit -a -m 'Initial commit'
+heroku create
+git push heroku master
+heroku open
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vim-indenting-with-vim-/">[Vim] Indenting With Vim</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-07T07:50:53+01:00" pubdate data-updated="true">Jul 7<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/vim-indenting-with-vim-/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/vim-indenting-with-vim-/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Vim is a great text editor but has quite a steep learning curve. <a href="http://vimcasts.org">VimCasts</a> is a great podcast for learning about vim.</p>
+
+<p>Indenting is a common programming activity so doing this effectively can greatly speed editing up.</p>
+
+<p>Pressing i to enter INSERT mode then pressing tab will insert a tab or white space as expected. There is a quicker method especially for multiline.</p>
+
+<p><strong>Vim Multi-Line Indent</strong>
+Press ESC to enter normal mode. &lsquo;v&rsquo; to enter Visual mode. use the cursors or your normal navigation keys to highlight multiple lines then press &lsquo;&lt;&lt;&rsquo; or &lsquo;>>&rsquo;. This indents in or out but notice that you have gone back to normal mode and your higlighted region has been lost. this is quite frustrating until you realise that you can redo the same command by pressing &lsquo;.&rsquo; and undo with &lsquo;u&rsquo; if you indented to far.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/os-x-itunes-play-ogg-videos/">OS X iTunes Play .ogg Videos</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-06T09:18:22+01:00" pubdate data-updated="true">Jul 6<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/os-x-itunes-play-ogg-videos/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/os-x-itunes-play-ogg-videos/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://pragmatic.tv">Pragmatic TV</a> release there screen casts in iPod, Quicktime and Theora Ogg formats. Since Theora Ogg seems to be the best quality and I want to be able to read the text from the video clearly I would like to integrate playback better into the mac ecosystem.</p>
+
+<p>This is actually fairly trivial with <a href="http://xiph.org/quicktime/download.html">Xiph</a>. Just download, open the .dmg and place the .component in the /Library/Components folder. .ogg videos can now be dragged into and played with iTunes.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/">jQuery Clear Form on Focus and Restore on Exit</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-27T10:57:35+01:00" pubdate data-updated="true">Jun 27<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I used <a href="http://www.eggchops.com/web-stuff/jquery/jquery-clear-focus-function/">this as a jQuery reference</a> to hide and show default text in forms.</p>
+
+<pre><code>&lt;head&gt;
+   &lt;script type=”text/javascript” src=”js/jquery.js”&gt;&lt;/script&gt;
+   &lt;script type=”text/javascript”&gt;
+
+   $(document).ready(function(){
+
+      var clearMePrevious = ”;
+
+      // clear input on focus
+      $(’.clearMeFocus’).focus(function()
+      {
+         if($(this).val()==$(this).attr(’title’))
+         {
+            clearMePrevious = $(this).val();
+            $(this).val(”);
+         }
+       });
+
+       // if field is empty afterward, add text again
+       $(’.clearMeFocus’).blur(function()
+       {
+        if($(this).val()==”)
+        {
+          $(this).val(clearMePrevious);
+        }
+    });
+});
+
+&lt;/script&gt;
+&lt;/head&gt;
+</code></pre>
+
+<p>and the for the form</p>
+
+<pre><code>&lt;input type=”text” name=”email” title=”Enter your email” value=”Enter your email” class=”clearMeFocus” /&gt;
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/webfaction-problems-restarting-nginx/">WebFaction Problems Restarting Nginx</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-27T09:39:48+01:00" pubdate data-updated="true">Jun 27<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/webfaction-problems-restarting-nginx/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/webfaction-problems-restarting-nginx/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After updating my website on <a href="http://www.webfaction.com/?affiliate=morgy">webfaction</a> nginx kept saying permission denied and when I tried to view my site I got a 502 Bad Gateway error page.</p>
+
+<p>To restart nginx I use to call:</p>
+
+<pre><code>  ~/webapps/passenger/bin/restart
+</code></pre>
+
+<p>I had to change this to:</p>
+
+<pre><code>~/webapps/passenger/nginx/sbin/nginx -p ~/webapps/passenger/nginx/ -s stop  
+~/webapps/passenger/nginx/sbin/nginx -p ~/webapps/passenger/nginx/ 
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/22/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/20/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/flip-flop/">Flip-flop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/morganp">@morganp</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'morganp',
+            count: 1,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Morgan Prior -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'morganpgithubio';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

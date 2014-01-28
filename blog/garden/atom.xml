@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Garden | RockPaperScissors]]></title>
+  <link href="http://morganp.github.io/blog/garden/atom.xml" rel="self"/>
+  <link href="http://morganp.github.io/"/>
+  <updated>2014-01-28T19:20:49+00:00</updated>
+  <id>http://morganp.github.io/</id>
+  <author>
+    <name><![CDATA[Morgan Prior]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Gardener C14e]]></title>
+    <link href="http://morganp.github.io/blog/garden/gardener-c14e/"/>
+    <updated>2013-10-02T17:14:38+01:00</updated>
+    <id>http://morganp.github.io/blog/garden/Gardener-C14e</id>
+    <content type="html"><![CDATA[<p>The programs available on your Gardener C14e water computer (timer) are:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> Program        </th>
+<th align="center"> Cycle           </th>
+<th align="right"> Duration  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>  00 </td>
+<td align="center"> None </td>
+<td align="right"> 0 |</td>
+</tr>
+<tr>
+<td></td>
+<td>  01 </td>
+<td align="center"> Every 6 hours  </td>
+<td align="right"> 3 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  02 </td>
+<td align="center"> Every 12 hours  </td>
+<td align="right"> 3 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  03 </td>
+<td align="center"> Every 12 hours  </td>
+<td align="right"> 15 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  04 </td>
+<td align="center"> Every 24 hours  </td>
+<td align="right"> 3 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  05 </td>
+<td align="center"> Every 24 hours  </td>
+<td align="right"> 5 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  06 </td>
+<td align="center"> Every 24 hours  </td>
+<td align="right"> 30 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  07 </td>
+<td align="center"> Every 24 hours  </td>
+<td align="right"> 60 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  08 </td>
+<td align="center"> Every 2 Days     </td>
+<td align="right"> 5 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  09 </td>
+<td align="center"> Every 2 Days     </td>
+<td align="right"> 30 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  10 </td>
+<td align="center"> Every 2 Days     </td>
+<td align="right"> 60 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  11 </td>
+<td align="center"> Every 3 Days     </td>
+<td align="right"> 30 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  12 </td>
+<td align="center"> Every 3 Days     </td>
+<td align="right"> 60 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  13 </td>
+<td align="center"> Every 4 Days     </td>
+<td align="right"> 60 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  14 </td>
+<td align="center"> Every 4 Days     </td>
+<td align="right"> 120 minutes  |</td>
+</tr>
+</tbody>
+</table>
+
+]]></content>
+  </entry>
+  
+</feed>

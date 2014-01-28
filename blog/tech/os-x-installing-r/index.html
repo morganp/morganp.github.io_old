@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>OS X Installing R - RockPaperScissors</title>
+  <meta name="author" content="Morgan Prior">
+
+  
+  <meta name="description" content="R is a language for statistical computing and graphics. It is the choice of Coursera Statistics One. It can be installed on OS X via the pkg &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://morganp.github.io/blog/tech/os-x-installing-r">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="RockPaperScissors" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47010631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">RockPaperScissors</a></h1>
+  
+    <h2>LizardSpock</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:morganp.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Latest</a></li>
+  <li><a href="/blog/archives">All</a></li>
+  <li><a href="/">Categories</a></li>
+  <li><a href="/tag">Tags</a></li>
+  <li><a href="/license">License</a></li>
+</ul>
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">OS X Installing R</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-03T20:11:46+01:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2012</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="http://www.r-project.org/">R</a> is a language for statistical computing and graphics. It is the choice of <a href="http://coursera.org">Coursera</a> Statistics One.</p>
+
+<p>It can be installed on OS X via the <a href="http://cran.r-project.org/bin/macosx/">pkg</a> available on the main website which is my recommendation or via <a href="http://mxcl.github.com/homebrew/">Homebrew</a>.</p>
+
+<p><em>I have been unable to get the homebrew version to install correctly.</em><br/>
+<em>On Mountain Lion the homebrew install also requires a few additional packages.</em></p>
+
+<h2>Install R with Homebrew</h2>
+
+<p><strong>Update</strong> First run <code>brew tap homebrew/science</code> to make the R package available <strong>/Update</strong></p>
+
+<p>If you run <code>brew install r</code> when you do not have a fortran compiler you will see the following error:</p>
+
+<blockquote><p>This formula requires a fortran compiler, but we could not find one by
+looking at the FC environment variable or searching your PATH for <code>gfortran</code>.
+Please take one of the following actions:</p>
+
+<ul>
+<li><p>Decide to use the build of gfortran 4.2.x provided by Homebrew using
+    <code>brew install gfortran</code></p></li>
+<li><p>Choose another Fortran compiler by setting the FC environment variable:
+    export FC=/path/to/some/fortran/compiler
+Using an alternative compiler may produce more efficient code, but we will
+not be able to provide support for build errors.</p></li>
+</ul>
+</blockquote>
+
+<p>To save time just run :</p>
+
+<pre><code>brew update
+brew install gfortran r
+</code></pre>
+
+<p>Although I ran into some issues with linking libtiff and jpeg and had to run:</p>
+
+<pre><code>brew link -f  libtiff jpeg
+brew install r
+</code></pre>
+
+<p>I still got checksum fails. Might have to wait for a brew update.</p>
+
+<p>If you are running Mountain Lion then you will also run into this:</p>
+
+<blockquote><p>Unsatisfied dependency: XQuartz
+Please install the latest version of XQuartz:
+ <a href="https://xquartz.macosforge.org">https://xquartz.macosforge.org</a>
+Error: An unsatisfied requirement failed this build.</p></blockquote>
+
+<p>The easiest way to install R on OS X really does seem to be just run the <a href="http://cran.r-project.org/bin/macosx/">package</a>. 134MB install size.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Morgan Prior</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-03T20:11:46+01:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/tech/'>Tech</a>
+  
+</span>
+
+
+      
+
+<span class="tags">
+  
+    <a class='tag' href='/tag/apple/'>Apple</a>, <a class='tag' href='/tag/command-line/'>Command Line</a>, <a class='tag' href='/tag/mountain-lion/'>Mountain Lion</a>, <a class='tag' href='/tag/os-x/'>OS X</a>, <a class='tag' href='/tag/programming/'>Programming</a>, <a class='tag' href='/tag/r/'>R</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://morganp.github.io/blog/tech/os-x-installing-r/" data-via="" data-counturl="http://morganp.github.io/blog/tech/os-x-installing-r/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/tech/mountain-lion-setup-part-5-etchosts/" title="Previous Post: Mountain Lion Setup, Part 5 /etc/hosts">&laquo; Mountain Lion Setup, Part 5 /etc/hosts</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/tech/get-snipmate-working-a-vim-plugin/" title="Next Post: Get snipMate working, a #vim plugin">Get snipMate working, a #vim plugin &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/flip-flop/">Flip-flop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/morganp">@morganp</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'morganp',
+            count: 1,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Morgan Prior -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'morganpgithubio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://morganp.github.io/blog/tech/os-x-installing-r/';
+        var disqus_url = 'http://morganp.github.io/blog/tech/os-x-installing-r/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

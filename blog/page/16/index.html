@@ -1,0 +1,950 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>RockPaperScissors</title>
+  <meta name="author" content="Morgan Prior">
+
+  
+  <meta name="description" content="recenlty after updating rubygems Istarted getting a lot of warning like this when running ruby or executable gems: NOTE: Gem::Specification# &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://morganp.github.io/blog/page/16">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="RockPaperScissors" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47010631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">RockPaperScissors</a></h1>
+  
+    <h2>LizardSpock</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:morganp.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Latest</a></li>
+  <li><a href="/blog/archives">All</a></li>
+  <li><a href="/">Categories</a></li>
+  <li><a href="/tag">Tags</a></li>
+  <li><a href="/license">License</a></li>
+</ul>
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/obnoxious-gem-warnings/">Obnoxious Gem Warnings</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-11T17:11:47+01:00" pubdate data-updated="true">May 11<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/obnoxious-gem-warnings/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/obnoxious-gem-warnings/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>recenlty after updating rubygems Istarted getting a lot of warning like this when running ruby or executable gems:</p>
+
+<p>NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299@global/specifications/rake-0.8.7.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/bundler-1.0.12.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/bundler-1.0.7.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/heroku-1.12.0.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/heroku-2.0.4.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/httparty-0.5.2.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/httparty-0.7.7.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/json-1.4.6.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/json-1.5.1.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.</p>
+
+<h2>Using RVM the fix is to run</h2>
+
+<pre><code> rvm rubygems current
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/recent-issue-with-building-gems/">Recent Issue With Building Gems</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-07T23:25:34+01:00" pubdate data-updated="true">May 7<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/recent-issue-with-building-gems/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/recent-issue-with-building-gems/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When running gem build on a new library I have been working on I started getting the following error:</p>
+
+<pre><code>[ruby_svg_light.gemspec] isn't a Gem::Specification (Rake::FileTask instead).
+ERROR:  While executing gem ... (NoMethodError)
+    undefined method `mark_version' for nil:NilClass
+</code></pre>
+
+<p>It was from a gemspec similar to that below</p>
+
+<pre><code>require 'rake/gempackagetask' 
+
+NAME = "ruby_svg_light" 
+Dir.chdir( './lib/')
+require NAME
+Dir.chdir( './../')
+
+spec = Gem::Specification.new do |s|
+  s.name         = NAME
+  s.version      = RubySVGLight::VERSION
+  s.platform     = Gem::Platform::RUBY
+  s.summary      = 'Basic Helper for creating SVG Files'
+  s.homepage     = 'http://amaras-tech.co.uk/software/RubySVGLight'
+  s.authors      = "Morgan Prior"
+  s.email        = NAME + "_gem@amaras-tech.co.uk"
+  s.description  = %{A basic library for building SVG files. Not all properties of SVG are supported}
+  s.files        = [Dir.glob("LICENSE.rtf")]
+  s.files        += Dir.glob("examples/*")
+  s.files        += Dir.glob("lib/**/*")
+  s.files        += Dir.glob("spec/*") 
+end
+Rake::GemPackageTask.new(spec).define
+</code></pre>
+
+<p>The Fix was to change to this (Removing Rake::GemPackageTask):</p>
+
+<pre><code>NAME = "ruby_svg_light"
+Dir.chdir( './lib/')
+require NAME
+Dir.chdir( './../')
+
+Gem::Specification.new do |s|
+  s.name         = NAME
+  s.version      = RubySVGLight::VERSION
+  s.platform     = Gem::Platform::RUBY
+  s.summary      = 'Basic Helper for creating SVG Files'
+  s.homepage     = 'http://amaras-tech.co.uk/software/RubySVGLight'
+  s.authors      = "Morgan Prior"
+  s.email        = NAME + "_gem@amaras-tech.co.uk"
+  s.description  = %{A basic library for building SVG files. Not all properties of SVG are supported}
+  s.files        = [Dir.glob("LICENSE.rtf")]
+  s.files        += Dir.glob("examples/*")
+  s.files        += Dir.glob("lib/**/*")
+  s.files        += Dir.glob("spec/*")
+end
+</code></pre>
+
+<p>It looks like the new format if for the gemspec is to return a Gem::Specification rather than run the task. I do not know when this change happened.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/lightroom-tip-press-%e2%8c%98-to-see-all-possible-shortcuts/">Lightroom Tip Press ⌘/ to See All Possible Shortcuts</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-03T23:15:14+01:00" pubdate data-updated="true">May 3<span>rd</span>, 2011</time>
+        
+           | <a href="/blog/photography/lightroom-tip-press-%e2%8c%98-to-see-all-possible-shortcuts/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/photography/lightroom-tip-press-%e2%8c%98-to-see-all-possible-shortcuts/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have captured all 5 lists here, but they are only a ⌘/ away.</p>
+
+<h2>Library</h2>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/5684556622/" title="LightroomLibraryShortcuts by munky morgy, on Flickr"><img src="http://farm6.static.flickr.com/5029/5684556622_566a9636a1.jpg" width="500" height="369" alt="LightroomLibraryShortcuts"></a></p>
+
+<h2>Develop</h2>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/5683989427/" title="LightroomDevelopShortcuts by munky morgy, on Flickr"><img src="http://farm6.static.flickr.com/5025/5683989427_47b33124d2.jpg" width="500" height="319" alt="LightroomDevelopShortcuts"></a></p>
+
+<h2>Slideshow</h2>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/5683989893/" title="LightroomSlideshowShortcuts by munky morgy, on Flickr"><img src="http://farm6.static.flickr.com/5064/5683989893_3a1f674702.jpg" width="453" height="500" alt="LightroomSlideshowShortcuts"></a></p>
+
+<h2>Print</h2>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/5683990243/" title="LightroomPrintShortcuts by munky morgy, on Flickr"><img src="http://farm6.static.flickr.com/5106/5683990243_4699a67af8.jpg" width="500" height="210" alt="LightroomPrintShortcuts"></a></p>
+
+<h2>Web</h2>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/5683990527/" title="LightroomWebShortcuts by munky morgy, on Flickr"><img src="http://farm6.static.flickr.com/5065/5683990527_3872b5e9d0.jpg" width="458" height="417" alt="LightroomWebShortcuts"></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/bash-scripts-and-cron/">Bash Scripts and Cron</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-28T20:01:13+01:00" pubdate data-updated="true">Apr 28<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/bash-scripts-and-cron/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/bash-scripts-and-cron/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have not fully read it but it looks like this is a <a href="http://mywiki.wooledge.org/BashGuide">good guide to bash scripting</a>. A few things that normally catch me out trying to load modules inside a script, but they fail with:</p>
+
+<pre><code>&gt; module: command not found
+</code></pre>
+
+<p>This is due to the module system not being loaded. For Linux/Unix systems adding the 3rd line below should fix the issue.</p>
+
+<pre><code>#!/bin/bash
+
+. /usr/share/modules/init/bash
+module load something
+</code></pre>
+
+<p>NB: Not sure how to do this on Mac OS X</p>
+
+<p>The Second bash scripting issue that trips me up is when adding to cron.</p>
+
+<p>cron or crontab is a way to run scripts at regular intervals, however by default it runs in a minimal environment. This means that a script which executes correctly in your terminal may not work as expected when entered in cron.</p>
+
+<h2>Solution 1</h2>
+
+<pre><code>#!/bin/bash
+source ~/.bashrc
+
+echo "The rest of the script"
+</code></pre>
+
+<p>Sourcing your bashrc in the script while this works it requires the script to be written based on how it will be deployed. Solution 2 fixes the crontab for the environment it will run in.</p>
+
+<h2>Solution 2</h2>
+
+<p>edit the crontab</p>
+
+<pre><code>$ crontab -e
+</code></pre>
+
+<p>From this:</p>
+
+<pre><code>* * * * * /path/to/script
+</code></pre>
+
+<p>to this:</p>
+
+<pre><code>* * * * * /bin/bash -l -c '/path/to/script'
+</code></pre>
+
+<p>-l loads the full environment<br/>
+-c tells bash that there is a script to execute</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vimfu-end-of-line-character-placement/">Vimfu End of Line Character Placement</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-24T12:07:07+01:00" pubdate data-updated="true">Apr 24<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/vimfu-end-of-line-character-placement/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/vimfu-end-of-line-character-placement/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In Vim to insert text before the cursor press &lsquo;i&rsquo;, to insert text after cursor &lsquo;a&rsquo; or to edit at the end of line &lsquo;A&rsquo;. To paste before the cursor &lsquo;p&rsquo; to paste after the cursor &lsquo;P&rsquo;.</p>
+
+<p>While these variants exist I still find it easier to place the cursor &lsquo;correctly&rsquo; and use one variant. However this results in a little trouble with end of lines as I can not move the cursor to paste &lsquo;P&rsquo; after the last character.</p>
+
+<p>Adding the following line to <a href="https://github.com/morganp/dotfiles/blob/master/dotfiles/.vimrc">my .vimrc</a> has helped me work around this:</p>
+
+<pre><code>" Allow cursor to move 1 character past end of line
+set virtualedit=onemore
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vimfu-reindent/">Vimfu Reindent</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-19T19:55:19+01:00" pubdate data-updated="true">Apr 19<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/vimfu-reindent/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/vimfu-reindent/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The latest addition to <a href="https://github.com/morganp/dotfiles/blob/master/dotfiles/.vimrc#L197">my .vimrc</a> below, allows ;g to smart indent the current file. It is the same as gg=G but returning you to the same position.</p>
+
+<p>Update based on Recommendations from <a href="http://drewneil.com/">Drew Neil</a> and <a href="http://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/">Jonathan Palardy</a>, a more generic pereserving state function, which can be mapped to a key sequence with specific commands.</p>
+
+<pre><code>function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+" SmartIndent keeping cursor position
+map ;g :call Preserve("normal! gg=G")&lt;CR&gt;
+</code></pre>
+
+<p>If this does not work for a particular file type you use you probably need to look at getting a *.syntax file for your language.</p>
+
+<h2>My Original Method </h2>
+
+<pre><code>function! Indent()
+  " Capture Current Line
+  let currentline_num = line(".")
+  let currentcol_num = virtcol('.')
+
+  " Reindent from start to end of file
+   normal! gg=G
+
+   " Restore Current Line and column
+   exe 'normal '.currentline_num.'G'.currentcol_num.'|'
+endfunction
+
+"assign to ;g in normal mode
+map ;g :call Indent()&lt;CR&gt;
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/behaviour-and-state/">Behaviour and State</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-16T17:59:44+01:00" pubdate data-updated="true">Apr 16<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/behaviour-and-state/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/behaviour-and-state/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Classes are a basic Object Orientated Structure which encapsulate state and behaviour. Some times you just require to capture state/storage of a data structure with out any behaviour, in this case Ruby&rsquo;s Stuct can be useful.</p>
+
+<pre><code>class Desk
+  attr_accessor :height, :width, :depth
+
+  def initialize(height=nil, width=nil, depth=nil)
+    @height = height
+    @width = width
+    @depth = depth
+  end
+end
+</code></pre>
+
+<p>Becomes (Is the same as):</p>
+
+<pre><code>DeskS = Struct.new(:height, :width, :depth)
+</code></pre>
+
+<p>Instantiation</p>
+
+<pre><code>a = Desk.new(12, 13, 14)
+b = DeskS.new(12, 13, 14)
+
+a.height
+ =&gt; 12
+
+b.height
+ =&gt; 12 
+</code></pre>
+
+<p>Taking this further for less code in a basic class. This might be too far!</p>
+
+<pre><code>#In herriting from a Struct
+# class DeskWithBehaviour &lt; DeskS
+class DeskWithBehaviour &lt; Struct.new(:height, :width, :depth)
+  def volume
+    height * width * depth
+  end
+end
+
+# Or Pass Struct a block
+DeskSPlus = Struct.new(:height, :width, :depth) do
+  def volume
+    height * width * depth
+  end
+end
+
+c = DeskWithBehaviour.new(1,2,3)
+c.volume
+ =&gt; 6
+c.class
+ =&gt; DeskWithBehaviour
+
+d = DeskSPlus.new(1,2,3)
+d.volume
+ =&gt; 6
+d.class
+ =&gt; DeskSPlus
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/better-open-source-project-setup-with-rvm-bundler/">Better Open Source Project Setup, With RVM & Bundler</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T06:35:10+01:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/better-open-source-project-setup-with-rvm-bundler/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/better-open-source-project-setup-with-rvm-bundler/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Based on &lsquo;Raise the bar, lower the pressure&rsquo; given by Durran Jordan at ScotRubyConf 2011.</p>
+
+<p>There has been some debate as to whether the project .rvmrc should be included in git. With the correct options including .rvmrc and bundler can make working on open source projects easier. I have an example on <a href="https://github.com/morganp/OpenSourceExample">github</a>. If you have not hear of Ruby Version Manager RVM I suggest you <a href="https://rvm.beginrescueend.com/rvm/install/">check it out</a>.</p>
+
+<p>An example project .rvmrc</p>
+
+<pre><code>rvm_gemset_create_on_use_flag=1
+rvm 1.9.2@OpenSourceExample
+</code></pre>
+
+<p>The first line is really important here on first time cd&#8217;ing into the folder it creates the gemset instead of outputting a warning that it does not exist.</p>
+
+<p>The second line specifies the version of ruby to use and defines the name of the gemset. Gemsets create a sandboxed gem area so that it does not pollute your global gem space.</p>
+
+<p><a href="http://gembundler.com/">Bundler</a> is then used to manage the gems.</p>
+
+<h2>Install Bundler</h2>
+
+<p>Bundler requires gem &mdash;version greater than 1.3.6, but it is a good idea to upgrade.</p>
+
+<pre><code>cd OpenSourceExample
+gem update --system
+rvm gemset global
+gem install bundler
+cd .. &amp;&amp; cd -
+</code></pre>
+
+<p>Write your [gemfile][<a href="http://gembundler.com/gemfile.html">http://gembundler.com/gemfile.html</a>] <br/>
+1) With at least 1 source <br/>
+2) If the gem install has a different name to require then :require has to be specified eg.</p>
+
+<p>   gem install sinatra-session
+   *.rb  contains require &ldquo;sinatra/session&rdquo;</p>
+
+<p>Example ./gemfile</p>
+
+<pre><code>source "http://rubygems.org"   
+
+gem "sinatra", "~&gt; 1"    
+gem "sinatra-session", :require =&gt; 'sinatra/session'
+
+group :development do
+  gem "sinatra-reloader", "~&gt; 0"
+  gem "thin", "~&gt; 1"
+end
+
+group :test do
+  gem "rspec", :require =&gt; "spec"
+end
+</code></pre>
+
+<p>Then install the gems specified and add the gemfile and Gemfile.lock to git</p>
+
+<pre><code>$ bundle install
+$ git add gemfile Gemfile.lock
+</code></pre>
+
+<h2>Workflow</h2>
+
+<p>When picking up an open source project set up like this, the workflow should just be:</p>
+
+<pre><code>$ git clone https://github.com/morganp/OpenSourceExample
+$ cd OpenSourceExample
+#Review the .rvmrc and type yes if it is safe
+$ bundle install
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/schwartzian-transform/">Schwartzian Transform</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-08T10:37:44+01:00" pubdate data-updated="true">Apr 8<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/schwartzian-transform/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/schwartzian-transform/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently heard about the Schwartzian transform, which is a sorting idiom from perl. It allows an array of objects to be efficiently sorted by any property. Part of the cleverness is the use of anonymous arrays which allows them to be garbage collected quickly.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Schwartzian_transform">Wikipedia</a> has a detailed description, however the general form (in perl) is:</p>
+
+<pre><code>@sorted = map  { $_-&gt;[0] }
+          sort { $a-&gt;[1] cmp $b-&gt;[1] }
+          map  { [$_, foo($_)] }
+              @unsorted;
+</code></pre>
+
+<p>A good history of it can be <a href="http://www.stonehenge.com/merlyn/UnixReview/col64.html">read here</a>.</p>
+
+<p>My point of bring all of this up other than pointing out a cool sorting algorithm is that any <strong>ruby</strong> class including <a href="http://ruby-doc.org/core/classes/Enumerable.html">Enumerable</a> (Arrays, Hashes etc) has this built in with the <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001481"><strong>.sort_by</strong></a> method.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/reading-list/">Reading List</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-08T10:19:56+01:00" pubdate data-updated="true">Apr 8<span>th</span>, 2011</time>
+        
+           | <a href="/blog/photography/reading-list/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/photography/reading-list/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>My <a href="http://www.shelfari.com/o1514252429/shelf">Shelfari</a></p>
+
+<h2>To Read</h2>
+
+<p>Photoshop CS5 and Lightroom 3, ISBN 978-1-933952-67-2<br/>
+Developing Vision and Style, ISBN 978-1-9025 38495<br/>
+Pragmatic Thinking and Learning, ISBN 978-1934356050<br/>
+Pragmatic Guide to Git,<br/>
+The RSpec Book,<br/>
+Ruby Best Practises,<br/>
+The Agile Samurai, <br/>
+jQuery Novice to Ninja,<br/>
+Structure and Interpretation of Computer Programming,<br/>
+Metaprogramming Ruby,</p>
+
+<h2>Recommended Computing</h2>
+
+<p>Classic Shell Scripting, ISBN 0-596-00595-4<br/>
+The Passionate Programmer, ISBN 978-1-934356-34-0</p>
+
+<h2>Recommended Photography</h2>
+
+<p>Lightroom 2 Adventure, ISBN 978-0-596-52101-1<br/>
+Black and White, ISBN 978-1-904705-57-4<br/>
+First Light, ISBN 1-902538-24-2</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/17/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/15/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/flip-flop/">Flip-flop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/morganp">@morganp</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'morganp',
+            count: 1,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Morgan Prior -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'morganpgithubio';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

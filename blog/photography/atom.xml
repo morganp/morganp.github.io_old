@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Photography | RockPaperScissors]]></title>
+  <link href="http://morganp.github.io/blog/photography/atom.xml" rel="self"/>
+  <link href="http://morganp.github.io/"/>
+  <updated>2014-01-28T19:20:49+00:00</updated>
+  <id>http://morganp.github.io/</id>
+  <author>
+    <name><![CDATA[Morgan Prior]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Lightroom Library Metadata Panel]]></title>
+    <link href="http://morganp.github.io/blog/photography/lightroom-library-metadata-panel/"/>
+    <updated>2013-12-04T19:04:14+00:00</updated>
+    <id>http://morganp.github.io/blog/photography/Lightroom-Library-Metadata-Panel</id>
+    <content type="html"><![CDATA[<p>The metadata panel in Lightroom has always felt a little crowded to me. It shows too many dialog boxes or not the ones I want and have to scroll through many panes.</p>
+
+<p>Since most of my photography is uploaded to <a href="http://www.flickr.com/photos/morgan_prior/">flickr</a> there are a few section of metadata which are useful.</p>
+
+<p>I use &lsquo;Job Identifier&rsquo; as the shoot name, this is the same as the folder I put my RAW files in. Whe I export this becomes part of the file name. My export file name is &lsquo;morganp-Date (YYYYMMDD)-Job Identifier-Filename&rsquo;.</p>
+
+<p> <a href="http://www.flickr.com/photos/morgan_prior/11209946034/"><img src="http://farm4.staticflickr.com/3820/11209946034_ecd2792ec2_n.jpg" width="276" height="320" alt="Lightroom Export Filename"></a></p>
+
+<p>The title of the image in my flick export is taken from the IPTC &lsquo;title&rsquo; . So I really only want these to setting present for my flick exports.</p>
+
+<p>Enter <a href="http://regex.info/blog/lightroom-goodies/metadata-presets">Jeffrey&rsquo;s “Metadata-Viewer Preset Editor”</a>. This allows you to create custom metadata views with only the fields you require.</p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/11209999464/"><img src="http://farm6.staticflickr.com/5520/11209999464_47aa9e93bd_n.jpg" width="320" height="214" alt="Jeffrey's Metadata-Viewer Preset Editor"></a></p>
+
+<p>The minimal view:</p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/11210017855/"><img src="http://farm8.staticflickr.com/7305/11210017855_0a643b1d87_n.jpg" width="320" height="209" alt="Lightroom Library Metadata"></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hugin 2013 Released]]></title>
+    <link href="http://morganp.github.io/blog/photography/hugin-2013-released/"/>
+    <updated>2013-11-27T19:40:08+00:00</updated>
+    <id>http://morganp.github.io/blog/photography/Hugin-2013-Released</id>
+    <content type="html"><![CDATA[<p>11 Months since the last Release <a href="http://hugin.sourceforge.net/">Hugin 2013.0.0</a> is released.</p>
+
+<p>One of the best photo stitchers available at any cost.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Lightroom 5.3 RC Beta Available]]></title>
+    <link href="http://morganp.github.io/blog/photography/lightroom-53-rc-beta-available/"/>
+    <updated>2013-11-23T18:14:24+00:00</updated>
+    <id>http://morganp.github.io/blog/photography/Lightroom-53-RC-Beta-available</id>
+    <content type="html"><![CDATA[<p><a href="http://labs.adobe.com/technologies/lightroom5-3/">Lightroom 5.3RC</a></p>
+
+<p>The Lightroom 5.3 release candidate will expire on December 31, 2013.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Photographing Stars Avoiding Star Trails]]></title>
+    <link href="http://morganp.github.io/blog/photography/photographing-stars-avoiding-star-trails/"/>
+    <updated>2013-09-06T06:55:22+01:00</updated>
+    <id>http://morganp.github.io/blog/photography/Photographing-stars-avoiding-star-trails</id>
+    <content type="html"><![CDATA[<p>While not attempted getting good images of the milkyway yet every so often I see some good examples and do a little bit more research.</p>
+
+<p>This thread on <a href="http://www.canonrumors.com/forum/index.php?topic=16310.msg300095#msg300095">Canon Rumours</a> pointed me towards the &lsquo;600 Rule&rsquo;.</p>
+
+<p>As a guide to avoid star trails 600/focal length gives the maximum exposure in seconds avoiding star trails.</p>
+
+<pre><code>600/24mm =&gt; 25 Second exposure
+</code></pre>
+
+<p><a href="http://photo.stackexchange.com/q/30263/5572">Rule of 600 discussed on photo stackexchange</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Lightroom Collections Whats the Point?]]></title>
+    <link href="http://morganp.github.io/blog/photography/lightroom-collections-whats-the-point/"/>
+    <updated>2013-07-12T22:47:25+01:00</updated>
+    <id>http://morganp.github.io/blog/photography/Lightroom-Collections-Whats-the-Point</id>
+    <content type="html"><![CDATA[<p>After using Lightroom for over 6 years I still do not see the point in Lightroom Collections.</p>
+
+<p><a href="http://scottkelby.com/2009/how-i-use-lightrooms-collections/">Scott Kelby</a> Describes <a href="http://scottkelby.com/2009/how-i-use-lightrooms-collections/">his usage</a>, but it is very similar to my workflow without them.</p>
+
+<p>I create a folder, via a script, which increments a shoot number and a description i.e. <strong>0101-SpaceRocket</strong></p>
+
+<p>I then import my images into this folder. A quick scan through the images rejecting (shortcut x) really bad ones. A second scan I Flag (shortcut p) the ones worth spending time to develop. I can change my mind later and remove them from the top selection (shortcut u).</p>
+
+<p>Rejecting photos has the advantage that you can get lightroom to clean up, removing from the catalog and deleting from disk.</p>
+
+<p>So far this does everything Scott Kelby talks about having a Full and Picks Collection. If I want to choose just the very best of a set them I could apply star filters.</p>
+
+<p>Scott then takes the the breakdown a bit further and creates Full and Picks folders for multiple events throughout a shoot. If we new we wanted this breakdown then the folder hierarchy can reflect it. So I still do not see the need for collections.</p>
+
+<p>My first use of collections was a mistake and it may be from this that I stay away. My first collection I had inadvertently set it to have different light room develop data. When viewing the photo from the lightroom file browser the images were not flagged or developed. Lightroom offered no way to merge a collections data back into the standard image view. I am now for ever stuck with one collection from many years ago which is the only place the develop data is held for that particular shoot.</p>
+]]></content>
+  </entry>
+  
+</feed>

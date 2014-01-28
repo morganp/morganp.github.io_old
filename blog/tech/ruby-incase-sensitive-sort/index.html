@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ruby Incase Sensitive Sort - RockPaperScissors</title>
+  <meta name="author" content="Morgan Prior">
+
+  
+  <meta name="description" content="Ruby has a .sort method which sorts basic objects. it is case sensitive though so Zebra is before apple. Using sort_by instead you can specify the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://morganp.github.io/blog/tech/ruby-incase-sensitive-sort">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="RockPaperScissors" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47010631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">RockPaperScissors</a></h1>
+  
+    <h2>LizardSpock</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:morganp.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Latest</a></li>
+  <li><a href="/blog/archives">All</a></li>
+  <li><a href="/">Categories</a></li>
+  <li><a href="/tag">Tags</a></li>
+  <li><a href="/license">License</a></li>
+</ul>
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Ruby Incase Sensitive Sort</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-18T11:13:51+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2010</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Ruby has a .sort method which sorts basic objects. it is case sensitive though so Zebra is before apple. Using sort_by instead you can specify the sort key.</p>
+
+<pre><code>some_array.sort_by { |x| x.downcase }
+</code></pre>
+
+<p>There is a good description/discussion of the performance issues of this on <a href="http://ruby-doc.org/core/classes/Enumerable.html#M003120">ruby-docs</a></p>
+
+<p>Since the <a href="http://ruby-doc.org/core/classes/Enumerable.html#M003120">ruby-docs</a> mention performance issues I though it would be worth noting  that in my blog app I have the option to pre sort with the ORM. this shouldmake the ruby sory much faster to execute as it is already mostly sorted, but how does this effect the performance of the ORM</p>
+
+<pre><code>def all_tags_sort
+   @tags = Tags.find(:all, :order =&gt; "tag")
+   @tags = @tags.sort_by { |tag| tag.tag.downcase }
+end
+</code></pre>
+
+<p>VS</p>
+
+<pre><code>def all_tags_sort
+   @tags = Tags.find(:all)
+   @tags = @tags.sort_by { |tag| tag.tag.downcase }
+end
+</code></pre>
+
+<p>For the performance test I added this to one of views that displays the tags</p>
+
+<pre><code>#For Benchmarking
+require 'benchmark'
+include Benchmark
+
+bm(10) do |b|
+   b.report("ORM") { @tags = Tags.find(:all) }
+   b.report("Sort by") { @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
+   b.report("ORM sorted") { @tags = Tags.find(:all, :order =&gt; "tag") }
+   b.report("Sort by") { @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
+end
+</code></pre>
+
+<p>To test I built up a small dictionary using this <a href="http://gist.github.com/370533">gist</a> (sorted by default so have to randomise it alittle bit)</p>
+
+<pre><code>                   user     system      total        real
+ORM           53.920000   3.650000  57.570000 ( 57.960210)
+Sort by        4.750000   0.320000   5.070000 (  5.091083)
+ORM sorted    45.080000   3.590000  48.670000 ( 49.554891)
+Sort by        2.700000   0.310000   3.010000 (  3.016042)
+</code></pre>
+
+<p>mmm, data does not look write as retrieving and sorting was quicker than just retrieving will run with the order swapped.</p>
+
+<pre><code>                user     system      total        real
+ORM sorted 10.290000   1.740000  12.030000 ( 12.087005)
+Sort by     0.930000   0.130000   1.060000 (  1.054450)
+ORM        11.740000   1.700000  13.440000 ( 13.453623)
+Sort by     0.760000   0.130000   0.890000 (  0.886095)
+</code></pre>
+
+<p>Sorting in the ORM layer still seems to be quicker than not sorting, and the Ruby sorting takes same length of time. So looks like applying the sort is a worthwhile.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Morgan Prior</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-18T11:13:51+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/tech/'>Tech</a>
+  
+</span>
+
+
+      
+
+<span class="tags">
+  
+    <a class='tag' href='/tag/programming/'>Programming</a>, <a class='tag' href='/tag/ruby/'>Ruby</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://morganp.github.io/blog/tech/ruby-incase-sensitive-sort/" data-via="" data-counturl="http://morganp.github.io/blog/tech/ruby-incase-sensitive-sort/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/tech/itunes-play-flac-on-os-x/" title="Previous Post: iTunes play FLAC on OS X">&laquo; iTunes play FLAC on OS X</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/tech/testing-tweets-from-production-server-this-should-be-working%21/" title="Next Post: Testing tweets from Production server This should be working!">Testing tweets from Production server This should be working! &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/flip-flop/">Flip-flop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/morganp">@morganp</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'morganp',
+            count: 1,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Morgan Prior -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'morganpgithubio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://morganp.github.io/blog/tech/ruby-incase-sensitive-sort/';
+        var disqus_url = 'http://morganp.github.io/blog/tech/ruby-incase-sensitive-sort/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

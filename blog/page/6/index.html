@@ -1,0 +1,1120 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>RockPaperScissors</title>
+  <meta name="author" content="Morgan Prior">
+
+  
+  <meta name="description" content="How to get method which handles a single string input or an array of strings? Splat * * turns single strings into Arrays, leaves arrays alone. a = " &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://morganp.github.io/blog/page/6">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="RockPaperScissors" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47010631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">RockPaperScissors</a></h1>
+  
+    <h2>LizardSpock</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:morganp.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Latest</a></li>
+  <li><a href="/blog/archives">All</a></li>
+  <li><a href="/">Categories</a></li>
+  <li><a href="/tag">Tags</a></li>
+  <li><a href="/license">License</a></li>
+</ul>
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-duck-typing-strings-and-arrays/">Ruby Duck Typing Strings and Arrays</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-20T16:12:08+00:00" pubdate data-updated="true">Dec 20<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/ruby-duck-typing-strings-and-arrays/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-duck-typing-strings-and-arrays/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>How to get method which handles a single string input or an array of strings?</p>
+
+<h2>Splat *</h2>
+
+<p>* turns single strings into Arrays, leaves arrays alone.</p>
+
+<pre><code>a = "hello"
+a = *a
+puts a.inspect
+=&gt;  ["hello"]
+
+a = ["hello", "world"]
+a = *a
+puts a.inspect
+=&gt; ["hello", "world"]
+</code></pre>
+
+<h2>Example Usage</h2>
+
+<pre><code>def unknown_input( input_data )
+  input_data = *input_data
+  input_data.each do |input_item|
+      puts input_item
+  end
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/reverting-rtorrent-version-on-snow-leopard/">Reverting Rtorrent Version on Snow Leopard</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-06T20:22:33+00:00" pubdate data-updated="true">Dec 6<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/reverting-rtorrent-version-on-snow-leopard/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/reverting-rtorrent-version-on-snow-leopard/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After running  a <code>brew upgrade</code> rtorrent was plagued with segmentation faults. Which look something like :</p>
+
+<pre><code>Caught Segmentation fault, dumping stack:B] [Port: 16006]                                                                    [U 0/14]    [D 0/30] [H 28/32] [S 196/198/208] [F 15/16]
+0 0   rtorrent                            0x0000000100001c8c _Z8do_panici + 130
+1 1   rtorrent                            0x0000000100044d48 _ZN13SignalHandler6caughtEi + 234
+2 2   libSystem.B.dylib                   0x00007fff872b51ba _sigtramp + 26
+3 3   libcrypto.0.9.8.dylib               0x00007fff81414491 ERR_get_state + 65
+4 4   libtorrent.14.dylib                 0x00000001002a75a9 _ZN7torrent13DiffieHellman13store_pub_keyEPhj + 45
+5 5   libtorrent.14.dylib                 0x0000000100292fb0 _ZN7torrent9Handshake20prepare_key_plus_padEv + 74
+6 6   libtorrent.14.dylib                 0x00000001002932ac _ZN7torrent9Handshake11event_writeEv + 284
+7 7   libtorrent.14.dylib                 0x0000000100247322 _ZN7torrent10PollKQueue7performEv + 236
+8 8   libtorrent.14.dylib                 0x0000000100247d69 _ZN7torrent10PollKQueue7do_pollExi + 383
+9 9   libtorrent.14.dylib                 0x000000010026b608 _ZN7torrent11thread_base10event_loopEPS0_ + 330
+10 10  rtorrent                            0x0000000100005af4 main + 12976
+11 11  rtorrent                            0x0000000100001820 start + 52
+12 12  ???                                 0x0000000000000001 0x0 + 1
+Abort trap
+</code></pre>
+
+<p>Since mid 2011 brew has added a versions command. Lets check what versions are available:</p>
+
+<pre><code>$ brew versions rtorrent
+0.9.2 git checkout 6b8d25f /usr/local/Library/Formula/rtorrent.rb
+0.8.9 git checkout e459d51 /usr/local/Library/Formula/rtorrent.rb
+0.9.0 git checkout 9b5cba7 /usr/local/Library/Formula/rtorrent.rb
+0.8.6 git checkout b782d9d /usr/local/Library/Formula/rtorrent.rb
+0.8.5 git checkout b92799d /usr/local/Library/Formula/rtorrent.rb
+
+$ brew versions libtorrent
+0.13.2 git checkout 8d5b242 /usr/local/Library/Formula/libtorrent.rb
+0.12.9 git checkout edd213c /usr/local/Library/Formula/libtorrent.rb
+0.13.0 git checkout 130b408 /usr/local/Library/Formula/libtorrent.rb
+0.12.6 git checkout 0476235 /usr/local/Library/Formula/libtorrent.rb
+0.12.5 git checkout d0ec1e6 /usr/local/Library/Formula/libtorrent.rb
+</code></pre>
+
+<p>The version giving me the segmentation faults is 0.9.2 with libtorrent 0.13.2, lets roll back to the previous version 0.8.9/0.12.9.</p>
+
+<pre><code>brew uninstall rtorrent libtorrent
+cd /usr/local/Library/Formula/
+git checkout edd213c
+# Not sure why brew thinks these are installed again but I had to run
+brew uninstall rtorrent libtorrent 
+brew install rtorrent libtorrent 
+</code></pre>
+
+<p>Once that has completed rtorrent should run as 0.8.9/0.12.9, which seems a whole lot more reliable on a mid 2010 Mac mini running snow leopard.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/lightroom-43-rc1-support-for-hidpi-retina-displays/">Lightroom 4.3 RC1, Support for HiDPI (Retina) Displays</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-09T00:15:53+00:00" pubdate data-updated="true">Nov 9<span>th</span>, 2012</time>
+        
+           | <a href="/blog/photography/lightroom-43-rc1-support-for-hidpi-retina-displays/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/photography/lightroom-43-rc1-support-for-hidpi-retina-displays/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A new Release Candidate for Lightroom is out, <a href="http://labs.adobe.com/downloads/lightroom4-3.html">Lightroom 4.3 RC1</a>. Expires 31st Jan 2013.</p>
+
+<p>For me the main feature will be the support for hi resolution screens in the Develop module.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/canon-2012-winter-cash-back/">Canon 2012 Winter Cash Back</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-20T09:03:33+01:00" pubdate data-updated="true">Oct 20<span>th</span>, 2012</time>
+        
+           | <a href="/blog/photography/canon-2012-winter-cash-back/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/photography/canon-2012-winter-cash-back/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The new <a href="http://www.canon.co.uk/wintercashback/">Canon Cash back</a> offer IS now valid for purchases between Thursday 18th October 2012 and Thursday 24th January 2013.</p>
+
+<p>Buy 2 promotional items receive an additional £25 cash back.</p>
+
+<p><a href="http://www.canon.co.uk/wintercashback/">www.canon.co.uk/wintercashback/</a></p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="left"> Lens </th>
+<th align="right"> Cash Back </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B0008G2P72/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B0008G2P72&amp;adid=0JJDB3Y0KXSXTYY07EME&amp;">EF-S 60mm f/2.8 Macro USM     </a></td>
+<td align="right"> £20 | </td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B00005KHRX/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B00005KHRX&amp;adid=1YWN11GK7S46DK29V3X2&amp;">EF 100mm f/2.8 Macro USM      </a></td>
+<td align="right"> £40 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B002NEFLD2/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B002NEFLD2&amp;adid=1DQY3708X79Z8YVEY1DX&amp;">EF 100mm f/2.8L Macro IS USM  </a></td>
+<td align="right"> £55 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B00065GZL2/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B00065GZL2&amp;adid=1NJB3GVAVJ9CMMTCAKMP&amp;">EF-S 10-22mm f/3.5-4.5 USM    </a></td>
+<td align="right"> £55 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B000NSHPG6/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B000NSHPG6&amp;adid=1864A64GM8RMPFQ1NHC3&amp;">EF 16-35mm f/2.8L II USM      </a></td>
+<td align="right"> £80 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B0000C4GAM/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B0000C4GAM&amp;adid=0QAJGRSV62EBC0QTZQDY&amp;">EF 17-40mm f/4L USM           </a></td>
+<td align="right"> £55 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B002NEFLDM/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B002NEFLDM&amp;adid=0XN4FGVX4JDKA05N69C6&amp;">EF-S 15-85mm f/3.5-5.6 IS USM </a></td>
+<td align="right"> £55 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B000EOTZ7G/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B000EOTZ7G&amp;adid=13BCWCBWCX4J912S5B6T&amp;">EF-S 17-55mm f/2.8 IS USM     </a></td>
+<td align="right"> £55 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B0002XNRG4/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B0002XNRG4&amp;adid=0510PM3KWZ7Y6RHA64N5&amp;">EF-S 17-85mm f/4-5.6 IS USM   </a></td>
+<td align="right"> £20 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B001E97GIA/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B001E97GIA&amp;adid=0H0AVC6D8X6TQ2WWGDX6&amp;">EF-S 18-200mm f/3.5-5.6 IS    </a></td>
+<td align="right"> £40 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B000B84KAW/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B000B84KAW&amp;adid=1ZR6496MYRCGGVC7PCMA&amp;">EF 24-105mm f/4L IS USM       </a></td>
+<td align="right"> £80 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B00005LESG/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B00005LESG&amp;adid=1SYKQ5PCA7ZKCPN0YDZN&amp;">EF 70-200mm f/2.8L USM        </a></td>
+<td align="right"> £80 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B0033567D8/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B0033567D8&amp;adid=08WXGACANDKH84AHZDQA&amp;">EF 70-200mm f/2.8L IS II USM  </a></td>
+<td align="right"> £160 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B00005QF6T/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B00005QF6T&amp;adid=0V7K96N1E1YJVY2JEH74&amp;">EF 70-200mm f/4L USM          </a></td>
+<td align="right"> £40 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B000I2J2SG/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B000I2J2SG&amp;adid=1QFV7RNHRE5V0AHTZRZS&amp;">EF 70-200mm f/4L IS USM       </a>￼</td>
+<td align="right"> £80 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B000B84KB6/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B000B84KB6&amp;adid=11B2QMG2TSJ4M8JPBYFP&amp;">EF 70-300mm f/4-5.6 IS USM    </a></td>
+<td align="right"> £20 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B0040Y83X8/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B0040Y83X8&amp;adid=0MERZZ35SX3GD24D87M0&amp;">EF 70-300mm f/4-5.6L IS USM   </a></td>
+<td align="right"> £80 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B00005QF6O/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B00005QF6O&amp;adid=0YFTKV542QE5J3SX4YN9&amp;">EF 100-400mm f/4.5-5.6L IS USM</a></td>
+<td align="right"> £80 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B00009XVCZ/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B00009XVCZ&amp;adid=0AENCKE0S2XKJV8JX4NV&amp;">EF 50mm f/1.4 USM             </a></td>
+<td align="right"> £20 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B0040X451I/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B0040X451I&amp;adid=0T5CQM8YW29BBD92RAQ7&amp;">Extender EF 1.4X III          </a></td>
+<td align="right"> £20 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B0040X454A/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B0040X454A&amp;adid=1EWTSRWZ67YMNAD5YSDH&amp;">Extender EF 2X III            </a></td>
+<td align="right"> £20 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="http://www.amazon.co.uk/Canon-Speedlite-430EX-Flash-Unit/dp/B001AXFV5A/ref=sr_1_1?s=electronics&amp;ie=UTF8&amp;qid=1350723555&amp;sr=1-1">Speedlite 430EX II            </a></td>
+<td align="right"> £20 |</td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="http://www.amazon.co.uk/Canon-5296B003AA-Speedlite-600EX-RT-Flashgun/dp/B007H7C78W/ref=sr_1_1?s=electronics&amp;ie=UTF8&amp;qid=1350723632&amp;sr=1-1">Speedlite 600EX-RT            </a></td>
+<td align="right"> £40 | </td>
+</tr>
+<tr>
+<td></td>
+<td align="left"> <a href="https://www.amazon.co.uk/dp/B007G3T2XU/ref=as_li_ss_til?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B007G3T2XU&amp;adid=16FH5XWK4TKX00YGY5CJ&amp;">GPS receiver GP-E2            </a></td>
+<td align="right"> £20 |</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/os-x-screen-capture/">OS X Screen Capture</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-15T19:28:16+01:00" pubdate data-updated="true">Oct 15<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/os-x-screen-capture/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/os-x-screen-capture/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To capture the screen on OS X :</p>
+
+<p>⇧⌘4 : Selected area to capture.<br/>
+⇧⌘4-space : Capture a window.</p>
+
+<p>These are defined in the System Preferences.</p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/8091257767/" title="OS X Screen Capture by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8466/8091257767_94369b4008.jpg" width="500" height="455" alt="OS X Screen Capture"></a></p>
+
+<p>To change the captured image from the Terminal (/Applications/Utilities/Terminal.app) type</p>
+
+<h2>Jpeg:</h2>
+
+<pre><code>defaults write com.apple.screencapture type jpg
+killall SystemUIServer
+</code></pre>
+
+<h2>PNG</h2>
+
+<pre><code>defaults write com.apple.screencapture type png
+killall SystemUIServer
+</code></pre>
+
+<h2>Tiff</h2>
+
+<pre><code>defaults write com.apple.screencapture type tiff
+killall SystemUIServer
+</code></pre>
+
+<h2>PDF</h2>
+
+<pre><code>defaults write com.apple.screencapture type pdf
+killall SystemUIServer
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/lee-wide-angle-hood/">LEE Wide Angle Hood</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-06T19:49:49+01:00" pubdate data-updated="true">Oct 6<span>th</span>, 2012</time>
+        
+           | <a href="/blog/photography/lee-wide-angle-hood/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/photography/lee-wide-angle-hood/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Available to buy from <a href="http://www.dalephotographic.co.uk/mall/productpage.cfm/DalePhotographicOnline/_Lee%20Wide%20Angle%20Slotted%20Hood/-/Lee%20Wide%20Angle%20Slotted%20Hood">Dale Photographic</a> or <a href="http://www.wexphotographic.com/buy-lee-wide-angle-lens-hood/p101">WEX</a>.</p>
+
+<p>Hoods or lens shades help improve contrast by stopping out of frame light source entering the lens. LEE filters are square filters that can be used for effects or managing dynamic range, how ever as they mount in front of the lens with a holder you can no longer use your lenses standard hood. LEE have a standard and wide angle hoods available.</p>
+
+<p>LEE do not provide many specs for the hood on their website. To help others decide if this is right for them I have included measurements and pictures of mine in different configurations.</p>
+
+<h2>Dimensions</h2>
+
+<pre><code>Width x Height:
+External: 21cm x 16cm
+Internal: 18cm x 13.5cm
+</code></pre>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/8060297008/" title="LEE Wide Filter, A5 Comparison"><img src="http://farm9.staticflickr.com/8313/8060297008_9b8cb916cf.jpg" width="500" height="333" alt="LEE Wide Filter, A5 Comparison"></a></p>
+
+<pre><code>Depth:
+Double slotted : 4cm    (Use 5/8" Screws)  
+Single slot    : 3.75cm (Use 3/8" Screws)  
+No slot        : 3.5cm  (Use 1/4" Screws)  
+</code></pre>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/8060276438/" title="Lee Wide Angle Hood, 2 Slots Depth 4cm"><img src="http://farm9.staticflickr.com/8317/8060276438_71d5c9fa4e.jpg" width="500" height="333" alt="Lee Wide Angle Hood, 2 Slots Depth 4cm"></a></p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/8060251896/" title="Lee Wide Angle Hood, 1 Slot Depth 3.75cm"><img src="http://farm9.staticflickr.com/8179/8060251896_73a0001cf3.jpg" width="500" height="333" alt="Lee Wide Angle Hood, 1 Slot Depth 3.75cm"></a></p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/8060238996/" title="LEE Wide Hood, No Slots Depth 3.5cm"><img src="http://farm9.staticflickr.com/8031/8060238996_ec1e055788.jpg" width="500" height="333" alt="LEE Wide Hood, No Slots Depth 3.5cm"></a></p>
+
+<p>Hood Only (No slots or clip):</p>
+
+<pre><code>Min Expansion : 2.5cm
+Max Expansion : 11cm
+</code></pre>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/8060276438/" title="Lee Wide Angle Hood, 2 Slots by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8317/8060276438_71d5c9fa4e.jpg" width="500" height="333" alt="Lee Wide Angle Hood, 2 Slots"></a></p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/8060297741/" title="Lee Wide Angle Filter, 2 Slots expanded by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8171/8060297741_15f4f654e7.jpg" width="500" height="333" alt="Lee Wide Angle Filter, 2 Slots expanded"></a></p>
+
+<h2>Assembly</h2>
+
+<p>Back of slot next to Hood, LEE Logo facing clip, Last slot has blank plate on top covering the logo.</p>
+
+<p>Order is: Clip, plate, slot, slot, Hood.</p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/8060334883/" title="LEE Hood, Clip, 2 Slots by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8034/8060334883_466f06a51b_n.jpg" width="213" height="320" alt="LEE Hood, Clip, 2 Slots"></a></p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/8060336086/" title="LEE Hood, slots (2) removed from hood and clip by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8176/8060336086_94f5c0e2f8_n.jpg" width="320" height="213" alt="LEE Hood, slots (2) removed from hood and clip"></a></p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/8060332868/" title="LEE Wide Angle Hood, Clip and slots removed by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8452/8060332868_621f3310d1_n.jpg" width="320" height="213" alt="LEE Wide Angle Hood, Clip and slots removed"></a></p>
+
+<p>Available to buy from <a href="http://www.dalephotographic.co.uk/mall/productpage.cfm/DalePhotographicOnline/_Lee%20Wide%20Angle%20Slotted%20Hood/-/Lee%20Wide%20Angle%20Slotted%20Hood">Dale Photographic</a> or <a href="http://www.wexphotographic.com/buy-lee-wide-angle-lens-hood/p101">WEX</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/print-nested-array-structures-in-table-format/">Print Nested Array Structures in Table Format</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-03T20:47:13+01:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+        
+           | <a href="/blog/tech/print-nested-array-structures-in-table-format/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/print-nested-array-structures-in-table-format/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Problem</h2>
+
+<p>Take an array of arrays and format it for displaying to the terminal or outputting to a text file.</p>
+
+<p>Sample Data:</p>
+
+<pre><code>data = [[1,2,3,4,5],["Four","Five","Six"],["Seven","Eight","Nine","Ten"]]
+</code></pre>
+
+<h2>Solution</h2>
+
+<p>The main issue I see is working out how wide to make each column. My solution is to iterate over the data keeping track of the maximum width found for each column.</p>
+
+<p>Once we know how wide to make each column printing the table is just a matter of a second iteration over the data using ljust or rjust to align all the columns.</p>
+
+<pre><code>def print_table( data )
+  #Clone/dup nested structure
+  data = Marshal.load(Marshal.dump(data))
+  #data = data_array.dup
+  lengths = []
+
+  data.each do |line| 
+    line.each_with_index do |item, column| 
+      length          = item.to_s.size
+      lengths[column] = length if length &gt; (lengths[column] ||= 0)
+    end
+  end
+
+  data.each do |line| 
+    line.each_with_index do |item, column|
+      line[column] = item.to_s.rjust(4+lengths[column])
+      print line[column]
+    end
+    puts
+  end
+
+  return data
+end
+</code></pre>
+
+<p>The result:</p>
+
+<pre><code>data = [[1,2,3,4,5],["Four","Five","Six"],["Seven","Eight","Nine","Ten"]]
+data = print_table( data )
+
+=&gt;        1        2       3      4    5    
+=&gt;     Four     Five     Six
+=&gt;    Seven    Eight    Nine    Ten
+</code></pre>
+
+<h2>Alternative Solution</h2>
+
+<p>Use the <a href="http://github.com/visionmedia/terminal-table">terminal-table</a> gem. Which creates nice ASCII tables.</p>
+
+<pre><code>#gem install terminal-table
+
+require 'terminal-table'
+data = [[1,2,3,4,5],["Four","Five","Six"],["Seven","Eight","Nine","Ten"]]
+table = Terminal::Table.new :rows =&gt; data
+
+puts table
++-------+-------+------+-----+---+
+| 1     | 2     | 3    | 4   | 5 |
+| Four  | Five  | Six  |
+| Seven | Eight | Nine | Ten |
++-------+-------+------+-----+---+
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/converting-flat-structure-into-a-nested-structure/">Converting Flat Structure Into a Nested Structure</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-03T20:11:12+01:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+        
+           | <a href="/blog/tech/converting-flat-structure-into-a-nested-structure/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/converting-flat-structure-into-a-nested-structure/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Given a flat hierarchy of data comprising level and a label, aim to nest the lower level of objects in to the parents.</p>
+
+<p>Example data:</p>
+
+<pre><code>  0, 'a'
+  1, 'b'
+  2, 'c'
+  2, 'd'
+  1, 'e'
+  2, 'f'
+</code></pre>
+
+<p>Converted to a structure similar to:</p>
+
+<pre><code>a
++b
+|+c
+|+d
++e
+ +f
+</code></pre>
+
+<h2>An Unoptimised Solution</h2>
+
+<p>A simple object, which allows adding child objects</p>
+
+<pre><code>Thing = Struct.new(:level, :label, :children)
+class Thing
+  def add_child (child)
+    children &lt;&lt; child
+  end
+end
+</code></pre>
+
+<p>The data:</p>
+
+<pre><code>list =
+[ Thing.new(0, "a", []),
+  Thing.new(1, "b", []),
+  Thing.new(2, "c", []),
+  Thing.new(2, "d", []),
+  Thing.new(1, "e", []),
+  Thing.new(2, "f", [])
+]
+</code></pre>
+
+<p>My approach is to find the lowest children and fold them in to the parent above it. The first step is a method to calculate the nesting depth.</p>
+
+<pre><code>def lowest_level( list )
+  level = 0
+  list.each do |obj|
+    level = obj.level if obj.level &gt; level
+  end
+  return level
+end
+
+puts "Lowest Level is #{lowest_level( list )}"
+=&gt; Lowest Level is 2
+</code></pre>
+
+<p>The main part of the solution now is to loop over the list, adding the object at the lowest_level to its parent, then removing it from its original position. The parent object is defined as being in the position before with a level 1 above the current node.</p>
+
+<pre><code>      current_fold = lowest_level( list )
+
+      list.each_with_index do |thing, index|
+        # Identify if on a lowest leaf which can be folded
+        if ( ( thing.level == current_fold ) &amp;&amp; (list[index-1].level == current_fold-1))
+          list[index-1].add_child( thing )
+          list.delete_at(index)
+        end
+      end
+</code></pre>
+
+<p>The main performance issue I have with this solution is it requires an iteration for every object at the same level wiith the same parent. ie 1222 would take 3 iterations to fold the 2s, 122212 would still take 3 iterations.</p>
+
+<p>The loop in full:</p>
+
+<pre><code>def fold_list( list )
+  ## Clone data for immutable operation
+  list = Marshal.load(Marshal.dump( list ))
+  fold_list!( list )
+end
+
+def fold_list!( list )
+  while ( lowest_level( list ) &gt; 0 ) do
+    #Find Current lowest Level and fold
+    current_fold = lowest_level( list )
+
+    while( current_fold == lowest_level( list ) ) do
+      list.each_with_index do |thing, index|
+        # Identify if on a lowest leaf which can be folded
+        if ( ( thing.level == current_fold ) &amp;&amp; (list[index-1].level == current_fold-1))
+          list[index-1].add_child( thing )
+          list.delete_at(index)
+        end
+      end
+    end
+  end
+
+  return list
+end
+
+require 'pp'
+pp  fold_list( list )
+</code></pre>
+
+<p>The result, showing the folding:</p>
+
+<pre><code>[#&lt;struct Thing
+  level=0,
+  label="a",
+  children=
+   [#&lt;struct Thing
+     level=1,
+     label="b",
+     children=
+      [#&lt;struct Thing level=2, label="c", children=[]&gt;,
+       #&lt;struct Thing level=2, label="d", children=[]&gt;]&gt;,
+    #&lt;struct Thing
+     level=1,
+     label="e",
+     children=[#&lt;struct Thing level=2, label="f", children=[]&gt;]&gt;]&gt;]
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/safari-6-not-playing-youtube-content/">Safari 6 Not Playing YouTube Content</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-30T08:30:42+01:00" pubdate data-updated="true">Sep 30<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/safari-6-not-playing-youtube-content/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/safari-6-not-playing-youtube-content/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After getting Safari 6 it seems that YouTube is no longer letting my watch video as html5 video formats and requires me to have flash installed.</p>
+
+<p>To avoid installing flash there is safari plugin which forces YouTube to give HTML5 video.</p>
+
+<p><a href="http://www.macupdate.com/app/mac/35606/youtube5-safari-extension">youtube5-safari-extension</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/calculating-regression-coefficients-in-r/">Calculating Regression Coefficients in R</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-29T12:10:18+01:00" pubdate data-updated="true">Sep 29<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/calculating-regression-coefficients-in-r/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/calculating-regression-coefficients-in-r/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For this example we will have a data file with two columns of data labelled A and B. For example</p>
+
+<pre><code>A    B
+0.1 0.2
+0.3 0.4
+0.5 0.6
+</code></pre>
+
+<p>Set the working directory and load the data as usual in r:</p>
+
+<pre><code>setwd("~/Code/example")
+data = read.table("data.txt", header=T)
+names(data) # List the header names
+</code></pre>
+
+<h2>Correlation</h2>
+
+<p>Find the correlation between A and B.</p>
+
+<pre><code>cor(data$A, data$b)
+</code></pre>
+
+<p>If you have more than 2 variables calculate the correlation matrix using :</p>
+
+<pre><code>cor(data)
+</code></pre>
+
+<h2>Unstandardised Regression Coefficient</h2>
+
+<p>A predicting B</p>
+
+<pre><code>lm(data$B~data$A)
+</code></pre>
+
+<h2>Standardised Regression Coefficient</h2>
+
+<p>A predicting B</p>
+
+<pre><code>lm( scale( data$B )~scale( data$A ) )
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/7/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/5/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/flip-flop/">Flip-flop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/morganp">@morganp</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'morganp',
+            count: 1,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Morgan Prior -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'morganpgithubio';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

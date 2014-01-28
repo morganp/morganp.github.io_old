@@ -1,0 +1,891 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>RockPaperScissors</title>
+  <meta name="author" content="Morgan Prior">
+
+  
+  <meta name="description" content="The Preferences menu in OS x give you the option to turn off Hard Disks whenever possible to save power however the default 10 minutes idle before &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://morganp.github.io/blog/page/20">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="RockPaperScissors" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47010631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">RockPaperScissors</a></h1>
+  
+    <h2>LizardSpock</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:morganp.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Latest</a></li>
+  <li><a href="/blog/archives">All</a></li>
+  <li><a href="/">Categories</a></li>
+  <li><a href="/tag">Tags</a></li>
+  <li><a href="/license">License</a></li>
+</ul>
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mac-os-x-harddrive-spin-down-time/">Mac OS X Harddrive Spin Down Time</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-01T13:05:32+01:00" pubdate data-updated="true">Sep 1<span>st</span>, 2010</time>
+        
+           | <a href="/blog/tech/mac-os-x-harddrive-spin-down-time/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/mac-os-x-harddrive-spin-down-time/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The Preferences menu in OS x give you the option to turn off Hard Disks whenever possible to save power however the default 10 minutes idle before shutdown can not be adjusted from this panel. This could also be causing excessive ware on desktop 3.5&#8221; drives.</p>
+
+<p>If you have the developer tools installed then you should have the SpindownHD tool. located in /Developer &ndash;> Applications &ndash;> Performance Tools &ndash;> CHUD &ndash;> Hardware</p>
+
+<p>If you do not have the developer tools installed there is no need just for this tool the changes can be made manually be editing: Library &ndash;> Preferences &ndash;> SystemConfiguration &ndash;> com.apple.PowerManagement.plist
+under &lsquo;Disk Sleep Timer&rsquo; adjust the minutes of idle time before shutting drives down.</p>
+
+<p><a href="http://hints.macworld.com/article.php?story=20050601044914357">source1</a>
+<a href="http://hints.macworld.com/article.php?story=20060922231408751">source2</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mac-os-x-default-path/">Mac OS X Default Path</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-26T09:36:06+01:00" pubdate data-updated="true">Aug 26<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/mac-os-x-default-path/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/mac-os-x-default-path/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As this seemed to be a useful post on my old blog I am reposting it.
+Just in case the $PATH terminal variable gets corrupted, for MAC OS X 10.5. 10.6.</p>
+
+<pre><code>export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
+</code></pre>
+
+<p>to add to you path</p>
+
+<pre><code>export PATH=$PATH:/usr/local/sbin:/usr/local/bin
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/error-nomethoderror-undefined-method-%60compact-for-nilnilclass/">Error: NoMethodError: Undefined Method `compact&#8217; for nil:NilClass</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-21T07:20:40+01:00" pubdate data-updated="true">Aug 21<span>st</span>, 2010</time>
+        
+           | <a href="/blog/tech/error-nomethoderror-undefined-method-%60compact-for-nilnilclass/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/error-nomethoderror-undefined-method-%60compact-for-nilnilclass/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When running a sequel migration I kept getting this error: <br/>
+<strong>Error: NoMethodError: undefined method `compact&#8217; for nil:NilClass</strong></p>
+
+<p>My setup looked like this:</p>
+
+<pre><code>./db/data.db
+./db/migrate/001-Create_table.rb
+</code></pre>
+
+<p>The failing command</p>
+
+<pre><code>$ sequel -m ./db/migrate/ -M 1 sqlite://db/data.db
+</code></pre>
+
+<p>The error in this instance was caused by having &lsquo;&ndash;&rsquo; in the file name of the migration. To fix this I changed to:</p>
+
+<pre><code>./db/data.db
+./db/migrate/001_Create_table.rb
+</code></pre>
+
+<p>Some <a href="http://github.com/morganp/Code-Dojo/tree/master/ORM">ORM active record and sequels lessons I prepared earlier</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/basic-grep-usage/">Basic Grep Usage</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-20T07:20:22+01:00" pubdate data-updated="true">Aug 20<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/basic-grep-usage/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/basic-grep-usage/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Grep is a unix (and mac os x) command line tool to search files for text.<br/>
+1) Search for all files containing &lsquo;text&rsquo; in current directory.</p>
+
+<pre><code>grep text *
+</code></pre>
+
+<p>2) Addline number to found matches.</p>
+
+<pre><code>grep -n text *
+</code></pre>
+
+<p>3) Search for all files containing &lsquo;text&rsquo; in current and sub directories.</p>
+
+<pre><code>$ grep -R text *
+</code></pre>
+
+<p>4) Search for files containing &lsquo;text&rsquo; in word only mode (Perl regular expressions).</p>
+
+<pre><code>$ grep -P '\btext\b' *
+</code></pre>
+
+<p>5) and remove &lsquo;//&rsquo; comments.</p>
+
+<pre><code>$ grep -P '\btext\b' * | grep -v -P '://'
+</code></pre>
+
+<p>Remember for more info</p>
+
+<pre><code>$ man grep
+$ info grep
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/removing-ports-os-x/">Removing Ports OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-17T12:18:48+01:00" pubdate data-updated="true">Aug 17<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/removing-ports-os-x/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/removing-ports-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have previously mentioned I installed <a href="http://amaras-tech.co.uk/people/morgan/article/44">Homebrew</a> for installing unix packages, I left Ports in place, but removed from my path, just incase. I have tonight noticed that the Mac ports directory is eating up 1.7GB of space and I want it back.</p>
+
+<pre><code>$ du -s -h /opt/local/var/macports
+</code></pre>
+
+<p>Following this <a href="http://guide.macports.org/chunked/installing.macports.uninstalling.html">guide to remove ports</a> I ran:</p>
+
+<pre><code>$ sudo /opt/local/bin/port -f uninstall installed
+$ sudo rm -rf \
+    /opt/local \
+    /Applications/DarwinPorts \
+    /Applications/MacPorts \
+    /Library/LaunchDaemons/org.macports.* \
+    /Library/Receipts/DarwinPorts*.pkg \
+    /Library/Receipts/MacPorts*.pkg \
+    /Library/StartupItems/DarwinPortsStartup \
+    /Library/Tcl/darwinports1.0 \
+    /Library/Tcl/macports1.0 \
+    ~/.macports
+</code></pre>
+
+<p>Now After emptying Trash, probably not necessary though, you should see quite a bit of harddrive space freed up.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/active-record-attributes-simplify-update-and-create/">Active Record Attributes Simplify Update and Create.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-13T02:13:17+01:00" pubdate data-updated="true">Aug 13<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/active-record-attributes-simplify-update-and-create/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/active-record-attributes-simplify-update-and-create/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In Active Record when updating records I used to have an very manual process to this some thing like:</p>
+
+<pre><code>@todo.done = params['post']['done']
+@todo.desc = params['post']['desc']
+@todo.save
+</code></pre>
+
+<p>Model of Todo with boolean done and text description field.</p>
+
+<p>This can be done in a more maintainable fashion with:</p>
+
+<pre><code>@todo.update_attributes = params['post']
+</code></pre>
+
+<p>This does pose the security concern that the form (which transmits params[&lsquo;post&rsquo;]) could be hacked to add id fields or such like that you may get unwanted manipulation of the table.</p>
+
+<p>To solve this there is a attr_accessible which specifies fields allowed to be updated by the .attributes . while this might seem now like there is no benefit as if we run a migration to add an extra column we also need to update the Active Record model. While this is true we only need to update the model once and create/new  and update methods should benefit from this.</p>
+
+<pre><code>class Todo &lt; ActiveRecord::Base
+end
+</code></pre>
+
+<p>Becomes</p>
+
+<pre><code>class Todo &lt; ActiveRecord::Base
+   attr_accessible :done
+   attr_accessible :desc
+end
+</code></pre>
+
+<h2>Summary:</h2>
+
+<pre><code>@customer.update_attributes = { "description" =&gt; "Jolly fellow", "credit_rating" =&gt; "Superb" }
+</code></pre>
+
+<p>same as:</p>
+
+<pre><code>@customer.description = "Jolly fellow"
+@customer.credit_rating = "Superb"
+@customer.save
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/active-record-create-unique-or-return-existing-element/">Active Record Create Unique or Return Existing Element</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-08T09:20:39+01:00" pubdate data-updated="true">Aug 8<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/active-record-create-unique-or-return-existing-element/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/active-record-create-unique-or-return-existing-element/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When working with databases it is often a requirement to have unique elements (columns) which are not the primary key, this can be achieved in the active record model with:</p>
+
+<pre><code>require 'rubygems'
+require 'sequel'
+DB = Sequel.sqlite('./lesson4.db')
+DB.create_table :tags do
+   primary_key :id
+   varchar :tag
+end  
+
+require 'rubygems'
+require 'active_record'
+ActiveRecord::Base.establish_connection(
+  :adapter   =&gt; 'sqlite3',
+  :database  =&gt; './lesson4.db'
+)
+class Tag &lt;  ActiveRecord::Base
+   validates_uniqueness_of :tag, :scope =&gt; :tag
+end
+
+@tag = Tag.create( :tag =&gt; "duck" )
+##&lt;Tag id: 1, tag: "duck"&gt;
+@tag = Tag.create( :tag =&gt; "duck" )
+##&lt;Tag id: nil, tag: "duck"&gt;
+</code></pre>
+
+<p>So you can see that this constraint works nicely to stop duplicates, if it does find one it does not return the existing element, good for creating but not reusing existing elements.</p>
+
+<p>I find that the following method is usually what I want:</p>
+
+<pre><code>require 'rubygems'
+require 'active_record'
+ActiveRecord::Base.establish_connection(
+  :adapter   =&gt; 'sqlite3',
+  :database  =&gt; './lesson4.db'
+)
+class Tag &lt;  ActiveRecord::Base
+end 
+
+@tag = Tag.find_or_create_by_tag("lazy")
+##&lt;Tag id: 2, tag: "lazy"&gt;
+@tag = Tag.find_or_create_by_tag("lazy")
+##&lt;Tag id: 2, tag: "lazy"&gt;
+</code></pre>
+
+<p>[Added Friday 13/08/2010]
+If you need to run some code between creating and saving the object there is also find_or_initialize_by_</p>
+
+<pre><code>@tag = Tag.find_or_initialize_by_tag("quack")
+@tag.save
+</code></pre>
+
+<p>This may be useful if you have  accessible or protected attributes, &lsquo;attr_accessible&rsquo; &lsquo;attr_protected&rsquo; which may block some properties from being initialised correctly.</p>
+
+<p>I discovered this in the depths of <a href="http://api.rubyonrails.org/classes/ActiveRecord/Base.html">ActiveRecord Base</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/activerecord-queries-on-table-joins/">Activerecord Queries on Table Joins</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-02T11:33:16+01:00" pubdate data-updated="true">Aug 2<span>nd</span>, 2010</time>
+        
+           | <a href="/blog/tech/activerecord-queries-on-table-joins/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/activerecord-queries-on-table-joins/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>An example of joining tables through active record models. There is <a href="http://guides.rubyonrails.org/association_basics.html">a good tutorial on the basics</a> of Activerecord joins.
+For this example we will have Posts and People, we will not use a grammatical parser and will beusing plural of people as peoples. (Note: should be person and persons) Create table with something like:</p>
+
+<pre><code>require 'rubygems'
+require 'sequel'
+DB = Sequel.sqlite('./example.db')
+
+DB.create_table :posts do
+   primary_key :id
+   foreign_key :people_id, :peoples
+   varchar :title
+   text :body
+end
+
+DB.create_table :peoples do
+   primary_key :id
+   varchar :first_name
+   varchar :last_name
+   varchar :short_name
+end
+</code></pre>
+
+<p>Now the active record model should be something like:
+NB I have added the foreign key specifier as I could not find migrations to modify it.</p>
+
+<pre><code>require 'rubygems'
+require 'active_record'
+
+ActiveRecord::Base.establish_connection(
+   :adapter   =&gt; "sqlite3",
+   :database  =&gt; "./example.db"
+)
+
+class People &lt; ActiveRecord::Base
+   has_many :post, :foreign_key =&gt; :people_id
+
+end
+
+class Post &lt; ActiveRecord::Base
+   # mmm No foregin key required for this
+   belongs_to :people
+end
+</code></pre>
+
+<p>This allows ORM automatic joins:</p>
+
+<pre><code>@person = People.first
+@posts  = @person.post
+
+@post   = Post.first
+@person_name = @post.people.first_name
+
+#Now get 3 posts by a particular author and sort
+@person = People.first
+@posts = @person.post.find(:all, :order =&gt; "id DESC", :limit =&gt; 3) 
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/recover-bulk-download-your-pictures-from-flickr/">Recover (Bulk Download) Your Pictures From Flickr</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-02T10:51:53+01:00" pubdate data-updated="true">Aug 2<span>nd</span>, 2010</time>
+        
+           | <a href="/blog/photography/recover-bulk-download-your-pictures-from-flickr/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/photography/recover-bulk-download-your-pictures-from-flickr/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Flickr is a great way to backup your photos and other images for around £25 a year you get unlimited storage. There are numerous uploader tools but not many bulk download applications.</p>
+
+<p>Today I wanted to download a few of my image sets for use as a screen saver on another computer, after looking at several free application <a href="http://janten.com/downloadr/">&lsquo;downloadr&rsquo;</a> was the only one which came close to offering the functionality I needed. The ability to list sets owned by user and select which images to download. Only minor irritation was when listing photos in a set it only lists the first 50 by default so you have press search again to ge the next 50, again and again until you have got previews for all the photos in the set, then you can download then all.</p>
+
+<p><a href="http://janten.com/downloadr/">Downloadr</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/benchmark-your-website-for-load-times/">Benchmark Your Website for Load Times.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-27T16:09:53+01:00" pubdate data-updated="true">Jul 27<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/benchmark-your-website-for-load-times/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/benchmark-your-website-for-load-times/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have been wondering how to do this for a while and accidentally discovered it while perusing <a href="http://docs.heroku.com/performance">this heroku page</a>. ab is the ApacheBench marking tool, it lets you set how many requests (for better averaging) and how many concurrent requests (for load testing) to send to your website. ab id installed by default on most unix/linux/mac os x.</p>
+
+<p>50 requests 2 at atime</p>
+
+<pre><code>$ ab -c 2 -n 50 http://amaras-tech.co.uk/
+</code></pre>
+
+<p>Outputs:</p>
+
+<pre><code>This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking amaras-tech.co.uk (be patient).....done
+
+
+Server Software:        nginx
+Server Hostname:        amaras-tech.co.uk
+Server Port:            80
+
+Document Path:          /
+Document Length:        0 bytes
+
+Concurrency Level:      2
+Time taken for tests:   9.951 seconds
+Complete requests:      50
+Failed requests:        0
+Write errors:           0
+Non-2xx responses:      50
+Total transferred:      11400 bytes
+HTML transferred:       0 bytes
+Requests per second:    5.02 [#/sec] (mean)
+Time per request:       398.030 [ms] (mean)
+Time per request:       199.015 [ms] (mean, across all concurrent requests)
+Transfer rate:          1.12 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:      146  162  16.7    158     214
+Processing:   149  229 198.3    159    1113
+Waiting:      148  228 198.2    159    1112
+Total:        298  392 198.0    328    1262
+
+Percentage of the requests served within a certain time (ms)
+  50%    328
+  66%    343
+  75%    351
+  80%    360
+  90%    612
+  95%    961
+  98%   1262
+  99%   1262
+ 100%   1262 (longest request)
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/21/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/19/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/flip-flop/">Flip-flop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/morganp">@morganp</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'morganp',
+            count: 1,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Morgan Prior -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'morganpgithubio';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

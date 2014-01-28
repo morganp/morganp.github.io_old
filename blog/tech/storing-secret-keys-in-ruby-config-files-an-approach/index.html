@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Storing Secret Keys in Ruby Config Files an Approach - RockPaperScissors</title>
+  <meta name="author" content="Morgan Prior">
+
+  
+  <meta name="description" content="I have for a while wondered about an ideal (good) approach to storing api keys in config files in ruby projects. A few conditions must be met:
+1) A &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://morganp.github.io/blog/tech/storing-secret-keys-in-ruby-config-files-an-approach">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="RockPaperScissors" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47010631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">RockPaperScissors</a></h1>
+  
+    <h2>LizardSpock</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:morganp.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Latest</a></li>
+  <li><a href="/blog/archives">All</a></li>
+  <li><a href="/">Categories</a></li>
+  <li><a href="/tag">Tags</a></li>
+  <li><a href="/license">License</a></li>
+</ul>
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Storing Secret Keys in Ruby Config Files an Approach</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-11T19:04:53+01:00" pubdate data-updated="true">Sep 11<span>th</span>, 2010</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I have for a while wondered about an ideal (good) approach to storing api keys in config files in ruby projects. A few conditions must be met:<br/>
+1) A new user must be given clear instructions on what has to be configured (until it is done), with boiler plate to complete.<br/>
+2) git must not accidentally let you submit the key.</p>
+
+<p>Gregory Brown steered me towards this setup. Create a config.rb file fill out the template for adding data. Then copy it to config.rb.example and add config.rb to the .gitignore</p>
+
+<pre><code>touch config.rb
+#setup template of config.rb
+cp config.rb config.rb.example
+echo "config.rb" &gt;&gt; .gitignore
+git add config.rb.example
+</code></pre>
+
+<p>The file requiring the keys can then do something like:</p>
+
+<pre><code>begin
+  require "config"
+rescue LoadError
+  STDERR.puts "You need to create a file called config.rb. See config.rb.example"
+exit
+</code></pre>
+
+<p>A slightly larger example.<br/>
+shorturl.rb</p>
+
+<pre><code>  require 'net/http'
+  require 'rubygems'
+  require 'json'
+  require 'cgi'
+
+  begin 
+     require File.dirname(__FILE__) + '/bit_ly_key'
+  rescue LoadError
+   STDERR.puts "You need to create a file called bit_ly_key.rb. See bit_ly_key.rb.example"
+   exit
+  end
+
+  module TechNews
+     class Shorturl
+        def initialize( url=nil )
+           bit_ly_keys = TechNews::BitLyKey.new
+
+           ##  url encode
+           url ||= "http://amaras-tech.co.uk"
+           @long_url = CGI.escape( url )
+           payload   = "http://api.bit.ly/v3/shorten?login=#{bit_ly_keys.login}&amp;apiKey=#{bit_ly_keys.apiKey}&amp;longUrl=#{@long_url}&amp;format=json"
+           @response = Net::HTTP.get URI.parse(payload)
+           @response = JSON.parse( @response )
+        end
+
+        def get_shorturl
+           return @response["data"]["url"]
+        end
+
+     end
+  end
+
+  if $0 == __FILE__
+     x = TechNews::Shorturl.new()
+     puts x.get_shorturl
+  end
+</code></pre>
+
+<p>bit_ly_key.rb</p>
+
+<pre><code># Register at [1] and get api key [2]
+# [1]: http://bit.ly
+# [2]: http://bit.ly/a/your_api_key
+
+module TechNews
+   class BitLyKey
+      attr_reader :login, :apiKey
+
+      def initialize
+         @login  = ""
+         @apiKey = ""
+      end
+
+   end
+end
+</code></pre>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Morgan Prior</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-11T19:04:53+01:00" pubdate data-updated="true">Sep 11<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/tech/'>Tech</a>
+  
+</span>
+
+
+      
+
+<span class="tags">
+  
+    <a class='tag' href='/tag/git/'>Git</a>, <a class='tag' href='/tag/programming/'>Programming</a>, <a class='tag' href='/tag/ruby/'>Ruby</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://morganp.github.io/blog/tech/storing-secret-keys-in-ruby-config-files-an-approach/" data-via="" data-counturl="http://morganp.github.io/blog/tech/storing-secret-keys-in-ruby-config-files-an-approach/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/tech/remove-sensitive-data-from-git/" title="Previous Post: Remove sensitive data from git">&laquo; Remove sensitive data from git</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/tech/ruby-each-or-delete_if/" title="Next Post: Ruby each or delete_if">Ruby each or delete_if &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/flip-flop/">Flip-flop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/morganp">@morganp</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'morganp',
+            count: 1,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Morgan Prior -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'morganpgithubio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://morganp.github.io/blog/tech/storing-secret-keys-in-ruby-config-files-an-approach/';
+        var disqus_url = 'http://morganp.github.io/blog/tech/storing-secret-keys-in-ruby-config-files-an-approach/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

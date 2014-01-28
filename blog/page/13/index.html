@@ -1,0 +1,1017 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>RockPaperScissors</title>
+  <meta name="author" content="Morgan Prior">
+
+  
+  <meta name="description" content="ctrl-r " Actually ctrl-r reg, where &ldquo; is the unnamed register from the last yank or delete. Why If you have done a block selection and you want &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://morganp.github.io/blog/page/13">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="RockPaperScissors" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47010631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">RockPaperScissors</a></h1>
+  
+    <h2>LizardSpock</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:morganp.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Latest</a></li>
+  <li><a href="/blog/archives">All</a></li>
+  <li><a href="/">Categories</a></li>
+  <li><a href="/tag">Tags</a></li>
+  <li><a href="/license">License</a></li>
+</ul>
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vim-paste-from-insert-mode/">Vim, Paste From Insert Mode</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-27T15:00:55+00:00" pubdate data-updated="true">Jan 27<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/vim-paste-from-insert-mode/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/vim-paste-from-insert-mode/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>ctrl-r "
+</code></pre>
+
+<p>Actually <code>ctrl-r reg</code>, where &ldquo; is the unnamed register from the last yank or delete.</p>
+
+<h2>Why</h2>
+
+<p>If you have done a block selection and you want to paste, normally you would have to leave selection mode to this and there fore not be able to edit multiple lines at once.</p>
+
+<p>say you have (below) and what to prepend &lsquo;number&rsquo;.</p>
+
+<pre><code>number 
+one
+two
+three
+</code></pre>
+
+<p>Place cursor on &lsquo;number&rsquo;, <code>yiw</code> to yank inner word. Move to &lsquo;o&rsquo; of one. <code>ctrl-v</code> to enter block selection, <code>jj</code> to select ott vertically. Then I to enter insert mode. <code>ctrl-r " . ESC</code>.</p>
+
+<pre><code>number 
+number.one
+number.two
+number.three
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/matrix-a-ruby-standard-library/">Matrix: A Ruby Standard Library</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-20T12:09:05+00:00" pubdate data-updated="true">Jan 20<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/matrix-a-ruby-standard-library/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/matrix-a-ruby-standard-library/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://github.com/sandal/guides/wiki/STDLIB:-Matrix">Originally written</a> as an assignment for <a href="http://mendicantuniversity.org/">Ruby Mendicant University</a>.</p>
+
+<p>matrix is part of the <a href="http://ruby-doc.org/stdlib/libdoc/matrix/rdoc/classes/Matrix.html">Ruby Standard Library</a></p>
+
+<h1>Usage</h1>
+
+<p>A note before we start, if using Ruby 1.8 require &lsquo;mathn&rsquo; will make matrix division return more accurate results. With it Rational numbers can be returned with out it Rounded numbers are returned. Ruby 1.9 Rational numbers are used by default.</p>
+
+<pre><code>require 'matrix'
+a = Matrix[[1,2], [3,4]] 
+=&gt; Matrix[[1, 2], [3, 4]] 
+This would look like:  
+   1,2
+   3,4
+
+a = Matrix.columns([ [1,3],[2,4] ]) #Note Rows and columns swapped
+=&gt; Matrix[[1, 2], [3, 4]] 
+
+This would still look like
+   1,2
+   3,4
+</code></pre>
+
+<p>If you already have the row defined as a Arrays then using rows they can be combined into a matrix</p>
+
+<pre><code>row1 = [1,2]
+row2 = [3,4]
+a = Matrix[ row1,row2 ]
+#This is also the same as:
+b = Matrix.rows([ row1, row2 ])
+</code></pre>
+
+<p>This by defaults to copying the arrays, i.e. any change to Matrix a will not effect row1 or row2. If you would like the row1 and row2 to be pointers to the respective rows then a boolean switch can be used to control this behaviour</p>
+
+<pre><code>row1 = [1,2]
+row2 = [3,4]
+a = Matrix.rows([ row1, row2 ], false)
+=&gt; Matrix[[1, 2], [3, 4]]
+row1[0] = 9
+puts a
+=&gt; Matrix[[9, 2], [3, 4]]
+</code></pre>
+
+<p>Note that you can not replace entire rows with:</p>
+
+<pre><code>row1 = [5,6]
+puts a 
+=&gt; Matrix[[9, 2], [3, 4]]
+</code></pre>
+
+<p>This is because row1 has become a new Array and does not modify the existing array, Matrix a now contains the old Array row1.</p>
+
+<h2>Identity &amp; Operators</h2>
+
+<p>For matrix mathematics the identity matrix is very useful, more can be read <a href="http://en.wikipedia.org/wiki/Identity_matrix">here</a>. The identity matrix is often represented by I, its definition, given a matrix M:</p>
+
+<pre><code>M*I = I*M = M
+</code></pre>
+
+<p>As it is a core part of matrices mathematics they are very simple to create in ruby.</p>
+
+<pre><code>i = Matrix.identity(2)
+=&gt; Matrix[[1,0],[0,1]]
+
+i = Matrix.identity(3)
+=&gt; Matrix[[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+</code></pre>
+
+<p>Addition and subtraction (and multiplication by scalars) work as expected</p>
+
+<pre><code>a =  Matrix[ [1,1], [2,2] ] + Matrix.identity(2)
+=&gt; Matrix[[2, 1], [2, 3]]
+
+s = Matrix[ [1,1], [2,2] ] - Matrix.identity(2)
+=&gt; Matrix[[0, 1], [2, 1]]
+
+m =  Matrix.identity(2) * 3
+=&gt; Matrix[[3, 0], [0, 3]] 
+NB: this is the same as Matrix.scalar(2, 3)
+</code></pre>
+
+<p>Matrix by Matrix Multiplication is only possible with m by p multiplied by p by n, i.e. the inner dimension must match. This will result in an m x n matrix. In the next example a 1,4 * 4,1 results in 1,1 a single element matrix.</p>
+
+<pre><code>[ [1 2 3 4] ]*[ [1]    =&gt; 1*1 + 2*2 + 3*3 + 4*4 = Matrix[ [30] ]
+                [2]
+                [3]
+                [4] ]
+</code></pre>
+
+<p>For a 2,2 * 2,2 results in a 2,2</p>
+
+<pre><code>[[a,b],  * [[w,x]   =&gt; [[a*w + b*y], [a*x + b*x]
+ [c,d]]     [y,z]]      [c*w + d*y], [c*x + d*z]]
+</code></pre>
+
+<p>At first glance this might not seem any thing special but there are a few mathematical properties that make this incredibly useful, rotation and solving linear equations for example.</p>
+
+<h1>Rotation</h1>
+
+<p><a href="http://xkcd.com/184/"><img src="http://imgs.xkcd.com/comics/matrix_transform.png"></a>
+<em>Comic from <a href="http://xkcd.com/184/">kxcd</a></em></p>
+
+<p>Rotating a 2,1 matrix is relatively trivial. This can be used to rotate a set of x,y coordinates and makes rotating vector images trivial.</p>
+
+<pre><code>[ [cos(x), -sin(x)]   * [[x] 
+  [sin(x),  cos(x)] ]    [y]]
+</code></pre>
+
+<h1>Solving Linear Equations (Linear Algebra)</h1>
+
+<p>Here I would like to introduce the inverse function. Which is as simple as calling inverse, be careful though as not all matrices have an inverse and then it will throw &lsquo;ExceptionForMatrix::ErrNotRegular: Not Regular Matrix&rsquo;. Any matrix multiplied by its inverse will lead to the identity matrix.</p>
+
+<pre><code>a = Matrix.scalar(4,3) * Matrix.scalar(4,3).inverse
+=&gt; Matrix[[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]
+</code></pre>
+
+<p>Two dimensional matrices are often used to help solve linear equations. Whereby we have x unknowns we can calculate the single solution if it exists with x equations.</p>
+
+<p>For example:</p>
+
+<pre><code>1a + 2b + 3c = 38
+4a + 5b + 6c = 92
+7a + 8b + 0c = 83
+</code></pre>
+
+<p>Can be rewritten as:</p>
+
+<pre><code>[[1, 2, 3], * [[ a ],  = [[ 38 ],
+ [4, 5, 6],    [ b ],     [ 92 ],
+ [7, 8, 0]]    [ c ]]     [ 83 ]]
+
+This can be generalised to A.x = y
+</code></pre>
+
+<p>When the inverse of A exists it can be solved for x, by multiplying both sides by A^-1</p>
+
+<pre><code>A.x = y
+x   = A^-1.y
+
+A = Matrix[ [1, 2, 3], [4,5,6], [7,8,0] ]
+y = Matrix[ [38], [92], [83] ]
+
+x = A.inverse * y
+=&gt; Matrix[[5], [6], [7]]
+</code></pre>
+
+<p>For sanity lets just check that.</p>
+
+<pre><code>a = x[0,0]
+b = x[1,0]
+c = x[2,0]
+
+1*a + 2*b + 3*c 
+=&gt; 38
+4*a + 5*b + 6*c 
+=&gt; 92
+7*a + 8*b + 0*c 
+=&gt; 83
+</code></pre>
+
+<p>All Equations return expected results.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/recursive-grep-with-filtering/">Recursive Grep, With Filtering</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-19T15:56:31+00:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/recursive-grep-with-filtering/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/recursive-grep-with-filtering/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I noticed today that greps recursive function is different to finds recursion.</p>
+
+<pre><code>find ./ -name *.txt
+grep -R 'text' *.text
+</code></pre>
+
+<p>The above find command will search from the sub-directory down while grep will only search the current folder. The FILE_PATTERN must also match the hierarchy in grep.</p>
+
+<p>To apply a file type filter in grep you can do:</p>
+
+<pre><code>grep -R --include=*.txt 'text' ./
+</code></pre>
+
+<p>This looks at all file from the current directory (./) but will only grep files which match the include.</p>
+
+<p>An older article on <a href="http://amaras-tech.co.uk/article/63">Basic grep usage</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/finding-tracks-not-in-itunes/">Finding Tracks Not in iTunes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-14T18:19:45+00:00" pubdate data-updated="true">Jan 14<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/finding-tracks-not-in-itunes/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/finding-tracks-not-in-itunes/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After switching my Audio ripper (<a href="http://sbooth.org/Max">Max</a>) accidentally to &lsquo;AAC Low Delay&rsquo; rather than plain &lsquo;AAC&rsquo; I realised too late after about 20-30cd rips that they were not appearing in iTunes.</p>
+
+<p>I also convert to flac to converting to the correct format from source is still relatively easy. Finding which track are in my iTunes folder but not in the iTunes library is a little bit more tricky. Well it was going to be until I found <a href="http://dougscripts.com/itunes/scripts/ss.php?sp=musicfolderfilesnotadded2">this Dougs Script</a>.</p>
+
+<p>I did not have to instal any script for this just ran the app insdie the download for &lsquo;Music Folder Files Not Added v3.0&rsquo;. My iTune folder is in the default location so I just had to press &lsquo;find&rsquo; and it took around a minute to list all the music tracks I had but iTunes had not added to its library.</p>
+
+<p>Working my way through the list recreating the tracks in the correct AAC format, just adding the &lsquo;iTunes Music&rsquo; folder to iTunes after every ablum fix and hitting &lsquo;find&rsquo; in Dougs app to refresh the list.</p>
+
+<p>Easy, almsot got a ruby version of it working but only got so far:</p>
+
+<pre><code>gem install 'itunes-library'
+</code></pre>
+
+<p>The Script:</p>
+
+<pre><code>require 'itunes/library'
+
+path       = File.expand_path( "~/Music/iTunes/iTunes Music" )
+itunes_lib = File.expand_path( "~/Music/iTunes/iTunes Library.xml" )
+library    = ITunes::Library.load( itunes_lib )
+
+puts  "#{library.music.tracks.size} Tracks have been loaded"
+
+files = Dir.glob( File.join(path, '**', '*.m4a'  ) )
+
+files.each do |music_file|
+  music_file_nice = music_file.dup
+  music_file.gsub!(' ', '%20')
+  music_file.gsub!('#', '%231')
+  #music_file.gsub!('´', '%C2%B4')
+
+  #This comes last so it the # does not get replace
+  music_file.gsub!('&amp;', '&amp;') 
+
+  #Correcting filename prefix / location
+  music_file.gsub!('/Users/morgy/Music', 'file://localhost/Volumes/Queeg500TimeM')
+
+  found = []
+  #found = library.music.tracks.keep_if { |t| t.to_hash['Location'] == music_file }
+  library.music.tracks.each { |t| 
+    if t.to_hash['Location'] == music_file
+      found &lt;&lt; t
+    end
+  }
+
+  if found.empty? 
+    puts
+    puts "MISSING #{music_file_nice}"
+  end
+
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/photo-software-update-hugin-201104-lightroom-36/">Photo Software Update, Hugin 2011.04 & Lightroom 3.6</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-26T18:17:30+00:00" pubdate data-updated="true">Dec 26<span>th</span>, 2011</time>
+        
+           | <a href="/blog/photography/photo-software-update-hugin-201104-lightroom-36/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/photography/photo-software-update-hugin-201104-lightroom-36/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Lightroom 3.6 has been released. Downloads for <a href="http://www.adobe.com/support/downloads/thankyou.jsp?ftpID=5307&amp;fileID=4949">Mac</a> and <a href="http://www.adobe.com/support/downloads/detail.jsp?ftpID=5308">Windows</a>.</p>
+
+<p><a href="http://hugin.sourceforge.net/releases/2011.4.0/">Hugin 2011.04</a> has also been released.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-get-a-users-real-name/">Ruby Get a Users Real Name</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-22T12:06:08+00:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2011</time>
+        
+           | <a href="/blog/tech/ruby-get-a-users-real-name/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-get-a-users-real-name/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>There does not appear to be a nice way to get a current users real name in ruby. The best way I have found on *nix systems (Not windows) is:</p>
+
+<pre><code>%x{finger `whoami`}.match(/Name: ([\w ]*)/)
+real_username = $1
+</code></pre>
+
+<p>There are other ways including parsing the git profile if it exists. At some point I will try to get these packaged up into a gem which can work its way through a list of possible sources.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-send-message-to-stderr/">Ruby Send Message to Stderr</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-22T11:56:25+00:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2011</time>
+        
+           | <a href="/blog/tech/ruby-send-message-to-stderr/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-send-message-to-stderr/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When creating applications normal messages should go to <a href="http://en.wikipedia.org/wiki/Standard_streams#Standard_output_.28stdout.29">stdout</a> and error messages should go to <a href="http://en.wikipedia.org/wiki/Standard_streams#Standard_error_.28stderr.29">stderr</a>, unfortunately there is not a nice ruby way the cleanest I have found is:</p>
+
+<pre><code>put "Message displayed in stdout"
+$stderr.puts "Error displayed in stderr"
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/suppressing-warnings-in-ruby-scripts/">Suppressing Warnings in Ruby Scripts</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-02T10:13:29+00:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
+        
+           | <a href="/blog/tech/suppressing-warnings-in-ruby-scripts/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/suppressing-warnings-in-ruby-scripts/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Suppressing warnings is usually a bad idea but if you understand the risk and want to carry on regardless. When ruby to call a script then the warning level can be set via:</p>
+
+<pre><code>$ ruby -W0 ./script.rb
+$ ruby -W1 ./script.rb
+$ ruby -W2 ./script.rb
+</code></pre>
+
+<p>Where 0=silence, 1=medium, 2=verbose</p>
+
+<p>In an executable with a shebang line this is a little harder. This is the method I have found:</p>
+
+<pre><code>#!/usr/bin/env ruby
+##                      $VERBOSE
+## -W0  NO Warnings     nil
+## -W1  Quiet           false
+## -W2  Verbose         true
+BEGIN { $VERBOSE = nil }
+
+#Rest of ruby script
+</code></pre>
+
+<p>The script can then be called directly with the warning level set:</p>
+
+<pre><code>$ executable_ruby_script 
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/setting-ruby-defaults-vs-fetch/">Setting Ruby Defaults &#8216;||&#8217; vs &#8216;Fetch(){}&#8217;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-09T17:29:10+00:00" pubdate data-updated="true">Nov 9<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/setting-ruby-defaults-vs-fetch/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/setting-ruby-defaults-vs-fetch/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>There is a very good presentation <a href="http://avdi.org/talks/confident-code-rubymidwest-2011/">Confident Code</a> by <a href="http://avdi.org/">Avdi Grimm</a> author of <a href="http://exceptionalruby.com/">http://exceptionalruby.com/</a>. <a href="http://confreaks.net/videos/614-cascadiaruby2011-confident-code">Previously presented at Cascadia</a>.</p>
+
+<p>There are many points which I find interesting, the most interesting for me are the ones which I disagree with, probably due to not understanding them in full.</p>
+
+<p>I use to do this for setting defaults.</p>
+
+<pre><code>def something( a, options={} )
+  width = options[:width]
+  width ||= 40
+end
+</code></pre>
+
+<p>I had not realized that this could be shortened to:</p>
+
+<pre><code>def something( a, options={} )
+  width = options[:width] || 40
+end
+</code></pre>
+
+<p>Avdi recommends that you use fetch instead (see below) as this has one less comparison. It is actually a longer statement and at the end replaces || 40 with {40} both just as ambiguous to non ruby programmers. So I have a preference for neither based on readability.</p>
+
+<pre><code>def something( a, options={} )
+  width = options.fetch(:width) { 40 }
+end
+</code></pre>
+
+<p>Maybe the &lsquo;one less comparison&rsquo; argument has some holding on execution time.
+NB: Tested with ruby 1.9.2-p290</p>
+
+<p>The Test:</p>
+
+<pre><code>require 'benchmark'
+
+def pipe options
+  width = options[:width]
+  width ||= 40
+  return width
+end
+
+def pipe_clean options
+  width = options[:width] || 40
+  return width
+end
+
+def fetch options
+  width = options.fetch(:width) { 40 }
+  return width
+end
+
+n = 100_000_000
+Benchmark.bmbm do |x|
+  options={}
+  x.report("options \\n ||= 40    :") { n.times { pipe(       options ) } }
+  x.report("options[] ||      40 :")  { n.times { pipe_clean( options ) } }
+  x.report("options.fetch() {40} :")  { n.times { fetch(      options ) } }
+end
+</code></pre>
+
+<p>The Results:</p>
+
+<pre><code>Rehearsal ----------------------------------------------------------------------
+options \n ||= 40    :  30.700000   0.000000  30.700000 ( 30.702585)
+options[] ||      40 :  28.480000   0.010000  28.490000 ( 28.492345)
+options.fetch() {40} :  38.720000   0.000000  38.720000 ( 38.731869)
+------------------------------------------------------------ total: 97.910000sec
+
+                                         user     system      total        real
+options \n ||= 40    :  30.490000   0.000000  30.490000 ( 30.494530)
+options[] ||      40 :  28.400000   0.000000  28.400000 ( 28.399310)
+options.fetch() {40} :  39.230000   0.000000  39.230000 ( 39.234303)
+</code></pre>
+
+<p>Since I am ambivalent to the 2 styles &lsquo;||&rsquo; vs &lsquo;fetch(){}&rsquo; I think I will go with the 27% faster &lsquo;||&rsquo; version.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/benchmarking-ruby-explicit-vs-implicit-returns/">Benchmarking Ruby, Explicit vs Implicit Returns</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-26T09:12:29+01:00" pubdate data-updated="true">Oct 26<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/benchmarking-ruby-explicit-vs-implicit-returns/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/benchmarking-ruby-explicit-vs-implicit-returns/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Back in 2009 <a href="http://barkingiguana.com/2009/11/11/returning-explicitly-is-slower/">barkingiguana</a> wrote about how explicit returns <code>'return "String"'</code> was slower than an implicit return, ie just letting the last value get returned. The test was performed on ruby 1.8.6 and I thought I would just check with ruby 1.9.2-p290 to see if this still held true.</p>
+
+<p>The test I ran:</p>
+
+<pre><code>require 'benchmark'
+
+def explicit
+  return "TEST"
+end
+
+def implicit
+  "TEST"
+end
+
+def explicit_non_eval
+  return 'TEST'
+end
+
+def implicit_non_eval
+  'TEST'
+end
+
+def explicit_symbol
+  return :TEST
+end
+
+def implicit_symbol
+  :TEST
+end
+
+n = 100_000_000
+Benchmark.bmbm do |x|
+  x.report("Explicit \"\"     return") { n.times { explicit } }
+  x.report("Implicit \"\"     return") { n.times { implicit } }
+  x.report("Explicit ''     return") { n.times { explicit_non_eval } }
+  x.report("Implicit ''     return") { n.times { implicit_non_eval } }
+  x.report("Explicit symbol return") { n.times { explicit_symbol   } }
+  x.report("Implicit symbol return") { n.times { implicit_symbol   } }
+end
+</code></pre>
+
+<p>the results</p>
+
+<pre><code>Rehearsal ----------------------------------------------------------
+Explicit ""     return  37.810000   0.000000  37.810000 ( 37.889241)
+Implicit ""     return  36.300000   0.000000  36.300000 ( 36.310153)
+Explicit ''     return  36.460000   0.000000  36.460000 ( 36.476939)
+Implicit ''     return  36.520000   0.010000  36.530000 ( 36.541361)
+Explicit symbol return  14.330000   0.000000  14.330000 ( 14.352004)
+Implicit symbol return  14.330000   0.000000  14.330000 ( 14.322934)
+----------------------------------------------- total: 175.760000sec
+
+                             user     system      total        real
+Explicit ""     return  37.620000   0.000000  37.620000 ( 37.680337)
+Implicit ""     return  36.480000   0.000000  36.480000 ( 36.504694)
+Explicit ''     return  36.560000   0.000000  36.560000 ( 36.574798)
+Implicit ''     return  36.100000   0.010000  36.110000 ( 36.111328)
+Explicit symbol return  14.770000   0.000000  14.770000 ( 14.812874)
+Implicit symbol return  14.710000   0.000000  14.710000 ( 14.829556)
+</code></pre>
+
+<p>For me the difference I see in the results between implicit and explicit returns is negligible. I also prefer the explicit return in all but the simplest of methods, as it is much easier to see what value gets returned and at which point the programmer want the method to exit. It also helps to minimize the side effects of re-factoring.</p>
+
+<p><a href="http://barkingiguana.com/2009/11/11/returning-explicitly-is-slower/">Barkingiguana</a> seems to prefer the implicit style which is possibly more idiomatic ruby, but I personally find that it adds ambiguity to the code for beginners to intermediate rubyists.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/14/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/12/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/flip-flop/">Flip-flop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/morganp">@morganp</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'morganp',
+            count: 1,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Morgan Prior -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'morganpgithubio';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

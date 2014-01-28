@@ -1,0 +1,825 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>RockPaperScissors</title>
+  <meta name="author" content="Morgan Prior">
+
+  
+  <meta name="description" content="For code reuse within I have found Subversion externals really nice to work with. Instead of copy and pasting code between projects you import part &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://morganp.github.io/blog/page/7">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="RockPaperScissors" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47010631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">RockPaperScissors</a></h1>
+  
+    <h2>LizardSpock</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:morganp.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Latest</a></li>
+  <li><a href="/blog/archives">All</a></li>
+  <li><a href="/">Categories</a></li>
+  <li><a href="/tag">Tags</a></li>
+  <li><a href="/license">License</a></li>
+</ul>
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/git-submodules/">Git Submodules</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-28T11:40:17+01:00" pubdate data-updated="true">Sep 28<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/git-submodules/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/git-submodules/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For code reuse within I have found Subversion externals really nice to work with. Instead of copy and pasting code between projects you import part or a whole Subversion repository, at trunk, a pinned revision of trunk or a tag.</p>
+
+<p>Git has some thing similar called submodules. Git Submodules are covered in <a href="http://git-scm.com/book/en/Git-Tools-Submodules">Chapter 6.6</a> of [Pro Git][progit] by Scott Chacon. Which has been <a href="http://git-scm.com/book">released for free</a>.</p>
+
+<p>My example is based on <a href="http://git-scm.com/book/en/Git-Tools-Submodules">Chapter 6.6</a> with a little bit of experimenting.</p>
+
+<p>For the example we will have git repos <code>project_top</code> and <code>project_sub</code>.</p>
+
+<pre><code>$ cd project_top
+$ git submodule add git@github.com:morganp/project_sub.git sub
+</code></pre>
+
+<p>We now have a folder in project_top called sub.</p>
+
+<pre><code>$ git status
+# On branch master
+# Changes to be committed:
+#     new file: .gitmodules
+#     new file: sub
+</code></pre>
+
+<p>The .gitmodules keeps track of which git repos map to folder names. sub is interesting it is actually recording the commit (hash) that you currently have cloned in sub.</p>
+
+<p>If you commit these changes.</p>
+
+<pre><code>$git commit -am 'Added Sub module sub'
+</code></pre>
+
+<p>Then go into folder sub and create or modify a file, you will see that git status works as expected if you were in a standalone repository.</p>
+
+<p>If you then commit and push the changes to sub :</p>
+
+<pre><code>git commit -am 'Modifying project_sub'
+git push origin master
+</code></pre>
+
+<p>Pushing back to the location everyone else will pull from is important as the next stage will move the project_sub sumodule on to that revision and if the commit hash does not exist and git clone or pull would fail.</p>
+
+<p>Going back to the main project_top and lets see what modifications to sub (project_sub) look like.</p>
+
+<pre><code>$ git status
+# On branch master
+# Changes not staged for commit:
+#        modified: sub (new commits)
+</code></pre>
+
+<p>Now release the changes in project_sub to every one else on project_top.</p>
+
+<pre><code>git commit sub -m 'moving to point to latest project_sub'
+git push origin master
+</code></pre>
+
+<p>Done.<br/>
+Note that github understands submodules and will display sub as a special folder in project_top. Sub will link to to the master page, there will also be a hash which will link to the included revision in that commit of project_top.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/retina-support-for-background-images/">Retina Support for Background Images</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-26T21:07:35+01:00" pubdate data-updated="true">Sep 26<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/retina-support-for-background-images/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/retina-support-for-background-images/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is based on a <a href="http://www.kylejlarson.com/blog/2012/creating-retina-images-for-your-website/">guide to adding retina support to websites</a>.</p>
+
+<p>To add a tiled (repeating) background cretae 2 images one at 100x100px and the other with the &lsquo;_@2&rsquo; added to the file name at 200x200px then use the following css.</p>
+
+<pre><code>body {background: url(../images/bg.png) repeat; background-size: 100px 100px;}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+   body {background: url(../images/bg_@2x.png) repeat;}
+}
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/speed-up-mission-control-animation/">Speed Up Mission Control Animation</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-18T16:18:56+01:00" pubdate data-updated="true">Sep 18<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/speed-up-mission-control-animation/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/speed-up-mission-control-animation/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If entering Mission Control (ctrl-up) is taking to long you can speed up the animation entering the following in the Terminal (/Applications/Utilities/Terminal.app):</p>
+
+<pre><code>defaults write com.apple.dock expose-animation-duration -float 0.2; killall Dock
+</code></pre>
+
+<p>To disable the animation altogether :</p>
+
+<pre><code>defaults write com.apple.dock expose-animation-duration -float 0; killall Dock
+</code></pre>
+
+<p>I prefer to have a fast animation rather than none as it provides context, it shows me where the applications are coming from on the screen.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/syncing-google-contacts-in-mountain-lion/">Syncing Google Contacts in Mountain Lion</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-18T08:40:53+01:00" pubdate data-updated="true">Sep 18<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/syncing-google-contacts-in-mountain-lion/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/syncing-google-contacts-in-mountain-lion/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A the time of writing Google exchange syncing only works on mobile devices, which is slightly annoying but mail, contacts and calendar can all be setup separately on their desktop system.</p>
+
+<p>To sync contacts on Mountain Lion :</p>
+
+<p>Open Contacts.app, either by The dock icon (book with @ on the cover), from browsing the applications folder (⇧⌘A) or ⌘-Space and type &lsquo;contacts&rsquo;  then return.</p>
+
+<p>To get the Contacts pref pane type &lsquo;⌘,&rsquo; or go to Contacts &ndash;> Preferences. You should see a window similar to the one shown below.</p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/7999074388/" title="Mountain Lion Contacts Sync with Google .png by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8308/7999074388_093c543244.jpg" width="500" height="453" alt="Mountain Lion Contacts Sync with Google .png"></a></p>
+
+<p>Selecte the &lsquo;On My Mac&rsquo; Account and check &lsquo;Synchronize with Google&rsquo; you will be prompted to enter you google login email address and password. Then all of your contacts should be imported and synchronised.</p>
+
+<p>This tip was originally found <a href="http://niklausgerber.com/thinking/syncing-google-contacts-in-mountain-lion/">here</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/syncing-safari-via-dropbox-for-pre-icloud-os-x/">Syncing Safari via Dropbox for Pre iCloud OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-15T18:39:27+01:00" pubdate data-updated="true">Sep 15<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/syncing-safari-via-dropbox-for-pre-icloud-os-x/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/syncing-safari-via-dropbox-for-pre-icloud-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>THIS NO LONGER WORKS, IF IT EVER DID :(</em></p>
+
+<p>When you add a link to safari, it replaces the link to dropbox with an actual file, outside of dropbox so breaks the syncing.</p>
+
+<h2>The Original Syncing Idea was :</h2>
+
+<p>For the cloud storage we will use <a href="http://db.tt/ZZzJ5LBq">dropbox</a>, if you have not already got an account you can get a free on <a href="http://db.tt/ZZzJ5LBq">here</a>.</p>
+
+<p>Once setup only the bookmarks from the first machine will be available after that bookmarks should be kept in sync.</p>
+
+<p>Create a backup of the original file then copy to dropbox, then create a link back to the original location. Todo this from <code>/Application/Utitlities/Terminal.app</code> run these commands:</p>
+
+<pre><code>cp ~/Library/Safari/Bookmarks.plist ~/Library/Safari/Bookmarks.plist.backup
+mv ~/Library/Safari/Bookmarks.plist ~/Dropbox
+ln -s ~/Dropbox/Bookmarks.plist ~/Library/Safari/Bookmarks.plist
+</code></pre>
+
+<p>On secondary machines, which will initially only have the first computers bookmarks.</p>
+
+<pre><code>mv ~/Library/Safari/Bookmarks.plist ~/Library/Safari/Bookmarks.plist.backup
+ln -s ~/Dropbox/Bookmarks.plist ~/Library/Safari/Bookmarks.plist
+</code></pre>
+
+<p>Original ideas is from <a href="http://macs.about.com/od/CloudServices/qt/Sync-Safari-Bookmarks-Using-Dropbox.htm">here</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vim-consistent-spelling-correction-highlighting/">Vim Consistent Spelling Correction Highlighting</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-11T11:09:36+01:00" pubdate data-updated="true">Sep 11<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/vim-consistent-spelling-correction-highlighting/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/vim-consistent-spelling-correction-highlighting/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In gvim and mvim incorrect spellings are highlighted with a squiggly underscore ala MS Word. vim in a terminal (xterm) will highlight the word be default. The following snippet can be added to your .vimrc file after setting your colorscheme. If you do not set a colorscheme then you are likely using the default and this could be placed any where.</p>
+
+<p>To highlight terminal (xterm) spelling mistakes with an underline rather than a background colour and keep the squiggly underlining in graphical vim:</p>
+
+<pre><code>" Spellings Underline instead of highlight "
+highlight clear SpellBad
+highlight SpellBad cterm=underline 
+" GVIM/MVIM squiggle underline "
+highlight SpellBad gui=undercurl
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/get-snipmate-working-a-vim-plugin/">Get snipMate Working, a #vim Plugin</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-05T00:45:31+01:00" pubdate data-updated="true">Sep 5<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/get-snipmate-working-a-vim-plugin/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/get-snipmate-working-a-vim-plugin/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.vim.org/scripts/script.php?script_id=2540">snipMate</a> is a useful vim plugin which allows short cuts like for&#8217;tab&#8217; to be set up which will insert the snippet:</p>
+
+<pre><code>for (i = 0; i &lt; count; i++) {  
+
+} 
+</code></pre>
+
+<p>To install you just have to download the the zip file from <a href="http://www.vim.org/scripts/script.php?script_id=2540">snipMate</a> and copy the files into your vim folder (~/.vim).</p>
+
+<p>Make sure you have this in your .vimrc file</p>
+
+<pre><code>filetype plugin on
+</code></pre>
+
+<p>I still could not get tab completion to work. running <code>:scriptnames</code> inside vim will list the files it has loaded and should include:</p>
+
+<pre><code>plugin/snipMate.vim
+after/plugin/snipMate.vim
+</code></pre>
+
+<p>On my first install the plugin/snipMate.vim was not executable and therefore the after/plugin/snipMate.vim did not get loaded.</p>
+
+<h2>The Fix</h2>
+
+<pre><code>cd ~/.vim 
+chmod ugo+x plugin/snipMate.vim
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/os-x-installing-r/">OS X Installing R</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-03T20:11:46+01:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2012</time>
+        
+           | <a href="/blog/tech/os-x-installing-r/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/os-x-installing-r/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.r-project.org/">R</a> is a language for statistical computing and graphics. It is the choice of <a href="http://coursera.org">Coursera</a> Statistics One.</p>
+
+<p>It can be installed on OS X via the <a href="http://cran.r-project.org/bin/macosx/">pkg</a> available on the main website which is my recommendation or via <a href="http://mxcl.github.com/homebrew/">Homebrew</a>.</p>
+
+<p><em>I have been unable to get the homebrew version to install correctly.</em><br/>
+<em>On Mountain Lion the homebrew install also requires a few additional packages.</em></p>
+
+<h2>Install R with Homebrew</h2>
+
+<p><strong>Update</strong> First run <code>brew tap homebrew/science</code> to make the R package available <strong>/Update</strong></p>
+
+<p>If you run <code>brew install r</code> when you do not have a fortran compiler you will see the following error:</p>
+
+<blockquote><p>This formula requires a fortran compiler, but we could not find one by
+looking at the FC environment variable or searching your PATH for <code>gfortran</code>.
+Please take one of the following actions:</p>
+
+<ul>
+<li><p>Decide to use the build of gfortran 4.2.x provided by Homebrew using
+    <code>brew install gfortran</code></p></li>
+<li><p>Choose another Fortran compiler by setting the FC environment variable:
+    export FC=/path/to/some/fortran/compiler
+Using an alternative compiler may produce more efficient code, but we will
+not be able to provide support for build errors.</p></li>
+</ul>
+</blockquote>
+
+<p>To save time just run :</p>
+
+<pre><code>brew update
+brew install gfortran r
+</code></pre>
+
+<p>Although I ran into some issues with linking libtiff and jpeg and had to run:</p>
+
+<pre><code>brew link -f  libtiff jpeg
+brew install r
+</code></pre>
+
+<p>I still got checksum fails. Might have to wait for a brew update.</p>
+
+<p>If you are running Mountain Lion then you will also run into this:</p>
+
+<blockquote><p>Unsatisfied dependency: XQuartz
+Please install the latest version of XQuartz:
+ <a href="https://xquartz.macosforge.org">https://xquartz.macosforge.org</a>
+Error: An unsatisfied requirement failed this build.</p></blockquote>
+
+<p>The easiest way to install R on OS X really does seem to be just run the <a href="http://cran.r-project.org/bin/macosx/">package</a>. 134MB install size.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mountain-lion-setup-part-5-etchosts/">Mountain Lion Setup, Part 5 /etc/hosts</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-30T20:28:12+01:00" pubdate data-updated="true">Aug 30<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/mountain-lion-setup-part-5-etchosts/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/mountain-lion-setup-part-5-etchosts/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For ssh and ping to local machines with out the .local extension I added them to my /ets/hosts file.</p>
+
+<p>A normal user does not have permission so you have to use sudo. If you os x account has admin privlages it will prompt you for your password. If you have not used vim before, i for insert mode (like a standard text editor), esc to exit insert mode and :wq to write and quit.</p>
+
+<pre><code>sudo vim /etc/hosts
+
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.  
+##
+127.0.0.1   localhost
+255.255.255.255 broadcasthost
+::1             localhost 
+fe80::1%lo0 localhost
+
+## Append Local fixed ip Machines
+192.168.10.1   router
+192.168.10.100 macmini
+192.168.10.101 krypton
+192.168.10.250 backup
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/os-x-get-info-summary-for-multiple-items/">OS X Get Info Summary for Multiple Items</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-29T21:02:22+01:00" pubdate data-updated="true">Aug 29<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/os-x-get-info-summary-for-multiple-items/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/os-x-get-info-summary-for-multiple-items/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you use the ⌘I shortcut in finder with a file selected you get a &lsquo;Get Info&rsquo; window. If you do this with 20 files selected you get 20 windows, In Snow Leopard if 10 or more file were selected you got a Summary window. I found this handy for getting the disk usage for a bunch of files.</p>
+
+<p>If you would like to change it to always get the Summary window, which I find useful in case of selecting all in a folder and accidentally hitting ⌘I you do not a have many many windows to close.</p>
+
+<p>Open System preferences, select keyboard.<br/>
+<a href="http://www.flickr.com/photos/morgan_prior/7889683364/" title="01-SysPref_Keyboard.png by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8462/7889683364_21baa38a61.jpg" width="500" height="367" alt="01-SysPref_Keyboard.png"></a></p>
+
+<p>Keyboard Shortcuts &ndash;> Application Shortcut &ndash;> +<br/>
+<a href="http://www.flickr.com/photos/morgan_prior/7889714382/" title="02-Keyboard.png by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8035/7889714382_a81aa4d791.jpg" width="500" height="455" alt="02-Keyboard.png"></a></p>
+
+<p>Application, select Finder.<br/>
+Menu Title, enter &lsquo;Summary Get Info&#8217;<br/>
+Keyboard Shortcut, press  ⌘I <br/>
+<a href="http://www.flickr.com/photos/morgan_prior/7889720574/" title="03-Entry.png by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8032/7889720574_0ed2232077.jpg" width="500" height="455" alt="03-Entry.png"></a></p>
+
+<p>Done<br/>
+<a href="http://www.flickr.com/photos/morgan_prior/7889724254/" title="04-cmdI-final.png by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8443/7889724254_bf1f39f4a7.jpg" width="500" height="455" alt="04-cmdI-final.png"></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/8/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/6/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/flip-flop/">Flip-flop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/morganp">@morganp</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'morganp',
+            count: 1,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Morgan Prior -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'morganpgithubio';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
