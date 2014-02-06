@@ -1,4 +1,9 @@
 <ul class="main-navigation">
-  <li><a href="{{ root_url }}/">Blog</a></li>
-  <li><a href="{{ root_url }}/blog/archives">Archives</a></li>
+  <li><a href="{{ root_url }}/about">About</a></li>
+  <li><a href="{{ root_url }}/">Latest</a></li>
+  <li><a href="{{ root_url }}/blog/archives">All</a></li>
+  <li><a href="{{ root_url }}/{{ site.config['category_dir'] }}">Categories</a></li>
+  <li><a href="{{ root_url }}/tag">Tags</a></li>
+  <li><a href="{{ root_url }}/license">License</a></li>
 </ul>
+<!-- {% category_list counter:false %} -->
