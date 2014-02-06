@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Home | RockPaperScissors]]></title>
+  <link href="http://morganp.github.io/blog/home/atom.xml" rel="self"/>
+  <link href="http://morganp.github.io/"/>
+  <updated>2014-02-06T21:46:04+00:00</updated>
+  <id>http://morganp.github.io/</id>
+  <author>
+    <name><![CDATA[Morgan Prior]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Chandelier]]></title>
+    <link href="http://morganp.github.io/blog/home/chandelier/"/>
+    <updated>2014-02-06T20:29:49+00:00</updated>
+    <id>http://morganp.github.io/blog/home/chandelier</id>
+    <content type="html"><![CDATA[<p>A new feature in the dining room.</p>
+
+<p><img src="/images/Chandelier/morganp-20140202-Chandelier-IMG_6675.jpg" alt="Chandelier view 1" />
+<img src="/images/Chandelier/morganp-20140202-Chandelier-IMG_6678.jpg" alt="Chandelier view 2" /></p>
+
+<p>Approximate materials and cost:</p>
+
+<pre><code>Section of plywood ~£10
+16 meters of 2.5mm chain ~£50
+40 Ikea Lanterns £80
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

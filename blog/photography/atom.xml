@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Photography | RockPaperScissors]]></title>
   <link href="http://morganp.github.io/blog/photography/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-01-28T19:20:49+00:00</updated>
+  <updated>2014-02-06T21:46:04+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[F-stop ICUs]]></title>
+    <link href="http://morganp.github.io/blog/photography/f-stop-icus/"/>
+    <updated>2014-02-01T21:27:32+00:00</updated>
+    <id>http://morganp.github.io/blog/photography/f-stop-icus</id>
+    <content type="html"><![CDATA[<p>F-Stop camera bags have an adaptable system for trading camera space for other outdoor gear. The swappable section are called ICUs or Internal Camera Units.</p>
+
+<p>This is not a review but just a quick note to record the default layouts of the Pro-Medium and Pro-Extra Large.</p>
+
+<h2>Pro-Medium ICU</h2>
+
+<p>Internal Dimensions (external all dimensions 2cm greater)<br/>
+Depth: 16.5cm. Width: 27cm. Height: 27.5cm  External Volume 15.4L
+<img class="centre" src="/images/fstop_icu/morganp-20140102-fstop-IMG_6382.jpg">
+<img class="centre" src="/images/fstop_icu/morganp-20140102-fstop-IMG_6383.jpg">
+<img class="centre" src="/images/fstop_icu/morganp-20140102-fstop-IMG_6384.jpg"></p>
+
+<h2>Pro-Extra Large ICU</h2>
+
+<p>Internal Dimensions (external all dimensions 2cm greater)<br/>
+Depth: 16.5cm. Width: 27cm. Height: 46cm  External Volume 25L</p>
+
+<p><img class="centre" src="/images/fstop_icu/morganp-20140102-fstop-IMG_6387.jpg">
+<img class="centre" src="/images/fstop_icu/morganp-20140102-fstop-IMG_6388.jpg">
+<img class="centre" src="/images/fstop_icu/morganp-20140102-fstop-IMG_6390.jpg"></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Lightroom Library Metadata Panel]]></title>
@@ -75,29 +103,6 @@
 </code></pre>
 
 <p><a href="http://photo.stackexchange.com/q/30263/5572">Rule of 600 discussed on photo stackexchange</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Lightroom Collections Whats the Point?]]></title>
-    <link href="http://morganp.github.io/blog/photography/lightroom-collections-whats-the-point/"/>
-    <updated>2013-07-12T22:47:25+01:00</updated>
-    <id>http://morganp.github.io/blog/photography/Lightroom-Collections-Whats-the-Point</id>
-    <content type="html"><![CDATA[<p>After using Lightroom for over 6 years I still do not see the point in Lightroom Collections.</p>
-
-<p><a href="http://scottkelby.com/2009/how-i-use-lightrooms-collections/">Scott Kelby</a> Describes <a href="http://scottkelby.com/2009/how-i-use-lightrooms-collections/">his usage</a>, but it is very similar to my workflow without them.</p>
-
-<p>I create a folder, via a script, which increments a shoot number and a description i.e. <strong>0101-SpaceRocket</strong></p>
-
-<p>I then import my images into this folder. A quick scan through the images rejecting (shortcut x) really bad ones. A second scan I Flag (shortcut p) the ones worth spending time to develop. I can change my mind later and remove them from the top selection (shortcut u).</p>
-
-<p>Rejecting photos has the advantage that you can get lightroom to clean up, removing from the catalog and deleting from disk.</p>
-
-<p>So far this does everything Scott Kelby talks about having a Full and Picks Collection. If I want to choose just the very best of a set them I could apply star filters.</p>
-
-<p>Scott then takes the the breakdown a bit further and creates Full and Picks folders for multiple events throughout a shoot. If we new we wanted this breakdown then the folder hierarchy can reflect it. So I still do not see the need for collections.</p>
-
-<p>My first use of collections was a mistake and it may be from this that I stay away. My first collection I had inadvertently set it to have different light room develop data. When viewing the photo from the lightroom file browser the images were not flagged or developed. Lightroom offered no way to merge a collections data back into the standard image view. I am now for ever stuck with one collection from many years ago which is the only place the develop data is held for that particular shoot.</p>
 ]]></content>
   </entry>
   

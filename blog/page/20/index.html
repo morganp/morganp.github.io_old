@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="The Preferences menu in OS x give you the option to turn off Hard Disks whenever possible to save power however the default 10 minutes idle before &hellip;">
+  <meta name="description" content="I recently discovered a feature of regular expressions called lookahead. This means for a match the lookahead must exist but it does not become part &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,13 +76,155 @@
   <li><a href="/tag">Tags</a></li>
   <li><a href="/license">License</a></li>
 </ul>
-<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/home'>Home</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
 
 </nav>
   <div id="main">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-regular-expressions-lookahead-lookbehind/">Ruby Regular Expressions Lookahead / Lookbehind</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-07T01:39:28+01:00" pubdate data-updated="true">Sep 7<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-regular-expressions-lookahead-lookbehind/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-regular-expressions-lookahead-lookbehind/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently discovered a feature of regular expressions called lookahead. This means for a match the lookahead must exist but it does not become part of the matched string.
+NB: (group) print first group with \1</p>
+
+<pre><code>"123456".gsub(/(\d\d\d)/, '\1,')
+123,456,
+</code></pre>
+
+<p>Now with lookahead</p>
+
+<pre><code>"123456".gsub(/(\d\d\d)(?=\d)/, '\1,')
+123,456
+</code></pre>
+
+<p>There are 2 types of lookahead</p>
+
+<pre><code>match (?=x)
+not-match (?!x)
+</code></pre>
+
+<p>Ruby 1.8.x does not support these by default but by using <a href="http://oniguruma.rubyforge.org/">Oniguruma</a> which is the default regex engine in Ruby 1.9.x you can also use lookbehind expressions.</p>
+
+<pre><code>match (?&lt;=x)
+not-match (?&lt;!x)
+</code></pre>
+
+<p>Example not using lookbehind</p>
+
+<pre><code> "http://h:5/".gsub(/:/,'=&gt;')
+ http=&gt;//h=&gt;5/
+</code></pre>
+
+<p>With Not lookbehind</p>
+
+<pre><code>"http://h:5/".gsub(/(?&lt;!http):/,'=&gt;')
+ http://h=&gt;5/
+</code></pre>
+
+<p>More info on <a href="http://www.regular-expressions.info/lookaround.html">Lookarounds</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-time-save-and-restore-serialise/">Ruby Time Save and Restore (Serialise)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-06T16:25:45+01:00" pubdate data-updated="true">Sep 6<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-time-save-and-restore-serialise/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-time-save-and-restore-serialise/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>One method to save a time and restore it correctly:</p>
+
+<pre><code>def get_time_run
+## File Access based on
+## http://rubylearning.com/satishtalim/read_write_files.html
+
+ if File.exists?('time.log') 
+   File.open('time.log', 'r') do |f|  
+      while line = f.gets  
+         @last_run = Time.at(line.to_i)
+      end  
+   end 
+ end
+ #Nice default if anything above failed
+ @last_run ||= Time.at(0) 
+end
+
+def set_run_time
+   if File.exists?("run.time")
+      File.delete("run.time")
+   end
+   File.open('time.log', 'w') do |f|  
+      f.puts Time.now.to_i  
+   end  
+end
+</code></pre>
+
+<p>Previously I had missed off the to_i but that meant when the time was loaded it was a string representation of it, quite a bit trickier to convert back into a time object.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -633,141 +775,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/recover-bulk-download-your-pictures-from-flickr/">Recover (Bulk Download) Your Pictures From Flickr</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-02T10:51:53+01:00" pubdate data-updated="true">Aug 2<span>nd</span>, 2010</time>
-        
-           | <a href="/blog/photography/recover-bulk-download-your-pictures-from-flickr/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/recover-bulk-download-your-pictures-from-flickr/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Flickr is a great way to backup your photos and other images for around £25 a year you get unlimited storage. There are numerous uploader tools but not many bulk download applications.</p>
-
-<p>Today I wanted to download a few of my image sets for use as a screen saver on another computer, after looking at several free application <a href="http://janten.com/downloadr/">&lsquo;downloadr&rsquo;</a> was the only one which came close to offering the functionality I needed. The ability to list sets owned by user and select which images to download. Only minor irritation was when listing photos in a set it only lists the first 50 by default so you have press search again to ge the next 50, again and again until you have got previews for all the photos in the set, then you can download then all.</p>
-
-<p><a href="http://janten.com/downloadr/">Downloadr</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/benchmark-your-website-for-load-times/">Benchmark Your Website for Load Times.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-27T16:09:53+01:00" pubdate data-updated="true">Jul 27<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/benchmark-your-website-for-load-times/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/benchmark-your-website-for-load-times/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have been wondering how to do this for a while and accidentally discovered it while perusing <a href="http://docs.heroku.com/performance">this heroku page</a>. ab is the ApacheBench marking tool, it lets you set how many requests (for better averaging) and how many concurrent requests (for load testing) to send to your website. ab id installed by default on most unix/linux/mac os x.</p>
-
-<p>50 requests 2 at atime</p>
-
-<pre><code>$ ab -c 2 -n 50 http://amaras-tech.co.uk/
-</code></pre>
-
-<p>Outputs:</p>
-
-<pre><code>This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;
-Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
-Licensed to The Apache Software Foundation, http://www.apache.org/
-
-Benchmarking amaras-tech.co.uk (be patient).....done
-
-
-Server Software:        nginx
-Server Hostname:        amaras-tech.co.uk
-Server Port:            80
-
-Document Path:          /
-Document Length:        0 bytes
-
-Concurrency Level:      2
-Time taken for tests:   9.951 seconds
-Complete requests:      50
-Failed requests:        0
-Write errors:           0
-Non-2xx responses:      50
-Total transferred:      11400 bytes
-HTML transferred:       0 bytes
-Requests per second:    5.02 [#/sec] (mean)
-Time per request:       398.030 [ms] (mean)
-Time per request:       199.015 [ms] (mean, across all concurrent requests)
-Transfer rate:          1.12 [Kbytes/sec] received
-
-Connection Times (ms)
-              min  mean[+/-sd] median   max
-Connect:      146  162  16.7    158     214
-Processing:   149  229 198.3    159    1113
-Waiting:      148  228 198.2    159    1112
-Total:        298  392 198.0    328    1262
-
-Percentage of the requests served within a certain time (ms)
-  50%    328
-  66%    343
-  75%    351
-  80%    360
-  90%    612
-  95%    961
-  98%   1262
-  99%   1262
- 100%   1262 (longest request)
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/21/">&larr; Older</a>
@@ -782,11 +789,19 @@ Percentage of the requests served within a certain time (ms)
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (1)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/home/chandelier/">Chandelier</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/photography/f-stop-icus/">F-stop ICUs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/flip-flop/">Flip-flop</a>
@@ -798,14 +813,6 @@ Percentage of the requests served within a certain time (ms)
     
       <li class="post">
         <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
       </li>
     
   </ul>

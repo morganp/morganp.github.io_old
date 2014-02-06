@@ -9,8 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="always_ff @(posedge clk or negedge rst_n) begin if (~rst_n) begin end else begin end
-end ">
+  <meta name="description" content="A flip-flop (D-Type) is essentially 2 latches in series with the enable to one inverted.
+This stops the flip-flop from being transparent or open as a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,7 +77,7 @@ end ">
   <li><a href="/tag">Tags</a></li>
   <li><a href="/license">License</a></li>
 </ul>
-<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/home'>Home</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
 
 </nav>
   <div id="main">
@@ -113,11 +113,60 @@ end ">
   </header>
 
 
-<div class="entry-content"><pre><code>always_ff @(posedge clk or negedge rst_n) begin
+<div class="entry-content"><p>A flip-flop (D-Type) is essentially 2 latches in series with the enable to one inverted.
+This stops the flip-flop from being transparent or open as a single latch can be.</p>
+
+<p>For ASIC design it is recommended that all flip-flops use active low asynchronous resets.
+This is often connected to the power on reset circuit and retimed on to the rising edge of the clock at the top level of the chip.</p>
+
+<p>In Verilog a D-Type flip-flop can be implied with the following logic.<br/>
+NB: the reg implies nothing about the flip-flop only that data is assigned inside an always block.</p>
+
+<pre><code>reg [1:0] data; 
+always @(posedge clk or negedge rst_n) begin
   if (~rst_n) begin
+    data &lt;= 'b0;
   end
   else begin
+    data &lt;= new_data;
   end
+end
+</code></pre>
+
+<p>If your flow supports the use of SystemVerilog, use of the <code>always_comb</code>, <code>always_latch</code> and <code>always_ff</code> are recommended.
+the rules for sensitivity lists are a little stricter to minimize RTL to gates mismatch.
+The added benefit is that it allows the designer to be clear about design intent.
+Using the logic type also removes confusion about reg implying flip-flops and allows code refacoring with out having to switch types.</p>
+
+<pre><code>logic [1:0] data; 
+always_ff @(posedge clk or negedge rst_n) begin
+  if (~rst_n) begin
+    data &lt;= 'b0;
+  end
+  else begin
+    data &lt;= new_data;
+  end
+end
+</code></pre>
+
+<p>With a Synchronous Reset:</p>
+
+<pre><code>logic [1:0] data; 
+always_ff @(posedge clk) begin
+  if (~rst_n) begin
+    data &lt;= 'b0;
+  end
+  else begin
+    data &lt;= new_data;
+  end
+end
+</code></pre>
+
+<p>No Reset:</p>
+
+<pre><code>logic [1:0] data; 
+always_ff @(posedge clk) begin
+  data &lt;= new_data;
 end
 </code></pre>
 </div>
@@ -177,6 +226,8 @@ end
         <a class="basic-alignment left" href="/blog/tech/reverting-in-git/" title="Previous Post: Reverting in git">&laquo; Reverting in git</a>
       
       
+        <a class="basic-alignment right" href="/blog/photography/f-stop-icus/" title="Next Post: F-stop ICUs">F-stop ICUs &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -193,11 +244,19 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (1)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/home/chandelier/">Chandelier</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/photography/f-stop-icus/">F-stop ICUs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/flip-flop/">Flip-flop</a>
@@ -209,14 +268,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
       </li>
     
   </ul>

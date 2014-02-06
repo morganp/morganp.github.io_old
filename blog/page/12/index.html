@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Sometime a script needs to now the directory that it is executing from, the best solution for this is: DIR="$( cd "$( dirname "${BASH_SOURCE[0 &hellip;">
+  <meta name="description" content="I have been setting up my recent Sinatra projects with a standard ruby project layout putting all of the application code within a lib folder. When &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,13 +76,146 @@
   <li><a href="/tag">Tags</a></li>
   <li><a href="/license">License</a></li>
 </ul>
-<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/home'>Home</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
 
 </nav>
   <div id="main">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/sinatra-application-in-lib-and-views-public-routes-not-working/">Sinatra Application in ./lib and Views, Public Routes Not Working</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-20T23:26:34+01:00" pubdate data-updated="true">Apr 20<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/sinatra-application-in-lib-and-views-public-routes-not-working/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/sinatra-application-in-lib-and-views-public-routes-not-working/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have been setting up my recent Sinatra projects with a standard ruby project layout putting all of the application code within a lib folder. When running locally I have been cding in to the lib folder and just running:</p>
+
+<pre><code>ruby app.rb
+</code></pre>
+
+<p>I often found that when deploying (WebFaction or Heroku) that I had to make several attempts to get the config.ru correct. I then found that thin can load and run using the config.ru.</p>
+
+<pre><code>thin start --port 4567 -R config.ru
+</code></pre>
+
+<p>Which worked until I tried it on a non trivial application which used (erb) templates and then I started seeing these errors, when viewing 127:0.0.1:4567</p>
+
+<pre><code>Errno::ENOENT at /
+No such file or directory - ./views/home.erb
+file: template.rb location: binread line: 67
+</code></pre>
+
+<p>The problem is that we are now a level above where we use to be, not sure whay this has never been a problem in production before.</p>
+
+<pre><code>module AnotherWebApp
+  VERSION = '0.0.1'
+  class App &lt; Sinatra::Base
+    use Rack::MethodOverride
+    #set :public_folder, "public" # &lt;-- Old version
+    set :public_folder, "#{File.dirname(__FILE__)}/public"   # &lt;-- New Version
+
+    # Older ersions of Thin/Sinatra May require
+    set :public, "#{File.dirname(__FILE__)}/public"              # &lt;-- public changed to public_folder in newer release
+    set :views, "#{File.dirname(__FILE__)}/views"                # &lt;-- Need to set View
+
+    get '/' do
+      erb :home
+    end
+
+  end
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/update-your-rvm-ruby-and-migrate-gemsets/">Update Your RVM Ruby and Migrate Gemsets</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-20T22:08:43+01:00" pubdate data-updated="true">Apr 20<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/update-your-rvm-ruby-and-migrate-gemsets/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/update-your-rvm-ruby-and-migrate-gemsets/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Update RVM</p>
+
+<pre><code>$ rvm get head
+</code></pre>
+
+<p>List current versions, and all versions</p>
+
+<pre><code>$ rvm list
+$ rvm list known
+</code></pre>
+
+<p>Select the version you want to upgrade to :</p>
+
+<pre><code>$ rvm upgrade 1.9.3
+
+Are you sure you wish to upgrade from ruby-1.9.3-p125 to ruby-1.9.3-p194? (Y/n): Y  
+...
+Are you sure you wish to MOVE gems from ruby-1.9.3-p125 to ruby-1.9.3-p194?
+This will overwrite existing gems in ruby-1.9.3-p194 and remove them from ruby-1.9.3-p125 (Y/n): Y
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -772,126 +905,6 @@ No mail for user
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/list_temp_files-script/">List_temp_files Script</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-20T12:18:21+00:00" pubdate data-updated="true">Feb 20<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/list_temp_files-script/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/list_temp_files-script/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A simple script for finding temp files from the current directory and below. I often run this before adding a new project to a revision control system to ensure temp files do not get added into the repo.</p>
-
-<pre><code>#!/bin/sh
-
-echo "Searching for temp local files/directories"
-#vim accidental saves
-find . -name "1" -type f 
-
-#Other Temp files
-find . -name "*.log" -type f 
-find . -name "*.key" -type f
-find . -name "*.swp" -type f 
-find . -name "results" -type d 
-find . -name "waveforms" -type d  
-
-echo "Searching for temp links"
-find . -name "results" -type l 
-find . -name "waveforms" -type l 
-
-#Accidental checkins
-find . -name "*.log" -type l
-find . -name "*.key" -type l
-find . -name "*.swp" -type l
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/irb-as-a-megapixels-calculator/">Irb as a Megapixels Calculator</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-12T18:56:40+00:00" pubdate data-updated="true">Feb 12<span>th</span>, 2012</time>
-        
-           | <a href="/blog/photography/irb-as-a-megapixels-calculator/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/irb-as-a-megapixels-calculator/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have just added the method below to my ruby .irbrc file for quickly calculating image megapixels. from OS X the info panel gives the form of &lsquo;23309 × 4412&rsquo; this becomes &lsquo;23309???4412&rsquo; when pasted into iTerm.</p>
-
-<pre><code>def megapixels( dimensions )
-  if dimensions.match(/\d*x\d*/)
-    x,y = dimensions.split('x')
-  end
-  if dimensions.match(/\d*\?\?\?\d*/)
-    x,y = dimensions.split('???')
-  end    
-
-  if x.nil? or y.nil? 
-    $stderr.puts "The input #{dimensions} could not be parsed in to megapixels"
-    exit -1
-  end
-  x = x.to_i
-  y = y.to_i
-
-  megapixels = (x*y)/10.0**6
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -906,11 +919,19 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (1)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/home/chandelier/">Chandelier</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/photography/f-stop-icus/">F-stop ICUs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/flip-flop/">Flip-flop</a>
@@ -922,14 +943,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
       </li>
     
   </ul>

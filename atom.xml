@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://morganp.github.io/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-01-28T19:20:49+00:00</updated>
+  <updated>2014-02-06T21:46:04+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -14,15 +14,111 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Chandelier]]></title>
+    <link href="http://morganp.github.io/blog/home/chandelier/"/>
+    <updated>2014-02-06T20:29:49+00:00</updated>
+    <id>http://morganp.github.io/blog/home/chandelier</id>
+    <content type="html"><![CDATA[<p>A new feature in the dining room.</p>
+
+<p><img src="http://morganp.github.io/images/Chandelier/morganp-20140202-Chandelier-IMG_6675.jpg" alt="Chandelier view 1" />
+<img src="http://morganp.github.io/images/Chandelier/morganp-20140202-Chandelier-IMG_6678.jpg" alt="Chandelier view 2" /></p>
+
+<p>Approximate materials and cost:</p>
+
+<pre><code>Section of plywood ~£10
+16 meters of 2.5mm chain ~£50
+40 Ikea Lanterns £80
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[F-stop ICUs]]></title>
+    <link href="http://morganp.github.io/blog/photography/f-stop-icus/"/>
+    <updated>2014-02-01T21:27:32+00:00</updated>
+    <id>http://morganp.github.io/blog/photography/f-stop-icus</id>
+    <content type="html"><![CDATA[<p>F-Stop camera bags have an adaptable system for trading camera space for other outdoor gear. The swappable section are called ICUs or Internal Camera Units.</p>
+
+<p>This is not a review but just a quick note to record the default layouts of the Pro-Medium and Pro-Extra Large.</p>
+
+<h2>Pro-Medium ICU</h2>
+
+<p>Internal Dimensions (external all dimensions 2cm greater)<br/>
+Depth: 16.5cm. Width: 27cm. Height: 27.5cm  External Volume 15.4L
+<img class="centre" src="http://morganp.github.io/images/fstop_icu/morganp-20140102-fstop-IMG_6382.jpg">
+<img class="centre" src="http://morganp.github.io/images/fstop_icu/morganp-20140102-fstop-IMG_6383.jpg">
+<img class="centre" src="http://morganp.github.io/images/fstop_icu/morganp-20140102-fstop-IMG_6384.jpg"></p>
+
+<h2>Pro-Extra Large ICU</h2>
+
+<p>Internal Dimensions (external all dimensions 2cm greater)<br/>
+Depth: 16.5cm. Width: 27cm. Height: 46cm  External Volume 25L</p>
+
+<p><img class="centre" src="http://morganp.github.io/images/fstop_icu/morganp-20140102-fstop-IMG_6387.jpg">
+<img class="centre" src="http://morganp.github.io/images/fstop_icu/morganp-20140102-fstop-IMG_6388.jpg">
+<img class="centre" src="http://morganp.github.io/images/fstop_icu/morganp-20140102-fstop-IMG_6390.jpg"></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Flip-flop]]></title>
     <link href="http://morganp.github.io/blog/engineering/flip-flop/"/>
     <updated>2014-01-09T19:15:10+00:00</updated>
     <id>http://morganp.github.io/blog/engineering/flip-flop</id>
-    <content type="html"><![CDATA[<pre><code>always_ff @(posedge clk or negedge rst_n) begin
+    <content type="html"><![CDATA[<p>A flip-flop (D-Type) is essentially 2 latches in series with the enable to one inverted.
+This stops the flip-flop from being transparent or open as a single latch can be.</p>
+
+<p>For ASIC design it is recommended that all flip-flops use active low asynchronous resets.
+This is often connected to the power on reset circuit and retimed on to the rising edge of the clock at the top level of the chip.</p>
+
+<p>In Verilog a D-Type flip-flop can be implied with the following logic.<br/>
+NB: the reg implies nothing about the flip-flop only that data is assigned inside an always block.</p>
+
+<pre><code>reg [1:0] data; 
+always @(posedge clk or negedge rst_n) begin
   if (~rst_n) begin
+    data &lt;= 'b0;
   end
   else begin
+    data &lt;= new_data;
   end
+end
+</code></pre>
+
+<p>If your flow supports the use of SystemVerilog, use of the <code>always_comb</code>, <code>always_latch</code> and <code>always_ff</code> are recommended.
+the rules for sensitivity lists are a little stricter to minimize RTL to gates mismatch.
+The added benefit is that it allows the designer to be clear about design intent.
+Using the logic type also removes confusion about reg implying flip-flops and allows code refacoring with out having to switch types.</p>
+
+<pre><code>logic [1:0] data; 
+always_ff @(posedge clk or negedge rst_n) begin
+  if (~rst_n) begin
+    data &lt;= 'b0;
+  end
+  else begin
+    data &lt;= new_data;
+  end
+end
+</code></pre>
+
+<p>With a Synchronous Reset:</p>
+
+<pre><code>logic [1:0] data; 
+always_ff @(posedge clk) begin
+  if (~rst_n) begin
+    data &lt;= 'b0;
+  end
+  else begin
+    data &lt;= new_data;
+  end
+end
+</code></pre>
+
+<p>No Reset:</p>
+
+<pre><code>logic [1:0] data; 
+always_ff @(posedge clk) begin
+  data &lt;= new_data;
 end
 </code></pre>
 ]]></content>
@@ -696,134 +792,6 @@ csh
 echo $x
 &gt; twenty
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[For Loops in Csh/tcsh]]></title>
-    <link href="http://morganp.github.io/blog/tech/for-loops-in-cshtcsh/"/>
-    <updated>2013-10-11T12:25:42+01:00</updated>
-    <id>http://morganp.github.io/blog/tech/For-loops-in-cshtcsh</id>
-    <content type="html"><![CDATA[<p>To count from 1 up to 20 in steps of 5</p>
-
-<pre><code>#!/bin/csh
-foreach x (`seq 1 5 20`)
-  echo $x
-end
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Gardener C14e]]></title>
-    <link href="http://morganp.github.io/blog/garden/gardener-c14e/"/>
-    <updated>2013-10-02T17:14:38+01:00</updated>
-    <id>http://morganp.github.io/blog/garden/Gardener-C14e</id>
-    <content type="html"><![CDATA[<p>The programs available on your Gardener C14e water computer (timer) are:</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th> Program        </th>
-<th align="center"> Cycle           </th>
-<th align="right"> Duration  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td>  00 </td>
-<td align="center"> None </td>
-<td align="right"> 0 |</td>
-</tr>
-<tr>
-<td></td>
-<td>  01 </td>
-<td align="center"> Every 6 hours  </td>
-<td align="right"> 3 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  02 </td>
-<td align="center"> Every 12 hours  </td>
-<td align="right"> 3 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  03 </td>
-<td align="center"> Every 12 hours  </td>
-<td align="right"> 15 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  04 </td>
-<td align="center"> Every 24 hours  </td>
-<td align="right"> 3 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  05 </td>
-<td align="center"> Every 24 hours  </td>
-<td align="right"> 5 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  06 </td>
-<td align="center"> Every 24 hours  </td>
-<td align="right"> 30 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  07 </td>
-<td align="center"> Every 24 hours  </td>
-<td align="right"> 60 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  08 </td>
-<td align="center"> Every 2 Days     </td>
-<td align="right"> 5 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  09 </td>
-<td align="center"> Every 2 Days     </td>
-<td align="right"> 30 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  10 </td>
-<td align="center"> Every 2 Days     </td>
-<td align="right"> 60 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  11 </td>
-<td align="center"> Every 3 Days     </td>
-<td align="right"> 30 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  12 </td>
-<td align="center"> Every 3 Days     </td>
-<td align="right"> 60 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  13 </td>
-<td align="center"> Every 4 Days     </td>
-<td align="right"> 60 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  14 </td>
-<td align="center"> Every 4 Days     </td>
-<td align="right"> 120 minutes  |</td>
-</tr>
-</tbody>
-</table>
-
 ]]></content>
   </entry>
   

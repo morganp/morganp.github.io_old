@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I recently discovered ||= in ruby. Its main use is for initialising a variable if it does not already exists, this is great for extending templates &hellip;">
+  <meta name="description" content="Fluke for mac can be used to get iTunes playing FLAC audio files. However it is currently broken for Snow Leopard due to the upgraded version of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,13 +76,98 @@
   <li><a href="/tag">Tags</a></li>
   <li><a href="/license">License</a></li>
 </ul>
-<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/home'>Home</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
 
 </nav>
   <div id="main">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/itunes-play-flac-on-os-x/">iTunes Play FLAC on OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-18T07:33:36+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/itunes-play-flac-on-os-x/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/itunes-play-flac-on-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://code.google.com/p/flukeformac/">Fluke for mac</a> can be used to get iTunes playing <a href="http://flac.sourceforge.net/">FLAC</a> audio files. However it is currently broken for Snow Leopard due to the upgraded version of python.</p>
+
+<p>Once Fluke is installed open your .flac files with fluke.app and they should be added to your iTunes library.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-and-gemspec/">Ruby and Gemspec</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-16T10:01:58+01:00" pubdate data-updated="true">Apr 16<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-and-gemspec/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-and-gemspec/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have just forked and cloned a project on github and discovered *.gemspec files. They are a nice way of specifying the gem dependencies in your project. once you have the copied/cloned a project before you run it just call:</p>
+
+<pre><code>$ gem build something.gemspec
+</code></pre>
+
+<p>The <a href="http://docs.rubygems.org/read/chapter/20">gemspec documentation</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -683,117 +768,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-include-require-local-files/">Ruby Include (Require) Local Files</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-include-require-local-files/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-include-require-local-files/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Also a <a href="http://gist.github.com/341255">gist</a> on github. This is an example of how you can require files in a relative path to the script. As Ruby scripts execute from which ever path they were called.</p>
-
-<pre><code>#!/usr/bin/env ruby
-
-#A way of including local functions in sub folders 
-path = File.expand_path $0
-path = File.dirname(path)
-
-require "#{path}/SubDir/function_1.rb"
-require "#{path}/SubDir/function_2.rb"
-require "#{path}/SubDir/function_3.rb"
-
-#or change working dir of script
-Dir.chdir(path) 
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/ruby-performance-measure/">Ruby Performance Measure</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/engineering/ruby-performance-measure/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/engineering/ruby-performance-measure/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Also available as a <a href="http://gist.github.com/342639">gist</a>. Very simple way of measuring execution time in second in Ruby</p>
-
-<pre><code>#!/usr/bin/env ruby
-# Measure performance in seconds of tasks
-# Record Startime For performance measurements
-startTime = Time.now
-
-#Main part of script goes here
-
-#Calculate and Display Execution Time in seconds
-execTime = Time.now - startTime
-puts "Execution time #{execTime} seconds."
-</code></pre>
-
-<p>Matlab has a slightly simpler function for this</p>
-
-<pre><code>tic
-%Main part goes here
-toc
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/26/">&larr; Older</a>
@@ -808,11 +782,19 @@ toc
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (1)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/home/chandelier/">Chandelier</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/photography/f-stop-icus/">F-stop ICUs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/flip-flop/">Flip-flop</a>
@@ -824,14 +806,6 @@ toc
     
       <li class="post">
         <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
       </li>
     
   </ul>

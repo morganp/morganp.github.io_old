@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="The camera aperture is how far the iris is kept open during the exposure. A wide aperture, large opening lets in more light so can have a faster &hellip;">
+  <meta name="description" content="When working behind a restrictive firewall, which limits ssh connections you may be running into some of the following errors: Connection refused git &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,13 +76,229 @@
   <li><a href="/tag">Tags</a></li>
   <li><a href="/license">License</a></li>
 </ul>
-<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/home'>Home</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
 
 </nav>
   <div id="main">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/using-github-behind-a-restrictive-firewall/">Using Github Behind a Restrictive Firewall</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-10T20:24:08+01:00" pubdate data-updated="true">May 10<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/using-github-behind-a-restrictive-firewall/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/using-github-behind-a-restrictive-firewall/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When working behind a restrictive firewall, which limits ssh connections you may be running into some of the following errors:</p>
+
+<h2>Connection refused</h2>
+
+<pre><code>git clone git@github.com:morganp/maruku_snippet.git
+Cloning into maruku_snippet...
+ssh: connect to host github.com port 22: Connection refused
+fatal: The remote end hung up unexpectedly
+</code></pre>
+
+<h2>Bad Owner, Using .ssh/config</h2>
+
+<pre><code>git clone git@github.com:morganp/maruku_snippet.git
+Cloning into maruku_snippet...
+Bad owner or permissions on /users/mprior/.ssh/config
+fatal: The remote end hung up unexpectedly
+</code></pre>
+
+<h2>Not a Repository</h2>
+
+<pre><code>$ git pull https://morganp@github.com/morganp/maruku_snippet.git
+fatal: Not a git repository (or any parent up to mount parent /users)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+</code></pre>
+
+<h2>RPC failed</h2>
+
+<pre><code>$ git clone https://morganp@github.com/morganp/maruku_snippet.git
+Cloning into maruku_snippet...
+error: RPC failed; result=22, HTTP code = 405
+fatal: The remote end hung up unexpectedly
+</code></pre>
+
+<h2>Getting it Working</h2>
+
+<p>Last time I ran into these issues I found I could clone as guest, changed <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#109;&#111;&#x72;&#103;&#97;&#110;&#112;&#x40;&#x67;&#x69;&#x74;&#x68;&#x75;&#98;&#46;&#x63;&#x6f;&#109;">&#x6d;&#x6f;&#x72;&#103;&#97;&#110;&#x70;&#64;&#x67;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#x6d;</a> to just github.com. Pushing will then prompt for your github Username and password. Once cloned you can manually update the config file so you do not have to enter your username. Entering your password will still be required.</p>
+
+<pre><code>$ git clone https://github.com/morganp/maruku_snippet.git
+Cloning into maruku_snippet...
+remote: Counting objects: 52, done.
+remote: Compressing objects: 100% (38/38), done.
+remote: Total 52 (delta 15), reused 43 (delta 10)
+ Unpacking objects: 100% (52/52), done.
+</code></pre>
+
+<p>Modify .git/config back to :</p>
+
+<pre><code>url = https://morganp@github.com/morganp/maruku_snippet.git
+</code></pre>
+
+<p><code>git push</code> will prompt for password via dialog box.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ubuntu-formatting-a-3tb-drive/">Ubuntu, Formatting a 3TB Drive</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-03T21:34:20+01:00" pubdate data-updated="true">May 3<span>rd</span>, 2012</time>
+        
+           | <a href="/blog/tech/ubuntu-formatting-a-3tb-drive/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ubuntu-formatting-a-3tb-drive/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I started off following <a href="https://help.ubuntu.com/community/InstallingANewHardDrive">the ubuntu guide for installing a new drive</a>, which uses fdsik to create the partitions how ever after formatting and mounting I ran <code>df -h</code>:</p>
+
+<pre><code>Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdb1       2.0T   28G  1.9T   2% /mnt/kryten/disk5
+</code></pre>
+
+<h2>Which is not 3TB</h2>
+
+<p>I then found <a href="http://www.cyberciti.biz/tips/fdisk-unable-to-create-partition-greater-2tb.html">this article</a> which worked in the long run not sure if I typo&rsquo;d a command but similar to <a href="http://archlinuxarm.org/forum/viewtopic.php?t=1935&amp;p=10490">this other user</a> I had to run through the commands a second time for them to work.</p>
+
+<p>To start with use <code>parted</code> instead of fdisk, this allows the gpt partition table that fdisk does not.</p>
+
+<pre><code>(parted) mklabel gpt 
+Warning: The existing disk label on /dev/sdb will be destroyed and all data on
+this disk will be lost. Do you want to continue?
+Yes/No? yes    
+(parted) unit TB 
+(parted) mkpart primary 0.00TB 3.00TB                                     
+Warning: You requested a partition from 0.00TB to 3.00TB.                 
+The closest location we can manage is 0.00TB to 0.00TB.
+Is this still acceptable to you?
+Yes/No? yes
+</code></pre>
+
+<p>basically after this point it showed up as a few KB after formatting, tried it again and it seemed to work much better.</p>
+
+<pre><code>(parted) mklabel gpt                                                       
+Warning: The existing disk label on /dev/sdb will be destroyed and all data on
+this disk will be lost. Do you want to continue?
+Yes/No? yes                                                               
+(parted) unit TB                                                          
+(parted) mkpart primary 0.00TB 3.00TB                                     
+(parted) print                                                            
+odel: Unknown (unknown)
+Disk /dev/sdb1: 3001GB
+Sector size (logical/physical): 512B/4096B
+Partition Table: loop
+
+Number  Start   End     Size    File system  Name     Flags
+1      0.00TB  3.00TB  3.00TB               primary
+
+(parted) quit                                                             
+Information: You may need to update /etc/fstab.                           
+</code></pre>
+
+<h2>Format</h2>
+
+<pre><code>$ sudo mkfs.ext4 /dev/sdb1
+$sudo parted /dev/sdb1
+(parted) print
+Model: Unknown (unknown)
+Disk /dev/sdb1: 3001GB 
+Sector size (logical/physical): 512B/4096B
+Partition Table: loop
+
+Number  Start  End     Size    File system  Flags
+1      0.00B  3001GB  3001GB  ext4
+</code></pre>
+
+<h2>Reduce Reserved Space</h2>
+
+<p>By default 5% is reserved for the root to stop the driving becoming unusable when full, for data and not the main OS drive this does not matter too much, and 5% was decided when drives where much small. 5% of 3TB is 150 GB, way too much.  Turn this down to 1% with:</p>
+
+<pre><code>sudo tune2fs -m 1 /dev/sdb1
+</code></pre>
+
+<h2>Mount </h2>
+
+<pre><code>sudo mkdir /mnt/kryten/disk5 
+sudo mount /dev/sdb1 /mnt/kryten/disk5
+</code></pre>
+
+<h2>Find UUID</h2>
+
+<pre><code>$ sudo blkid
+/dev/sda1: UUID="c41cba49-bd3a-41d7-961c-b4ad45d48ed1" TYPE="ext4" 
+/dev/sdb1: UUID="d822c6af-9802-4d00-8de8-61f1653a854a" TYPE="ext4" 
+/dev/sdc1: UUID="59a61ceb-fee3-460a-97c5-e9f115776daf" TYPE="ext4" 
+/dev/sdc5: UUID="80f9c384-9a5a-4563-921a-5c25628e1b2e" TYPE="swap"
+</code></pre>
+
+<h2>Update /etc/fstab </h2>
+
+<pre><code>$sudo vim /etc/fstab
+
+#/dev/sdb1 3TB drive replacing 1.5TB old UUID Below
+UUID=d822c6af-9802-4d00-8de8-61f1653a854a     /mnt/kryten/disk4 ext4 rw,auto,user,exec,async,errors=remount-ro 0 1
+#UUID=c41cba49-bd3a-41d7-961c-b4ad45d48ed1    /mnt/kryten/disk4 ext4 rw,auto,user,exec,async,errors=remount-ro 0 1
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -764,139 +980,6 @@ I would also like to note that I have printed a 10MP image WITHOUT up-sampling a
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-application-in-lib-and-views-public-routes-not-working/">Sinatra Application in ./lib and Views, Public Routes Not Working</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-20T23:26:34+01:00" pubdate data-updated="true">Apr 20<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/sinatra-application-in-lib-and-views-public-routes-not-working/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/sinatra-application-in-lib-and-views-public-routes-not-working/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have been setting up my recent Sinatra projects with a standard ruby project layout putting all of the application code within a lib folder. When running locally I have been cding in to the lib folder and just running:</p>
-
-<pre><code>ruby app.rb
-</code></pre>
-
-<p>I often found that when deploying (WebFaction or Heroku) that I had to make several attempts to get the config.ru correct. I then found that thin can load and run using the config.ru.</p>
-
-<pre><code>thin start --port 4567 -R config.ru
-</code></pre>
-
-<p>Which worked until I tried it on a non trivial application which used (erb) templates and then I started seeing these errors, when viewing 127:0.0.1:4567</p>
-
-<pre><code>Errno::ENOENT at /
-No such file or directory - ./views/home.erb
-file: template.rb location: binread line: 67
-</code></pre>
-
-<p>The problem is that we are now a level above where we use to be, not sure whay this has never been a problem in production before.</p>
-
-<pre><code>module AnotherWebApp
-  VERSION = '0.0.1'
-  class App &lt; Sinatra::Base
-    use Rack::MethodOverride
-    #set :public_folder, "public" # &lt;-- Old version
-    set :public_folder, "#{File.dirname(__FILE__)}/public"   # &lt;-- New Version
-
-    # Older ersions of Thin/Sinatra May require
-    set :public, "#{File.dirname(__FILE__)}/public"              # &lt;-- public changed to public_folder in newer release
-    set :views, "#{File.dirname(__FILE__)}/views"                # &lt;-- Need to set View
-
-    get '/' do
-      erb :home
-    end
-
-  end
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/update-your-rvm-ruby-and-migrate-gemsets/">Update Your RVM Ruby and Migrate Gemsets</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-20T22:08:43+01:00" pubdate data-updated="true">Apr 20<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/update-your-rvm-ruby-and-migrate-gemsets/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/update-your-rvm-ruby-and-migrate-gemsets/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Update RVM</p>
-
-<pre><code>$ rvm get head
-</code></pre>
-
-<p>List current versions, and all versions</p>
-
-<pre><code>$ rvm list
-$ rvm list known
-</code></pre>
-
-<p>Select the version you want to upgrade to :</p>
-
-<pre><code>$ rvm upgrade 1.9.3
-
-Are you sure you wish to upgrade from ruby-1.9.3-p125 to ruby-1.9.3-p194? (Y/n): Y  
-...
-Are you sure you wish to MOVE gems from ruby-1.9.3-p125 to ruby-1.9.3-p194?
-This will overwrite existing gems in ruby-1.9.3-p194 and remove them from ruby-1.9.3-p125 (Y/n): Y
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -911,11 +994,19 @@ This will overwrite existing gems in ruby-1.9.3-p194 and remove them from ruby-1
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (1)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/home/chandelier/">Chandelier</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/photography/f-stop-icus/">F-stop ICUs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/flip-flop/">Flip-flop</a>
@@ -927,14 +1018,6 @@ This will overwrite existing gems in ruby-1.9.3-p194 and remove them from ruby-1
     
       <li class="post">
         <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
       </li>
     
   </ul>

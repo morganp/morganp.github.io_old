@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I was wanting to use Dir.glob to get a file list and wanted to do Dir.glob( path + '*') but nicely handle when the final &lsquo;/&rsquo; of path was &hellip;">
+  <meta name="description" content="On the continuous search for a decent ADSL, Router and Wireless access point. I have tried many (unscientifically). Finding that many fall over when &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,13 +76,112 @@
   <li><a href="/tag">Tags</a></li>
   <li><a href="/license">License</a></li>
 </ul>
-<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
+<!-- <li><a href='/blog/cooking'>Cooking</a></li><li><a href='/blog/engineering'>Engineering</a></li><li><a href='/blog/garden'>Garden</a></li><li><a href='/blog/home'>Home</a></li><li><a href='/blog/photography'>Photography</a></li><li><a href='/blog/tech'>Tech</a></li> -->
 
 </nav>
   <div id="main">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/home-wi-fi/">Home Wi-Fi</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-17T11:38:27+01:00" pubdate data-updated="true">Jun 17<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/home-wi-fi/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/home-wi-fi/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>On the continuous search for a decent ADSL, Router and Wireless access point. I have tried many (unscientifically). Finding that many fall over when used with file sharing, I believe due to the number of connections that the router has to keep track of.</p>
+
+<p>What I want/expect from it is fast reliable coverage through out my home. So far the BT Home Hub 3 has done a pretty good job, but as always could be faster.</p>
+
+<p>Quiet excited to see the <a href="http://www.productsandservices.bt.com/products/broadband/wireless-hub-router?s_cid=con_ppc_maxus_vidZ59_T1&amp;vendorid=Z59&amp;gclid=CNKitd3-6rcCFUhc3godfEsA4A#/intro">BT Home Hub 4</a> announced and available as a £35 upgrade. Not so sure there is much new in this though, it gets a faster processor but the biggest thing is it is flat. so it goes through your letter box. Version 3 was to cubic in shape so required people to be in for the delivery.</p>
+
+<p>But the day after I found out about this Apple release a range of new wifi products with the <a href="http://en.wikipedia.org/wiki/IEEE_802.11ac">802.11ac</a>. Now I do not have any 802.11ac products but if apple is integrating them into all new products it should not be too long before I have collected a few.</p>
+
+<p>Using the Apple TV to drive secondary monitors over wifi is a nice usage of the protocol, but that would also mean upgrading laptop sooner than I want. The first 802.11n routers (non-apple) always seemed a bit flaky to me, so jumping on the first 802.11ac products might just be heading for trouble.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/stackoverflow-sites-and-images/">Stackoverflow Sites and Images</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-16T12:32:54+01:00" pubdate data-updated="true">Jun 16<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/stackoverflow-sites-and-images/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/stackoverflow-sites-and-images/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Stackoverflow have supported markdown for a while. The syntax for showing an image is :</p>
+
+<pre><code>![Holes in Leaf 1][1]
+[1]: http://i.stack.imgur.com/ECE47.jpg
+</code></pre>
+
+<p>After having a question edited I discovered that by adding a m to the image url you get the medium sized version for thumbnails. Link 1 becomes the thumbnail shown and wrap it up in a link syntax, when clicked you get link 5, the large version.</p>
+
+<pre><code>[![Holes in Leaf 1][1]][5]
+[1]: http://i.stack.imgur.com/ECE47m.jpg
+[5]: http://i.stack.imgur.com/ECE47.jpg
+</code></pre>
+
+<p><a href="http://i.stack.imgur.com/ECE47.jpg"><img src="http://i.stack.imgur.com/ECE47m.jpg" alt="Holes in Leaf 1" /></a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -816,104 +915,6 @@ On the same 2 layers also spread some cherry sauce and cherries, then added whip
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ubuntu-linux-list-disks/">Ubuntu (Linux) List Disks</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-02T13:39:24+01:00" pubdate data-updated="true">May 2<span>nd</span>, 2013</time>
-        
-           | <a href="/blog/tech/ubuntu-linux-list-disks/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ubuntu-linux-list-disks/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>sudo lshw -class disk -class storage -short
-</code></pre>
-
-<p>Outputs :</p>
-
-<pre><code>H/W path           Device     Class       Description
-=====================================================
-/0/100/1c.3/0      scsi0      storage     JMB363 SATA/IDE Controller
-/0/100/1c.3/0/0    /dev/sda   disk        3TB ST3000DM001-9YN1
-/0/100/1c.3/0/1    /dev/sdb   disk        2TB SAMSUNG HD204UI
-/0/100/1c.3/0.1               storage     JMB368 IDE controller
-/0/100/1f.2        scsi2      storage     N10/ICH7 Family SATA Controller [IDE mode]
-/0/100/1f.2/0      /dev/sdc   disk        3TB ST3000DM001-9YN1
-/0/100/1f.2/1      /dev/sdd   disk        2TB SAMSUNG HD204UI
-/0/1               scsi6      storage
-/0/1/0.0.0         /dev/sde   disk        8019MB SCSI Disk
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/bt-broadband-messing-around-with-your-dns/">BT Broadband Messing Around With Your DNS</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-25T09:02:48+01:00" pubdate data-updated="true">Apr 25<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/bt-broadband-messing-around-with-your-dns/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/bt-broadband-messing-around-with-your-dns/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>BT broadband has <strong>BT Web Address Help</strong> enabled by default. This allows then to redirect you to another site if they think you typed the URL incorrectly.</p>
-
-<p>This can cause problems when connecting to a VPN, which is setup to no route normal websites through the VPN. When the URL is rejected your VPN then picks it up as a fall back and tries over its connection. However when these Smart systems are enabled by your isp they will never reject them and always try to offer useful content.</p>
-
-<p>To <a href="http://preferences.webaddresshelp.bt.com/selfcare/preferences.cgi">turn off your BT Web Address Help</a> go to : <a href="http://preferences.webaddresshelp.bt.com/selfcare/preferences.cgi">BT Preferences</a>. You can read more about it in <a href="http://bt.custhelp.com/app/answers/detail/a_id/14244/c/346,402,405">this discussion</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -928,11 +929,19 @@ On the same 2 layers also spread some cherry sauce and cherries, then added whip
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/photography'>Photography (30)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (1)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/home/chandelier/">Chandelier</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/photography/f-stop-icus/">F-stop ICUs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/flip-flop/">Flip-flop</a>
@@ -944,14 +953,6 @@ On the same 2 layers also spread some cherry sauce and cherries, then added whip
     
       <li class="post">
         <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a>
       </li>
     
   </ul>
