@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="After using Lightroom for over 6 years I still do not see the point in Lightroom Collections. Scott Kelby Describes his usage, but it is very similar &hellip;">
+  <meta name="description" content="A cheap (~£15) four tier growhouse, with my current selection of potted herbs. Over the course of the summer I think the temperatures inside actually &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,112 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/garden/growhouse/">Growhouse</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-04T00:35:29+01:00" pubdate data-updated="true">Aug 4<span>th</span>, 2013</time>
+        
+           | <a href="/blog/garden/growhouse/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/garden/growhouse/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A cheap (~£15) four tier growhouse, with my current selection of potted herbs.</p>
+
+<p><img src="/images/Gardening/morganp-20130803-herbs-IMG_2586.jpg" alt="Growhouse with herbs" /></p>
+
+<p>Over the course of the summer I think the temperatures inside actually became too hot for the plants during midday. I think best to use as an early start on the season and to extend the season for small plants.</p>
+
+<p>NB: The growhouse did not make it through the winter storms.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-evaluate-envvars-in-string/">Ruby Evaluate Envvars in String.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-12T22:59:37+01:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/ruby-evaluate-envvars-in-string/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-evaluate-envvars-in-string/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In ruby Dir.entries takes a path and returns a list of its contents. However it does not deal with paths (strings) which contain Enviroment Variables (envvars), first they need to be expanded.</p>
+
+<p>Given:SHELL:</p>
+
+<pre><code>export DIR=x
+export FILE=y.z
+</code></pre>
+
+<p>Ruby string:</p>
+
+<pre><code>s = "$DIR/test/$FILE"
+puts s
+=&gt; "$DIR/test/$FILE"
+
+def expand_envvars( in_string )
+  return in_string.gsub(/\$(\w+)/) { ENV[$1] }
+end
+
+puts expand_envvars( s )
+=&gt; "x/test/y.z"
+</code></pre>
+
+<p>Based on: <a href="http://www.ruby-forum.com/topic/180340">http://www.ruby-forum.com/topic/180340</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -657,210 +763,6 @@ footer: true
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/push-local-folder-to-remote-server-over-ssh/">Push Local Folder to Remote Server Over Ssh</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-10T21:30:00+01:00" pubdate data-updated="true">May 10<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/push-local-folder-to-remote-server-over-ssh/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/push-local-folder-to-remote-server-over-ssh/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After struggling to get the rake task for octopress to deploy I decided to fall back to the command line and use rsync and ssh to push the static website to the server.</p>
-
-<p>To copy the local folder public to webapp/x/ folder on my webserver:</p>
-
-<pre><code> rsync -avz ./public/  user@server:~/webapps/x/
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/cooking/black-forest-gateau/">Black Forest Gateau</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-07T12:29:00+01:00" pubdate data-updated="true">May 7<span>th</span>, 2013</time>
-        
-           | <a href="/blog/cooking/black-forest-gateau/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/cooking/black-forest-gateau/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Cake (£1.23 a portion) time to table  ~1 hour 30 minutes.</p>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0770-Cake2.jpg"></p>
-
-<p>Ingredients (for 8)</p>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0733-Ingredients.jpg"></p>
-
-<pre><code>400 g    black cherries in syrup
- 75 g    sour cherries (dried)
-  2 tbsp cherry brandy
-  1      orange
-150 g    dark chocolate
-150 g    plain flour
-  1      large egg
- 50 g    unslated butter
-265 g    golden caster sugar
-  1 tbsp vanilla extract
-  2 tbsp cocoa powder
-125 ml   buttermilk
-400 ml   double cream
-1.5 tsp  white wine vinegar
-0.5 tsp  bicarbonate of soda
-         plain flour for dusting
-         unsalted butter for greasing
-</code></pre>
-
-<p>Grease 20cm spring form cake tin. dust side with flour and add grease proof paper to bottom of tin.
-Preheat oven to 180OC/Gas 4.</p>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0760-CakeTin.jpg"></p>
-
-<p>Using food processor/hand blender mix 250g sugar and butter. Add egg, pinch of salt and vanilla extract.</p>
-
-<pre><code>250g sugar
-butter
-egg
-vanilla extract
-</code></pre>
-
-<p>Next Add in the cocoa powder, flour and buttermilk.</p>
-
-<pre><code>cocoa powder
-flour
-buttermilk
-</code></pre>
-
-<p>In a bowl mix bicarbonate of soda and white wine vinegar, it will fizz, then add to the rest of the cake mix.</p>
-
-<pre><code>bicarbonate of soda
-white wine vinegar
-</code></pre>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0764-VinegarBaking.jpg"></p>
-
-<p>Pour Cake mix into 20cm spring form cake tin, put in oven for about 35 minutes.</p>
-
-<p>Zest orange into pan with 15g of caster sugar, halve and squeeze juice into pan. Heat on high until dissolved.</p>
-
-<pre><code>15g caster sugar
-orange
-</code></pre>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0766-Zest.jpg"></p>
-
-<p>Add all the cherries and brandy to the pan, cook for 5 minutes. Then leave to cool.</p>
-
-<pre><code>cherries with syrup
-sour cherries
-cherry brandy
-</code></pre>
-
-<p>Once cake is cooked leave in cake tin for 10 minutes to cool then transfer to cooling rack. Strain Cherries, keeping the syrup.</p>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0767-Cherries.jpg"></p>
-
-<p>Start heating 100ml of the cream.<br/>
-Break 100g of the chocolate into small pieces, mix with the heated cream until the chocolate is melted, remove from heat and allow pan to cool.</p>
-
-<pre><code>100ml double cream
-100g  chocolate
-</code></pre>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0768-Chocolate.jpg"></p>
-
-<p>Whip the remaining cream until stiff.</p>
-
-<pre><code>300ml double cream
-</code></pre>
-
-<p>Cut cake into 3 slices, mine fell apart so I layered lots of broken pieces together. <br/>
-spread choclate sauce over the layers, saving some for pouring over the top of cake.<br/>
-On the same 2 layers also spread some cherry sauce and cherries, then added whipped cream.</p>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0769-Cake1.jpg">
-<img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0770-Cake2.jpg"></p>
-
-<p>Stack these 2 layers placing the final layer on top. Pour any remaing chocolate sauce, cherry syrup on the top before finishing by grating the remaning chocolate over the top.</p>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0776-Final.jpg"></p>
-
-<p>Cost</p>
-
-<pre><code>400 g      £ 1.19 black cherries in syrup 
- 75 g      £ 2.00 sour cherries (dried)
-  2 tbsp   £ 1.00 cherry brandy       (500ml £10)
-  1        £ 0.30 orange
-150 g      £ 1.50 dark chocolate      (200g  £2)
-150 g      £ 0.20 plain flour         (1.5kg £1.78)
-  1        £ 0.33 large egg           (6     £2)
- 50 g      £ 0.40 unslated butter     (250g  £1.30)
-265 g      £ 0.53 golden caster sugar (1kg   £2)
-  1 tbsp   £ 0.20 vanilla extract     (38ml  £1.04)
-  2 tbsp   £ ?.?? cocoa powder
-125 ml     £ 0.50 buttermilk
-400 ml     £ 1.68 double cream
-1.5 tsp    £ 0.08 white wine vinegar  (350ml £0.80)
-0.5 tsp    £ 0.05 bicarbonate of soda (£1)
-----------------
-8 portions £ 9.83
-1 portion  £ 1.23
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -875,7 +777,7 @@ On the same 2 layers also spread some cherry sauce and cherries, then added whip
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (3)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (3)</a></li><li><a href='/blog/home'>Home (3)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
