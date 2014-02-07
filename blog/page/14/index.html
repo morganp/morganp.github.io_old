@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Suppressing warnings is usually a bad idea but if you understand the risk and want to carry on regardless. When ruby to call a script then the &hellip;">
+  <meta name="description" content="When creating applications normal messages should go to stdout and error messages should go to stderr, unfortunately there is not a nice ruby way the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,49 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-send-message-to-stderr/">Ruby Send Message to Stderr</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-22T11:56:25+00:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2011</time>
+        
+           | <a href="/blog/tech/ruby-send-message-to-stderr/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-send-message-to-stderr/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When creating applications normal messages should go to <a href="http://en.wikipedia.org/wiki/Standard_streams#Standard_output_.28stdout.29">stdout</a> and error messages should go to <a href="http://en.wikipedia.org/wiki/Standard_streams#Standard_error_.28stderr.29">stderr</a>, unfortunately there is not a nice ruby way the cleanest I have found is:</p>
+
+<pre><code>put "Message displayed in stdout"
+$stderr.puts "Error displayed in stderr"
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -745,132 +788,6 @@ count_this.count
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-blocks-for-better-code-reuse/">Ruby Blocks for Better Code Reuse</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-30T13:51:28+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-blocks-for-better-code-reuse/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-blocks-for-better-code-reuse/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>While working on some disk space / folder structure scripts I had several functions which hierarchically search the disk then performed some custom function. When refactoring the code I realised that the specific functions could be contained in a block and passed to a generic search method.</p>
-
-<p>This is one of the original functions</p>
-
-<pre><code>def search_folder( folder )
-  sub_folders = Dir.glob( folder + '*/')
-  sub_files   = Dir.glob( folder + '*.*')
-
-  ## Recursive
-  sub_folders.each do |sub_folder|
-    search_folder( sub_folder )
-  end
-
-  sub_files.each do | sub_file |
-   if sub_file.match(/\.rar$/)
-    puts sub_file    
-    end
-  end
-end
-</code></pre>
-
-<p>Refactored to take a block</p>
-
-<pre><code>def search_folder( folder, &amp;block )
-
-  sub_folders = Dir.glob( folder + '*/')
-  sub_files   = Dir.glob( folder + '*.*')
-
-  ## Recursive
-  sub_folders.each do |sub_folder|
-    search_folder( sub_folder, &amp;block )
-  end
-
-  sub_files.each do | sub_file |
-    yield(sub_file)
-  end
-end
-</code></pre>
-
-<p>And where the original method was called replace with:</p>
-
-<pre><code>search_folder( folder ) do |file|
-  if file.match(/\.rar$/)
-     puts file
-  end
-end
-</code></pre>
-
-<h2>Encapsulate with Modules</h2>
-
-<p>Wrapping the generic methods up into a module and calling local methods from the block.</p>
-
-<pre><code>module GenericStuff
-
-  def self.search_folder( folder, &amp;block )
-    sub_folders = Dir.glob( folder + '*/')
-    sub_files   = Dir.glob( folder + '*.*')
-
-    ## Recursive
-    sub_folders.each do |sub_folder|
-      search_folder( sub_folder, &amp;block )
-    end
-
-    sub_files.each do | sub_file |
-      yield(sub_file)
-    end
-  end
-end
-
-
-def limit
-  @count ||= 1
-  puts "Count is " + @count.to_s
-  if @count &gt; 2
-    exit( -1 )
-  end
-  @count += 1
-end
-
-# Call to generic method, block calls local method
-folder = '/'    
-GenericStuff::search_folder( folder ) do |file|
-  if file.match(/\.rar$/)
-    limit
-    puts file
-  end
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/15/">&larr; Older</a>
@@ -885,11 +802,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (2)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (3)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/home/coffee-table/">Coffee Table</a>
+      </li>
     
       <li class="post">
         <a href="/blog/home/chandelier/">Chandelier</a>
@@ -905,10 +826,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/flip-flop/">Flip-flop</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
       </li>
     
   </ul>

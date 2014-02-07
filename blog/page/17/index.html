@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Based on &lsquo;Raise the bar, lower the pressure&rsquo; given by Durran Jordan at ScotRubyConf 2011. There has been some debate as to whether the &hellip;">
+  <meta name="description" content="Classes are a basic Object Orientated Structure which encapsulate state and behaviour. Some times you just require to capture state/storage of a data &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,103 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/behaviour-and-state/">Behaviour and State</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-16T17:59:44+01:00" pubdate data-updated="true">Apr 16<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/behaviour-and-state/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/behaviour-and-state/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Classes are a basic Object Orientated Structure which encapsulate state and behaviour. Some times you just require to capture state/storage of a data structure with out any behaviour, in this case Ruby&rsquo;s Stuct can be useful.</p>
+
+<pre><code>class Desk
+  attr_accessor :height, :width, :depth
+
+  def initialize(height=nil, width=nil, depth=nil)
+    @height = height
+    @width = width
+    @depth = depth
+  end
+end
+</code></pre>
+
+<p>Becomes (Is the same as):</p>
+
+<pre><code>DeskS = Struct.new(:height, :width, :depth)
+</code></pre>
+
+<p>Instantiation</p>
+
+<pre><code>a = Desk.new(12, 13, 14)
+b = DeskS.new(12, 13, 14)
+
+a.height
+ =&gt; 12
+
+b.height
+ =&gt; 12 
+</code></pre>
+
+<p>Taking this further for less code in a basic class. This might be too far!</p>
+
+<pre><code>#In herriting from a Struct
+# class DeskWithBehaviour &lt; DeskS
+class DeskWithBehaviour &lt; Struct.new(:height, :width, :depth)
+  def volume
+    height * width * depth
+  end
+end
+
+# Or Pass Struct a block
+DeskSPlus = Struct.new(:height, :width, :depth) do
+  def volume
+    height * width * depth
+  end
+end
+
+c = DeskWithBehaviour.new(1,2,3)
+c.volume
+ =&gt; 6
+c.class
+ =&gt; DeskWithBehaviour
+
+d = DeskSPlus.new(1,2,3)
+d.volume
+ =&gt; 6
+d.class
+ =&gt; DeskSPlus
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -658,72 +755,6 @@ t-adapter may not be required if telescope offers direct connection.
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/activerecord-find-allmultiple/">Activerecord Find All/Multiple</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-19T06:31:03+00:00" pubdate data-updated="true">Feb 19<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/activerecord-find-allmultiple/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/activerecord-find-allmultiple/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Using Tags (An active record model) to find tags by the tag property:</p>
-
-<pre><code>Tag.find_by_tag("Ruby")
-Ruby
-
-Tag.find_by_tag(["Ruby", "Gem"])
-Ruby
-</code></pre>
-
-<p> That did not return what I expected, find<em> returns one object by default. first</em> last<em> or all</em> modifiers can be used. So to find multiple tags by the same property:</p>
-
-<pre><code>Tag.find_all_by_tag(["Ruby", "Gem"]) 
-Ruby
-Gem
-</code></pre>
-
-<p>Again with slightly less active record magic:<br/>
-Note the = ? for singular items and IN (?) for a list of items.</p>
-
-<pre><code>Tag.find(:all, :conditions =&gt; ["tag = ?", "Ruby"])
-Ruby
-
-Tag.find(:all, :conditions =&gt; ["tag IN (?)", ["Ruby", "Gem"]])
-Ruby
-Gem
-</code></pre>
-
-<p>More info can be read on <a href="http://lenary.co.uk/guides/active_record_querying.html#dynamic-finders">Rails Guides</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/18/">&larr; Older</a>
@@ -738,11 +769,15 @@ Gem
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (2)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (3)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/home/coffee-table/">Coffee Table</a>
+      </li>
     
       <li class="post">
         <a href="/blog/home/chandelier/">Chandelier</a>
@@ -758,10 +793,6 @@ Gem
     
       <li class="post">
         <a href="/blog/engineering/flip-flop/">Flip-flop</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
       </li>
     
   </ul>

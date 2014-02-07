@@ -9,7 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="To enable code folding in Vim type (from normal mode): :set foldmethod=marker Or add this to your .vimrc set foldmethod=marker Now anything contained &hellip;">
+  <meta name="description" content="Commutative Configurable order of numbers: x+y = y+x
+xy = yx Associative Order that multiplication is applied : (x+y)+z =x+(y+z)
+(xy)z = x(yz) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +83,89 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/algebra-properties-of-real-x211d-numbers/">Algebra : Properties of Real (&#x211D) Numbers</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-14T17:57:46+00:00" pubdate data-updated="true">Feb 14<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/algebra-properties-of-real-x211d-numbers/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/algebra-properties-of-real-x211d-numbers/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Commutative</h2>
+
+<p>Configurable order of numbers:</p>
+
+<pre><code>x+y = y+x
+xy  = yx
+</code></pre>
+
+<h2>Associative </h2>
+
+<p>Order that multiplication is applied :</p>
+
+<pre><code>(x+y)+z =x+(y+z)
+(xy)z     = x(yz)
+</code></pre>
+
+<h2>Identity</h2>
+
+<pre><code>x+0 = x
+0+x = x
+x.1  = x
+1.x  = x
+</code></pre>
+
+<h2>Distributive</h2>
+
+<pre><code>(x + y)z = xz+xy
+</code></pre>
+
+<h2>Inverse</h2>
+
+<pre><code> x+(-x) = 0
+-x + x  = 0
+
+1/x . x = 1
+x . 1/x  =1
+</code></pre>
+
+<h2>Multiplication Property of Zero</h2>
+
+<pre><code>x.0 = 0
+0.x = 0
+</code></pre>
+
+<p><a href="http://en.wikipedia.org/wiki/Real_number">Wikipedia Real Numbers</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -760,111 +845,6 @@ Max Expansion : 11cm
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/print-nested-array-structures-in-table-format/">Print Nested Array Structures in Table Format</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-03T20:47:13+01:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
-        
-           | <a href="/blog/tech/print-nested-array-structures-in-table-format/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/print-nested-array-structures-in-table-format/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Problem</h2>
-
-<p>Take an array of arrays and format it for displaying to the terminal or outputting to a text file.</p>
-
-<p>Sample Data:</p>
-
-<pre><code>data = [[1,2,3,4,5],["Four","Five","Six"],["Seven","Eight","Nine","Ten"]]
-</code></pre>
-
-<h2>Solution</h2>
-
-<p>The main issue I see is working out how wide to make each column. My solution is to iterate over the data keeping track of the maximum width found for each column.</p>
-
-<p>Once we know how wide to make each column printing the table is just a matter of a second iteration over the data using ljust or rjust to align all the columns.</p>
-
-<pre><code>def print_table( data )
-  #Clone/dup nested structure
-  data = Marshal.load(Marshal.dump(data))
-  #data = data_array.dup
-  lengths = []
-
-  data.each do |line| 
-    line.each_with_index do |item, column| 
-      length          = item.to_s.size
-      lengths[column] = length if length &gt; (lengths[column] ||= 0)
-    end
-  end
-
-  data.each do |line| 
-    line.each_with_index do |item, column|
-      line[column] = item.to_s.rjust(4+lengths[column])
-      print line[column]
-    end
-    puts
-  end
-
-  return data
-end
-</code></pre>
-
-<p>The result:</p>
-
-<pre><code>data = [[1,2,3,4,5],["Four","Five","Six"],["Seven","Eight","Nine","Ten"]]
-data = print_table( data )
-
-=&gt;        1        2       3      4    5    
-=&gt;     Four     Five     Six
-=&gt;    Seven    Eight    Nine    Ten
-</code></pre>
-
-<h2>Alternative Solution</h2>
-
-<p>Use the <a href="http://github.com/visionmedia/terminal-table">terminal-table</a> gem. Which creates nice ASCII tables.</p>
-
-<pre><code>#gem install terminal-table
-
-require 'terminal-table'
-data = [[1,2,3,4,5],["Four","Five","Six"],["Seven","Eight","Nine","Ten"]]
-table = Terminal::Table.new :rows =&gt; data
-
-puts table
-+-------+-------+------+-----+---+
-| 1     | 2     | 3    | 4   | 5 |
-| Four  | Five  | Six  |
-| Seven | Eight | Nine | Ten |
-+-------+-------+------+-----+---+
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -879,11 +859,15 @@ puts table
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (2)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (3)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/home/coffee-table/">Coffee Table</a>
+      </li>
     
       <li class="post">
         <a href="/blog/home/chandelier/">Chandelier</a>
@@ -899,10 +883,6 @@ puts table
     
       <li class="post">
         <a href="/blog/engineering/flip-flop/">Flip-flop</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
       </li>
     
   </ul>

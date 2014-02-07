@@ -9,12 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="setenv allows sub shells to inherit the value. Set set x = "twenty"
-echo $x
-&gt; twenty ## New Shell
-csh
-echo $x
-x: Undefined variable. Setenv Note &hellip;">
+  <meta name="description" content="Good programming practice is to use spaces to indent code rather than tabs. Due to tabs often being rendered differently by editors and personal &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +81,55 @@ x: Undefined variable. Setenv Note &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vim-convert-tabs-to-spaces/">VIM: Convert Tabs to Spaces</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-14T09:23:03+01:00" pubdate data-updated="true">Oct 14<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/vim-convert-tabs-to-spaces/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/vim-convert-tabs-to-spaces/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Good programming practice is to use spaces to indent code rather than tabs. Due to tabs often being rendered differently by editors and personal configurations.</p>
+
+<p>In vim this will convert tabs to space based on your current tab width settings:</p>
+
+<pre><code>:retab
+</code></pre>
+
+<p>To view white space characters (tabs will show as ^I)</p>
+
+<pre><code>:set list
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -635,59 +679,6 @@ puts expand_envvars( s )
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/lightroom-collections-whats-the-point/">Lightroom Collections Whats the Point?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-12T22:47:25+01:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
-        
-           | <a href="/blog/photography/lightroom-collections-whats-the-point/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/lightroom-collections-whats-the-point/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After using Lightroom for over 6 years I still do not see the point in Lightroom Collections.</p>
-
-<p><a href="http://scottkelby.com/2009/how-i-use-lightrooms-collections/">Scott Kelby</a> Describes <a href="http://scottkelby.com/2009/how-i-use-lightrooms-collections/">his usage</a>, but it is very similar to my workflow without them.</p>
-
-<p>I create a folder, via a script, which increments a shoot number and a description i.e. <strong>0101-SpaceRocket</strong></p>
-
-<p>I then import my images into this folder. A quick scan through the images rejecting (shortcut x) really bad ones. A second scan I Flag (shortcut p) the ones worth spending time to develop. I can change my mind later and remove them from the top selection (shortcut u).</p>
-
-<p>Rejecting photos has the advantage that you can get lightroom to clean up, removing from the catalog and deleting from disk.</p>
-
-<p>So far this does everything Scott Kelby talks about having a Full and Picks Collection. If I want to choose just the very best of a set them I could apply star filters.</p>
-
-<p>Scott then takes the the breakdown a bit further and creates Full and Picks folders for multiple events throughout a shoot. If we new we wanted this breakdown then the folder hierarchy can reflect it. So I still do not see the need for collections.</p>
-
-<p>My first use of collections was a mistake and it may be from this that I stay away. My first collection I had inadvertently set it to have different light room develop data. When viewing the photo from the lightroom file browser the images were not flagged or developed. Lightroom offered no way to merge a collections data back into the standard image view. I am now for ever stuck with one collection from many years ago which is the only place the develop data is held for that particular shoot.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -702,11 +693,15 @@ puts expand_envvars( s )
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (2)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (3)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/home/coffee-table/">Coffee Table</a>
+      </li>
     
       <li class="post">
         <a href="/blog/home/chandelier/">Chandelier</a>
@@ -722,10 +717,6 @@ puts expand_envvars( s )
     
       <li class="post">
         <a href="/blog/engineering/flip-flop/">Flip-flop</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
       </li>
     
   </ul>
