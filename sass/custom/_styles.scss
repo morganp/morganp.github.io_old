@@ -1,2 +1,28 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
+
+//Style Banner
+body > header[role="banner"] > hgroup > h1 {
+  font-size: 1.4em;
+  line-height: 0.5em;
+}
+body > header[role="banner"] > hgroup > h2 {
+  margin-top: -8px;
+  font-size: 2.15em;
+  line-height: 1em;
+}
+$article-font-size: 18px;
+
+article {
+  max-width: round( 34 * $article-font-size );
+  margin-left:  auto;
+  margin-right: auto;
+}  
+
+article header h1 {
+  font-size: round( 4 * $article-font-size );
+}
+article div p {
+  font-size: $article-font-size;
+  line-height: round(1.618 * $article-font-size) ;
+}
