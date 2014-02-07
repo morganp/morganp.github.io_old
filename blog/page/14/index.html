@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="There is a very good presentation Confident Code by Avdi Grimm author of http://exceptionalruby.com/. Previously presented at Cascadia. There are &hellip;">
+  <meta name="description" content="Suppressing warnings is usually a bad idea but if you understand the risk and want to carry on regardless. When ruby to call a script then the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,69 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/suppressing-warnings-in-ruby-scripts/">Suppressing Warnings in Ruby Scripts</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-02T10:13:29+00:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
+        
+           | <a href="/blog/tech/suppressing-warnings-in-ruby-scripts/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/suppressing-warnings-in-ruby-scripts/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Suppressing warnings is usually a bad idea but if you understand the risk and want to carry on regardless. When ruby to call a script then the warning level can be set via:</p>
+
+<pre><code>$ ruby -W0 ./script.rb
+$ ruby -W1 ./script.rb
+$ ruby -W2 ./script.rb
+</code></pre>
+
+<p>Where 0=silence, 1=medium, 2=verbose</p>
+
+<p>In an executable with a shebang line this is a little harder. This is the method I have found:</p>
+
+<pre><code>#!/usr/bin/env ruby
+##                      $VERBOSE
+## -W0  NO Warnings     nil
+## -W1  Quiet           false
+## -W2  Verbose         true
+BEGIN { $VERBOSE = nil }
+
+#Rest of ruby script
+</code></pre>
+
+<p>The script can then be called directly with the warning level set:</p>
+
+<pre><code>$ executable_ruby_script 
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -808,52 +871,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/make-ubuntu-samba-share-show-up-on-os-x-106-finder/">Make Ubuntu Samba Share Show Up on OS X 10.6 Finder</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-25T20:35:18+01:00" pubdate data-updated="true">Jul 25<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/make-ubuntu-samba-share-show-up-on-os-x-106-finder/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/make-ubuntu-samba-share-show-up-on-os-x-106-finder/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Install Avahi, it like bonjour auto discovery but for linux, then tell it about your servers samba service.</p>
-
-<pre><code>$ sudo apt-get install avahi-daemon
-$ cd /etc/avahi/services/
-$ sudo wget https://raw.github.com/gist/1105096/0dc157711a85a08a1220ecb3fe94f069d2fcecec/etc_avahi_services_samba.service
-$ sudo mv etc_avahi_services_samba.service samba.service
-$ sudo restart avahi-daemon
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/15/">&larr; Older</a>
@@ -868,7 +885,7 @@ $ sudo restart avahi-daemon
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (1)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (2)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
@@ -883,15 +900,15 @@ $ sudo restart avahi-daemon
       </li>
     
       <li class="post">
+        <a href="/blog/home/exact-fit-blinds/">Exact Fit Blinds</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/engineering/flip-flop/">Flip-flop</a>
       </li>
     
       <li class="post">
         <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
       </li>
     
   </ul>

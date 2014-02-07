@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="After getting Safari 6 it seems that YouTube is no longer letting my watch video as html5 video formats and requires me to have flash installed. To &hellip;">
+  <meta name="description" content="Given a flat hierarchy of data comprising level and a label, aim to nest the lower level of objects in to the parents. Example data: 0, 'a' 1, 'b' 2 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,167 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/converting-flat-structure-into-a-nested-structure/">Converting Flat Structure Into a Nested Structure</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-03T20:11:12+01:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+        
+           | <a href="/blog/tech/converting-flat-structure-into-a-nested-structure/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/converting-flat-structure-into-a-nested-structure/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Given a flat hierarchy of data comprising level and a label, aim to nest the lower level of objects in to the parents.</p>
+
+<p>Example data:</p>
+
+<pre><code>  0, 'a'
+  1, 'b'
+  2, 'c'
+  2, 'd'
+  1, 'e'
+  2, 'f'
+</code></pre>
+
+<p>Converted to a structure similar to:</p>
+
+<pre><code>a
++b
+|+c
+|+d
++e
+ +f
+</code></pre>
+
+<h2>An Unoptimised Solution</h2>
+
+<p>A simple object, which allows adding child objects</p>
+
+<pre><code>Thing = Struct.new(:level, :label, :children)
+class Thing
+  def add_child (child)
+    children &lt;&lt; child
+  end
+end
+</code></pre>
+
+<p>The data:</p>
+
+<pre><code>list =
+[ Thing.new(0, "a", []),
+  Thing.new(1, "b", []),
+  Thing.new(2, "c", []),
+  Thing.new(2, "d", []),
+  Thing.new(1, "e", []),
+  Thing.new(2, "f", [])
+]
+</code></pre>
+
+<p>My approach is to find the lowest children and fold them in to the parent above it. The first step is a method to calculate the nesting depth.</p>
+
+<pre><code>def lowest_level( list )
+  level = 0
+  list.each do |obj|
+    level = obj.level if obj.level &gt; level
+  end
+  return level
+end
+
+puts "Lowest Level is #{lowest_level( list )}"
+=&gt; Lowest Level is 2
+</code></pre>
+
+<p>The main part of the solution now is to loop over the list, adding the object at the lowest_level to its parent, then removing it from its original position. The parent object is defined as being in the position before with a level 1 above the current node.</p>
+
+<pre><code>      current_fold = lowest_level( list )
+
+      list.each_with_index do |thing, index|
+        # Identify if on a lowest leaf which can be folded
+        if ( ( thing.level == current_fold ) &amp;&amp; (list[index-1].level == current_fold-1))
+          list[index-1].add_child( thing )
+          list.delete_at(index)
+        end
+      end
+</code></pre>
+
+<p>The main performance issue I have with this solution is it requires an iteration for every object at the same level wiith the same parent. ie 1222 would take 3 iterations to fold the 2s, 122212 would still take 3 iterations.</p>
+
+<p>The loop in full:</p>
+
+<pre><code>def fold_list( list )
+  ## Clone data for immutable operation
+  list = Marshal.load(Marshal.dump( list ))
+  fold_list!( list )
+end
+
+def fold_list!( list )
+  while ( lowest_level( list ) &gt; 0 ) do
+    #Find Current lowest Level and fold
+    current_fold = lowest_level( list )
+
+    while( current_fold == lowest_level( list ) ) do
+      list.each_with_index do |thing, index|
+        # Identify if on a lowest leaf which can be folded
+        if ( ( thing.level == current_fold ) &amp;&amp; (list[index-1].level == current_fold-1))
+          list[index-1].add_child( thing )
+          list.delete_at(index)
+        end
+      end
+    end
+  end
+
+  return list
+end
+
+require 'pp'
+pp  fold_list( list )
+</code></pre>
+
+<p>The result, showing the folding:</p>
+
+<pre><code>[#&lt;struct Thing
+  level=0,
+  label="a",
+  children=
+   [#&lt;struct Thing
+     level=1,
+     label="b",
+     children=
+      [#&lt;struct Thing level=2, label="c", children=[]&gt;,
+       #&lt;struct Thing level=2, label="d", children=[]&gt;]&gt;,
+    #&lt;struct Thing
+     level=1,
+     label="e",
+     children=[#&lt;struct Thing level=2, label="f", children=[]&gt;]&gt;]&gt;]
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -618,93 +779,6 @@ chmod ugo+x plugin/snipMate.vim
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/os-x-installing-r/">OS X Installing R</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-03T20:11:46+01:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2012</time>
-        
-           | <a href="/blog/tech/os-x-installing-r/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/os-x-installing-r/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.r-project.org/">R</a> is a language for statistical computing and graphics. It is the choice of <a href="http://coursera.org">Coursera</a> Statistics One.</p>
-
-<p>It can be installed on OS X via the <a href="http://cran.r-project.org/bin/macosx/">pkg</a> available on the main website which is my recommendation or via <a href="http://mxcl.github.com/homebrew/">Homebrew</a>.</p>
-
-<p><em>I have been unable to get the homebrew version to install correctly.</em><br/>
-<em>On Mountain Lion the homebrew install also requires a few additional packages.</em></p>
-
-<h2>Install R with Homebrew</h2>
-
-<p><strong>Update</strong> First run <code>brew tap homebrew/science</code> to make the R package available <strong>/Update</strong></p>
-
-<p>If you run <code>brew install r</code> when you do not have a fortran compiler you will see the following error:</p>
-
-<blockquote><p>This formula requires a fortran compiler, but we could not find one by
-looking at the FC environment variable or searching your PATH for <code>gfortran</code>.
-Please take one of the following actions:</p>
-
-<ul>
-<li><p>Decide to use the build of gfortran 4.2.x provided by Homebrew using
-    <code>brew install gfortran</code></p></li>
-<li><p>Choose another Fortran compiler by setting the FC environment variable:
-    export FC=/path/to/some/fortran/compiler
-Using an alternative compiler may produce more efficient code, but we will
-not be able to provide support for build errors.</p></li>
-</ul>
-</blockquote>
-
-<p>To save time just run :</p>
-
-<pre><code>brew update
-brew install gfortran r
-</code></pre>
-
-<p>Although I ran into some issues with linking libtiff and jpeg and had to run:</p>
-
-<pre><code>brew link -f  libtiff jpeg
-brew install r
-</code></pre>
-
-<p>I still got checksum fails. Might have to wait for a brew update.</p>
-
-<p>If you are running Mountain Lion then you will also run into this:</p>
-
-<blockquote><p>Unsatisfied dependency: XQuartz
-Please install the latest version of XQuartz:
- <a href="https://xquartz.macosforge.org">https://xquartz.macosforge.org</a>
-Error: An unsatisfied requirement failed this build.</p></blockquote>
-
-<p>The easiest way to install R on OS X really does seem to be just run the <a href="http://cran.r-project.org/bin/macosx/">package</a>. 134MB install size.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -719,7 +793,7 @@ Error: An unsatisfied requirement failed this build.</p></blockquote>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (1)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (2)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
@@ -734,15 +808,15 @@ Error: An unsatisfied requirement failed this build.</p></blockquote>
       </li>
     
       <li class="post">
+        <a href="/blog/home/exact-fit-blinds/">Exact Fit Blinds</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/engineering/flip-flop/">Flip-flop</a>
       </li>
     
       <li class="post">
         <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
       </li>
     
   </ul>

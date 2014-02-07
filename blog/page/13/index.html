@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="A simple script for finding temp files from the current directory and below. I often run this before adding a new project to a revision control &hellip;">
+  <meta name="description" content="Cron jobs can have there results returned as mail via the unix mail system. If left unchecked for a while the number of mails can mount up and you &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,55 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/unix-mail-command-delete-all-messages/">Unix Mail Command, Delete All Messages</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-01T20:44:36+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2012</time>
+        
+           | <a href="/blog/tech/unix-mail-command-delete-all-messages/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/unix-mail-command-delete-all-messages/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Cron jobs can have there results returned as mail via the unix mail system. If left unchecked for a while the number of mails can mount up and you probably do not care about the old results. the command <code>d *</code> will delete all mails</p>
+
+<pre><code>$ mail
+Mail version 8.1 6/6/93.  Type ? for help.
+"/var/mail/lounge": 2726 messages 25 new 2726 unread
+? d *
+? quit
+
+$ mail
+No mail for user
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -736,69 +785,6 @@ $stderr.puts "Error displayed in stderr"
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/suppressing-warnings-in-ruby-scripts/">Suppressing Warnings in Ruby Scripts</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-02T10:13:29+00:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
-        
-           | <a href="/blog/tech/suppressing-warnings-in-ruby-scripts/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/suppressing-warnings-in-ruby-scripts/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Suppressing warnings is usually a bad idea but if you understand the risk and want to carry on regardless. When ruby to call a script then the warning level can be set via:</p>
-
-<pre><code>$ ruby -W0 ./script.rb
-$ ruby -W1 ./script.rb
-$ ruby -W2 ./script.rb
-</code></pre>
-
-<p>Where 0=silence, 1=medium, 2=verbose</p>
-
-<p>In an executable with a shebang line this is a little harder. This is the method I have found:</p>
-
-<pre><code>#!/usr/bin/env ruby
-##                      $VERBOSE
-## -W0  NO Warnings     nil
-## -W1  Quiet           false
-## -W2  Verbose         true
-BEGIN { $VERBOSE = nil }
-
-#Rest of ruby script
-</code></pre>
-
-<p>The script can then be called directly with the warning level set:</p>
-
-<pre><code>$ executable_ruby_script 
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/14/">&larr; Older</a>
@@ -813,7 +799,7 @@ BEGIN { $VERBOSE = nil }
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (1)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (2)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
@@ -828,15 +814,15 @@ BEGIN { $VERBOSE = nil }
       </li>
     
       <li class="post">
+        <a href="/blog/home/exact-fit-blinds/">Exact Fit Blinds</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/engineering/flip-flop/">Flip-flop</a>
       </li>
     
       <li class="post">
         <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
       </li>
     
   </ul>

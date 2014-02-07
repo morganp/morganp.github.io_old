@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Flickr is a great way to backup your photos and other images for around £25 a year you get unlimited storage. There are numerous uploader tools but &hellip;">
+  <meta name="description" content="An example of joining tables through active record models. There is a good tutorial on the basics of Activerecord joins.
+For this example we will &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,100 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/activerecord-queries-on-table-joins/">Activerecord Queries on Table Joins</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-02T11:33:16+01:00" pubdate data-updated="true">Aug 2<span>nd</span>, 2010</time>
+        
+           | <a href="/blog/tech/activerecord-queries-on-table-joins/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/activerecord-queries-on-table-joins/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>An example of joining tables through active record models. There is <a href="http://guides.rubyonrails.org/association_basics.html">a good tutorial on the basics</a> of Activerecord joins.
+For this example we will have Posts and People, we will not use a grammatical parser and will beusing plural of people as peoples. (Note: should be person and persons) Create table with something like:</p>
+
+<pre><code>require 'rubygems'
+require 'sequel'
+DB = Sequel.sqlite('./example.db')
+
+DB.create_table :posts do
+   primary_key :id
+   foreign_key :people_id, :peoples
+   varchar :title
+   text :body
+end
+
+DB.create_table :peoples do
+   primary_key :id
+   varchar :first_name
+   varchar :last_name
+   varchar :short_name
+end
+</code></pre>
+
+<p>Now the active record model should be something like:
+NB I have added the foreign key specifier as I could not find migrations to modify it.</p>
+
+<pre><code>require 'rubygems'
+require 'active_record'
+
+ActiveRecord::Base.establish_connection(
+   :adapter   =&gt; "sqlite3",
+   :database  =&gt; "./example.db"
+)
+
+class People &lt; ActiveRecord::Base
+   has_many :post, :foreign_key =&gt; :people_id
+
+end
+
+class Post &lt; ActiveRecord::Base
+   # mmm No foregin key required for this
+   belongs_to :people
+end
+</code></pre>
+
+<p>This allows ORM automatic joins:</p>
+
+<pre><code>@person = People.first
+@posts  = @person.post
+
+@post   = Post.first
+@person_name = @post.people.first_name
+
+#Now get 3 posts by a particular author and sort
+@person = People.first
+@posts = @person.post.find(:all, :order =&gt; "id DESC", :limit =&gt; 3) 
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -653,47 +748,6 @@ Press ESC to enter normal mode. &lsquo;v&rsquo; to enter Visual mode. use the cu
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/os-x-itunes-play-ogg-videos/">OS X iTunes Play .ogg Videos</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-06T09:18:22+01:00" pubdate data-updated="true">Jul 6<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/os-x-itunes-play-ogg-videos/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/os-x-itunes-play-ogg-videos/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://pragmatic.tv">Pragmatic TV</a> release there screen casts in iPod, Quicktime and Theora Ogg formats. Since Theora Ogg seems to be the best quality and I want to be able to read the text from the video clearly I would like to integrate playback better into the mac ecosystem.</p>
-
-<p>This is actually fairly trivial with <a href="http://xiph.org/quicktime/download.html">Xiph</a>. Just download, open the .dmg and place the .component in the /Library/Components folder. .ogg videos can now be dragged into and played with iTunes.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/22/">&larr; Older</a>
@@ -708,7 +762,7 @@ Press ESC to enter normal mode. &lsquo;v&rsquo; to enter Visual mode. use the cu
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (1)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (1)</a></li><li><a href='/blog/home'>Home (2)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
@@ -723,15 +777,15 @@ Press ESC to enter normal mode. &lsquo;v&rsquo; to enter Visual mode. use the cu
       </li>
     
       <li class="post">
+        <a href="/blog/home/exact-fit-blinds/">Exact Fit Blinds</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/engineering/flip-flop/">Flip-flop</a>
       </li>
     
       <li class="post">
         <a href="/blog/tech/reverting-in-git/">Reverting in Git</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a>
       </li>
     
   </ul>
