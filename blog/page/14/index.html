@@ -9,8 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Lightroom 3.6 has been released. Downloads for Mac and Windows. Hugin 2011.04 has also been released.
-">
+  <meta name="description" content="I noticed today that greps recursive function is different to finds recursion. find ./ -name *.txt
+grep -R 'text' *.text The above find command will &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,150 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/recursive-grep-with-filtering/">Recursive Grep, With Filtering</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-19T15:56:31+00:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/recursive-grep-with-filtering/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/recursive-grep-with-filtering/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I noticed today that greps recursive function is different to finds recursion.</p>
+
+<pre><code>find ./ -name *.txt
+grep -R 'text' *.text
+</code></pre>
+
+<p>The above find command will search from the sub-directory down while grep will only search the current folder. The FILE_PATTERN must also match the hierarchy in grep.</p>
+
+<p>To apply a file type filter in grep you can do:</p>
+
+<pre><code>grep -R --include=*.txt 'text' ./
+</code></pre>
+
+<p>This looks at all file from the current directory (./) but will only grep files which match the include.</p>
+
+<p>An older article on <a href="http://amaras-tech.co.uk/article/63">Basic grep usage</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/finding-tracks-not-in-itunes/">Finding Tracks Not in iTunes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-14T18:19:45+00:00" pubdate data-updated="true">Jan 14<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/finding-tracks-not-in-itunes/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/finding-tracks-not-in-itunes/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After switching my Audio ripper (<a href="http://sbooth.org/Max">Max</a>) accidentally to &lsquo;AAC Low Delay&rsquo; rather than plain &lsquo;AAC&rsquo; I realised too late after about 20-30cd rips that they were not appearing in iTunes.</p>
+
+<p>I also convert to flac to converting to the correct format from source is still relatively easy. Finding which track are in my iTunes folder but not in the iTunes library is a little bit more tricky. Well it was going to be until I found <a href="http://dougscripts.com/itunes/scripts/ss.php?sp=musicfolderfilesnotadded2">this Dougs Script</a>.</p>
+
+<p>I did not have to instal any script for this just ran the app insdie the download for &lsquo;Music Folder Files Not Added v3.0&rsquo;. My iTune folder is in the default location so I just had to press &lsquo;find&rsquo; and it took around a minute to list all the music tracks I had but iTunes had not added to its library.</p>
+
+<p>Working my way through the list recreating the tracks in the correct AAC format, just adding the &lsquo;iTunes Music&rsquo; folder to iTunes after every ablum fix and hitting &lsquo;find&rsquo; in Dougs app to refresh the list.</p>
+
+<p>Easy, almsot got a ruby version of it working but only got so far:</p>
+
+<pre><code>gem install 'itunes-library'
+</code></pre>
+
+<p>The Script:</p>
+
+<pre><code>require 'itunes/library'
+
+path       = File.expand_path( "~/Music/iTunes/iTunes Music" )
+itunes_lib = File.expand_path( "~/Music/iTunes/iTunes Library.xml" )
+library    = ITunes::Library.load( itunes_lib )
+
+puts  "#{library.music.tracks.size} Tracks have been loaded"
+
+files = Dir.glob( File.join(path, '**', '*.m4a'  ) )
+
+files.each do |music_file|
+  music_file_nice = music_file.dup
+  music_file.gsub!(' ', '%20')
+  music_file.gsub!('#', '%231')
+  #music_file.gsub!('´', '%C2%B4')
+
+  #This comes last so it the # does not get replace
+  music_file.gsub!('&amp;', '&amp;') 
+
+  #Correcting filename prefix / location
+  music_file.gsub!('/Users/morgy/Music', 'file://localhost/Volumes/Queeg500TimeM')
+
+  found = []
+  #found = library.music.tracks.keep_if { |t| t.to_hash['Location'] == music_file }
+  library.music.tracks.each { |t| 
+    if t.to_hash['Location'] == music_file
+      found &lt;&lt; t
+    end
+  }
+
+  if found.empty? 
+    puts
+    puts "MISSING #{music_file_nice}"
+  end
+
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -605,125 +749,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-search-and-replace-script/">Ruby Search and Replace Script.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-25T12:06:36+01:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-search-and-replace-script/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-search-and-replace-script/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A small standalone script that search through a file doing text substitutions.</p>
-
-<pre><code>#!/usr/bin/env ruby
-# Usage $ ruby_search_and_replace.rb file_to_update.txt
-
-def update_file( file_name )
-  puts "Updating : #{file_name}"
-  ::File.open( file_name, "rb"){ |f| @contents = f.read }
-
-  ## Replace Renamed thing here
-  #@contents.gsub!("search","replace")
-
-  ::File.open( file_name, "w" ){ |f| f.write @contents }
-end
-
-if $0 == __FILE__
-  #If file is called directly execute
-  update_file( ::File.absolute_path( ARGV[0] ) )
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/photography-workshops/">Photography Workshops</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-12T21:31:15+01:00" pubdate data-updated="true">Oct 12<span>th</span>, 2011</time>
-        
-           | <a href="/blog/photography/photography-workshops/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/photography-workshops/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Just making a note to self to check these regularly for updates</p>
-
-<p><a href="http://www.joecornishgallery.co.uk/workshops">Joe Cornish 1-2 Day Workshop</a><br/>
-<a href="http://www.lightandland.co.uk/tours">Light and Land</a><br/>
-<a href="http://www.leefilters.com/camera/products/range/ref:I4A00067D65336/">Lee Filters workshop by Jeremy Walker</a><br/>
-<a href="http://www.davidnoton.com/workshops.htm">David Norton</a><br/>
-<a href="http://www.andyrouse.co.uk/index.php?page_id=40">Andy Rouse</a></p>
-
-<p><a href="http://www.phaseone.com/sv-se/Workshops/PODAS/Workshops.aspx">Phase One</a> Includes a Scottish tour and use of a medium format camera for the length of the course.</p>
-
-<p><a href="http://photography.info/">Skye Photography Weeks</a><br/>
-<a href="http://www.wildarena.com/">UK Wildarena</a><br/>
-<a href="http://www.lightstalkersscotland.com/workshops">LightStalker Workshop</a><br/>
-<a href="http://www.lightstalkersscotland.com/photo-tours">LightStalker Tour</a><br/>
-<a href="http://ebirder.net/MullBirdPhotographyTour.aspx">Mull Bird Tour</a><br/>
-<a href="http://www.earthsbeautytours.com/photo-shoot/scotland/">Earths Beauty Scotland</a><br/>
-<a href="http://www.earthsbeautytours.com/photo-shoot/england/">Earths Beauty England</a>  <br/>
-<a href="http://highlandlodges-scotland.com/PhotoToursWorkshops.html">Highland Lodges Photo Workshops</a><br/>
-<a href="http://www.islandscapephotography.co.uk/">Mull Photography Tours</a></p>
-
-<p><a href="http://www.crianlarich-hotel.co.uk/photography-breaks">Crianlarich Landscape Courses</a></p>
-
-<p><a href="http://www.hfholidays.co.uk/activities/photography">Photo Holiday Directory</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/15/">&larr; Older</a>
@@ -738,11 +763,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (3)</a></li><li><a href='/blog/home'>Home (3)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (5)</a></li><li><a href='/blog/home'>Home (3)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/garden-design-books/">Garden Design Books</a>
+      </li>
     
       <li class="post">
         <a href="/blog/home/coffee-table/">Coffee Table</a>
@@ -758,10 +787,6 @@ end
     
       <li class="post">
         <a href="/blog/home/exact-fit-blinds/">Exact Fit Blinds</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/flip-flop/">Flip-flop</a>
       </li>
     
   </ul>

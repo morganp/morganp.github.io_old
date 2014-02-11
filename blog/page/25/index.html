@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="With Webfaction you can create new users with there own home area but there is no straight forward way to host their site. There is a posted method &hellip;">
+  <meta name="description" content="Matlab figure properties which can be set through the properties editor can also be set by scripts. My main stumbling block was not realising that &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,112 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-scripting-axes-properties/">Matlab Scripting Axes Properties</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-03T06:47:06+01:00" pubdate data-updated="true">May 3<span>rd</span>, 2010</time>
+        
+           | <a href="/blog/engineering/matlab-scripting-axes-properties/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/engineering/matlab-scripting-axes-properties/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Matlab figure properties which can be set through the properties editor can also be set by scripts. My main stumbling block was not realising that gca is a builtin function which returns the current axes. A list of <a href="http://www.mathworks.co.uk/access/helpdesk/help/techdoc/ref/axes_props.html">all properties</a>.</p>
+
+<p>Below is a example matlab script which plots a graph then adds minor ticks to the X-axis:</p>
+
+<pre><code>a =   1:100 ;
+b = 101:200 ;
+
+figure
+plot(a, b)
+% gca : get current axes
+set(gca, 'XMinorTick','on')
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/sinatra-file-upload/">Sinatra File Upload</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-01T07:54:03+01:00" pubdate data-updated="true">May 1<span>st</span>, 2010</time>
+        
+           | <a href="/blog/tech/sinatra-file-upload/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/sinatra-file-upload/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A simple Sinatra web app to upload a single file. Also available as a <a href="http://gist.github.com/386495">gist</a>, based on <a href="http://pastie.caboo.se/134681">http://pastie.caboo.se/134681</a></p>
+
+<pre><code>require 'rubygems'
+require 'sinatra'
+
+get '/upload' do
+   erb '&lt;form action="upload" method="post" enctype="multipart/form-data" accept-charset="utf-8"&gt;
+   &lt;input type="file" name="uploaded_data" id="uploaded_data"&gt;
+   &lt;p&gt;&lt;input type="submit" value="Continue"&gt;&lt;/p&gt;
+   &lt;/form&gt;'
+end
+
+post '/upload' do
+   FileUtils.mkdir_p('./Uploads/')
+   FileUtils.mv(params[:uploaded_data][:tempfile].path, "./Uploads/#{params[:uploaded_data][:filename]}")
+   erb 'Upload Complete'
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -723,116 +829,6 @@ Change Ruby/Gem version used by Passenger for Sinatra and Rails Web apps</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/gem-install-with-out-the-docs/">Gem Install With Out the Docs</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-10T14:11:26+01:00" pubdate data-updated="true">Apr 10<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/gem-install-with-out-the-docs/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/gem-install-with-out-the-docs/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When I install gems on my server I do not get any of the documentation which is normally 3-5 times larger than the gem itself. Installing gems with out docs can be done via</p>
-
-<pre><code>$ gem install --no-ri --no-rdoc gem_name 
-</code></pre>
-
-<p>Based this <a href="http://bparanj.blogspot.com/2008/11/how-to-install-gem-without-rdoc-or-ri.html">blog post</a> I have created a ~/.gemrc so that it does the no docs automatically.</p>
-
-<pre><code>:update_sources: true
-:bulk_threshold: 1000
-:sources: 
-- http://rubygems.org
-- http://gems.github.com
-gem: --no-ri --no-rdoc
-:verbose: true
-:benchmark: false
-:backtrace: false
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-blog-retrieving-next-and-previous-ids/">Sinatra Blog Retrieving Next and Previous Ids</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-09T10:13:17+01:00" pubdate data-updated="true">Apr 9<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/sinatra-blog-retrieving-next-and-previous-ids/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/sinatra-blog-retrieving-next-and-previous-ids/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When displaying blog/articles it is often nice to have previous and next posts. Simply -1 +1 from the current post.id is not enough because posts could be deleted or marked as private. These requirements should also be added into the :conditions statement. Below is a nice way I found of finding the previous and next ids.</p>
-
-<pre><code>get '/article/:id/?' do
-   prev_post = Posts.last( :conditions =&gt; ["id &lt; ?", params[:id]])
-   next_post = Posts.first(:conditions =&gt; ["id &gt; ?", params[:id]])
-   if not prev_post.nil?
-       @prev_post_id =  prev_post.id
-   end
-   if not next_post.nil?
-      @next_post_id = next_post.id
-   end
-
-   @posts = Posts.first(:conditions =&gt; ["id = ?", params[:id]])
-
-  erb :'blog/blog_one'
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/26/">&larr; Older</a>
@@ -847,11 +843,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (3)</a></li><li><a href='/blog/home'>Home (3)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (5)</a></li><li><a href='/blog/home'>Home (3)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/garden-design-books/">Garden Design Books</a>
+      </li>
     
       <li class="post">
         <a href="/blog/home/coffee-table/">Coffee Table</a>
@@ -867,10 +867,6 @@ end
     
       <li class="post">
         <a href="/blog/home/exact-fit-blinds/">Exact Fit Blinds</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/flip-flop/">Flip-flop</a>
       </li>
     
   </ul>
