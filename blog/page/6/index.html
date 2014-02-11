@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="The Lightroom 5 Beta is out now, Free and active until June 2013. From adobe : New Features in Lightroom 5 Beta Advanced Healing Brush – Easily &hellip;">
+  <meta name="description" content="Normally this would just end up on my link blog, but thought it was worthy of a proper mention. A JavaScript tear able net curtain, clicking the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,94 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/javascript-net-curtain/">JavaScript Net Curtain</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-24T07:44:19+01:00" pubdate data-updated="true">Apr 24<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/javascript-net-curtain/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/javascript-net-curtain/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Normally this would just end up on <a href="http://amaras-tech.co.uk/u">my link blog</a>, but thought it was worthy of a proper mention.</p>
+
+<p><a href="http://amaras-tech.co.uk/u/5m">A JavaScript tear able net curtain</a>, clicking the mouse the moving mouse over curtain the real-time rendering in a browser feels very impressive to me. To see some thing this interactive with out lag being rendered in a browser is quite impressive. Am sure there are still many sites which crash my browser while trying to render little pointless animations.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/bittorrent-sync-free-rival-to-dropbox/">BitTorrent Sync, Free Rival to DropBox</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-24T07:11:47+01:00" pubdate data-updated="true">Apr 24<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/bittorrent-sync-free-rival-to-dropbox/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/bittorrent-sync-free-rival-to-dropbox/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://labs.bittorrent.com/experiments/sync.html">BitTorrent Sync</a> although still in Beta offers a App and protocol for <a href="http://db.tt/ZZzJ5LBq">DropBox</a> like file syncing. As it is an app rather than a service you use you own disk space. Hope fully it can also be run on <a href="http://www.webfaction.com?affiliate=morgy">webfaction</a> to setup a private cloud.</p>
+
+<p>The advantages I can see are:</p>
+
+<ol>
+<li>Private Storage &ndash; Secure, third party can not be forced to hand over data if hosting it on own hardware.</li>
+<li>Private Storage &ndash; Unlimted space, Dropbox give 2GB free basic webfation account has 20-40Gb storage. S3 offers very cheap way to scale for cloud storage. Synced from home computer TB available.</li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -587,155 +675,6 @@ Fold all <code>zm</code></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-duck-typing-strings-and-arrays/">Ruby Duck Typing Strings and Arrays</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-20T16:12:08+00:00" pubdate data-updated="true">Dec 20<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/ruby-duck-typing-strings-and-arrays/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-duck-typing-strings-and-arrays/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>How to get method which handles a single string input or an array of strings?</p>
-
-<h2>Splat *</h2>
-
-<p>* turns single strings into Arrays, leaves arrays alone.</p>
-
-<pre><code>a = "hello"
-a = *a
-puts a.inspect
-=&gt;  ["hello"]
-
-a = ["hello", "world"]
-a = *a
-puts a.inspect
-=&gt; ["hello", "world"]
-</code></pre>
-
-<h2>Example Usage</h2>
-
-<pre><code>def unknown_input( input_data )
-  input_data = *input_data
-  input_data.each do |input_item|
-      puts input_item
-  end
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/reverting-rtorrent-version-on-snow-leopard/">Reverting Rtorrent Version on Snow Leopard</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-06T20:22:33+00:00" pubdate data-updated="true">Dec 6<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/reverting-rtorrent-version-on-snow-leopard/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/reverting-rtorrent-version-on-snow-leopard/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After running  a <code>brew upgrade</code> rtorrent was plagued with segmentation faults. Which look something like :</p>
-
-<pre><code>Caught Segmentation fault, dumping stack:B] [Port: 16006]                                                                    [U 0/14]    [D 0/30] [H 28/32] [S 196/198/208] [F 15/16]
-0 0   rtorrent                            0x0000000100001c8c _Z8do_panici + 130
-1 1   rtorrent                            0x0000000100044d48 _ZN13SignalHandler6caughtEi + 234
-2 2   libSystem.B.dylib                   0x00007fff872b51ba _sigtramp + 26
-3 3   libcrypto.0.9.8.dylib               0x00007fff81414491 ERR_get_state + 65
-4 4   libtorrent.14.dylib                 0x00000001002a75a9 _ZN7torrent13DiffieHellman13store_pub_keyEPhj + 45
-5 5   libtorrent.14.dylib                 0x0000000100292fb0 _ZN7torrent9Handshake20prepare_key_plus_padEv + 74
-6 6   libtorrent.14.dylib                 0x00000001002932ac _ZN7torrent9Handshake11event_writeEv + 284
-7 7   libtorrent.14.dylib                 0x0000000100247322 _ZN7torrent10PollKQueue7performEv + 236
-8 8   libtorrent.14.dylib                 0x0000000100247d69 _ZN7torrent10PollKQueue7do_pollExi + 383
-9 9   libtorrent.14.dylib                 0x000000010026b608 _ZN7torrent11thread_base10event_loopEPS0_ + 330
-10 10  rtorrent                            0x0000000100005af4 main + 12976
-11 11  rtorrent                            0x0000000100001820 start + 52
-12 12  ???                                 0x0000000000000001 0x0 + 1
-Abort trap
-</code></pre>
-
-<p>Since mid 2011 brew has added a versions command. Lets check what versions are available:</p>
-
-<pre><code>$ brew versions rtorrent
-0.9.2 git checkout 6b8d25f /usr/local/Library/Formula/rtorrent.rb
-0.8.9 git checkout e459d51 /usr/local/Library/Formula/rtorrent.rb
-0.9.0 git checkout 9b5cba7 /usr/local/Library/Formula/rtorrent.rb
-0.8.6 git checkout b782d9d /usr/local/Library/Formula/rtorrent.rb
-0.8.5 git checkout b92799d /usr/local/Library/Formula/rtorrent.rb
-
-$ brew versions libtorrent
-0.13.2 git checkout 8d5b242 /usr/local/Library/Formula/libtorrent.rb
-0.12.9 git checkout edd213c /usr/local/Library/Formula/libtorrent.rb
-0.13.0 git checkout 130b408 /usr/local/Library/Formula/libtorrent.rb
-0.12.6 git checkout 0476235 /usr/local/Library/Formula/libtorrent.rb
-0.12.5 git checkout d0ec1e6 /usr/local/Library/Formula/libtorrent.rb
-</code></pre>
-
-<p>The version giving me the segmentation faults is 0.9.2 with libtorrent 0.13.2, lets roll back to the previous version 0.8.9/0.12.9.</p>
-
-<pre><code>brew uninstall rtorrent libtorrent
-cd /usr/local/Library/Formula/
-git checkout edd213c
-# Not sure why brew thinks these are installed again but I had to run
-brew uninstall rtorrent libtorrent 
-brew install rtorrent libtorrent 
-</code></pre>
-
-<p>Once that has completed rtorrent should run as 0.8.9/0.12.9, which seems a whole lot more reliable on a mid 2010 Mac mini running snow leopard.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -750,11 +689,19 @@ brew install rtorrent libtorrent
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (5)</a></li><li><a href='/blog/home'>Home (3)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (7)</a></li><li><a href='/blog/garden'>Garden (5)</a></li><li><a href='/blog/home'>Home (3)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (211)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-remove-values-from-array/">Matlab Remove Values From Array</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/brew-update-fail/">Brew Update Fail</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/garden-design-books/">Garden Design Books</a>
@@ -766,14 +713,6 @@ brew install rtorrent libtorrent
     
       <li class="post">
         <a href="/blog/home/chandelier/">Chandelier</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/f-stop-icus/">F-stop ICUs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/home/exact-fit-blinds/">Exact Fit Blinds</a>
       </li>
     
   </ul>

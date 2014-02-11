@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Engineering | RockPaperScissors]]></title>
   <link href="http://morganp.github.io/blog/engineering/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-02-11T16:13:27+00:00</updated>
+  <updated>2014-02-11T21:28:46+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,45 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab Remove Values From Array]]></title>
+    <link href="http://morganp.github.io/blog/engineering/matlab-remove-values-from-array/"/>
+    <updated>2014-02-11T21:21:44+00:00</updated>
+    <id>http://morganp.github.io/blog/engineering/matlab-remove-values-from-array</id>
+    <content type="html"><![CDATA[<p>Remove all values of 3 from array</p>
+
+<pre><code>a = [1 2 3 4 3];
+a(any(a==3,1)) = []
+a =
+
+
+     1     2     4
+</code></pre>
+
+<p>Remove 2 or less from array</p>
+
+<pre><code>a = [1 2 3 4 3];
+a(any(a&lt;=2,1)) = []
+a =
+
+
+     3     4     3
+</code></pre>
+
+<p>Remove values between 2 and 3</p>
+
+<pre><code>a = [1 2 3 4 3];
+a(any((a&gt;=2)&amp;(a&lt;=3),1)) = []
+a =
+
+
+     1     4
+</code></pre>
+
+<p>Based on <a href="http://matlabnewbie.blogspot.co.uk/2011/11/remove-any-rows-that-contains-specific.html">examples from matlabnewbie</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Flip-flop]]></title>
@@ -239,26 +278,6 @@ ans =
 </code></pre>
 
 <p>For direct comparisons of arrays use <code>isequal(a,b)</code> for vectorised operations use <code>a==b</code>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Matlab Scripting Axes Properties]]></title>
-    <link href="http://morganp.github.io/blog/engineering/matlab-scripting-axes-properties/"/>
-    <updated>2010-05-03T06:47:06+01:00</updated>
-    <id>http://morganp.github.io/blog/engineering/Matlab-Scripting-Axes-Properties</id>
-    <content type="html"><![CDATA[<p>Matlab figure properties which can be set through the properties editor can also be set by scripts. My main stumbling block was not realising that gca is a builtin function which returns the current axes. A list of <a href="http://www.mathworks.co.uk/access/helpdesk/help/techdoc/ref/axes_props.html">all properties</a>.</p>
-
-<p>Below is a example matlab script which plots a graph then adds minor ticks to the X-axis:</p>
-
-<pre><code>a =   1:100 ;
-b = 101:200 ;
-
-figure
-plot(a, b)
-% gca : get current axes
-set(gca, 'XMinorTick','on')
-</code></pre>
 ]]></content>
   </entry>
   

@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://morganp.github.io/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-02-11T16:13:27+00:00</updated>
+  <updated>2014-02-11T21:28:46+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,68 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab Remove Values From Array]]></title>
+    <link href="http://morganp.github.io/blog/engineering/matlab-remove-values-from-array/"/>
+    <updated>2014-02-11T21:21:44+00:00</updated>
+    <id>http://morganp.github.io/blog/engineering/matlab-remove-values-from-array</id>
+    <content type="html"><![CDATA[<p>Remove all values of 3 from array</p>
+
+<pre><code>a = [1 2 3 4 3];
+a(any(a==3,1)) = []
+a =
+
+
+     1     2     4
+</code></pre>
+
+<p>Remove 2 or less from array</p>
+
+<pre><code>a = [1 2 3 4 3];
+a(any(a&lt;=2,1)) = []
+a =
+
+
+     3     4     3
+</code></pre>
+
+<p>Remove values between 2 and 3</p>
+
+<pre><code>a = [1 2 3 4 3];
+a(any((a&gt;=2)&amp;(a&lt;=3),1)) = []
+a =
+
+
+     1     4
+</code></pre>
+
+<p>Based on <a href="http://matlabnewbie.blogspot.co.uk/2011/11/remove-any-rows-that-contains-specific.html">examples from matlabnewbie</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Brew Update Fail]]></title>
+    <link href="http://morganp.github.io/blog/tech/brew-update-fail/"/>
+    <updated>2014-02-11T21:17:24+00:00</updated>
+    <id>http://morganp.github.io/blog/tech/brew-update-fail</id>
+    <content type="html"><![CDATA[<p>Received the following errors when doing <code>brew update</code> on mountain lion:</p>
+
+<pre><code>error: The following untracked working tree files would be overwritten by merge:
+        Library/Formula/platypus.rb
+Please move or remove them before you can merge.
+Aborting
+Error: Failure while executing: git pull -q origin refs/heads/master:refs/remotes/origin/master
+</code></pre>
+
+<p>A solution found on <a href="http://stackoverflow.com/questions/10762859/brew-update-the-following-untracked-working-tree-files-would-be-overwritten-by">Stackoverflow</a></p>
+
+<pre><code>cd /usr/local
+git fetch origin
+git reset --hard origin/master
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Garden Design Books]]></title>
@@ -747,32 +809,6 @@ ans =
      2
      3
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Lightroom 5.3 RC Beta Available]]></title>
-    <link href="http://morganp.github.io/blog/photography/lightroom-53-rc-beta-available/"/>
-    <updated>2013-11-23T18:14:24+00:00</updated>
-    <id>http://morganp.github.io/blog/photography/Lightroom-53-RC-Beta-available</id>
-    <content type="html"><![CDATA[<p><a href="http://labs.adobe.com/technologies/lightroom5-3/">Lightroom 5.3RC</a></p>
-
-<p>The Lightroom 5.3 release candidate will expire on December 31, 2013.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[OS X Handbrake Install Libdvdcss (Decryption)]]></title>
-    <link href="http://morganp.github.io/blog/tech/os-x-handbrake-install-libdvdcss-decryption/"/>
-    <updated>2013-10-30T12:38:35+00:00</updated>
-    <id>http://morganp.github.io/blog/tech/OS-X-Handbrake-install-libdvdcss-Decryption</id>
-    <content type="html"><![CDATA[<ol>
-<li><p>Go to the <a href="http://amaras-tech.co.uk/u/7h">Videolan</a> website and download and run the libdvdcss.pkg.</p></li>
-<li><p>Switch VLC preference, Advanced, uncheck Dvd-Video use libdvdnav (instead of libdvdread)</p></li>
-</ol>
-
-
-<p>Also see <a href="http://mackonsti.wordpress.com/2013/07/22/create-backup-dvd-using-handbrake-mac/">Mackonsti.wordpress</a>.</p>
 ]]></content>
   </entry>
   

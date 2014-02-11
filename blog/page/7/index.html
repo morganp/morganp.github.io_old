@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="A new Release Candidate for Lightroom is out, Lightroom 4.3 RC1. Expires 31st Jan 2013. For me the main feature will be the support for hi resolution &hellip;">
+  <meta name="description" content="How to get method which handles a single string input or an array of strings? Splat * * turns single strings into Arrays, leaves arrays alone. a = " &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,155 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-duck-typing-strings-and-arrays/">Ruby Duck Typing Strings and Arrays</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-20T16:12:08+00:00" pubdate data-updated="true">Dec 20<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/ruby-duck-typing-strings-and-arrays/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-duck-typing-strings-and-arrays/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>How to get method which handles a single string input or an array of strings?</p>
+
+<h2>Splat *</h2>
+
+<p>* turns single strings into Arrays, leaves arrays alone.</p>
+
+<pre><code>a = "hello"
+a = *a
+puts a.inspect
+=&gt;  ["hello"]
+
+a = ["hello", "world"]
+a = *a
+puts a.inspect
+=&gt; ["hello", "world"]
+</code></pre>
+
+<h2>Example Usage</h2>
+
+<pre><code>def unknown_input( input_data )
+  input_data = *input_data
+  input_data.each do |input_item|
+      puts input_item
+  end
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/reverting-rtorrent-version-on-snow-leopard/">Reverting Rtorrent Version on Snow Leopard</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-06T20:22:33+00:00" pubdate data-updated="true">Dec 6<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/reverting-rtorrent-version-on-snow-leopard/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/reverting-rtorrent-version-on-snow-leopard/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After running  a <code>brew upgrade</code> rtorrent was plagued with segmentation faults. Which look something like :</p>
+
+<pre><code>Caught Segmentation fault, dumping stack:B] [Port: 16006]                                                                    [U 0/14]    [D 0/30] [H 28/32] [S 196/198/208] [F 15/16]
+0 0   rtorrent                            0x0000000100001c8c _Z8do_panici + 130
+1 1   rtorrent                            0x0000000100044d48 _ZN13SignalHandler6caughtEi + 234
+2 2   libSystem.B.dylib                   0x00007fff872b51ba _sigtramp + 26
+3 3   libcrypto.0.9.8.dylib               0x00007fff81414491 ERR_get_state + 65
+4 4   libtorrent.14.dylib                 0x00000001002a75a9 _ZN7torrent13DiffieHellman13store_pub_keyEPhj + 45
+5 5   libtorrent.14.dylib                 0x0000000100292fb0 _ZN7torrent9Handshake20prepare_key_plus_padEv + 74
+6 6   libtorrent.14.dylib                 0x00000001002932ac _ZN7torrent9Handshake11event_writeEv + 284
+7 7   libtorrent.14.dylib                 0x0000000100247322 _ZN7torrent10PollKQueue7performEv + 236
+8 8   libtorrent.14.dylib                 0x0000000100247d69 _ZN7torrent10PollKQueue7do_pollExi + 383
+9 9   libtorrent.14.dylib                 0x000000010026b608 _ZN7torrent11thread_base10event_loopEPS0_ + 330
+10 10  rtorrent                            0x0000000100005af4 main + 12976
+11 11  rtorrent                            0x0000000100001820 start + 52
+12 12  ???                                 0x0000000000000001 0x0 + 1
+Abort trap
+</code></pre>
+
+<p>Since mid 2011 brew has added a versions command. Lets check what versions are available:</p>
+
+<pre><code>$ brew versions rtorrent
+0.9.2 git checkout 6b8d25f /usr/local/Library/Formula/rtorrent.rb
+0.8.9 git checkout e459d51 /usr/local/Library/Formula/rtorrent.rb
+0.9.0 git checkout 9b5cba7 /usr/local/Library/Formula/rtorrent.rb
+0.8.6 git checkout b782d9d /usr/local/Library/Formula/rtorrent.rb
+0.8.5 git checkout b92799d /usr/local/Library/Formula/rtorrent.rb
+
+$ brew versions libtorrent
+0.13.2 git checkout 8d5b242 /usr/local/Library/Formula/libtorrent.rb
+0.12.9 git checkout edd213c /usr/local/Library/Formula/libtorrent.rb
+0.13.0 git checkout 130b408 /usr/local/Library/Formula/libtorrent.rb
+0.12.6 git checkout 0476235 /usr/local/Library/Formula/libtorrent.rb
+0.12.5 git checkout d0ec1e6 /usr/local/Library/Formula/libtorrent.rb
+</code></pre>
+
+<p>The version giving me the segmentation faults is 0.9.2 with libtorrent 0.13.2, lets roll back to the previous version 0.8.9/0.12.9.</p>
+
+<pre><code>brew uninstall rtorrent libtorrent
+cd /usr/local/Library/Formula/
+git checkout edd213c
+# Not sure why brew thinks these are installed again but I had to run
+brew uninstall rtorrent libtorrent 
+brew install rtorrent libtorrent 
+</code></pre>
+
+<p>Once that has completed rtorrent should run as 0.8.9/0.12.9, which seems a whole lot more reliable on a mid 2010 Mac mini running snow leopard.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -846,146 +995,6 @@ names(data) # List the header names
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/git-submodules/">Git Submodules</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-28T11:40:17+01:00" pubdate data-updated="true">Sep 28<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/git-submodules/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/git-submodules/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>For code reuse within I have found Subversion externals really nice to work with. Instead of copy and pasting code between projects you import part or a whole Subversion repository, at trunk, a pinned revision of trunk or a tag.</p>
-
-<p>Git has some thing similar called submodules. Git Submodules are covered in <a href="http://git-scm.com/book/en/Git-Tools-Submodules">Chapter 6.6</a> of [Pro Git][progit] by Scott Chacon. Which has been <a href="http://git-scm.com/book">released for free</a>.</p>
-
-<p>My example is based on <a href="http://git-scm.com/book/en/Git-Tools-Submodules">Chapter 6.6</a> with a little bit of experimenting.</p>
-
-<p>For the example we will have git repos <code>project_top</code> and <code>project_sub</code>.</p>
-
-<pre><code>$ cd project_top
-$ git submodule add git@github.com:morganp/project_sub.git sub
-</code></pre>
-
-<p>We now have a folder in project_top called sub.</p>
-
-<pre><code>$ git status
-# On branch master
-# Changes to be committed:
-#     new file: .gitmodules
-#     new file: sub
-</code></pre>
-
-<p>The .gitmodules keeps track of which git repos map to folder names. sub is interesting it is actually recording the commit (hash) that you currently have cloned in sub.</p>
-
-<p>If you commit these changes.</p>
-
-<pre><code>$git commit -am 'Added Sub module sub'
-</code></pre>
-
-<p>Then go into folder sub and create or modify a file, you will see that git status works as expected if you were in a standalone repository.</p>
-
-<p>If you then commit and push the changes to sub :</p>
-
-<pre><code>git commit -am 'Modifying project_sub'
-git push origin master
-</code></pre>
-
-<p>Pushing back to the location everyone else will pull from is important as the next stage will move the project_sub sumodule on to that revision and if the commit hash does not exist and git clone or pull would fail.</p>
-
-<p>Going back to the main project_top and lets see what modifications to sub (project_sub) look like.</p>
-
-<pre><code>$ git status
-# On branch master
-# Changes not staged for commit:
-#        modified: sub (new commits)
-</code></pre>
-
-<p>Now release the changes in project_sub to every one else on project_top.</p>
-
-<pre><code>git commit sub -m 'moving to point to latest project_sub'
-git push origin master
-</code></pre>
-
-<p>Done.<br/>
-Note that github understands submodules and will display sub as a special folder in project_top. Sub will link to to the master page, there will also be a hash which will link to the included revision in that commit of project_top.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/retina-support-for-background-images/">Retina Support for Background Images</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-26T21:07:35+01:00" pubdate data-updated="true">Sep 26<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/retina-support-for-background-images/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/retina-support-for-background-images/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This is based on a <a href="http://www.kylejlarson.com/blog/2012/creating-retina-images-for-your-website/">guide to adding retina support to websites</a>.</p>
-
-<p>To add a tiled (repeating) background cretae 2 images one at 100x100px and the other with the &lsquo;_@2&rsquo; added to the file name at 200x200px then use the following css.</p>
-
-<pre><code>body {background: url(../images/bg.png) repeat; background-size: 100px 100px;}
-
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-   body {background: url(../images/bg_@2x.png) repeat;}
-}
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -1000,11 +1009,19 @@ Note that github understands submodules and will display sub as a special folder
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (6)</a></li><li><a href='/blog/garden'>Garden (5)</a></li><li><a href='/blog/home'>Home (3)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (210)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (7)</a></li><li><a href='/blog/garden'>Garden (5)</a></li><li><a href='/blog/home'>Home (3)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (211)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-remove-values-from-array/">Matlab Remove Values From Array</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/brew-update-fail/">Brew Update Fail</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/garden-design-books/">Garden Design Books</a>
@@ -1016,14 +1033,6 @@ Note that github understands submodules and will display sub as a special folder
     
       <li class="post">
         <a href="/blog/home/chandelier/">Chandelier</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/f-stop-icus/">F-stop ICUs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/home/exact-fit-blinds/">Exact Fit Blinds</a>
       </li>
     
   </ul>

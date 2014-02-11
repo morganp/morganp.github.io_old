@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | RockPaperScissors]]></title>
   <link href="http://morganp.github.io/blog/tech/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-02-11T16:13:27+00:00</updated>
+  <updated>2014-02-11T21:28:46+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Brew Update Fail]]></title>
+    <link href="http://morganp.github.io/blog/tech/brew-update-fail/"/>
+    <updated>2014-02-11T21:17:24+00:00</updated>
+    <id>http://morganp.github.io/blog/tech/brew-update-fail</id>
+    <content type="html"><![CDATA[<p>Received the following errors when doing <code>brew update</code> on mountain lion:</p>
+
+<pre><code>error: The following untracked working tree files would be overwritten by merge:
+        Library/Formula/platypus.rb
+Please move or remove them before you can merge.
+Aborting
+Error: Failure while executing: git pull -q origin refs/heads/master:refs/remotes/origin/master
+</code></pre>
+
+<p>A solution found on <a href="http://stackoverflow.com/questions/10762859/brew-update-the-following-untracked-working-tree-files-would-be-overwritten-by">Stackoverflow</a></p>
+
+<pre><code>cd /usr/local
+git fetch origin
+git reset --hard origin/master
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Reverting in Git]]></title>
@@ -106,43 +129,6 @@ Alias loop
 </code></pre>
 
 <p><a href="http://docstore.mik.ua/orelly/unix/upt/ch10_06.htm">source</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Vim: Status Line]]></title>
-    <link href="http://morganp.github.io/blog/tech/vim-status-line/"/>
-    <updated>2013-12-17T19:04:42+00:00</updated>
-    <id>http://morganp.github.io/blog/tech/Vim-Status-line</id>
-    <content type="html"><![CDATA[<p>Deciding to see if I could make my vim status line a bit more practical for myself. I decided to try having the modification &lsquo;[+]&rsquo; warning as the first thing on the line. I do not want the rest of the line jumping about when it changes from empty to +, using min widths that should be no problem:</p>
-
-<pre><code>" m is the [+] when modified
-set statusline=-%-01h-%10m-%-01r
-</code></pre>
-
-<p>This becomes empty except the  &lsquo;&ndash; &ndash; &ndash;&rsquo; when no flags are set, from :help statusline</p>
-
-<blockquote><p>When all items in a group becomes an empty string (i.e. flags that are
-not set) and a minwid is not set for the group, the whole group will
-become empty.  This will make a group like the following disappear
-completely from the statusline when none of the flags are set. ></p>
-
-<pre><code>     :set statusline=...%(\ [%M%R%H]%)...
-</code></pre></blockquote>
-
-<p><a href="http://got-ravings.blogspot.co.uk/2008/08/vim-pr0n-making-statuslines-that-own.html">The answer (source)</a></p>
-
-<pre><code>You can also group several items together and apply formatting 
-to the group as a whole. To do this, use the %(...%) syntax. 
-For example: %20(%l/%L%) would display&lt;current-line&gt;/&lt;total-lines&gt; 
-at a minimum width of 20 characters.
-</code></pre>
-
-<p>Winner: create a group with %width( &hellip; %)</p>
-
-<pre><code>" m is the [+] when modified
-set statusline=%10(-%h-%m-%r%)
-</code></pre>
 ]]></content>
   </entry>
   
