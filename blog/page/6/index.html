@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Normally this would just end up on my link blog, but thought it was worthy of a proper mention. A JavaScript tear able net curtain, clicking the &hellip;">
+  <meta name="description" content="Still unresolved The Jetway ADPE4S uses a Marvell 88SE6145 chip which a number of users have had trouble getting to work with Linux. Currently there &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,164 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ubuntu-and-the-jetway-adpe4s/">Ubuntu and the Jetway ADPE4S</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-02T17:02:37+01:00" pubdate data-updated="true">May 2<span>nd</span>, 2013</time>
+        
+           | <a href="/blog/tech/ubuntu-and-the-jetway-adpe4s/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ubuntu-and-the-jetway-adpe4s/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>Still unresolved</strong></p>
+
+<p>The Jetway ADPE4S uses a Marvell 88SE6145 chip which a number of users have had trouble getting to work with Linux.</p>
+
+<p>Currently there is <a href="https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1087790">bug report</a> open for ubuntu about it.</p>
+
+<p>Also there is a report on the <a href="http://wiki.debian.org/pata_marvell">debian wiki</a> about fixing it so far I have:</p>
+
+<p>/etc/modprobe.d/my-marvell.conf</p>
+
+<pre><code>install pata_marvell /bin/true
+</code></pre>
+
+<p>/etc/modprobe.d/my-marvel.conf //&lt;&mdash; spelling mistake?</p>
+
+<pre><code>options ahci marvell_enable=1
+</code></pre>
+
+<p>Run (rebuilds some boot thingy):</p>
+
+<pre><code>sudo update-initramfs -u
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ubuntu-linux-list-disks/">Ubuntu (Linux) List Disks</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-02T13:39:24+01:00" pubdate data-updated="true">May 2<span>nd</span>, 2013</time>
+        
+           | <a href="/blog/tech/ubuntu-linux-list-disks/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ubuntu-linux-list-disks/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>sudo lshw -class disk -class storage -short
+</code></pre>
+
+<p>Outputs :</p>
+
+<pre><code>H/W path           Device     Class       Description
+=====================================================
+/0/100/1c.3/0      scsi0      storage     JMB363 SATA/IDE Controller
+/0/100/1c.3/0/0    /dev/sda   disk        3TB ST3000DM001-9YN1
+/0/100/1c.3/0/1    /dev/sdb   disk        2TB SAMSUNG HD204UI
+/0/100/1c.3/0.1               storage     JMB368 IDE controller
+/0/100/1f.2        scsi2      storage     N10/ICH7 Family SATA Controller [IDE mode]
+/0/100/1f.2/0      /dev/sdc   disk        3TB ST3000DM001-9YN1
+/0/100/1f.2/1      /dev/sdd   disk        2TB SAMSUNG HD204UI
+/0/1               scsi6      storage
+/0/1/0.0.0         /dev/sde   disk        8019MB SCSI Disk
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/bt-broadband-messing-around-with-your-dns/">BT Broadband Messing Around With Your DNS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-25T09:02:48+01:00" pubdate data-updated="true">Apr 25<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/bt-broadband-messing-around-with-your-dns/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/bt-broadband-messing-around-with-your-dns/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>BT broadband has <strong>BT Web Address Help</strong> enabled by default. This allows then to redirect you to another site if they think you typed the URL incorrectly.</p>
+
+<p>This can cause problems when connecting to a VPN, which is setup to no route normal websites through the VPN. When the URL is rejected your VPN then picks it up as a fall back and tries over its connection. However when these Smart systems are enabled by your isp they will never reject them and always try to offer useful content.</p>
+
+<p>To <a href="http://preferences.webaddresshelp.bt.com/selfcare/preferences.cgi">turn off your BT Web Address Help</a> go to : <a href="http://preferences.webaddresshelp.bt.com/selfcare/preferences.cgi">BT Preferences</a>. You can read more about it in <a href="http://bt.custhelp.com/app/answers/detail/a_id/14244/c/346,402,405">this discussion</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -523,158 +681,6 @@ x . 1/x  =1
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vim-code-folding/">Vim Code Folding</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-22T16:37:17+00:00" pubdate data-updated="true">Jan 22<span>nd</span>, 2013</time>
-        
-           | <a href="/blog/tech/vim-code-folding/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/vim-code-folding/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To enable code folding in Vim type (from normal mode):</p>
-
-<pre><code>:set foldmethod=marker
-</code></pre>
-
-<p>Or add this to your <code>.vimrc</code></p>
-
-<pre><code>set foldmethod=marker
-</code></pre>
-
-<p>Now anything contained with in <code>}</code> will be folded.</p>
-
-<h2>Commands</h2>
-
-<p>From Normal mode</p>
-
-<p>unfold <code>zo</code> (open)<br/>
-fold  <code>zc</code> (collapse)<br/>
-unfold all <code>zr</code><br/>
-Fold all <code>zm</code></p>
-
-<p>Read more on <a href="http://vim.wikia.com/wiki/Folding">vim wiki</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/nik-hdr-efex-pro-20-8499-even-in-the-uk/">Nik HDR Efex Pro 2.0 $84.99 (Even in the UK)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-29T11:58:24+00:00" pubdate data-updated="true">Dec 29<span>th</span>, 2012</time>
-        
-           | <a href="/blog/photography/nik-hdr-efex-pro-20-8499-even-in-the-uk/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/nik-hdr-efex-pro-20-8499-even-in-the-uk/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Initially Launched at $99 in the US or £99 in the UK. Today they seem to be charging $99 regardless of location.</p>
-
-<p>15% Dicount Code <em>NIKPSS</em> brings total to $84.99 (£53)!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/the-unworkable-lightroom-to-ipad-workflow/">The Unworkable Lightroom to iPad Workflow</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-24T16:05:49+00:00" pubdate data-updated="true">Dec 24<span>th</span>, 2012</time>
-        
-           | <a href="/blog/photography/the-unworkable-lightroom-to-ipad-workflow/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/the-unworkable-lightroom-to-ipad-workflow/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After a bit of research I decided to give <a href="http://www.photosmithapp.com/">PhotoSmith</a> Version 2.2 a go, it is the most expensive iPad app I have bought to-date. It fills a niche market and nothing else promised what it could deliver it might be worth it. Due to failed promises and many things not work as you would expect it was a massive drain on my time investigating how to get it to work. so the real cost of the app is the hours of you life it wasted!</p>
-
-<p>What I was initially looking for was the ability to import photos to Lightroom, Sit on the sofa with iPad pick my favourites sort out my tags then go back to edit it Lightroom. The other important feature for me was to export photoshoots so I could show people my edited photos in fullscreen on the ipad.</p>
-
-<p>The sync process was not very smooth and forced me to start using collection, well something might have to give to add this into the workflow. but on a whole the syncing back and forth between photosmith and Lightroom just did not work.</p>
-
-<p>May be I can export my final pictures, but they end up in the Camera Roll and photostream, What! this is potentially disastrous, if I was on a client shoot and took pictures export to Photosmith on the iPad to  show the client how they were coming out and found that they had also been shared with friends and family breaking clients confidentiality.</p>
-
-<p>Oh and the app will not start if you block access to your camera roll!</p>
-
-<p>After exporting one picture it seemed to be fine. Restarted app NO pictures, great it just lost the last sync. Lets try again, sent 3 photos over. Photos show up, lets view full screen, quiet good can flick between them. Then Boom, I know have some how got 887 photos in photosmith, while viewing fullscreen it decided to import my entire camera roll. I have specifically configured it not to load apps from any where but a Lightroom export.</p>
-
-<p>They say they are working on a new version, but I am not holding my breath.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -689,11 +695,23 @@ Fold all <code>zm</code></p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (7)</a></li><li><a href='/blog/garden'>Garden (5)</a></li><li><a href='/blog/home'>Home (3)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (211)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (5)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (211)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-legend-colours/">Matlab: Legend Colours</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/home/cooking-le-crueset-sizes/">Kitchen: Le Creuset</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-benchmarking/">Matlab Benchmarking</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-remove-values-from-array/">Matlab Remove Values From Array</a>
@@ -701,18 +719,6 @@ Fold all <code>zm</code></p>
     
       <li class="post">
         <a href="/blog/tech/brew-update-fail/">Brew Update Fail</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/garden-design-books/">Garden Design Books</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/home/coffee-table/">Coffee Table</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/home/chandelier/">Chandelier</a>
       </li>
     
   </ul>

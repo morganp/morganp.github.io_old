@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://morganp.github.io/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-02-11T21:28:46+00:00</updated>
+  <updated>2014-02-13T20:59:25+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,109 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab: Legend Colours]]></title>
+    <link href="http://morganp.github.io/blog/engineering/matlab-legend-colours/"/>
+    <updated>2014-02-13T20:51:45+00:00</updated>
+    <id>http://morganp.github.io/blog/engineering/matlab-legend-colours</id>
+    <content type="html"><![CDATA[<p>When plotting several lines in Matlab, I have become aware of how hard it was to see the colours in the legend. Based <a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/267186">on this matlabcentral question</a> I found an easy way to control the line thickness in the legend.</p>
+
+<pre><code>plot(randn(100,1));
+hold on;
+plot(randn(100,1),'k');
+
+
+[legh,objh,outh,outm] = legend('First','Second','Location','Southeast');
+set(objh,'linewidth',2); %%&lt;-- set legend line thickness to 2
+</code></pre>
+
+<p>Or just the following after you define your legend:</p>
+
+<pre><code>% legend('First','Second','Location','Southeast');
+
+[legh,objh,outh,outm] = legend();
+set(objh,'linewidth',2);
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Kitchen: Le Creuset]]></title>
+    <link href="http://morganp.github.io/blog/home/cooking-le-crueset-sizes/"/>
+    <updated>2014-02-12T21:03:49+00:00</updated>
+    <id>http://morganp.github.io/blog/home/cooking-le-crueset-sizes</id>
+    <content type="html"><![CDATA[<p>Le Creuset do not list pan volumes on there site so for <strong>Round Cast Iron</strong>:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center"> Diameter  </th>
+<th align="center">  Volume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">18cm</td>
+<td align="center"> 1.8 Litres </td>
+</tr>
+<tr>
+<td align="center">20cm</td>
+<td align="center"> 2.4 Litres </td>
+</tr>
+<tr>
+<td align="center">22cm</td>
+<td align="center"> 3.3 Litres </td>
+</tr>
+<tr>
+<td align="center">24cm</td>
+<td align="center"> 4.2 Litres </td>
+</tr>
+<tr>
+<td align="center">26cm</td>
+<td align="center"> 5.5 Litres </td>
+</tr>
+<tr>
+<td align="center">28cm</td>
+<td align="center"> 6.7 Litres </td>
+</tr>
+<tr>
+<td align="center">30cm</td>
+<td align="center"> 8.4 Litres </td>
+</tr>
+<tr>
+<td align="center">34cm</td>
+<td align="center">12.4 Litres </td>
+</tr>
+</tbody>
+</table>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab Benchmarking]]></title>
+    <link href="http://morganp.github.io/blog/engineering/matlab-benchmarking/"/>
+    <updated>2014-02-12T20:55:42+00:00</updated>
+    <id>http://morganp.github.io/blog/engineering/matlab-benchmarking</id>
+    <content type="html"><![CDATA[<p>In the following example we test the allocation speed of different types:</p>
+
+<pre><code>samples_to_avg = 10000;
+for i=1:samples_to_avg
+  tic; t = int8(zeros(32,2^16)); b(i) = toc;
+end
+avg_int8 = mean(b);
+
+for i=1:samples_to_avg
+  tic; t = zeros(32,2^16); b(i) = toc;
+end
+avg_double = mean(b);
+
+%int 8 is
+disp(['int8 pre-allocation is ', num2str(1 - avg_double/avg_int8), ' times faster than doubles'])
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Matlab Remove Values From Array]]></title>
@@ -735,80 +838,6 @@ bunch         Coriander stalks
 <p>Serve with Rice, and lemon wedges to squeeze over it.</p>
 
 <p><img class="centre" src="http://morganp.github.io/images/ChickenTikkaMasala/morganp-20130910-ChickenTikkaMasala-IMG_3991.jpg"></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Lightroom Library Metadata Panel]]></title>
-    <link href="http://morganp.github.io/blog/photography/lightroom-library-metadata-panel/"/>
-    <updated>2013-12-04T19:04:14+00:00</updated>
-    <id>http://morganp.github.io/blog/photography/Lightroom-Library-Metadata-Panel</id>
-    <content type="html"><![CDATA[<p>The metadata panel in Lightroom has always felt a little crowded to me. It shows too many dialog boxes or not the ones I want and have to scroll through many panes.</p>
-
-<p>Since most of my photography is uploaded to <a href="http://www.flickr.com/photos/morgan_prior/">flickr</a> there are a few section of metadata which are useful.</p>
-
-<p>I use &lsquo;Job Identifier&rsquo; as the shoot name, this is the same as the folder I put my RAW files in. Whe I export this becomes part of the file name. My export file name is &lsquo;morganp-Date (YYYYMMDD)-Job Identifier-Filename&rsquo;.</p>
-
-<p> <a href="http://www.flickr.com/photos/morgan_prior/11209946034/"><img src="http://farm4.staticflickr.com/3820/11209946034_ecd2792ec2_n.jpg" width="276" height="320" alt="Lightroom Export Filename"></a></p>
-
-<p>The title of the image in my flick export is taken from the IPTC &lsquo;title&rsquo; . So I really only want these to setting present for my flick exports.</p>
-
-<p>Enter <a href="http://regex.info/blog/lightroom-goodies/metadata-presets">Jeffrey&rsquo;s “Metadata-Viewer Preset Editor”</a>. This allows you to create custom metadata views with only the fields you require.</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/11209999464/"><img src="http://farm6.staticflickr.com/5520/11209999464_47aa9e93bd_n.jpg" width="320" height="214" alt="Jeffrey's Metadata-Viewer Preset Editor"></a></p>
-
-<p>The minimal view:</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/11210017855/"><img src="http://farm8.staticflickr.com/7305/11210017855_0a643b1d87_n.jpg" width="320" height="209" alt="Lightroom Library Metadata"></a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hugin 2013 Released]]></title>
-    <link href="http://morganp.github.io/blog/photography/hugin-2013-released/"/>
-    <updated>2013-11-27T19:40:08+00:00</updated>
-    <id>http://morganp.github.io/blog/photography/Hugin-2013-Released</id>
-    <content type="html"><![CDATA[<p>11 Months since the last Release <a href="http://hugin.sourceforge.net/">Hugin 2013.0.0</a> is released.</p>
-
-<p>One of the best photo stitchers available at any cost.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Matlab Repeat a Matrix N Times]]></title>
-    <link href="http://morganp.github.io/blog/engineering/matlab-repeat-a-matrix-n-times/"/>
-    <updated>2013-11-27T10:57:36+00:00</updated>
-    <id>http://morganp.github.io/blog/engineering/Matlab-repeat-a-matrix-n-times</id>
-    <content type="html"><![CDATA[<p>repmat(matrix, [repeat_y, repeat_x])</p>
-
-<p>Horizontal</p>
-
-<pre><code>repmat([1 2 3],[1,4])
-
-ans =
-
-     1     2     3     1     2     3     1     2     3     1     2     3
-</code></pre>
-
-<p>Vertical</p>
-
-<pre><code>repmat([1; 2; 3],[4,1])
-
-ans =
-
-     1
-     2
-     3
-     1
-     2
-     3
-     1
-     2
-     3
-     1
-     2
-     3
-</code></pre>
 ]]></content>
   </entry>
   

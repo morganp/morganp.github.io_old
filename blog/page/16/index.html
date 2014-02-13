@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Using ssh to securely connect with servers from the terminal is pretty easy. set up a public key and a private key using: ssh-keygen -t rsa This &hellip;">
+  <meta name="description" content="Install Avahi, it like bonjour auto discovery but for linux, then tell it about your servers samba service. $ sudo apt-get install avahi-daemon
+$ cd &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,167 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/make-ubuntu-samba-share-show-up-on-os-x-106-finder/">Make Ubuntu Samba Share Show Up on OS X 10.6 Finder</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-25T20:35:18+01:00" pubdate data-updated="true">Jul 25<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/make-ubuntu-samba-share-show-up-on-os-x-106-finder/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/make-ubuntu-samba-share-show-up-on-os-x-106-finder/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Install Avahi, it like bonjour auto discovery but for linux, then tell it about your servers samba service.</p>
+
+<pre><code>$ sudo apt-get install avahi-daemon
+$ cd /etc/avahi/services/
+$ sudo wget https://raw.github.com/gist/1105096/0dc157711a85a08a1220ecb3fe94f069d2fcecec/etc_avahi_services_samba.service
+$ sudo mv etc_avahi_services_samba.service samba.service
+$ sudo restart avahi-daemon
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/new-macbook-air-2011-os-x-lion/">New Macbook Air (2011) & OS X Lion</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-22T12:05:36+01:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2011</time>
+        
+           | <a href="/blog/tech/new-macbook-air-2011-os-x-lion/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/new-macbook-air-2011-os-x-lion/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The new (July 2011) <a href="http://www.apple.com/macbookair/">Mac Book Air</a> is now out, shipping with Lion.</p>
+
+<p>The combination of these two fixes some issues I have had with the last air and recent OS X editions.</p>
+
+<p>The removal of the back lit keyboard was a deal breaker for me. When you are up late working on code and the lights are dimmed the contrast between the screen and the keyboard is often to high to clear see the keys. so a back lit keyboard makes a big usability difference when working in low light conditions.</p>
+
+<p>Copying a folder to a location will finally try to merge the contents! The old behavior was to replace the entire folder (this is the behavior for files). Every other operating system and the Mac command line will try to merge the contents, I even built my own <a href="http://amaras-tech.co.uk/software/FileExplorer">file browser</a> to fix this issue.</p>
+
+<p>NB: if you lost work due to copying a folder with the same name you did not delete it, it is not in the trash, it is just gone!</p>
+
+<p>We also now get full screen applications which is very useful to those working on small laptop screens. For years the apple fanboys protested that it was not necessary and we should get use to a new way of working, except the pro apps like lightroom have always had a full-screen mode to take advantage of the screen size. Looks like Apple have finally given us some things I felt have been missing for a while.</p>
+
+<p>Full drive encryption, guess this checks a box for some corporate types so business could switch over. I do like this idea for portable devices though, if some one picks up my laptop then all my work is protected.</p>
+
+<p>Apparently they are also going to support NFSv4, NFS = Networked File System and they have scrapped there own AFP Apple file protocol. This should mean connecting to a linux NAS box much easier.</p>
+
+<p>The terminal is now 256 Colours instead of 16.</p>
+
+<p><a href="http://www.apple.com/macosx/whats-new/features.html">Full list of feature</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/get-latest-ruby-192-build-with-rvm/">Get Latest Ruby 1.9.2 Build With RVM</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-16T07:47:23+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/get-latest-ruby-192-build-with-rvm/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/get-latest-ruby-192-build-with-rvm/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ruby 1.9.2-p290 released, if you have <a href="http://beginrescueend.com/">RVM</a> installed updating to the latest release is easy</p>
+
+<pre><code>rvm get head
+rvm reload
+rvm install 1.9.2
+</code></pre>
+
+<p>If you do not have <a href="http://beginrescueend.com/">RVM</a> installed you can <a href="http://beginrescueend.com/rvm/install/">read up here</a> or just run:</p>
+
+<pre><code>bash &lt; &lt;(curl -s https://rvm.beginrescueend.com/install/rvm)
+</code></pre>
+
+<p>You may want to check your default gem list in your old version and add then make the new ruby your default. Having bundler present is almost essential for most projects, to install the protected gemsets.</p>
+
+<pre><code>rvm gem list &gt; rvm_old_gemlist.txt
+rvm --default use 1.9.2
+gem install bundler
+</code></pre>
+
+<p>When only specifying a ruby version the latest release will be the default.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -610,276 +772,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/setting-up-postgresql-on-os-x/">Setting Up PostgreSQL on OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-20T11:35:31+01:00" pubdate data-updated="true">Jun 20<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/setting-up-postgresql-on-os-x/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/setting-up-postgresql-on-os-x/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>An old guide is written on the <a href="http://developer.apple.com/internet/opensource/postgres.htmlhttp://developer.apple.com/internet/opensource/postgres.html">Apple Developer Forum</a> however if you are using <a href="https://github.com/mxcl/homebrew">Homebrew</a> it is much simpler.</p>
-
-<pre><code>$ brew install postgresql
-</code></pre>
-
-<p>Define a data area for the database to be stored.</p>
-
-<pre><code>mkdir -p ~/.psgrs/data
-</code></pre>
-
-<p>Initialize the database folder:</p>
-
-<pre><code>#initidb can be found here /usr/local/Cellar/postgresql/9.0.4/bin/
-$ initdb -D ~/.psgrs/data
-</code></pre>
-
-<p>Create the database:</p>
-
-<pre><code>$ createdb example_dev
-</code></pre>
-
-<p>Start the postgresql server:</p>
-
-<pre><code># postgres can be found here /usr/local/Cellar/postgresql/9.0.4/bin
-$ postgres -D ~/.psgrs/data
-</code></pre>
-
-<h2>Summary of Postgresql setup for Development</h2>
-
-<pre><code>$ brew install postgresql
-$ mkdir -p ~/.psgrs/data
-$ initdb -D ~/.psgrs/data
-$ createdb example_dev
-$ postgres -D ~/.psgrs/data
-</code></pre>
-
-<p>A Rails database.yaml file might look something like:</p>
-
-<pre><code>development:
-    adapter: postgresql
-    host: localhost
-    port: 5432
-    username: 
-    password: 
-    database: example_dev
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-arrays-part-1/">Ruby Arrays, Part 1</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-23T23:37:26+01:00" pubdate data-updated="true">May 23<span>rd</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-arrays-part-1/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-arrays-part-1/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Some uses of Arrays that were not apparent at first.</p>
-
-<h2>Enumeration</h2>
-
-<p><a href="http://ruby-doc.org/core/classes/Array.html#M000231">each</a> is the basic enumerator method but there is also <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001511">each_with_index</a> (and for hashes <a href="http://ruby-doc.org/core/classes/Hash.html#M000741">each_pair</a>)</p>
-
-<pre><code>['a', 'b', 'c', 'd'].each {|item| puts item }
-['a', 'b', 'c', 'd'].each_with_index {|item,index| puts "#{index}:#{item}" }
-{:a=&gt;1, :b=&gt;2}.each_pair {|key,value| puts "#{key}=&gt;#{value}" }
-</code></pre>
-
-<h2>Sorting</h2>
-
-<p>Sort is very easy with ruby if you want a basic sort [4,5,3,2,7].sort will do. However sorting by any key is possible using sort_by. Sort_by performs a <a href="http://amaras-tech.co.uk/people/morgan/article/98">Schwartzian Transform</a></p>
-
-<pre><code>['a','B','D','c'].sort
-#=&gt; ["B", "D", "a", "c"]
-['a','B','D','c'].sort_by {|x| x.downcase }
-#=&gt; ["a", "B", "c", "D"]    
-</code></pre>
-
-<h2>Return Arrays</h2>
-
-<p>When you want an array, map modifies the contents of each element:</p>
-
-<pre><code>[1,2,3,4].map {|i| i*2 }
-#=&gt; [2,4,6,8]
-# or with any enumerable (Range)
-(1..4).map {|i| i*2 }
-</code></pre>
-
-<p>select and reject can be used to select and remove elements from the enumerable, and return a new enumerable, they are immutable methods.</p>
-
-<pre><code>[0,1,2,3,4,5].select { |x| x &gt; 2 }
-#=&gt; [3,4,5]
-[0,1,2,3,4,5].reject { |x| x &lt; 3 }
-#=&gt; [3,4,5]
-</code></pre>
-
-<p>select! and reject! (bang operators) modify the existing enumerable. They have more natural names that I think should be used when appropriate, keep_if and delete_if.</p>
-
-<pre><code>[0,1,2,3,4,5].keep_if { |x| x &gt; 2 }
-#=&gt; [3,4,5]
-[0,1,2,3,4,5].delete_if { |x| x &lt; 3 }
-#=&gt; [3,4,5]
-</code></pre>
-
-<h2>Reduction to a Single Value</h2>
-
-<p>inject can be called on any enumerable object, it iterates over each item with an accumulator.</p>
-
-<pre><code>[1,2,3,4].inject {|memory, item| memory * (item+1) } 
-</code></pre>
-
-<p>For basic operations there is the reduce method which can be used for summing and multiplying out the arrays.</p>
-
-<p>Sum:</p>
-
-<pre><code> [1,2,3,4].reduce :+
-</code></pre>
-
-<p>Multiply:</p>
-
-<pre><code>[1,2,3,4].reduce :*
-</code></pre>
-
-<h2>Booleans</h2>
-
-<p><a href="http://ruby-doc.org/core/classes/Enumerable.html#M001510">include?</a> is used to check if the array contains the supplied object.</p>
-
-<pre><code>['a','b','c'].include?( 'b' )
-#=&gt; true
-</code></pre>
-
-<p><a href="http://ruby-doc.org/core/classes/Enumerable.html#M001499">all?</a> and <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001500">any?</a> can be used to check if the array matches against given criteria.</p>
-
-<pre><code>[1,2,3,4].any?{|x| x &gt; 3 }
-#=&gt; true
-[1,2,3,4].all?{|x| x &gt; 3 }
-#=&gt; false
-[1,2,3,4].any?{|x| x &gt; 5 }
-#=&gt; false
-[1,2,3,4].all?{|x| x &gt; 0 }
-#=&gt; true
-</code></pre>
-
-<p>I often use <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001500">any?</a> with an array of regular expressions to match a string to any item.</p>
-
-<pre><code>text   = "one"
-search = [/one/, /two/, /three/]
-found  = search.any? { |regexp| text.match( regexp ) }
-#=&gt; true
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/installing-gistvim/">Installing gist.vim</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-20T20:32:05+01:00" pubdate data-updated="true">May 20<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/installing-gistvim/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/installing-gistvim/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This vim plugin will allow you to gist directly from vim, simple way is just :Gist to gist entire file more options in the <a href="https://github.com/mattn/gist-vim/blob/master/README.mkd">Full Readme</a>.</p>
-
-<p>If you have not heard of gists or Github. Github is a very popular (especially with in the Ruby community) way of sharing open source code. <a href="https://gist.github.com/">Gists</a> are the easy way to save and share small snippets of code.</p>
-
-<h2>Install</h2>
-
-<pre><code>cd ~/.vim/plugin
-wget --nocheck-certificate https://github.com/mattn/gist-vim/raw/master/plugin/gist.vim
-cd ../doc
-wget --no-check-certificate https://github.com/mattn/gist-vim/raw/master/doc/gist-vim.txt
-
-#Now to set Your env variables
-git config --global github.user your-name-here
-git config --global github.token your-token-here
-</code></pre>
-
-<p>You Github token can be found on the <a href="https://github.com/account">GitHub Admin</a> Account Admin tab.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/17/">&larr; Older</a>
@@ -894,11 +786,23 @@ git config --global github.token your-token-here
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (7)</a></li><li><a href='/blog/garden'>Garden (5)</a></li><li><a href='/blog/home'>Home (3)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (211)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (5)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (211)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-legend-colours/">Matlab: Legend Colours</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/home/cooking-le-crueset-sizes/">Kitchen: Le Creuset</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-benchmarking/">Matlab Benchmarking</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-remove-values-from-array/">Matlab Remove Values From Array</a>
@@ -906,18 +810,6 @@ git config --global github.token your-token-here
     
       <li class="post">
         <a href="/blog/tech/brew-update-fail/">Brew Update Fail</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/garden-design-books/">Garden Design Books</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/home/coffee-table/">Coffee Table</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/home/chandelier/">Chandelier</a>
       </li>
     
   </ul>
