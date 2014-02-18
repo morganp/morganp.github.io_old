@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Tray Bake Chicken Dinner. Based on recipe from &ldquo;Jamie Oliver&rsquo;s Recipe&rdquo; iOS app. Ingredients (for 2) 2 Chicken thighs
-2 Rashers of &hellip;">
+  <meta name="description" content="Deciding to see if I could make my vim status line a bit more practical for myself. I decided to try having the modification &lsquo;[+]&rsquo; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,73 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vim-status-line/">Vim: Status Line</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-17T19:04:42+00:00" pubdate data-updated="true">Dec 17<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/vim-status-line/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/vim-status-line/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Deciding to see if I could make my vim status line a bit more practical for myself. I decided to try having the modification &lsquo;[+]&rsquo; warning as the first thing on the line. I do not want the rest of the line jumping about when it changes from empty to +, using min widths that should be no problem:</p>
+
+<pre><code>" m is the [+] when modified
+set statusline=-%-01h-%10m-%-01r
+</code></pre>
+
+<p>This becomes empty except the  &lsquo;&ndash; &ndash; &ndash;&rsquo; when no flags are set, from :help statusline</p>
+
+<blockquote><p>When all items in a group becomes an empty string (i.e. flags that are
+not set) and a minwid is not set for the group, the whole group will
+become empty.  This will make a group like the following disappear
+completely from the statusline when none of the flags are set. ></p>
+
+<pre><code>     :set statusline=...%(\ [%M%R%H]%)...
+</code></pre></blockquote>
+
+<p><a href="http://got-ravings.blogspot.co.uk/2008/08/vim-pr0n-making-statuslines-that-own.html">The answer (source)</a></p>
+
+<pre><code>You can also group several items together and apply formatting 
+to the group as a whole. To do this, use the %(...%) syntax. 
+For example: %20(%l/%L%) would display&lt;current-line&gt;/&lt;total-lines&gt; 
+at a minimum width of 20 characters.
+</code></pre>
+
+<p>Winner: create a group with %width( &hellip; %)</p>
+
+<pre><code>" m is the [+] when modified
+set statusline=%10(-%h-%m-%r%)
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -790,85 +856,6 @@ ans =
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-setting-simulink-simulation-stop-time/">Matlab Setting Simulink Simulation Stop Time</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-29T19:17:44+00:00" pubdate data-updated="true">Oct 29<span>th</span>, 2013</time>
-        
-           | <a href="/blog/engineering/matlab-setting-simulink-simulation-stop-time/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/engineering/matlab-setting-simulink-simulation-stop-time/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Running the Simulink model model.mdl from matlab for a specified time:</p>
-
-<pre><code>sim('model', stoptime)
-</code></pre>
-
-<p>Where stoptime is a number. To mix with other options such eg. SimulationMode, things get a little trickier.</p>
-
-<pre><code>sim( 'model', 'SimulationMode', 'normal')
-</code></pre>
-
-<p>you would expect:</p>
-
-<pre><code>sim( 'model', 'SimulationMode', 'normal', 'StopTime', 1)
-</code></pre>
-
-<p>but this results in :</p>
-
-<pre><code>Invalid setting in block_diagram 'model' for parameter 'StopTime'
-</code></pre>
-
-<p>The trick is that parameter, value pairs must be strings, what you actually need to do is:</p>
-
-<pre><code>sim( 'model', 'SimulationMode', 'normal', 'StopTime', num2str(1) )
-</code></pre>
-
-<p>Or you can create an ParameterStruct,</p>
-
-<pre><code>SimOpts.SimulationMode = 'normal';
-SimOpts.StopTime       = num2str(1);
-sim( 'model', SimOpts )
-</code></pre>
-
-<p>Both of these methods change the way in which the to_workspace blocks work, instead of just outputting a variable to the workspace or available in the calling function sim now returns an &lsquo;Simulink.SimulationOutput&rsquo; object.</p>
-
-<p>Instead of just accessing &lsquo;simout&rsquo; you know need to capture the sim output and use the get command to retrieve the data :</p>
-
-<pre><code>simdata = sim( 'model', SimOpts ) ;
-simdata.get('simout' )
-</code></pre>
-
-<p><a href="http://www.mathworks.co.uk/help/simulink/ug/using-the-sim-command.html">Further Info on the sim command</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -883,11 +870,15 @@ simdata.get('simout' )
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (7)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (8)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/propagator/">Propagator</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/monkey-patch-octopress/">Monkey Patch Octopress</a>
@@ -903,10 +894,6 @@ simdata.get('simout' )
     
       <li class="post">
         <a href="/blog/engineering/matlab-legend-colours/">Matlab: Legend Colours</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/home/cooking-le-crueset-sizes/">Kitchen: Le Creuset</a>
       </li>
     
   </ul>

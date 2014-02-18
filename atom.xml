@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://morganp.github.io/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-02-18T19:59:30+00:00</updated>
+  <updated>2014-02-18T21:06:17+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Propagator]]></title>
+    <link href="http://morganp.github.io/blog/garden/propagator/"/>
+    <updated>2014-02-18T20:43:00+00:00</updated>
+    <id>http://morganp.github.io/blog/garden/propagator</id>
+    <content type="html"><![CDATA[<p>I have always had trouble getting seeds to germinate, therefore I have purchased a <a href="https://www.amazon.co.uk/dp/B000YA43HC?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B000YA43HC&amp;adid=18Q38Q8QS33XBPP04WNR&amp;">propagator</a> to help. Ideally I would have a thermostatically controlled unit, but they tend to be a bit more expensive, and non-looked like they wood fit nicely on a windowsill.</p>
+
+<p>Garland Super7, should raise soil temperature by 8 degrees but fluctions of indoor temp will be passed on:</p>
+
+<p><img src="http://morganp.github.io/images/Gardening/morganp-20140218-Propagator-IMG_6827.jpg" title="Garland Super7" alt="Propagator" /></p>
+
+<p>Hopefully I will have some better luck in the future.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Monkey Patch Octopress]]></title>
@@ -582,43 +597,6 @@ Alias loop
 </code></pre>
 
 <p><a href="http://docstore.mik.ua/orelly/unix/upt/ch10_06.htm">source</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Vim: Status Line]]></title>
-    <link href="http://morganp.github.io/blog/tech/vim-status-line/"/>
-    <updated>2013-12-17T19:04:42+00:00</updated>
-    <id>http://morganp.github.io/blog/tech/Vim-Status-line</id>
-    <content type="html"><![CDATA[<p>Deciding to see if I could make my vim status line a bit more practical for myself. I decided to try having the modification &lsquo;[+]&rsquo; warning as the first thing on the line. I do not want the rest of the line jumping about when it changes from empty to +, using min widths that should be no problem:</p>
-
-<pre><code>" m is the [+] when modified
-set statusline=-%-01h-%10m-%-01r
-</code></pre>
-
-<p>This becomes empty except the  &lsquo;&ndash; &ndash; &ndash;&rsquo; when no flags are set, from :help statusline</p>
-
-<blockquote><p>When all items in a group becomes an empty string (i.e. flags that are
-not set) and a minwid is not set for the group, the whole group will
-become empty.  This will make a group like the following disappear
-completely from the statusline when none of the flags are set. ></p>
-
-<pre><code>     :set statusline=...%(\ [%M%R%H]%)...
-</code></pre></blockquote>
-
-<p><a href="http://got-ravings.blogspot.co.uk/2008/08/vim-pr0n-making-statuslines-that-own.html">The answer (source)</a></p>
-
-<pre><code>You can also group several items together and apply formatting 
-to the group as a whole. To do this, use the %(...%) syntax. 
-For example: %20(%l/%L%) would display&lt;current-line&gt;/&lt;total-lines&gt; 
-at a minimum width of 20 characters.
-</code></pre>
-
-<p>Winner: create a group with %width( &hellip; %)</p>
-
-<pre><code>" m is the [+] when modified
-set statusline=%10(-%h-%m-%r%)
-</code></pre>
 ]]></content>
   </entry>
   

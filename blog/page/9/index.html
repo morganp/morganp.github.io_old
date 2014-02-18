@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="A the time of writing Google exchange syncing only works on mobile devices, which is slightly annoying but mail, contacts and calendar can all be &hellip;">
+  <meta name="description" content="If entering Mission Control (ctrl-up) is taking to long you can speed up the animation entering the following in the Terminal (/Applications/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,55 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/speed-up-mission-control-animation/">Speed Up Mission Control Animation</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-18T16:18:56+01:00" pubdate data-updated="true">Sep 18<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/speed-up-mission-control-animation/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/speed-up-mission-control-animation/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If entering Mission Control (ctrl-up) is taking to long you can speed up the animation entering the following in the Terminal (/Applications/Utilities/Terminal.app):</p>
+
+<pre><code>defaults write com.apple.dock expose-animation-duration -float 0.2; killall Dock
+</code></pre>
+
+<p>To disable the animation altogether :</p>
+
+<pre><code>defaults write com.apple.dock expose-animation-duration -float 0; killall Dock
+</code></pre>
+
+<p>I prefer to have a fast animation rather than none as it provides context, it shows me where the applications are coming from on the screen.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -645,53 +694,6 @@ ctrl-6
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/mountain-lion-twitter-and-flickr-integration/">Mountain Lion, Twitter and Flickr Integration</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-16T17:41:38+01:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
-        
-           | <a href="/blog/photography/mountain-lion-twitter-and-flickr-integration/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/mountain-lion-twitter-and-flickr-integration/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The settings for Twitter and Flickr feel a little hidden at first. To set them up go to <code>System Preferences</code> &lsquo;Internet &amp; Wireless&rsquo; &ndash;> &lsquo;Mail, Contacts &amp; Calendars&rsquo;.</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/7796473036/" title="Mountain Lion, Twitter and Flickr integration by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8284/7796473036_6de41c22c2.jpg" width="500" height="367" alt="Mountain Lion, Twitter and Flickr integration"></a></p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/7796447178/" title="Setup twitter &amp; flickr by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8436/7796447178_78d2913de2.jpg" width="500" height="401" alt="Setup twitter &amp; flickr"></a></p>
-
-<p>Once they are setup the <code>Share Sheet</code> will have new options.</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/7796459660/" title="New Options in Share Sheet by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8300/7796459660_9dca2c5223.jpg" width="500" height="406" alt="New Options in Share Sheet"></a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/10/">&larr; Older</a>
@@ -706,11 +708,15 @@ ctrl-6
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (7)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (8)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/propagator/">Propagator</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/monkey-patch-octopress/">Monkey Patch Octopress</a>
@@ -726,10 +732,6 @@ ctrl-6
     
       <li class="post">
         <a href="/blog/engineering/matlab-legend-colours/">Matlab: Legend Colours</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/home/cooking-le-crueset-sizes/">Kitchen: Le Creuset</a>
       </li>
     
   </ul>

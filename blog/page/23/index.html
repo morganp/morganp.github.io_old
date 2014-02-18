@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Having a clean build of Mac OS X Snow Leopard I thought I would give the Homebrew method of installing git a try. First of all Install Homebrew. I &hellip;">
+  <meta name="description" content="After adding some USB2 (NTFS formatted) drives to a headless Ubuntu server, they were not auto-mounted so I had to find them and mount them, with &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,60 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/adding-usb-drives-to-a-headless-ubuntu-linux-box/">Adding USB Drives to a Headless Ubuntu Linux Box</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-17T04:03:10+01:00" pubdate data-updated="true">Jul 17<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/adding-usb-drives-to-a-headless-ubuntu-linux-box/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/adding-usb-drives-to-a-headless-ubuntu-linux-box/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After adding some USB2 (NTFS formatted) drives to a headless Ubuntu server, they were not auto-mounted so I had to find them and mount them, with only remote terminal access.</p>
+
+<p>List Hard Drive Devices:</p>
+
+<pre><code>sudo fdisk -l
+</code></pre>
+
+<p>Create a mount point:</p>
+
+<pre><code>sudo mkdir /mnt/starbug1/terra06
+</code></pre>
+
+<p>and run this command to mount (NTFS formatted):</p>
+
+<pre><code>sudo mount /dev/sdc1 /mnt/starbug1/terra06 -t ntfs
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -596,81 +650,6 @@ match OverLength /\%81v.\+/
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/homebrew-package-management-for-mac-os-x/">Homebrew Package Management for Mac OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-22T07:45:14+01:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2010</time>
-        
-           | <a href="/blog/tech/homebrew-package-management-for-mac-os-x/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/homebrew-package-management-for-mac-os-x/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Homebrew is a new package management system for Mac OS X. <a href="http://www.engineyard.com/blog/2010/homebrew-os-xs-missing-package-manager/">A good review/tutorial on EngineYard</a>.</p>
-
-<p>Update 20-August-2010<br/>
-Then method of installation below adds lots (4) extra folders to your home area making it look clutered so I now preffer this method of installation.</p>
-
-<pre><code>ruby -e "$(curl -fsS http://gist.github.com/raw/323731/install_homebrew.rb)";
-</code></pre>
-
-<p>Then just make sure &lsquo;/usr/local/bin/&rsquo; and &lsquo;/usr/local/sbin/&rsquo; are on your path.<br/>
-Update End</p>
-
-<p>Although I do not like the idea of changing permissions on /usr/local/, so I did:</p>
-
-<pre><code>mkdir -p ~/bin/homebrew
-curl -L http://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C ~/bin/homebrew
-ln -s ~/bin/homebrew/bin/brew ~/bin/brew
-
-#and make sure ~/bin is on your path with soem thing like this in your ~/.bashrc
-# export PATH=$PATH:~/bin
-</code></pre>
-
-<p>Now try it out:</p>
-
-<pre><code>$ brew --version
-&gt; 0.6
-$ brew install wget
-Warning: It appears you have Macports or Fink installed
-Although, unlikely, this can break builds or cause obscure runtime issues.
-If you experience problems try uninstalling these tools.
-==&gt; Downloading http://ftp.gnu.org/gnu/wget/wget-1.12.tar.bz2
-######################################################################## 100.0%
-==&gt; ./configure --disable-debug --prefix=/Users/morgy/bin/homebrew/Cellar/wget/1.12 --disable-iri
-==&gt; make install
-/Users/morgy/bin/homebrew/Cellar/wget/1.12: 7 files, 576K, built in 44 seconds
-</code></pre>
-
-<p>Done</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/24/">&larr; Older</a>
@@ -685,11 +664,15 @@ If you experience problems try uninstalling these tools.
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (7)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (8)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/propagator/">Propagator</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/monkey-patch-octopress/">Monkey Patch Octopress</a>
@@ -705,10 +688,6 @@ If you experience problems try uninstalling these tools.
     
       <li class="post">
         <a href="/blog/engineering/matlab-legend-colours/">Matlab: Legend Colours</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/home/cooking-le-crueset-sizes/">Kitchen: Le Creuset</a>
       </li>
     
   </ul>

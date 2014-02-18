@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="While working on this site I wanted to find a simple way of trying out multiple stylesheets for different colour schemes. I originally thought a &hellip;">
+  <meta name="description" content="Entering the following command in to your .bashrc seems like a simple way forward. xmodmap -e "remove lock = Caps_Lock" However generates the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,59 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/trying-to-disable-caps-lock-on-unix-systems/">Trying to Disable Caps Lock on Unix Systems</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-02T09:45:19+01:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2012</time>
+        
+           | <a href="/blog/tech/trying-to-disable-caps-lock-on-unix-systems/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/trying-to-disable-caps-lock-on-unix-systems/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Entering the following command in to your .bashrc seems like a simple way forward.</p>
+
+<pre><code>xmodmap -e "remove lock = Caps_Lock"
+</code></pre>
+
+<p>However generates the following error when loading multiple terminals</p>
+
+<pre><code>xmodmap:  commandline:0:  bad keysym in remove modifier list 'Caps_Lock', no corresponding keycodes
+xmodmap:  1 error encountered, aborting.
+</code></pre>
+
+<p>This appear to be a safer variant with out the errors when reloading your .bashrc</p>
+
+<pre><code>xmodmap -e "clear lock"
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -962,60 +1015,6 @@ c = x[2,0]
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/recursive-grep-with-filtering/">Recursive Grep, With Filtering</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-19T15:56:31+00:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/recursive-grep-with-filtering/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/recursive-grep-with-filtering/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I noticed today that greps recursive function is different to finds recursion.</p>
-
-<pre><code>find ./ -name *.txt
-grep -R 'text' *.text
-</code></pre>
-
-<p>The above find command will search from the sub-directory down while grep will only search the current folder. The FILE_PATTERN must also match the hierarchy in grep.</p>
-
-<p>To apply a file type filter in grep you can do:</p>
-
-<pre><code>grep -R --include=*.txt 'text' ./
-</code></pre>
-
-<p>This looks at all file from the current directory (./) but will only grep files which match the include.</p>
-
-<p>An older article on <a href="http://amaras-tech.co.uk/article/63">Basic grep usage</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/15/">&larr; Older</a>
@@ -1030,11 +1029,15 @@ grep -R 'text' *.text
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (7)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (8)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/propagator/">Propagator</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/monkey-patch-octopress/">Monkey Patch Octopress</a>
@@ -1050,10 +1053,6 @@ grep -R 'text' *.text
     
       <li class="post">
         <a href="/blog/engineering/matlab-legend-colours/">Matlab: Legend Colours</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/home/cooking-le-crueset-sizes/">Kitchen: Le Creuset</a>
       </li>
     
   </ul>

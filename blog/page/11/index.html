@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="After deciding to try out epub on the kindle, as I noticed people are listing epub as an apple format. I thought it was an open version of mobi, for &hellip;">
+  <meta name="description" content="One of the limitations of mountain lion is that they are only going to support 64 bit Kernel extensions, the graphics drivers are are loaded as a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,62 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mac-mountain-lion-compatibility/">Mac Mountain Lion Compatibility</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-16T06:52:09+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/mac-mountain-lion-compatibility/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/mac-mountain-lion-compatibility/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>One of the limitations of mountain lion is that they are only going to support 64 bit Kernel extensions, the graphics drivers are are loaded as a kernel extension and some of the older macs (mac pro, iMac, MacBook, MacBook pro) only have a 32bit graphics driver (Kernel extension) avilable and so will not be supported by Mountain Lion.</p>
+
+<p>To check just run this from your terminal (/Applications/Utilities/Terminal.app) :</p>
+
+<pre><code>ioreg -l -p IODeviceTree | grep firmware-abi
+</code></pre>
+
+<p>If it is supported the result should look some thing like:</p>
+
+<pre><code>    | |   "firmware-abi" = &lt;"EFI64"&gt;
+</code></pre>
+
+<p>If you device is not supported you will get:</p>
+
+<pre><code>    | |   "firmware-abi" = &lt;"EFI32"&gt;
+</code></pre>
+
+<p><a href="http://arstechnica.com/apple/2012/07/confirmed-mountain-lion-sends-some-64-bit-macs-gently-into-that-good-night/">Source</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -566,45 +622,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/rspec-testing-exceptions-old-post/">Rspec Testing Exceptions (Old Post)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-20T14:57:39+01:00" pubdate data-updated="true">May 20<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/rspec-testing-exceptions-old-post/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/rspec-testing-exceptions-old-post/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://amaras-tech.co.uk/article/166">Correct Post</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -619,11 +636,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (7)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (8)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/propagator/">Propagator</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/monkey-patch-octopress/">Monkey Patch Octopress</a>
@@ -639,10 +660,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/matlab-legend-colours/">Matlab: Legend Colours</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/home/cooking-le-crueset-sizes/">Kitchen: Le Creuset</a>
       </li>
     
   </ul>
