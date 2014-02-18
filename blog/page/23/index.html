@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="After adding some USB2 (NTFS formatted) drives to a headless Ubuntu server, they were not auto-mounted so I had to find them and mount them, with &hellip;">
+  <meta name="description" content="Following this article lets you turn a executable java .jar into a mac appliction (.app). The Tools are only available on Mac OS with Xcode installed &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,53 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/turn-a-jar-file-into-a-mac-app/">Turn a .jar File Into a Mac .app</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-18T05:59:31+01:00" pubdate data-updated="true">Jul 18<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/turn-a-jar-file-into-a-mac-app/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/turn-a-jar-file-into-a-mac-app/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Following <a href="http://www.centerkey.com/mac/java/">this article</a> lets you turn a executable java .jar into a mac appliction (.app). The Tools are only available on Mac OS with Xcode installed.</p>
+
+<p>Basically create a 512x512px png for your logo. then use &lsquo;/Developer/Applications/Utilities/Icon Composer.app&rsquo; to create a someFileName.icns, Just drag the png into each of the different size boxes and Icon Composer will resize it correctly.
+Then Save.</p>
+
+<p>Second Stage is to start &lsquo;/Developer/Applications/Utilities/Jar Bundler.app&#8217;<br/>
+For the main class choose your executable .jar for the icon load the icns created in the previous step. Then press the create application button, chose location then your .app should be created.</p>
+
+<p>The only complaint I have about these to applications is there is no ability to save the set-up, so every time you want to rebuild you have to enter all the settings again, I do not know many other applications which do not allow you to save.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -585,71 +632,6 @@ match OverLength /\%81v.\+/
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vim-search-and-replace/">Vim Search and Replace</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-24T09:37:37+01:00" pubdate data-updated="true">Jun 24<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/vim-search-and-replace/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/vim-search-and-replace/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To search in Vim just press (apple-f for macvim) / then search string.</p>
-
-<pre><code>/search
-</code></pre>
-
-<p>This will highlight all occurrences of &lsquo;search&rsquo;, to clear the highlighting enter:</p>
-
-<pre><code>:let @/ = ""
-</code></pre>
-
-<p>To search and replace the first occurrence on this line only:</p>
-
-<pre><code>:s/search/replace/
-</code></pre>
-
-<p>Lines 1 to 10 all instance per line (thats the /g global):</p>
-
-<pre><code>:1,10 s/search/replace/g 
-</code></pre>
-
-<p>All Lines All instances</p>
-
-<pre><code>:%s/search/replace/g 
-</code></pre>
-
-<p><a href="http://www.linux.com/learn/tutorials/8255-vim-tips-the-basics-of-search-and-replace">Originals source</a><br  />
-<a href="http://stackoverflow.com/questions/657447/vim-clear-last-search-highlighting">Stack overflow vim clear question</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/24/">&larr; Older</a>
@@ -664,11 +646,15 @@ match OverLength /\%81v.\+/
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (8)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/rocket/">Rocket</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/propagator/">Propagator</a>
@@ -684,10 +670,6 @@ match OverLength /\%81v.\+/
     
       <li class="post">
         <a href="/blog/cooking/beef-wellington/">Beef Wellington</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-legend-colours/">Matlab: Legend Colours</a>
       </li>
     
   </ul>

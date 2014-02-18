@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Garden | RockPaperScissors]]></title>
   <link href="http://morganp.github.io/blog/garden/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-02-18T21:06:17+00:00</updated>
+  <updated>2014-02-18T21:18:32+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rocket]]></title>
+    <link href="http://morganp.github.io/blog/garden/rocket/"/>
+    <updated>2014-02-19T21:08:38+00:00</updated>
+    <id>http://morganp.github.io/blog/garden/rocket</id>
+    <content type="html"><![CDATA[<p>On Saturday I placed Rocket seeds in my propagator and by Tuesday it had germinated and started to sprout.</p>
+
+<p>So far so good:</p>
+
+<p><img src="/images/Gardening/morganp-20140218-Propagator-IMG_6838.jpg" title="Rocket" alt="Rocket" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Propagator]]></title>
@@ -108,119 +121,6 @@ So I picked up a few books on garden design with good reviews, they were:</p>
 <iframe src="http://rcm-eu.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=morgue-21&o=2&p=8&l=as4&m=amazon&f=ifr&ref=ss_til&asins=0897214897" style="width:120px;height:240px;" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>
 
 
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Gardener C14e]]></title>
-    <link href="http://morganp.github.io/blog/garden/gardener-c14e/"/>
-    <updated>2013-10-02T17:14:38+01:00</updated>
-    <id>http://morganp.github.io/blog/garden/Gardener-C14e</id>
-    <content type="html"><![CDATA[<p>The programs available on your Gardener C14e water computer (timer) are:</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th> Program        </th>
-<th align="center"> Cycle           </th>
-<th align="right"> Duration  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td>  00 </td>
-<td align="center"> None </td>
-<td align="right"> 0 |</td>
-</tr>
-<tr>
-<td></td>
-<td>  01 </td>
-<td align="center"> Every 6 hours  </td>
-<td align="right"> 3 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  02 </td>
-<td align="center"> Every 12 hours  </td>
-<td align="right"> 3 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  03 </td>
-<td align="center"> Every 12 hours  </td>
-<td align="right"> 15 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  04 </td>
-<td align="center"> Every 24 hours  </td>
-<td align="right"> 3 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  05 </td>
-<td align="center"> Every 24 hours  </td>
-<td align="right"> 5 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  06 </td>
-<td align="center"> Every 24 hours  </td>
-<td align="right"> 30 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  07 </td>
-<td align="center"> Every 24 hours  </td>
-<td align="right"> 60 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  08 </td>
-<td align="center"> Every 2 Days     </td>
-<td align="right"> 5 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  09 </td>
-<td align="center"> Every 2 Days     </td>
-<td align="right"> 30 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  10 </td>
-<td align="center"> Every 2 Days     </td>
-<td align="right"> 60 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  11 </td>
-<td align="center"> Every 3 Days     </td>
-<td align="right"> 30 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  12 </td>
-<td align="center"> Every 3 Days     </td>
-<td align="right"> 60 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  13 </td>
-<td align="center"> Every 4 Days     </td>
-<td align="right"> 60 minutes  |</td>
-</tr>
-<tr>
-<td></td>
-<td>  14 </td>
-<td align="center"> Every 4 Days     </td>
-<td align="right"> 120 minutes  |</td>
-</tr>
-</tbody>
-</table>
 
 ]]></content>
   </entry>
