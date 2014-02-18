@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Putting together my first raised bed, 8 foot by 2 foot, 1 plank high. Cut parts ready for assembly: Using right angle clamps to assemble first corner &hellip;">
+  <meta name="description" content="Based on post_filters by imathis. First Move the original method out the way with alias_method then create a new method with the original name, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,59 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/monkey-patch-octopress/">Monkey Patch Octopress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-18T19:46:55+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/monkey-patch-octopress/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/monkey-patch-octopress/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Based on <a href="https://github.com/imathis/octopress/blob/master/plugins/post_filters.rb">post_filters by imathis</a>.</p>
+
+<p>First Move the original method out the way with <code>alias_method</code>  then create a new method with the original name, calling the original now aliased method if required.</p>
+
+<pre><code>module Jekyll
+  class URL
+    alias_method :old_sanitize_url, :sanitize_url
+    def sanitize_url(in_url)
+      old_sanitize_url(in_url).downcase
+    end
+  end
+end
+</code></pre>
+
+<p>This was used to build my <a href="https://github.com/morganp/octopress_url_downcase">Octopress plugin octopress_url_downcase</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -661,50 +714,6 @@ So I picked up a few books on garden design with good reviews, they were:</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/home/coffee-table/">Coffee Table</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-07T21:18:14+00:00" pubdate data-updated="true">Feb 7<span>th</span>, 2014</time>
-        
-           | <a href="/blog/home/coffee-table/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/home/coffee-table/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In 2007 I built our coffee table from 2.5&#8221; thick Elm purchased from <a href="http://www.lanarkshirehardwoods.co.uk/">Lanarkshire Hardwoods</a>.</p>
-
-<p>The wood was rough sanded. For the finish it took about 48 hours of sanding with a belt sander, and finished with <a href="http://www.organoil.com/danishoil/index.html">Danish oil</a>.</p>
-
-<p><img src="/images/Home/Table/morganp-20070609-Table-IMG_8640.jpg" alt="Coffee Table" />
-<img src="/images/Home/Table/morganp-20070609-Table-IMG_8648.jpg" alt="Coffee Table" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -717,11 +726,15 @@ So I picked up a few books on garden design with good reviews, they were:</p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (7)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (211)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (7)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/monkey-patch-octopress/">Monkey Patch Octopress</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/raised-bed/">Raised Bed</a>
@@ -737,10 +750,6 @@ So I picked up a few books on garden design with good reviews, they were:</p>
     
       <li class="post">
         <a href="/blog/home/cooking-le-crueset-sizes/">Kitchen: Le Creuset</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-benchmarking/">Matlab Benchmarking</a>
       </li>
     
   </ul>

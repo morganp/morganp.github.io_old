@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://morganp.github.io/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-02-18T19:40:02+00:00</updated>
+  <updated>2014-02-18T19:59:30+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Monkey Patch Octopress]]></title>
+    <link href="http://morganp.github.io/blog/tech/monkey-patch-octopress/"/>
+    <updated>2014-02-18T19:46:55+00:00</updated>
+    <id>http://morganp.github.io/blog/tech/monkey-patch-octopress</id>
+    <content type="html"><![CDATA[<p>Based on <a href="https://github.com/imathis/octopress/blob/master/plugins/post_filters.rb">post_filters by imathis</a>.</p>
+
+<p>First Move the original method out the way with <code>alias_method</code>  then create a new method with the original name, calling the original now aliased method if required.</p>
+
+<pre><code>module Jekyll
+  class URL
+    alias_method :old_sanitize_url, :sanitize_url
+    def sanitize_url(in_url)
+      old_sanitize_url(in_url).downcase
+    end
+  end
+end
+</code></pre>
+
+<p>This was used to build my <a href="https://github.com/morganp/octopress_url_downcase">Octopress plugin octopress_url_downcase</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Raised Bed]]></title>
@@ -596,86 +619,6 @@ at a minimum width of 20 characters.
 <pre><code>" m is the [+] when modified
 set statusline=%10(-%h-%m-%r%)
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Tray Bake Chicken Dinner]]></title>
-    <link href="http://morganp.github.io/blog/cooking/tray-bake-chicken-dinner/"/>
-    <updated>2013-12-12T12:59:00+00:00</updated>
-    <id>http://morganp.github.io/blog/cooking/tray-bake-chicken-dinner</id>
-    <content type="html"><![CDATA[<p>Tray Bake Chicken Dinner.</p>
-
-<p><img class="centre" src="http://morganp.github.io/images/TrayBakeChickenDinner/morganp-20130703-TrayBakeChickenDinner-IMG_2247.jpg"></p>
-
-<p>Based on recipe from &ldquo;Jamie Oliver&rsquo;s Recipe&rdquo; iOS app.</p>
-
-<p>Ingredients (for 2)</p>
-
-<pre><code>2          Chicken thighs
-2          Rashers of bacon
-2          Chipolatas
-1          Red onion
-2          Potatoes
-2          Carrots
-50g        Frozen peas
-50g        Broad beans
-
-1/2 Cube   Chicken Stock
-knob       Butter
-1/2 tbsp   Plain flour
-           sage
-</code></pre>
-
-<p><img class="centre" src="http://morganp.github.io/images/TrayBakeChickenDinner/morganp-20130703-TrayBakeChickenDinner-IMG_2210-Edit.jpg"></p>
-
-<p>Pre-heat oven to 200.</p>
-
-<p>Make tin foil pocket and fill with peas, broad beens, a sprig of mint and the knob of butter. Now seal up the pocket ready for putting in the oven later.</p>
-
-<pre><code>50g        Frozen peas
-50g        Broad beans
-knob       Butter
-</code></pre>
-
-<p>Peal carrots and cut into 2cm chunks, quarter potatoes. Boil for 10 minutes.</p>
-
-<pre><code>2          Potatoes
-2          Carrots
-</code></pre>
-
-<p>Place Chicken thighs in a bowl and coat in olive oil with a little salt.
-Peel and quarter the onion.</p>
-
-<pre><code>2          Chicken thighs
-1          Red onion
-</code></pre>
-
-<p><img class="centre" src="http://morganp.github.io/images/TrayBakeChickenDinner/morganp-20130703-TrayBakeChickenDinner-IMG_2219.jpg"></p>
-
-<p>Now wrap up chipolatas with the bacon to make the pigs in blankets. I prefer pancetta but streaky bacon will do.</p>
-
-<pre><code>2          Rashers of bacon
-2          Chipolatas
-</code></pre>
-
-<p><img class="centre" src="http://morganp.github.io/images/TrayBakeChickenDinner/morganp-20130703-TrayBakeChickenDinner-IMG_2223.jpg"></p>
-
-<p>Place chicken in a baking tray skin side down with the pigs in blankets, put in the oven for 15 minutes.</p>
-
-<p>Removing the potatoes and carrots from the pan using a slotted spoon, placing in a colander, keep 250ml of water for the gravy. Shake potatoes and carrots around in the colander to chuff up the edges for nice crispy roast vegetables.</p>
-
-<p>Once the initial 15 minutes is up on the chicken and pigs in blankets remove from the oven and add the potatoes, carrots and quartered onion. Make sure everything is coated from the oil and fats. Turn the chicken skin side up. Cover in sage.</p>
-
-<p><img class="centre" src="http://morganp.github.io/images/TrayBakeChickenDinner/morganp-20130703-TrayBakeChickenDinner-IMG_2231.jpg"></p>
-
-<p>Place in oven for an additional 30 minutes, turn oven up to 220 degrees.
- 10 minutes to go add the peas and broad beans to the oven.</p>
-
-<p>Plate up on warm plates while you make the gravy. Place roasting tray on a medium heat, add flour mixing to a paste scraping everything from the bottom of the pan. Add 250ml of water from the potato and carrot pan, bring to the boil. Then spoon over the plates, or place in a jug.
-<img class="centre" src="http://morganp.github.io/images/TrayBakeChickenDinner/morganp-20130703-TrayBakeChickenDinner-IMG_2241.jpg"></p>
-
-<p><img class="centre" src="http://morganp.github.io/images/TrayBakeChickenDinner/morganp-20130703-TrayBakeChickenDinner-IMG_2247.jpg"></p>
 ]]></content>
   </entry>
   

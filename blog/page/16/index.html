@@ -9,8 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Do you some times see: FileUtils.rb:93: warning: already initialized constant OPT_TABLE
-FileUtils.rb:1176: warning: already initialized constant &hellip;">
+  <meta name="description" content="Just making a note to self to check these regularly for updates Joe Cornish 1-2 Day Workshop
+Light and Land
+Lee Filters workshop by Jeremy Walker &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +83,67 @@ FileUtils.rb:1176: warning: already initialized constant &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/photography-workshops/">Photography Workshops</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-12T21:31:15+01:00" pubdate data-updated="true">Oct 12<span>th</span>, 2011</time>
+        
+           | <a href="/blog/photography/photography-workshops/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/photography/photography-workshops/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Just making a note to self to check these regularly for updates</p>
+
+<p><a href="http://www.joecornishgallery.co.uk/workshops">Joe Cornish 1-2 Day Workshop</a><br/>
+<a href="http://www.lightandland.co.uk/tours">Light and Land</a><br/>
+<a href="http://www.leefilters.com/camera/products/range/ref:I4A00067D65336/">Lee Filters workshop by Jeremy Walker</a><br/>
+<a href="http://www.davidnoton.com/workshops.htm">David Norton</a><br/>
+<a href="http://www.andyrouse.co.uk/index.php?page_id=40">Andy Rouse</a></p>
+
+<p><a href="http://www.phaseone.com/sv-se/Workshops/PODAS/Workshops.aspx">Phase One</a> Includes a Scottish tour and use of a medium format camera for the length of the course.</p>
+
+<p><a href="http://photography.info/">Skye Photography Weeks</a><br/>
+<a href="http://www.wildarena.com/">UK Wildarena</a><br/>
+<a href="http://www.lightstalkersscotland.com/workshops">LightStalker Workshop</a><br/>
+<a href="http://www.lightstalkersscotland.com/photo-tours">LightStalker Tour</a><br/>
+<a href="http://ebirder.net/MullBirdPhotographyTour.aspx">Mull Bird Tour</a><br/>
+<a href="http://www.earthsbeautytours.com/photo-shoot/scotland/">Earths Beauty Scotland</a><br/>
+<a href="http://www.earthsbeautytours.com/photo-shoot/england/">Earths Beauty England</a>  <br/>
+<a href="http://highlandlodges-scotland.com/PhotoToursWorkshops.html">Highland Lodges Photo Workshops</a><br/>
+<a href="http://www.islandscapephotography.co.uk/">Mull Photography Tours</a></p>
+
+<p><a href="http://www.crianlarich-hotel.co.uk/photography-breaks">Crianlarich Landscape Courses</a></p>
+
+<p><a href="http://www.hfholidays.co.uk/activities/photography">Photo Holiday Directory</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -735,86 +797,6 @@ Host *
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-basic-file-read-and-write/">Ruby Basic File Read and Write</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-01T20:38:27+01:00" pubdate data-updated="true">Jul 1<span>st</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-basic-file-read-and-write/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-basic-file-read-and-write/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Read text file with one line:</p>
-
-<pre><code>::File.open( absolute_filename, "rb"){ |f| @contents = f.read }
-</code></pre>
-
-<p>Write text with one line :</p>
-
-<pre><code>::File.open( absolute_filename, "w" ){ |f| f.write @contents }
-</code></pre>
-
-<h2>Explanation and other ways</h2>
-
-<p>When reading a text file in the open command rb implies &lsquo;read binary&rsquo; mode which creates the .read method for the entire file. The following line looks simpler but the file object in not closed. If a block is passed <code>{ |io| block }</code> then the File is closed after the block completes.</p>
-
-<pre><code>@contents = ::File.open( absolute_filename, "rb").read
-</code></pre>
-
-<p>That should could be broken into 3 lines so that the file object can be closed. This is equivalent to the first one line example.</p>
-
-<pre><code>f = ::File.open( absolute_filename, "rb")
-@contents = f.read
-f.close
-</code></pre>
-
-<p>The File will be automatically closed when program quits but if you create a long life process with hundreds of files not closing might cause performance issues.</p>
-
-<p>Line by Line read, block containd with <code>do end</code></p>
-
-<pre><code>@contents = ''
-::File.open( absolute_filename, "r") do |f|
-  f.each_line do |line|
-    @contents += line
-  end
-end
-</code></pre>
-
-<p>Write file, with explicit close.</p>
-
-<pre><code>f = ::File.open( absolute_filename, "w" )
-f.write @contents
-f.close
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/17/">&larr; Older</a>
@@ -829,11 +811,15 @@ f.close
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (7)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (211)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (7)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/monkey-patch-octopress/">Monkey Patch Octopress</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/raised-bed/">Raised Bed</a>
@@ -849,10 +835,6 @@ f.close
     
       <li class="post">
         <a href="/blog/home/cooking-le-crueset-sizes/">Kitchen: Le Creuset</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-benchmarking/">Matlab Benchmarking</a>
       </li>
     
   </ul>

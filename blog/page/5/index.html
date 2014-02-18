@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="In ruby Dir.entries takes a path and returns a list of its contents. However it does not deal with paths (strings) which contain Enviroment Variables &hellip;">
+  <meta name="description" content="A cheap (~£15) four tier Botanico growhouse, with my current selection of potted herbs. Over the course of the summer I think the temperatures inside &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/garden/growhouse/">Growhouse</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-04T00:35:29+01:00" pubdate data-updated="true">Aug 4<span>th</span>, 2013</time>
+        
+           | <a href="/blog/garden/growhouse/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/garden/growhouse/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A cheap (~£15) four tier <a href="https://www.amazon.co.uk/dp/B00IA1KI7G?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B00IA1KI7G&amp;adid=117VNH8ZGZJVTEV9GJFD&amp;">Botanico growhouse</a>, with my current selection of potted herbs.</p>
+
+<p><img src="/images/Gardening/morganp-20130803-herbs-IMG_2586.jpg" alt="Growhouse with herbs" /></p>
+
+<p>Over the course of the summer I think the temperatures inside actually became too hot for the plants during midday. I think best to use as an early start on the season and to extend the season for small plants.</p>
+
+<p>NB: The growhouse did not make it through the winter storms.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -688,81 +733,6 @@ In the last 5 minutes wash then boil the brocolli for 3-5 minutes. or Steam for 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/add-about-page-to-octopress/">Add About Page to Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-19T08:41:53+01:00" pubdate data-updated="true">May 19<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/add-about-page-to-octopress/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/add-about-page-to-octopress/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To add  static about page to octopress blog, assuming that octopress has been already setup:</p>
-
-<p>Create the page from the command line:</p>
-
-<pre><code>rake new_page["about"]
-</code></pre>
-
-<p>You can now edit the page at ./source/about/index.markdown which should look like:</p>
-
-<pre><code>---
-layout: page
-title: "about" 
-date: 2013-05-19 09:04
-comments: true
-sharing: true
-footer: true
----
-</code></pre>
-
-<p>Add the link to the site navigation menu.</p>
-
-<p>Edit source/_includes/custom/navigation.html from :</p>
-
-<pre><code>&lt;ul class="main-navigation"&gt;
-  &lt;li&gt;&lt;a href="/"&gt;Blog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="/blog/archives"&gt;Archives&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</code></pre>
-
-<p>To (adding about link):</p>
-
-<pre><code>&lt;ul class="main-navigation"&gt;
-  &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="/"&gt;Blog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="/blog/archives"&gt;Archives&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/6/">&larr; Older</a>
@@ -777,11 +747,15 @@ footer: true
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (7)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (211)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (7)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/monkey-patch-octopress/">Monkey Patch Octopress</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/raised-bed/">Raised Bed</a>
@@ -797,10 +771,6 @@ footer: true
     
       <li class="post">
         <a href="/blog/home/cooking-le-crueset-sizes/">Kitchen: Le Creuset</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-benchmarking/">Matlab Benchmarking</a>
       </li>
     
   </ul>

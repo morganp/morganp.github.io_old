@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | RockPaperScissors]]></title>
   <link href="http://morganp.github.io/blog/tech/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-02-18T19:40:02+00:00</updated>
+  <updated>2014-02-18T19:59:30+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Monkey Patch Octopress]]></title>
+    <link href="http://morganp.github.io/blog/tech/monkey-patch-octopress/"/>
+    <updated>2014-02-18T19:46:55+00:00</updated>
+    <id>http://morganp.github.io/blog/tech/monkey-patch-octopress</id>
+    <content type="html"><![CDATA[<p>Based on <a href="https://github.com/imathis/octopress/blob/master/plugins/post_filters.rb">post_filters by imathis</a>.</p>
+
+<p>First Move the original method out the way with <code>alias_method</code>  then create a new method with the original name, calling the original now aliased method if required.</p>
+
+<pre><code>module Jekyll
+  class URL
+    alias_method :old_sanitize_url, :sanitize_url
+    def sanitize_url(in_url)
+      old_sanitize_url(in_url).downcase
+    end
+  end
+end
+</code></pre>
+
+<p>This was used to build my <a href="https://github.com/morganp/octopress_url_downcase">Octopress plugin octopress_url_downcase</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Brew Update Fail]]></title>
@@ -100,35 +123,6 @@ system.method.set_key =event.download.finished,move_complete,"d.set_directory=$d
 
 <pre><code>:echo g:colors_name
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Cshrc Alias Loop]]></title>
-    <link href="http://morganp.github.io/blog/tech/cshrc-alias-loop/"/>
-    <updated>2013-12-19T22:04:45+00:00</updated>
-    <id>http://morganp.github.io/blog/tech/Cshrc-alias-loop</id>
-    <content type="html"><![CDATA[<p>Here are some aliased commands which stop line wrapping on really long lines, making the output much more readable:</p>
-
-<pre><code># Stop line wrapping
-alias ll '(tput rmam; ls -lFh  \!*; tput smam)'
-alias la '(tput rmam; ls -lAFh \!*; tput smam)'
-
-alias tree '(tput rmam; tree \!*; tput smam)'
-</code></pre>
-
-<p>In use:</p>
-
-<pre><code>$ tree
-Alias loop
-</code></pre>
-
-<p>The trick is to pre-pend &ldquo;&rdquo; to the command</p>
-
-<pre><code>alias tree '(tput rmam; ""tree \!*; tput smam)'
-</code></pre>
-
-<p><a href="http://docstore.mik.ua/orelly/unix/upt/ch10_06.htm">source</a></p>
 ]]></content>
   </entry>
   
