@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Cron jobs can have there results returned as mail via the unix mail system. If left unchecked for a while the number of mails can mount up and you &hellip;">
+  <meta name="description" content="Working on my site design I thought it would be nice to have user selectable stylesheets, say a black text on white background or white text on black &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,227 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/user-selectable-stylesheets-using-sinatra/">User Selectable Stylesheets (Using Sinatra)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-29T21:49:23+01:00" pubdate data-updated="true">Mar 29<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/user-selectable-stylesheets-using-sinatra/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/user-selectable-stylesheets-using-sinatra/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Working on my site design I thought it would be nice to have user selectable stylesheets, say a black text on white background or white text on black background. Once I had this working in development mode I ran into the problem with the stylesheet being cached.</p>
+
+<p>In my implementation the user sets a cookie by visiting a url and being redirected back to the original page. The routing then returned different content for the /stylesheet/screen.css based on the cookie.</p>
+
+<p>From my <a href="http://www.sinatrarb.com/">Sinatra</a> routes:</p>
+
+<pre><code>get '/set_css/:style' do
+   ## Set style with /set_css/light?ref=/article
+  response.set_cookie("style", { :value =&gt; params[:style], :path =&gt; '/'} ) 
+
+  if params[:ref].nil? or params[:ref] == '' 
+    redirect '/'
+  else
+    redirect params[:ref]
+  end
+end
+</code></pre>
+
+<p>The CSS routes, using sass for rendering</p>
+
+<pre><code>get '/stylesheets/screen.css' do
+  content_type 'text/css', :charset =&gt; 'utf-8'
+  response['Expires'] = (Time.now + 60*60*24*356).httpdate
+  if request.cookies['style'] == 'light'
+    sass(:"stylesheets/light_screen" ) 
+  else
+    sass(:"stylesheets/dark_screen" ) 
+  end
+end
+</code></pre>
+
+<p>The problem mentioned earlier is that the header is set to cache the page for a year. This means that the user would need to force a full webpage refresh. This does not happen automatically using the route which sets the cookie and redirect.</p>
+
+<p>An easy solution to for this is using the cookie to directly load a different named stylesheet. Each stylesheet will get cached but they are different assets to the browser. For my web app I move the if statment into layouts.erb.</p>
+
+<p>Stylesheet routes back to:</p>
+
+<pre><code>get '/stylesheets/:name.css' do
+  content_type 'text/css', :charset =&gt; 'utf-8'
+  response['Expires'] = (Time.now + 60*60*24*356).httpdate
+  sass(:"stylesheets/#{params[:name]}" ) 
+end
+</code></pre>
+
+<p>Inside my layout.erb</p>
+
+<pre><code>&lt;head&gt;
+  &lt;% if request.cookies['style'] == 'light' -%&gt;
+  &lt;link href="/stylesheets/light_screen.css" rel="stylesheet" type="text/css" media="screen, projection"/&gt;
+  &lt;% else -%&gt;
+  &lt;link href="/stylesheets/dark_screen.css" rel="stylesheet" type="text/css" media="screen, projection"/&gt;
+  &lt;% end -%&gt;
+ &lt;/head&gt;
+</code></pre>
+
+<p>The style selection menu:</p>
+
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;&lt;a href="/set_css/light?ref=&lt;%=request.fullpath%&gt;"&gt;Light&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="/set_css/dark?ref=&lt;%=request.fullpath%&gt;"&gt;Dark&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/what-shell-am-i-using/">What Shell Am I Using?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-28T20:43:20+01:00" pubdate data-updated="true">Mar 28<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/what-shell-am-i-using/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/what-shell-am-i-using/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you are working on a new system or with multiple environments it is good to know what type of shell you are using. the answer is in the $0 variable.</p>
+
+<pre><code>echo $0
+&gt; bash
+</code></pre>
+
+<p>The default shell is $SHELL</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/svn-multi-line-comments-on-the-command-line-/">SVN Multi-line Comments on the Command Line</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-28T13:32:53+01:00" pubdate data-updated="true">Mar 28<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/svn-multi-line-comments-on-the-command-line-/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/svn-multi-line-comments-on-the-command-line-/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Answer:</p>
+
+<pre><code>svn commit -m $'Line 1 \nLine 2'
+</code></pre>
+
+<h2>The Problem</h2>
+
+<p>Committing to subversion on the command line and using escaped line returns for multi line comments:</p>
+
+<pre><code>svn commit -m $'Line 1 \nLine 2'
+</code></pre>
+
+<p>svn log will show some thing like</p>
+
+<pre><code>------------------------------------------------------------------------
+r1 | user | 2012-03-28 13:37:48 +0100 (Wed, 28 Mar 2012) | 1 lines
+
+Line 1 \nLine 2
+</code></pre>
+
+<p>Answer originally posted on <a href="http://serverfault.com/questions/148917/use-linefeed-or-carriage-return-in-subversion-commit-message-from-the-command-li">ServerFault</a>. Strings contained in \&lsquo;\&rsquo; should not be interpreted by the command line but:</p>
+
+<pre><code>svn commit -m "Line 1 \nLine 2"
+</code></pre>
+
+<p>Shows the same errors. Starting the comment with a $ does seem to fix it.</p>
+
+<pre><code>svn commit -m $'Line 1 \nLine 2'
+</code></pre>
+
+<p>Will give:</p>
+
+<pre><code>------------------------------------------------------------------------
+r1 | user | 2012-03-28 13:37:48 +0100 (Wed, 28 Mar 2012) | 1 lines
+
+Line 1 
+Line 2
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -656,135 +877,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/photo-software-update-hugin-201104-lightroom-36/">Photo Software Update, Hugin 2011.04 & Lightroom 3.6</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-26T18:17:30+00:00" pubdate data-updated="true">Dec 26<span>th</span>, 2011</time>
-        
-           | <a href="/blog/photography/photo-software-update-hugin-201104-lightroom-36/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/photo-software-update-hugin-201104-lightroom-36/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Lightroom 3.6 has been released. Downloads for <a href="http://www.adobe.com/support/downloads/thankyou.jsp?ftpID=5307&amp;fileID=4949">Mac</a> and <a href="http://www.adobe.com/support/downloads/detail.jsp?ftpID=5308">Windows</a>.</p>
-
-<p><a href="http://hugin.sourceforge.net/releases/2011.4.0/">Hugin 2011.04</a> has also been released.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-get-a-users-real-name/">Ruby Get a Users Real Name</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-22T12:06:08+00:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-get-a-users-real-name/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-get-a-users-real-name/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>There does not appear to be a nice way to get a current users real name in ruby. The best way I have found on *nix systems (Not windows) is:</p>
-
-<pre><code>%x{finger `whoami`}.match(/Name: ([\w ]*)/)
-real_username = $1
-</code></pre>
-
-<p>There are other ways including parsing the git profile if it exists. At some point I will try to get these packaged up into a gem which can work its way through a list of possible sources.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-send-message-to-stderr/">Ruby Send Message to Stderr</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-22T11:56:25+00:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-send-message-to-stderr/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-send-message-to-stderr/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When creating applications normal messages should go to <a href="http://en.wikipedia.org/wiki/Standard_streams#Standard_output_.28stdout.29">stdout</a> and error messages should go to <a href="http://en.wikipedia.org/wiki/Standard_streams#Standard_error_.28stderr.29">stderr</a>, unfortunately there is not a nice ruby way the cleanest I have found is:</p>
-
-<pre><code>put "Message displayed in stdout"
-$stderr.puts "Error displayed in stderr"
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/15/">&larr; Older</a>
@@ -799,11 +891,19 @@ $stderr.puts "Error displayed in stderr"
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (5)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (211)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (7)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (211)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/raised-bed/">Raised Bed</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/cooking/beef-wellington/">Beef Wellington</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-legend-colours/">Matlab: Legend Colours</a>
@@ -815,14 +915,6 @@ $stderr.puts "Error displayed in stderr"
     
       <li class="post">
         <a href="/blog/engineering/matlab-benchmarking/">Matlab Benchmarking</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-remove-values-from-array/">Matlab Remove Values From Array</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/brew-update-fail/">Brew Update Fail</a>
       </li>
     
   </ul>

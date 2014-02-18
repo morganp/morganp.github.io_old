@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Based on &lsquo;Raise the bar, lower the pressure&rsquo; given by Durran Jordan at ScotRubyConf 2011. There has been some debate as to whether the &hellip;">
+  <meta name="description" content="In Vim to insert text before the cursor press &lsquo;i&rsquo;, to insert text after cursor &lsquo;a&rsquo; or to edit at the end of line &lsquo;A& &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,227 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vimfu-end-of-line-character-placement/">Vimfu End of Line Character Placement</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-24T12:07:07+01:00" pubdate data-updated="true">Apr 24<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/vimfu-end-of-line-character-placement/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/vimfu-end-of-line-character-placement/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In Vim to insert text before the cursor press &lsquo;i&rsquo;, to insert text after cursor &lsquo;a&rsquo; or to edit at the end of line &lsquo;A&rsquo;. To paste before the cursor &lsquo;p&rsquo; to paste after the cursor &lsquo;P&rsquo;.</p>
+
+<p>While these variants exist I still find it easier to place the cursor &lsquo;correctly&rsquo; and use one variant. However this results in a little trouble with end of lines as I can not move the cursor to paste &lsquo;P&rsquo; after the last character.</p>
+
+<p>Adding the following line to <a href="https://github.com/morganp/dotfiles/blob/master/dotfiles/.vimrc">my .vimrc</a> has helped me work around this:</p>
+
+<pre><code>" Allow cursor to move 1 character past end of line
+set virtualedit=onemore
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vimfu-reindent/">Vimfu Reindent</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-19T19:55:19+01:00" pubdate data-updated="true">Apr 19<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/vimfu-reindent/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/vimfu-reindent/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The latest addition to <a href="https://github.com/morganp/dotfiles/blob/master/dotfiles/.vimrc#L197">my .vimrc</a> below, allows ;g to smart indent the current file. It is the same as gg=G but returning you to the same position.</p>
+
+<p>Update based on Recommendations from <a href="http://drewneil.com/">Drew Neil</a> and <a href="http://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/">Jonathan Palardy</a>, a more generic pereserving state function, which can be mapped to a key sequence with specific commands.</p>
+
+<pre><code>function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+" SmartIndent keeping cursor position
+map ;g :call Preserve("normal! gg=G")&lt;CR&gt;
+</code></pre>
+
+<p>If this does not work for a particular file type you use you probably need to look at getting a *.syntax file for your language.</p>
+
+<h2>My Original Method </h2>
+
+<pre><code>function! Indent()
+  " Capture Current Line
+  let currentline_num = line(".")
+  let currentcol_num = virtcol('.')
+
+  " Reindent from start to end of file
+   normal! gg=G
+
+   " Restore Current Line and column
+   exe 'normal '.currentline_num.'G'.currentcol_num.'|'
+endfunction
+
+"assign to ;g in normal mode
+map ;g :call Indent()&lt;CR&gt;
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/behaviour-and-state/">Behaviour and State</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-16T17:59:44+01:00" pubdate data-updated="true">Apr 16<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/behaviour-and-state/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/behaviour-and-state/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Classes are a basic Object Orientated Structure which encapsulate state and behaviour. Some times you just require to capture state/storage of a data structure with out any behaviour, in this case Ruby&rsquo;s Stuct can be useful.</p>
+
+<pre><code>class Desk
+  attr_accessor :height, :width, :depth
+
+  def initialize(height=nil, width=nil, depth=nil)
+    @height = height
+    @width = width
+    @depth = depth
+  end
+end
+</code></pre>
+
+<p>Becomes (Is the same as):</p>
+
+<pre><code>DeskS = Struct.new(:height, :width, :depth)
+</code></pre>
+
+<p>Instantiation</p>
+
+<pre><code>a = Desk.new(12, 13, 14)
+b = DeskS.new(12, 13, 14)
+
+a.height
+ =&gt; 12
+
+b.height
+ =&gt; 12 
+</code></pre>
+
+<p>Taking this further for less code in a basic class. This might be too far!</p>
+
+<pre><code>#In herriting from a Struct
+# class DeskWithBehaviour &lt; DeskS
+class DeskWithBehaviour &lt; Struct.new(:height, :width, :depth)
+  def volume
+    height * width * depth
+  end
+end
+
+# Or Pass Struct a block
+DeskSPlus = Struct.new(:height, :width, :depth) do
+  def volume
+    height * width * depth
+  end
+end
+
+c = DeskWithBehaviour.new(1,2,3)
+c.volume
+ =&gt; 6
+c.class
+ =&gt; DeskWithBehaviour
+
+d = DeskSPlus.new(1,2,3)
+d.volume
+ =&gt; 6
+d.class
+ =&gt; DeskSPlus
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -487,243 +708,6 @@ end # while true
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ormactiverecord-or-ruby-sort/">ORM(Activerecord) or Ruby Sort</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-20T02:19:17+00:00" pubdate data-updated="true">Feb 20<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/ormactiverecord-or-ruby-sort/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ormactiverecord-or-ruby-sort/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Based on an <a href="http://amaras-tech.co.uk/people/morgan/article/18">old Article</a> I wrote, investigating incase sensitive sorting performance.</p>
-
-<p>I have an active record model call Tag with tag and id properties, it contains 3000 randomly chosen and sorted words.</p>
-
-<h3>My Summary of results:</h3>
-
-
-<p>
-Average time for ORM (Activerecord) to return results 0.1928<br/>
-Average time for ORM to return sorted results 0.1290 (0.0638 quicker!)<br/>
-Ruby to sort (non-case sensitive) results 0.0138<br/>
-Ruby to sort pre-sorted* results 0.0606 (4.4 times slower!)</p>
-
-<p>*Pre-sorted is case sensitive</p>
-
-<p>More investigation is require, results could be effected by caching at the ORM/DB layer, but returning sorted results appears quicker than unsorted. and sorting in ruby is 4.4 times slower with pre sorted data.</p>
-
-<p>The test:</p>
-
-<pre><code>#For Benchmarking 
-require 'benchmark'
-include Benchmark
-
-bm(10) do |b|
-       b.report("ORM") {        @tags = Tag.find(:all) }
-       b.report("Sort by") {    @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
-       b.report("ORM sorted") { @tags = Tag.find(:all, :order =&gt; "tag") }
-       b.report("Sort by") {    @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
-  end
-
-  puts "same test but presorted after ruby sort"
-  bm(10) do |b|
-       b.report("ORM sorted") { @tags = Tag.find(:all, :order =&gt; "tag") }
-       b.report("Sort by") {    @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
-       b.report("ORM") {        @tags = Tag.find(:all) }
-       b.report("Sort by") {    @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
- end
-</code></pre>
-
-<p>The results collated: ORM returning unsorted results</p>
-
-<pre><code>            user     system      total        real
-ORM         0.200000   0.010000   0.210000 (  0.216162)
-ORM         0.160000   0.000000   0.160000 (  0.171810)
-ORM         0.200000   0.020000   0.220000 (  0.215265)
-ORM         0.160000   0.000000   0.160000 (  0.167882)
-ORM         0.200000   0.020000   0.220000 (  0.216648)
-ORM         0.170000   0.000000   0.170000 (  0.169064)
-</code></pre>
-
-<p>Full ruby sort</p>
-
-<pre><code>Sort by     0.010000   0.000000   0.010000 (  0.014169)
-Sort by     0.020000   0.000000   0.020000 (  0.012673)
-Sort by     0.010000   0.000000   0.010000 (  0.014791)
-Sort by     0.010000   0.000000   0.010000 (  0.012934)
-Sort by     0.020000   0.000000   0.020000 (  0.014387)
-Sort by     0.010000   0.000000   0.010000 (  0.013655)
-</code></pre>
-
-<p>Case-sensitive ORM sorting</p>
-
-<pre><code>ORM sorted  0.110000   0.000000   0.110000 (  0.138993)
-ORM sorted  0.100000   0.010000   0.110000 (  0.135767)
-ORM sorted  0.110000   0.000000   0.110000 (  0.132612)
-ORM sorted  0.100000   0.000000   0.100000 (  0.150029)
-ORM sorted  0.100000   0.000000   0.100000 (  0.108307)
-ORM sorted  0.100000   0.000000   0.100000 (  0.108133)
-</code></pre>
-
-<p>Ruby sorting pre-sorted results</p>
-
-<pre><code>Sort by     0.080000   0.000000   0.080000 (  0.132228)
-Sort by     0.020000   0.000000   0.020000 (  0.015885)
-Sort by     0.090000   0.000000   0.090000 (  0.102128)
-Sort by     0.010000   0.000000   0.010000 (  0.014791)
-Sort by     0.090000   0.000000   0.090000 (  0.086072)
-Sort by     0.010000   0.000000   0.010000 (  0.012341)
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/beginning-astro-photography/">Beginning Astro Photography</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-19T23:34:17+00:00" pubdate data-updated="true">Feb 19<span>th</span>, 2011</time>
-        
-           | <a href="/blog/photography/beginning-astro-photography/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/beginning-astro-photography/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>None of this has been tried yet but from various sources I have created this list:</p>
-
-<p>Once you have telescope the next task will be finding objects in the sky.<br/>
-Book: <a href="https://www.amazon.co.uk/dp/0521781906?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=0521781906&amp;adid=0T095V4ZAX026FDZPXPG&amp;">Turn left at Orion</a> seems to get good reviews and is recommend on several sites.<br/>
-Software: <a href="http://www.stellarium.org/">Stellarium</a> is free software for most major OS platforms. This will create maps of the sky.</p>
-
-<p>To start Capturing images with a DSLR you will need a t-ring (about £15), this connects to you DSLR instead of a lens. This gives you a t-thread. Some telescopes like skywatcher dobsoians offer a direct connection (t-ring to telescope) others will require a t-adaper which will be 2&#8221; or 1.25&#8221; to a t-thread.</p>
-
-<pre><code>t-ring:    DSLR     -&gt; t-thread (manufacturer specifc)
-t-adapter: t-thread -&gt; 2" or 1.25" eyepiece
-t-adapter may not be required if telescope offers direct connection.
-</code></pre>
-
-<p>Digital cameras tend to suffer from noise during long exposures, image stacking is a technique using multiple images added together to give good exposure while avoiding long exposure noise. <a href="https://www.amazon.co.uk/dp/B003N7O3CI?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B003N7O3CI&amp;adid=0NP2Z411SY7PT8G7G8WH&amp;">Lightroom</a> is my favourite image management/editing toll and image stack is possible with the <a href="http://www.photographers-toolbox.com/products/lrenfuse.php">Enfuse</a> plug-in.</p>
-
-<p>The <a href="http://stargazerslounge.com/">Stargazers Lounge</a> looks like a good forum for asking questions and reading beginner articles.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/activerecord-find-allmultiple/">Activerecord Find All/Multiple</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-19T06:31:03+00:00" pubdate data-updated="true">Feb 19<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/activerecord-find-allmultiple/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/activerecord-find-allmultiple/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Using Tags (An active record model) to find tags by the tag property:</p>
-
-<pre><code>Tag.find_by_tag("Ruby")
-Ruby
-
-Tag.find_by_tag(["Ruby", "Gem"])
-Ruby
-</code></pre>
-
-<p> That did not return what I expected, find<em> returns one object by default. first</em> last<em> or all</em> modifiers can be used. So to find multiple tags by the same property:</p>
-
-<pre><code>Tag.find_all_by_tag(["Ruby", "Gem"]) 
-Ruby
-Gem
-</code></pre>
-
-<p>Again with slightly less active record magic:<br/>
-Note the = ? for singular items and IN (?) for a list of items.</p>
-
-<pre><code>Tag.find(:all, :conditions =&gt; ["tag = ?", "Ruby"])
-Ruby
-
-Tag.find(:all, :conditions =&gt; ["tag IN (?)", ["Ruby", "Gem"]])
-Ruby
-Gem
-</code></pre>
-
-<p>More info can be read on <a href="http://lenary.co.uk/guides/active_record_querying.html#dynamic-finders">Rails Guides</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/19/">&larr; Older</a>
@@ -738,11 +722,19 @@ Gem
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (5)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (211)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (7)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (211)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/raised-bed/">Raised Bed</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/cooking/beef-wellington/">Beef Wellington</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-legend-colours/">Matlab: Legend Colours</a>
@@ -754,14 +746,6 @@ Gem
     
       <li class="post">
         <a href="/blog/engineering/matlab-benchmarking/">Matlab Benchmarking</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-remove-values-from-array/">Matlab Remove Values From Array</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/brew-update-fail/">Brew Update Fail</a>
       </li>
     
   </ul>

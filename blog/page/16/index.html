@@ -9,8 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Install Avahi, it like bonjour auto discovery but for linux, then tell it about your servers samba service. $ sudo apt-get install avahi-daemon
-$ cd &hellip;">
+  <meta name="description" content="Do you some times see: FileUtils.rb:93: warning: already initialized constant OPT_TABLE
+FileUtils.rb:1176: warning: already initialized constant &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,283 @@ $ cd &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/warning-already-initialized-constant/">Warning: Already Initialized Constant</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-06T00:57:30+01:00" pubdate data-updated="true">Oct 6<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/warning-already-initialized-constant/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/warning-already-initialized-constant/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Do you some times see:</p>
+
+<pre><code>FileUtils.rb:93: warning: already initialized constant OPT_TABLE
+FileUtils.rb:1176: warning: already initialized constant S_IF_DOOR
+FileUtils.rb:1406: warning: already initialized constant DIRECTORY_TERM
+FileUtils.rb:1408: warning: already initialized constant SYSCASE
+FileUtils.rb:1527: warning: already initialized constant LOW_METHODS
+FileUtils.rb:1533: warning: already initialized constant METHODS
+</code></pre>
+
+<p>After quite some searching I discovered the cause of these errors. require is clever it only allows you to require each file once.</p>
+
+<pre><code>ruby-1.9.2-p290 :001 &gt; require 'fileutils'
+ =&gt; true 
+ruby-1.9.2-p290 :002 &gt; require 'fileutils'
+ =&gt; false 
+</code></pre>
+
+<p>However it is not case sensitive.</p>
+
+<pre><code>ruby-1.9.2-p290 :003 &gt; require 'FileUtils'
+.... 
+=&gt; true 
+</code></pre>
+
+<p>So if you accidentally include FileUtils this is the same as reopening the module and re-declaring the constants a second time. you should always require the lowercase version. you can <a href="http://www.ruby-forum.com/topic/123026">include the camelcase</a> version for mixins.</p>
+
+<p>If you are getting this during development of a program you could do something like :</p>
+
+<pre><code>grep -Rn "require 'FileUtils'" ~/Code
+</code></pre>
+
+<p>Incase the error seems to be coming from a file other than fileutils.rb it is likely that tehre is a camelcase version of it being included somewhere, try searching for it be modifying the above command.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-arrays-concatenation-and-subtraction/">Ruby Arrays Concatenation and Subtraction</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-08-24T22:08:02+01:00" pubdate data-updated="true">Aug 24<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/ruby-arrays-concatenation-and-subtraction/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-arrays-concatenation-and-subtraction/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Building on my <a href="http://amaras-tech.co.uk/people/morgan/article/108">original Ruby Arrays article</a> a few more things you can do with Ruby Arrays.</p>
+
+<p>Concatenation</p>
+
+<pre><code>a = [1,2,3]
+b = [4,5,6]
+c = [a,b]
+&gt; [[1,2,3],[4,5,6]]
+# Not quite what we wanted.
+c = [a,b].flatten
+&gt; [1,2,3,4,5,6]
+</code></pre>
+
+<p>This can be achieved much simpler via addition</p>
+
+<pre><code>a = [1,2,3]
+b = [4,5,6]
+c = a + b
+&gt; [1,2,3,4,5,6]
+</code></pre>
+
+<p>Another cool fact that you can subtract array from each other. It will subtract objects which have matching object ids.</p>
+
+<pre><code>a = [1,2,3]
+b = [4,5,6]
+c = a + b - [3,4]
+&gt; [1,2,5,6]
+</code></pre>
+
+<p>This can also be used to list the unique methods of an object  by subtracting all base methods.</p>
+
+<pre><code>fl = 0.0 # a float
+count_this = fl.methods.sort - Object.methods
+count_this.count
+ =&gt; 52
+
+ Object.methods.count
+ =&gt; 102
+
+ fl.methods.count
+ =&gt; 127
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-blocks-for-better-code-reuse/">Ruby Blocks for Better Code Reuse</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-30T13:51:28+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/ruby-blocks-for-better-code-reuse/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-blocks-for-better-code-reuse/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>While working on some disk space / folder structure scripts I had several functions which hierarchically search the disk then performed some custom function. When refactoring the code I realised that the specific functions could be contained in a block and passed to a generic search method.</p>
+
+<p>This is one of the original functions</p>
+
+<pre><code>def search_folder( folder )
+  sub_folders = Dir.glob( folder + '*/')
+  sub_files   = Dir.glob( folder + '*.*')
+
+  ## Recursive
+  sub_folders.each do |sub_folder|
+    search_folder( sub_folder )
+  end
+
+  sub_files.each do | sub_file |
+   if sub_file.match(/\.rar$/)
+    puts sub_file    
+    end
+  end
+end
+</code></pre>
+
+<p>Refactored to take a block</p>
+
+<pre><code>def search_folder( folder, &amp;block )
+
+  sub_folders = Dir.glob( folder + '*/')
+  sub_files   = Dir.glob( folder + '*.*')
+
+  ## Recursive
+  sub_folders.each do |sub_folder|
+    search_folder( sub_folder, &amp;block )
+  end
+
+  sub_files.each do | sub_file |
+    yield(sub_file)
+  end
+end
+</code></pre>
+
+<p>And where the original method was called replace with:</p>
+
+<pre><code>search_folder( folder ) do |file|
+  if file.match(/\.rar$/)
+     puts file
+  end
+end
+</code></pre>
+
+<h2>Encapsulate with Modules</h2>
+
+<p>Wrapping the generic methods up into a module and calling local methods from the block.</p>
+
+<pre><code>module GenericStuff
+
+  def self.search_folder( folder, &amp;block )
+    sub_folders = Dir.glob( folder + '*/')
+    sub_files   = Dir.glob( folder + '*.*')
+
+    ## Recursive
+    sub_folders.each do |sub_folder|
+      search_folder( sub_folder, &amp;block )
+    end
+
+    sub_files.each do | sub_file |
+      yield(sub_file)
+    end
+  end
+end
+
+
+def limit
+  @count ||= 1
+  puts "Count is " + @count.to_s
+  if @count &gt; 2
+    exit( -1 )
+  end
+  @count += 1
+end
+
+# Call to generic method, block calls local method
+folder = '/'    
+GenericStuff::search_folder( folder ) do |file|
+  if file.match(/\.rar$/)
+    limit
+    puts file
+  end
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -538,240 +815,6 @@ f.close
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/uninitialized-constant-compasslogger/">Uninitialized Constant Compass::Logger</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-23T20:21:03+01:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2011</time>
-        
-           | <a href="/blog/tech/uninitialized-constant-compasslogger/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/uninitialized-constant-compasslogger/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Working on a joint project an error started showing up when trying to perform migrations.</p>
-
-<pre><code>$ rake db:migrate VERSION=0
-&gt;rake aborted!
-&gt;uninitialized constant Compass::Logger
-</code></pre>
-
-<p>The Solution was to add a line to the rake file, to correctly load Compass::Logger, still no idea why rake needed it.</p>
-
-<pre><code>require 'compass/logger'
-</code></pre>
-
-<p>Another thing to check might be that compass is being loaded before classes which use it. An issue that can happen in Sinatra and Rails apps.</p>
-
-<p>Example Gemfile (for <a href="http://gembundler.com/">Bundler</a>)</p>
-
-<pre><code>source :rubygems
-
-gem 'rails', '3.0.9'
-
-gem "compass"
-gem "haml-rails"
-gem "pg"
-gem "jquery-rails"
-gem "omniauth", '~&gt; 0.2.5'
-
-group :test do
-  gem "capybara"
-  gem "factory_girl_rails"
-  gem "test-unit"
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-activerecord-db-config-on-heroku/">Sinatra ActiveRecord DB Config on Heroku</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-22T10:04:48+01:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2011</time>
-        
-           | <a href="/blog/tech/sinatra-activerecord-db-config-on-heroku/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/sinatra-activerecord-db-config-on-heroku/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To make an automatic <a href="http://api.rubyonrails.org/classes/ActiveRecord/Base.html">ActiveRecord</a> database connection using ENV[&lsquo;DATABASE_URL&rsquo;] The following snippet can be used:</p>
-
-<p>From <a href="http://apidock.com/rails/v3.2.1/ActiveRecord/Base/establish_connection/class">ActiveRecord 3.2.1</a> connections can be made with :</p>
-
-<pre><code>ActiveRecord::Base.establish_connection(ENV["DATABASE_URL"])
-</code></pre>
-
-<p>At some stage My first example also stopped working, Heroku have this example on there pages:</p>
-
-<pre><code>  db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
-
-  ActiveRecord::Base.establish_connection(
-    :adapter  =&gt; db.scheme == 'postgres' ? 'postgresql' : db.scheme,
-    :host     =&gt; db.host,
-    :port     =&gt; db.port,
-    :username =&gt; db.user,
-    :password =&gt; db.password,
-    :database =&gt; db.path[1..-1],
-    :encoding =&gt; 'utf8'
-  )
-</code></pre>
-
-<p>My original example for parsing the env variable and making he DB connection.</p>
-
-<pre><code>module ExampleSinatra
-  class App &lt; Sinatra::Base
-    use Rack::MethodOverride
-    set :public, "public"
-
-    configure :production do
-      db = ENV["DATABASE_URL"]
-      if db.match(/postgres:\/\/(.*):(.*)@(.*)\/(.*)/) 
-        username = $1
-        password = $2
-        hostname = $3
-        database = $4
-
-        ActiveRecord::Base.establish_connection(
-          :adapter  =&gt; 'postgresql',
-          :host     =&gt; hostname,
-          :username =&gt; username,
-          :password =&gt; password,
-          :database =&gt; database
-        )
-      end
-    end
-  end
-end
-if $0 == __FILE__
-  ExampleSinatra::App.run!
-end
-</code></pre>
-
-<p>From Heroku connecting using <a href="http://sequel.rubyforge.org/">Sequel</a> or <a href="http://datamapper.org/">Datamapper</a> is a little simpler:</p>
-
-<pre><code>Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://my.db')
-DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3://my.db')
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-script-connect-to-db-using-databaseyml/">Ruby Script Connect to DB Using database.yml</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-20T12:07:51+01:00" pubdate data-updated="true">Jun 20<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-script-connect-to-db-using-databaseyml/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-script-connect-to-db-using-databaseyml/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To connect to a rails style DB config outside of the normal workflow, or using a database.yml in a different workflow:</p>
-
-<pre><code>require 'yaml'
-require 'active_record'
-
-environment = ENV['RACK_ENV'] || 'development'
-dbconfig    = YAML.load(File.read('config/database.yml'))
-ActiveRecord::Base.establish_connection dbconfig[environment]
-
-#Load All models 
-Dir.glob("./app/models/*").each do |file|
-  require file 
-end
-
-#Now use Active record as you normally would
-# @user = User.create( :name =&gt; 'Dave' )
-# @user.save
-# @first_person = User.first
-</code></pre>
-
-<p>An example database.yml</p>
-
-<pre><code>development:
-    adapter: postgresql
-    host: localhost
-    port: 5432
-    username: 
-    password: 
-    database: example_dev
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/17/">&larr; Older</a>
@@ -786,11 +829,19 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (5)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (211)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (7)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (211)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/raised-bed/">Raised Bed</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/cooking/beef-wellington/">Beef Wellington</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-legend-colours/">Matlab: Legend Colours</a>
@@ -802,14 +853,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/matlab-benchmarking/">Matlab Benchmarking</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-remove-values-from-array/">Matlab Remove Values From Array</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/brew-update-fail/">Brew Update Fail</a>
       </li>
     
   </ul>

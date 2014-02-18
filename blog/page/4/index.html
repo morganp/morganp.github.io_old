@@ -9,7 +9,12 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="While not attempted getting good images of the milkyway yet every so often I see some good examples and do a little bit more research. This thread on &hellip;">
+  <meta name="description" content="setenv allows sub shells to inherit the value. Set set x = "twenty"
+echo $x
+&gt; twenty ## New Shell
+csh
+echo $x
+x: Undefined variable. Setenv Note &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +86,257 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/set-vs-setenv/">Set vs Setenv</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-11T12:34:15+01:00" pubdate data-updated="true">Oct 11<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/set-vs-setenv/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/set-vs-setenv/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>setenv allows sub shells to inherit the value.</p>
+
+<h2>Set</h2>
+
+<pre><code>set x = "twenty"
+echo $x
+&gt; twenty
+
+## New Shell
+csh
+echo $x
+x: Undefined variable.
+</code></pre>
+
+<h2>Setenv Note missing &lsquo;=&rsquo;</h2>
+
+<pre><code>setenv x "twenty"
+echo $x
+&gt; twenty
+
+##New Shell
+csh
+echo $x
+&gt; twenty
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/for-loops-in-cshtcsh/">For Loops in Csh/tcsh</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-11T12:25:42+01:00" pubdate data-updated="true">Oct 11<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/for-loops-in-cshtcsh/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/for-loops-in-cshtcsh/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To count from 1 up to 20 in steps of 5</p>
+
+<pre><code>#!/bin/csh
+foreach x (`seq 1 5 20`)
+  echo $x
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/garden/gardener-c14e/">Gardener C14e</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-02T17:14:38+01:00" pubdate data-updated="true">Oct 2<span>nd</span>, 2013</time>
+        
+           | <a href="/blog/garden/gardener-c14e/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/garden/gardener-c14e/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The programs available on your Gardener C14e water computer (timer) are:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th> Program        </th>
+<th align="center"> Cycle           </th>
+<th align="right"> Duration  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>  00 </td>
+<td align="center"> None </td>
+<td align="right"> 0 |</td>
+</tr>
+<tr>
+<td></td>
+<td>  01 </td>
+<td align="center"> Every 6 hours  </td>
+<td align="right"> 3 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  02 </td>
+<td align="center"> Every 12 hours  </td>
+<td align="right"> 3 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  03 </td>
+<td align="center"> Every 12 hours  </td>
+<td align="right"> 15 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  04 </td>
+<td align="center"> Every 24 hours  </td>
+<td align="right"> 3 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  05 </td>
+<td align="center"> Every 24 hours  </td>
+<td align="right"> 5 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  06 </td>
+<td align="center"> Every 24 hours  </td>
+<td align="right"> 30 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  07 </td>
+<td align="center"> Every 24 hours  </td>
+<td align="right"> 60 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  08 </td>
+<td align="center"> Every 2 Days     </td>
+<td align="right"> 5 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  09 </td>
+<td align="center"> Every 2 Days     </td>
+<td align="right"> 30 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  10 </td>
+<td align="center"> Every 2 Days     </td>
+<td align="right"> 60 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  11 </td>
+<td align="center"> Every 3 Days     </td>
+<td align="right"> 30 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  12 </td>
+<td align="center"> Every 3 Days     </td>
+<td align="right"> 60 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  13 </td>
+<td align="center"> Every 4 Days     </td>
+<td align="right"> 60 minutes  |</td>
+</tr>
+<tr>
+<td></td>
+<td>  14 </td>
+<td align="center"> Every 4 Days     </td>
+<td align="right"> 120 minutes  |</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -410,198 +666,6 @@ and optimise the process I purchased the <strong><a href="https://www.amazon.co.
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-evaluate-envvars-in-string/">Ruby Evaluate Envvars in String.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-12T22:59:37+01:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/ruby-evaluate-envvars-in-string/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-evaluate-envvars-in-string/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In ruby Dir.entries takes a path and returns a list of its contents. However it does not deal with paths (strings) which contain Enviroment Variables (envvars), first they need to be expanded.</p>
-
-<p>Given:SHELL:</p>
-
-<pre><code>export DIR=x
-export FILE=y.z
-</code></pre>
-
-<p>Ruby string:</p>
-
-<pre><code>s = "$DIR/test/$FILE"
-puts s
-=&gt; "$DIR/test/$FILE"
-
-def expand_envvars( in_string )
-  return in_string.gsub(/\$(\w+)/) { ENV[$1] }
-end
-
-puts expand_envvars( s )
-=&gt; "x/test/y.z"
-</code></pre>
-
-<p>Based on: <a href="http://www.ruby-forum.com/topic/180340">http://www.ruby-forum.com/topic/180340</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/lightroom-collections-whats-the-point/">Lightroom Collections Whats the Point?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-12T22:47:25+01:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
-        
-           | <a href="/blog/photography/lightroom-collections-whats-the-point/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/lightroom-collections-whats-the-point/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After using Lightroom for over 6 years I still do not see the point in Lightroom Collections.</p>
-
-<p><a href="http://scottkelby.com/2009/how-i-use-lightrooms-collections/">Scott Kelby</a> Describes <a href="http://scottkelby.com/2009/how-i-use-lightrooms-collections/">his usage</a>, but it is very similar to my workflow without them.</p>
-
-<p>I create a folder, via a script, which increments a shoot number and a description i.e. <strong>0101-SpaceRocket</strong></p>
-
-<p>I then import my images into this folder. A quick scan through the images rejecting (shortcut x) really bad ones. A second scan I Flag (shortcut p) the ones worth spending time to develop. I can change my mind later and remove them from the top selection (shortcut u).</p>
-
-<p>Rejecting photos has the advantage that you can get lightroom to clean up, removing from the catalog and deleting from disk.</p>
-
-<p>So far this does everything Scott Kelby talks about having a Full and Picks Collection. If I want to choose just the very best of a set them I could apply star filters.</p>
-
-<p>Scott then takes the the breakdown a bit further and creates Full and Picks folders for multiple events throughout a shoot. If we new we wanted this breakdown then the folder hierarchy can reflect it. So I still do not see the need for collections.</p>
-
-<p>My first use of collections was a mistake and it may be from this that I stay away. My first collection I had inadvertently set it to have different light room develop data. When viewing the photo from the lightroom file browser the images were not flagged or developed. Lightroom offered no way to merge a collections data back into the standard image view. I am now for ever stuck with one collection from many years ago which is the only place the develop data is held for that particular shoot.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/terminal-colours/">Terminal Colours</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-12T19:16:31+01:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/terminal-colours/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/terminal-colours/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have decided to clean up my vim colorschemes. I have been using ir_black for sometime but it does not look the same as others who use it. I think I was forcing it into 256 or 16 color mode.</p>
-
-<p>Some vim command line on some terminals looked awful and I had to switch to another colorscheme just so I could see the text.</p>
-
-<p>I have decided to pick an 8,16,256 and full color scheme and load them automatically, rather than trying to find a colorscheme which degraded gracefully, they just never seemed to do it that well.</p>
-
-<p>From <a href="http://blog.sanctum.geek.nz/tag/xterm-256color/">sanctum.geek.nz</a> I discovered the <code>tput colors</code> command. Vims <code>&amp;t_Co</code> will reflect this value.  But it only reflects the calling terminals capabilities, so calling gvim or mvim from an 8 bit color terminal your &amp;t_Co will still be 8.</p>
-
-<p>After some trouble getting the 8 colour scheme to work posted a question on <a href="http://superuser.com/questions/604589/vim-non-gui-background-will-not-go-white">superuser</a>.</p>
-
-<p>The main solution seems to be to append your TERM envar with -256color to force 256 Colour detection.  I was originally hesitant to blindly apply 256 color to any system I may be working on, but I think it would be rare to come across a terminal that does not support 256 colors these days. This would also have to be a system/network where I have already set-up my dotfiles.</p>
-
-<p>Adding -256color to term makes tput return 256 and makes vim t_Co 256 as well.
-For csh:</p>
-
-<pre><code>setenv TERM $TERM-256color
-</code></pre>
-
-<p>For a bit more protection you should stop multiple -256colors being appended i.e. stop xterm-256color-256color if called from bash with 256color extension already applied.</p>
-
-<pre><code>if ($TERM =~ *256color*) then
-  #Already 256color
-else
-  setenv TERM $TERM-256color
-endif
-</code></pre>
-
-<p>For Bash:</p>
-
-<pre><code>if [[ "$TERM" != *256color* ]]
-then
-  export TERM=$TERM-256color
-fi
-</code></pre>
-
-<p>Using a <a href="https://github.com/wardi/xterm_colour_chart">python script</a> you can display color charts in the terminal. It should be clear if 256 colors is not working, you would only see 16 colour blocks.</p>
-
-<p><a href="http://flickr.com/gp/morgan_prior/45kh8P"> <img src="http://farm6.staticflickr.com/5542/9272025578_7a86fc474c_n.jpg" alt="colour block" /> </a></p>
-
-<p>After all of this instead of getting my vim colour schemes to degrade gracefully I force everything into 256 colours mode. Which I think is actually ok and I get to use better colour schemes all/more of the time.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -616,11 +680,19 @@ fi
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (8)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (5)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (211)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (7)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (211)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/raised-bed/">Raised Bed</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/cooking/beef-wellington/">Beef Wellington</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-legend-colours/">Matlab: Legend Colours</a>
@@ -632,14 +704,6 @@ fi
     
       <li class="post">
         <a href="/blog/engineering/matlab-benchmarking/">Matlab Benchmarking</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-remove-values-from-array/">Matlab Remove Values From Array</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/brew-update-fail/">Brew Update Fail</a>
       </li>
     
   </ul>
