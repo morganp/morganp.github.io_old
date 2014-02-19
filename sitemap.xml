@@ -1057,6 +1057,10 @@
         <lastmod>2014-01-28T19:00:03+00:00</lastmod>
     </url>
     <url>
+        <loc>http://morganp.github.io/blog/engineering/name-spacing-in-matlab/</loc>
+        <lastmod>2014-02-19T21:18:47+00:00</lastmod>
+    </url>
+    <url>
         <loc>http://morganp.github.io/blog/garden/gardener-c14e/</loc>
         <lastmod>2014-01-28T19:00:03+00:00</lastmod>
     </url>
@@ -1112,7 +1116,7 @@
     </url>
     <url>
         <loc>http://morganp.github.io/blog/cooking/tray-bake-chicken-dinner/</loc>
-        <lastmod>2014-01-28T19:00:03+00:00</lastmod>
+        <lastmod>2014-02-19T19:32:42+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/blog/tech/vim-status-line/</loc>
@@ -1160,7 +1164,7 @@
     </url>
     <url>
         <loc>http://morganp.github.io/blog/garden/birdbox/</loc>
-        <lastmod>2014-02-18T19:35:25+00:00</lastmod>
+        <lastmod>2014-02-19T19:38:20+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/blog/tech/brew-update-fail/</loc>
@@ -1188,7 +1192,7 @@
     </url>
     <url>
         <loc>http://morganp.github.io/blog/garden/raised-bed/</loc>
-        <lastmod>2014-02-18T19:14:23+00:00</lastmod>
+        <lastmod>2014-02-19T19:45:26+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/blog/tech/monkey-patch-octopress/</loc>
@@ -1208,11 +1212,11 @@
     </url>
     <url>
         <loc>http://morganp.github.io/blog/archives/</loc>
-        <lastmod>2014-02-18T21:18:21+00:00</lastmod>
+        <lastmod>2014-02-19T21:18:47+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/</loc>
-        <lastmod>2014-02-18T21:18:21+00:00</lastmod>
+        <lastmod>2014-02-19T21:18:47+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/license/</loc>

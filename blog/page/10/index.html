@@ -9,7 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="From OS X Lion the Users Library folder has been hidden. To find it make Finder the active application, that is when the menu bar displays &lsquo; &hellip;">
+  <meta name="description" content="ctrl-6 Demo For the example we will create 3 new temp files and then open them in vim. touch vim_test1.txt
+touch vim_test2.txt
+touch vim_test3.txt &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +83,93 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vim-toggle-between-last-2-edited-buffers/">#vim Toggle Between Last 2 Edited Buffers</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-29T11:22:06+01:00" pubdate data-updated="true">Aug 29<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/vim-toggle-between-last-2-edited-buffers/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/vim-toggle-between-last-2-edited-buffers/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>ctrl-6
+</code></pre>
+
+<h1>Demo</h1>
+
+<p>For the example we will create 3 new temp files and then open them in vim.</p>
+
+<pre><code>touch vim_test1.txt
+touch vim_test2.txt
+touch vim_test3.txt
+vim vim_test*
+</code></pre>
+
+<p>From with in vim</p>
+
+<pre><code>:ls 
+1 %a   "vim_test1.txt"                line 2
+2      "vim_test2.txt"                line 0
+3      "vim_test3.txt"                line 0
+</code></pre>
+
+<p>Buffer 1 is active (%a) if we jump to buffer 3</p>
+
+<pre><code>:b3
+:ls
+1 #    "vim_test1.txt"                line 2
+2      "vim_test2.txt"                line 0
+3 %a   "vim_test3.txt"                line 2
+</code></pre>
+
+<p>Buffer 3 is active (%a) and 3 is previous edited buffer. ctrl-6 will switch these around. Toggling the active buffer between the two.</p>
+
+<pre><code>ctrl-6
+:ls
+1 %a   "vim_test1.txt"                line 2
+2      "vim_test2.txt"                line 0
+3 #    "vim_test3.txt"                line 2 
+ctrl-6
+:ls
+1 #    "vim_test1.txt"                line 2
+2      "vim_test2.txt"                line 0
+3 %a   "vim_test3.txt"                line 2  
+</code></pre>
+
+<p>To scroll through the buffers in order:</p>
+
+<pre><code>:bn (Next Buffer)
+:bp (Previous Buffer)
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -730,106 +819,6 @@ Then select Downloads.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/web-automation-with-watir/">Web Automation With Watir</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-06T13:30:06+01:00" pubdate data-updated="true">Aug 6<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/web-automation-with-watir/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/web-automation-with-watir/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://watir.com/">Watir</a> is a web testing framework implemented in ruby, but can be used for testing or automating any web service.</p>
-
-<pre><code>gem install watir-webdriver
-#or in your Gemfile
-gem "watir-webdriver"
-</code></pre>
-
-<h2>For Internet Explorer on Windows</h2>
-
-<pre><code>require 'watir'
-browser = Watir::Browser.new :ie
-</code></pre>
-
-<h2>Firefox or Chrome</h2>
-
-<pre><code>require 'watir-webdriver'
-browser = Watir::Browser.new :firefox
-# OR
-browser = Watir::Browser.new :chrome
-</code></pre>
-
-<p>For OS X and Automating chrome I had to install the chrome driver from <a href="http://code.google.com/p/chromedriver/downloads/list">chromedriver</a> or using <a href="http://mxcl.github.com/homebrew/">homebrew</a>.</p>
-
-<pre><code>brew install chromedriver
-</code></pre>
-
-<p>A simple script might be:</p>
-
-<pre><code>require 'watir-webdriver'
-browser = Watir::Browser.new :chrome
-browser = Watir::Browser.start 'www.google.com'
-puts browser.title
-browser.close
-</code></pre>
-
-<p>This launches a graphical browser and performs the actions requested.</p>
-
-<h1>Headless</h1>
-
-<p>There is a way to make these compatible with severs which do not have a graphics system, by installing the headless gem.</p>
-
-<pre><code>gem install watir-webdriver
-gem install headless
-#or in your Gemfile
-gem "watir-webdriver"
-gem "healdess"
-</code></pre>
-
-<p>The headless gem uses xvfb to perform graphical actions. If you are not on headless machine these will still be visible.</p>
-
-<pre><code>require 'watir-webdriver'
-require 'headless'
-
-headless = Headless.new
-headless.start
-
-browser = Watir::Browser.start 'www.google.com'
-puts browser.title
-browser.close
-
-headless.destroy
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/11/">&larr; Older</a>
@@ -844,7 +833,7 @@ headless.destroy
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>

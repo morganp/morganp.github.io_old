@@ -512,6 +512,119 @@ end
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/engineering/name-spacing-in-matlab/">Name Spacing in Matlab</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-12T20:51:19+01:00" pubdate data-updated="true">Sep 12<span>th</span>, 2013</time>
+        
+           | <a href="/blog/engineering/name-spacing-in-matlab/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/engineering/name-spacing-in-matlab/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A typical work flow in Matlab involves a folder filled with scripts and functions.
+Over time this folder grows until it becomes completely unmaintainable and
+dependencies between scripts can not be tracked.</p>
+
+<p>The next step is to group the related functions into folders in maintainable
+collections. They can then be added to the scripts that require them by adding to
+Matlabs search path via:</p>
+
+<pre><code>addpath('../collection_of_functions_a/');
+addpath('../collection_of_functions_b/');
+</code></pre>
+
+<p>The main issue I have with this is that of name spacing when working with third
+party functions or developing your own it would be easy to override other functions
+even internal ones. For toolbox developers it is hard to known all the function names
+from matlabs toolboxes. After a name collision which one is picked up is
+dependent on the path order. Other languages often use name spacing to avoid these
+name conflicts.</p>
+
+<p>Since MATLAB Version 7.6 <a href="http://www.mathworks.co.uk/help/matlab/matlab_oop/scoping-classes-with-packages.html">Packages</a> have been available for just this, adding
+name spacing to classes, but it also works for raw (plain) functions.</p>
+
+<p>To create a package, as before place functions in a folder, start the folder name
+with a <code>+</code>, ie <code>+mypkg</code> then you have created package mypkg.</p>
+
+<p>To use the package functions in a script they must be <a href="http://www.mathworks.co.uk/help/matlab/ref/import.html">imported</a>.</p>
+
+<pre><code>import mypkg.*
+
+%% call function_x
+a = mypkg.function_x() ;
+</code></pre>
+
+<p>As packages themselves can not be on the path you have to <a href="http://www.mathworks.co.uk/help/matlab/matlab_env/files-and-folders-that-matlab-accesses.html">make the parent folder accessible</a>.</p>
+
+<p>If you have a folder containing a lot of packages then this is quite useful.
+Add one folder to path then import the required packages.</p>
+
+<p>If the packages are being independently maintained then it is likely that they
+all have separate hierarchy (I think this is good from a development point of
+view). To avoid adding unnecessary items to your search path I would recommend a
+hierarchy of:</p>
+
+<pre><code>Top_level_package
+  function
+  +my_pkg
+    function_x.m
+    function_y.m
+  test
+    run_test_function_x.m
+    run_test_function_y.m
+</code></pre>
+
+<p>run_test_function_x.m :</p>
+
+<pre><code>addpath('../function/');
+import my_pkg.function_x
+
+%% test function_x
+% ...
+</code></pre>
+
+<p>The downside of this is that every package needs an <code>addpath</code> and <code>import</code>.
+Which you will have unless all your packages live under one parent directory.</p>
+
+<p>An excerpt from <a href="http://www.mathworks.co.uk/help/matlab/matlab_env/what-is-the-matlab-search-path.html">What is in the Matlab Search Path</a>:</p>
+
+<blockquote><p>The userpath folder is first on the search path, above the folders supplied by
+MathWorks. By default, MATLAB adds the userpath folder to the search path at
+startup. Therefore, the userpath is convenient for storing files where MATLAB
+can access them.</p>
+
+<p>The userpath consists of a primary path, and on Macintosh and UNIX® platforms,
+it also contains a secondary path. The primary path is only one folder, but the
+secondary path can contain multiple folders.</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/photography/photographing-stars-avoiding-star-trails/">Photographing Stars Avoiding Star Trails</a></h1>
     
     
@@ -655,50 +768,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/weather-alerts-via-email-from-the-metoffice/">Weather Alerts via eMail From the MetOffice</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-15T12:17:08+01:00" pubdate data-updated="true">Aug 15<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/weather-alerts-via-email-from-the-metoffice/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/weather-alerts-via-email-from-the-metoffice/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In the UK you can now get regional weather alerts from the
-<a href="https://service.govdelivery.com/service/multi_subscribe.html?code=UKMETOFFICE&amp;origin=http://www.metoffice.gov.uk">Met Office</a>.</p>
-
-<p>Unfortunately it does not break it down any further, all I really wanted was a frost alert to look after my plants, but now I will know about any hazards weather 24 hours in advance.</p>
-
-<p>AdamFoster seems to have set up a free service <a href="http://frostalertemail.com/">FrostAlert</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -713,7 +782,7 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>

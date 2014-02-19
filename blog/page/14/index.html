@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Are you running into the following error Encoding::UndefinedConversionError - "\xE2" from ASCII-8BIT to UTF-8: If you are using Ruby and SASS for &hellip;">
+  <meta name="description" content="Sometime a script needs to now the directory that it is executing from, the best solution for this is: DIR="$( cd "$( dirname "${BASH_SOURCE[0 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,70 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/bash-script-get-current-script-directory/">Bash Script Get Current Script Directory</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-07T13:45:37+01:00" pubdate data-updated="true">Apr 7<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/bash-script-get-current-script-directory/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/bash-script-get-current-script-directory/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Sometime a script needs to now the directory that it is executing from, the best solution for this is:</p>
+
+<pre><code>DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &amp;&amp; pwd )"
+</code></pre>
+
+<p>Although the simpler version below should work for most cases the version above is preferred for shell portability.</p>
+
+<pre><code>DIR=`dirname $0` 
+</code></pre>
+
+<p>The usage of this could be for creating shell scripts that a user can double click to execute or drag on to the terminal to execute, as the working directory could change. Uses the scripts folder means that if a user copies the script to a new project it will work in the new project rather than having absolute paths to the old project.</p>
+
+<pre><code>#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &amp;&amp; pwd )"
+CSS_COLLATION=$DIR/screen.css
+
+#Clean File
+echo '' &gt; $CSS_COLLATION
+
+#Append CSS
+cat $DIR/reset.css &gt;&gt; $CSS_COLLATION
+cat $DIR/960.css &gt;&gt; $CSS_COLLATION
+</code></pre>
+
+<p><a href="http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in">From StackOverflow</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -826,68 +890,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vim-paste-from-insert-mode/">Vim, Paste From Insert Mode</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-01-27T15:00:55+00:00" pubdate data-updated="true">Jan 27<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/vim-paste-from-insert-mode/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/vim-paste-from-insert-mode/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>ctrl-r "
-</code></pre>
-
-<p>Actually <code>ctrl-r reg</code>, where &ldquo; is the unnamed register from the last yank or delete.</p>
-
-<h2>Why</h2>
-
-<p>If you have done a block selection and you want to paste, normally you would have to leave selection mode to this and there fore not be able to edit multiple lines at once.</p>
-
-<p>say you have (below) and what to prepend &lsquo;number&rsquo;.</p>
-
-<pre><code>number 
-one
-two
-three
-</code></pre>
-
-<p>Place cursor on &lsquo;number&rsquo;, <code>yiw</code> to yank inner word. Move to &lsquo;o&rsquo; of one. <code>ctrl-v</code> to enter block selection, <code>jj</code> to select ott vertically. Then I to enter insert mode. <code>ctrl-r " . ESC</code>.</p>
-
-<pre><code>number 
-number.one
-number.two
-number.three
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/15/">&larr; Older</a>
@@ -902,7 +904,7 @@ number.three
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>

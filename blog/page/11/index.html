@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I have specifically been trying to find out how to transfer my full GB Memory Map OS 1:50K 2012 GB map to an iPad, finally found a working solution &hellip;">
+  <meta name="description" content="Watir is a web testing framework implemented in ruby, but can be used for testing or automating any web service. gem install watir-webdriver
+#or in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,106 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/web-automation-with-watir/">Web Automation With Watir</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-06T13:30:06+01:00" pubdate data-updated="true">Aug 6<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/web-automation-with-watir/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/web-automation-with-watir/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://watir.com/">Watir</a> is a web testing framework implemented in ruby, but can be used for testing or automating any web service.</p>
+
+<pre><code>gem install watir-webdriver
+#or in your Gemfile
+gem "watir-webdriver"
+</code></pre>
+
+<h2>For Internet Explorer on Windows</h2>
+
+<pre><code>require 'watir'
+browser = Watir::Browser.new :ie
+</code></pre>
+
+<h2>Firefox or Chrome</h2>
+
+<pre><code>require 'watir-webdriver'
+browser = Watir::Browser.new :firefox
+# OR
+browser = Watir::Browser.new :chrome
+</code></pre>
+
+<p>For OS X and Automating chrome I had to install the chrome driver from <a href="http://code.google.com/p/chromedriver/downloads/list">chromedriver</a> or using <a href="http://mxcl.github.com/homebrew/">homebrew</a>.</p>
+
+<pre><code>brew install chromedriver
+</code></pre>
+
+<p>A simple script might be:</p>
+
+<pre><code>require 'watir-webdriver'
+browser = Watir::Browser.new :chrome
+browser = Watir::Browser.start 'www.google.com'
+puts browser.title
+browser.close
+</code></pre>
+
+<p>This launches a graphical browser and performs the actions requested.</p>
+
+<h1>Headless</h1>
+
+<p>There is a way to make these compatible with severs which do not have a graphics system, by installing the headless gem.</p>
+
+<pre><code>gem install watir-webdriver
+gem install headless
+#or in your Gemfile
+gem "watir-webdriver"
+gem "healdess"
+</code></pre>
+
+<p>The headless gem uses xvfb to perform graphical actions. If you are not on headless machine these will still be visible.</p>
+
+<pre><code>require 'watir-webdriver'
+require 'headless'
+
+headless = Headless.new
+headless.start
+
+browser = Watir::Browser.start 'www.google.com'
+puts browser.title
+browser.close
+
+headless.destroy
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -542,73 +643,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/create-andor-of-multiple-booleans/">Create And,Or of Multiple Booleans</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-21T11:35:19+01:00" pubdate data-updated="true">May 21<span>st</span>, 2012</time>
-        
-           | <a href="/blog/tech/create-andor-of-multiple-booleans/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/create-andor-of-multiple-booleans/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To reduce an array of Booleans to a single Boolean using enumerables reduce method:</p>
-
-<pre><code>[true, true, true].reduce( :| ) ## OR
-=&gt; true
-[true, true, true].reduce( :&amp; ) ## AND
-=&gt; true
-
-[false, false, false].reduce( :| ) ## OR
-=&gt; false
-[false, false, false].reduce( :&amp; ) ## AND
-=&gt; false
-
-[true, true, false].reduce( :| ) ## OR
-=&gt; true
-[true, true, false].reduce( :&amp; ) ## AND
-=&gt; false
-</code></pre>
-
-<h2>Checksums (XOR)</h2>
-
-<pre><code>[false, false].reduce( :^ ) ## XOR
-=&gt; false
-[false, true ].reduce( :^ ) ## XOR
-=&gt; true
-[true, false ].reduce( :^ ) ## XOR
-=&gt; true
-[true, true  ].reduce( :^ ) ## XOR
-=&gt; false
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -623,7 +657,7 @@
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>

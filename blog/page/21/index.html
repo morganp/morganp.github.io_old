@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Just discovered this: from source. $ open . ">
+  <meta name="description" content="Sinatra Reloader is a sinatra extension which reloads source files while in development mode, this functionality was removed from base sinatra in 0.9 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,65 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/sinatra-reload-source-file-changes-in-development-mode/">Sinatra Reload Source File Changes in Development Mode</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-02T11:03:26+00:00" pubdate data-updated="true">Nov 2<span>nd</span>, 2010</time>
+        
+           | <a href="/blog/tech/sinatra-reload-source-file-changes-in-development-mode/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/sinatra-reload-source-file-changes-in-development-mode/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://github.com/rkh/sinatra-reloader">Sinatra Reloader</a> is a sinatra extension which reloads source files while in development mode, this functionality was removed from base sinatra in 0.9.2</p>
+
+<pre><code>gem install sinatra-reloader
+</code></pre>
+
+<p>In your app (classy style)</p>
+
+<pre><code>require "sinatra/base"
+require "sinatra/reloader"
+
+class Foo &lt; Sinatra::Base
+  configure(:development) do
+    register Sinatra::Reloader
+    also_reload "models/*.rb"
+    also_reload "helpers/*.rb"
+    #dont_reload "lib/**/*.rb"
+  end
+end
+</code></pre>
+
+<p><a href="http://github.com/rkh/sinatra-reloader">Source</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -665,53 +724,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/mac-os-x-harddrive-spin-down-time/">Mac OS X Harddrive Spin Down Time</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-01T13:05:32+01:00" pubdate data-updated="true">Sep 1<span>st</span>, 2010</time>
-        
-           | <a href="/blog/tech/mac-os-x-harddrive-spin-down-time/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/mac-os-x-harddrive-spin-down-time/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The Preferences menu in OS x give you the option to turn off Hard Disks whenever possible to save power however the default 10 minutes idle before shutdown can not be adjusted from this panel. This could also be causing excessive ware on desktop 3.5&#8221; drives.</p>
-
-<p>If you have the developer tools installed then you should have the SpindownHD tool. located in /Developer &ndash;> Applications &ndash;> Performance Tools &ndash;> CHUD &ndash;> Hardware</p>
-
-<p>If you do not have the developer tools installed there is no need just for this tool the changes can be made manually be editing: Library &ndash;> Preferences &ndash;> SystemConfiguration &ndash;> com.apple.PowerManagement.plist
-under &lsquo;Disk Sleep Timer&rsquo; adjust the minutes of idle time before shutting drives down.</p>
-
-<p><a href="http://hints.macworld.com/article.php?story=20050601044914357">source1</a>
-<a href="http://hints.macworld.com/article.php?story=20060922231408751">source2</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/22/">&larr; Older</a>
@@ -726,7 +738,7 @@ under &lsquo;Disk Sleep Timer&rsquo; adjust the minutes of idle time before shut
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>

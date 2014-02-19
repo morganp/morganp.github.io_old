@@ -9,10 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Cake (£? a portion) time to table ~?. Ingredients (for 8) 3x25 ml double espresso
-200 g plain flour 3 large eggs
-320 g unsalted butter
-100 g demerara &hellip;">
+  <meta name="description" content="I was wanting to use Dir.glob to get a file list and wanted to do Dir.glob( path + '*') but nicely handle when the final &lsquo;/&rsquo; of path was &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +81,50 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-optionally-add-path-separator/">Ruby: Optionally Add Path Separator</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-05T11:46:58+01:00" pubdate data-updated="true">Jun 5<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/ruby-optionally-add-path-separator/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-optionally-add-path-separator/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I was wanting to use Dir.glob to get a file list and wanted to do <code>Dir.glob( path + '*')</code> but nicely handle when the final &lsquo;/&rsquo; of path was missing.</p>
+
+<p>Instead of doing string manipulation we should just be using the file utilities.</p>
+
+<pre><code>Dir.glob( File.join( path, '*')  ) 
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -871,47 +912,6 @@ On the same 2 layers also spread some cherry sauce and cherries, then added whip
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/javascript-net-curtain/">JavaScript Net Curtain</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-24T07:44:19+01:00" pubdate data-updated="true">Apr 24<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/javascript-net-curtain/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/javascript-net-curtain/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Normally this would just end up on <a href="http://amaras-tech.co.uk/u">my link blog</a>, but thought it was worthy of a proper mention.</p>
-
-<p><a href="http://amaras-tech.co.uk/u/5m">A JavaScript tear able net curtain</a>, clicking the mouse the moving mouse over curtain the real-time rendering in a browser feels very impressive to me. To see some thing this interactive with out lag being rendered in a browser is quite impressive. Am sure there are still many sites which crash my browser while trying to render little pointless animations.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -926,7 +926,7 @@ On the same 2 layers also spread some cherry sauce and cherries, then added whip
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
