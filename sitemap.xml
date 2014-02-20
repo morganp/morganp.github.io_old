@@ -21,8 +21,8 @@
         <lastmod>2014-01-28T19:00:03+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/engineering/ruby-performance-measure/</loc>
-        <lastmod>2014-01-28T19:00:03+00:00</lastmod>
+        <loc>http://morganp.github.io/blog/tech/ruby-performance-measure/</loc>
+        <lastmod>2014-02-19T21:30:19+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/blog/tech/ruby-include-require-local-files/</loc>
@@ -1058,7 +1058,7 @@
     </url>
     <url>
         <loc>http://morganp.github.io/blog/engineering/name-spacing-in-matlab/</loc>
-        <lastmod>2014-02-19T21:18:47+00:00</lastmod>
+        <lastmod>2014-02-19T22:54:05+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/blog/garden/gardener-c14e/</loc>
@@ -1192,7 +1192,7 @@
     </url>
     <url>
         <loc>http://morganp.github.io/blog/garden/raised-bed/</loc>
-        <lastmod>2014-02-19T19:45:26+00:00</lastmod>
+        <lastmod>2014-02-19T22:54:08+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/blog/tech/monkey-patch-octopress/</loc>
@@ -1207,16 +1207,20 @@
         <lastmod>2014-02-18T21:18:18+00:00</lastmod>
     </url>
     <url>
+        <loc>http://morganp.github.io/blog/tech/gnome-disable-focus-tracking/</loc>
+        <lastmod>2014-02-20T20:36:36+00:00</lastmod>
+    </url>
+    <url>
         <loc>http://morganp.github.io/about/</loc>
         <lastmod>2014-01-28T19:00:03+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/blog/archives/</loc>
-        <lastmod>2014-02-19T21:18:47+00:00</lastmod>
+        <lastmod>2014-02-20T20:36:36+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/</loc>
-        <lastmod>2014-02-19T21:18:47+00:00</lastmod>
+        <lastmod>2014-02-20T20:36:36+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/license/</loc>

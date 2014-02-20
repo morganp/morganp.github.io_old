@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Download ruby enterprise and follow instructions on page. The exact commands I used are: $ cd ~/bin
-$ wget http://rubyforge.org/frs/download.php/ &hellip;">
+  <meta name="description" content="The &lsquo;413 Request Entity Too Large&rsquo; Error message is because you have filled in a form and are submitting it with too much data in the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,63 @@ $ wget http://rubyforge.org/frs/download.php/ &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/413-request-entity-too-large/">413 Request Entity Too Large</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-08T03:22:08+01:00" pubdate data-updated="true">May 8<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/413-request-entity-too-large/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/413-request-entity-too-large/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The &lsquo;413 Request Entity Too Large&rsquo; Error message is because you have filled in a form and are submitting it with too much data in the form. Typically this comes from uploading files.</p>
+
+<p>The default size for <a href="http://nginx.org/">nginx</a> seems to be around 1MB.</p>
+
+<p>To increase the form size limit update your nginx.conf with :</p>
+
+<pre><code>http {
+   client_max_body_size 20M;
+
+   server {
+      ...
+   }
+}
+</code></pre>
+
+<p>To find the location of your nginx.conf file you can run:</p>
+
+<pre><code>find / -iname "nginx.conf"
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -668,50 +724,6 @@ Sort by     0.760000   0.130000   0.890000 (  0.886095)
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-and-gemspec/">Ruby and Gemspec</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-16T10:01:58+01:00" pubdate data-updated="true">Apr 16<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-and-gemspec/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-and-gemspec/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have just forked and cloned a project on github and discovered *.gemspec files. They are a nice way of specifying the gem dependencies in your project. once you have the copied/cloned a project before you run it just call:</p>
-
-<pre><code>$ gem build something.gemspec
-</code></pre>
-
-<p>The <a href="http://docs.rubygems.org/read/chapter/20">gemspec documentation</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/27/">&larr; Older</a>
@@ -726,11 +738,15 @@ Sort by     0.760000   0.130000   0.890000 (  0.886095)
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/gnome-disable-focus-tracking/">Gnome: Disable Focus Tracking</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/rocket/">Rocket</a>
@@ -746,10 +762,6 @@ Sort by     0.760000   0.130000   0.890000 (  0.886095)
     
       <li class="post">
         <a href="/blog/garden/raised-bed/">Raised Bed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/cooking/beef-wellington/">Beef Wellington</a>
       </li>
     
   </ul>

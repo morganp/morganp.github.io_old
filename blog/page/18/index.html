@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="recenlty after updating rubygems Istarted getting a lot of warning like this when running ruby or executable gems: NOTE: Gem::Specification# &hellip;">
+  <meta name="description" content="This vim plugin will allow you to gist directly from vim, simple way is just :Gist to gist entire file more options in the Full Readme. If you have &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,61 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/installing-gistvim/">Installing gist.vim</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-20T20:32:05+01:00" pubdate data-updated="true">May 20<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/installing-gistvim/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/installing-gistvim/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This vim plugin will allow you to gist directly from vim, simple way is just :Gist to gist entire file more options in the <a href="https://github.com/mattn/gist-vim/blob/master/README.mkd">Full Readme</a>.</p>
+
+<p>If you have not heard of gists or Github. Github is a very popular (especially with in the Ruby community) way of sharing open source code. <a href="https://gist.github.com/">Gists</a> are the easy way to save and share small snippets of code.</p>
+
+<h2>Install</h2>
+
+<pre><code>cd ~/.vim/plugin
+wget --nocheck-certificate https://github.com/mattn/gist-vim/raw/master/plugin/gist.vim
+cd ../doc
+wget --no-check-certificate https://github.com/mattn/gist-vim/raw/master/doc/gist-vim.txt
+
+#Now to set Your env variables
+git config --global github.user your-name-here
+git config --global github.token your-token-here
+</code></pre>
+
+<p>You Github token can be found on the <a href="https://github.com/account">GitHub Admin</a> Account Admin tab.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -762,69 +817,6 @@ $ bundle install
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/reading-list/">Reading List</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-08T10:19:56+01:00" pubdate data-updated="true">Apr 8<span>th</span>, 2011</time>
-        
-           | <a href="/blog/photography/reading-list/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/reading-list/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>My <a href="http://www.shelfari.com/o1514252429/shelf">Shelfari</a></p>
-
-<h2>To Read</h2>
-
-<p>Photoshop CS5 and Lightroom 3, ISBN 978-1-933952-67-2<br/>
-Developing Vision and Style, ISBN 978-1-9025 38495<br/>
-Pragmatic Thinking and Learning, ISBN 978-1934356050<br/>
-Pragmatic Guide to Git,<br/>
-The RSpec Book,<br/>
-Ruby Best Practises,<br/>
-The Agile Samurai, <br/>
-jQuery Novice to Ninja,<br/>
-Structure and Interpretation of Computer Programming,<br/>
-Metaprogramming Ruby,</p>
-
-<h2>Recommended Computing</h2>
-
-<p>Classic Shell Scripting, ISBN 0-596-00595-4<br/>
-The Passionate Programmer, ISBN 978-1-934356-34-0</p>
-
-<h2>Recommended Photography</h2>
-
-<p>Lightroom 2 Adventure, ISBN 978-0-596-52101-1<br/>
-Black and White, ISBN 978-1-904705-57-4<br/>
-First Light, ISBN 1-902538-24-2</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/19/">&larr; Older</a>
@@ -839,11 +831,15 @@ First Light, ISBN 1-902538-24-2</p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/gnome-disable-focus-tracking/">Gnome: Disable Focus Tracking</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/rocket/">Rocket</a>
@@ -859,10 +855,6 @@ First Light, ISBN 1-902538-24-2</p>
     
       <li class="post">
         <a href="/blog/garden/raised-bed/">Raised Bed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/cooking/beef-wellington/">Beef Wellington</a>
       </li>
     
   </ul>

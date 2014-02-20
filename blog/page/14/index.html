@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Sometime a script needs to now the directory that it is executing from, the best solution for this is: DIR="$( cd "$( dirname "${BASH_SOURCE[0 &hellip;">
+  <meta name="description" content="Update RVM $ rvm get head List current versions, and all versions $ rvm list
+$ rvm list known Select the version you want to upgrade to : $ rvm &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,64 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/update-your-rvm-ruby-and-migrate-gemsets/">Update Your RVM Ruby and Migrate Gemsets</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-20T22:08:43+01:00" pubdate data-updated="true">Apr 20<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/update-your-rvm-ruby-and-migrate-gemsets/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/update-your-rvm-ruby-and-migrate-gemsets/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Update RVM</p>
+
+<pre><code>$ rvm get head
+</code></pre>
+
+<p>List current versions, and all versions</p>
+
+<pre><code>$ rvm list
+$ rvm list known
+</code></pre>
+
+<p>Select the version you want to upgrade to :</p>
+
+<pre><code>$ rvm upgrade 1.9.3
+
+Are you sure you wish to upgrade from ruby-1.9.3-p125 to ruby-1.9.3-p194? (Y/n): Y  
+...
+Are you sure you wish to MOVE gems from ruby-1.9.3-p125 to ruby-1.9.3-p194?
+This will overwrite existing gems in ruby-1.9.3-p194 and remove them from ruby-1.9.3-p125 (Y/n): Y
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -832,64 +891,6 @@ find . -name "*.swp" -type l
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/irb-as-a-megapixels-calculator/">Irb as a Megapixels Calculator</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-12T18:56:40+00:00" pubdate data-updated="true">Feb 12<span>th</span>, 2012</time>
-        
-           | <a href="/blog/photography/irb-as-a-megapixels-calculator/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/irb-as-a-megapixels-calculator/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have just added the method below to my ruby .irbrc file for quickly calculating image megapixels. from OS X the info panel gives the form of &lsquo;23309 × 4412&rsquo; this becomes &lsquo;23309???4412&rsquo; when pasted into iTerm.</p>
-
-<pre><code>def megapixels( dimensions )
-  if dimensions.match(/\d*x\d*/)
-    x,y = dimensions.split('x')
-  end
-  if dimensions.match(/\d*\?\?\?\d*/)
-    x,y = dimensions.split('???')
-  end    
-
-  if x.nil? or y.nil? 
-    $stderr.puts "The input #{dimensions} could not be parsed in to megapixels"
-    exit -1
-  end
-  x = x.to_i
-  y = y.to_i
-
-  megapixels = (x*y)/10.0**6
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/15/">&larr; Older</a>
@@ -904,11 +905,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/gnome-disable-focus-tracking/">Gnome: Disable Focus Tracking</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/rocket/">Rocket</a>
@@ -924,10 +929,6 @@ end
     
       <li class="post">
         <a href="/blog/garden/raised-bed/">Raised Bed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/cooking/beef-wellington/">Beef Wellington</a>
       </li>
     
   </ul>

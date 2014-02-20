@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://morganp.github.io/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-02-19T21:19:05+00:00</updated>
+  <updated>2014-02-20T20:37:50+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Gnome: Disable Focus Tracking]]></title>
+    <link href="http://morganp.github.io/blog/tech/gnome-disable-focus-tracking/"/>
+    <updated>2014-02-20T20:31:44+00:00</updated>
+    <id>http://morganp.github.io/blog/tech/gnome-disable-focus-tracking</id>
+    <content type="html"><![CDATA[<p>Sometime ago I enabled focus tracking the mouse on Gnome. It took a while to find how to disable it again, so with out further a do the setting can be found in:</p>
+
+<pre><code>System -&gt; Preferences -&gt; Windows
+</code></pre>
+
+<p><img src="http://morganp.github.io/images/Tech/Disable_Mouse_focus_tracking.png" alt="" />§</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Rocket]]></title>
@@ -581,23 +595,6 @@ system.method.set_key =event.download.finished,move_complete,"d.set_directory=$d
 <p><a href="https://gist.github.com/morganp/8323448">Link to gist on github</a>.</p>
 
 <p><a href="http://libtorrent.rakshasa.no/wiki/RTorrentCommonTasks#Movecompletedtorrentstodifferentdirectorydependingonwatchdirectory">Recipe</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Check You Current Vim Colorscheme]]></title>
-    <link href="http://morganp.github.io/blog/tech/check-you-current-vim-colorscheme/"/>
-    <updated>2013-12-20T19:43:16+00:00</updated>
-    <id>http://morganp.github.io/blog/tech/Check-you-current-Vim-colorscheme</id>
-    <content type="html"><![CDATA[<p>This is not a foolproof method, as vim colorschemes are juct vim commands but by default they set:</p>
-
-<pre><code>let g:colors_name = "ir_black"
-</code></pre>
-
-<p>so to find out from vim just run</p>
-
-<pre><code>:echo g:colors_name
-</code></pre>
 ]]></content>
   </entry>
   

@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="How to get method which handles a single string input or an array of strings? Splat * * turns single strings into Arrays, leaves arrays alone. a = " &hellip;">
+  <meta name="description" content="After a bit of research I decided to give PhotoSmith Version 2.2 a go, it is the most expensive iPad app I have bought to-date. It fills a niche &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,57 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/the-unworkable-lightroom-to-ipad-workflow/">The Unworkable Lightroom to iPad Workflow</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-24T16:05:49+00:00" pubdate data-updated="true">Dec 24<span>th</span>, 2012</time>
+        
+           | <a href="/blog/photography/the-unworkable-lightroom-to-ipad-workflow/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/photography/the-unworkable-lightroom-to-ipad-workflow/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After a bit of research I decided to give <a href="http://www.photosmithapp.com/">PhotoSmith</a> Version 2.2 a go, it is the most expensive iPad app I have bought to-date. It fills a niche market and nothing else promised what it could deliver it might be worth it. Due to failed promises and many things not work as you would expect it was a massive drain on my time investigating how to get it to work. so the real cost of the app is the hours of you life it wasted!</p>
+
+<p>What I was initially looking for was the ability to import photos to Lightroom, Sit on the sofa with iPad pick my favourites sort out my tags then go back to edit it Lightroom. The other important feature for me was to export photoshoots so I could show people my edited photos in fullscreen on the ipad.</p>
+
+<p>The sync process was not very smooth and forced me to start using collection, well something might have to give to add this into the workflow. but on a whole the syncing back and forth between photosmith and Lightroom just did not work.</p>
+
+<p>May be I can export my final pictures, but they end up in the Camera Roll and photostream, What! this is potentially disastrous, if I was on a client shoot and took pictures export to Photosmith on the iPad to  show the client how they were coming out and found that they had also been shared with friends and family breaking clients confidentiality.</p>
+
+<p>Oh and the app will not start if you block access to your camera roll!</p>
+
+<p>After exporting one picture it seemed to be fine. Restarted app NO pictures, great it just lost the last sync. Lets try again, sent 3 photos over. Photos show up, lets view full screen, quiet good can flick between them. Then Boom, I know have some how got 887 photos in photosmith, while viewing fullscreen it decided to import my entire camera roll. I have specifically configured it not to load apps from any where but a Lightroom export.</p>
+
+<p>They say they are working on a new version, but I am not holding my breath.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -917,84 +968,6 @@ pp  fold_list( list )
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/calculating-regression-coefficients-in-r/">Calculating Regression Coefficients in R</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-29T12:10:18+01:00" pubdate data-updated="true">Sep 29<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/calculating-regression-coefficients-in-r/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/calculating-regression-coefficients-in-r/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>For this example we will have a data file with two columns of data labelled A and B. For example</p>
-
-<pre><code>A    B
-0.1 0.2
-0.3 0.4
-0.5 0.6
-</code></pre>
-
-<p>Set the working directory and load the data as usual in r:</p>
-
-<pre><code>setwd("~/Code/example")
-data = read.table("data.txt", header=T)
-names(data) # List the header names
-</code></pre>
-
-<h2>Correlation</h2>
-
-<p>Find the correlation between A and B.</p>
-
-<pre><code>cor(data$A, data$b)
-</code></pre>
-
-<p>If you have more than 2 variables calculate the correlation matrix using :</p>
-
-<pre><code>cor(data)
-</code></pre>
-
-<h2>Unstandardised Regression Coefficient</h2>
-
-<p>A predicting B</p>
-
-<pre><code>lm(data$B~data$A)
-</code></pre>
-
-<h2>Standardised Regression Coefficient</h2>
-
-<p>A predicting B</p>
-
-<pre><code>lm( scale( data$B )~scale( data$A ) )
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/9/">&larr; Older</a>
@@ -1009,11 +982,15 @@ names(data) # List the header names
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (212)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/gnome-disable-focus-tracking/">Gnome: Disable Focus Tracking</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/rocket/">Rocket</a>
@@ -1029,10 +1006,6 @@ names(data) # List the header names
     
       <li class="post">
         <a href="/blog/garden/raised-bed/">Raised Bed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/cooking/beef-wellington/">Beef Wellington</a>
       </li>
     
   </ul>
