@@ -176,6 +176,58 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/engineering/navigate-verilog-with-vim/">Navigate Verilog With VIM</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-04T22:08:39+01:00" pubdate data-updated="true">Jun 4<span>th</span>, 2013</time>
+        
+           | <a href="/blog/engineering/navigate-verilog-with-vim/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/engineering/navigate-verilog-with-vim/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>Using <code>gf</code></h1>
+
+<p>In your vimrc</p>
+
+<pre><code>" gf goto_file, automatically add search for these file extensions
+:set suffixesadd+=.v
+:set suffixesadd+=.sv
+:set suffixesadd+=.bh.v
+</code></pre>
+
+<p>Now <code>gf</code> on a module name will try to open file.v file.sv and file.bh.v  if they are in the same folder.
+Another good reason to keep module and file names matching.</p>
+
+<p><code>ctrl-6</code> will jump back to the previous file.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/cooking/coffee-cake/">Coffee Cake With Rummy Cream</a></h1>
     
     
@@ -859,61 +911,6 @@ On the same 2 layers also spread some cherry sauce and cherries, then added whip
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ubuntu-linux-list-disks/">Ubuntu (Linux) List Disks</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-02T13:39:24+01:00" pubdate data-updated="true">May 2<span>nd</span>, 2013</time>
-        
-           | <a href="/blog/tech/ubuntu-linux-list-disks/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ubuntu-linux-list-disks/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>sudo lshw -class disk -class storage -short
-</code></pre>
-
-<p>Outputs :</p>
-
-<pre><code>H/W path           Device     Class       Description
-=====================================================
-/0/100/1c.3/0      scsi0      storage     JMB363 SATA/IDE Controller
-/0/100/1c.3/0/0    /dev/sda   disk        3TB ST3000DM001-9YN1
-/0/100/1c.3/0/1    /dev/sdb   disk        2TB SAMSUNG HD204UI
-/0/100/1c.3/0.1               storage     JMB368 IDE controller
-/0/100/1f.2        scsi2      storage     N10/ICH7 Family SATA Controller [IDE mode]
-/0/100/1f.2/0      /dev/sdc   disk        3TB ST3000DM001-9YN1
-/0/100/1f.2/1      /dev/sdd   disk        2TB SAMSUNG HD204UI
-/0/1               scsi6      storage
-/0/1/0.0.0         /dev/sde   disk        8019MB SCSI Disk
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -928,7 +925,7 @@ On the same 2 layers also spread some cherry sauce and cherries, then added whip
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (9)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
