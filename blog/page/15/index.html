@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="A simple script for finding temp files from the current directory and below. I often run this before adding a new project to a revision control &hellip;">
+  <meta name="description" content="Answer: svn commit -m $'Line 1 \nLine 2' The Problem Committing to subversion on the command line and using escaped line returns for multi line &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,131 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/svn-multi-line-comments-on-the-command-line-/">SVN Multi-line Comments on the Command Line</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-28T13:32:53+01:00" pubdate data-updated="true">Mar 28<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/svn-multi-line-comments-on-the-command-line-/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/svn-multi-line-comments-on-the-command-line-/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Answer:</p>
+
+<pre><code>svn commit -m $'Line 1 \nLine 2'
+</code></pre>
+
+<h2>The Problem</h2>
+
+<p>Committing to subversion on the command line and using escaped line returns for multi line comments:</p>
+
+<pre><code>svn commit -m $'Line 1 \nLine 2'
+</code></pre>
+
+<p>svn log will show some thing like</p>
+
+<pre><code>------------------------------------------------------------------------
+r1 | user | 2012-03-28 13:37:48 +0100 (Wed, 28 Mar 2012) | 1 lines
+
+Line 1 \nLine 2
+</code></pre>
+
+<p>Answer originally posted on <a href="http://serverfault.com/questions/148917/use-linefeed-or-carriage-return-in-subversion-commit-message-from-the-command-li">ServerFault</a>. Strings contained in \&lsquo;\&rsquo; should not be interpreted by the command line but:</p>
+
+<pre><code>svn commit -m "Line 1 \nLine 2"
+</code></pre>
+
+<p>Shows the same errors. Starting the comment with a $ does seem to fix it.</p>
+
+<pre><code>svn commit -m $'Line 1 \nLine 2'
+</code></pre>
+
+<p>Will give:</p>
+
+<pre><code>------------------------------------------------------------------------
+r1 | user | 2012-03-28 13:37:48 +0100 (Wed, 28 Mar 2012) | 1 lines
+
+Line 1 
+Line 2
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/unix-mail-command-delete-all-messages/">Unix Mail Command, Delete All Messages</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-01T20:44:36+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2012</time>
+        
+           | <a href="/blog/tech/unix-mail-command-delete-all-messages/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/unix-mail-command-delete-all-messages/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Cron jobs can have there results returned as mail via the unix mail system. If left unchecked for a while the number of mails can mount up and you probably do not care about the old results. the command <code>d *</code> will delete all mails</p>
+
+<pre><code>$ mail
+Mail version 8.1 6/6/93.  Type ? for help.
+"/var/mail/lounge": 2726 messages 25 new 2726 unread
+? d *
+? quit
+
+$ mail
+No mail for user
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -693,112 +818,6 @@ real_username = $1
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-send-message-to-stderr/">Ruby Send Message to Stderr</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-22T11:56:25+00:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-send-message-to-stderr/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-send-message-to-stderr/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When creating applications normal messages should go to <a href="http://en.wikipedia.org/wiki/Standard_streams#Standard_output_.28stdout.29">stdout</a> and error messages should go to <a href="http://en.wikipedia.org/wiki/Standard_streams#Standard_error_.28stderr.29">stderr</a>, unfortunately there is not a nice ruby way the cleanest I have found is:</p>
-
-<pre><code>put "Message displayed in stdout"
-$stderr.puts "Error displayed in stderr"
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/suppressing-warnings-in-ruby-scripts/">Suppressing Warnings in Ruby Scripts</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-02T10:13:29+00:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
-        
-           | <a href="/blog/tech/suppressing-warnings-in-ruby-scripts/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/suppressing-warnings-in-ruby-scripts/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Suppressing warnings is usually a bad idea but if you understand the risk and want to carry on regardless. When ruby to call a script then the warning level can be set via:</p>
-
-<pre><code>$ ruby -W0 ./script.rb
-$ ruby -W1 ./script.rb
-$ ruby -W2 ./script.rb
-</code></pre>
-
-<p>Where 0=silence, 1=medium, 2=verbose</p>
-
-<p>In an executable with a shebang line this is a little harder. This is the method I have found:</p>
-
-<pre><code>#!/usr/bin/env ruby
-##                      $VERBOSE
-## -W0  NO Warnings     nil
-## -W1  Quiet           false
-## -W2  Verbose         true
-BEGIN { $VERBOSE = nil }
-
-#Rest of ruby script
-</code></pre>
-
-<p>The script can then be called directly with the warning level set:</p>
-
-<pre><code>$ executable_ruby_script 
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/16/">&larr; Older</a>
@@ -813,11 +832,19 @@ BEGIN { $VERBOSE = nil }
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/rocket-and-chilli/">Rocket &amp; Chilli</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/garden/spring/">Spring</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/gnome-disable-focus-tracking/">Gnome: Disable Focus Tracking</a>
@@ -829,14 +856,6 @@ BEGIN { $VERBOSE = nil }
     
       <li class="post">
         <a href="/blog/garden/propagator/">Propagator</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/monkey-patch-octopress/">Monkey Patch Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/raised-bed/">Raised Bed</a>
       </li>
     
   </ul>

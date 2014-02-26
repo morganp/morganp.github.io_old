@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Fluke for mac can be used to get iTunes playing FLAC audio files. However it is currently broken for Snow Leopard due to the upgraded version of &hellip;">
+  <meta name="description" content="
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,139 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/testing-tweets-from-production-server-this-should-be-working%21/">Testing Tweets From Production Server This Should Be Working!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-18T13:45:45+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/testing-tweets-from-production-server-this-should-be-working%21/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/testing-tweets-from-production-server-this-should-be-working%21/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-incase-sensitive-sort/">Ruby Incase Sensitive Sort</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-18T11:13:51+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-incase-sensitive-sort/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-incase-sensitive-sort/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ruby has a .sort method which sorts basic objects. it is case sensitive though so Zebra is before apple. Using sort_by instead you can specify the sort key.</p>
+
+<pre><code>some_array.sort_by { |x| x.downcase }
+</code></pre>
+
+<p>There is a good description/discussion of the performance issues of this on <a href="http://ruby-doc.org/core/classes/Enumerable.html#M003120">ruby-docs</a></p>
+
+<p>Since the <a href="http://ruby-doc.org/core/classes/Enumerable.html#M003120">ruby-docs</a> mention performance issues I though it would be worth noting  that in my blog app I have the option to pre sort with the ORM. this shouldmake the ruby sory much faster to execute as it is already mostly sorted, but how does this effect the performance of the ORM</p>
+
+<pre><code>def all_tags_sort
+   @tags = Tags.find(:all, :order =&gt; "tag")
+   @tags = @tags.sort_by { |tag| tag.tag.downcase }
+end
+</code></pre>
+
+<p>VS</p>
+
+<pre><code>def all_tags_sort
+   @tags = Tags.find(:all)
+   @tags = @tags.sort_by { |tag| tag.tag.downcase }
+end
+</code></pre>
+
+<p>For the performance test I added this to one of views that displays the tags</p>
+
+<pre><code>#For Benchmarking
+require 'benchmark'
+include Benchmark
+
+bm(10) do |b|
+   b.report("ORM") { @tags = Tags.find(:all) }
+   b.report("Sort by") { @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
+   b.report("ORM sorted") { @tags = Tags.find(:all, :order =&gt; "tag") }
+   b.report("Sort by") { @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
+end
+</code></pre>
+
+<p>To test I built up a small dictionary using this <a href="http://gist.github.com/370533">gist</a> (sorted by default so have to randomise it alittle bit)</p>
+
+<pre><code>                   user     system      total        real
+ORM           53.920000   3.650000  57.570000 ( 57.960210)
+Sort by        4.750000   0.320000   5.070000 (  5.091083)
+ORM sorted    45.080000   3.590000  48.670000 ( 49.554891)
+Sort by        2.700000   0.310000   3.010000 (  3.016042)
+</code></pre>
+
+<p>mmm, data does not look write as retrieving and sorting was quicker than just retrieving will run with the order swapped.</p>
+
+<pre><code>                user     system      total        real
+ORM sorted 10.290000   1.740000  12.030000 ( 12.087005)
+Sort by     0.930000   0.130000   1.060000 (  1.054450)
+ORM        11.740000   1.700000  13.440000 ( 13.453623)
+Sort by     0.760000   0.130000   0.890000 (  0.886095)
+</code></pre>
+
+<p>Sorting in the ORM layer still seems to be quicker than not sorting, and the Ruby sorting takes same length of time. So looks like applying the sort is a worthwhile.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -666,106 +800,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-10-released/">Sinatra 1.0 Released</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/sinatra-10-released/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/sinatra-10-released/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sinatra 1.0 has been released!</p>
-
-<p>When you install the new version the old one are still left behind. This is an example of how to upgrade, and remove old versions:</p>
-
-<pre><code>$ gem install sinatra
-$ gem cleanup sinatra
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-run-execute-command-line/">Ruby Run (Execute) Command Line</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-run-execute-command-line/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-run-execute-command-line/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Also a <a href="http://gist.github.com/341670">gist</a> on github. This code snippet is an example of how to execute a command line argument in ruby and display the output</p>
-
-<pre><code>#!/usr/bin/env ruby
-do_and_report("ls")
-
-#Small function to run a command and output return values
-def do_and_report(command)
-   f = open("| #{command}")
-   g = Array.new
-   while (foo = f.gets)
-      g &lt;&lt; foo
-   end
-   g.each do |element|
-      puts element
-   end
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/28/">&larr; Older</a>
@@ -780,11 +814,19 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/rocket-and-chilli/">Rocket &amp; Chilli</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/garden/spring/">Spring</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/gnome-disable-focus-tracking/">Gnome: Disable Focus Tracking</a>
@@ -796,14 +838,6 @@ end
     
       <li class="post">
         <a href="/blog/garden/propagator/">Propagator</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/monkey-patch-octopress/">Monkey Patch Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/raised-bed/">Raised Bed</a>
       </li>
     
   </ul>

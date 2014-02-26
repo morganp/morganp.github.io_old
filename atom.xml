@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://morganp.github.io/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-02-20T21:14:22+00:00</updated>
+  <updated>2014-02-26T11:58:36+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rocket &amp; Chilli]]></title>
+    <link href="http://morganp.github.io/blog/garden/rocket-and-chilli/"/>
+    <updated>2014-02-25T21:23:40+00:00</updated>
+    <id>http://morganp.github.io/blog/garden/rocket-and-chilli</id>
+    <content type="html"><![CDATA[<p>The first batch of seeds in the propagator are off to a good start.</p>
+
+<p>Rocket:
+<img src="http://morganp.github.io/images/Gardening/morganp-20140225-Garden-IMG_6843.jpg" title="Rocket" alt="" /></p>
+
+<p>De Cayenne, Chilli Peppers:
+<img src="http://morganp.github.io/images/Gardening/morganp-20140225-Garden-IMG_6848.jpg" title="De Cayenne, Chilli Peppers" alt="" /></p>
+
+<p>Soon will re-pot and start <a href="http://apps.rhs.org.uk/advicesearch/profile.aspx?pid=386">hardening off</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Spring]]></title>
+    <link href="http://morganp.github.io/blog/garden/spring/"/>
+    <updated>2014-02-25T20:42:28+00:00</updated>
+    <id>http://morganp.github.io/blog/garden/spring</id>
+    <content type="html"><![CDATA[<p>First signs of spring, bulbs starting to show growth.</p>
+
+<p><img src="http://morganp.github.io/images/Gardening/morganp-20140225-Garden-IMG_6851.jpg" title="Bulbs starting to shoot" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Gnome: Disable Focus Tracking]]></title>
@@ -545,56 +573,6 @@ always_ff @(posedge clk) begin
   data &lt;= new_data;
 end
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Reverting in Git]]></title>
-    <link href="http://morganp.github.io/blog/tech/reverting-in-git/"/>
-    <updated>2014-01-08T20:10:31+00:00</updated>
-    <id>http://morganp.github.io/blog/tech/Reverting-in-git</id>
-    <content type="html"><![CDATA[<p>I use to use <code>svn revert</code> to roll back local modification and get back to the state I was in last time I checked out.</p>
-
-<p>to do the same in git  I use :</p>
-
-<pre><code>git checkout -- filename
-</code></pre>
-
-<p>As git does not automatically push to a server the way subversion does you have an opportunity to revert local commits.</p>
-
-<pre><code>git reset --soft HEAD^
-</code></pre>
-
-<p>Here the <code>^</code> means previous. ie go back 1 commit. Using soft the files will still appear modified and we can use the previous command to reset the files as required.</p>
-
-<p>Further reading <a href="http://stackoverflow.com/q/2530060/97073">what “git reset” does in plain english?</a>, <a href="http://marklodato.github.io/visual-git-guide/index-en.html">Visual Git Reference</a> and <a href="http://git-scm.com/blog/2011/07/11/reset.html">Reset Demystified</a></p>
-
-<p>&mdash;
-<a href="http://www.norbauer.com/rails-consulting/notes/git-revert-reset-a-single-file.html">git checkout source</a>.  <br/>
-<a href="http://stackoverflow.com/questions/2845731/how-to-uncommit-my-last-commit-in-git">git reset source</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rtorrent Move on Download Completion]]></title>
-    <link href="http://morganp.github.io/blog/tech/rtorrent-move-on-download-completion/"/>
-    <updated>2014-01-08T19:53:02+00:00</updated>
-    <id>http://morganp.github.io/blog/tech/rtorrent-move-on-download-completion</id>
-    <content type="html"><![CDATA[<p>rtorrent moving torrents upon completion:</p>
-
-<pre><code># Torrents go in ~/Torrents
-# Incomplete Downloads in ~/Incomplete
-# Upon Completion Data is moved to ~/Seeding
-
-schedule = watch_directory_standard,10,10,"load_start=~/Torrents/*.torrent,d.set_directory=~/Incomplete/,d.set_custom1=~/Seeding/
-
-#Move upon download completion.
-system.method.set_key =event.download.finished,move_complete,"d.set_directory=$d.get_custom1= ;execute=mv,-n,$d.get_base_path=,$d.get_custom1="
-</code></pre>
-
-<p><a href="https://gist.github.com/morganp/8323448">Link to gist on github</a>.</p>
-
-<p><a href="http://libtorrent.rakshasa.no/wiki/RTorrentCommonTasks#Movecompletedtorrentstodifferentdirectorydependingonwatchdirectory">Recipe</a>.</p>
 ]]></content>
   </entry>
   

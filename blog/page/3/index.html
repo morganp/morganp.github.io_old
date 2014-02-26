@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="This is not a foolproof method, as vim colorschemes are juct vim commands but by default they set: let g:colors_name = "ir_black" so to find out from &hellip;">
+  <meta name="description" content="I use to use svn revert to roll back local modification and get back to the state I was in last time I checked out. to do the same in git I use : git &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,116 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/reverting-in-git/">Reverting in Git</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-08T20:10:31+00:00" pubdate data-updated="true">Jan 8<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/reverting-in-git/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/reverting-in-git/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I use to use <code>svn revert</code> to roll back local modification and get back to the state I was in last time I checked out.</p>
+
+<p>to do the same in git  I use :</p>
+
+<pre><code>git checkout -- filename
+</code></pre>
+
+<p>As git does not automatically push to a server the way subversion does you have an opportunity to revert local commits.</p>
+
+<pre><code>git reset --soft HEAD^
+</code></pre>
+
+<p>Here the <code>^</code> means previous. ie go back 1 commit. Using soft the files will still appear modified and we can use the previous command to reset the files as required.</p>
+
+<p>Further reading <a href="http://stackoverflow.com/q/2530060/97073">what “git reset” does in plain english?</a>, <a href="http://marklodato.github.io/visual-git-guide/index-en.html">Visual Git Reference</a> and <a href="http://git-scm.com/blog/2011/07/11/reset.html">Reset Demystified</a></p>
+
+<p>&mdash;
+<a href="http://www.norbauer.com/rails-consulting/notes/git-revert-reset-a-single-file.html">git checkout source</a>.  <br/>
+<a href="http://stackoverflow.com/questions/2845731/how-to-uncommit-my-last-commit-in-git">git reset source</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-08T19:53:02+00:00" pubdate data-updated="true">Jan 8<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/rtorrent-move-on-download-completion/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/rtorrent-move-on-download-completion/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>rtorrent moving torrents upon completion:</p>
+
+<pre><code># Torrents go in ~/Torrents
+# Incomplete Downloads in ~/Incomplete
+# Upon Completion Data is moved to ~/Seeding
+
+schedule = watch_directory_standard,10,10,"load_start=~/Torrents/*.torrent,d.set_directory=~/Incomplete/,d.set_custom1=~/Seeding/
+
+#Move upon download completion.
+system.method.set_key =event.download.finished,move_complete,"d.set_directory=$d.get_custom1= ;execute=mv,-n,$d.get_base_path=,$d.get_custom1="
+</code></pre>
+
+<p><a href="https://gist.github.com/morganp/8323448">Link to gist on github</a>.</p>
+
+<p><a href="http://libtorrent.rakshasa.no/wiki/RTorrentCommonTasks#Movecompletedtorrentstodifferentdirectorydependingonwatchdirectory">Recipe</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -767,115 +877,6 @@ bunch         Coriander stalks
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/hugin-2013-released/">Hugin 2013 Released</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-27T19:40:08+00:00" pubdate data-updated="true">Nov 27<span>th</span>, 2013</time>
-        
-           | <a href="/blog/photography/hugin-2013-released/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/hugin-2013-released/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>11 Months since the last Release <a href="http://hugin.sourceforge.net/">Hugin 2013.0.0</a> is released.</p>
-
-<p>One of the best photo stitchers available at any cost.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-repeat-a-matrix-n-times/">Matlab Repeat a Matrix N Times</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-27T10:57:36+00:00" pubdate data-updated="true">Nov 27<span>th</span>, 2013</time>
-        
-           | <a href="/blog/engineering/matlab-repeat-a-matrix-n-times/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/engineering/matlab-repeat-a-matrix-n-times/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>repmat(matrix, [repeat_y, repeat_x])</p>
-
-<p>Horizontal</p>
-
-<pre><code>repmat([1 2 3],[1,4])
-
-ans =
-
-     1     2     3     1     2     3     1     2     3     1     2     3
-</code></pre>
-
-<p>Vertical</p>
-
-<pre><code>repmat([1; 2; 3],[4,1])
-
-ans =
-
-     1
-     2
-     3
-     1
-     2
-     3
-     1
-     2
-     3
-     1
-     2
-     3
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -890,11 +891,19 @@ ans =
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (9)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/rocket-and-chilli/">Rocket &amp; Chilli</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/garden/spring/">Spring</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/gnome-disable-focus-tracking/">Gnome: Disable Focus Tracking</a>
@@ -906,14 +915,6 @@ ans =
     
       <li class="post">
         <a href="/blog/garden/propagator/">Propagator</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/monkey-patch-octopress/">Monkey Patch Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/raised-bed/">Raised Bed</a>
       </li>
     
   </ul>
