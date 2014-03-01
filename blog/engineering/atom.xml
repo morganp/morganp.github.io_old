@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Engineering | RockPaperScissors]]></title>
   <link href="http://morganp.github.io/blog/engineering/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-03-01T19:58:33+00:00</updated>
+  <updated>2014-03-01T20:19:22+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[OO Magic Bullet?]]></title>
+    <link href="http://morganp.github.io/blog/engineering/oo-magic-bullet/"/>
+    <updated>2014-03-01T20:04:06+00:00</updated>
+    <id>http://morganp.github.io/blog/engineering/oo-magic-bullet</id>
+    <content type="html"><![CDATA[<p>I do not think that there are any magic bullets, best practises can minimise risk but you have to fully understand the technique. You can not just switch from procedural code to wrapping everything in an object and claim statements like this from <a href="http://www.mathworks.co.uk/company/newsletters/articles/introduction-to-object-oriented-programming-in-matlab.html">mathworks</a>:</p>
+
+<blockquote><p>Because it was built using OO techniques, the application is now robust enough for others to use and maintain and can be integrated with related applications throughout an organization.</p></blockquote>
+
+<p>Sounds like Object-Oriented programming is a magic bullet to solve all you programming woes!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[$display Without a Line Return]]></title>
@@ -114,70 +127,6 @@ a =
 </code></pre>
 
 <p>Based on <a href="http://matlabnewbie.blogspot.co.uk/2011/11/remove-any-rows-that-contains-specific.html">examples from matlabnewbie</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Flip-flop]]></title>
-    <link href="http://morganp.github.io/blog/engineering/flip-flop/"/>
-    <updated>2014-01-09T19:15:10+00:00</updated>
-    <id>http://morganp.github.io/blog/engineering/flip-flop</id>
-    <content type="html"><![CDATA[<p>A flip-flop (D-Type) is essentially 2 latches in series with the enable to one inverted.
-This stops the flip-flop from being transparent or open as a single latch can be.</p>
-
-<p>For ASIC design it is recommended that all flip-flops use active low asynchronous resets.
-This is often connected to the power on reset circuit and retimed on to the rising edge of the clock at the top level of the chip.</p>
-
-<p>In Verilog a D-Type flip-flop can be implied with the following logic.<br/>
-NB: the reg implies nothing about the flip-flop only that data is assigned inside an always block.</p>
-
-<pre><code>reg [1:0] data; 
-always @(posedge clk or negedge rst_n) begin
-  if (~rst_n) begin
-    data &lt;= 'b0;
-  end
-  else begin
-    data &lt;= new_data;
-  end
-end
-</code></pre>
-
-<p>If your flow supports the use of SystemVerilog, use of the <code>always_comb</code>, <code>always_latch</code> and <code>always_ff</code> are recommended.
-the rules for sensitivity lists are a little stricter to minimize RTL to gates mismatch.
-The added benefit is that it allows the designer to be clear about design intent.
-Using the logic type also removes confusion about reg implying flip-flops and allows code refacoring with out having to switch types.</p>
-
-<pre><code>logic [1:0] data; 
-always_ff @(posedge clk or negedge rst_n) begin
-  if (~rst_n) begin
-    data &lt;= 'b0;
-  end
-  else begin
-    data &lt;= new_data;
-  end
-end
-</code></pre>
-
-<p>With a Synchronous Reset:</p>
-
-<pre><code>logic [1:0] data; 
-always_ff @(posedge clk) begin
-  if (~rst_n) begin
-    data &lt;= 'b0;
-  end
-  else begin
-    data &lt;= new_data;
-  end
-end
-</code></pre>
-
-<p>No Reset:</p>
-
-<pre><code>logic [1:0] data; 
-always_ff @(posedge clk) begin
-  data &lt;= new_data;
-end
-</code></pre>
 ]]></content>
   </entry>
   

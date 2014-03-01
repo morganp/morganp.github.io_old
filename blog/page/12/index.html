@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Lightroom 4.1 is now available. Not much looks like it has changed between this and the RC1 release version. But the adobe page lists the changes and &hellip;">
+  <meta name="description" content="After deciding to try out epub on the kindle, as I noticed people are listing epub as an apple format. I thought it was an open version of mobi, for &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,49 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/pragmatic-programmers-dropbox-integration/">Pragmatic Programmers, Dropbox Integration</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-19T09:13:07+01:00" pubdate data-updated="true">Jun 19<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/pragmatic-programmers-dropbox-integration/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/pragmatic-programmers-dropbox-integration/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After deciding to try out epub on the kindle, as I noticed people are listing epub as an apple format. I thought it was an open version of mobi, for other ebook readers, and since the iPad is good with pdfs did not really think apple would have been to interested.</p>
+
+<p>I noticed in my <a href="http://db.tt/WdYABF0y">Dropbox</a> when I first paired it with my <a href="http://pragprog.com/">PragProg</a> I had only selected pdfs, as I planned to send mobi to my kindle and would only need pdfs portable. Since then I have changed that decision and get all formats delivered to <a href="http://db.tt/WdYABF0y">Dropbox</a>. So I thought I would go through my old titles download the missing files and uploaded them to Dropbox. Where they would magically appear on my iPad.</p>
+
+<p><a href="http://pragprog.com/">PragProg</a> have done an amazing job with their [Drobbox][] integration, after selecting &ldquo;Download eBook&rdquo; just under the format download links is a &ldquo;Send to Dropbox&rdquo; which send all the currently selected formats. Brilliant no need for me to download from <a href="http://pragprog.com/">PragProg</a> and re-upload to <a href="http://db.tt/WdYABF0y">Dropbox</a> just to get them onto the ipad, <a href="http://pragprog.com/">PragProg</a> do all the heavy lifting making it really easy to get their content on to the iPad.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -562,65 +605,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-special-exception-variables-made-mnemonic/">Ruby Special Exception Variables Made Mnemonic</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-19T14:56:56+01:00" pubdate data-updated="true">May 19<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/ruby-special-exception-variables-made-mnemonic/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-special-exception-variables-made-mnemonic/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In ruby you can catch StandardErrors using begin rescue end</p>
-
-<pre><code>begin
-  #Some thing which might fails
-rescue
-  $stderr.puts $!
-end
-</code></pre>
-
-<p>We can add a mnemonic variable name to the captured error using :</p>
-
-<pre><code>begin
-  #Some thing which might fails
-rescue =&gt; error
-  $stderr.puts error
-end
-</code></pre>
-
-<p>Other <a href="http://ruby.wikia.com/wiki/Special_variable">Special Ruby Variables</a>. I am not sure on the completeness of that list so <a href="http://ruby.runpaint.org/globals">here is another</a> and <a href="http://www.zenspider.com/Languages/Ruby/QuickRef.html#pre-defined-variables">another</a>.</p>
-
-<p>For more on Ruby error handling I would recommend <a href="http://exceptionalruby.com">Avdi Grimms book Exceptional Ruby</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -635,11 +619,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (11)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (215)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (12)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (215)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/oo-magic-bullet/">OO Magic Bullet?</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/edit-octopress-posts/">Edit Octopress Posts</a>
@@ -655,10 +643,6 @@ end
     
       <li class="post">
         <a href="/blog/garden/spring/">Spring</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/gnome-disable-focus-tracking/">Gnome: Disable Focus Tracking</a>
       </li>
     
   </ul>

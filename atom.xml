@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://morganp.github.io/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-03-01T19:58:33+00:00</updated>
+  <updated>2014-03-01T20:19:22+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[OO Magic Bullet?]]></title>
+    <link href="http://morganp.github.io/blog/engineering/oo-magic-bullet/"/>
+    <updated>2014-03-01T20:04:06+00:00</updated>
+    <id>http://morganp.github.io/blog/engineering/oo-magic-bullet</id>
+    <content type="html"><![CDATA[<p>I do not think that there are any magic bullets, best practises can minimise risk but you have to fully understand the technique. You can not just switch from procedural code to wrapping everything in an object and claim statements like this from <a href="http://www.mathworks.co.uk/company/newsletters/articles/introduction-to-object-oriented-programming-in-matlab.html">mathworks</a>:</p>
+
+<blockquote><p>Because it was built using OO techniques, the application is now robust enough for others to use and maintain and can be integrated with related applications throughout an organization.</p></blockquote>
+
+<p>Sounds like Object-Oriented programming is a magic bullet to solve all you programming woes!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Edit Octopress Posts]]></title>
@@ -524,34 +537,6 @@ So I picked up a few books on garden design with good reviews, they were:</p>
 16 meters of 2.5mm chain ~£50
 40 Ikea Lanterns £80
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[F-stop ICUs]]></title>
-    <link href="http://morganp.github.io/blog/photography/f-stop-icus/"/>
-    <updated>2014-02-01T21:27:32+00:00</updated>
-    <id>http://morganp.github.io/blog/photography/f-stop-icus</id>
-    <content type="html"><![CDATA[<p>F-Stop camera bags have an adaptable system for trading camera space for other outdoor gear. The swappable section are called ICUs or Internal Camera Units.</p>
-
-<p>This is not a review but just a quick note to record the default layouts of the Pro-Medium and Pro-Extra Large.</p>
-
-<h2>Pro-Medium ICU</h2>
-
-<p>Internal Dimensions (external all dimensions 2cm greater)<br/>
-Depth: 16.5cm. Width: 27cm. Height: 27.5cm  External Volume 15.4L
-<img class="centre" src="http://morganp.github.io/images/fstop_icu/morganp-20140102-fstop-IMG_6382.jpg">
-<img class="centre" src="http://morganp.github.io/images/fstop_icu/morganp-20140102-fstop-IMG_6383.jpg">
-<img class="centre" src="http://morganp.github.io/images/fstop_icu/morganp-20140102-fstop-IMG_6384.jpg"></p>
-
-<h2>Pro-Extra Large ICU</h2>
-
-<p>Internal Dimensions (external all dimensions 2cm greater)<br/>
-Depth: 16.5cm. Width: 27cm. Height: 46cm  External Volume 25L</p>
-
-<p><img class="centre" src="http://morganp.github.io/images/fstop_icu/morganp-20140102-fstop-IMG_6387.jpg">
-<img class="centre" src="http://morganp.github.io/images/fstop_icu/morganp-20140102-fstop-IMG_6388.jpg">
-<img class="centre" src="http://morganp.github.io/images/fstop_icu/morganp-20140102-fstop-IMG_6390.jpg"></p>
 ]]></content>
   </entry>
   

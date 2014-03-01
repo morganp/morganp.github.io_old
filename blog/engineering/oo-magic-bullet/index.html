@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>ORM(Activerecord) or Ruby Sort - RockPaperScissors</title>
+  <title>OO Magic Bullet? - RockPaperScissors</title>
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Based on an old Article I wrote, investigating incase sensitive sorting performance. I have an active record model call Tag with tag and id &hellip;">
+  <meta name="description" content="I do not think that there are any magic bullets, best practises can minimise risk but you have to fully understand the technique. You can not just &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://morganp.github.io/blog/tech/ormactiverecord-or-ruby-sort">
+  <link rel="canonical" href="http://morganp.github.io/blog/engineering/oo-magic-bullet">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="RockPaperScissors" type="application/atom+xml">
@@ -84,7 +84,7 @@
   
   <header>
     
-      <h1 class="entry-title">ORM(Activerecord) or Ruby Sort</h1>
+      <h1 class="entry-title">OO Magic Bullet?</h1>
     
     
       <p class="meta">
@@ -100,7 +100,7 @@
   
 
 
-<time datetime="2011-02-20T02:19:17+00:00" pubdate data-updated="true">Feb 20<span>th</span>, 2011</time>
+<time datetime="2014-03-01T20:04:06+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://morganp.github.io">Comments</a>
@@ -110,85 +110,11 @@
   </header>
 
 
-<div class="entry-content"><p>Based on an <a href="http://amaras-tech.co.uk/people/morgan/article/18">old Article</a> I wrote, investigating incase sensitive sorting performance.</p>
+<div class="entry-content"><p>I do not think that there are any magic bullets, best practises can minimise risk but you have to fully understand the technique. You can not just switch from procedural code to wrapping everything in an object and claim statements like this from <a href="http://www.mathworks.co.uk/company/newsletters/articles/introduction-to-object-oriented-programming-in-matlab.html">mathworks</a>:</p>
 
-<p>I have an active record model call Tag with tag and id properties, it contains 3000 randomly chosen and sorted words.</p>
+<blockquote><p>Because it was built using OO techniques, the application is now robust enough for others to use and maintain and can be integrated with related applications throughout an organization.</p></blockquote>
 
-<h3>My Summary of results:</h3>
-
-
-<p>
-Average time for ORM (Activerecord) to return results 0.1928<br/>
-Average time for ORM to return sorted results 0.1290 (0.0638 quicker!)<br/>
-Ruby to sort (non-case sensitive) results 0.0138<br/>
-Ruby to sort pre-sorted* results 0.0606 (4.4 times slower!)</p>
-
-<p>*Pre-sorted is case sensitive</p>
-
-<p>More investigation is require, results could be effected by caching at the ORM/DB layer, but returning sorted results appears quicker than unsorted. and sorting in ruby is 4.4 times slower with pre sorted data.</p>
-
-<p>The test:</p>
-
-<pre><code>#For Benchmarking 
-require 'benchmark'
-include Benchmark
-
-bm(10) do |b|
-       b.report("ORM") {        @tags = Tag.find(:all) }
-       b.report("Sort by") {    @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
-       b.report("ORM sorted") { @tags = Tag.find(:all, :order =&gt; "tag") }
-       b.report("Sort by") {    @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
-  end
-
-  puts "same test but presorted after ruby sort"
-  bm(10) do |b|
-       b.report("ORM sorted") { @tags = Tag.find(:all, :order =&gt; "tag") }
-       b.report("Sort by") {    @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
-       b.report("ORM") {        @tags = Tag.find(:all) }
-       b.report("Sort by") {    @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
- end
-</code></pre>
-
-<p>The results collated: ORM returning unsorted results</p>
-
-<pre><code>            user     system      total        real
-ORM         0.200000   0.010000   0.210000 (  0.216162)
-ORM         0.160000   0.000000   0.160000 (  0.171810)
-ORM         0.200000   0.020000   0.220000 (  0.215265)
-ORM         0.160000   0.000000   0.160000 (  0.167882)
-ORM         0.200000   0.020000   0.220000 (  0.216648)
-ORM         0.170000   0.000000   0.170000 (  0.169064)
-</code></pre>
-
-<p>Full ruby sort</p>
-
-<pre><code>Sort by     0.010000   0.000000   0.010000 (  0.014169)
-Sort by     0.020000   0.000000   0.020000 (  0.012673)
-Sort by     0.010000   0.000000   0.010000 (  0.014791)
-Sort by     0.010000   0.000000   0.010000 (  0.012934)
-Sort by     0.020000   0.000000   0.020000 (  0.014387)
-Sort by     0.010000   0.000000   0.010000 (  0.013655)
-</code></pre>
-
-<p>Case-sensitive ORM sorting</p>
-
-<pre><code>ORM sorted  0.110000   0.000000   0.110000 (  0.138993)
-ORM sorted  0.100000   0.010000   0.110000 (  0.135767)
-ORM sorted  0.110000   0.000000   0.110000 (  0.132612)
-ORM sorted  0.100000   0.000000   0.100000 (  0.150029)
-ORM sorted  0.100000   0.000000   0.100000 (  0.108307)
-ORM sorted  0.100000   0.000000   0.100000 (  0.108133)
-</code></pre>
-
-<p>Ruby sorting pre-sorted results</p>
-
-<pre><code>Sort by     0.080000   0.000000   0.080000 (  0.132228)
-Sort by     0.020000   0.000000   0.020000 (  0.015885)
-Sort by     0.090000   0.000000   0.090000 (  0.102128)
-Sort by     0.010000   0.000000   0.010000 (  0.014791)
-Sort by     0.090000   0.000000   0.090000 (  0.086072)
-Sort by     0.010000   0.000000   0.010000 (  0.012341)
-</code></pre>
+<p>Sounds like Object-Oriented programming is a magic bullet to solve all you programming woes!</p>
 </div>
 
 
@@ -211,12 +137,12 @@ Sort by     0.010000   0.000000   0.010000 (  0.012341)
   
 
 
-<time datetime="2011-02-20T02:19:17+00:00" pubdate data-updated="true">Feb 20<span>th</span>, 2011</time>
+<time datetime="2014-03-01T20:04:06+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/tech/'>Tech</a>
+    <a class='category' href='/blog/engineering/'>Engineering</a>
   
 </span>
 
@@ -225,7 +151,7 @@ Sort by     0.010000   0.000000   0.010000 (  0.012341)
 
 <span class="tags">
   
-    <a class='tag' href='/tag/active-record/'>Active Record</a>, <a class='tag' href='/tag/performance/'>Performance</a>, <a class='tag' href='/tag/programming/'>Programming</a>, <a class='tag' href='/tag/ruby/'>Ruby</a>
+    <a class='tag' href='/tag/matlab/'>Matlab</a>
   
 </span>
 
@@ -234,7 +160,7 @@ Sort by     0.010000   0.000000   0.010000 (  0.012341)
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://morganp.github.io/blog/tech/ormactiverecord-or-ruby-sort/" data-via="" data-counturl="http://morganp.github.io/blog/tech/ormactiverecord-or-ruby-sort/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://morganp.github.io/blog/engineering/oo-magic-bullet/" data-via="" data-counturl="http://morganp.github.io/blog/engineering/oo-magic-bullet/" >Tweet</a>
   
   
   
@@ -243,10 +169,8 @@ Sort by     0.010000   0.000000   0.010000 (  0.012341)
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/photography/beginning-astro-photography/" title="Previous Post: Beginning Astro Photography">&laquo; Beginning Astro Photography</a>
+        <a class="basic-alignment left" href="/blog/tech/edit-octopress-posts/" title="Previous Post: Edit Octopress Posts">&laquo; Edit Octopress Posts</a>
       
-      
-        <a class="basic-alignment right" href="/blog/tech/amaras-site-updates/" title="Next Post: Amaras Site Updates">Amaras Site Updates &raquo;</a>
       
     </p>
   </footer>
@@ -342,8 +266,8 @@ Sort by     0.010000   0.000000   0.010000 (  0.012341)
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://morganp.github.io/blog/tech/ormactiverecord-or-ruby-sort/';
-        var disqus_url = 'http://morganp.github.io/blog/tech/ormactiverecord-or-ruby-sort/';
+        var disqus_identifier = 'http://morganp.github.io/blog/engineering/oo-magic-bullet/';
+        var disqus_url = 'http://morganp.github.io/blog/engineering/oo-magic-bullet/';
         var disqus_script = 'embed.js';
       
     (function () {
