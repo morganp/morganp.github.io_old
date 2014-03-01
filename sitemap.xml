@@ -214,7 +214,7 @@
     </url>
     <url>
         <loc>http://morganp.github.io/blog/tech/vim-indenting-with-vim-/</loc>
-        <lastmod>2014-01-28T19:00:03+00:00</lastmod>
+        <lastmod>2014-03-01T19:21:58+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/blog/tech/sinatra-running-on-heroku/</loc>
@@ -1120,7 +1120,7 @@
     </url>
     <url>
         <loc>http://morganp.github.io/blog/cooking/tray-bake-chicken-dinner/</loc>
-        <lastmod>2014-02-19T19:32:42+00:00</lastmod>
+        <lastmod>2014-03-01T18:21:56+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/blog/tech/vim-status-line/</loc>
@@ -1192,7 +1192,7 @@
     </url>
     <url>
         <loc>http://morganp.github.io/blog/cooking/beef-wellington/</loc>
-        <lastmod>2014-02-18T18:58:05+00:00</lastmod>
+        <lastmod>2014-03-01T18:48:03+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/blog/garden/raised-bed/</loc>
@@ -1227,16 +1227,20 @@
         <lastmod>2014-03-01T18:03:51+00:00</lastmod>
     </url>
     <url>
+        <loc>http://morganp.github.io/blog/tech/edit-octopress-posts/</loc>
+        <lastmod>2014-03-01T19:56:31+00:00</lastmod>
+    </url>
+    <url>
         <loc>http://morganp.github.io/about/</loc>
         <lastmod>2014-01-28T19:00:03+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/blog/archives/</loc>
-        <lastmod>2014-03-01T18:03:51+00:00</lastmod>
+        <lastmod>2014-03-01T19:56:31+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/</loc>
-        <lastmod>2014-03-01T18:03:51+00:00</lastmod>
+        <lastmod>2014-03-01T19:56:31+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/license/</loc>

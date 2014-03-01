@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://morganp.github.io/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-03-01T18:04:02+00:00</updated>
+  <updated>2014-03-01T19:58:33+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Edit Octopress Posts]]></title>
+    <link href="http://morganp.github.io/blog/tech/edit-octopress-posts/"/>
+    <updated>2014-03-01T19:28:17+00:00</updated>
+    <id>http://morganp.github.io/blog/tech/edit-octopress-posts</id>
+    <content type="html"><![CDATA[<p>Creating new posts in Octopress is <code>rake new_post["Edit Posts"]</code> which outputs the created filename.</p>
+
+<p>Posts are prefixed with date, which can make it difficult to find a particular post to edit. Tab completion can help if you known the year of the post but it may still list 100&rsquo;s of posts where you have to spot the title, and narrow it done via month and day. To get around this I use this script to launch matching posts in my editor:</p>
+
+<pre><code>#!/bin/bash
+
+editor="mvim"
+post_path="source/_posts/"
+
+for OUTPUT in $(ls $post_path | grep $1)
+do
+  file_list="$file_list $post_path$OUTPUT"
+done
+
+$editor $file_list
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[$display Without a Line Return]]></title>
@@ -172,12 +196,12 @@ Jamie Olivers Minced Beef Wellington from <a href="https://www.amazon.co.uk/dp/0
 
 <p>Ingredients (for 4-6) :</p>
 
-<pre><code>  1         Medium Onion
+<pre><code>  1         Large Potato
+  1         Medium Onion
   1         Carrot
   1  Stick  Celery
-  1         Large Potato
-  2         Large Mushrooms
   2  Cloves Garlic
+  2         Large Mushrooms
   4  Sprigs Fresh Rosemarry
  50 g       Frozen Peas
   1         Large Egg
@@ -186,26 +210,49 @@ Jamie Olivers Minced Beef Wellington from <a href="https://www.amazon.co.uk/dp/0
 
 <p>Pre-heat oven to 180.</p>
 
+<pre><code>  1         Large Potato
+  1         Medium Onion
+  1         Carrot
+  1  Stick  Celery
+</code></pre>
+
 <p>Add a olive oil to a frying pan start on a medium heat.
 Chop vegetables in to 1cm cubes, Potatoes, Onion, Carrot and Celery.
 Add to frying pan as you go.<br/>
 <img src="http://morganp.github.io/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6782.jpg" alt="Chop" /></p>
 
+<pre><code>  2  Cloves Garlic
+  2         Large Mushrooms
+</code></pre>
+
 <p>Grate garlic into pan, rough chop mushrooms into 1cm chunks.
 <img src="http://morganp.github.io/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6786.jpg" alt="Grate" /></p>
 
+<pre><code>  4  Sprigs Fresh Rosemarry
+</code></pre>
+
 <p>Remove Rosemary leaves and finely dice.
 <img src="http://morganp.github.io/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6796.jpg" alt="Rosemary" /></p>
+
+<pre><code> 50 g       Frozen Peas
+</code></pre>
 
 <p>After 8 minutes, add frozen peas to pan and cook for 1 minute more.
 <img src="http://morganp.github.io/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6792.jpg" alt="Fry" />
 <img src="http://morganp.github.io/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6799.jpg" alt="Peas" /></p>
 
+<pre><code>  1/2       Large Egg
+</code></pre>
+
 <p>Move mixture to a large mixing bowl to cool, Once cool mix in the beef with salt and half a beaten egg.
 <img src="http://morganp.github.io/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6803.jpg" alt="Mixing Bowl" />
 <img src="http://morganp.github.io/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6804.jpg" alt="Mince" /></p>
 
-<p>Roll out the pastry into teatowl size, or unroll the sheets. Add mixture into the middle and rollup sealing the ends. Apply second half of beaten egg to the top of the wellington with a pastry brush.
+<pre><code>500 g       Puff Pastry (or 2 300g sheets)
+  1/2       Large Egg
+</code></pre>
+
+<p>Roll out the pastry into tea towel size, or unroll the sheets. Add mixture into the middle and roll up sealing the ends. Apply second half of beaten egg to the top of the wellington with a pastry brush.
 <img src="http://morganp.github.io/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6807.jpg" alt="Pastry" />
 <img src="http://morganp.github.io/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6808.jpg" alt="" />
 <img src="http://morganp.github.io/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6811.jpg" alt="" />
@@ -505,25 +552,6 @@ Depth: 16.5cm. Width: 27cm. Height: 46cm  External Volume 25L</p>
 <p><img class="centre" src="http://morganp.github.io/images/fstop_icu/morganp-20140102-fstop-IMG_6387.jpg">
 <img class="centre" src="http://morganp.github.io/images/fstop_icu/morganp-20140102-fstop-IMG_6388.jpg">
 <img class="centre" src="http://morganp.github.io/images/fstop_icu/morganp-20140102-fstop-IMG_6390.jpg"></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Exact Fit Blinds]]></title>
-    <link href="http://morganp.github.io/blog/home/exact-fit-blinds/"/>
-    <updated>2014-01-12T19:25:37+00:00</updated>
-    <id>http://morganp.github.io/blog/home/exact-fit-blinds</id>
-    <content type="html"><![CDATA[<object type="application/x-shockwave-flash" width="750" height="425" data="http://www.flickr.com/apps/video/stewart.swf?v=140315" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"> <param name="flashvars" value="intl_lang=en-us&photo_secret=8e95f1d3e2&photo_id=12015486316&hd_default=false"></param> <param name="movie" value="http://www.flickr.com/apps/video/stewart.swf?v=140315"></param> <param name="bgcolor" value="#000000"></param> <param name="allowFullScreen" value="true"></param><embed type="application/x-shockwave-flash" src="http://www.flickr.com/apps/video/stewart.swf?v=140315" bgcolor="#000000" allowfullscreen="true" flashvars="intl_lang=en-us&photo_secret=8e95f1d3e2&photo_id=12015486316&hd_default=false" height="272" width="480"></embed></object>
-
-
-<p><strong>Fitting</strong> is relatively straight forward. Use a credit card to place clips in the frame 85mm from the top and bottom. I found it helps to use some washing-up liquid on the clips to help it slide between the frame and glass.</p>
-
-<p>Put the frame together, roller blind variants have a correct order for the sides. To identify each side, the roller takes up room at the top so the cut out for the clips is closer to the top. Once the clips are in the window frame, and the blind frame is assembled all that is left is to left frame on to clips and click into place. Occasionnaly clips need some minor adjustment in position for a secure fit.</p>
-
-<object type="application/x-shockwave-flash" width="480" height="270" data="http://www.flickr.com/apps/video/stewart.swf?v=140315" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"> <param name="flashvars" value="intl_lang=en-us&photo_secret=505649d268&photo_id=12369545465&hd_default=false"></param> <param name="movie" value="http://www.flickr.com/apps/video/stewart.swf?v=140315"></param> <param name="bgcolor" value="#000000"></param> <param name="allowFullScreen" value="true"></param><embed type="application/x-shockwave-flash" src="http://www.flickr.com/apps/video/stewart.swf?v=140315" bgcolor="#000000" allowfullscreen="true" flashvars="intl_lang=en-us&photo_secret=505649d268&photo_id=12369545465&hd_default=false" height="270" width="480"></embed></object>
-
-
-
 ]]></content>
   </entry>
   

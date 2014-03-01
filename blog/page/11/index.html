@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Following on from Macbook Pro Setup, Now it is time to install some of the command line tools. I have install XCode 4.4 and the command line tools, &hellip;">
+  <meta name="description" content="Little Snitch There is currently a preview (Beta) of [Little Snitch 3][littelsnitch3]. If you have not come across Little Snitch before it is a Third &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,104 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mountain-lion-setup-part-3-little-snitch-dotfiles/">Mountain Lion Setup, Part 3 : Little Snitch & Dotfiles</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-16T12:44:04+01:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/mountain-lion-setup-part-3-little-snitch-dotfiles/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/mountain-lion-setup-part-3-little-snitch-dotfiles/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Little Snitch</h2>
+
+<p>There is currently a preview (Beta) of [Little Snitch 3][littelsnitch3]. If you have not come across Little Snitch before it is a Third Party Firewall for OS X. When an application tries to make a network connection (connecting to the internet) it allerts you and allows the application to be blocked. Controllability is based on the application, the place it is connecting to and the port that it is connecting on.</p>
+
+<p>From Version 3 of Little Snitch we also get control of incoming connections. Version 3 is a free preview until September 15, 2012.</p>
+
+<p>Installation of Little Snitch requires a restart.</p>
+
+<h2>Dotfiles</h2>
+
+<p>For last few years I have ket [my dotfiles][dotfiles] (configuration files) on <a href="https://github.com/">github</a>.</p>
+
+<p>First create a new set of RSA keys (if on a new machine) from <code>/Applications/Utilities/Terminal.app</code>:</p>
+
+<pre><code>ssh-keygen -t rsa
+cat ~/.ssh/id_rsa.pub
+</code></pre>
+
+<p>Then copy this output and add it to your <a href="https://github.com/settings/ssh">github ssh keys</a>.</p>
+
+<p>if git is not installed <code>brew install git</code></p>
+
+<pre><code>#Configure Git Globals
+git config --global user.name "Your Name"
+git config --global user.name your@email.com
+# Get Dotfiles Repo
+cd ~
+git clone git@github.com:morganp/dotfiles.git
+</code></pre>
+
+<p>Add ssh to Little Snitch, Forever, Any Connection, Allow.</p>
+
+<p>Once the cloning of the repo has completed, I go into my dotfiles folder and run the installer.</p>
+
+<pre><code>cd ~/dotfiles 
+./install --all
+</code></pre>
+
+<p>There are 2 types of bash config, .bashrc and .bash_login.</p>
+
+<p>For consistency I change the .bash_login to just load the .bashrc</p>
+
+<pre><code>if [ -f $HOME/.bashrc ]; 
+then
+  source $HOME/.bashrc ; 
+fi
+</code></pre>
+
+<p>This may alter some of the things that RVM has put in place my github dotfiles include this but you need to make sure that included in your .basrc is :</p>
+
+<pre><code>[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+</code></pre>
+
+<p>Lets also install Mac VIM for good measure:</p>
+
+<pre><code>brew install macvim
+</code></pre>
+
+<p>Adding Curl to Little Snitch, Forever, Any Connection, Allow.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -728,45 +826,6 @@ headless.destroy
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/lightroom-41-available/">Lightroom 4.1 Available</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-18T19:28:53+01:00" pubdate data-updated="true">Jun 18<span>th</span>, 2012</time>
-        
-           | <a href="/blog/photography/lightroom-41-available/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/lightroom-41-available/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Lightroom 4.1 is <a href="http://blogs.adobe.com/lightroomjournal/2012/05/lr41nowavailable.html">now available</a>. Not much looks like it has changed between this and the RC1 release version. But the <a href="http://blogs.adobe.com/lightroomjournal/2012/05/lr41nowavailable.html">adobe page</a> lists the changes and added camera support since 4.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -781,11 +840,15 @@ headless.destroy
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (11)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (11)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (215)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/edit-octopress-posts/">Edit Octopress Posts</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/without-a-line-return/">$display Without a Line Return</a>
@@ -801,10 +864,6 @@ headless.destroy
     
       <li class="post">
         <a href="/blog/tech/gnome-disable-focus-tracking/">Gnome: Disable Focus Tracking</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/rocket/">Rocket</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="In gvim and mvim incorrect spellings are highlighted with a squiggly underscore ala MS Word. vim in a terminal (xterm) will highlight the word be &hellip;">
+  <meta name="description" content="THIS NO LONGER WORKS, IF IT EVER DID :( When you add a link to safari, it replaces the link to dropbox with an actual file, outside of dropbox so &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,68 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/syncing-safari-via-dropbox-for-pre-icloud-os-x/">Syncing Safari via Dropbox for Pre iCloud OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-15T18:39:27+01:00" pubdate data-updated="true">Sep 15<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/syncing-safari-via-dropbox-for-pre-icloud-os-x/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/syncing-safari-via-dropbox-for-pre-icloud-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>THIS NO LONGER WORKS, IF IT EVER DID :(</em></p>
+
+<p>When you add a link to safari, it replaces the link to dropbox with an actual file, outside of dropbox so breaks the syncing.</p>
+
+<h2>The Original Syncing Idea was :</h2>
+
+<p>For the cloud storage we will use <a href="http://db.tt/ZZzJ5LBq">dropbox</a>, if you have not already got an account you can get a free on <a href="http://db.tt/ZZzJ5LBq">here</a>.</p>
+
+<p>Once setup only the bookmarks from the first machine will be available after that bookmarks should be kept in sync.</p>
+
+<p>Create a backup of the original file then copy to dropbox, then create a link back to the original location. Todo this from <code>/Application/Utitlities/Terminal.app</code> run these commands:</p>
+
+<pre><code>cp ~/Library/Safari/Bookmarks.plist ~/Library/Safari/Bookmarks.plist.backup
+mv ~/Library/Safari/Bookmarks.plist ~/Dropbox
+ln -s ~/Dropbox/Bookmarks.plist ~/Library/Safari/Bookmarks.plist
+</code></pre>
+
+<p>On secondary machines, which will initially only have the first computers bookmarks.</p>
+
+<pre><code>mv ~/Library/Safari/Bookmarks.plist ~/Library/Safari/Bookmarks.plist.backup
+ln -s ~/Dropbox/Bookmarks.plist ~/Library/Safari/Bookmarks.plist
+</code></pre>
+
+<p>Original ideas is from <a href="http://macs.about.com/od/CloudServices/qt/Sync-Safari-Bookmarks-Using-Dropbox.htm">here</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -633,104 +695,6 @@ brew install wget
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/mountain-lion-setup-part-3-little-snitch-dotfiles/">Mountain Lion Setup, Part 3 : Little Snitch & Dotfiles</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-16T12:44:04+01:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/mountain-lion-setup-part-3-little-snitch-dotfiles/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/mountain-lion-setup-part-3-little-snitch-dotfiles/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Little Snitch</h2>
-
-<p>There is currently a preview (Beta) of [Little Snitch 3][littelsnitch3]. If you have not come across Little Snitch before it is a Third Party Firewall for OS X. When an application tries to make a network connection (connecting to the internet) it allerts you and allows the application to be blocked. Controllability is based on the application, the place it is connecting to and the port that it is connecting on.</p>
-
-<p>From Version 3 of Little Snitch we also get control of incoming connections. Version 3 is a free preview until September 15, 2012.</p>
-
-<p>Installation of Little Snitch requires a restart.</p>
-
-<h2>Dotfiles</h2>
-
-<p>For last few years I have ket [my dotfiles][dotfiles] (configuration files) on <a href="https://github.com/">github</a>.</p>
-
-<p>First create a new set of RSA keys (if on a new machine) from <code>/Applications/Utilities/Terminal.app</code>:</p>
-
-<pre><code>ssh-keygen -t rsa
-cat ~/.ssh/id_rsa.pub
-</code></pre>
-
-<p>Then copy this output and add it to your <a href="https://github.com/settings/ssh">github ssh keys</a>.</p>
-
-<p>if git is not installed <code>brew install git</code></p>
-
-<pre><code>#Configure Git Globals
-git config --global user.name "Your Name"
-git config --global user.name your@email.com
-# Get Dotfiles Repo
-cd ~
-git clone git@github.com:morganp/dotfiles.git
-</code></pre>
-
-<p>Add ssh to Little Snitch, Forever, Any Connection, Allow.</p>
-
-<p>Once the cloning of the repo has completed, I go into my dotfiles folder and run the installer.</p>
-
-<pre><code>cd ~/dotfiles 
-./install --all
-</code></pre>
-
-<p>There are 2 types of bash config, .bashrc and .bash_login.</p>
-
-<p>For consistency I change the .bash_login to just load the .bashrc</p>
-
-<pre><code>if [ -f $HOME/.bashrc ]; 
-then
-  source $HOME/.bashrc ; 
-fi
-</code></pre>
-
-<p>This may alter some of the things that RVM has put in place my github dotfiles include this but you need to make sure that included in your .basrc is :</p>
-
-<pre><code>[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-</code></pre>
-
-<p>Lets also install Mac VIM for good measure:</p>
-
-<pre><code>brew install macvim
-</code></pre>
-
-<p>Adding Curl to Little Snitch, Forever, Any Connection, Allow.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/11/">&larr; Older</a>
@@ -745,11 +709,15 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (11)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (11)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (215)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/edit-octopress-posts/">Edit Octopress Posts</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/without-a-line-return/">$display Without a Line Return</a>
@@ -765,10 +733,6 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
     
       <li class="post">
         <a href="/blog/tech/gnome-disable-focus-tracking/">Gnome: Disable Focus Tracking</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/rocket/">Rocket</a>
       </li>
     
   </ul>

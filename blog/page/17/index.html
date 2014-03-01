@@ -9,10 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Building on my original Ruby Arrays article a few more things you can do with Ruby Arrays. Concatenation a = [1,2,3]
-b = [4,5,6]
-c = [a,b]
-&gt; [[1,2 &hellip;">
+  <meta name="description" content="Do you some times see: FileUtils.rb:93: warning: already initialized constant OPT_TABLE
+FileUtils.rb:1176: warning: already initialized constant &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +82,77 @@ c = [a,b]
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/warning-already-initialized-constant/">Warning: Already Initialized Constant</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-06T00:57:30+01:00" pubdate data-updated="true">Oct 6<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/warning-already-initialized-constant/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/warning-already-initialized-constant/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Do you some times see:</p>
+
+<pre><code>FileUtils.rb:93: warning: already initialized constant OPT_TABLE
+FileUtils.rb:1176: warning: already initialized constant S_IF_DOOR
+FileUtils.rb:1406: warning: already initialized constant DIRECTORY_TERM
+FileUtils.rb:1408: warning: already initialized constant SYSCASE
+FileUtils.rb:1527: warning: already initialized constant LOW_METHODS
+FileUtils.rb:1533: warning: already initialized constant METHODS
+</code></pre>
+
+<p>After quite some searching I discovered the cause of these errors. require is clever it only allows you to require each file once.</p>
+
+<pre><code>ruby-1.9.2-p290 :001 &gt; require 'fileutils'
+ =&gt; true 
+ruby-1.9.2-p290 :002 &gt; require 'fileutils'
+ =&gt; false 
+</code></pre>
+
+<p>However it is not case sensitive.</p>
+
+<pre><code>ruby-1.9.2-p290 :003 &gt; require 'FileUtils'
+.... 
+=&gt; true 
+</code></pre>
+
+<p>So if you accidentally include FileUtils this is the same as reopening the module and re-declaring the constants a second time. you should always require the lowercase version. you can <a href="http://www.ruby-forum.com/topic/123026">include the camelcase</a> version for mixins.</p>
+
+<p>If you are getting this during development of a program you could do something like :</p>
+
+<pre><code>grep -Rn "require 'FileUtils'" ~/Code
+</code></pre>
+
+<p>Incase the error seems to be coming from a file other than fileutils.rb it is likely that tehre is a camelcase version of it being included somewhere, try searching for it be modifying the above command.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -746,76 +815,6 @@ f.close
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/uninitialized-constant-compasslogger/">Uninitialized Constant Compass::Logger</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-23T20:21:03+01:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2011</time>
-        
-           | <a href="/blog/tech/uninitialized-constant-compasslogger/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/uninitialized-constant-compasslogger/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Working on a joint project an error started showing up when trying to perform migrations.</p>
-
-<pre><code>$ rake db:migrate VERSION=0
-&gt;rake aborted!
-&gt;uninitialized constant Compass::Logger
-</code></pre>
-
-<p>The Solution was to add a line to the rake file, to correctly load Compass::Logger, still no idea why rake needed it.</p>
-
-<pre><code>require 'compass/logger'
-</code></pre>
-
-<p>Another thing to check might be that compass is being loaded before classes which use it. An issue that can happen in Sinatra and Rails apps.</p>
-
-<p>Example Gemfile (for <a href="http://gembundler.com/">Bundler</a>)</p>
-
-<pre><code>source :rubygems
-
-gem 'rails', '3.0.9'
-
-gem "compass"
-gem "haml-rails"
-gem "pg"
-gem "jquery-rails"
-gem "omniauth", '~&gt; 0.2.5'
-
-group :test do
-  gem "capybara"
-  gem "factory_girl_rails"
-  gem "test-unit"
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/18/">&larr; Older</a>
@@ -830,11 +829,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (11)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (11)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (215)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/edit-octopress-posts/">Edit Octopress Posts</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/without-a-line-return/">$display Without a Line Return</a>
@@ -850,10 +853,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/gnome-disable-focus-tracking/">Gnome: Disable Focus Tracking</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/rocket/">Rocket</a>
       </li>
     
   </ul>

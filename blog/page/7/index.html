@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Cake (£1.23 a portion) time to table ~1 hour 30 minutes. Ingredients (for 8) 400 g black cherries in syrup 75 g sour cherries (dried) 2 tbsp cherry &hellip;">
+  <meta name="description" content="After struggling to get the rake task for octopress to deploy I decided to fall back to the command line and use rsync and ssh to push the static &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,50 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/push-local-folder-to-remote-server-over-ssh/">Push Local Folder to Remote Server Over Ssh</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-10T21:30:00+01:00" pubdate data-updated="true">May 10<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/push-local-folder-to-remote-server-over-ssh/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/push-local-folder-to-remote-server-over-ssh/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After struggling to get the rake task for octopress to deploy I decided to fall back to the command line and use rsync and ssh to push the static website to the server.</p>
+
+<p>To copy the local folder public to webapp/x/ folder on my webserver:</p>
+
+<pre><code> rsync -avz ./public/  user@server:~/webapps/x/
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -711,68 +755,6 @@ Improved photo book creation – Create beautiful photo books from your images. 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/nik-collection-149-or-free/">Nik Collection ($149 or FREE)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-27T09:29:16+00:00" pubdate data-updated="true">Mar 27<span>th</span>, 2013</time>
-        
-           | <a href="/blog/photography/nik-collection-149-or-free/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/nik-collection-149-or-free/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Nik Software (HDR Efex Pro, Silver Efex Pro) was recently <a href="http://techcrunch.com/2012/09/17/google-acquires-nik-software-the-company-behind-the-popular-snapseed-photo-editing-app-for-ios/">purchased by Google</a>, since then not too much has happened. Well the HDR Efex Pro 2 was released but not much else.</p>
-
-<p>I finally decided to purchase HDR Efex Pro over christmas, which lead to me getting what I thought was a spam email pretending to be from Nik Software, turns out it was real! If you have purchased any Nik Software product in the last <strong>5 Years</strong> you are eligible for a free upgrade to the new Nik Collection.</p>
-
-<p>Because I purchased HDR Efex Pro in December, today I get <strong>For FREE</strong> :</p>
-
-<ul>
-<li>Color Efex Pro 4</li>
-<li>Dfine2</li>
-<li>HDR Efex Pro 2</li>
-<li>Sharpener Pro 3 Output Sharpening</li>
-<li>Sharpener Pro 3 Raw Presharpening</li>
-<li>Silver Efex Pro 2</li>
-<li>Viveza 2</li>
-</ul>
-
-
-<p>The retail price for the <a href="http://www.niksoftware.com/nikcollection/usa/index.php?view=intro%2Fmain.shtml">new Nik Collection is $149</a>. Which is less than the old Silver Efex Pro price, this is an incredible bargain. These are great photography tools.</p>
-
-<p>The email in question, which has been put in a few peoples SPAM folders was from &lsquo;The Nik Collection by Google&rsquo;. Subject &lsquo;Your upgrade to the new Nik Collection by Google&rsquo;.</p>
-
-<p>The email body:</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8593916281/" title="Nik Collection by Google by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8392/8593916281_49c4f2dcc8.jpg" width="500" height="364" alt="Nik Collection by Google"></a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -787,11 +769,15 @@ Improved photo book creation – Create beautiful photo books from your images. 
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (11)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (11)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (215)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/edit-octopress-posts/">Edit Octopress Posts</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/without-a-line-return/">$display Without a Line Return</a>
@@ -807,10 +793,6 @@ Improved photo book creation – Create beautiful photo books from your images. 
     
       <li class="post">
         <a href="/blog/tech/gnome-disable-focus-tracking/">Gnome: Disable Focus Tracking</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/rocket/">Rocket</a>
       </li>
     
   </ul>

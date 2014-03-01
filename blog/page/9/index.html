@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Available to buy from Dale Photographic or WEX. Hoods or lens shades help improve contrast by stopping out of frame light source entering the lens. &hellip;">
+  <meta name="description" content="To capture the screen on OS X : ⇧⌘4 : Selected area to capture.
+⇧⌘4-space : Capture a window. These are defined in the System Preferences. To change &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,78 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/os-x-screen-capture/">OS X Screen Capture</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-15T19:28:16+01:00" pubdate data-updated="true">Oct 15<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/os-x-screen-capture/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/os-x-screen-capture/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To capture the screen on OS X :</p>
+
+<p>⇧⌘4 : Selected area to capture.<br/>
+⇧⌘4-space : Capture a window.</p>
+
+<p>These are defined in the System Preferences.</p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/8091257767/" title="OS X Screen Capture by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8466/8091257767_94369b4008.jpg" width="500" height="455" alt="OS X Screen Capture"></a></p>
+
+<p>To change the captured image from the Terminal (/Applications/Utilities/Terminal.app) type</p>
+
+<h2>Jpeg:</h2>
+
+<pre><code>defaults write com.apple.screencapture type jpg
+killall SystemUIServer
+</code></pre>
+
+<h2>PNG</h2>
+
+<pre><code>defaults write com.apple.screencapture type png
+killall SystemUIServer
+</code></pre>
+
+<h2>Tiff</h2>
+
+<pre><code>defaults write com.apple.screencapture type tiff
+killall SystemUIServer
+</code></pre>
+
+<h2>PDF</h2>
+
+<pre><code>defaults write com.apple.screencapture type pdf
+killall SystemUIServer
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -797,68 +870,6 @@ Note that github understands submodules and will display sub as a special folder
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/syncing-safari-via-dropbox-for-pre-icloud-os-x/">Syncing Safari via Dropbox for Pre iCloud OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-15T18:39:27+01:00" pubdate data-updated="true">Sep 15<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/syncing-safari-via-dropbox-for-pre-icloud-os-x/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/syncing-safari-via-dropbox-for-pre-icloud-os-x/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><em>THIS NO LONGER WORKS, IF IT EVER DID :(</em></p>
-
-<p>When you add a link to safari, it replaces the link to dropbox with an actual file, outside of dropbox so breaks the syncing.</p>
-
-<h2>The Original Syncing Idea was :</h2>
-
-<p>For the cloud storage we will use <a href="http://db.tt/ZZzJ5LBq">dropbox</a>, if you have not already got an account you can get a free on <a href="http://db.tt/ZZzJ5LBq">here</a>.</p>
-
-<p>Once setup only the bookmarks from the first machine will be available after that bookmarks should be kept in sync.</p>
-
-<p>Create a backup of the original file then copy to dropbox, then create a link back to the original location. Todo this from <code>/Application/Utitlities/Terminal.app</code> run these commands:</p>
-
-<pre><code>cp ~/Library/Safari/Bookmarks.plist ~/Library/Safari/Bookmarks.plist.backup
-mv ~/Library/Safari/Bookmarks.plist ~/Dropbox
-ln -s ~/Dropbox/Bookmarks.plist ~/Library/Safari/Bookmarks.plist
-</code></pre>
-
-<p>On secondary machines, which will initially only have the first computers bookmarks.</p>
-
-<pre><code>mv ~/Library/Safari/Bookmarks.plist ~/Library/Safari/Bookmarks.plist.backup
-ln -s ~/Dropbox/Bookmarks.plist ~/Library/Safari/Bookmarks.plist
-</code></pre>
-
-<p>Original ideas is from <a href="http://macs.about.com/od/CloudServices/qt/Sync-Safari-Bookmarks-Using-Dropbox.htm">here</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/10/">&larr; Older</a>
@@ -873,11 +884,15 @@ ln -s ~/Dropbox/Bookmarks.plist ~/Library/Safari/Bookmarks.plist
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (11)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (11)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (215)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/edit-octopress-posts/">Edit Octopress Posts</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/without-a-line-return/">$display Without a Line Return</a>
@@ -893,10 +908,6 @@ ln -s ~/Dropbox/Bookmarks.plist ~/Library/Safari/Bookmarks.plist
     
       <li class="post">
         <a href="/blog/tech/gnome-disable-focus-tracking/">Gnome: Disable Focus Tracking</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/rocket/">Rocket</a>
       </li>
     
   </ul>
