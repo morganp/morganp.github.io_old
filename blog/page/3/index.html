@@ -145,6 +145,59 @@ Depth: 16.5cm. Width: 27cm. Height: 46cm  External Volume 25L</p>
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/tech/git-submodule-update-fatal/">Git Submodule Update Fatal</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-21T20:32:16+00:00" pubdate data-updated="true">Jan 21<span>st</span>, 2014</time>
+        
+           | <a href="/blog/tech/git-submodule-update-fatal/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/git-submodule-update-fatal/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>$ git submodule update
+fatal: Needed a single revision
+Unable to find current revision in submodule path 'vim/bundle/systemverilog'
+</code></pre>
+
+<p>To resolve the issue :</p>
+
+<pre><code>rm -rf vim/bundle/systemverilog
+git submodule update
+</code></pre>
+
+<p>Check your .gimodules, one of mine was an http instead of https, (gitub is https only now).
+Update to the latest version I find a minimum of git 1.8.5 is required for reliable module checkout.</p>
+
+<p>Solution based <a href="http://www.gostai.com/downloads/urbi-sdk-2.0/doc/urbi-sdk.htmldir/faq.html#x22-10400014.1.4">on gostais docs</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/home/exact-fit-blinds/">Exact Fit Blinds</a></h1>
     
     
@@ -680,145 +733,6 @@ Peel and quarter the onion.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/cooking/cowboy-chilli/">Cowboy Chilli</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-08T21:04:00+00:00" pubdate data-updated="true">Dec 8<span>th</span>, 2013</time>
-        
-           | <a href="/blog/cooking/cowboy-chilli/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/cooking/cowboy-chilli/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Cowboy Style Chilli
-<img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3968.jpg"></p>
-
-<p>Based on recipe from &ldquo;Jamie Oliver&rsquo;s Recipe&rdquo; iOS app.</p>
-
-<p>Ingredients (for 6)</p>
-
-<pre><code>1KG            Diced stewing beef
-4              Red chillies
-2              Red onions
-3 sticks       Celery
-1 bunch        Spring onions
-1 bunch        Fresh coriander
-2              Green peppers
-2              Red peppers
-1              Lime
-2 teaspoon     Cumin seeds
-1 teaspoon     Cayenne pepper
-1 tin 400g     Chopped tomatoes
-4 tablespoon   Ground coffee
-1.5L           Beef stock
-Splash         Red wine vinegar
-</code></pre>
-
-<p><img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3948.jpg">
-Pre-heat oven 180.<br/>
-Put a griddle pan on high heat add red peppers for 15 minutes. Turn peppers occasionally until they start to blacken/blister.</p>
-
-<pre><code>2              Red peppers
-</code></pre>
-
-<p><img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3951.jpg"></p>
-
-<p>Add Chillies to griddle, with peppers and cook for 15 minutes.</p>
-
-<pre><code>4              Red chillies
-</code></pre>
-
-<p>Transfer Chillies and red peppers to bowl and allow to cool.<br/>
-Mix beef with salt and 1 tablespoon of coffee.</p>
-
-<pre><code>1KG            Diced stewing beef
-1 tablespoon   Ground coffee
-</code></pre>
-
-<p><img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3949.jpg"></p>
-
-<p>Brown beef (around 10 minutes) in a large pan. While roughly chopping celery and onion.</p>
-
-<pre><code>3 sticks       Celery
-2              Red onions
-</code></pre>
-
-<p>Add Celery and Onions to the pan, cook for additional 10 minutes. While removing the blistered skin and seeds from the red peppers.</p>
-
-<p><img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3952.jpg"></p>
-
-<p>Remove leaves from coriander then roughly chop the stalks. Add coriander stalks, cumin seeds and cayenne pepper to the pan.</p>
-
-<pre><code>1 bunch        Fresh coriander (stalks)
-2 teaspoon     Cumin seeds
-1 teaspoon     Cayenne pepper
-</code></pre>
-
-<p>Brew the remaining coffee with 400ml of boiling water. Make the 1.5 litres of stock.</p>
-
-<pre><code>3 tablespoon   Ground coffee
-</code></pre>
-
-<p>Add filtered coffee, chopped peppers, tomatoes and the stock to pan.</p>
-
-<pre><code>1 tin 400g     Chopped tomatoes
-1.5L           Beef stock
-</code></pre>
-
-<p><img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3955.jpg"></p>
-
-<p>Place lid on pan and place in the preheated oven for 2 hours.</p>
-
-<h2>Salsa</h2>
-
-<p>Remove seeds and finely chop green peppers. Finely chop the spring onions. Place green peppers, spring onions and coriander leaves in a bowl.</p>
-
-<pre><code>2              Green peppers
-1 bunch        Spring onions
-1 bunch        Fresh coriander (leaves)
-</code></pre>
-
-<p><img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3957.jpg"></p>
-
-<p>Add 2 tables spoons of olive oil and add the juice of a lime, mix well.</p>
-
-<pre><code>1              Lime
-</code></pre>
-
-<p><img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3958.jpg">
-<img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3964.jpg"></p>
-
-<p>After 2 hours remove the chilli from the oven add a splash of red wine vinegar. Serve with rice.</p>
-
-<p><img class="centre" src="/images/CowboyChilli/morganp-20130908-CowboyChilli-IMG_3968.jpg"></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -833,7 +747,7 @@ Mix beef with salt and 1 tablespoon of coffee.</p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (12)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (215)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (12)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (216)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>

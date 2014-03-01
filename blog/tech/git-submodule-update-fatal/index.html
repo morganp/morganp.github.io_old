@@ -5,12 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tag: Fstop - RockPaperScissors</title>
+  <title>Git Submodule Update Fatal - RockPaperScissors</title>
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content=" 2014 F-stop ICUs
-Feb 01 2014 posted in Photography ">
+  <meta name="description" content="$ git submodule update
+fatal: Needed a single revision
+Unable to find current revision in submodule path 'vim/bundle/systemverilog' To resolve the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +20,7 @@ Feb 01 2014 posted in Photography ">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://morganp.github.iotag/fstop">
+  <link rel="canonical" href="http://morganp.github.io/blog/tech/git-submodule-update-fatal">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="RockPaperScissors" type="application/atom+xml">
@@ -81,36 +82,119 @@ Feb 01 2014 posted in Photography ">
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Tag: Fstop</h1>
+    
+      <h1 class="entry-title">Git Submodule Update Fatal</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-21T20:32:16+00:00" pubdate data-updated="true">Jan 21<span>st</span>, 2014</time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io">Comments</a>
+        
+      </p>
     
   </header>
+
+
+<div class="entry-content"><pre><code>$ git submodule update
+fatal: Needed a single revision
+Unable to find current revision in submodule path 'vim/bundle/systemverilog'
+</code></pre>
+
+<p>To resolve the issue :</p>
+
+<pre><code>rm -rf vim/bundle/systemverilog
+git submodule update
+</code></pre>
+
+<p>Check your .gimodules, one of mine was an http instead of https, (gitub is https only now).
+Update to the latest version I find a minimum of git 1.8.5 is required for reliable module checkout.</p>
+
+<p>Solution based <a href="http://www.gostai.com/downloads/urbi-sdk-2.0/doc/urbi-sdk.htmldir/faq.html#x22-10400014.1.4">on gostais docs</a>.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-  <div class="entry-content"><div id="tag-archives" class="tags">
+
+<span class="byline author vcard">Posted by <span class="fn">Morgan Prior</span></span>
+
+      
+
+
+
+
+
+
+
+
   
+
+
+<time datetime="2014-01-21T20:32:16+00:00" pubdate data-updated="true">Jan 21<span>st</span>, 2014</time>
+      
+
+<span class="categories">
   
+    <a class='category' href='/blog/tech/'>Tech</a>
   
+</span>
+
+
+      
+
+<span class="tags">
   
-  <h2>2014</h2> 
+    <a class='tag' href='/tag/git/'>Git</a>
   
-  <article>
+</span>
+
+
+    </p>
     
-<h1><a href="/blog/photography/f-stop-icus/">F-stop ICUs</a></h1>
-<time datetime="2014-02-01T21:27:32+00:00" pubdate><span class='month'>Feb</span> <span class='day'>01</span> <span class='year'>2014</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/photography/'>Photography</a></span>
-</footer>
-
-
-  </article>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://morganp.github.io/blog/tech/git-submodule-update-fatal/" data-via="" data-counturl="http://morganp.github.io/blog/tech/git-submodule-update-fatal/" >Tweet</a>
+  
+  
   
 </div>
-</div>
-  
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/home/exact-fit-blinds/" title="Previous Post: Exact Fit Blinds">&laquo; Exact Fit Blinds</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/photography/f-stop-icus/" title="Next Post: F-stop ICUs">F-stop ICUs &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -195,7 +279,10 @@ Feb 01 2014 posted in Photography ">
       var disqus_shortname = 'morganpgithubio';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://morganp.github.io/blog/tech/git-submodule-update-fatal/';
+        var disqus_url = 'http://morganp.github.io/blog/tech/git-submodule-update-fatal/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

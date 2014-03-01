@@ -9,9 +9,12 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="To count from 1 up to 20 in steps of 5 #!/bin/csh
-foreach x (`seq 1 5 20`) echo $x
-end ">
+  <meta name="description" content="setenv allows sub shells to inherit the value. Set set x = "twenty"
+echo $x
+&gt; twenty ## New Shell
+csh
+echo $x
+x: Undefined variable. Setenv Note &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +86,69 @@ end ">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/set-vs-setenv/">Set vs Setenv</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-11T12:34:15+01:00" pubdate data-updated="true">Oct 11<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/set-vs-setenv/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/set-vs-setenv/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>setenv allows sub shells to inherit the value.</p>
+
+<h2>Set</h2>
+
+<pre><code>set x = "twenty"
+echo $x
+&gt; twenty
+
+## New Shell
+csh
+echo $x
+x: Undefined variable.
+</code></pre>
+
+<h2>Setenv Note missing &lsquo;=&rsquo;</h2>
+
+<pre><code>setenv x "twenty"
+echo $x
+&gt; twenty
+
+##New Shell
+csh
+echo $x
+&gt; twenty
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -668,51 +734,6 @@ and optimise the process I purchased the <strong><a href="https://www.amazon.co.
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/growhouse/">Growhouse</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-04T00:35:29+01:00" pubdate data-updated="true">Aug 4<span>th</span>, 2013</time>
-        
-           | <a href="/blog/garden/growhouse/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/garden/growhouse/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A cheap (~£15) four tier <a href="https://www.amazon.co.uk/dp/B00IA1KI7G?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B00IA1KI7G&amp;adid=117VNH8ZGZJVTEV9GJFD&amp;">Botanico growhouse</a>, with my current selection of potted herbs.</p>
-
-<p><img src="/images/Gardening/morganp-20130803-herbs-IMG_2586.jpg" alt="Growhouse with herbs" /></p>
-
-<p>Over the course of the summer I think the temperatures inside actually became too hot for the plants during midday. I think best to use as an early start on the season and to extend the season for small plants.</p>
-
-<p>NB: The growhouse did not make it through the winter storms.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/6/">&larr; Older</a>
@@ -727,7 +748,7 @@ and optimise the process I purchased the <strong><a href="https://www.amazon.co.
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (12)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (215)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (12)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (216)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>

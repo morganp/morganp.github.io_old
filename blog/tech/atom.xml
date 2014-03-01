@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | RockPaperScissors]]></title>
   <link href="http://morganp.github.io/blog/tech/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-03-01T20:19:22+00:00</updated>
+  <updated>2014-03-01T20:45:01+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -98,29 +98,25 @@ git reset --hard origin/master
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Reverting in Git]]></title>
-    <link href="http://morganp.github.io/blog/tech/reverting-in-git/"/>
-    <updated>2014-01-08T20:10:31+00:00</updated>
-    <id>http://morganp.github.io/blog/tech/Reverting-in-git</id>
-    <content type="html"><![CDATA[<p>I use to use <code>svn revert</code> to roll back local modification and get back to the state I was in last time I checked out.</p>
-
-<p>to do the same in git  I use :</p>
-
-<pre><code>git checkout -- filename
+    <title type="html"><![CDATA[Git Submodule Update Fatal]]></title>
+    <link href="http://morganp.github.io/blog/tech/git-submodule-update-fatal/"/>
+    <updated>2014-01-21T20:32:16+00:00</updated>
+    <id>http://morganp.github.io/blog/tech/git-submodule-update-fatal</id>
+    <content type="html"><![CDATA[<pre><code>$ git submodule update
+fatal: Needed a single revision
+Unable to find current revision in submodule path 'vim/bundle/systemverilog'
 </code></pre>
 
-<p>As git does not automatically push to a server the way subversion does you have an opportunity to revert local commits.</p>
+<p>To resolve the issue :</p>
 
-<pre><code>git reset --soft HEAD^
+<pre><code>rm -rf vim/bundle/systemverilog
+git submodule update
 </code></pre>
 
-<p>Here the <code>^</code> means previous. ie go back 1 commit. Using soft the files will still appear modified and we can use the previous command to reset the files as required.</p>
+<p>Check your .gimodules, one of mine was an http instead of https, (gitub is https only now).
+Update to the latest version I find a minimum of git 1.8.5 is required for reliable module checkout.</p>
 
-<p>Further reading <a href="http://stackoverflow.com/q/2530060/97073">what “git reset” does in plain english?</a>, <a href="http://marklodato.github.io/visual-git-guide/index-en.html">Visual Git Reference</a> and <a href="http://git-scm.com/blog/2011/07/11/reset.html">Reset Demystified</a></p>
-
-<p>&mdash;
-<a href="http://www.norbauer.com/rails-consulting/notes/git-revert-reset-a-single-file.html">git checkout source</a>.  <br/>
-<a href="http://stackoverflow.com/questions/2845731/how-to-uncommit-my-last-commit-in-git">git reset source</a>.</p>
+<p>Solution based <a href="http://www.gostai.com/downloads/urbi-sdk-2.0/doc/urbi-sdk.htmldir/faq.html#x22-10400014.1.4">on gostais docs</a>.</p>
 ]]></content>
   </entry>
   
