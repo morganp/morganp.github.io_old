@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="In the following example we test the allocation speed of different types: samples_to_avg = 10000;
-for i=1:samples_to_avg tic; t = int8(zeros(32,2^16 &hellip;">
+  <meta name="description" content="Le Creuset do not list pan volumes on there site so for Round Cast Iron: Diameter Volume 18cm 1.8 Litres 20cm 2.4 Litres 22cm 3.3 Litres 24cm 4.2 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,89 @@ for i=1:samples_to_avg tic; t = int8(zeros(32,2^16 &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/home/cooking-le-crueset-sizes/">Kitchen: Le Creuset</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-12T21:03:49+00:00" pubdate data-updated="true">Feb 12<span>th</span>, 2014</time>
+        
+           | <a href="/blog/home/cooking-le-crueset-sizes/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/home/cooking-le-crueset-sizes/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Le Creuset do not list pan volumes on there site so for <strong>Round Cast Iron</strong>:</p>
+
+<table>
+<thead>
+<tr>
+<th align="center"> Diameter  </th>
+<th align="center">  Volume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">18cm</td>
+<td align="center"> 1.8 Litres </td>
+</tr>
+<tr>
+<td align="center">20cm</td>
+<td align="center"> 2.4 Litres </td>
+</tr>
+<tr>
+<td align="center">22cm</td>
+<td align="center"> 3.3 Litres </td>
+</tr>
+<tr>
+<td align="center">24cm</td>
+<td align="center"> 4.2 Litres </td>
+</tr>
+<tr>
+<td align="center">26cm</td>
+<td align="center"> 5.5 Litres </td>
+</tr>
+<tr>
+<td align="center">28cm</td>
+<td align="center"> 6.7 Litres </td>
+</tr>
+<tr>
+<td align="center">30cm</td>
+<td align="center"> 8.4 Litres </td>
+</tr>
+<tr>
+<td align="center">34cm</td>
+<td align="center">12.4 Litres </td>
+</tr>
+</tbody>
+</table>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -583,100 +665,6 @@ Depth: 16.5cm. Width: 27cm. Height: 46cm  External Volume 25L</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/flip-flop/">Flip-flop</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-09T19:15:10+00:00" pubdate data-updated="true">Jan 9<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/flip-flop/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/engineering/flip-flop/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A flip-flop (D-Type) is essentially 2 latches in series with the enable to one inverted.
-This stops the flip-flop from being transparent or open as a single latch can be.</p>
-
-<p>For ASIC design it is recommended that all flip-flops use active low asynchronous resets.
-This is often connected to the power on reset circuit and retimed on to the rising edge of the clock at the top level of the chip.</p>
-
-<p>In Verilog a D-Type flip-flop can be implied with the following logic.<br/>
-NB: the reg implies nothing about the flip-flop only that data is assigned inside an always block.</p>
-
-<pre><code>reg [1:0] data; 
-always @(posedge clk or negedge rst_n) begin
-  if (~rst_n) begin
-    data &lt;= 'b0;
-  end
-  else begin
-    data &lt;= new_data;
-  end
-end
-</code></pre>
-
-<p>If your flow supports the use of SystemVerilog, use of the <code>always_comb</code>, <code>always_latch</code> and <code>always_ff</code> are recommended.
-the rules for sensitivity lists are a little stricter to minimize RTL to gates mismatch.
-The added benefit is that it allows the designer to be clear about design intent.
-Using the logic type also removes confusion about reg implying flip-flops and allows code refacoring with out having to switch types.</p>
-
-<pre><code>logic [1:0] data; 
-always_ff @(posedge clk or negedge rst_n) begin
-  if (~rst_n) begin
-    data &lt;= 'b0;
-  end
-  else begin
-    data &lt;= new_data;
-  end
-end
-</code></pre>
-
-<p>With a Synchronous Reset:</p>
-
-<pre><code>logic [1:0] data; 
-always_ff @(posedge clk) begin
-  if (~rst_n) begin
-    data &lt;= 'b0;
-  end
-  else begin
-    data &lt;= new_data;
-  end
-end
-</code></pre>
-
-<p>No Reset:</p>
-
-<pre><code>logic [1:0] data; 
-always_ff @(posedge clk) begin
-  data &lt;= new_data;
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -691,11 +679,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (11)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/without-a-line-return/">$display Without a Line Return</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/rocket-and-chilli/">Rocket &amp; Chilli</a>
@@ -711,10 +703,6 @@ end
     
       <li class="post">
         <a href="/blog/garden/rocket/">Rocket</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/propagator/">Propagator</a>
       </li>
     
   </ul>

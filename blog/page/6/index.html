@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="On the continuous search for a decent ADSL, Router and Wireless access point. I have tried many (unscientifically). Finding that many fall over when &hellip;">
+  <meta name="description" content="I have decided to clean up my vim colorschemes. I have been using ir_black for sometime but it does not look the same as others who use it. I think I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,84 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/terminal-colours/">Terminal Colours</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-12T19:16:31+01:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/terminal-colours/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/terminal-colours/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have decided to clean up my vim colorschemes. I have been using ir_black for sometime but it does not look the same as others who use it. I think I was forcing it into 256 or 16 color mode.</p>
+
+<p>Some vim command line on some terminals looked awful and I had to switch to another colorscheme just so I could see the text.</p>
+
+<p>I have decided to pick an 8,16,256 and full color scheme and load them automatically, rather than trying to find a colorscheme which degraded gracefully, they just never seemed to do it that well.</p>
+
+<p>From <a href="http://blog.sanctum.geek.nz/tag/xterm-256color/">sanctum.geek.nz</a> I discovered the <code>tput colors</code> command. Vims <code>&amp;t_Co</code> will reflect this value.  But it only reflects the calling terminals capabilities, so calling gvim or mvim from an 8 bit color terminal your &amp;t_Co will still be 8.</p>
+
+<p>After some trouble getting the 8 colour scheme to work posted a question on <a href="http://superuser.com/questions/604589/vim-non-gui-background-will-not-go-white">superuser</a>.</p>
+
+<p>The main solution seems to be to append your TERM envar with -256color to force 256 Colour detection.  I was originally hesitant to blindly apply 256 color to any system I may be working on, but I think it would be rare to come across a terminal that does not support 256 colors these days. This would also have to be a system/network where I have already set-up my dotfiles.</p>
+
+<p>Adding -256color to term makes tput return 256 and makes vim t_Co 256 as well.
+For csh:</p>
+
+<pre><code>setenv TERM $TERM-256color
+</code></pre>
+
+<p>For a bit more protection you should stop multiple -256colors being appended i.e. stop xterm-256color-256color if called from bash with 256color extension already applied.</p>
+
+<pre><code>if ($TERM =~ *256color*) then
+  #Already 256color
+else
+  setenv TERM $TERM-256color
+endif
+</code></pre>
+
+<p>For Bash:</p>
+
+<pre><code>if [[ "$TERM" != *256color* ]]
+then
+  export TERM=$TERM-256color
+fi
+</code></pre>
+
+<p>Using a <a href="https://github.com/wardi/xterm_colour_chart">python script</a> you can display color charts in the terminal. It should be clear if 256 colors is not working, you would only see 16 colour blocks.</p>
+
+<p><a href="http://flickr.com/gp/morgan_prior/45kh8P"> <img src="http://farm6.staticflickr.com/5542/9272025578_7a86fc474c_n.jpg" alt="colour block" /> </a></p>
+
+<p>After all of this instead of getting my vim colour schemes to degrade gracefully I force everything into 256 colours mode. Which I think is actually ok and I get to use better colour schemes all/more of the time.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -667,166 +745,6 @@ footer: true
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/cooking/black-forest-gateau/">Black Forest Gateau</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-07T12:29:00+01:00" pubdate data-updated="true">May 7<span>th</span>, 2013</time>
-        
-           | <a href="/blog/cooking/black-forest-gateau/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/cooking/black-forest-gateau/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Cake (£1.23 a portion) time to table  ~1 hour 30 minutes.</p>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0770-Cake2.jpg"></p>
-
-<p>Ingredients (for 8)</p>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0733-Ingredients.jpg"></p>
-
-<pre><code>400 g    black cherries in syrup
- 75 g    sour cherries (dried)
-  2 tbsp cherry brandy
-  1      orange
-150 g    dark chocolate
-150 g    plain flour
-  1      large egg
- 50 g    unslated butter
-265 g    golden caster sugar
-  1 tbsp vanilla extract
-  2 tbsp cocoa powder
-125 ml   buttermilk
-400 ml   double cream
-1.5 tsp  white wine vinegar
-0.5 tsp  bicarbonate of soda
-         plain flour for dusting
-         unsalted butter for greasing
-</code></pre>
-
-<p>Grease 20cm spring form cake tin. dust side with flour and add grease proof paper to bottom of tin.
-Preheat oven to 180OC/Gas 4.</p>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0760-CakeTin.jpg"></p>
-
-<p>Using food processor/hand blender mix 250g sugar and butter. Add egg, pinch of salt and vanilla extract.</p>
-
-<pre><code>250g sugar
-butter
-egg
-vanilla extract
-</code></pre>
-
-<p>Next Add in the cocoa powder, flour and buttermilk.</p>
-
-<pre><code>cocoa powder
-flour
-buttermilk
-</code></pre>
-
-<p>In a bowl mix bicarbonate of soda and white wine vinegar, it will fizz, then add to the rest of the cake mix.</p>
-
-<pre><code>bicarbonate of soda
-white wine vinegar
-</code></pre>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0764-VinegarBaking.jpg"></p>
-
-<p>Pour Cake mix into 20cm spring form cake tin, put in oven for about 35 minutes.</p>
-
-<p>Zest orange into pan with 15g of caster sugar, halve and squeeze juice into pan. Heat on high until dissolved.</p>
-
-<pre><code>15g caster sugar
-orange
-</code></pre>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0766-Zest.jpg"></p>
-
-<p>Add all the cherries and brandy to the pan, cook for 5 minutes. Then leave to cool.</p>
-
-<pre><code>cherries with syrup
-sour cherries
-cherry brandy
-</code></pre>
-
-<p>Once cake is cooked leave in cake tin for 10 minutes to cool then transfer to cooling rack. Strain Cherries, keeping the syrup.</p>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0767-Cherries.jpg"></p>
-
-<p>Start heating 100ml of the cream.<br/>
-Break 100g of the chocolate into small pieces, mix with the heated cream until the chocolate is melted, remove from heat and allow pan to cool.</p>
-
-<pre><code>100ml double cream
-100g  chocolate
-</code></pre>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0768-Chocolate.jpg"></p>
-
-<p>Whip the remaining cream until stiff.</p>
-
-<pre><code>300ml double cream
-</code></pre>
-
-<p>Cut cake into 3 slices, mine fell apart so I layered lots of broken pieces together. <br/>
-spread choclate sauce over the layers, saving some for pouring over the top of cake.<br/>
-On the same 2 layers also spread some cherry sauce and cherries, then added whipped cream.</p>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0769-Cake1.jpg">
-<img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0770-Cake2.jpg"></p>
-
-<p>Stack these 2 layers placing the final layer on top. Pour any remaing chocolate sauce, cherry syrup on the top before finishing by grating the remaning chocolate over the top.</p>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0776-Final.jpg"></p>
-
-<p>Cost</p>
-
-<pre><code>400 g      £ 1.19 black cherries in syrup 
- 75 g      £ 2.00 sour cherries (dried)
-  2 tbsp   £ 1.00 cherry brandy       (500ml £10)
-  1        £ 0.30 orange
-150 g      £ 1.50 dark chocolate      (200g  £2)
-150 g      £ 0.20 plain flour         (1.5kg £1.78)
-  1        £ 0.33 large egg           (6     £2)
- 50 g      £ 0.40 unslated butter     (250g  £1.30)
-265 g      £ 0.53 golden caster sugar (1kg   £2)
-  1 tbsp   £ 0.20 vanilla extract     (38ml  £1.04)
-  2 tbsp   £ ?.?? cocoa powder
-125 ml     £ 0.50 buttermilk
-400 ml     £ 1.68 double cream
-1.5 tsp    £ 0.08 white wine vinegar  (350ml £0.80)
-0.5 tsp    £ 0.05 bicarbonate of soda (£1)
-----------------
-8 portions £ 9.83
-1 portion  £ 1.23
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -841,11 +759,15 @@ On the same 2 layers also spread some cherry sauce and cherries, then added whip
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (10)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (11)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (214)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/without-a-line-return/">$display Without a Line Return</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/rocket-and-chilli/">Rocket &amp; Chilli</a>
@@ -861,10 +783,6 @@ On the same 2 layers also spread some cherry sauce and cherries, then added whip
     
       <li class="post">
         <a href="/blog/garden/rocket/">Rocket</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/propagator/">Propagator</a>
       </li>
     
   </ul>
