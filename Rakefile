@@ -47,6 +47,11 @@ end
 #######################
 # Working with Jekyll #
 #######################
+desc 'Get all tasks'
+task :tasklist do
+  puts 'All tasks:'
+  puts Rake.application.tasks
+end
 
 desc "Generate jekyll site"
 task :generate do
