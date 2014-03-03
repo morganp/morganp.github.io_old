@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://morganp.github.io/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-03-01T20:45:01+00:00</updated>
+  <updated>2014-03-03T20:21:11+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Revert in Git]]></title>
+    <link href="http://morganp.github.io/blog/tech/revert-in-git/"/>
+    <updated>2014-03-03T19:42:12+00:00</updated>
+    <id>http://morganp.github.io/blog/tech/revert-in-git</id>
+    <content type="html"><![CDATA[<h1>and Remove Orphaned Commits.</h1>
+
+<p>I use <code>gitx</code> graphical tool on OS X to find the SHAs for commits. Revert back throwing away all changes:</p>
+
+<pre><code>git reset --hard shaqwerty      
+</code></pre>
+
+<p>Now delete the orphaned commits.</p>
+
+<pre><code>git reflog expire --expire=now --expire-unreachable=now --all
+git gc --prune=now
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OO Magic Bullet?]]></title>
@@ -518,25 +538,6 @@ So I picked up a few books on garden design with good reviews, they were:</p>
 
 <p><img src="http://morganp.github.io/images/Home/Table/morganp-20070609-Table-IMG_8640.jpg" alt="Coffee Table" />
 <img src="http://morganp.github.io/images/Home/Table/morganp-20070609-Table-IMG_8648.jpg" alt="Coffee Table" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Chandelier]]></title>
-    <link href="http://morganp.github.io/blog/home/chandelier/"/>
-    <updated>2014-02-06T20:29:49+00:00</updated>
-    <id>http://morganp.github.io/blog/home/chandelier</id>
-    <content type="html"><![CDATA[<p>A new feature in the dining room.</p>
-
-<p><img src="http://morganp.github.io/images/Chandelier/morganp-20140202-Chandelier-IMG_6675.jpg" alt="Chandelier view 1" />
-<img src="http://morganp.github.io/images/Chandelier/morganp-20140202-Chandelier-IMG_6678.jpg" alt="Chandelier view 2" /></p>
-
-<p>Approximate materials and cost:</p>
-
-<pre><code>Section of plywood ~£10
-16 meters of 2.5mm chain ~£50
-40 Ikea Lanterns £80
-</code></pre>
 ]]></content>
   </entry>
   

@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I do not think that there are any magic bullets, best practises can minimise risk but you have to fully understand the technique. You can not just &hellip;">
+  <meta name="description" content="and Remove Orphaned Commits. I use gitx graphical tool on OS X to find the SHAs for commits. Revert back throwing away all changes: git reset --hard &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,56 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/revert-in-git/">Revert in Git</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-03T19:42:12+00:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2014</time>
+        
+           | <a href="/blog/tech/revert-in-git/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/revert-in-git/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>and Remove Orphaned Commits.</h1>
+
+<p>I use <code>gitx</code> graphical tool on OS X to find the SHAs for commits. Revert back throwing away all changes:</p>
+
+<pre><code>git reset --hard shaqwerty      
+</code></pre>
+
+<p>Now delete the orphaned commits.</p>
+
+<pre><code>git reflog expire --expire=now --expire-unreachable=now --all
+git gc --prune=now
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -497,73 +547,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/raised-bed/">Raised Bed</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-18T18:58:30+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/raised-bed/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/garden/raised-bed/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Putting together my first raised bed, 8 foot by 2 foot, 1 plank high.</p>
-
-<p>Cut parts ready for assembly:
-<img src="/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6743.jpg" alt="Parts" /></p>
-
-<p>The timber is pressure treated softwood from <a href="http://www.dremtimberandfencing.co.uk/">Drem Timber</a>. Cost is around £14 for 16 foot (4.8m).</p>
-
-<p>Parts I got:</p>
-
-<pre><code>4 * 8 foot (2 * 4.8m)
-8 * 2 foot (1 * 4.8m)
-8 corner stakes (£1 each)
---
-£49
-</code></pre>
-
-<p>Using right angle clamps to assemble first corner.
-<img src="/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6746.jpg" alt="First Corner" /></p>
-
-<p>Holding the spikes in place with quick clamps.
-<img src="/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6751.jpg" alt="Attaching Spike" />
-<img src="/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6753.jpg" alt="" /></p>
-
-<p>Constructing the second corner.
-<img src="/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6758.jpg" alt="Second Corner" />
-<img src="/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6761.jpg" alt="" /></p>
-
-<p>The final side and 2 corners, using 4 right angle clamps to hold it all in place.
-<img src="/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6766.jpg" alt="Final Corners" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -576,11 +559,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (12)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (216)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (12)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (217)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/revert-in-git/">Revert in Git</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/oo-magic-bullet/">OO Magic Bullet?</a>
@@ -596,10 +583,6 @@ end
     
       <li class="post">
         <a href="/blog/garden/rocket-and-chilli/">Rocket &amp; Chilli</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/spring/">Spring</a>
       </li>
     
   </ul>

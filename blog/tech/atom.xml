@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | RockPaperScissors]]></title>
   <link href="http://morganp.github.io/blog/tech/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-03-01T20:45:01+00:00</updated>
+  <updated>2014-03-03T20:21:11+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Revert in Git]]></title>
+    <link href="http://morganp.github.io/blog/tech/revert-in-git/"/>
+    <updated>2014-03-03T19:42:12+00:00</updated>
+    <id>http://morganp.github.io/blog/tech/revert-in-git</id>
+    <content type="html"><![CDATA[<h1>and Remove Orphaned Commits.</h1>
+
+<p>I use <code>gitx</code> graphical tool on OS X to find the SHAs for commits. Revert back throwing away all changes:</p>
+
+<pre><code>git reset --hard shaqwerty      
+</code></pre>
+
+<p>Now delete the orphaned commits.</p>
+
+<pre><code>git reflog expire --expire=now --expire-unreachable=now --all
+git gc --prune=now
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Edit Octopress Posts]]></title>
@@ -94,29 +114,6 @@ Error: Failure while executing: git pull -q origin refs/heads/master:refs/remote
 git fetch origin
 git reset --hard origin/master
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Git Submodule Update Fatal]]></title>
-    <link href="http://morganp.github.io/blog/tech/git-submodule-update-fatal/"/>
-    <updated>2014-01-21T20:32:16+00:00</updated>
-    <id>http://morganp.github.io/blog/tech/git-submodule-update-fatal</id>
-    <content type="html"><![CDATA[<pre><code>$ git submodule update
-fatal: Needed a single revision
-Unable to find current revision in submodule path 'vim/bundle/systemverilog'
-</code></pre>
-
-<p>To resolve the issue :</p>
-
-<pre><code>rm -rf vim/bundle/systemverilog
-git submodule update
-</code></pre>
-
-<p>Check your .gimodules, one of mine was an http instead of https, (gitub is https only now).
-Update to the latest version I find a minimum of git 1.8.5 is required for reliable module checkout.</p>
-
-<p>Solution based <a href="http://www.gostai.com/downloads/urbi-sdk-2.0/doc/urbi-sdk.htmldir/faq.html#x22-10400014.1.4">on gostais docs</a>.</p>
 ]]></content>
   </entry>
   
