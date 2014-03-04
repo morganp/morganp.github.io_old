@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Previous posts arrays and arrays2 Based on a post by barkingiguana, some idiomatic ruby ways to handle arrays.
-Ruby tries to have a natural language &hellip;">
+  <meta name="description" content="Back in 2009 barkingiguana wrote about how explicit returns 'return "String"' was slower than an implicit return, ie just letting the last value get &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,152 @@ Ruby tries to have a natural language &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/benchmarking-ruby-explicit-vs-implicit-returns/">Benchmarking Ruby, Explicit vs Implicit Returns</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-26T09:12:29+01:00" pubdate data-updated="true">Oct 26<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/benchmarking-ruby-explicit-vs-implicit-returns/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/benchmarking-ruby-explicit-vs-implicit-returns/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Back in 2009 <a href="http://barkingiguana.com/2009/11/11/returning-explicitly-is-slower/">barkingiguana</a> wrote about how explicit returns <code>'return "String"'</code> was slower than an implicit return, ie just letting the last value get returned. The test was performed on ruby 1.8.6 and I thought I would just check with ruby 1.9.2-p290 to see if this still held true.</p>
+
+<p>The test I ran:</p>
+
+<pre><code>require 'benchmark'
+
+def explicit
+  return "TEST"
+end
+
+def implicit
+  "TEST"
+end
+
+def explicit_non_eval
+  return 'TEST'
+end
+
+def implicit_non_eval
+  'TEST'
+end
+
+def explicit_symbol
+  return :TEST
+end
+
+def implicit_symbol
+  :TEST
+end
+
+n = 100_000_000
+Benchmark.bmbm do |x|
+  x.report("Explicit \"\"     return") { n.times { explicit } }
+  x.report("Implicit \"\"     return") { n.times { implicit } }
+  x.report("Explicit ''     return") { n.times { explicit_non_eval } }
+  x.report("Implicit ''     return") { n.times { implicit_non_eval } }
+  x.report("Explicit symbol return") { n.times { explicit_symbol   } }
+  x.report("Implicit symbol return") { n.times { implicit_symbol   } }
+end
+</code></pre>
+
+<p>the results</p>
+
+<pre><code>Rehearsal ----------------------------------------------------------
+Explicit ""     return  37.810000   0.000000  37.810000 ( 37.889241)
+Implicit ""     return  36.300000   0.000000  36.300000 ( 36.310153)
+Explicit ''     return  36.460000   0.000000  36.460000 ( 36.476939)
+Implicit ''     return  36.520000   0.010000  36.530000 ( 36.541361)
+Explicit symbol return  14.330000   0.000000  14.330000 ( 14.352004)
+Implicit symbol return  14.330000   0.000000  14.330000 ( 14.322934)
+----------------------------------------------- total: 175.760000sec
+
+                             user     system      total        real
+Explicit ""     return  37.620000   0.000000  37.620000 ( 37.680337)
+Implicit ""     return  36.480000   0.000000  36.480000 ( 36.504694)
+Explicit ''     return  36.560000   0.000000  36.560000 ( 36.574798)
+Implicit ''     return  36.100000   0.010000  36.110000 ( 36.111328)
+Explicit symbol return  14.770000   0.000000  14.770000 ( 14.812874)
+Implicit symbol return  14.710000   0.000000  14.710000 ( 14.829556)
+</code></pre>
+
+<p>For me the difference I see in the results between implicit and explicit returns is negligible. I also prefer the explicit return in all but the simplest of methods, as it is much easier to see what value gets returned and at which point the programmer want the method to exit. It also helps to minimize the side effects of re-factoring.</p>
+
+<p><a href="http://barkingiguana.com/2009/11/11/returning-explicitly-is-slower/">Barkingiguana</a> seems to prefer the implicit style which is possibly more idiomatic ruby, but I personally find that it adds ambiguity to the code for beginners to intermediate rubyists.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/tagging-a-git-repo-and-pushing-tag-to-github/">Tagging a Git Repo and Pushing Tag to Github</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-25T21:46:13+01:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/tagging-a-git-repo-and-pushing-tag-to-github/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/tagging-a-git-repo-and-pushing-tag-to-github/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This assumes that <code>origin</code> is the label for github. <br/>
+Tagging a github repo for my gem releases I do:</p>
+
+<pre><code>$ git tag -a 0.0.4 -m 'Tagging gem release 0.0.4'
+$ git push origin 0.0.4
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -655,150 +800,6 @@ $ sudo restart avahi-daemon
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/get-latest-ruby-192-build-with-rvm/">Get Latest Ruby 1.9.2 Build With RVM</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-16T07:47:23+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/get-latest-ruby-192-build-with-rvm/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/get-latest-ruby-192-build-with-rvm/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Ruby 1.9.2-p290 released, if you have <a href="http://beginrescueend.com/">RVM</a> installed updating to the latest release is easy</p>
-
-<pre><code>rvm get head
-rvm reload
-rvm install 1.9.2
-</code></pre>
-
-<p>If you do not have <a href="http://beginrescueend.com/">RVM</a> installed you can <a href="http://beginrescueend.com/rvm/install/">read up here</a> or just run:</p>
-
-<pre><code>bash &lt; &lt;(curl -s https://rvm.beginrescueend.com/install/rvm)
-</code></pre>
-
-<p>You may want to check your default gem list in your old version and add then make the new ruby your default. Having bundler present is almost essential for most projects, to install the protected gemsets.</p>
-
-<pre><code>rvm gem list &gt; rvm_old_gemlist.txt
-rvm --default use 1.9.2
-gem install bundler
-</code></pre>
-
-<p>When only specifying a ruby version the latest release will be the default.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/using-sshconfig-and-no-passowrds-with-mac-os-x/">Using ~/.ssh/config and No Passowrds With Mac OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-14T21:56:03+01:00" pubdate data-updated="true">Jul 14<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/using-sshconfig-and-no-passowrds-with-mac-os-x/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/using-sshconfig-and-no-passowrds-with-mac-os-x/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Using ssh to securely connect with servers from the terminal is pretty easy. set up a public key and a private key using:</p>
-
-<pre><code>ssh-keygen -t rsa
-</code></pre>
-
-<p>This should save them in ~/.ssh/</p>
-
-<p>However you may want separate keys for work, for home servers and other services like a web server or github. the ~/.ssh/config file is a way to specify a list of possible keys to use and associate them with a host name. I when using this initially Mac OS X always prompted me for my identity file password. instead of acting password-less.</p>
-
-<p>For OS X it looks like you have to add a few more options to get the same behaviour as without the .ssh/config :</p>
-
-<pre><code>Host *
-  RSAAuthentication yes
-  PasswordAuthentication yes
-  ChallengeResponseAuthentication no
-  IdentityFile ~/.ssh/id_rsa
-</code></pre>
-
-<p>Adding more Identity files the first passing will be used</p>
-
-<pre><code>Host *
-  RSAAuthentication yes
-  PasswordAuthentication yes
-  ChallengeResponseAuthentication no
-  IdentityFile ~/.ssh/id_rsa
-  IdentityFile ~/.ssh/id_rsa_work
-  IdentityFile ~/.ssh/id_rsa_github
-</code></pre>
-
-<p>Multiple Identities, using known identity for known location.</p>
-
-<pre><code>Host *.work.com
-  IdentityFile ~/.ssh/id_rsa
-
-Host *.github.com
-  IdentityFile ~/.ssh/id_rsa_github
-
-Host *
-  RSAAuthentication yes
-  PasswordAuthentication yes
-  ChallengeResponseAuthentication no
-  IdentityFile ~/.ssh/id_rsa
-</code></pre>
-
-<p>For more info try looking at <a href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh_config">the man page</a>, from your terminal:</p>
-
-<pre><code>$ man ssh_config
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/18/">&larr; Older</a>
@@ -813,11 +814,19 @@ Host *
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (12)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (217)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (10)</a></li><li><a href='/blog/engineering'>Engineering (12)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (218)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/cooking/puy-lentil-wellington/">Puy Lentil Wellington</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/octopress/">Octopress, Pages and Custom Domain</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/revert-in-git/">Revert in Git</a>
@@ -829,14 +838,6 @@ Host *
     
       <li class="post">
         <a href="/blog/tech/edit-octopress-posts/">Edit Octopress Posts</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/without-a-line-return/">$display Without a Line Return</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/rocket-and-chilli/">Rocket &amp; Chilli</a>
       </li>
     
   </ul>

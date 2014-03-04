@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I have specifically been trying to find out how to transfer my full GB Memory Map OS 1:50K 2012 GB map to an iPad, finally found a working solution &hellip;">
+  <meta name="description" content="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin To Reset it back to this value run (from /Applications/Utilities/Terminal.app) export path &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,151 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/lion-default-path/">Lion Default $PATH</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-16T09:22:58+01:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/lion-default-path/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/lion-default-path/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
+</code></pre>
+
+<p>To Reset it back to this value run (from /Applications/Utilities/Terminal.app)</p>
+
+<pre><code>export path=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/web-automation-with-watir/">Web Automation With Watir</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-06T13:30:06+01:00" pubdate data-updated="true">Aug 6<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/web-automation-with-watir/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/web-automation-with-watir/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://watir.com/">Watir</a> is a web testing framework implemented in ruby, but can be used for testing or automating any web service.</p>
+
+<pre><code>gem install watir-webdriver
+#or in your Gemfile
+gem "watir-webdriver"
+</code></pre>
+
+<h2>For Internet Explorer on Windows</h2>
+
+<pre><code>require 'watir'
+browser = Watir::Browser.new :ie
+</code></pre>
+
+<h2>Firefox or Chrome</h2>
+
+<pre><code>require 'watir-webdriver'
+browser = Watir::Browser.new :firefox
+# OR
+browser = Watir::Browser.new :chrome
+</code></pre>
+
+<p>For OS X and Automating chrome I had to install the chrome driver from <a href="http://code.google.com/p/chromedriver/downloads/list">chromedriver</a> or using <a href="http://mxcl.github.com/homebrew/">homebrew</a>.</p>
+
+<pre><code>brew install chromedriver
+</code></pre>
+
+<p>A simple script might be:</p>
+
+<pre><code>require 'watir-webdriver'
+browser = Watir::Browser.new :chrome
+browser = Watir::Browser.start 'www.google.com'
+puts browser.title
+browser.close
+</code></pre>
+
+<p>This launches a graphical browser and performs the actions requested.</p>
+
+<h1>Headless</h1>
+
+<p>There is a way to make these compatible with severs which do not have a graphics system, by installing the headless gem.</p>
+
+<pre><code>gem install watir-webdriver
+gem install headless
+#or in your Gemfile
+gem "watir-webdriver"
+gem "healdess"
+</code></pre>
+
+<p>The headless gem uses xvfb to perform graphical actions. If you are not on headless machine these will still be visible.</p>
+
+<pre><code>require 'watir-webdriver'
+require 'headless'
+
+headless = Headless.new
+headless.start
+
+browser = Watir::Browser.start 'www.google.com'
+puts browser.title
+browser.close
+
+headless.destroy
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -487,128 +632,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/device-ownership-password/">Device Ownership Password</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-29T09:19:24+01:00" pubdate data-updated="true">May 29<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/device-ownership-password/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/device-ownership-password/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>While using a pool laptop from work and trying to connect to my home wifi I am prompted for my Device Ownership Password. It will only accept numerics, I believe this is requesting the &lsquo;Security Pin&rsquo; which is stamped on the bottom of my netgear router.</p>
-
-<p>This is only happening because the laptop is using Intel&reg; PROSet/Wireless Software, no other devices I have ever ask for this.</p>
-
-<p>It can be disabled by:</p>
-
-<pre><code>Control Panel -&gt; 
-  add or remove programs -&gt; 
-    Intel(R) PROSet/Wireless Software -&gt; 
-      Repair -&gt; 
-        Modify -&gt; 
-          WI-FI PROTECTED SETUP (change to not installed)
-</code></pre>
-
-<p>Now connecting to the WiFi I am just prompted for my network password, like all other devices.</p>
-
-<p>Answer originally found <a href="http://forums.anandtech.com/showthread.php?t=274465">here</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/create-andor-of-multiple-booleans/">Create And,Or of Multiple Booleans</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-21T11:35:19+01:00" pubdate data-updated="true">May 21<span>st</span>, 2012</time>
-        
-           | <a href="/blog/tech/create-andor-of-multiple-booleans/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/create-andor-of-multiple-booleans/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To reduce an array of Booleans to a single Boolean using enumerables reduce method:</p>
-
-<pre><code>[true, true, true].reduce( :| ) ## OR
-=&gt; true
-[true, true, true].reduce( :&amp; ) ## AND
-=&gt; true
-
-[false, false, false].reduce( :| ) ## OR
-=&gt; false
-[false, false, false].reduce( :&amp; ) ## AND
-=&gt; false
-
-[true, true, false].reduce( :| ) ## OR
-=&gt; true
-[true, true, false].reduce( :&amp; ) ## AND
-=&gt; false
-</code></pre>
-
-<h2>Checksums (XOR)</h2>
-
-<pre><code>[false, false].reduce( :^ ) ## XOR
-=&gt; false
-[false, true ].reduce( :^ ) ## XOR
-=&gt; true
-[true, false ].reduce( :^ ) ## XOR
-=&gt; true
-[true, true  ].reduce( :^ ) ## XOR
-=&gt; false
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -623,11 +646,19 @@
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (12)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (217)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (10)</a></li><li><a href='/blog/engineering'>Engineering (12)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (218)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/cooking/puy-lentil-wellington/">Puy Lentil Wellington</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/octopress/">Octopress, Pages and Custom Domain</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/revert-in-git/">Revert in Git</a>
@@ -639,14 +670,6 @@
     
       <li class="post">
         <a href="/blog/tech/edit-octopress-posts/">Edit Octopress Posts</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/without-a-line-return/">$display Without a Line Return</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/rocket-and-chilli/">Rocket &amp; Chilli</a>
       </li>
     
   </ul>

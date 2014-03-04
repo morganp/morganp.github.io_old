@@ -9,8 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="As the growhouse stops the plants recieving rain I decided to try micro-irrigtion.
-It comes with a gardnen computer to time the water automation, &hellip;">
+  <meta name="description" content="In the UK you can now get regional weather alerts from the
+Met Office. Unfortunately it does not break it down any further, all I really wanted was a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,94 @@ It comes with a gardnen computer to time the water automation, &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/weather-alerts-via-email-from-the-metoffice/">Weather Alerts via eMail From the MetOffice</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-15T12:17:08+01:00" pubdate data-updated="true">Aug 15<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/weather-alerts-via-email-from-the-metoffice/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/weather-alerts-via-email-from-the-metoffice/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In the UK you can now get regional weather alerts from the
+<a href="https://service.govdelivery.com/service/multi_subscribe.html?code=UKMETOFFICE&amp;origin=http://www.metoffice.gov.uk">Met Office</a>.</p>
+
+<p>Unfortunately it does not break it down any further, all I really wanted was a frost alert to look after my plants, but now I will know about any hazards weather 24 hours in advance.</p>
+
+<p>AdamFoster seems to have set up a free service <a href="http://frostalertemail.com/">FrostAlert</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/tcsh-check-a-var-exists/">Tcsh Check a Var Exists</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-07T07:04:38+01:00" pubdate data-updated="true">Aug 7<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/tcsh-check-a-var-exists/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/tcsh-check-a-var-exists/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To check if an environment variable exists in .mycshrc or shell scripts</p>
+
+<pre><code>if ($?TERM) then
+  echo "TERM is $TERM" 
+endif
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -511,102 +599,6 @@ fi
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-optionally-add-path-separator/">Ruby: Optionally Add Path Separator</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-05T11:46:58+01:00" pubdate data-updated="true">Jun 5<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/ruby-optionally-add-path-separator/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-optionally-add-path-separator/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I was wanting to use Dir.glob to get a file list and wanted to do <code>Dir.glob( path + '*')</code> but nicely handle when the final &lsquo;/&rsquo; of path was missing.</p>
-
-<p>Instead of doing string manipulation we should just be using the file utilities.</p>
-
-<pre><code>Dir.glob( File.join( path, '*')  ) 
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/navigate-verilog-with-vim/">Navigate Verilog With VIM</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-04T22:08:39+01:00" pubdate data-updated="true">Jun 4<span>th</span>, 2013</time>
-        
-           | <a href="/blog/engineering/navigate-verilog-with-vim/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/engineering/navigate-verilog-with-vim/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1>Using <code>gf</code></h1>
-
-<p>In your vimrc</p>
-
-<pre><code>" gf goto_file, automatically add search for these file extensions
-:set suffixesadd+=.v
-:set suffixesadd+=.sv
-:set suffixesadd+=.bh.v
-</code></pre>
-
-<p>Now <code>gf</code> on a module name will try to open file.v file.sv and file.bh.v  if they are in the same folder.
-Another good reason to keep module and file names matching.</p>
-
-<p><code>ctrl-6</code> will jump back to the previous file.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -621,11 +613,19 @@ Another good reason to keep module and file names matching.</p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (9)</a></li><li><a href='/blog/engineering'>Engineering (12)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (217)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (10)</a></li><li><a href='/blog/engineering'>Engineering (12)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (218)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/cooking/puy-lentil-wellington/">Puy Lentil Wellington</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/octopress/">Octopress, Pages and Custom Domain</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/revert-in-git/">Revert in Git</a>
@@ -637,14 +637,6 @@ Another good reason to keep module and file names matching.</p>
     
       <li class="post">
         <a href="/blog/tech/edit-octopress-posts/">Edit Octopress Posts</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/without-a-line-return/">$display Without a Line Return</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/rocket-and-chilli/">Rocket &amp; Chilli</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | RockPaperScissors]]></title>
   <link href="http://morganp.github.io/blog/tech/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-03-03T20:21:11+00:00</updated>
+  <updated>2014-03-04T20:29:10+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress, Pages and Custom Domain]]></title>
+    <link href="http://morganp.github.io/blog/tech/octopress/"/>
+    <updated>2014-03-04T18:19:25+00:00</updated>
+    <id>http://morganp.github.io/blog/tech/octopress</id>
+    <content type="html"><![CDATA[<p>In your <code>sources</code> branch, which is the main branch for writing creating posts, create a <code>CNAME</code> file in the sources directory.</p>
+
+<p>vim source/CNAME</p>
+
+<pre><code>your-domain.co.uk
+</code></pre>
+
+<p>Then check-in and deploy</p>
+
+<pre><code>git add source/CNAME
+rake deploy
+</code></pre>
+
+<p>Point your domain to github pages:</p>
+
+<pre><code>A record pointing to 204.232.175.78
+</code></pre>
+
+<p>I also redirect www. to the non-www url</p>
+
+<pre><code>CNAME record for www.example.com to example.com  
+</code></pre>
+
+<p><a href="http://octopress.org/docs/deploying/github/">Official Docs</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Revert in Git]]></title>
@@ -91,29 +123,6 @@ end
 </code></pre>
 
 <p>This was used to build my <a href="https://github.com/morganp/octopress_url_downcase">Octopress plugin octopress_url_downcase</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Brew Update Fail]]></title>
-    <link href="http://morganp.github.io/blog/tech/brew-update-fail/"/>
-    <updated>2014-02-11T21:17:24+00:00</updated>
-    <id>http://morganp.github.io/blog/tech/brew-update-fail</id>
-    <content type="html"><![CDATA[<p>Received the following errors when doing <code>brew update</code> on mountain lion:</p>
-
-<pre><code>error: The following untracked working tree files would be overwritten by merge:
-        Library/Formula/platypus.rb
-Please move or remove them before you can merge.
-Aborting
-Error: Failure while executing: git pull -q origin refs/heads/master:refs/remotes/origin/master
-</code></pre>
-
-<p>A solution found on <a href="http://stackoverflow.com/questions/10762859/brew-update-the-following-untracked-working-tree-files-would-be-overwritten-by">Stackoverflow</a></p>
-
-<pre><code>cd /usr/local
-git fetch origin
-git reset --hard origin/master
-</code></pre>
 ]]></content>
   </entry>
   
