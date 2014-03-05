@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I have been wondering how to do this for a while and accidentally discovered it while perusing this heroku page. ab is the ApacheBench marking tool, &hellip;">
+  <meta name="description" content="Flickr is a great way to backup your photos and other images for around £25 a year you get unlimited storage. There are numerous uploader tools but &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,49 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/recover-bulk-download-your-pictures-from-flickr/">Recover (Bulk Download) Your Pictures From Flickr</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-02T10:51:53+01:00" pubdate data-updated="true">Aug 2<span>nd</span>, 2010</time>
+        
+           | <a href="/blog/photography/recover-bulk-download-your-pictures-from-flickr/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/photography/recover-bulk-download-your-pictures-from-flickr/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Flickr is a great way to backup your photos and other images for around £25 a year you get unlimited storage. There are numerous uploader tools but not many bulk download applications.</p>
+
+<p>Today I wanted to download a few of my image sets for use as a screen saver on another computer, after looking at several free application <a href="http://janten.com/downloadr/">&lsquo;downloadr&rsquo;</a> was the only one which came close to offering the functionality I needed. The ability to list sets owned by user and select which images to download. Only minor irritation was when listing photos in a set it only lists the first 50 by default so you have press search again to ge the next 50, again and again until you have got previews for all the photos in the set, then you can download then all.</p>
+
+<p><a href="http://janten.com/downloadr/">Downloadr</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -651,82 +694,6 @@ Press ESC to enter normal mode. &lsquo;v&rsquo; to enter Visual mode. use the cu
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/">jQuery Clear Form on Focus and Restore on Exit</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-27T10:57:35+01:00" pubdate data-updated="true">Jun 27<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I used <a href="http://www.eggchops.com/web-stuff/jquery/jquery-clear-focus-function/">this as a jQuery reference</a> to hide and show default text in forms.</p>
-
-<pre><code>&lt;head&gt;
-   &lt;script type=”text/javascript” src=”js/jquery.js”&gt;&lt;/script&gt;
-   &lt;script type=”text/javascript”&gt;
-
-   $(document).ready(function(){
-
-      var clearMePrevious = ”;
-
-      // clear input on focus
-      $(’.clearMeFocus’).focus(function()
-      {
-         if($(this).val()==$(this).attr(’title’))
-         {
-            clearMePrevious = $(this).val();
-            $(this).val(”);
-         }
-       });
-
-       // if field is empty afterward, add text again
-       $(’.clearMeFocus’).blur(function()
-       {
-        if($(this).val()==”)
-        {
-          $(this).val(clearMePrevious);
-        }
-    });
-});
-
-&lt;/script&gt;
-&lt;/head&gt;
-</code></pre>
-
-<p>and the for the form</p>
-
-<pre><code>&lt;input type=”text” name=”email” title=”Enter your email” value=”Enter your email” class=”clearMeFocus” /&gt;
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/25/">&larr; Older</a>
@@ -741,11 +708,15 @@ Press ESC to enter normal mode. &lsquo;v&rsquo; to enter Visual mode. use the cu
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (10)</a></li><li><a href='/blog/engineering'>Engineering (12)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (218)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (10)</a></li><li><a href='/blog/engineering'>Engineering (12)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (219)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/bash-string-manipulation/">Bash String Manipulation</a>
+      </li>
     
       <li class="post">
         <a href="/blog/cooking/puy-lentil-wellington/">Puy Lentil Wellington</a>
@@ -761,10 +732,6 @@ Press ESC to enter normal mode. &lsquo;v&rsquo; to enter Visual mode. use the cu
     
       <li class="post">
         <a href="/blog/engineering/oo-magic-bullet/">OO Magic Bullet?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/edit-octopress-posts/">Edit Octopress Posts</a>
       </li>
     
   </ul>
