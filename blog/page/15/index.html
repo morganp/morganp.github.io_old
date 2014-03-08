@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="While enjoy photography I am not that interested in portrait, fashion or lifestyle photography but for some reason I decided to watch the Jeremy &hellip;">
+  <meta name="description" content="When working with digital images some effort should be put into understanding the colour space. Which basically means that for each colour the range &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/understanding-colour-spaces-digital-imaging/">Understanding Colour Spaces (Digital Imaging)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-23T18:36:19+01:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2012</time>
+        
+           | <a href="/blog/photography/understanding-colour-spaces-digital-imaging/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/photography/understanding-colour-spaces-digital-imaging/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When working with digital images some effort should be put into understanding the colour space. Which basically means that for each colour the range that you can represent. Knowing the range of colours the file can hold, the range you can see on your screen and the range that you can print will let you get the best results from your images.</p>
+
+<p><a href="http://www.cambridgeincolour.com/tutorials/sRGB-AdobeRGB1998.htm">This article compares sRGB to AdobeRGB</a> is a good introduction to the two most common formats. My very simplified conclusion from this is that sRGB should be used for targeting 8 bit formats and AdobeRGB for 16 bit formats.</p>
+
+<p>I recently re-profiled my monitor using my datacolor  Spyder3Elite. The results are shown below, note that the smallest colour space (red triangle) is the range my mac book screen can display :(</p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/6960821554/" title="ColourProfile  by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8021/6960821554_94f22c6e4f_z.jpg" width="640" height="354" alt="ColourProfile "></a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -821,82 +866,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/svn-multi-line-comments-on-the-command-line-/">SVN Multi-line Comments on the Command Line</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-28T13:32:53+01:00" pubdate data-updated="true">Mar 28<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/svn-multi-line-comments-on-the-command-line-/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/svn-multi-line-comments-on-the-command-line-/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Answer:</p>
-
-<pre><code>svn commit -m $'Line 1 \nLine 2'
-</code></pre>
-
-<h2>The Problem</h2>
-
-<p>Committing to subversion on the command line and using escaped line returns for multi line comments:</p>
-
-<pre><code>svn commit -m $'Line 1 \nLine 2'
-</code></pre>
-
-<p>svn log will show some thing like</p>
-
-<pre><code>------------------------------------------------------------------------
-r1 | user | 2012-03-28 13:37:48 +0100 (Wed, 28 Mar 2012) | 1 lines
-
-Line 1 \nLine 2
-</code></pre>
-
-<p>Answer originally posted on <a href="http://serverfault.com/questions/148917/use-linefeed-or-carriage-return-in-subversion-commit-message-from-the-command-li">ServerFault</a>. Strings contained in \&lsquo;\&rsquo; should not be interpreted by the command line but:</p>
-
-<pre><code>svn commit -m "Line 1 \nLine 2"
-</code></pre>
-
-<p>Shows the same errors. Starting the comment with a $ does seem to fix it.</p>
-
-<pre><code>svn commit -m $'Line 1 \nLine 2'
-</code></pre>
-
-<p>Will give:</p>
-
-<pre><code>------------------------------------------------------------------------
-r1 | user | 2012-03-28 13:37:48 +0100 (Wed, 28 Mar 2012) | 1 lines
-
-Line 1 
-Line 2
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/16/">&larr; Older</a>
@@ -911,11 +880,15 @@ Line 2
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (10)</a></li><li><a href='/blog/engineering'>Engineering (13)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (219)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (13)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (219)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/cooking/spicy-choclate-cake/">Spicy Choclate Cake</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-function-outputs/">Matlab Function Outputs</a>
@@ -931,10 +904,6 @@ Line 2
     
       <li class="post">
         <a href="/blog/tech/octopress/">Octopress, Pages and Custom Domain</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/revert-in-git/">Revert in Git</a>
       </li>
     
   </ul>
