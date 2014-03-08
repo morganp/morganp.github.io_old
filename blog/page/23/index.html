@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I recently discovered a feature of regular expressions called lookahead. This means for a match the lookahead must exist but it does not become part &hellip;">
+  <meta name="description" content="The new EC2-Pricing also includes a new Micro service. This micro service is intended for small apps servicing tens of requests per second. The &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,67 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/amazon-drops-ec2-web-service-prices/">Amazon Drops EC2 Web Service Prices</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-09T02:24:49+01:00" pubdate data-updated="true">Sep 9<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/amazon-drops-ec2-web-service-prices/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/amazon-drops-ec2-web-service-prices/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The new <a href="http://aws.amazon.com/ec2/#pricing">EC2-Pricing</a> also includes a new Micro service. This micro service is intended for small apps servicing tens of requests per second.</p>
+
+<p>The standard price (EU) is $0.025 so if it was running 24/7/365 that would be:</p>
+
+<pre><code>(24*365*0.025) = $219 or $18.25/month  
+</code></pre>
+
+<p><a href="http://www.webfaction.com/?affiliate=morgy">Webfaction</a> can run the same thing for $9.50 a month, limited to fair use of 80MB memory.</p>
+
+<p>With a 1 year Reserved instance, $54 + $0.01 hourly charge this drops to $11.8/month.</p>
+
+<pre><code>((24*365*0.01)+54)/12 = 11.8
+</code></pre>
+
+<p>This could be dropped further with a 3 year Reserved instance.</p>
+
+<pre><code>((24*365*0.01*3)+82)/36 = $9.58/month
+</code></pre>
+
+<p>If the web then stays deactivated for half this time (site is country specific or only popular around new article posts) then this could drop the monthly cost down to $5.92</p>
+
+<pre><code>((12*365*0.01*3)+82)/36
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -679,100 +740,6 @@ If you need to run some code between creating and saving the object there is als
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/activerecord-queries-on-table-joins/">Activerecord Queries on Table Joins</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-02T11:33:16+01:00" pubdate data-updated="true">Aug 2<span>nd</span>, 2010</time>
-        
-           | <a href="/blog/tech/activerecord-queries-on-table-joins/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/activerecord-queries-on-table-joins/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>An example of joining tables through active record models. There is <a href="http://guides.rubyonrails.org/association_basics.html">a good tutorial on the basics</a> of Activerecord joins.
-For this example we will have Posts and People, we will not use a grammatical parser and will beusing plural of people as peoples. (Note: should be person and persons) Create table with something like:</p>
-
-<pre><code>require 'rubygems'
-require 'sequel'
-DB = Sequel.sqlite('./example.db')
-
-DB.create_table :posts do
-   primary_key :id
-   foreign_key :people_id, :peoples
-   varchar :title
-   text :body
-end
-
-DB.create_table :peoples do
-   primary_key :id
-   varchar :first_name
-   varchar :last_name
-   varchar :short_name
-end
-</code></pre>
-
-<p>Now the active record model should be something like:
-NB I have added the foreign key specifier as I could not find migrations to modify it.</p>
-
-<pre><code>require 'rubygems'
-require 'active_record'
-
-ActiveRecord::Base.establish_connection(
-   :adapter   =&gt; "sqlite3",
-   :database  =&gt; "./example.db"
-)
-
-class People &lt; ActiveRecord::Base
-   has_many :post, :foreign_key =&gt; :people_id
-
-end
-
-class Post &lt; ActiveRecord::Base
-   # mmm No foregin key required for this
-   belongs_to :people
-end
-</code></pre>
-
-<p>This allows ORM automatic joins:</p>
-
-<pre><code>@person = People.first
-@posts  = @person.post
-
-@post   = Post.first
-@person_name = @post.people.first_name
-
-#Now get 3 posts by a particular author and sort
-@person = People.first
-@posts = @person.post.find(:all, :order =&gt; "id DESC", :limit =&gt; 3) 
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/24/">&larr; Older</a>
@@ -787,11 +754,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (10)</a></li><li><a href='/blog/engineering'>Engineering (12)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (219)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (10)</a></li><li><a href='/blog/engineering'>Engineering (13)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (219)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-function-outputs/">Matlab Function Outputs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/bash-string-manipulation/">Bash String Manipulation</a>
@@ -807,10 +778,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/revert-in-git/">Revert in Git</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/oo-magic-bullet/">OO Magic Bullet?</a>
       </li>
     
   </ul>

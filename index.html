@@ -9,10 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Removal of substring: string="test string"
-echo $string remove="test"
-short_string=${string#$remove}
-echo short_string Note that inside the ${} &hellip;">
+  <meta name="description" content="Handling functions with extraneous leading outputs. For example: function [a,b] = dummy_function a = 10; b = 20;
+endfunction [a, b] = dummy_function &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +82,68 @@ echo short_string Note that inside the ${} &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-function-outputs/">Matlab Function Outputs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-08T08:02:27+00:00" pubdate data-updated="true">Mar 8<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-function-outputs/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/engineering/matlab-function-outputs/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Handling functions with extraneous leading outputs. For example:</p>
+
+<pre><code>function [a,b] = dummy_function
+  a = 10;
+  b = 20;
+endfunction
+
+
+[a, b] = dummy_function
+
+a =
+    10
+
+b =
+    20
+</code></pre>
+
+<p>If <code>a</code> is not required it can be replaced with a tilda <code>~</code>.</p>
+
+<pre><code>[~, b] = dummy_function
+
+b =
+    20
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -553,50 +613,6 @@ $display("");
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/gnome-disable-focus-tracking/">Gnome: Disable Focus Tracking</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-20T20:31:44+00:00" pubdate data-updated="true">Feb 20<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/gnome-disable-focus-tracking/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/gnome-disable-focus-tracking/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sometime ago I enabled focus tracking the mouse on Gnome. It took a while to find how to disable it again, so with out further a do the setting can be found in:</p>
-
-<pre><code>System -&gt; Preferences -&gt; Windows
-</code></pre>
-
-<p><img src="/images/Tech/Disable_Mouse_focus_tracking.png" alt="" />§</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -609,11 +625,15 @@ $display("");
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (10)</a></li><li><a href='/blog/engineering'>Engineering (12)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (219)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (10)</a></li><li><a href='/blog/engineering'>Engineering (13)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (219)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-function-outputs/">Matlab Function Outputs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/bash-string-manipulation/">Bash String Manipulation</a>
@@ -629,10 +649,6 @@ $display("");
     
       <li class="post">
         <a href="/blog/tech/revert-in-git/">Revert in Git</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/oo-magic-bullet/">OO Magic Bullet?</a>
       </li>
     
   </ul>

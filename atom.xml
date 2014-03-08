@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://morganp.github.io/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-03-05T21:40:32+00:00</updated>
+  <updated>2014-03-08T08:25:47+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab Function Outputs]]></title>
+    <link href="http://morganp.github.io/blog/engineering/matlab-function-outputs/"/>
+    <updated>2014-03-08T08:02:27+00:00</updated>
+    <id>http://morganp.github.io/blog/engineering/matlab-function-outputs</id>
+    <content type="html"><![CDATA[<p>Handling functions with extraneous leading outputs. For example:</p>
+
+<pre><code>function [a,b] = dummy_function
+  a = 10;
+  b = 20;
+endfunction
+
+
+[a, b] = dummy_function
+
+a =
+    10
+
+b =
+    20
+</code></pre>
+
+<p>If <code>a</code> is not required it can be replaced with a tilda <code>~</code>.</p>
+
+<pre><code>[~, b] = dummy_function
+
+b =
+    20
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Bash String Manipulation]]></title>
@@ -535,29 +567,6 @@ a =
 </code></pre>
 
 <p>Based on <a href="http://matlabnewbie.blogspot.co.uk/2011/11/remove-any-rows-that-contains-specific.html">examples from matlabnewbie</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Brew Update Fail]]></title>
-    <link href="http://morganp.github.io/blog/tech/brew-update-fail/"/>
-    <updated>2014-02-11T21:17:24+00:00</updated>
-    <id>http://morganp.github.io/blog/tech/brew-update-fail</id>
-    <content type="html"><![CDATA[<p>Received the following errors when doing <code>brew update</code> on mountain lion:</p>
-
-<pre><code>error: The following untracked working tree files would be overwritten by merge:
-        Library/Formula/platypus.rb
-Please move or remove them before you can merge.
-Aborting
-Error: Failure while executing: git pull -q origin refs/heads/master:refs/remotes/origin/master
-</code></pre>
-
-<p>A solution found on <a href="http://stackoverflow.com/questions/10762859/brew-update-the-following-untracked-working-tree-files-would-be-overwritten-by">Stackoverflow</a></p>
-
-<pre><code>cd /usr/local
-git fetch origin
-git reset --hard origin/master
-</code></pre>
 ]]></content>
   </entry>
   

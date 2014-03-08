@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Engineering | RockPaperScissors]]></title>
   <link href="http://morganp.github.io/blog/engineering/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-03-05T21:40:32+00:00</updated>
+  <updated>2014-03-08T08:25:47+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab Function Outputs]]></title>
+    <link href="http://morganp.github.io/blog/engineering/matlab-function-outputs/"/>
+    <updated>2014-03-08T08:02:27+00:00</updated>
+    <id>http://morganp.github.io/blog/engineering/matlab-function-outputs</id>
+    <content type="html"><![CDATA[<p>Handling functions with extraneous leading outputs. For example:</p>
+
+<pre><code>function [a,b] = dummy_function
+  a = 10;
+  b = 20;
+endfunction
+
+
+[a, b] = dummy_function
+
+a =
+    10
+
+b =
+    20
+</code></pre>
+
+<p>If <code>a</code> is not required it can be replaced with a tilda <code>~</code>.</p>
+
+<pre><code>[~, b] = dummy_function
+
+b =
+    20
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OO Magic Bullet?]]></title>
@@ -88,45 +120,6 @@ avg_double = mean(b);
 %int 8 is
 disp(['int8 pre-allocation is ', num2str(1 - avg_double/avg_int8), ' times faster than doubles'])
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Matlab Remove Values From Array]]></title>
-    <link href="http://morganp.github.io/blog/engineering/matlab-remove-values-from-array/"/>
-    <updated>2014-02-11T21:21:44+00:00</updated>
-    <id>http://morganp.github.io/blog/engineering/matlab-remove-values-from-array</id>
-    <content type="html"><![CDATA[<p>Remove all values of 3 from array</p>
-
-<pre><code>a = [1 2 3 4 3];
-a(any(a==3,1)) = []
-a =
-
-
-     1     2     4
-</code></pre>
-
-<p>Remove 2 or less from array</p>
-
-<pre><code>a = [1 2 3 4 3];
-a(any(a&lt;=2,1)) = []
-a =
-
-
-     3     4     3
-</code></pre>
-
-<p>Remove values between 2 and 3</p>
-
-<pre><code>a = [1 2 3 4 3];
-a(any((a&gt;=2)&amp;(a&lt;=3),1)) = []
-a =
-
-
-     1     4
-</code></pre>
-
-<p>Based on <a href="http://matlabnewbie.blogspot.co.uk/2011/11/remove-any-rows-that-contains-specific.html">examples from matlabnewbie</a>.</p>
 ]]></content>
   </entry>
   

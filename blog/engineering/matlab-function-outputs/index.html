@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Amaras Site Updates - RockPaperScissors</title>
+  <title>Matlab Function Outputs - RockPaperScissors</title>
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I have just finished some minor updates to the site. The largest is the move to Droid Fonts, Google Fonts provides a way for free cross platform &hellip;">
+  <meta name="description" content="Handling functions with extraneous leading outputs. For example: function [a,b] = dummy_function a = 10; b = 20;
+endfunction [a, b] = dummy_function &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://morganp.github.io/blog/tech/amaras-site-updates">
+  <link rel="canonical" href="http://morganp.github.io/blog/engineering/matlab-function-outputs">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="RockPaperScissors" type="application/atom+xml">
@@ -84,7 +85,7 @@
   
   <header>
     
-      <h1 class="entry-title">Amaras Site Updates</h1>
+      <h1 class="entry-title">Matlab Function Outputs</h1>
     
     
       <p class="meta">
@@ -100,7 +101,7 @@
   
 
 
-<time datetime="2011-02-28T13:19:09+00:00" pubdate data-updated="true">Feb 28<span>th</span>, 2011</time>
+<time datetime="2014-03-08T08:02:27+00:00" pubdate data-updated="true">Mar 8<span>th</span>, 2014</time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://morganp.github.io">Comments</a>
@@ -110,11 +111,30 @@
   </header>
 
 
-<div class="entry-content"><p>I have just finished some minor updates to the site. The largest is the move to Droid Fonts, <a href="http://www.google.com/webfonts">Google Fonts</a> provides a way for free cross platform fonts to be used. <a href="http://www.fontsquirrel.com/">Font Squirrel</a> is also meant to be a good alternative.</p>
+<div class="entry-content"><p>Handling functions with extraneous leading outputs. For example:</p>
 
-<p>The link colours have also been changed around and dropped the underline. The graduated colour in the header is now a repeated image instead of css as the original method of the graduation forced a horizontal scroll bar.</p>
+<pre><code>function [a,b] = dummy_function
+  a = 10;
+  b = 20;
+endfunction
 
-<p>Articles can now be filtered by tag <a href="/article/tag/Ruby">/tag/Ruby</a>, and the <a href="/article/rss">RSS</a> works again.</p>
+
+[a, b] = dummy_function
+
+a =
+    10
+
+b =
+    20
+</code></pre>
+
+<p>If <code>a</code> is not required it can be replaced with a tilda <code>~</code>.</p>
+
+<pre><code>[~, b] = dummy_function
+
+b =
+    20
+</code></pre>
 </div>
 
 
@@ -137,12 +157,12 @@
   
 
 
-<time datetime="2011-02-28T13:19:09+00:00" pubdate data-updated="true">Feb 28<span>th</span>, 2011</time>
+<time datetime="2014-03-08T08:02:27+00:00" pubdate data-updated="true">Mar 8<span>th</span>, 2014</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/tech/'>Tech</a>
+    <a class='category' href='/blog/engineering/'>Engineering</a>
   
 </span>
 
@@ -151,7 +171,7 @@
 
 <span class="tags">
   
-    <a class='tag' href='/tag/design/'>Design</a>, <a class='tag' href='/tag/web/'>Web</a>
+    <a class='tag' href='/tag/matlab/'>Matlab</a>, <a class='tag' href='/tag/programming/'>Programming</a>
   
 </span>
 
@@ -160,7 +180,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://morganp.github.io/blog/tech/amaras-site-updates/" data-via="" data-counturl="http://morganp.github.io/blog/tech/amaras-site-updates/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://morganp.github.io/blog/engineering/matlab-function-outputs/" data-via="" data-counturl="http://morganp.github.io/blog/engineering/matlab-function-outputs/" >Tweet</a>
   
   
   
@@ -169,10 +189,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/tech/ormactiverecord-or-ruby-sort/" title="Previous Post: ORM(Activerecord) or Ruby Sort">&laquo; ORM(Activerecord) or Ruby Sort</a>
+        <a class="basic-alignment left" href="/blog/tech/bash-string-manipulation/" title="Previous Post: Bash String Manipulation">&laquo; Bash String Manipulation</a>
       
-      
-        <a class="basic-alignment right" href="/blog/photography/working-from-home-practising-enfuse-hdr/" title="Next Post: Working From Home, Practising Enfuse HDR">Working From Home, Practising Enfuse HDR &raquo;</a>
       
     </p>
   </footer>
@@ -268,8 +286,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://morganp.github.io/blog/tech/amaras-site-updates/';
-        var disqus_url = 'http://morganp.github.io/blog/tech/amaras-site-updates/';
+        var disqus_identifier = 'http://morganp.github.io/blog/engineering/matlab-function-outputs/';
+        var disqus_url = 'http://morganp.github.io/blog/engineering/matlab-function-outputs/';
         var disqus_script = 'embed.js';
       
     (function () {
