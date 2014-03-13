@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="First signs of spring, bulbs starting to show growth. ">
+  <meta name="description" content="In Verilog to output to stdout without a line return use $write(); Equivalent statements : $write("\n");
+$display(""); ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,98 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/without-a-line-return/">$display Without a Line Return</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-01T17:49:43+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
+        
+           | <a href="/blog/engineering/without-a-line-return/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/engineering/without-a-line-return/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In Verilog to output to stdout without a line return use <code>$write();</code></p>
+
+<p>Equivalent statements :</p>
+
+<pre><code>$write("\n");
+$display("");
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/garden/rocket-and-chilli/">Rocket &amp; Chilli</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-25T21:23:40+00:00" pubdate data-updated="true">Feb 25<span>th</span>, 2014</time>
+        
+           | <a href="/blog/garden/rocket-and-chilli/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/garden/rocket-and-chilli/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The first batch of seeds in the propagator are off to a good start.</p>
+
+<p>Rocket:
+<img src="/images/Gardening/morganp-20140225-Garden-IMG_6843.jpg" title="Rocket" alt="" /></p>
+
+<p>De Cayenne, Chilli Peppers:
+<img src="/images/Gardening/morganp-20140225-Garden-IMG_6848.jpg" title="De Cayenne, Chilli Peppers" alt="" /></p>
+
+<p>Soon will re-pot and start <a href="http://apps.rhs.org.uk/advicesearch/profile.aspx?pid=386">hardening off</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -544,143 +637,6 @@ set(objh,'linewidth',2);
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/home/cooking-le-crueset-sizes/">Kitchen: Le Creuset</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-12T21:03:49+00:00" pubdate data-updated="true">Feb 12<span>th</span>, 2014</time>
-        
-           | <a href="/blog/home/cooking-le-crueset-sizes/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/home/cooking-le-crueset-sizes/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Le Creuset do not list pan volumes on there site so for <strong>Round Cast Iron</strong>:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center"> Diameter  </th>
-<th align="center">  Volume</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">18cm</td>
-<td align="center"> 1.8 Litres </td>
-</tr>
-<tr>
-<td align="center">20cm</td>
-<td align="center"> 2.4 Litres </td>
-</tr>
-<tr>
-<td align="center">22cm</td>
-<td align="center"> 3.3 Litres </td>
-</tr>
-<tr>
-<td align="center">24cm</td>
-<td align="center"> 4.2 Litres </td>
-</tr>
-<tr>
-<td align="center">26cm</td>
-<td align="center"> 5.5 Litres </td>
-</tr>
-<tr>
-<td align="center">28cm</td>
-<td align="center"> 6.7 Litres </td>
-</tr>
-<tr>
-<td align="center">30cm</td>
-<td align="center"> 8.4 Litres </td>
-</tr>
-<tr>
-<td align="center">34cm</td>
-<td align="center">12.4 Litres </td>
-</tr>
-</tbody>
-</table>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-benchmarking/">Matlab Benchmarking</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-12T20:55:42+00:00" pubdate data-updated="true">Feb 12<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-benchmarking/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/engineering/matlab-benchmarking/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In the following example we test the allocation speed of different types:</p>
-
-<pre><code>samples_to_avg = 10000;
-for i=1:samples_to_avg
-  tic; t = int8(zeros(32,2^16)); b(i) = toc;
-end
-avg_int8 = mean(b);
-
-for i=1:samples_to_avg
-  tic; t = zeros(32,2^16); b(i) = toc;
-end
-avg_double = mean(b);
-
-%int 8 is
-disp(['int8 pre-allocation is ', num2str(1 - avg_double/avg_int8), ' times faster than doubles'])
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -695,11 +651,19 @@ disp(['int8 pre-allocation is ', num2str(1 - avg_double/avg_int8), ' times faste
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (13)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (219)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (14)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (220)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/git-tag-and-push-to-github/">Git Tag and Push to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/beyond-the-lsb/">Beyond the LSB</a>
+      </li>
     
       <li class="post">
         <a href="/blog/cooking/spicy-choclate-cake/">Spicy Choclate Cake</a>
@@ -711,14 +675,6 @@ disp(['int8 pre-allocation is ', num2str(1 - avg_double/avg_int8), ' times faste
     
       <li class="post">
         <a href="/blog/tech/bash-string-manipulation/">Bash String Manipulation</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/cooking/puy-lentil-wellington/">Puy Lentil Wellington</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/octopress/">Octopress, Pages and Custom Domain</a>
       </li>
     
   </ul>

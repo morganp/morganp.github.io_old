@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://morganp.github.io/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-03-08T09:44:21+00:00</updated>
+  <updated>2014-03-13T19:22:33+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,79 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Git Tag and Push to Github]]></title>
+    <link href="http://morganp.github.io/blog/tech/git-tag-and-push-to-github/"/>
+    <updated>2014-03-13T19:16:57+00:00</updated>
+    <id>http://morganp.github.io/blog/tech/git-tag-and-push-to-github</id>
+    <content type="html"><![CDATA[<pre><code>git tag -a 0.0.1 -m "Tag comment"
+git push --tags
+</code></pre>
+
+<p><em>Note: The use of <a href="http://semver.org/">major.minor.patch Semantic Versioning</a> is a really good idea.</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Beyond the LSB]]></title>
+    <link href="http://morganp.github.io/blog/engineering/beyond-the-lsb/"/>
+    <updated>2014-03-13T19:07:42+00:00</updated>
+    <id>http://morganp.github.io/blog/engineering/beyond-the-lsb</id>
+    <content type="html"><![CDATA[<p>If we truncate a number, that is to throw away the LSBs (least significant bits) we loose resolution.</p>
+
+<p>A 4 bit number truncated to 2 bits: <em>numbers shown in binary (Base2).</em></p>
+
+<pre><code>0100
+0101
+0110
+0111 
+</code></pre>
+
+<p>Would all become 01.</p>
+
+<h1>Introducing Dither</h1>
+
+<p>Effective dithering increase the accuracy beyond the LSB of the truncated values.
+Consider a small fractional value rounded to an integer. Starting with 0.5 with 1 bit random dither:</p>
+
+<pre><code>Input  Dither Sum &amp; truncate
+00.1   0.1    01
+00.1   0.0    00
+00.1   0.1    01
+00.1   0.0    00
+Average over 4 samples is 0.5
+</code></pre>
+
+<p>If the value is below 0.5 this dither scheme will not work, as it would never
+round to a full integer.</p>
+
+<p>So we increase the dither to 2 bits. Inputting a constant 0.25, Dither cycling
+through all possible values</p>
+
+<pre><code>Input  Dither Sum &amp; truncate
+00.01  0.00   00
+00.01  0.01   00
+00.01  0.10   00
+00.01  0.11   01
+Average of 4 Samples 0.25
+</code></pre>
+
+<p>In the above example we have increased the resolution of the time averaged value
+by 2 bits.</p>
+
+<p>For every doubling of the frequency we gain an effective LSB if dithered correctly.
+Adding more bits than <code>log2(oversampling rate)</code> of dithering will not gain accuracy.
+Although it may help breakup tonal behaviour of a system.</p>
+
+<h2>Summary</h2>
+
+<p>Apply dither to the bits to be truncated. Apply enough bits of dither so it is
+possible for the LSB of the required resolution to effect the truncated value.</p>
+
+<p>The increase in resolution is limited to <code>log2(oversampling rate)</code>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Spicy Choclate Cake]]></title>
@@ -543,83 +616,6 @@ set(objh,'linewidth',2); %%&lt;-- set legend line thickness to 2
 
 [legh,objh,outh,outm] = legend();
 set(objh,'linewidth',2);
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Kitchen: Le Creuset]]></title>
-    <link href="http://morganp.github.io/blog/home/cooking-le-crueset-sizes/"/>
-    <updated>2014-02-12T21:03:49+00:00</updated>
-    <id>http://morganp.github.io/blog/home/cooking-le-crueset-sizes</id>
-    <content type="html"><![CDATA[<p>Le Creuset do not list pan volumes on there site so for <strong>Round Cast Iron</strong>:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center"> Diameter  </th>
-<th align="center">  Volume</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">18cm</td>
-<td align="center"> 1.8 Litres </td>
-</tr>
-<tr>
-<td align="center">20cm</td>
-<td align="center"> 2.4 Litres </td>
-</tr>
-<tr>
-<td align="center">22cm</td>
-<td align="center"> 3.3 Litres </td>
-</tr>
-<tr>
-<td align="center">24cm</td>
-<td align="center"> 4.2 Litres </td>
-</tr>
-<tr>
-<td align="center">26cm</td>
-<td align="center"> 5.5 Litres </td>
-</tr>
-<tr>
-<td align="center">28cm</td>
-<td align="center"> 6.7 Litres </td>
-</tr>
-<tr>
-<td align="center">30cm</td>
-<td align="center"> 8.4 Litres </td>
-</tr>
-<tr>
-<td align="center">34cm</td>
-<td align="center">12.4 Litres </td>
-</tr>
-</tbody>
-</table>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Matlab Benchmarking]]></title>
-    <link href="http://morganp.github.io/blog/engineering/matlab-benchmarking/"/>
-    <updated>2014-02-12T20:55:42+00:00</updated>
-    <id>http://morganp.github.io/blog/engineering/matlab-benchmarking</id>
-    <content type="html"><![CDATA[<p>In the following example we test the allocation speed of different types:</p>
-
-<pre><code>samples_to_avg = 10000;
-for i=1:samples_to_avg
-  tic; t = int8(zeros(32,2^16)); b(i) = toc;
-end
-avg_int8 = mean(b);
-
-for i=1:samples_to_avg
-  tic; t = zeros(32,2^16); b(i) = toc;
-end
-avg_double = mean(b);
-
-%int 8 is
-disp(['int8 pre-allocation is ', num2str(1 - avg_double/avg_int8), ' times faster than doubles'])
 </code></pre>
 ]]></content>
   </entry>

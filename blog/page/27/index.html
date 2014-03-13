@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Directory listing can be enabled (disabled by default) by adding this: autoindex on; Example usage http{ server { #Server with no Directory listing &hellip;">
+  <meta name="description" content="I do not like having to use sudo to run development servers for testing web applications. sudo should be reserved for commands that really need that &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,136 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mac-os-x-run-nginx-as-a-user-process/">Mac OS X Run Nginx as a User Process</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-11T12:51:49+01:00" pubdate data-updated="true">May 11<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/mac-os-x-run-nginx-as-a-user-process/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/mac-os-x-run-nginx-as-a-user-process/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I do not like having to use sudo to run development servers for testing web applications. sudo should be reserved for commands that really need that level of privilege. After <a href="http://amaras-tech.co.uk/people/morgan/article/26">installing passenger and nginx</a> on Mac OS X Snow Leopard I had trouble getting nginx to run without sudo.</p>
+
+<p>NB: sudo runs the command with superuser privileges ie things that could break your system if you do not know what you are doing, or typo a command so should be used sparingly.</p>
+
+<p>if you have been running with sudo stop the service</p>
+
+<pre><code>$ sudo nginx -s stop
+</code></pre>
+
+<p>find and remove the log files for me this is:</p>
+
+<pre><code>$ rm -rf ~/bin/nginx/logs/*
+</code></pre>
+
+<p>Assuming nginx is on your path (if not you must know its location) to find its location you can try which ie:</p>
+
+<pre><code>$ which nginx
+</code></pre>
+
+<p>A few changes to the default config file:</p>
+
+<pre><code>vim ~/bin/nginx/conf/nginx.conf
+
+#user morgy; #&lt;-- comment out when running as user process
+worker_processes  1;
+
+http {
+   passenger_root /path/ruby-ee-1.8.7/lib/ruby/gems/1.8/gems/passenger-2.2.11;
+   passenger_ruby /path/ruby-ee-1.8.7/bin/ruby;
+
+   include       mime.types;
+   default_type  application/octet-stream;
+
+   client_max_body_size 20M;
+
+   server {
+      listen       8080; #&lt;-- superuser only has acess to 80
+      server_name  localhost, www.localhost;
+      passenger_enabled on;
+      root /your/path/public;   # &lt;--- be sure to point to 'public'!
+   }
+}
+</code></pre>
+
+<p>That is all I had to do to get nginx working without sudo</p>
+
+<pre><code>$ nginx
+$ nginx -s reload
+</code></pre>
+
+<p>Just point your browser to localhost:8080 or 127.0.0.1:8080</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/add-http-web-control-over-your-infared-devices/">Add HTTP (Web) Control Over Your InfaRed Devices</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-11T01:49:48+01:00" pubdate data-updated="true">May 11<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/add-http-web-control-over-your-infared-devices/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/add-http-web-control-over-your-infared-devices/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Using the new <a href="http://www.keene.co.uk/electronic/keene-electronics/keene-ir-anywhere-ir-over-ip-module-%28128-code%29/KIRA128.html">IR ANYWHERE IR OVER IP MODULE</a> you can send web requests that get turned into standard consumer InfaRed signals, to control your tv, hifi units. I have thought for along time that manufacturers should just be adding web control to all new electronics, but this seems like it could be a good interim measure.</p>
+
+<p>This then allows app/web based control of you home entertainment system, which would be very slick from an iPhone/iTouch/iPad.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -579,162 +709,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/webfaction-new-user-with-access-to-their-own-site/">Webfaction New User With Access to Their Own Site</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-28T09:24:58+01:00" pubdate data-updated="true">Apr 28<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/webfaction-new-user-with-access-to-their-own-site/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/webfaction-new-user-with-access-to-their-own-site/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>With <a href="http://www.webfaction.com/?affiliate=morgy">Webfaction</a> you can create new users with there own home area but there is no straight forward way to host their site.</p>
-
-<p>There is a posted method where the site is hosted in YOUR home/webapps directory, but that requires you reset your permissions every time you create a new site and if you forget there could be a security hole.</p>
-
-<p>Hosting the site in THEIR home directory requires you to set permissions in there directory so YOU can see it. This is much safer if all goes wrong the site does not have permission to be displayed rather than compromising your new site.</p>
-
-<p>Create new user with bash login via with <a href="http://panel.webfaction.com">Web interface</a></p>
-
-<p>set password, as this can be tricky getting a random string a cheat is to do:</p>
-
-<pre><code>echo "some random string" | md5
-</code></pre>
-
-<p>Choose 8 or more characters for the password.</p>
-
-<p>SSH login as normal</p>
-
-<pre><code>ssh user@user.webfactional.com
-</code></pre>
-
-<p>then</p>
-
-<pre><code>su new_user
-cd ~
-mkdir myweb.com
-</code></pre>
-
-<p>then set</p>
-
-<pre><code>setfacl -m u:nginx:rx ~
-setfacl -R -m u:nginx:rx myweb.com/
-
-setfacl -m u:apache:rx ~
-setfacl -R -m u:apache:rx myweb.com/
-
-setfacl -m u:Your_Username:rx ~
-setfacl -R -m u:Your_Username:rx myweb.com/
-</code></pre>
-
-<p>Back to <a href="http://www.webfaction.com/?affiliate=morgy">webfaction</a> main control panel and create a new app ( symbolic link to PHP/static )</p>
-
-<p>The info section for this needs to be:
-/home/new_user/myweb.com</p>
-
-<p>NB: currently only works with apache not nginx</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-ruby-ruby-why-are-you-so-wierd-at-times/">Ruby, Ruby, Ruby, Why Are You So Wierd at Times?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-26T07:48:47+01:00" pubdate data-updated="true">Apr 26<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-ruby-ruby-why-are-you-so-wierd-at-times/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-ruby-ruby-why-are-you-so-wierd-at-times/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This feature of ruby keeps catching me out as the behaviour is quite unexpected (by me).</p>
-
-<p>I can use a &lsquo;!&rsquo; modifying function like so:</p>
-
-<pre><code>html_string.gsub!("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
-</code></pre>
-
-<p>Which works great apart from when the match string &ldquo;&lt;pre&gt;&rdquo; in this case is not found then it returns nil. Surely I would want the string unaltered instead, why would I want nil. So I generally have to replace it with the following:</p>
-
-<pre><code>html_string = html_string.gsub("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
-</code></pre>
-
-<p>[Update 27/04/2010]</p>
-
-<p>Turns out it should not modify the the string but the function returns nil. This was the last line in a function call and so was an implicit return. The following would probably have been better:</p>
-
-<pre><code>html_string.gsub!("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
-return html_string
-</code></pre>
-
-<p>The returned nil could then be used as an if statment to take a different execution path if not modified:</p>
-
-<pre><code>if /&lt;pre&gt;/ === html_string
-   html_string = html_string.gsub("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
-else
-   puts "Does not contain &lt;pre&gt;"
-end
-</code></pre>
-
-<p>Could just become:</p>
-
-<pre><code>if not html_string.gsub!("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
-   puts "Does not contain &lt;pre&gt;"
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/28/">&larr; Older</a>
@@ -749,11 +723,19 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (13)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (219)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (14)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (220)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/git-tag-and-push-to-github/">Git Tag and Push to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/beyond-the-lsb/">Beyond the LSB</a>
+      </li>
     
       <li class="post">
         <a href="/blog/cooking/spicy-choclate-cake/">Spicy Choclate Cake</a>
@@ -765,14 +747,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/bash-string-manipulation/">Bash String Manipulation</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/cooking/puy-lentil-wellington/">Puy Lentil Wellington</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/octopress/">Octopress, Pages and Custom Domain</a>
       </li>
     
   </ul>

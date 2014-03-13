@@ -9,9 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Commutative Configurable order of numbers: x+y = y+x
-xy = yx Associative Order that multiplication is applied : (x+y)+z =x+(y+z)
-(xy)z = x(yz) &hellip;">
+  <meta name="description" content="Nik Software (HDR Efex Pro, Silver Efex Pro) was recently purchased by Google, since then not too much has happened. Well the HDR Efex Pro 2 was &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +81,176 @@ xy = yx Associative Order that multiplication is applied : (x+y)+z =x+(y+z)
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/nik-collection-149-or-free/">Nik Collection ($149 or FREE)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-03-27T09:29:16+00:00" pubdate data-updated="true">Mar 27<span>th</span>, 2013</time>
+        
+           | <a href="/blog/photography/nik-collection-149-or-free/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/photography/nik-collection-149-or-free/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Nik Software (HDR Efex Pro, Silver Efex Pro) was recently <a href="http://techcrunch.com/2012/09/17/google-acquires-nik-software-the-company-behind-the-popular-snapseed-photo-editing-app-for-ios/">purchased by Google</a>, since then not too much has happened. Well the HDR Efex Pro 2 was released but not much else.</p>
+
+<p>I finally decided to purchase HDR Efex Pro over christmas, which lead to me getting what I thought was a spam email pretending to be from Nik Software, turns out it was real! If you have purchased any Nik Software product in the last <strong>5 Years</strong> you are eligible for a free upgrade to the new Nik Collection.</p>
+
+<p>Because I purchased HDR Efex Pro in December, today I get <strong>For FREE</strong> :</p>
+
+<ul>
+<li>Color Efex Pro 4</li>
+<li>Dfine2</li>
+<li>HDR Efex Pro 2</li>
+<li>Sharpener Pro 3 Output Sharpening</li>
+<li>Sharpener Pro 3 Raw Presharpening</li>
+<li>Silver Efex Pro 2</li>
+<li>Viveza 2</li>
+</ul>
+
+
+<p>The retail price for the <a href="http://www.niksoftware.com/nikcollection/usa/index.php?view=intro%2Fmain.shtml">new Nik Collection is $149</a>. Which is less than the old Silver Efex Pro price, this is an incredible bargain. These are great photography tools.</p>
+
+<p>The email in question, which has been put in a few peoples SPAM folders was from &lsquo;The Nik Collection by Google&rsquo;. Subject &lsquo;Your upgrade to the new Nik Collection by Google&rsquo;.</p>
+
+<p>The email body:</p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/8593916281/" title="Nik Collection by Google by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8392/8593916281_49c4f2dcc8.jpg" width="500" height="364" alt="Nik Collection by Google"></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/testing-matlab-arrays-for-equality/">Testing Matlab Arrays for Equality.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-16T21:22:07+00:00" pubdate data-updated="true">Feb 16<span>th</span>, 2013</time>
+        
+           | <a href="/blog/engineering/testing-matlab-arrays-for-equality/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/engineering/testing-matlab-arrays-for-equality/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Testing a matlab array for equality can be doen a few different was some have surprising side effects if your not use to working with vectorised testing.</p>
+
+<p>Initial test :</p>
+
+<pre><code>a = [1,2,3];
+if (a == [1,2,3])
+  disp('equal')
+end
+
+&gt; equal
+</code></pre>
+
+<p>Seems easy, But what happens if the dimensions of the array are incorrect?</p>
+
+<pre><code>a = [1,2,3];
+if (a == [1,2,3,4])
+  disp('equal')
+end
+
+Error using  == 
+Matrix dimensions must agree
+</code></pre>
+
+<p>May be if we check dimensions first using short-circuiting (<code>&amp;&amp;</code>) operators. NB: Short circuiting operators only execute if required, if it failed on the left hand side the right side will not be evaluated.</p>
+
+<pre><code>a = [1,2,3];
+if ((length(a) == 4) &amp;&amp; (a == [1,2,3,4]))
+  disp('equal')
+end
+</code></pre>
+
+<p>So far so good, but lets check it will also pass:</p>
+
+<pre><code>a = [1,2,3];
+if ((length(a) == 3) &amp;&amp; (a == [1,2,3]))
+  disp('equal')
+end
+
+Operands to the || and &amp;&amp; operators must be convertible to logical scalar
+values.
+</code></pre>
+
+<p>This is where it got interesting for me:</p>
+
+<pre><code>a ==[1,2,3]
+ans =
+
+ 1     1     1
+</code></pre>
+
+<p>The basic equality <code>==</code>  test for arrays is vectorised. When this is the only test it gets reduced down to true or false, but can not be combined with scalars.</p>
+
+<p>Then I the discovered the <a href="http://www.mathworks.co.uk/help/matlab/ref/isequal.html">isequal</a> function.</p>
+
+<pre><code>a = [1,2,3];
+isequal(a, [1,2,3])
+
+ans =
+
+     1
+
+a = [1,2,3];
+isequal(a, [1,2,3,4])
+
+ans =
+
+     0
+</code></pre>
+
+<p>For direct comparisons of arrays use <code>isequal(a,b)</code> for vectorised operations use <code>a==b</code>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -685,166 +853,6 @@ brew install rtorrent libtorrent
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/os-x-screen-capture/">OS X Screen Capture</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-15T19:28:16+01:00" pubdate data-updated="true">Oct 15<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/os-x-screen-capture/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/os-x-screen-capture/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To capture the screen on OS X :</p>
-
-<p>⇧⌘4 : Selected area to capture.<br/>
-⇧⌘4-space : Capture a window.</p>
-
-<p>These are defined in the System Preferences.</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8091257767/" title="OS X Screen Capture by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8466/8091257767_94369b4008.jpg" width="500" height="455" alt="OS X Screen Capture"></a></p>
-
-<p>To change the captured image from the Terminal (/Applications/Utilities/Terminal.app) type</p>
-
-<h2>Jpeg:</h2>
-
-<pre><code>defaults write com.apple.screencapture type jpg
-killall SystemUIServer
-</code></pre>
-
-<h2>PNG</h2>
-
-<pre><code>defaults write com.apple.screencapture type png
-killall SystemUIServer
-</code></pre>
-
-<h2>Tiff</h2>
-
-<pre><code>defaults write com.apple.screencapture type tiff
-killall SystemUIServer
-</code></pre>
-
-<h2>PDF</h2>
-
-<pre><code>defaults write com.apple.screencapture type pdf
-killall SystemUIServer
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/lee-wide-angle-hood/">LEE Wide Angle Hood</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-06T19:49:49+01:00" pubdate data-updated="true">Oct 6<span>th</span>, 2012</time>
-        
-           | <a href="/blog/photography/lee-wide-angle-hood/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/lee-wide-angle-hood/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Available to buy from <a href="http://www.dalephotographic.co.uk/mall/productpage.cfm/DalePhotographicOnline/_Lee%20Wide%20Angle%20Slotted%20Hood/-/Lee%20Wide%20Angle%20Slotted%20Hood">Dale Photographic</a> or <a href="http://www.wexphotographic.com/buy-lee-wide-angle-lens-hood/p101">WEX</a>.</p>
-
-<p>Hoods or lens shades help improve contrast by stopping out of frame light source entering the lens. LEE filters are square filters that can be used for effects or managing dynamic range, how ever as they mount in front of the lens with a holder you can no longer use your lenses standard hood. LEE have a standard and wide angle hoods available.</p>
-
-<p>LEE do not provide many specs for the hood on their website. To help others decide if this is right for them I have included measurements and pictures of mine in different configurations.</p>
-
-<h2>Dimensions</h2>
-
-<pre><code>Width x Height:
-External: 21cm x 16cm
-Internal: 18cm x 13.5cm
-</code></pre>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060297008/" title="LEE Wide Filter, A5 Comparison"><img src="http://farm9.staticflickr.com/8313/8060297008_9b8cb916cf.jpg" width="500" height="333" alt="LEE Wide Filter, A5 Comparison"></a></p>
-
-<pre><code>Depth:
-Double slotted : 4cm    (Use 5/8" Screws)  
-Single slot    : 3.75cm (Use 3/8" Screws)  
-No slot        : 3.5cm  (Use 1/4" Screws)  
-</code></pre>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060276438/" title="Lee Wide Angle Hood, 2 Slots Depth 4cm"><img src="http://farm9.staticflickr.com/8317/8060276438_71d5c9fa4e.jpg" width="500" height="333" alt="Lee Wide Angle Hood, 2 Slots Depth 4cm"></a></p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060251896/" title="Lee Wide Angle Hood, 1 Slot Depth 3.75cm"><img src="http://farm9.staticflickr.com/8179/8060251896_73a0001cf3.jpg" width="500" height="333" alt="Lee Wide Angle Hood, 1 Slot Depth 3.75cm"></a></p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060238996/" title="LEE Wide Hood, No Slots Depth 3.5cm"><img src="http://farm9.staticflickr.com/8031/8060238996_ec1e055788.jpg" width="500" height="333" alt="LEE Wide Hood, No Slots Depth 3.5cm"></a></p>
-
-<p>Hood Only (No slots or clip):</p>
-
-<pre><code>Min Expansion : 2.5cm
-Max Expansion : 11cm
-</code></pre>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060276438/" title="Lee Wide Angle Hood, 2 Slots by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8317/8060276438_71d5c9fa4e.jpg" width="500" height="333" alt="Lee Wide Angle Hood, 2 Slots"></a></p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060297741/" title="Lee Wide Angle Filter, 2 Slots expanded by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8171/8060297741_15f4f654e7.jpg" width="500" height="333" alt="Lee Wide Angle Filter, 2 Slots expanded"></a></p>
-
-<h2>Assembly</h2>
-
-<p>Back of slot next to Hood, LEE Logo facing clip, Last slot has blank plate on top covering the logo.</p>
-
-<p>Order is: Clip, plate, slot, slot, Hood.</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060334883/" title="LEE Hood, Clip, 2 Slots by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8034/8060334883_466f06a51b_n.jpg" width="213" height="320" alt="LEE Hood, Clip, 2 Slots"></a></p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060336086/" title="LEE Hood, slots (2) removed from hood and clip by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8176/8060336086_94f5c0e2f8_n.jpg" width="320" height="213" alt="LEE Hood, slots (2) removed from hood and clip"></a></p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060332868/" title="LEE Wide Angle Hood, Clip and slots removed by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8452/8060332868_621f3310d1_n.jpg" width="320" height="213" alt="LEE Wide Angle Hood, Clip and slots removed"></a></p>
-
-<p>Available to buy from <a href="http://www.dalephotographic.co.uk/mall/productpage.cfm/DalePhotographicOnline/_Lee%20Wide%20Angle%20Slotted%20Hood/-/Lee%20Wide%20Angle%20Slotted%20Hood">Dale Photographic</a> or <a href="http://www.wexphotographic.com/buy-lee-wide-angle-lens-hood/p101">WEX</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/10/">&larr; Older</a>
@@ -859,11 +867,19 @@ Max Expansion : 11cm
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (13)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (219)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (14)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (220)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/git-tag-and-push-to-github/">Git Tag and Push to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/beyond-the-lsb/">Beyond the LSB</a>
+      </li>
     
       <li class="post">
         <a href="/blog/cooking/spicy-choclate-cake/">Spicy Choclate Cake</a>
@@ -875,14 +891,6 @@ Max Expansion : 11cm
     
       <li class="post">
         <a href="/blog/tech/bash-string-manipulation/">Bash String Manipulation</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/cooking/puy-lentil-wellington/">Puy Lentil Wellington</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/octopress/">Octopress, Pages and Custom Domain</a>
       </li>
     
   </ul>

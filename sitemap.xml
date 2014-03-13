@@ -1260,7 +1260,15 @@
     </url>
     <url>
         <loc>http://morganp.github.io/blog/cooking/spicy-choclate-cake/</loc>
-        <lastmod>2014-03-08T09:43:02+00:00</lastmod>
+        <lastmod>2014-03-08T09:44:32+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://morganp.github.io/blog/engineering/beyond-the-lsb/</loc>
+        <lastmod>2014-03-13T19:14:49+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://morganp.github.io/blog/tech/git-tag-and-push-to-github/</loc>
+        <lastmod>2014-03-13T19:21:52+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/about/</loc>
@@ -1268,11 +1276,11 @@
     </url>
     <url>
         <loc>http://morganp.github.io/blog/archives/</loc>
-        <lastmod>2014-03-08T09:43:02+00:00</lastmod>
+        <lastmod>2014-03-13T19:21:52+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/</loc>
-        <lastmod>2014-03-08T09:43:02+00:00</lastmod>
+        <lastmod>2014-03-13T19:21:52+00:00</lastmod>
     </url>
     <url>
         <loc>http://morganp.github.io/license/</loc>

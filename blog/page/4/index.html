@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I use to use svn revert to roll back local modification and get back to the state I was in last time I checked out. to do the same in git I use : git &hellip;">
+  <meta name="description" content="Fitting is relatively straight forward. Use a credit card to place clips in the frame 85mm from the top and bottom. I found it helps to use some &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,149 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/home/exact-fit-blinds/">Exact Fit Blinds</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-12T19:25:37+00:00" pubdate data-updated="true">Jan 12<span>th</span>, 2014</time>
+        
+           | <a href="/blog/home/exact-fit-blinds/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/home/exact-fit-blinds/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><object type="application/x-shockwave-flash" width="750" height="425" data="http://www.flickr.com/apps/video/stewart.swf?v=140315" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"> <param name="flashvars" value="intl_lang=en-us&photo_secret=8e95f1d3e2&photo_id=12015486316&hd_default=false"></param> <param name="movie" value="http://www.flickr.com/apps/video/stewart.swf?v=140315"></param> <param name="bgcolor" value="#000000"></param> <param name="allowFullScreen" value="true"></param><embed type="application/x-shockwave-flash" src="http://www.flickr.com/apps/video/stewart.swf?v=140315" bgcolor="#000000" allowfullscreen="true" flashvars="intl_lang=en-us&photo_secret=8e95f1d3e2&photo_id=12015486316&hd_default=false" height="272" width="480"></embed></object>
+
+
+<p><strong>Fitting</strong> is relatively straight forward. Use a credit card to place clips in the frame 85mm from the top and bottom. I found it helps to use some washing-up liquid on the clips to help it slide between the frame and glass.</p>
+
+<p>Put the frame together, roller blind variants have a correct order for the sides. To identify each side, the roller takes up room at the top so the cut out for the clips is closer to the top. Once the clips are in the window frame, and the blind frame is assembled all that is left is to left frame on to clips and click into place. Occasionnaly clips need some minor adjustment in position for a secure fit.</p>
+
+<object type="application/x-shockwave-flash" width="480" height="270" data="http://www.flickr.com/apps/video/stewart.swf?v=140315" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"> <param name="flashvars" value="intl_lang=en-us&photo_secret=505649d268&photo_id=12369545465&hd_default=false"></param> <param name="movie" value="http://www.flickr.com/apps/video/stewart.swf?v=140315"></param> <param name="bgcolor" value="#000000"></param> <param name="allowFullScreen" value="true"></param><embed type="application/x-shockwave-flash" src="http://www.flickr.com/apps/video/stewart.swf?v=140315" bgcolor="#000000" allowfullscreen="true" flashvars="intl_lang=en-us&photo_secret=505649d268&photo_id=12369545465&hd_default=false" height="270" width="480"></embed></object>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/flip-flop/">Flip-flop</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-09T19:15:10+00:00" pubdate data-updated="true">Jan 9<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/flip-flop/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/engineering/flip-flop/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A flip-flop (D-Type) is essentially 2 latches in series with the enable to one inverted.
+This stops the flip-flop from being transparent or open as a single latch can be.</p>
+
+<p>For ASIC design it is recommended that all flip-flops use active low asynchronous resets.
+This is often connected to the power on reset circuit and retimed on to the rising edge of the clock at the top level of the chip.</p>
+
+<p>In Verilog a D-Type flip-flop can be implied with the following logic.<br/>
+NB: the reg implies nothing about the flip-flop only that data is assigned inside an always block.</p>
+
+<pre><code>reg [1:0] data; 
+always @(posedge clk or negedge rst_n) begin
+  if (~rst_n) begin
+    data &lt;= 'b0;
+  end
+  else begin
+    data &lt;= new_data;
+  end
+end
+</code></pre>
+
+<p>If your flow supports the use of SystemVerilog, use of the <code>always_comb</code>, <code>always_latch</code> and <code>always_ff</code> are recommended.
+the rules for sensitivity lists are a little stricter to minimize RTL to gates mismatch.
+The added benefit is that it allows the designer to be clear about design intent.
+Using the logic type also removes confusion about reg implying flip-flops and allows code refacoring with out having to switch types.</p>
+
+<pre><code>logic [1:0] data; 
+always_ff @(posedge clk or negedge rst_n) begin
+  if (~rst_n) begin
+    data &lt;= 'b0;
+  end
+  else begin
+    data &lt;= new_data;
+  end
+end
+</code></pre>
+
+<p>With a Synchronous Reset:</p>
+
+<pre><code>logic [1:0] data; 
+always_ff @(posedge clk) begin
+  if (~rst_n) begin
+    data &lt;= 'b0;
+  end
+  else begin
+    data &lt;= new_data;
+  end
+end
+</code></pre>
+
+<p>No Reset:</p>
+
+<pre><code>logic [1:0] data; 
+always_ff @(posedge clk) begin
+  data &lt;= new_data;
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -729,158 +872,6 @@ thumb           Ginger
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/cooking/chicken-tikka-masala/">Chicken Tikka Masala</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-08T16:44:00+00:00" pubdate data-updated="true">Dec 8<span>th</span>, 2013</time>
-        
-           | <a href="/blog/cooking/chicken-tikka-masala/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/cooking/chicken-tikka-masala/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Chicken Tikka Masala</p>
-
-<p><img class="centre" src="/images/ChickenTikkaMasala/morganp-20130910-ChickenTikkaMasala-IMG_3991.jpg"></p>
-
-<p>Based on recipe from &ldquo;Jamie&rsquo;s Ministry of Food&rdquo;</p>
-
-<p>Ingredients (for 4)</p>
-
-<pre><code>4             Chicken breasts
-2             Onions 
-1             Red chilli
-thumb         Ginger
-bunch         Coriander
-
-15g(knob)     Butter
-1/2 Jar       Tikka masala curry paste (pataks)
-1 tin (400g)  Chopped tomatoes
-1 tin (400g)  Coconut milk
-1             Lemon 
-</code></pre>
-
-<p><img class="centre" src="/images/ChickenTikkaMasala/morganp-20130910-ChickenTikkaMasala-IMG_3973.jpg">
-Cut chicken breast into 2cm strips then cut in half.<br/>
-Half and finely slice the onion.<br/>
-Finely chop Chilli.<br/>
-Peel and slice ginger.<br/>
-Pick coriander leaves and leave to one side, finely chop stalks.</p>
-
-<p><img class="centre" src="/images/ChickenTikkaMasala/morganp-20130910-ChickenTikkaMasala-IMG_3975.jpg"></p>
-
-<p>Large pan on medium to high heat add oil and butter. Once butter has melted add the onions, chilli, ginger and coriander stalks.</p>
-
-<pre><code>2             Onions 
-1             Red chilli
-thumb         Ginger
-bunch         Coriander stalks
-</code></pre>
-
-<p><img class="centre" src="/images/ChickenTikkaMasala/morganp-20130910-ChickenTikkaMasala-IMG_3977.jpg"></p>
-
-<p>Cook for 10 minutes until onions have softened. Add Tikka Masala paste and chicken, making sure everyithing gets coated with the curry paste.</p>
-
-<pre><code>1/2 Jar       Tikka masala curry paste
-4             Chicken breasts
-</code></pre>
-
-<p><img class="centre" src="/images/ChickenTikkaMasala/morganp-20130910-ChickenTikkaMasala-IMG_3983.jpg"></p>
-
-<p>Add tomatoes and Coconut milk. Stir then simmer for 20 minutes.</p>
-
-<pre><code>1 tin (400g)  Chopped tomatoes
-1 tin (400g)  Coconut milk
-</code></pre>
-
-<p><img class="centre" src="/images/ChickenTikkaMasala/morganp-20130910-ChickenTikkaMasala-IMG_3984.jpg"></p>
-
-<p>Serve with Rice, and lemon wedges to squeeze over it.</p>
-
-<p><img class="centre" src="/images/ChickenTikkaMasala/morganp-20130910-ChickenTikkaMasala-IMG_3991.jpg"></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/lightroom-library-metadata-panel/">Lightroom Library Metadata Panel</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-04T19:04:14+00:00" pubdate data-updated="true">Dec 4<span>th</span>, 2013</time>
-        
-           | <a href="/blog/photography/lightroom-library-metadata-panel/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/lightroom-library-metadata-panel/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The metadata panel in Lightroom has always felt a little crowded to me. It shows too many dialog boxes or not the ones I want and have to scroll through many panes.</p>
-
-<p>Since most of my photography is uploaded to <a href="http://www.flickr.com/photos/morgan_prior/">flickr</a> there are a few section of metadata which are useful.</p>
-
-<p>I use &lsquo;Job Identifier&rsquo; as the shoot name, this is the same as the folder I put my RAW files in. Whe I export this becomes part of the file name. My export file name is &lsquo;morganp-Date (YYYYMMDD)-Job Identifier-Filename&rsquo;.</p>
-
-<p> <a href="http://www.flickr.com/photos/morgan_prior/11209946034/"><img src="http://farm4.staticflickr.com/3820/11209946034_ecd2792ec2_n.jpg" width="276" height="320" alt="Lightroom Export Filename"></a></p>
-
-<p>The title of the image in my flick export is taken from the IPTC &lsquo;title&rsquo; . So I really only want these to setting present for my flick exports.</p>
-
-<p>Enter <a href="http://regex.info/blog/lightroom-goodies/metadata-presets">Jeffrey&rsquo;s “Metadata-Viewer Preset Editor”</a>. This allows you to create custom metadata views with only the fields you require.</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/11209999464/"><img src="http://farm6.staticflickr.com/5520/11209999464_47aa9e93bd_n.jpg" width="320" height="214" alt="Jeffrey's Metadata-Viewer Preset Editor"></a></p>
-
-<p>The minimal view:</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/11210017855/"><img src="http://farm8.staticflickr.com/7305/11210017855_0a643b1d87_n.jpg" width="320" height="209" alt="Lightroom Library Metadata"></a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -895,11 +886,19 @@ bunch         Coriander stalks
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (13)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (219)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (14)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (220)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/git-tag-and-push-to-github/">Git Tag and Push to Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/beyond-the-lsb/">Beyond the LSB</a>
+      </li>
     
       <li class="post">
         <a href="/blog/cooking/spicy-choclate-cake/">Spicy Choclate Cake</a>
@@ -911,14 +910,6 @@ bunch         Coriander stalks
     
       <li class="post">
         <a href="/blog/tech/bash-string-manipulation/">Bash String Manipulation</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/cooking/puy-lentil-wellington/">Puy Lentil Wellington</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/octopress/">Octopress, Pages and Custom Domain</a>
       </li>
     
   </ul>
