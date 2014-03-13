@@ -9,9 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="In ruby you can catch StandardErrors using begin rescue end begin #Some thing which might fails
-rescue $stderr.puts $!
-end We can add a mnemonic &hellip;">
+  <meta name="description" content="Correct Post
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +82,45 @@ end We can add a mnemonic &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/rspec-testing-exceptions-old-post/">Rspec Testing Exceptions (Old Post)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-20T14:57:39+01:00" pubdate data-updated="true">May 20<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/rspec-testing-exceptions-old-post/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/rspec-testing-exceptions-old-post/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://amaras-tech.co.uk/article/166">Correct Post</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -770,7 +808,7 @@ fatal: The remote end hung up unexpectedly
 
 <h2>Getting it Working</h2>
 
-<p>Last time I ran into these issues I found I could clone as guest, changed <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#111;&#x3a;&#x6d;&#x6f;&#x72;&#x67;&#x61;&#x6e;&#x70;&#x40;&#x67;&#x69;&#x74;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#x6d;">&#x6d;&#111;&#114;&#103;&#x61;&#110;&#x70;&#64;&#x67;&#x69;&#116;&#x68;&#117;&#x62;&#46;&#99;&#111;&#109;</a> to just github.com. Pushing will then prompt for your github Username and password. Once cloned you can manually update the config file so you do not have to enter your username. Entering your password will still be required.</p>
+<p>Last time I ran into these issues I found I could clone as guest, changed <a href="&#x6d;&#x61;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x6f;&#114;&#103;&#97;&#x6e;&#112;&#64;&#x67;&#105;&#116;&#104;&#x75;&#x62;&#x2e;&#99;&#111;&#109;">&#x6d;&#111;&#x72;&#x67;&#x61;&#x6e;&#x70;&#x40;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#109;</a> to just github.com. Pushing will then prompt for your github Username and password. Once cloned you can manually update the config file so you do not have to enter your username. Entering your password will still be required.</p>
 
 <pre><code>$ git clone https://github.com/morganp/maruku_snippet.git
 Cloning into maruku_snippet...
@@ -1066,74 +1104,6 @@ then run <code>$ bundle update</code></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/minify-your-html-from-sinatra/">Minify Your HTML From Sinatra</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-26T15:13:49+01:00" pubdate data-updated="true">Apr 26<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/minify-your-html-from-sinatra/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/minify-your-html-from-sinatra/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>There are gzip compression options available but when I looked at this a long time ago I found that the extra server load to compress (with out caching) and the extra delay in the browser to decompress was not worth the few bytes it saved and lead to longer times before seeing the fully rendered page.</p>
-
-<p>Minification or minifying is more about removing white space, in the case of javascript it can also optimise variable names. For html we would not want to do that unless our css was going to be converted to match exactly.</p>
-
-<p>After a little digging and trying a few gems which failed to set there dependancies correctly and even <code>required 'pp'</code>*, I found TidyFFI.</p>
-
-<ul>
-<li>Really useful for debugging but I do not think has a place in deployed code.</li>
-</ul>
-
-
-<h1>Minify HTML</h1>
-
-<pre><code>gem install TidyFFI
-</code></pre>
-
-<p>Before:</p>
-
-<pre><code>get '/' do
-  erb :'about'
-end 
-</code></pre>
-
-<p>After :</p>
-
-<pre><code>require 'tidy_ffi'
-get '/' do
-  TidyFFI::Tidy.new( erb :'about' ).clean 
-end 
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/15/">&larr; Older</a>
@@ -1148,7 +1118,7 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (14)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (221)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (222)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>

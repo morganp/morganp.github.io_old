@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I have not fully read it but it looks like this is a good guide to bash scripting. A few things that normally catch me out trying to load modules &hellip;">
+  <meta name="description" content="When running gem build on a new library I have been working on I started getting the following error: [ruby_svg_light.gemspec] isn't a Gem:: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,160 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/recent-issue-with-building-gems/">Recent Issue With Building Gems</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-07T23:25:34+01:00" pubdate data-updated="true">May 7<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/recent-issue-with-building-gems/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/recent-issue-with-building-gems/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When running gem build on a new library I have been working on I started getting the following error:</p>
+
+<pre><code>[ruby_svg_light.gemspec] isn't a Gem::Specification (Rake::FileTask instead).
+ERROR:  While executing gem ... (NoMethodError)
+    undefined method `mark_version' for nil:NilClass
+</code></pre>
+
+<p>It was from a gemspec similar to that below</p>
+
+<pre><code>require 'rake/gempackagetask' 
+
+NAME = "ruby_svg_light" 
+Dir.chdir( './lib/')
+require NAME
+Dir.chdir( './../')
+
+spec = Gem::Specification.new do |s|
+  s.name         = NAME
+  s.version      = RubySVGLight::VERSION
+  s.platform     = Gem::Platform::RUBY
+  s.summary      = 'Basic Helper for creating SVG Files'
+  s.homepage     = 'http://amaras-tech.co.uk/software/RubySVGLight'
+  s.authors      = "Morgan Prior"
+  s.email        = NAME + "_gem@amaras-tech.co.uk"
+  s.description  = %{A basic library for building SVG files. Not all properties of SVG are supported}
+  s.files        = [Dir.glob("LICENSE.rtf")]
+  s.files        += Dir.glob("examples/*")
+  s.files        += Dir.glob("lib/**/*")
+  s.files        += Dir.glob("spec/*") 
+end
+Rake::GemPackageTask.new(spec).define
+</code></pre>
+
+<p>The Fix was to change to this (Removing Rake::GemPackageTask):</p>
+
+<pre><code>NAME = "ruby_svg_light"
+Dir.chdir( './lib/')
+require NAME
+Dir.chdir( './../')
+
+Gem::Specification.new do |s|
+  s.name         = NAME
+  s.version      = RubySVGLight::VERSION
+  s.platform     = Gem::Platform::RUBY
+  s.summary      = 'Basic Helper for creating SVG Files'
+  s.homepage     = 'http://amaras-tech.co.uk/software/RubySVGLight'
+  s.authors      = "Morgan Prior"
+  s.email        = NAME + "_gem@amaras-tech.co.uk"
+  s.description  = %{A basic library for building SVG files. Not all properties of SVG are supported}
+  s.files        = [Dir.glob("LICENSE.rtf")]
+  s.files        += Dir.glob("examples/*")
+  s.files        += Dir.glob("lib/**/*")
+  s.files        += Dir.glob("spec/*")
+end
+</code></pre>
+
+<p>It looks like the new format if for the gemspec is to return a Gem::Specification rather than run the task. I do not know when this change happened.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/lightroom-tip-press-%e2%8c%98-to-see-all-possible-shortcuts/">Lightroom Tip Press ⌘/ to See All Possible Shortcuts</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-03T23:15:14+01:00" pubdate data-updated="true">May 3<span>rd</span>, 2011</time>
+        
+           | <a href="/blog/photography/lightroom-tip-press-%e2%8c%98-to-see-all-possible-shortcuts/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/photography/lightroom-tip-press-%e2%8c%98-to-see-all-possible-shortcuts/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have captured all 5 lists here, but they are only a ⌘/ away.</p>
+
+<h2>Library</h2>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/5684556622/" title="LightroomLibraryShortcuts by munky morgy, on Flickr"><img src="http://farm6.static.flickr.com/5029/5684556622_566a9636a1.jpg" width="500" height="369" alt="LightroomLibraryShortcuts"></a></p>
+
+<h2>Develop</h2>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/5683989427/" title="LightroomDevelopShortcuts by munky morgy, on Flickr"><img src="http://farm6.static.flickr.com/5025/5683989427_47b33124d2.jpg" width="500" height="319" alt="LightroomDevelopShortcuts"></a></p>
+
+<h2>Slideshow</h2>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/5683989893/" title="LightroomSlideshowShortcuts by munky morgy, on Flickr"><img src="http://farm6.static.flickr.com/5064/5683989893_3a1f674702.jpg" width="453" height="500" alt="LightroomSlideshowShortcuts"></a></p>
+
+<h2>Print</h2>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/5683990243/" title="LightroomPrintShortcuts by munky morgy, on Flickr"><img src="http://farm6.static.flickr.com/5106/5683990243_4699a67af8.jpg" width="500" height="210" alt="LightroomPrintShortcuts"></a></p>
+
+<h2>Web</h2>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/5683990527/" title="LightroomWebShortcuts by munky morgy, on Flickr"><img src="http://farm6.static.flickr.com/5065/5683990527_3872b5e9d0.jpg" width="458" height="417" alt="LightroomWebShortcuts"></a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -658,99 +812,6 @@ First Light, ISBN 1-902538-24-2</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-cli-user-input-using-gets/">Ruby CLI User Input Using Gets</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-27T06:04:31+01:00" pubdate data-updated="true">Mar 27<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-cli-user-input-using-gets/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-cli-user-input-using-gets/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Using a while true loop with &lsquo;gets&rsquo; and a case statement, can create a compact command line interface for ruby scripts.</p>
-
-<pre><code>while true
-  puts "'q' to quit, 'c' to continue"
-  command = gets
-  case
-    when command.match(/^q/) then
-      puts "Quit"
-      break
-    when command.match(/^c/) then
-      puts "Continue"
-  end # case
-end # while true
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/working-from-home-practising-enfuse-hdr/">Working From Home, Practising Enfuse HDR</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-01T10:11:02+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2011</time>
-        
-           | <a href="/blog/photography/working-from-home-practising-enfuse-hdr/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/photography/working-from-home-practising-enfuse-hdr/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>While trying to get my setup to work from home I thought I would give <a href="http://www.photographers-toolbox.com/products/lrenfuse.php">enfuse</a> a go at merging 3 different exposures.</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/5488500175/" title="Working From Home"><img src="http://farm6.static.flickr.com/5171/5488500175_bb3b09d5b6.jpg" width="500" height="333" alt="Working From Home Image" /></a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/21/">&larr; Older</a>
@@ -765,7 +826,7 @@ end # while true
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (14)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (221)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (222)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>

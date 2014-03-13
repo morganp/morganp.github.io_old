@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Engineering | RockPaperScissors]]></title>
   <link href="http://morganp.github.io/blog/engineering/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-03-13T20:12:08+00:00</updated>
+  <updated>2014-03-13T21:02:42+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -106,6 +106,30 @@ b =
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[Matlab Shuffle Array]]></title>
+    <link href="http://morganp.github.io/blog/engineering/matlab-shuffle-array/"/>
+    <updated>2014-03-06T20:42:57+00:00</updated>
+    <id>http://morganp.github.io/blog/engineering/matlab-shuffle-array</id>
+    <content type="html"><![CDATA[<p>To shuffle a:</p>
+
+<pre><code>a(randperm(length(a)))
+</code></pre>
+
+<p>Example:</p>
+
+<pre><code>a = [10 2 5 20];
+a = a(randperm(length(a)))
+
+a =
+
+ 5    10     2    20
+</code></pre>
+
+<p><a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/239478">Source</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[OO Magic Bullet?]]></title>
     <link href="http://morganp.github.io/blog/engineering/oo-magic-bullet/"/>
     <updated>2014-03-01T20:04:06+00:00</updated>
@@ -129,32 +153,6 @@ b =
 
 <pre><code>$write("\n");
 $display("");
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Matlab: Legend Colours]]></title>
-    <link href="http://morganp.github.io/blog/engineering/matlab-legend-colours/"/>
-    <updated>2014-02-13T20:51:45+00:00</updated>
-    <id>http://morganp.github.io/blog/engineering/matlab-legend-colours</id>
-    <content type="html"><![CDATA[<p>When plotting several lines in Matlab, I have become aware of how hard it was to see the colours in the legend. Based <a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/267186">on this matlabcentral question</a> I found an easy way to control the line thickness in the legend.</p>
-
-<pre><code>plot(randn(100,1));
-hold on;
-plot(randn(100,1),'k');
-
-
-[legh,objh,outh,outm] = legend('First','Second','Location','Southeast');
-set(objh,'linewidth',2); %%&lt;-- set legend line thickness to 2
-</code></pre>
-
-<p>Or just the following after you define your legend:</p>
-
-<pre><code>% legend('First','Second','Location','Southeast');
-
-[legh,objh,outh,outm] = legend();
-set(objh,'linewidth',2);
 </code></pre>
 ]]></content>
   </entry>

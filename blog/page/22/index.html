@@ -9,7 +9,10 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I think it is good practise to create a read only tag when releasing an application. This allows you to create a branch from it at any time or a bug &hellip;">
+  <meta name="description" content="I have been running into issues with screen when switching to another user: $ su otheruser
+&gt; password
+$ screen -x
+&gt; Cannot open your terminal &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +84,148 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/screen-x-not-connecting-when-running-as-an-other-user/">Screen -x Not Connecting When Running as an Other User</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-30T13:06:42+00:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+        
+           | <a href="/blog/photography/screen-x-not-connecting-when-running-as-an-other-user/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/photography/screen-x-not-connecting-when-running-as-an-other-user/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p> I have been running into issues with screen when switching to another user:</p>
+
+<pre><code>$ su otheruser
+&gt; password
+$ screen -x
+&gt; Cannot open your terminal '/dev/ttys002' - please check.
+</code></pre>
+
+<p>From <a href="http://www.linuxquestions.org/questions/linux-general-1/problem-using-screen-cannot-open-your-terminal-dev-pts-0-please-check-338313/">this post</a> I have discovered that it was due to a permissions issue.</p>
+
+<pre><code>$ ls -l /dev/ttys002
+&gt; crw--w----  1 user  tty   16,   2 Dec 30 23:34 /dev/ttys002
+</code></pre>
+
+<p>To fix I had to set other permissions.</p>
+
+<pre><code>$ su otheruser
+$ sudo chmod go+wr /dev/ttys002
+</code></pre>
+
+<p>You still have to su to the owners account and therefore it is still secure. ie user can not just connect to a /dev/ttys002 currently in use by otheruser.</p>
+
+<pre><code> #As user, otheruser currently using /dev/ttys002
+ $ screen -x /dev/ttys002
+&gt; Must run suid root for multiuser support. 
+</code></pre>
+
+<p>The issue has kept recurring and I have had to reset the permissions every time I wanted to connect. This could be Mac OS X specific but I edited the root crontab to fix.</p>
+
+<pre><code>$ sudo crontab -e
+# Added the text below
+# MIN   HOUR   MDAY  MON  DOW   COMMAND 
+  0,15,30,45 * * * * chmod o+wr /dev/ttys000
+  0,15,30,45 * * * * chmod o+wr /dev/ttys001
+  0,15,30,45 * * * * chmod o+wr /dev/ttys002
+  0,15,30,45 * * * * chmod o+wr /dev/ttys003
+  0,15,30,45 * * * * chmod o+wr /dev/ttys004
+  0,15,30,45 * * * * chmod o+wr /dev/ttys005
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-block-selection-in-vim-plugin/">Ruby Block Selection in Vim (Plugin)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-28T22:42:03+00:00" pubdate data-updated="true">Dec 28<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-block-selection-in-vim-plugin/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-block-selection-in-vim-plugin/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A new very cool plugin for Rubyists using Vim. <a href="http://vimcasts.org/blog/2010/12/a-text-object-for-ruby-blocks/">RubyBlock</a> TextObjects created by <a href="http://drewneil.com/">Drew Neil</a> from <a href="http://vimcasts.org/">Vimcasts.org</a>. Once installed it will add the commands var, vir, sr &amp; ir for selecting Ruby blocks, Drew Neil has explained it well on <a href="http://vimcasts.org/blog/2010/12/a-text-object-for-ruby-blocks/">VimCasts</a>.
+This vim plugin relies on two others <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> and <a href="http://www.vim.org/scripts/script.php?script_id=2100">textobj-user</a>. I believe that <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> is built in to current builds of vim and only requires enabling by adding the following to you .vimrc file:</p>
+
+<pre><code>runtime macros/matchit.vim    
+</code></pre>
+
+<p>If it is not built in to your build or you want the latest you can get a zip file from the <a href="http://www.vim.org/scripts/script.php?script_id=39">vim scripts</a> Uncompress it and put matchit.vim into your vim/plugin folder and matchit.txt in to your vim/doc. these are typically ~/.vim/plugin ~/.vim/doc but can be any where on thr $VIMRUNTIME, I redefine mine ot a github repo via (in .vimrc):</p>
+
+<pre><code>set runtimepath=$HOME/.unix_config/vim,$VIMRUNTIME
+</code></pre>
+
+<p>To add the new help files to vim help you run (using the path to you vim help files):</p>
+
+<pre><code>:helptags ~/.vim/doc
+</code></pre>
+
+<p>Next, <a href="http://www.vim.org/scripts/script.php?script_id=2100">textobj-user</a> plugin which is a generic wrapper for text objects and provides no added vim functionality by itself. Installation of this plugin confused me as the zip file and github all had make files and I do not like having to compile my plugins. However after uncompressing the zip file I moved the contents of the autoload folder to vim/autoload and contents of the docs folder to vim/docs, the RubyBlock plugin seems to work so I assume that this is all that is required.</p>
+
+<p>Drew Neil has distributed his plugin as a vimball (*.vba) which is the simplest to install way of distributing vim plugins. Download file from <a href="http://www.vim.org/scripts/script.php?script_id=3382">vim scripts</a>. Open the file with vim and  then :source %</p>
+
+<pre><code>$ vim ~/Downloads/textobj-rubyblock.vba
+:source %
+</code></pre>
+
+<p>Now open a ruby file move to a line inside a block and start trying out your new commands: var, vir, ar &amp; ir.</p>
+
+<p>Thanks to <a href="http://drewneil.com/">Drew Neil</a> of <a href="http://vimcasts.org/">Vimcasts.org</a> for creating this plugin.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -588,92 +733,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/os-x-open-finder-from-command-line/">OS X Open Finder From Command Line</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-10-13T11:08:40+01:00" pubdate data-updated="true">Oct 13<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/os-x-open-finder-from-command-line/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/os-x-open-finder-from-command-line/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Just discovered this: from <a href="http://grx.no/kb/2009/01/09/open-finder-for-current-directory-from-command-line/">source</a>.</p>
-
-<pre><code>$ open .
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/stopstart-and-restart-samba-on-os-x/">Stop/Start and Restart Samba on OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-10-10T10:13:52+01:00" pubdate data-updated="true">Oct 10<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/stopstart-and-restart-samba-on-os-x/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/stopstart-and-restart-samba-on-os-x/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To Stop Start and Restart Samba on Mac OS X 10.6:</p>
-
-<pre><code>sudo /usr/sbin/smbd stop
-sudo /usr/sbin/smbd start
-sudo /usr/sbin/smbd restart
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/23/">&larr; Older</a>
@@ -688,7 +747,7 @@ sudo /usr/sbin/smbd restart
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (14)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (221)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (222)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>

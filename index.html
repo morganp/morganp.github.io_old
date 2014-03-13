@@ -447,6 +447,60 @@ b =
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-shuffle-array/">Matlab Shuffle Array</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-06T20:42:57+00:00" pubdate data-updated="true">Mar 6<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-shuffle-array/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/engineering/matlab-shuffle-array/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To shuffle a:</p>
+
+<pre><code>a(randperm(length(a)))
+</code></pre>
+
+<p>Example:</p>
+
+<pre><code>a = [10 2 5 20];
+a = a(randperm(length(a)))
+
+a =
+
+ 5    10     2    20
+</code></pre>
+
+<p><a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/239478">Source</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/tech/bash-string-manipulation/">Bash String Manipulation</a></h1>
     
     
@@ -680,49 +734,6 @@ git gc --prune=now
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/oo-magic-bullet/">OO Magic Bullet?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-01T20:04:06+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
-        
-           | <a href="/blog/engineering/oo-magic-bullet/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/engineering/oo-magic-bullet/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I do not think that there are any magic bullets, best practises can minimise risk but you have to fully understand the technique. You can not just switch from procedural code to wrapping everything in an object and claim statements like this from <a href="http://www.mathworks.co.uk/company/newsletters/articles/introduction-to-object-oriented-programming-in-matlab.html">mathworks</a>:</p>
-
-<blockquote><p>Because it was built using OO techniques, the application is now robust enough for others to use and maintain and can be integrated with related applications throughout an organization.</p></blockquote>
-
-<p>Sounds like Object-Oriented programming is a magic bullet to solve all you programming woes!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -735,7 +746,7 @@ git gc --prune=now
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (14)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (221)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (222)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
