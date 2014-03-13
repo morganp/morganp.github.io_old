@@ -9,7 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Checkout : Apple support. Disable &lsquo;Adjust keyboard brightness in low light&rsquo;. ">
+  <meta name="description" content="str.each_line do |line| #do something with line
+end Source.
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +83,50 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-iterate-over-lines-in-a-string/">Ruby Iterate Over Lines in a String</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-13T21:03:54+00:00" pubdate data-updated="true">Mar 13<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/ruby-iterate-over-lines-in-a-string/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ruby-iterate-over-lines-in-a-string/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>str.each_line do |line|
+  #do something with line
+end
+</code></pre>
+
+<p><a href="http://stackoverflow.com/a/601892/97073">Source</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -684,56 +730,6 @@ rake deploy
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/revert-in-git/">Revert in Git</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-03T19:42:12+00:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2014</time>
-        
-           | <a href="/blog/tech/revert-in-git/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/revert-in-git/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1>and Remove Orphaned Commits.</h1>
-
-<p>I use <code>gitx</code> graphical tool on OS X to find the SHAs for commits. Revert back throwing away all changes:</p>
-
-<pre><code>git reset --hard shaqwerty      
-</code></pre>
-
-<p>Now delete the orphaned commits.</p>
-
-<pre><code>git reflog expire --expire=now --expire-unreachable=now --all
-git gc --prune=now
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -746,11 +742,15 @@ git gc --prune=now
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (222)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/ruby-iterate-over-lines-in-a-string/">Ruby Iterate Over Lines in a String</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/macbook-keyboard-light-not-working/">Macbook Keyboard Light Not Working</a>
@@ -766,10 +766,6 @@ git gc --prune=now
     
       <li class="post">
         <a href="/blog/cooking/spicy-choclate-cake/">Spicy Choclate Cake</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-function-outputs/">Matlab Function Outputs</a>
       </li>
     
   </ul>

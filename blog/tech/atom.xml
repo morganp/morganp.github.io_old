@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | RockPaperScissors]]></title>
   <link href="http://morganp.github.io/blog/tech/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-03-13T21:02:42+00:00</updated>
+  <updated>2014-03-13T21:07:23+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Iterate Over Lines in a String]]></title>
+    <link href="http://morganp.github.io/blog/tech/ruby-iterate-over-lines-in-a-string/"/>
+    <updated>2014-03-13T21:03:54+00:00</updated>
+    <id>http://morganp.github.io/blog/tech/ruby-iterate-over-lines-in-a-string</id>
+    <content type="html"><![CDATA[<pre><code>str.each_line do |line|
+  #do something with line
+end
+</code></pre>
+
+<p><a href="http://stackoverflow.com/a/601892/97073">Source</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Macbook Keyboard Light Not Working]]></title>
@@ -89,26 +103,6 @@ rake deploy
 </code></pre>
 
 <p><a href="http://octopress.org/docs/deploying/github/">Official Docs</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Revert in Git]]></title>
-    <link href="http://morganp.github.io/blog/tech/revert-in-git/"/>
-    <updated>2014-03-03T19:42:12+00:00</updated>
-    <id>http://morganp.github.io/blog/tech/revert-in-git</id>
-    <content type="html"><![CDATA[<h1>and Remove Orphaned Commits.</h1>
-
-<p>I use <code>gitx</code> graphical tool on OS X to find the SHAs for commits. Revert back throwing away all changes:</p>
-
-<pre><code>git reset --hard shaqwerty      
-</code></pre>
-
-<p>Now delete the orphaned commits.</p>
-
-<pre><code>git reflog expire --expire=now --expire-unreachable=now --all
-git gc --prune=now
-</code></pre>
 ]]></content>
   </entry>
   

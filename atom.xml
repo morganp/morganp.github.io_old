@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://morganp.github.io/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-03-13T21:02:42+00:00</updated>
+  <updated>2014-03-13T21:07:23+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Iterate Over Lines in a String]]></title>
+    <link href="http://morganp.github.io/blog/tech/ruby-iterate-over-lines-in-a-string/"/>
+    <updated>2014-03-13T21:03:54+00:00</updated>
+    <id>http://morganp.github.io/blog/tech/ruby-iterate-over-lines-in-a-string</id>
+    <content type="html"><![CDATA[<pre><code>str.each_line do |line|
+  #do something with line
+end
+</code></pre>
+
+<p><a href="http://stackoverflow.com/a/601892/97073">Source</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Macbook Keyboard Light Not Working]]></title>
@@ -507,43 +521,6 @@ end
 </code></pre>
 
 <p>This was used to build my <a href="https://github.com/morganp/octopress_url_downcase">Octopress plugin octopress_url_downcase</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Raised Bed]]></title>
-    <link href="http://morganp.github.io/blog/garden/raised-bed/"/>
-    <updated>2014-02-18T18:58:30+00:00</updated>
-    <id>http://morganp.github.io/blog/garden/raised-bed</id>
-    <content type="html"><![CDATA[<p>Putting together my first raised bed, 8 foot by 2 foot, 1 plank high.</p>
-
-<p>Cut parts ready for assembly:
-<img src="http://morganp.github.io/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6743.jpg" alt="Parts" /></p>
-
-<p>The timber is pressure treated softwood from <a href="http://www.dremtimberandfencing.co.uk/">Drem Timber</a>. Cost is around £14 for 16 foot (4.8m).</p>
-
-<p>Parts I got:</p>
-
-<pre><code>4 * 8 foot (2 * 4.8m)
-8 * 2 foot (1 * 4.8m)
-8 corner stakes (£1 each)
---
-£49
-</code></pre>
-
-<p>Using right angle clamps to assemble first corner.
-<img src="http://morganp.github.io/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6746.jpg" alt="First Corner" /></p>
-
-<p>Holding the spikes in place with quick clamps.
-<img src="http://morganp.github.io/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6751.jpg" alt="Attaching Spike" />
-<img src="http://morganp.github.io/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6753.jpg" alt="" /></p>
-
-<p>Constructing the second corner.
-<img src="http://morganp.github.io/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6758.jpg" alt="Second Corner" />
-<img src="http://morganp.github.io/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6761.jpg" alt="" /></p>
-
-<p>The final side and 2 corners, using 4 right angle clamps to hold it all in place.
-<img src="http://morganp.github.io/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6766.jpg" alt="Final Corners" /></p>
 ]]></content>
   </entry>
   
