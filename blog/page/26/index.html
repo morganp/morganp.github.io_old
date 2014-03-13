@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Just released my first gem &lsquo;memory_usage&rsquo; Version 0.0.1. $ gem install memory_usage Assuming the gems folder has been set-up on your path &hellip;">
+  <meta name="description" content="This is not necessarily the correct way of creating executable gems but a method which worked for me. Assuming we are working in folder just for this &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,131 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/creating-executable-gems/">Creating Executable Gems</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-21T08:43:48+01:00" pubdate data-updated="true">Jun 21<span>st</span>, 2010</time>
+        
+           | <a href="/blog/tech/creating-executable-gems/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/creating-executable-gems/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is not necessarily the correct way of creating executable gems but a method which worked for me.</p>
+
+<p>Assuming we are working in folder just for this gem we need a structure like this:</p>
+
+<pre><code>my_gem/
+   my_gem.gemspec
+   bin/
+      my_gem #&lt;-script with no file extension
+   lib/
+      my_gem.rb #&lt;- Actual class file
+</code></pre>
+
+<p>my_gem.gemspec</p>
+
+<pre><code>require 'rake/gempackagetask'
+spec = Gem::Specification.new do |s|
+   s.name         = 'my_gem'
+   s.version      = '0.0.1'
+   s.platform     = Gem::Platform::RUBY
+   s.summary      = 'Report memory usage on Mac OS X, Linux and Unix.'
+   s.homepage     = 'http://amaras-tech.co.uk/software/memory_usage'
+   s.authors      = "Morgan Prior"
+   s.email        = "memory_usage_gem@amaras-tech.co.uk"
+   s.description  = "Reports memory used by all current user processes"
+   s.files        = ['bin/my_gem', 'lib/my_gem.rb']
+   s.bindir       = 'bin'   
+   s.executables  = ['my_gem']
+   s.has_rdoc     = false
+
+   s.post_install_message = "To use 'my_gem' as a standalone application your gems folder must be on your path"   
+end
+Rake::GemPackageTask.new(spec).define
+</code></pre>
+
+<p>bin/my_gem</p>
+
+<pre><code>#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'my_gem'
+
+a = MyGem.new(ARGV)
+a.report
+</code></pre>
+
+<p>lib/my_gem.rb</p>
+
+<pre><code>class MyGem
+    #Any command Line options set are passed in as array argv
+    # You cannot have arguments as CONSTANTS plus if it was 
+    # ARGV it would clash with the built in ARGV.
+    def initialize(argv=[""])
+      @msg = "HelloWorld!"
+    end
+
+    def report
+       puts @msg.to_s
+    end
+ end
+</code></pre>
+
+<p>Then :</p>
+
+<pre><code>$ gem build my_gem.gemspec
+</code></pre>
+
+<p>and you can test the install via:</p>
+
+<pre><code>$ gem install my_gem-0.0.1.gem
+</code></pre>
+
+<p>Test then uninstall:</p>
+
+<pre><code>$ gem uninstall my_gem
+</code></pre>
+
+<p>Push to RubyGems:</p>
+
+<pre><code>$ gem push my_gem-0.0.1.gem
+</code></pre>
+
+<p>Then install from ruby Gem:</p>
+
+<pre><code>$ gem install my_gem
+</code></pre>
+
+<p>Done, Remember to replace &lsquo;my_gem&rsquo; with a unique but relevant name.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -593,64 +718,6 @@ RubyTorrent Execution time 0.689869 seconds</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/super-simple-ruby-list-directory-contents/">Super Simple Ruby List Directory Contents</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-16T08:14:52+01:00" pubdate data-updated="true">May 16<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/super-simple-ruby-list-directory-contents/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/super-simple-ruby-list-directory-contents/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A very simple Ruby way for listing files in a directory is the glob function:</p>
-
-<pre><code>#!/usr/bin/env ruby
-
-@directory_to_list = '/some/path/'
-files = Dir.glob(@directory_to_list + '*')
-
-files.each do |x|
-   puts x
-end
-</code></pre>
-
-<p>To avoid the separate each block, select could be used to iterate over the results. Used below with entries instead of glob.</p>
-
-<pre><code>Dir.entries(@directory_to_list).select do |f| 
-  puts f
-end
-</code></pre>
-
-<p>NB Dir.glob takes a pattern as an argument, Dir.entries takes a path.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/27/">&larr; Older</a>
@@ -665,11 +732,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (14)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (220)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (14)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (221)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/macbook-keyboard-light-not-working/">Macbook Keyboard Light Not Working</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/git-tag-and-push-to-github/">Git Tag and Push to Github</a>
@@ -685,10 +756,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/matlab-function-outputs/">Matlab Function Outputs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/bash-string-manipulation/">Bash String Manipulation</a>
       </li>
     
   </ul>

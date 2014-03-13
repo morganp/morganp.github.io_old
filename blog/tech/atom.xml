@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | RockPaperScissors]]></title>
   <link href="http://morganp.github.io/blog/tech/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-03-13T19:22:33+00:00</updated>
+  <updated>2014-03-13T20:12:08+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,18 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Macbook Keyboard Light Not Working]]></title>
+    <link href="http://morganp.github.io/blog/tech/macbook-keyboard-light-not-working/"/>
+    <updated>2014-03-13T20:00:47+00:00</updated>
+    <id>http://morganp.github.io/blog/tech/macbook-keyboard-light-not-working</id>
+    <content type="html"><![CDATA[<p>Checkout : <a href="http://support.apple.com/kb/HT4882">Apple support</a>.</p>
+
+<p>Disable &lsquo;Adjust keyboard brightness in low light&rsquo;.<br/>
+<img src="/images/Tech/Keyboard_low_light.png" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Git Tag and Push to Github]]></title>
@@ -96,30 +108,6 @@ rake deploy
 
 <pre><code>git reflog expire --expire=now --expire-unreachable=now --all
 git gc --prune=now
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Edit Octopress Posts]]></title>
-    <link href="http://morganp.github.io/blog/tech/edit-octopress-posts/"/>
-    <updated>2014-03-01T19:28:17+00:00</updated>
-    <id>http://morganp.github.io/blog/tech/edit-octopress-posts</id>
-    <content type="html"><![CDATA[<p>Creating new posts in Octopress is <code>rake new_post["Edit Posts"]</code> which outputs the created filename.</p>
-
-<p>Posts are prefixed with date, which can make it difficult to find a particular post to edit. Tab completion can help if you known the year of the post but it may still list 100&rsquo;s of posts where you have to spot the title, and narrow it done via month and day. To get around this I use this script to launch matching posts in my editor:</p>
-
-<pre><code>#!/bin/bash
-
-editor="mvim"
-post_path="source/_posts/"
-
-for OUTPUT in $(ls $post_path | grep $1)
-do
-  file_list="$file_list $post_path$OUTPUT"
-done
-
-$editor $file_list
 </code></pre>
 ]]></content>
   </entry>

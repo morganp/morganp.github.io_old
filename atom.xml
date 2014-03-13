@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://morganp.github.io/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-03-13T19:22:33+00:00</updated>
+  <updated>2014-03-13T20:12:08+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,18 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Macbook Keyboard Light Not Working]]></title>
+    <link href="http://morganp.github.io/blog/tech/macbook-keyboard-light-not-working/"/>
+    <updated>2014-03-13T20:00:47+00:00</updated>
+    <id>http://morganp.github.io/blog/tech/macbook-keyboard-light-not-working</id>
+    <content type="html"><![CDATA[<p>Checkout : <a href="http://support.apple.com/kb/HT4882">Apple support</a>.</p>
+
+<p>Disable &lsquo;Adjust keyboard brightness in low light&rsquo;.<br/>
+<img src="http://morganp.github.io/images/Tech/Keyboard_low_light.png" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Git Tag and Push to Github]]></title>
@@ -591,32 +603,6 @@ Add to frying pan as you go.<br/>
 <p>Put in the oven for 180 Degrees for an hour.</p>
 
 <p><img src="http://morganp.github.io/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6820.jpg" alt="Beef Wellington" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Matlab: Legend Colours]]></title>
-    <link href="http://morganp.github.io/blog/engineering/matlab-legend-colours/"/>
-    <updated>2014-02-13T20:51:45+00:00</updated>
-    <id>http://morganp.github.io/blog/engineering/matlab-legend-colours</id>
-    <content type="html"><![CDATA[<p>When plotting several lines in Matlab, I have become aware of how hard it was to see the colours in the legend. Based <a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/267186">on this matlabcentral question</a> I found an easy way to control the line thickness in the legend.</p>
-
-<pre><code>plot(randn(100,1));
-hold on;
-plot(randn(100,1),'k');
-
-
-[legh,objh,outh,outm] = legend('First','Second','Location','Southeast');
-set(objh,'linewidth',2); %%&lt;-- set legend line thickness to 2
-</code></pre>
-
-<p>Or just the following after you define your legend:</p>
-
-<pre><code>% legend('First','Second','Location','Southeast');
-
-[legh,objh,outh,outm] = legend();
-set(objh,'linewidth',2);
-</code></pre>
 ]]></content>
   </entry>
   

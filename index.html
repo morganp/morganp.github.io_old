@@ -9,9 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="git tag -a 0.0.1 -m "Tag comment"
-git push --tags Note: The use of major.minor.patch Semantic Versioning is a really good idea.
-">
+  <meta name="description" content="Checkout : Apple support. Disable &lsquo;Adjust keyboard brightness in low light&rsquo;. ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +81,48 @@ git push --tags Note: The use of major.minor.patch Semantic Versioning is a real
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/macbook-keyboard-light-not-working/">Macbook Keyboard Light Not Working</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-13T20:00:47+00:00" pubdate data-updated="true">Mar 13<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/macbook-keyboard-light-not-working/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/macbook-keyboard-light-not-working/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Checkout : <a href="http://support.apple.com/kb/HT4882">Apple support</a>.</p>
+
+<p>Disable &lsquo;Adjust keyboard brightness in low light&rsquo;.<br/>
+<img src="/images/Tech/Keyboard_low_light.png" alt="" /></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -683,60 +723,6 @@ git gc --prune=now
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/edit-octopress-posts/">Edit Octopress Posts</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-01T19:28:17+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
-        
-           | <a href="/blog/tech/edit-octopress-posts/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/edit-octopress-posts/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Creating new posts in Octopress is <code>rake new_post["Edit Posts"]</code> which outputs the created filename.</p>
-
-<p>Posts are prefixed with date, which can make it difficult to find a particular post to edit. Tab completion can help if you known the year of the post but it may still list 100&rsquo;s of posts where you have to spot the title, and narrow it done via month and day. To get around this I use this script to launch matching posts in my editor:</p>
-
-<pre><code>#!/bin/bash
-
-editor="mvim"
-post_path="source/_posts/"
-
-for OUTPUT in $(ls $post_path | grep $1)
-do
-  file_list="$file_list $post_path$OUTPUT"
-done
-
-$editor $file_list
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -749,11 +735,15 @@ $editor $file_list
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (14)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (220)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (14)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (221)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/macbook-keyboard-light-not-working/">Macbook Keyboard Light Not Working</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/git-tag-and-push-to-github/">Git Tag and Push to Github</a>
@@ -769,10 +759,6 @@ $editor $file_list
     
       <li class="post">
         <a href="/blog/engineering/matlab-function-outputs/">Matlab Function Outputs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/bash-string-manipulation/">Bash String Manipulation</a>
       </li>
     
   </ul>

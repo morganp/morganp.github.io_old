@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="In Verilog to output to stdout without a line return use $write(); Equivalent statements : $write("\n");
-$display(""); ">
+  <meta name="description" content="Creating new posts in Octopress is rake new_post["Edit Posts"] which outputs the created filename. Posts are prefixed with date, which can make it &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,60 @@ $display(""); ">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/edit-octopress-posts/">Edit Octopress Posts</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-01T19:28:17+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
+        
+           | <a href="/blog/tech/edit-octopress-posts/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/edit-octopress-posts/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Creating new posts in Octopress is <code>rake new_post["Edit Posts"]</code> which outputs the created filename.</p>
+
+<p>Posts are prefixed with date, which can make it difficult to find a particular post to edit. Tab completion can help if you known the year of the post but it may still list 100&rsquo;s of posts where you have to spot the title, and narrow it done via month and day. To get around this I use this script to launch matching posts in my editor:</p>
+
+<pre><code>#!/bin/bash
+
+editor="mvim"
+post_path="source/_posts/"
+
+for OUTPUT in $(ls $post_path | grep $1)
+do
+  file_list="$file_list $post_path$OUTPUT"
+done
+
+$editor $file_list
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -581,62 +634,6 @@ Add to frying pan as you go.<br/>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-legend-colours/">Matlab: Legend Colours</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-13T20:51:45+00:00" pubdate data-updated="true">Feb 13<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-legend-colours/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/engineering/matlab-legend-colours/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When plotting several lines in Matlab, I have become aware of how hard it was to see the colours in the legend. Based <a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/267186">on this matlabcentral question</a> I found an easy way to control the line thickness in the legend.</p>
-
-<pre><code>plot(randn(100,1));
-hold on;
-plot(randn(100,1),'k');
-
-
-[legh,objh,outh,outm] = legend('First','Second','Location','Southeast');
-set(objh,'linewidth',2); %%&lt;-- set legend line thickness to 2
-</code></pre>
-
-<p>Or just the following after you define your legend:</p>
-
-<pre><code>% legend('First','Second','Location','Southeast');
-
-[legh,objh,outh,outm] = legend();
-set(objh,'linewidth',2);
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -651,11 +648,15 @@ set(objh,'linewidth',2);
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (14)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (220)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (14)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (221)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/macbook-keyboard-light-not-working/">Macbook Keyboard Light Not Working</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/git-tag-and-push-to-github/">Git Tag and Push to Github</a>
@@ -671,10 +672,6 @@ set(objh,'linewidth',2);
     
       <li class="post">
         <a href="/blog/engineering/matlab-function-outputs/">Matlab Function Outputs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/bash-string-manipulation/">Bash String Manipulation</a>
       </li>
     
   </ul>
