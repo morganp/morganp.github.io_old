@@ -9,9 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="ctrl-6 Demo For the example we will create 3 new temp files and then open them in vim. touch vim_test1.txt
-touch vim_test2.txt
-touch vim_test3.txt &hellip;">
+  <meta name="description" content="For ssh and ping to local machines with out the .local extension I added them to my /ets/hosts file. A normal user does not have permission so you &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +81,122 @@ touch vim_test3.txt &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mountain-lion-setup-part-5-etchosts/">Mountain Lion Setup, Part 5 /etc/hosts</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-30T20:28:12+01:00" pubdate data-updated="true">Aug 30<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/mountain-lion-setup-part-5-etchosts/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/mountain-lion-setup-part-5-etchosts/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For ssh and ping to local machines with out the .local extension I added them to my /ets/hosts file.</p>
+
+<p>A normal user does not have permission so you have to use sudo. If you os x account has admin privlages it will prompt you for your password. If you have not used vim before, i for insert mode (like a standard text editor), esc to exit insert mode and :wq to write and quit.</p>
+
+<pre><code>sudo vim /etc/hosts
+
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.  
+##
+127.0.0.1   localhost
+255.255.255.255 broadcasthost
+::1             localhost 
+fe80::1%lo0 localhost
+
+## Append Local fixed ip Machines
+192.168.10.1   router
+192.168.10.100 macmini
+192.168.10.101 krypton
+192.168.10.250 backup
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/os-x-get-info-summary-for-multiple-items/">OS X Get Info Summary for Multiple Items</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-29T21:02:22+01:00" pubdate data-updated="true">Aug 29<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/os-x-get-info-summary-for-multiple-items/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/os-x-get-info-summary-for-multiple-items/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you use the ⌘I shortcut in finder with a file selected you get a &lsquo;Get Info&rsquo; window. If you do this with 20 files selected you get 20 windows, In Snow Leopard if 10 or more file were selected you got a Summary window. I found this handy for getting the disk usage for a bunch of files.</p>
+
+<p>If you would like to change it to always get the Summary window, which I find useful in case of selecting all in a folder and accidentally hitting ⌘I you do not a have many many windows to close.</p>
+
+<p>Open System preferences, select keyboard.<br/>
+<a href="http://www.flickr.com/photos/morgan_prior/7889683364/" title="01-SysPref_Keyboard.png by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8462/7889683364_21baa38a61.jpg" width="500" height="367" alt="01-SysPref_Keyboard.png"></a></p>
+
+<p>Keyboard Shortcuts &ndash;> Application Shortcut &ndash;> +<br/>
+<a href="http://www.flickr.com/photos/morgan_prior/7889714382/" title="02-Keyboard.png by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8035/7889714382_a81aa4d791.jpg" width="500" height="455" alt="02-Keyboard.png"></a></p>
+
+<p>Application, select Finder.<br/>
+Menu Title, enter &lsquo;Summary Get Info&#8217;<br/>
+Keyboard Shortcut, press  ⌘I <br/>
+<a href="http://www.flickr.com/photos/morgan_prior/7889720574/" title="03-Entry.png by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8032/7889720574_0ed2232077.jpg" width="500" height="455" alt="03-Entry.png"></a></p>
+
+<p>Done<br/>
+<a href="http://www.flickr.com/photos/morgan_prior/7889724254/" title="04-cmdI-final.png by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8443/7889724254_bf1f39f4a7.jpg" width="500" height="455" alt="04-cmdI-final.png"></a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -724,101 +838,6 @@ Then select Downloads.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/mountain-lion-default-path/">Mountain Lion Default $PATH</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-16T09:25:37+01:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/mountain-lion-default-path/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/mountain-lion-default-path/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
-</code></pre>
-
-<p>To Reset it back to this value run (from /Applications/Utilities/Terminal.app)</p>
-
-<pre><code>export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
-</code></pre>
-
-<p>NB: Note the removal of X11 from this compared to the Lion path:</p>
-
-<pre><code>/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/lion-default-path/">Lion Default $PATH</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-16T09:22:58+01:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/lion-default-path/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/lion-default-path/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
-</code></pre>
-
-<p>To Reset it back to this value run (from /Applications/Utilities/Terminal.app)</p>
-
-<pre><code>export path=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -833,11 +852,19 @@ Then select Downloads.</p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (13)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/tool-acquisition/">Tool Acquisition</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/garden/propagator-trays/">Propagator Trays</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/f-stop-loka-hydration/">F-Stop Loka Hydration</a>
@@ -849,14 +876,6 @@ Then select Downloads.</p>
     
       <li class="post">
         <a href="/blog/tech/macbook-keyboard-light-not-working/">Macbook Keyboard Light Not Working</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/git-tag-and-push-to-github/">Git Tag and Push to Github</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/beyond-the-lsb/">Beyond the LSB</a>
       </li>
     
   </ul>
