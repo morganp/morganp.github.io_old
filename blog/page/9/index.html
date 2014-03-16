@@ -9,9 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="sudo lshw -class disk -class storage -short Outputs : H/W path Device Class Description
-=====================================================
-/0/100/ &hellip;">
+  <meta name="description" content="Still unresolved The Jetway ADPE4S uses a Marvell 88SE6145 chip which a number of users have had trouble getting to work with Linux. Currently there &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +81,66 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ubuntu-and-the-jetway-adpe4s/">Ubuntu and the Jetway ADPE4S</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-02T17:02:37+01:00" pubdate data-updated="true">May 2<span>nd</span>, 2013</time>
+        
+           | <a href="/blog/tech/ubuntu-and-the-jetway-adpe4s/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/ubuntu-and-the-jetway-adpe4s/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>Still unresolved</strong></p>
+
+<p>The Jetway ADPE4S uses a Marvell 88SE6145 chip which a number of users have had trouble getting to work with Linux.</p>
+
+<p>Currently there is <a href="https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1087790">bug report</a> open for ubuntu about it.</p>
+
+<p>Also there is a report on the <a href="http://wiki.debian.org/pata_marvell">debian wiki</a> about fixing it so far I have:</p>
+
+<p>/etc/modprobe.d/my-marvell.conf</p>
+
+<pre><code>install pata_marvell /bin/true
+</code></pre>
+
+<p>/etc/modprobe.d/my-marvel.conf //&lt;&mdash; spelling mistake?</p>
+
+<pre><code>options ahci marvell_enable=1
+</code></pre>
+
+<p>Run (rebuilds some boot thingy):</p>
+
+<pre><code>sudo update-initramfs -u
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -623,66 +681,6 @@ x . 1/x  =1
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vim-code-folding/">Vim Code Folding</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-22T16:37:17+00:00" pubdate data-updated="true">Jan 22<span>nd</span>, 2013</time>
-        
-           | <a href="/blog/tech/vim-code-folding/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/vim-code-folding/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To enable code folding in Vim type (from normal mode):</p>
-
-<pre><code>:set foldmethod=marker
-</code></pre>
-
-<p>Or add this to your <code>.vimrc</code></p>
-
-<pre><code>set foldmethod=marker
-</code></pre>
-
-<p>Now anything contained with in <code>}</code> will be folded.</p>
-
-<h2>Commands</h2>
-
-<p>From Normal mode</p>
-
-<p>unfold <code>zo</code> (open)<br/>
-fold  <code>zc</code> (collapse)<br/>
-unfold all <code>zr</code><br/>
-Fold all <code>zm</code></p>
-
-<p>Read more on <a href="http://vim.wikia.com/wiki/Folding">vim wiki</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/10/">&larr; Older</a>
@@ -697,11 +695,15 @@ Fold all <code>zm</code></p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (13)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/raised-bed/">Raised Bed, Update</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/tool-acquisition/">Tool Acquisition</a>
@@ -717,10 +719,6 @@ Fold all <code>zm</code></p>
     
       <li class="post">
         <a href="/blog/tech/ruby-iterate-over-lines-in-a-string/">Ruby Iterate Over Lines in a String</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/macbook-keyboard-light-not-working/">Macbook Keyboard Light Not Working</a>
       </li>
     
   </ul>
