@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="After making a few updates to my site it stopped working after deploying. The issue was that the gem version of compass had not been tied down and &hellip;">
+  <meta name="description" content="The camera aperture is how far the iris is kept open during the exposure. A wide aperture, large opening lets in more light so can have a faster &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,90 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/camera-apetures-/">Camera Apetures</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-28T22:29:47+01:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time>
+        
+           | <a href="/blog/photography/camera-apetures-/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/photography/camera-apetures-/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The camera aperture is how far the iris is kept open during the exposure. A wide aperture, large opening lets in more light so can have a faster shutter speed but also has a lower depth of field (DOF). That is less of the image will be in sharp focus.</p>
+
+<p>Lens are sold based on there largest aperture, f2.8, f4 etc but how do these relate to each other? Stops are the often used measurement of photographic equipment. Here if a lens is one stop faster it will have an aperture wide enough to half the exposure time.</p>
+
+<p>From f1 the whole stops are:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center"> 1 </th>
+<th align="center"> 2 </th>
+<th align="center"> 3 </th>
+<th align="center"> 4 </th>
+<th align="center"> 5 </th>
+<th align="center"> 6 </th>
+<th align="center"> 7 </th>
+<th> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td align="center"> f1.0 </td>
+<td align="center"> f1.4 </td>
+<td align="center"> f2.0 </td>
+<td align="center"> f2.8 </td>
+<td align="center"> f4.0 </td>
+<td align="center"> f5.6 </td>
+<td align="center"> f8.0 </td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>There are a few lenses which are rated as f4-5.6 which we can see represents a full stop, which means at it maximum zoom the lens will be even slower. For a fixed aperture the lens would be slower as we increase focal length (zoom in) because we take the centre portion of the light, here we also suffer from a smaller aperture.</p>
+
+<h2>Area</h2>
+
+<p>The area of the size of the aperture changes by square root of 2 (about 1.41) .  <a href="http://en.wikipedia.org/wiki/Aperture#Aperture_area">Wikipedia</a> has an equation which can be used to calculate the amount (area) of light collected from a lens for a given focal length and aperture.</p>
+
+<pre><code>f = focal length, eg 50mm
+n = f-stop, eg 5.6
+area = pi *( f/(2*n) )^2
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -811,70 +895,6 @@ This will overwrite existing gems in ruby-1.9.3-p194 and remove them from ruby-1
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/bash-script-get-current-script-directory/">Bash Script Get Current Script Directory</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-07T13:45:37+01:00" pubdate data-updated="true">Apr 7<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/bash-script-get-current-script-directory/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/bash-script-get-current-script-directory/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sometime a script needs to now the directory that it is executing from, the best solution for this is:</p>
-
-<pre><code>DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &amp;&amp; pwd )"
-</code></pre>
-
-<p>Although the simpler version below should work for most cases the version above is preferred for shell portability.</p>
-
-<pre><code>DIR=`dirname $0` 
-</code></pre>
-
-<p>The usage of this could be for creating shell scripts that a user can double click to execute or drag on to the terminal to execute, as the working directory could change. Uses the scripts folder means that if a user copies the script to a new project it will work in the new project rather than having absolute paths to the old project.</p>
-
-<pre><code>#!/bin/bash
-
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &amp;&amp; pwd )"
-CSS_COLLATION=$DIR/screen.css
-
-#Clean File
-echo '' &gt; $CSS_COLLATION
-
-#Append CSS
-cat $DIR/reset.css &gt;&gt; $CSS_COLLATION
-cat $DIR/960.css &gt;&gt; $CSS_COLLATION
-</code></pre>
-
-<p><a href="http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in">From StackOverflow</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/16/">&larr; Older</a>
@@ -889,11 +909,15 @@ cat $DIR/960.css &gt;&gt; $CSS_COLLATION
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/photography/f-stop-loka-hydration/">F-Stop Loka Hydration</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/ruby-iterate-over-lines-in-a-string/">Ruby Iterate Over Lines in a String</a>
@@ -909,10 +933,6 @@ cat $DIR/960.css &gt;&gt; $CSS_COLLATION
     
       <li class="post">
         <a href="/blog/engineering/beyond-the-lsb/">Beyond the LSB</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/cooking/spicy-choclate-cake/">Spicy Choclate Cake</a>
       </li>
     
   </ul>

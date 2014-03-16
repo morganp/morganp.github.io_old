@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="This is based on a guide to adding retina support to websites. To add a tiled (repeating) background cretae 2 images one at 100x100px and the other &hellip;">
+  <meta name="description" content="For code reuse within I have found Subversion externals really nice to work with. Instead of copy and pasting code between projects you import part &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,98 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/git-submodules/">Git Submodules</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-28T11:40:17+01:00" pubdate data-updated="true">Sep 28<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/git-submodules/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/git-submodules/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For code reuse within I have found Subversion externals really nice to work with. Instead of copy and pasting code between projects you import part or a whole Subversion repository, at trunk, a pinned revision of trunk or a tag.</p>
+
+<p>Git has some thing similar called submodules. Git Submodules are covered in <a href="http://git-scm.com/book/en/Git-Tools-Submodules">Chapter 6.6</a> of [Pro Git][progit] by Scott Chacon. Which has been <a href="http://git-scm.com/book">released for free</a>.</p>
+
+<p>My example is based on <a href="http://git-scm.com/book/en/Git-Tools-Submodules">Chapter 6.6</a> with a little bit of experimenting.</p>
+
+<p>For the example we will have git repos <code>project_top</code> and <code>project_sub</code>.</p>
+
+<pre><code>$ cd project_top
+$ git submodule add git@github.com:morganp/project_sub.git sub
+</code></pre>
+
+<p>We now have a folder in project_top called sub.</p>
+
+<pre><code>$ git status
+# On branch master
+# Changes to be committed:
+#     new file: .gitmodules
+#     new file: sub
+</code></pre>
+
+<p>The .gitmodules keeps track of which git repos map to folder names. sub is interesting it is actually recording the commit (hash) that you currently have cloned in sub.</p>
+
+<p>If you commit these changes.</p>
+
+<pre><code>$git commit -am 'Added Sub module sub'
+</code></pre>
+
+<p>Then go into folder sub and create or modify a file, you will see that git status works as expected if you were in a standalone repository.</p>
+
+<p>If you then commit and push the changes to sub :</p>
+
+<pre><code>git commit -am 'Modifying project_sub'
+git push origin master
+</code></pre>
+
+<p>Pushing back to the location everyone else will pull from is important as the next stage will move the project_sub sumodule on to that revision and if the commit hash does not exist and git clone or pull would fail.</p>
+
+<p>Going back to the main project_top and lets see what modifications to sub (project_sub) look like.</p>
+
+<pre><code>$ git status
+# On branch master
+# Changes not staged for commit:
+#        modified: sub (new commits)
+</code></pre>
+
+<p>Now release the changes in project_sub to every one else on project_top.</p>
+
+<pre><code>git commit sub -m 'moving to point to latest project_sub'
+git push origin master
+</code></pre>
+
+<p>Done.<br/>
+Note that github understands submodules and will display sub as a special folder in project_top. Sub will link to to the master page, there will also be a hash which will link to the included revision in that commit of project_top.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -608,93 +700,6 @@ Keyboard Shortcut, press  ⌘I <br/>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vim-toggle-between-last-2-edited-buffers/">#vim Toggle Between Last 2 Edited Buffers</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-29T11:22:06+01:00" pubdate data-updated="true">Aug 29<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/vim-toggle-between-last-2-edited-buffers/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/vim-toggle-between-last-2-edited-buffers/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>ctrl-6
-</code></pre>
-
-<h1>Demo</h1>
-
-<p>For the example we will create 3 new temp files and then open them in vim.</p>
-
-<pre><code>touch vim_test1.txt
-touch vim_test2.txt
-touch vim_test3.txt
-vim vim_test*
-</code></pre>
-
-<p>From with in vim</p>
-
-<pre><code>:ls 
-1 %a   "vim_test1.txt"                line 2
-2      "vim_test2.txt"                line 0
-3      "vim_test3.txt"                line 0
-</code></pre>
-
-<p>Buffer 1 is active (%a) if we jump to buffer 3</p>
-
-<pre><code>:b3
-:ls
-1 #    "vim_test1.txt"                line 2
-2      "vim_test2.txt"                line 0
-3 %a   "vim_test3.txt"                line 2
-</code></pre>
-
-<p>Buffer 3 is active (%a) and 3 is previous edited buffer. ctrl-6 will switch these around. Toggling the active buffer between the two.</p>
-
-<pre><code>ctrl-6
-:ls
-1 %a   "vim_test1.txt"                line 2
-2      "vim_test2.txt"                line 0
-3 #    "vim_test3.txt"                line 2 
-ctrl-6
-:ls
-1 #    "vim_test1.txt"                line 2
-2      "vim_test2.txt"                line 0
-3 %a   "vim_test3.txt"                line 2  
-</code></pre>
-
-<p>To scroll through the buffers in order:</p>
-
-<pre><code>:bn (Next Buffer)
-:bp (Previous Buffer)
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -709,11 +714,15 @@ ctrl-6
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/photography/f-stop-loka-hydration/">F-Stop Loka Hydration</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/ruby-iterate-over-lines-in-a-string/">Ruby Iterate Over Lines in a String</a>
@@ -729,10 +738,6 @@ ctrl-6
     
       <li class="post">
         <a href="/blog/engineering/beyond-the-lsb/">Beyond the LSB</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/cooking/spicy-choclate-cake/">Spicy Choclate Cake</a>
       </li>
     
   </ul>

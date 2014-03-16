@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://morganp.github.io/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-03-16T18:09:56+00:00</updated>
+  <updated>2014-03-16T18:19:17+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[F-Stop Loka Hydration]]></title>
+    <link href="http://morganp.github.io/blog/photography/f-stop-loka-hydration/"/>
+    <updated>2014-03-16T18:13:55+00:00</updated>
+    <id>http://morganp.github.io/blog/photography/f-stop-loka-hydration</id>
+    <content type="html"><![CDATA[<p>Not a review, just noting the default position of the velcro hydration loop, before I remove it.
+Left shoulder, under chest harness.</p>
+
+<p><img src="http://morganp.github.io/images/Photography/Loka/morganp-20140315-Loka-IMG_6970.jpg" alt="" />
+<img src="http://morganp.github.io/images/Photography/Loka/morganp-20140315-Loka-IMG_6976.jpg" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby Iterate Over Lines in a String]]></title>
@@ -498,29 +511,6 @@ $display("");
 <p><img src="http://morganp.github.io/images/Gardening/morganp-20140218-Propagator-IMG_6827.jpg" title="Garland Super7" alt="Propagator" /></p>
 
 <p>Hopefully I will have some better luck in the future.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Monkey Patch Octopress]]></title>
-    <link href="http://morganp.github.io/blog/tech/monkey-patch-octopress/"/>
-    <updated>2014-02-18T19:46:55+00:00</updated>
-    <id>http://morganp.github.io/blog/tech/monkey-patch-octopress</id>
-    <content type="html"><![CDATA[<p>Based on <a href="https://github.com/imathis/octopress/blob/master/plugins/post_filters.rb">post_filters by imathis</a>.</p>
-
-<p>First Move the original method out the way with <code>alias_method</code>  then create a new method with the original name, calling the original now aliased method if required.</p>
-
-<pre><code>module Jekyll
-  class URL
-    alias_method :old_sanitize_url, :sanitize_url
-    def sanitize_url(in_url)
-      old_sanitize_url(in_url).downcase
-    end
-  end
-end
-</code></pre>
-
-<p>This was used to build my <a href="https://github.com/morganp/octopress_url_downcase">Octopress plugin octopress_url_downcase</a>.</p>
 ]]></content>
   </entry>
   

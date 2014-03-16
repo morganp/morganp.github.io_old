@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Photography | RockPaperScissors]]></title>
   <link href="http://morganp.github.io/blog/photography/atom.xml" rel="self"/>
   <link href="http://morganp.github.io/"/>
-  <updated>2014-03-16T18:09:56+00:00</updated>
+  <updated>2014-03-16T18:19:17+00:00</updated>
   <id>http://morganp.github.io/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[F-Stop Loka Hydration]]></title>
+    <link href="http://morganp.github.io/blog/photography/f-stop-loka-hydration/"/>
+    <updated>2014-03-16T18:13:55+00:00</updated>
+    <id>http://morganp.github.io/blog/photography/f-stop-loka-hydration</id>
+    <content type="html"><![CDATA[<p>Not a review, just noting the default position of the velcro hydration loop, before I remove it.
+Left shoulder, under chest harness.</p>
+
+<p><img src="/images/Photography/Loka/morganp-20140315-Loka-IMG_6970.jpg" alt="" />
+<img src="/images/Photography/Loka/morganp-20140315-Loka-IMG_6976.jpg" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[F-stop ICUs]]></title>
@@ -85,24 +98,6 @@ Depth: 16.5cm. Width: 27cm. Height: 46cm  External Volume 25L</p>
     <content type="html"><![CDATA[<p><a href="http://labs.adobe.com/technologies/lightroom5-3/">Lightroom 5.3RC</a></p>
 
 <p>The Lightroom 5.3 release candidate will expire on December 31, 2013.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Photographing Stars Avoiding Star Trails]]></title>
-    <link href="http://morganp.github.io/blog/photography/photographing-stars-avoiding-star-trails/"/>
-    <updated>2013-09-06T06:55:22+01:00</updated>
-    <id>http://morganp.github.io/blog/photography/Photographing-stars-avoiding-star-trails</id>
-    <content type="html"><![CDATA[<p>While not attempted getting good images of the milkyway yet every so often I see some good examples and do a little bit more research.</p>
-
-<p>This thread on <a href="http://www.canonrumors.com/forum/index.php?topic=16310.msg300095#msg300095">Canon Rumours</a> pointed me towards the &lsquo;600 Rule&rsquo;.</p>
-
-<p>As a guide to avoid star trails 600/focal length gives the maximum exposure in seconds avoiding star trails.</p>
-
-<pre><code>600/24mm =&gt; 25 Second exposure
-</code></pre>
-
-<p><a href="http://photo.stackexchange.com/q/30263/5572">Rule of 600 discussed on photo stackexchange</a></p>
 ]]></content>
   </entry>
   

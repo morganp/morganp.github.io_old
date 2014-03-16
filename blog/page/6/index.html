@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Good programming practice is to use spaces to indent code rather than tabs. Due to tabs often being rendered differently by editors and personal &hellip;">
+  <meta name="description" content="Running the Simulink model model.mdl from matlab for a specified time: sim('model', stoptime) Where stoptime is a number. To mix with other options &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,85 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-setting-simulink-simulation-stop-time/">Matlab Setting Simulink Simulation Stop Time</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-29T19:17:44+00:00" pubdate data-updated="true">Oct 29<span>th</span>, 2013</time>
+        
+           | <a href="/blog/engineering/matlab-setting-simulink-simulation-stop-time/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/engineering/matlab-setting-simulink-simulation-stop-time/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Running the Simulink model model.mdl from matlab for a specified time:</p>
+
+<pre><code>sim('model', stoptime)
+</code></pre>
+
+<p>Where stoptime is a number. To mix with other options such eg. SimulationMode, things get a little trickier.</p>
+
+<pre><code>sim( 'model', 'SimulationMode', 'normal')
+</code></pre>
+
+<p>you would expect:</p>
+
+<pre><code>sim( 'model', 'SimulationMode', 'normal', 'StopTime', 1)
+</code></pre>
+
+<p>but this results in :</p>
+
+<pre><code>Invalid setting in block_diagram 'model' for parameter 'StopTime'
+</code></pre>
+
+<p>The trick is that parameter, value pairs must be strings, what you actually need to do is:</p>
+
+<pre><code>sim( 'model', 'SimulationMode', 'normal', 'StopTime', num2str(1) )
+</code></pre>
+
+<p>Or you can create an ParameterStruct,</p>
+
+<pre><code>SimOpts.SimulationMode = 'normal';
+SimOpts.StopTime       = num2str(1);
+sim( 'model', SimOpts )
+</code></pre>
+
+<p>Both of these methods change the way in which the to_workspace blocks work, instead of just outputting a variable to the workspace or available in the calling function sim now returns an &lsquo;Simulink.SimulationOutput&rsquo; object.</p>
+
+<p>Instead of just accessing &lsquo;simout&rsquo; you know need to capture the sim output and use the get command to retrieve the data :</p>
+
+<pre><code>simdata = sim( 'model', SimOpts ) ;
+simdata.get('simout' )
+</code></pre>
+
+<p><a href="http://www.mathworks.co.uk/help/simulink/ug/using-the-sim-command.html">Further Info on the sim command</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -687,50 +766,6 @@ secondary path can contain multiple folders.</p></blockquote>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/tcsh-check-a-var-exists/">Tcsh Check a Var Exists</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-07T07:04:38+01:00" pubdate data-updated="true">Aug 7<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/tcsh-check-a-var-exists/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/tcsh-check-a-var-exists/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To check if an environment variable exists in .mycshrc or shell scripts</p>
-
-<pre><code>if ($?TERM) then
-  echo "TERM is $TERM" 
-endif
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -745,11 +780,15 @@ endif
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/photography/f-stop-loka-hydration/">F-Stop Loka Hydration</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/ruby-iterate-over-lines-in-a-string/">Ruby Iterate Over Lines in a String</a>
@@ -765,10 +804,6 @@ endif
     
       <li class="post">
         <a href="/blog/engineering/beyond-the-lsb/">Beyond the LSB</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/cooking/spicy-choclate-cake/">Spicy Choclate Cake</a>
       </li>
     
   </ul>

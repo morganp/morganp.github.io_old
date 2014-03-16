@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="This snippet can be added to you ~/.vimrc to highlight long lines. " Highlight lines over 80 characters long with red background
-highlight OverLength &hellip;">
+  <meta name="description" content="After updating my website on webfaction nginx kept saying permission denied and when I tried to view my site I got a 502 Bad Gateway error page. To &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,56 @@ highlight OverLength &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/webfaction-problems-restarting-nginx/">WebFaction Problems Restarting Nginx</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-27T09:39:48+01:00" pubdate data-updated="true">Jun 27<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/webfaction-problems-restarting-nginx/#disqus_thread"
+             data-disqus-identifier="http://morganp.github.io/blog/tech/webfaction-problems-restarting-nginx/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After updating my website on <a href="http://www.webfaction.com/?affiliate=morgy">webfaction</a> nginx kept saying permission denied and when I tried to view my site I got a 502 Bad Gateway error page.</p>
+
+<p>To restart nginx I use to call:</p>
+
+<pre><code>  ~/webapps/passenger/bin/restart
+</code></pre>
+
+<p>I had to change this to:</p>
+
+<pre><code>~/webapps/passenger/nginx/sbin/nginx -p ~/webapps/passenger/nginx/ -s stop  
+~/webapps/passenger/nginx/sbin/nginx -p ~/webapps/passenger/nginx/ 
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -712,47 +761,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/m4b-audiobooks-on-android/">M4B Audiobooks on Android</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-07T11:15:46+01:00" pubdate data-updated="true">Jun 7<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/m4b-audiobooks-on-android/#disqus_thread"
-             data-disqus-identifier="http://morganp.github.io/blog/tech/m4b-audiobooks-on-android/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The *.m4b extension is used for audiobooks on the iTunes Store and is a convenient (if you have an iPod) format that other Audio books can be converted to. It is a wrapper for AAC encoded audio data with chapters.</p>
-
-<p>So far there looks to be two promising players for the Android that can handle DRM free M4B. <a href="http://amblingbookplayer.com/">AmblingBookPlayer</a> and <a href="http://www.absent.fi/mobile/?id=88">BookDroid</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/27/">&larr; Older</a>
@@ -767,11 +775,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (31)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (15)</a></li><li><a href='/blog/garden'>Garden (11)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/photography/f-stop-loka-hydration/">F-Stop Loka Hydration</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/ruby-iterate-over-lines-in-a-string/">Ruby Iterate Over Lines in a String</a>
@@ -787,10 +799,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/beyond-the-lsb/">Beyond the LSB</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/cooking/spicy-choclate-cake/">Spicy Choclate Cake</a>
       </li>
     
   </ul>
