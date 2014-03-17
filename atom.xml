@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-03-17T19:38:05+00:00</updated>
+  <updated>2014-03-17T19:56:54+00:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab Wrapper Scripts]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-wrapper-scripts/"/>
+    <updated>2014-03-17T19:48:57+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/matlab-wrapper-scripts</id>
+    <content type="html"><![CDATA[<p>To wrap a function with variable input arguments and pass them all on to the wrapped function.
+Based on a <a href="http://stackoverflow.com/questions/4895556/how-to-wrap-a-function-using-varargin-and-varargout">StackOverflow answer</a>:</p>
+
+<pre><code>function varargout = wrapper( varargin )
+[varargout{1:nargout}] = someFunction( varargin{:} ); 
+</code></pre>
+
+<p>Used in the <a href="https://github.com/Matlab-Toolbox/printf">printf toolbox</a>: where we wrap fprint to print directly to stdout.</p>
+
+<pre><code>function printf( varargin )
+  fprintf(1, varargin{:}); 
+end
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Matlab Sort_by]]></title>
@@ -529,23 +550,6 @@ $editor $file_list
 <pre><code>$write("\n");
 $display("");
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rocket &amp; Chilli]]></title>
-    <link href="http://lizard-spock.co.uk/blog/garden/rocket-and-chilli/"/>
-    <updated>2014-02-25T21:23:40+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/garden/rocket-and-chilli</id>
-    <content type="html"><![CDATA[<p>The first batch of seeds in the propagator are off to a good start.</p>
-
-<p>Rocket:
-<img src="http://lizard-spock.co.uk/images/Gardening/morganp-20140225-Garden-IMG_6843.jpg" title="Rocket" alt="" /></p>
-
-<p>De Cayenne, Chilli Peppers:
-<img src="http://lizard-spock.co.uk/images/Gardening/morganp-20140225-Garden-IMG_6848.jpg" title="De Cayenne, Chilli Peppers" alt="" /></p>
-
-<p>Soon will re-pot and start <a href="http://apps.rhs.org.uk/advicesearch/profile.aspx?pid=386">hardening off</a>.</p>
 ]]></content>
   </entry>
   

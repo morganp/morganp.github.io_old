@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="This feature of ruby keeps catching me out as the behaviour is quite unexpected (by me). I can use a &lsquo;!&rsquo; modifying function like so: &hellip;">
+  <meta name="description" content="With Webfaction you can create new users with there own home area but there is no straight forward way to host their site. There is a posted method &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,89 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/webfaction-new-user-with-access-to-their-own-site/">Webfaction New User With Access to Their Own Site</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-28T09:24:58+01:00" pubdate data-updated="true">Apr 28<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/webfaction-new-user-with-access-to-their-own-site/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/webfaction-new-user-with-access-to-their-own-site/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>With <a href="http://www.webfaction.com/?affiliate=morgy">Webfaction</a> you can create new users with there own home area but there is no straight forward way to host their site.</p>
+
+<p>There is a posted method where the site is hosted in YOUR home/webapps directory, but that requires you reset your permissions every time you create a new site and if you forget there could be a security hole.</p>
+
+<p>Hosting the site in THEIR home directory requires you to set permissions in there directory so YOU can see it. This is much safer if all goes wrong the site does not have permission to be displayed rather than compromising your new site.</p>
+
+<p>Create new user with bash login via with <a href="http://panel.webfaction.com">Web interface</a></p>
+
+<p>set password, as this can be tricky getting a random string a cheat is to do:</p>
+
+<pre><code>echo "some random string" | md5
+</code></pre>
+
+<p>Choose 8 or more characters for the password.</p>
+
+<p>SSH login as normal</p>
+
+<pre><code>ssh user@user.webfactional.com
+</code></pre>
+
+<p>then</p>
+
+<pre><code>su new_user
+cd ~
+mkdir myweb.com
+</code></pre>
+
+<p>then set</p>
+
+<pre><code>setfacl -m u:nginx:rx ~
+setfacl -R -m u:nginx:rx myweb.com/
+
+setfacl -m u:apache:rx ~
+setfacl -R -m u:apache:rx myweb.com/
+
+setfacl -m u:Your_Username:rx ~
+setfacl -R -m u:Your_Username:rx myweb.com/
+</code></pre>
+
+<p>Back to <a href="http://www.webfaction.com/?affiliate=morgy">webfaction</a> main control panel and create a new app ( symbolic link to PHP/static )</p>
+
+<p>The info section for this needs to be:
+/home/new_user/myweb.com</p>
+
+<p>NB: currently only works with apache not nginx</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -750,65 +833,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sequel-orm-migrations/">Sequel ORM Migrations</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-31T09:07:51+01:00" pubdate data-updated="true">Mar 31<span>st</span>, 2010</time>
-        
-           | <a href="/blog/tech/sequel-orm-migrations/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sequel-orm-migrations/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Available as a <a href="http://gist.github.com/348121">gist</a> a Sequel Migration to rename a database column.</p>
-
-<pre><code>## Command line to apply Migration
-#sequel -m ./db/migrate/ -M 1 sqlite://db/data.db
-## Command to roll back
-#sequel -m ./db/migrate/ -M 0 sqlite://db/data.db
-
-Class.new(Sequel::Migration) do
-   def up
-      DB.alter_table :aTable do
-         rename_column :old, :new
-      end
-   end
-
-   def down
-     DB.alter_table :aTable do
-        rename_column :new, :old
-     end
-   end
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/30/">&larr; Older</a>
@@ -823,11 +847,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (16)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (17)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-wrapper-scripts/">Matlab Wrapper Scripts</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-sort-by/">Matlab Sort_by</a>
@@ -843,10 +871,6 @@ end
     
       <li class="post">
         <a href="/blog/garden/propagator-trays/">Propagator Trays</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/f-stop-loka-hydration/">F-Stop Loka Hydration</a>
       </li>
     
   </ul>
