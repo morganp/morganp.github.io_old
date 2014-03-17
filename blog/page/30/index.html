@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Available as a gist a Sequel Migration to rename a database column. ## Command line to apply Migration
-#sequel -m ./db/migrate/ -M 1 sqlite://db/data &hellip;">
+  <meta name="description" content="When displaying blog/articles it is often nice to have previous and next posts. Simply -1 +1 from the current post.id is not enough because posts &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,61 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/sinatra-blog-retrieving-next-and-previous-ids/">Sinatra Blog Retrieving Next and Previous Ids</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-09T10:13:17+01:00" pubdate data-updated="true">Apr 9<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/sinatra-blog-retrieving-next-and-previous-ids/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-blog-retrieving-next-and-previous-ids/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When displaying blog/articles it is often nice to have previous and next posts. Simply -1 +1 from the current post.id is not enough because posts could be deleted or marked as private. These requirements should also be added into the :conditions statement. Below is a nice way I found of finding the previous and next ids.</p>
+
+<pre><code>get '/article/:id/?' do
+   prev_post = Posts.last( :conditions =&gt; ["id &lt; ?", params[:id]])
+   next_post = Posts.first(:conditions =&gt; ["id &gt; ?", params[:id]])
+   if not prev_post.nil?
+       @prev_post_id =  prev_post.id
+   end
+   if not next_post.nil?
+      @next_post_id = next_post.id
+   end
+
+   @posts = Posts.first(:conditions =&gt; ["id = ?", params[:id]])
+
+  erb :'blog/blog_one'
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -583,47 +637,6 @@ ruby app.rb
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/gitx/">GitX</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T14:58:39+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/gitx/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/gitx/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Git has a hand full of GUIs available on Mac OS X, gitk proved a little tricky to use but <a href="http://gitx.frim.nl/">GitX</a> has some nice features.</p>
-
-<p>Normally I would recommend just working from the command line but <a href="http://gitx.frim.nl/">GitX</a> has the ability to stage &lsquo;svn speak for prepare for a commit&rsquo; individual lines or blocks of lines. So if you forgot to commit between 2 bug fixes you can stage and push blocks of code instead of the whole file. It does not seen to be able to add new files to a repo yet though or maybe I just need to spend some more time with it.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/31/">&larr; Older</a>
@@ -638,7 +651,7 @@ ruby app.rb
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (17)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (18)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
