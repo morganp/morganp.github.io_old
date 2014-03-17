@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Engineering | RockPaperScissors]]></title>
-  <link href="http://morganp.github.io/blog/engineering/atom.xml" rel="self"/>
-  <link href="http://morganp.github.io/"/>
-  <updated>2014-03-16T22:07:34+00:00</updated>
-  <id>http://morganp.github.io/</id>
+  <link href="http://lizard-spock.co.uk/blog/engineering/atom.xml" rel="self"/>
+  <link href="http://lizard-spock.co.uk/"/>
+  <updated>2014-03-17T19:38:05+00:00</updated>
+  <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
     
@@ -14,10 +14,39 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Matlab Sort_by]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-sort-by/"/>
+    <updated>2014-03-17T18:55:11+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/matlab-sort-by</id>
+    <content type="html"><![CDATA[<p>In ruby we can perform schwartzian transforms easily with the sort_by method. This allows sorting enumerators by any property.</p>
+
+<p>For example to do a non case sensitive sort:</p>
+
+<pre><code>some_array.sort_by { |x| x.downcase }
+</code></pre>
+
+<p><a href="http://blogs.mathworks.com/pick/2010/09/17/sorting-structure-arrays-based-on-fields/">Based on this Mathworks blog</a>, I have ported the <a href="http://www.mathworks.com/matlabcentral/fileexchange/28573-nested-sort-of-structure-arrays">Matlab central code</a> to a <a href="https://github.com/Matlab-Toolbox/nested_sort">Toolbox on Github</a>.</p>
+
+<p>After Downloading the toolbox and adding the functions folder to your path.</p>
+
+<pre><code>addpath('../lib/nested_sort/function/');
+</code></pre>
+
+<p>Basic usage is:</p>
+
+<pre><code>A = struct('name', num2cell(1:4), 'value', {5,2,3,1});
+B=sortStruct(A,'value');
+</code></pre>
+
+<p>B is A sorted by &lsquo;value&rsquo;.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Beyond the LSB]]></title>
-    <link href="http://morganp.github.io/blog/engineering/beyond-the-lsb/"/>
+    <link href="http://lizard-spock.co.uk/blog/engineering/beyond-the-lsb/"/>
     <updated>2014-03-13T19:07:42+00:00</updated>
-    <id>http://morganp.github.io/blog/engineering/beyond-the-lsb</id>
+    <id>http://lizard-spock.co.uk/blog/engineering/beyond-the-lsb</id>
     <content type="html"><![CDATA[<p>If we truncate a number, that is to throw away the LSBs (least significant bits) we loose resolution.</p>
 
 <p>A 4 bit number truncated to 2 bits: <em>numbers shown in binary (Base2).</em></p>
@@ -75,9 +104,9 @@ possible for the LSB of the required resolution to effect the truncated value.</
   
   <entry>
     <title type="html"><![CDATA[Matlab Function Outputs]]></title>
-    <link href="http://morganp.github.io/blog/engineering/matlab-function-outputs/"/>
+    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-function-outputs/"/>
     <updated>2014-03-08T08:02:27+00:00</updated>
-    <id>http://morganp.github.io/blog/engineering/matlab-function-outputs</id>
+    <id>http://lizard-spock.co.uk/blog/engineering/matlab-function-outputs</id>
     <content type="html"><![CDATA[<p>Handling functions with extraneous leading outputs. For example:</p>
 
 <pre><code>function [a,b] = dummy_function
@@ -107,9 +136,9 @@ b =
   
   <entry>
     <title type="html"><![CDATA[Matlab Shuffle Array]]></title>
-    <link href="http://morganp.github.io/blog/engineering/matlab-shuffle-array/"/>
+    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-shuffle-array/"/>
     <updated>2014-03-06T20:42:57+00:00</updated>
-    <id>http://morganp.github.io/blog/engineering/matlab-shuffle-array</id>
+    <id>http://lizard-spock.co.uk/blog/engineering/matlab-shuffle-array</id>
     <content type="html"><![CDATA[<p>To shuffle a:</p>
 
 <pre><code>a(randperm(length(a)))
@@ -131,29 +160,14 @@ a =
   
   <entry>
     <title type="html"><![CDATA[OO Magic Bullet?]]></title>
-    <link href="http://morganp.github.io/blog/engineering/oo-magic-bullet/"/>
+    <link href="http://lizard-spock.co.uk/blog/engineering/oo-magic-bullet/"/>
     <updated>2014-03-01T20:04:06+00:00</updated>
-    <id>http://morganp.github.io/blog/engineering/oo-magic-bullet</id>
+    <id>http://lizard-spock.co.uk/blog/engineering/oo-magic-bullet</id>
     <content type="html"><![CDATA[<p>I do not think that there are any magic bullets, best practises can minimise risk but you have to fully understand the technique. You can not just switch from procedural code to wrapping everything in an object and claim statements like this from <a href="http://www.mathworks.co.uk/company/newsletters/articles/introduction-to-object-oriented-programming-in-matlab.html">mathworks</a>:</p>
 
 <blockquote><p>Because it was built using OO techniques, the application is now robust enough for others to use and maintain and can be integrated with related applications throughout an organization.</p></blockquote>
 
 <p>Sounds like Object-Oriented programming is a magic bullet to solve all you programming woes!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[$display Without a Line Return]]></title>
-    <link href="http://morganp.github.io/blog/engineering/without-a-line-return/"/>
-    <updated>2014-03-01T17:49:43+00:00</updated>
-    <id>http://morganp.github.io/blog/engineering/without-a-line-return</id>
-    <content type="html"><![CDATA[<p>In Verilog to output to stdout without a line return use <code>$write();</code></p>
-
-<p>Equivalent statements :</p>
-
-<pre><code>$write("\n");
-$display("");
-</code></pre>
 ]]></content>
   </entry>
   

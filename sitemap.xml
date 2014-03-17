@@ -1,1325 +1,1347 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-time-formats/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-time-formats/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/gitx/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/gitx/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/amaras-finally-online/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/amaras-finally-online/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/fourthirds-sinatra-restful-example/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/fourthirds-sinatra-restful-example/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-logger/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-logger/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-performance-measure/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-performance-measure/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-include-require-local-files/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-include-require-local-files/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-run-execute-command-line/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-run-execute-command-line/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/sinatra-10-released/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/sinatra-10-released/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/sinatra-and-compass-sending-compressed-cached-css/
+            http://lizard-spock.co.uk/blog/tech/sinatra-and-compass-sending-compressed-cached-css/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/sequel-orm-migrations/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/sequel-orm-migrations/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/sinatra-blog-retrieving-next-and-previous-ids/
+            http://lizard-spock.co.uk/blog/tech/sinatra-blog-retrieving-next-and-previous-ids/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/gem-install-with-out-the-docs/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/gem-install-with-out-the-docs/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/installing-the-ruby-gem-twitter-on-webfaction/
+            http://lizard-spock.co.uk/blog/tech/installing-the-ruby-gem-twitter-on-webfaction/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-nil-tests-fail-you-really-want-/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-nil-tests-fail-you-really-want-/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-and-gemspec/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-and-gemspec/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/itunes-play-flac-on-os-x/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/itunes-play-flac-on-os-x/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-incase-sensitive-sort/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/tech/testing-tweets-from-production-server-this-should-be-working%21/
-        </loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-incase-sensitive-sort/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/ruby-ruby-ruby-why-are-you-so-wierd-at-times/
+            http://lizard-spock.co.uk/blog/tech/testing-tweets-from-production-server-this-should-be-working%21/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/webfaction-new-user-with-access-to-their-own-site/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/sinatra-file-upload/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/engineering/matlab-scripting-axes-properties/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-memory-issue-on-web-faction/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/installing-ruby-enterprise-on-mac-os-x/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/413-request-entity-too-large/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/tech/how-to-test-subdomains-on-a-development-machine/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/stop-git-status-monitoring-file-permissions/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/nginx-enable-directory-listing/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/tech/add-http-web-control-over-your-infared-devices/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/mac-os-x-run-nginx-as-a-user-process/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/super-simple-ruby-list-directory-contents/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/open-office-impress-autostart/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-parsing-torrent-files-for-meta-info/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/github-command-line-tools-with-static-paths/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/m4b-audiobooks-on-android/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-runnable-and-includeable/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/macbook-power-consumption/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/tech/64bit-handbrake-for-video-encoding-on-mac-os-x/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/save-space-on-your-mac-by-going-monolingual/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/gem-install-memory_usage/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/creating-executable-gems/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/homebrew-package-management-for-mac-os-x/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/vim-search-and-replace/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/vim-show-lines-over-80-charaters-long/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/webfaction-problems-restarting-nginx/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/os-x-itunes-play-ogg-videos/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/vim-indenting-with-vim-/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/sinatra-running-on-heroku/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/get-client-ip-on-heroku/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/installing-git-on-a-clean-build-of-os-x/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/tech/adding-usb-drives-to-a-headless-ubuntu-linux-box/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/turn-a-jar-file-into-a-mac-app/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/tech/philip_roberts-taught-me-a-thing-or-two-about-css/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/benchmark-your-website-for-load-times/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/photography/recover-bulk-download-your-pictures-from-flickr/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/activerecord-queries-on-table-joins/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/tech/active-record-create-unique-or-return-existing-element/
+            http://lizard-spock.co.uk/blog/tech/ruby-ruby-ruby-why-are-you-so-wierd-at-times/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/active-record-attributes-simplify-update-and-create/
+            http://lizard-spock.co.uk/blog/tech/webfaction-new-user-with-access-to-their-own-site/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/removing-ports-os-x/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/sinatra-file-upload/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/basic-grep-usage/</loc>
+        <loc>http://lizard-spock.co.uk/blog/engineering/matlab-scripting-axes-properties/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://morganp.github.io/blog/tech/error-nomethoderror-undefined-method-%60compact-for-nilnilclass/
-        </loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-memory-issue-on-web-faction/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/mac-os-x-default-path/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/installing-ruby-enterprise-on-mac-os-x/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/mac-os-x-harddrive-spin-down-time/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-time-save-and-restore-serialise/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/413-request-entity-too-large/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/ruby-regular-expressions-lookahead-lookbehind/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/amazon-drops-ec2-web-service-prices/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/remove-sensitive-data-from-git/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/tech/storing-secret-keys-in-ruby-config-files-an-approach/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-each-or-delete_if/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/photography/natural-hdr-images-in-lightroom/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/stopstart-and-restart-samba-on-os-x/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/os-x-open-finder-from-command-line/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/tech/sinatra-reload-source-file-changes-in-development-mode/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/sinatra-session-extension/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/sinatra-heroku-and-configru/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/tech/rake-aborted%21-undefined-method-%60info-for-nilnilclass/
+            http://lizard-spock.co.uk/blog/tech/how-to-test-subdomains-on-a-development-machine/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/put-methods-not-working-with-classy-sinatra-apps/
+            http://lizard-spock.co.uk/blog/tech/stop-git-status-monitoring-file-permissions/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/mac-os-x-libsystem-cache-out-of-sync/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/fixing-ncursers-on-os-x-1063%2b/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/tagging-a-git-repo-for-a-release-/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-block-selection-in-vim-plugin/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/nginx-enable-directory-listing/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/photography/screen-x-not-connecting-when-running-as-an-other-user/
+            http://lizard-spock.co.uk/blog/tech/add-http-web-control-over-your-infared-devices/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/my-backup-strategy/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/mac-os-x-run-nginx-as-a-user-process/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/mac-mini-mid-2010-8gb-memory-upgrade/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/super-simple-ruby-list-directory-contents/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/sinatra-regex-routes/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/open-office-impress-autostart/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/gem-permissions-on-webfaction/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/activerecord-find-allmultiple/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/photography/beginning-astro-photography/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ormactiverecord-or-ruby-sort/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/amaras-site-updates/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-parsing-torrent-files-for-meta-info/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/photography/working-from-home-practising-enfuse-hdr/
+            http://lizard-spock.co.uk/blog/tech/github-command-line-tools-with-static-paths/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-cli-user-input-using-gets/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/m4b-audiobooks-on-android/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/unregistered-torrent-flush-the-dns/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-runnable-and-includeable/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/photography/reading-list/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/schwartzian-transform/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/macbook-power-consumption/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/better-open-source-project-setup-with-rvm-bundler/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/behaviour-and-state/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/vimfu-reindent/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/vimfu-end-of-line-character-placement/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/bash-scripts-and-cron/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/photography/lightroom-tip-press-%e2%8c%98-to-see-all-possible-shortcuts/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/recent-issue-with-building-gems/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/obnoxious-gem-warnings/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/installing-gistvim/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-arrays-part-1/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/setting-up-postgresql-on-os-x/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-script-connect-to-db-using-databaseyml/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/sinatra-activerecord-db-config-on-heroku/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/uninitialized-constant-compasslogger/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-basic-file-read-and-write/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ideas-1st-july-to-the-3rd-july/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/tech/using-sshconfig-and-no-passwords-with-mac-os-x/
+            http://lizard-spock.co.uk/blog/tech/64bit-handbrake-for-video-encoding-on-mac-os-x/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/using-sshconfig-and-no-passowrds-with-mac-os-x/
+            http://lizard-spock.co.uk/blog/tech/save-space-on-your-mac-by-going-monolingual/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/get-latest-ruby-192-build-with-rvm/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/gem-install-memory_usage/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/new-macbook-air-2011-os-x-lion/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/creating-executable-gems/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/homebrew-package-management-for-mac-os-x/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/vim-search-and-replace/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/vim-show-lines-over-80-charaters-long/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/webfaction-problems-restarting-nginx/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/make-ubuntu-samba-share-show-up-on-os-x-106-finder/
+            http://lizard-spock.co.uk/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-blocks-for-better-code-reuse/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/os-x-itunes-play-ogg-videos/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-arrays-concatenation-and-subtraction/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/vim-indenting-with-vim-/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/homebrew-list-outdated-packages/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/sinatra-running-on-heroku/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/get-client-ip-on-heroku/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/installing-git-on-a-clean-build-of-os-x/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/adding-usb-drives-to-a-headless-ubuntu-linux-box/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/turn-a-jar-file-into-a-mac-app/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/philip_roberts-taught-me-a-thing-or-two-about-css/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/benchmark-your-website-for-load-times/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/photography/recover-bulk-download-your-pictures-from-flickr/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/activerecord-queries-on-table-joins/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/active-record-create-unique-or-return-existing-element/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/active-record-attributes-simplify-update-and-create/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/removing-ports-os-x/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/basic-grep-usage/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/error-nomethoderror-undefined-method-%60compact-for-nilnilclass/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/mac-os-x-default-path/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/mac-os-x-harddrive-spin-down-time/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-time-save-and-restore-serialise/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/ruby-regular-expressions-lookahead-lookbehind/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/amazon-drops-ec2-web-service-prices/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/remove-sensitive-data-from-git/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/storing-secret-keys-in-ruby-config-files-an-approach/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-each-or-delete_if/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/photography/natural-hdr-images-in-lightroom/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/stopstart-and-restart-samba-on-os-x/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/os-x-open-finder-from-command-line/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/sinatra-reload-source-file-changes-in-development-mode/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/sinatra-session-extension/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/sinatra-heroku-and-configru/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/rake-aborted%21-undefined-method-%60info-for-nilnilclass/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/put-methods-not-working-with-classy-sinatra-apps/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/mac-os-x-libsystem-cache-out-of-sync/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/fixing-ncursers-on-os-x-1063%2b/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/tagging-a-git-repo-for-a-release-/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-block-selection-in-vim-plugin/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/photography/screen-x-not-connecting-when-running-as-an-other-user/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/my-backup-strategy/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/mac-mini-mid-2010-8gb-memory-upgrade/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/sinatra-regex-routes/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/gem-permissions-on-webfaction/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/activerecord-find-allmultiple/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/photography/beginning-astro-photography/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/ormactiverecord-or-ruby-sort/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/amaras-site-updates/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/photography/working-from-home-practising-enfuse-hdr/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-cli-user-input-using-gets/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/unregistered-torrent-flush-the-dns/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/photography/reading-list/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/schwartzian-transform/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/better-open-source-project-setup-with-rvm-bundler/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/behaviour-and-state/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/vimfu-reindent/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/vimfu-end-of-line-character-placement/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/bash-scripts-and-cron/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/photography/lightroom-tip-press-%e2%8c%98-to-see-all-possible-shortcuts/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/recent-issue-with-building-gems/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/obnoxious-gem-warnings/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/installing-gistvim/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-arrays-part-1/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/setting-up-postgresql-on-os-x/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/ruby-script-connect-to-db-using-databaseyml/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/sinatra-activerecord-db-config-on-heroku/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/uninitialized-constant-compasslogger/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-basic-file-read-and-write/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/ideas-1st-july-to-the-3rd-july/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/using-sshconfig-and-no-passwords-with-mac-os-x/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/using-sshconfig-and-no-passowrds-with-mac-os-x/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/get-latest-ruby-192-build-with-rvm/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/new-macbook-air-2011-os-x-lion/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/make-ubuntu-samba-share-show-up-on-os-x-106-finder/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-blocks-for-better-code-reuse/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-arrays-concatenation-and-subtraction/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/homebrew-list-outdated-packages/</loc>
         <lastmod>2014-03-13T21:01:47+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/warning-already-initialized-constant/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/warning-already-initialized-constant/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/photography/photography-workshops/</loc>
+        <loc>http://lizard-spock.co.uk/blog/photography/photography-workshops/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-search-and-replace-script/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-search-and-replace-script/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/arrays-3-write-idiomatic-ruby/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/arrays-3-write-idiomatic-ruby/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/tagging-a-git-repo-and-pushing-tag-to-github/
+            http://lizard-spock.co.uk/blog/tech/tagging-a-git-repo-and-pushing-tag-to-github/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/benchmarking-ruby-explicit-vs-implicit-returns/
+            http://lizard-spock.co.uk/blog/tech/benchmarking-ruby-explicit-vs-implicit-returns/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/setting-ruby-defaults-vs-fetch/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/setting-ruby-defaults-vs-fetch/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/suppressing-warnings-in-ruby-scripts/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/suppressing-warnings-in-ruby-scripts/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-send-message-to-stderr/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-send-message-to-stderr/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-get-a-users-real-name/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-get-a-users-real-name/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/photography/photo-software-update-hugin-201104-lightroom-36/
+            http://lizard-spock.co.uk/blog/photography/photo-software-update-hugin-201104-lightroom-36/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/finding-tracks-not-in-itunes/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/finding-tracks-not-in-itunes/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/recursive-grep-with-filtering/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/recursive-grep-with-filtering/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/matrix-a-ruby-standard-library/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/matrix-a-ruby-standard-library/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/vim-paste-from-insert-mode/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/vim-paste-from-insert-mode/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/photography/irb-as-a-megapixels-calculator/</loc>
+        <loc>http://lizard-spock.co.uk/blog/photography/irb-as-a-megapixels-calculator/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/list_temp_files-script/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/list_temp_files-script/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/unix-mail-command-delete-all-messages/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/unix-mail-command-delete-all-messages/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/svn-multi-line-comments-on-the-command-line-/
+            http://lizard-spock.co.uk/blog/tech/svn-multi-line-comments-on-the-command-line-/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/what-shell-am-i-using/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/what-shell-am-i-using/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/user-selectable-stylesheets-using-sinatra/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/css-via-sass-seperating-colour-and-position/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/trying-to-disable-caps-lock-on-unix-systems/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/encodingundefinedconversionerror-/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/bash-script-get-current-script-directory/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/update-your-rvm-ruby-and-migrate-gemsets/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/user-selectable-stylesheets-using-sinatra/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/sinatra-application-in-lib-and-views-public-routes-not-working/
+            http://lizard-spock.co.uk/blog/tech/css-via-sass-seperating-colour-and-position/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/photography/on-location-with-jeremy-cowart-kelby-training/
+            http://lizard-spock.co.uk/blog/tech/trying-to-disable-caps-lock-on-unix-systems/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/encodingundefinedconversionerror-/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/bash-script-get-current-script-directory/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/update-your-rvm-ruby-and-migrate-gemsets/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/sinatra-application-in-lib-and-views-public-routes-not-working/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/photography/understanding-colour-spaces-digital-imaging/
+            http://lizard-spock.co.uk/blog/photography/on-location-with-jeremy-cowart-kelby-training/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/photography/printing-photos-uk-cost-analysis-for-larger-formats/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/photography/light-and-land-book-series/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/photography/joe-cornish-book-series/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/minify-your-html-from-sinatra/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/tech/syntax-error-not-a-valid-color-stop-sassscriptstring-white/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/photography/camera-apetures-/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ubuntu-formatting-a-3tb-drive/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/using-github-behind-a-restrictive-firewall/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/vim-terminal-colours/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ipad-3-tethering/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/big-monitor-litmus-test/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/tech/handle-www-and-no-www-for-better-google-juice/
+            http://lizard-spock.co.uk/blog/photography/understanding-colour-spaces-digital-imaging/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/ruby-special-exception-variables-made-mnemonic/
+            http://lizard-spock.co.uk/blog/photography/printing-photos-uk-cost-analysis-for-larger-formats/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/rspec-testing-exceptions-old-post/</loc>
+        <loc>http://lizard-spock.co.uk/blog/photography/light-and-land-book-series/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/rspec-testing-exceptions/</loc>
+        <loc>http://lizard-spock.co.uk/blog/photography/joe-cornish-book-series/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/create-andor-of-multiple-booleans/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/device-ownership-password/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ipad-docks-cradles/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/minify-your-html-from-sinatra/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/itunes-match-and-genius-why-cant-we-have-both/
+            http://lizard-spock.co.uk/blog/tech/syntax-error-not-a-valid-color-stop-sassscriptstring-white/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/gelaskins-ipad-cases/</loc>
+        <loc>http://lizard-spock.co.uk/blog/photography/camera-apetures-/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/subscribe-to-a-channel-on-youtube-ipad/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ubuntu-formatting-a-3tb-drive/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/photography/lightroom-41-available/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/using-github-behind-a-restrictive-firewall/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/pragmatic-programmers-dropbox-integration/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/vim-terminal-colours/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/mac-mountain-lion-compatibility/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ipad-3-tethering/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/transferring-a-memory-map-2012-map-to-ios/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/web-automation-with-watir/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/lion-default-path/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/mountain-lion-default-path/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/mountain-lion-setup-part-1-upgrade-lion/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/xcode-4-install-disk-usage/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/mountain-lion-setup-part-2-homebrew-rvm/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/big-monitor-litmus-test/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/mountain-lion-setup-part-3-little-snitch-dotfiles/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/mountain-lion-setup-part-4-apps/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/photography/mountain-lion-twitter-and-flickr-integration/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/mountain-lion-finding-the-library-folder/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/vim-toggle-between-last-2-edited-buffers/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/os-x-get-info-summary-for-multiple-items/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/mountain-lion-setup-part-5-etchosts/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/os-x-installing-r/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/get-snipmate-working-a-vim-plugin/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/tech/vim-consistent-spelling-correction-highlighting/
+            http://lizard-spock.co.uk/blog/tech/handle-www-and-no-www-for-better-google-juice/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/syncing-safari-via-dropbox-for-pre-icloud-os-x/
+            http://lizard-spock.co.uk/blog/tech/ruby-special-exception-variables-made-mnemonic/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/syncing-google-contacts-in-mountain-lion/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/rspec-testing-exceptions-old-post/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/speed-up-mission-control-animation/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/rspec-testing-exceptions/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/retina-support-for-background-images/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/create-andor-of-multiple-booleans/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/git-submodules/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/device-ownership-password/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/calculating-regression-coefficients-in-r/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/safari-6-not-playing-youtube-content/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ipad-docks-cradles/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/converting-flat-structure-into-a-nested-structure/
+            http://lizard-spock.co.uk/blog/tech/itunes-match-and-genius-why-cant-we-have-both/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/gelaskins-ipad-cases/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/subscribe-to-a-channel-on-youtube-ipad/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/photography/lightroom-41-available/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/pragmatic-programmers-dropbox-integration/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/mac-mountain-lion-compatibility/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/transferring-a-memory-map-2012-map-to-ios/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/web-automation-with-watir/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/lion-default-path/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/mountain-lion-default-path/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/mountain-lion-setup-part-1-upgrade-lion/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/xcode-4-install-disk-usage/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/mountain-lion-setup-part-2-homebrew-rvm/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/mountain-lion-setup-part-3-little-snitch-dotfiles/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/mountain-lion-setup-part-4-apps/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/photography/mountain-lion-twitter-and-flickr-integration/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/mountain-lion-finding-the-library-folder/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/vim-toggle-between-last-2-edited-buffers/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/os-x-get-info-summary-for-multiple-items/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/mountain-lion-setup-part-5-etchosts/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/os-x-installing-r/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/get-snipmate-working-a-vim-plugin/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/vim-consistent-spelling-correction-highlighting/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/print-nested-array-structures-in-table-format/
+            http://lizard-spock.co.uk/blog/tech/syncing-safari-via-dropbox-for-pre-icloud-os-x/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/photography/lee-wide-angle-hood/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/syncing-google-contacts-in-mountain-lion/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/os-x-screen-capture/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/speed-up-mission-control-animation/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/photography/canon-2012-winter-cash-back/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/retina-support-for-background-images/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/git-submodules/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/calculating-regression-coefficients-in-r/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/safari-6-not-playing-youtube-content/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/photography/lightroom-43-rc1-support-for-hidpi-retina-displays/
-        </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/reverting-rtorrent-version-on-snow-leopard/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-duck-typing-strings-and-arrays/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://morganp.github.io/blog/photography/the-unworkable-lightroom-to-ipad-workflow/
+            http://lizard-spock.co.uk/blog/tech/converting-flat-structure-into-a-nested-structure/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/photography/nik-hdr-efex-pro-20-8499-even-in-the-uk/
+            http://lizard-spock.co.uk/blog/tech/print-nested-array-structures-in-table-format/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/vim-code-folding/</loc>
+        <loc>http://lizard-spock.co.uk/blog/photography/lee-wide-angle-hood/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/algebra-properties-of-real-x211d-numbers/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/os-x-screen-capture/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/engineering/testing-matlab-arrays-for-equality/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/photography/nik-collection-149-or-free/</loc>
+        <loc>http://lizard-spock.co.uk/blog/photography/canon-2012-winter-cash-back/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/tech/iso-8601-standardised-date-format-yyyy-mm-dd/
+            http://lizard-spock.co.uk/blog/photography/lightroom-43-rc1-support-for-hidpi-retina-displays/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/photography/lightroom-5-public-beta/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/reverting-rtorrent-version-on-snow-leopard/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/bittorrent-sync-free-rival-to-dropbox/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/javascript-net-curtain/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/bt-broadband-messing-around-with-your-dns/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ubuntu-linux-list-disks/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ubuntu-and-the-jetway-adpe4s/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/cooking/lamb-keema/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/cooking/black-forest-gateau/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/push-local-folder-to-remote-server-over-ssh/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/add-about-page-to-octopress/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/cooking/beefstew/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/cooking/coffee-cake/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/engineering/navigate-verilog-with-vim/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-optionally-add-path-separator/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/garden/first-tree/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/stackoverflow-sites-and-images/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/home-wi-fi/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/terminal-colours/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-duck-typing-strings-and-arrays/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/photography/lightroom-collections-whats-the-point/
+            http://lizard-spock.co.uk/blog/photography/the-unworkable-lightroom-to-ipad-workflow/
         </loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-evaluate-envvars-in-string/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/garden/growhouse/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/garden/micro-irrigation/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/tcsh-check-a-var-exists/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/weather-alerts-via-email-from-the-metoffice/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/unlocking-a-nokia-8310/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/find-redhat-version/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/photography/photographing-stars-avoiding-star-trails/
+            http://lizard-spock.co.uk/blog/photography/nik-hdr-efex-pro-20-8499-even-in-the-uk/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/engineering/name-spacing-in-matlab/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/vim-code-folding/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/garden/gardener-c14e/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/algebra-properties-of-real-x211d-numbers/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/for-loops-in-cshtcsh/</loc>
+        <loc>http://lizard-spock.co.uk/blog/engineering/testing-matlab-arrays-for-equality/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/set-vs-setenv/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/vim-convert-tabs-to-spaces/</loc>
+        <loc>http://lizard-spock.co.uk/blog/photography/nik-collection-149-or-free/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>
-            http://morganp.github.io/blog/engineering/matlab-setting-simulink-simulation-stop-time/
+            http://lizard-spock.co.uk/blog/tech/iso-8601-standardised-date-format-yyyy-mm-dd/
         </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/os-x-handbrake-install-libdvdcss-decryption/</loc>
+        <loc>http://lizard-spock.co.uk/blog/photography/lightroom-5-public-beta/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/photography/lightroom-53-rc-beta-available/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/bittorrent-sync-free-rival-to-dropbox/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/engineering/matlab-repeat-a-matrix-n-times/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/javascript-net-curtain/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/photography/hugin-2013-released/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/bt-broadband-messing-around-with-your-dns/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/photography/lightroom-library-metadata-panel/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ubuntu-linux-list-disks/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/cooking/chicken-tikka-masala/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ubuntu-and-the-jetway-adpe4s/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/cooking/sweet-and-sour-pork/</loc>
+        <loc>http://lizard-spock.co.uk/blog/cooking/lamb-keema/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/cooking/cowboy-chilli/</loc>
+        <loc>http://lizard-spock.co.uk/blog/cooking/black-forest-gateau/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/cooking/tray-bake-chicken-dinner/</loc>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/push-local-folder-to-remote-server-over-ssh/
+        </loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/vim-status-line/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/add-about-page-to-octopress/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/cshrc-alias-loop/</loc>
+        <loc>http://lizard-spock.co.uk/blog/cooking/beefstew/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/check-you-current-vim-colorscheme/</loc>
+        <loc>http://lizard-spock.co.uk/blog/cooking/coffee-cake/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/rtorrent-move-on-download-completion/</loc>
+        <loc>http://lizard-spock.co.uk/blog/engineering/navigate-verilog-with-vim/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/reverting-in-git/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-optionally-add-path-separator/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/engineering/flip-flop/</loc>
+        <loc>http://lizard-spock.co.uk/blog/garden/first-tree/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/home/exact-fit-blinds/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/stackoverflow-sites-and-images/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/git-submodule-update-fatal/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/home-wi-fi/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/photography/f-stop-icus/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/terminal-colours/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/photography/lightroom-collections-whats-the-point/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-evaluate-envvars-in-string/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/garden/growhouse/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/garden/micro-irrigation/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/tcsh-check-a-var-exists/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/weather-alerts-via-email-from-the-metoffice/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/unlocking-a-nokia-8310/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/find-redhat-version/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/photography/photographing-stars-avoiding-star-trails/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/engineering/name-spacing-in-matlab/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/garden/gardener-c14e/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/for-loops-in-cshtcsh/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/set-vs-setenv/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/vim-convert-tabs-to-spaces/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/engineering/matlab-setting-simulink-simulation-stop-time/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/tech/os-x-handbrake-install-libdvdcss-decryption/
+        </loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/photography/lightroom-53-rc-beta-available/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/engineering/matlab-repeat-a-matrix-n-times/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/photography/hugin-2013-released/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/photography/lightroom-library-metadata-panel/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/cooking/chicken-tikka-masala/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/cooking/sweet-and-sour-pork/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/cooking/cowboy-chilli/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/cooking/tray-bake-chicken-dinner/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/vim-status-line/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/cshrc-alias-loop/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/check-you-current-vim-colorscheme/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/rtorrent-move-on-download-completion/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/reverting-in-git/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/engineering/flip-flop/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/home/exact-fit-blinds/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/git-submodule-update-fatal/</loc>
+        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/photography/f-stop-icus/</loc>
         <lastmod>2014-03-16T17:59:32+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/home/chandelier/</loc>
+        <loc>http://lizard-spock.co.uk/blog/home/chandelier/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/home/coffee-table/</loc>
+        <loc>http://lizard-spock.co.uk/blog/home/coffee-table/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/garden/garden-design-books/</loc>
+        <loc>http://lizard-spock.co.uk/blog/garden/garden-design-books/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/garden/birdbox/</loc>
+        <loc>http://lizard-spock.co.uk/blog/garden/birdbox/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/brew-update-fail/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/brew-update-fail/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/engineering/matlab-remove-values-from-array/</loc>
+        <loc>http://lizard-spock.co.uk/blog/engineering/matlab-remove-values-from-array/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/engineering/matlab-benchmarking/</loc>
+        <loc>http://lizard-spock.co.uk/blog/engineering/matlab-benchmarking/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/home/cooking-le-crueset-sizes/</loc>
+        <loc>http://lizard-spock.co.uk/blog/home/cooking-le-crueset-sizes/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/engineering/matlab-legend-colours/</loc>
+        <loc>http://lizard-spock.co.uk/blog/engineering/matlab-legend-colours/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/cooking/beef-wellington/</loc>
+        <loc>http://lizard-spock.co.uk/blog/cooking/beef-wellington/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/garden/raised-bed/</loc>
+        <loc>http://lizard-spock.co.uk/blog/garden/raised-bed/</loc>
+        <lastmod>2014-03-17T19:15:55+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/monkey-patch-octopress/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/monkey-patch-octopress/</loc>
+        <loc>http://lizard-spock.co.uk/blog/garden/propagator/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/garden/propagator/</loc>
+        <loc>http://lizard-spock.co.uk/blog/garden/rocket/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/garden/rocket/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/gnome-disable-focus-tracking/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/gnome-disable-focus-tracking/</loc>
+        <loc>http://lizard-spock.co.uk/blog/garden/spring/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/garden/spring/</loc>
+        <loc>http://lizard-spock.co.uk/blog/garden/rocket-and-chilli/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/garden/rocket-and-chilli/</loc>
+        <loc>http://lizard-spock.co.uk/blog/engineering/without-a-line-return/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/engineering/without-a-line-return/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/edit-octopress-posts/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/edit-octopress-posts/</loc>
+        <loc>http://lizard-spock.co.uk/blog/engineering/oo-magic-bullet/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/engineering/oo-magic-bullet/</loc>
-        <lastmod>2014-03-02T10:58:24+00:00</lastmod>
-    </url>
-    <url>
-        <loc>http://morganp.github.io/blog/tech/revert-in-git/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/revert-in-git/</loc>
         <lastmod>2014-03-03T20:20:45+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/octopress/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/octopress/</loc>
         <lastmod>2014-03-04T18:22:20+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/cooking/puy-lentil-wellington/</loc>
+        <loc>http://lizard-spock.co.uk/blog/cooking/puy-lentil-wellington/</loc>
         <lastmod>2014-03-04T21:36:11+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/bash-string-manipulation/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/bash-string-manipulation/</loc>
         <lastmod>2014-03-05T21:40:25+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/engineering/matlab-shuffle-array/</loc>
+        <loc>http://lizard-spock.co.uk/blog/engineering/matlab-shuffle-array/</loc>
         <lastmod>2014-03-13T20:49:31+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/engineering/matlab-function-outputs/</loc>
+        <loc>http://lizard-spock.co.uk/blog/engineering/matlab-function-outputs/</loc>
         <lastmod>2014-03-08T08:06:40+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/cooking/spicy-choclate-cake/</loc>
+        <loc>http://lizard-spock.co.uk/blog/cooking/spicy-choclate-cake/</loc>
         <lastmod>2014-03-08T09:44:32+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/engineering/beyond-the-lsb/</loc>
+        <loc>http://lizard-spock.co.uk/blog/engineering/beyond-the-lsb/</loc>
         <lastmod>2014-03-13T19:14:49+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/git-tag-and-push-to-github/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/git-tag-and-push-to-github/</loc>
         <lastmod>2014-03-13T19:21:52+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/macbook-keyboard-light-not-working/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/macbook-keyboard-light-not-working/</loc>
         <lastmod>2014-03-13T20:11:28+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/tech/ruby-iterate-over-lines-in-a-string/</loc>
+        <loc>http://lizard-spock.co.uk/blog/tech/ruby-iterate-over-lines-in-a-string/</loc>
         <lastmod>2014-03-13T21:06:50+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/photography/f-stop-loka-hydration/</loc>
+        <loc>http://lizard-spock.co.uk/blog/photography/f-stop-loka-hydration/</loc>
         <lastmod>2014-03-16T18:19:09+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/garden/propagator-trays/</loc>
+        <loc>http://lizard-spock.co.uk/blog/garden/propagator-trays/</loc>
         <lastmod>2014-03-16T19:37:36+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/garden/tool-acquisition/</loc>
+        <loc>http://lizard-spock.co.uk/blog/garden/tool-acquisition/</loc>
         <lastmod>2014-03-16T20:22:05+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/garden/raised-bed/</loc>
+        <loc>http://lizard-spock.co.uk/blog/garden/raised-bed-update/</loc>
         <lastmod>2014-03-16T22:07:13+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/about/</loc>
+        <loc>http://lizard-spock.co.uk/blog/engineering/matlab-sort-by/</loc>
+        <lastmod>2014-03-17T19:16:02+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/about/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/blog/archives/</loc>
-        <lastmod>2014-03-16T22:07:13+00:00</lastmod>
+        <loc>http://lizard-spock.co.uk/blog/archives/</loc>
+        <lastmod>2014-03-17T19:16:02+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/</loc>
-        <lastmod>2014-03-16T22:07:13+00:00</lastmod>
+        <loc>http://lizard-spock.co.uk/</loc>
+        <lastmod>2014-03-17T19:16:02+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/license/</loc>
+        <loc>http://lizard-spock.co.uk/license/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
-        <loc>http://morganp.github.io/robots.txt</loc>
+        <loc>http://lizard-spock.co.uk/robots.txt</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
 </urlset>

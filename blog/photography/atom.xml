@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Photography | RockPaperScissors]]></title>
-  <link href="http://morganp.github.io/blog/photography/atom.xml" rel="self"/>
-  <link href="http://morganp.github.io/"/>
-  <updated>2014-03-16T22:07:34+00:00</updated>
-  <id>http://morganp.github.io/</id>
+  <link href="http://lizard-spock.co.uk/blog/photography/atom.xml" rel="self"/>
+  <link href="http://lizard-spock.co.uk/"/>
+  <updated>2014-03-17T19:38:05+00:00</updated>
+  <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[F-Stop Loka Hydration]]></title>
-    <link href="http://morganp.github.io/blog/photography/f-stop-loka-hydration/"/>
+    <link href="http://lizard-spock.co.uk/blog/photography/f-stop-loka-hydration/"/>
     <updated>2014-03-16T18:13:55+00:00</updated>
-    <id>http://morganp.github.io/blog/photography/f-stop-loka-hydration</id>
+    <id>http://lizard-spock.co.uk/blog/photography/f-stop-loka-hydration</id>
     <content type="html"><![CDATA[<p>Not a review, just noting the default position of the velcro hydration loop, before I remove it.
 Left shoulder, under chest harness.</p>
 
@@ -28,9 +28,9 @@ Left shoulder, under chest harness.</p>
   
   <entry>
     <title type="html"><![CDATA[F-stop ICUs]]></title>
-    <link href="http://morganp.github.io/blog/photography/f-stop-icus/"/>
+    <link href="http://lizard-spock.co.uk/blog/photography/f-stop-icus/"/>
     <updated>2014-02-01T21:27:32+00:00</updated>
-    <id>http://morganp.github.io/blog/photography/f-stop-icus</id>
+    <id>http://lizard-spock.co.uk/blog/photography/f-stop-icus</id>
     <content type="html"><![CDATA[<p>F-Stop camera bags have an adaptable system for trading camera space for other outdoor gear. The swappable section are called ICUs or Internal Camera Units.</p>
 
 <p>This is not a review but just a quick note to record the default layouts of the Pro-Medium and Pro-Extra Large.</p>
@@ -56,9 +56,9 @@ Depth: 16.5cm. Width: 27cm. Height: 46cm  External Volume 25L</p>
   
   <entry>
     <title type="html"><![CDATA[Lightroom Library Metadata Panel]]></title>
-    <link href="http://morganp.github.io/blog/photography/lightroom-library-metadata-panel/"/>
+    <link href="http://lizard-spock.co.uk/blog/photography/lightroom-library-metadata-panel/"/>
     <updated>2013-12-04T19:04:14+00:00</updated>
-    <id>http://morganp.github.io/blog/photography/Lightroom-Library-Metadata-Panel</id>
+    <id>http://lizard-spock.co.uk/blog/photography/Lightroom-Library-Metadata-Panel</id>
     <content type="html"><![CDATA[<p>The metadata panel in Lightroom has always felt a little crowded to me. It shows too many dialog boxes or not the ones I want and have to scroll through many panes.</p>
 
 <p>Since most of my photography is uploaded to <a href="http://www.flickr.com/photos/morgan_prior/">flickr</a> there are a few section of metadata which are useful.</p>
@@ -81,9 +81,9 @@ Depth: 16.5cm. Width: 27cm. Height: 46cm  External Volume 25L</p>
   
   <entry>
     <title type="html"><![CDATA[Hugin 2013 Released]]></title>
-    <link href="http://morganp.github.io/blog/photography/hugin-2013-released/"/>
+    <link href="http://lizard-spock.co.uk/blog/photography/hugin-2013-released/"/>
     <updated>2013-11-27T19:40:08+00:00</updated>
-    <id>http://morganp.github.io/blog/photography/Hugin-2013-Released</id>
+    <id>http://lizard-spock.co.uk/blog/photography/Hugin-2013-Released</id>
     <content type="html"><![CDATA[<p>11 Months since the last Release <a href="http://hugin.sourceforge.net/">Hugin 2013.0.0</a> is released.</p>
 
 <p>One of the best photo stitchers available at any cost.</p>
@@ -92,9 +92,9 @@ Depth: 16.5cm. Width: 27cm. Height: 46cm  External Volume 25L</p>
   
   <entry>
     <title type="html"><![CDATA[Lightroom 5.3 RC Beta Available]]></title>
-    <link href="http://morganp.github.io/blog/photography/lightroom-53-rc-beta-available/"/>
+    <link href="http://lizard-spock.co.uk/blog/photography/lightroom-53-rc-beta-available/"/>
     <updated>2013-11-23T18:14:24+00:00</updated>
-    <id>http://morganp.github.io/blog/photography/Lightroom-53-RC-Beta-available</id>
+    <id>http://lizard-spock.co.uk/blog/photography/Lightroom-53-RC-Beta-available</id>
     <content type="html"><![CDATA[<p><a href="http://labs.adobe.com/technologies/lightroom5-3/">Lightroom 5.3RC</a></p>
 
 <p>The Lightroom 5.3 release candidate will expire on December 31, 2013.</p>
