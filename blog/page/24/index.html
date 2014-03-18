@@ -9,7 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="NB: By default the image is only 500pixels on the long edge. By donating to the project you can remove this restriction. This Video demonstrates how &hellip;">
+  <meta name="description" content="To Stop Start and Restart Samba on Mac OS X 10.6: sudo /usr/sbin/smbd stop
+sudo /usr/sbin/smbd start
+sudo /usr/sbin/smbd restart ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +83,50 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/stopstart-and-restart-samba-on-os-x/">Stop/Start and Restart Samba on OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-10T10:13:52+01:00" pubdate data-updated="true">Oct 10<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/stopstart-and-restart-samba-on-os-x/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/stopstart-and-restart-samba-on-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To Stop Start and Restart Samba on Mac OS X 10.6:</p>
+
+<pre><code>sudo /usr/sbin/smbd stop
+sudo /usr/sbin/smbd start
+sudo /usr/sbin/smbd restart
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -674,65 +720,6 @@ Just in case the $PATH terminal variable gets corrupted, for MAC OS X 10.5. 10.6
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/error-nomethoderror-undefined-method-%60compact-for-nilnilclass/">Error: NoMethodError: Undefined Method `compact&#8217; for nil:NilClass</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-21T07:20:40+01:00" pubdate data-updated="true">Aug 21<span>st</span>, 2010</time>
-        
-           | <a href="/blog/tech/error-nomethoderror-undefined-method-%60compact-for-nilnilclass/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/error-nomethoderror-undefined-method-%60compact-for-nilnilclass/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When running a sequel migration I kept getting this error: <br/>
-<strong>Error: NoMethodError: undefined method `compact&#8217; for nil:NilClass</strong></p>
-
-<p>My setup looked like this:</p>
-
-<pre><code>./db/data.db
-./db/migrate/001-Create_table.rb
-</code></pre>
-
-<p>The failing command</p>
-
-<pre><code>$ sequel -m ./db/migrate/ -M 1 sqlite://db/data.db
-</code></pre>
-
-<p>The error in this instance was caused by having &lsquo;&ndash;&rsquo; in the file name of the migration. To fix this I changed to:</p>
-
-<pre><code>./db/data.db
-./db/migrate/001_Create_table.rb
-</code></pre>
-
-<p>Some <a href="http://github.com/morganp/Code-Dojo/tree/master/ORM">ORM active record and sequels lessons I prepared earlier</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/25/">&larr; Older</a>
@@ -747,11 +734,15 @@ Just in case the $PATH terminal variable gets corrupted, for MAC OS X 10.5. 10.6
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (18)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (223)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (18)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (224)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/mavericks-disable-mail-sound/">Mavericks Disable Mail Sound</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-wrapper-scripts/">Matlab Wrapper Scripts</a>
@@ -767,10 +758,6 @@ Just in case the $PATH terminal variable gets corrupted, for MAC OS X 10.5. 10.6
     
       <li class="post">
         <a href="/blog/garden/tool-acquisition/">Tool Acquisition</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/propagator-trays/">Propagator Trays</a>
       </li>
     
   </ul>

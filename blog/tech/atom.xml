@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/blog/tech/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-03-17T20:21:59+00:00</updated>
+  <updated>2014-03-18T18:03:04+00:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Mavericks Disable Mail Sound]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/mavericks-disable-mail-sound/"/>
+    <updated>2014-03-18T17:41:49+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/mavericks-disable-mail-sound</id>
+    <content type="html"><![CDATA[<p>Since upgrading to Mavericks I get a sound whenever I get mail. I find this very annoying so first port of call is to disable &lsquo;Play user interface sound effects&rsquo; from  System Preferences &ndash;> Sound.</p>
+
+<p>This did not work, I found a separate option in mail for playing a sound on incoming mail, disabled that and other actions if you want.</p>
+
+<p><img src="/images/Tech/Disable_mail_sound.png" alt="" /></p>
+
+<p><em>NB: On checking things to write this I found that &lsquo;Play user interface sound effects&rsquo; had been enabled again.</em></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby Iterate Over Lines in a String]]></title>
@@ -71,38 +86,6 @@ echo short_string
 The second half <code>$remove</code> does require it.</p>
 
 <p><a href="http://tldp.org/LDP/abs/html/string-manipulation.html">More info</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Octopress, Pages and Custom Domain]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/octopress/"/>
-    <updated>2014-03-04T18:19:25+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/octopress</id>
-    <content type="html"><![CDATA[<p>In your <code>sources</code> branch, which is the main branch for writing creating posts, create a <code>CNAME</code> file in the sources directory.</p>
-
-<p>vim source/CNAME</p>
-
-<pre><code>your-domain.co.uk
-</code></pre>
-
-<p>Then check-in and deploy</p>
-
-<pre><code>git add source/CNAME
-rake deploy
-</code></pre>
-
-<p>Point your domain to github pages:</p>
-
-<pre><code>A record pointing to 204.232.175.78
-</code></pre>
-
-<p>I also redirect www. to the non-www url</p>
-
-<pre><code>CNAME record for www.example.com to example.com  
-</code></pre>
-
-<p><a href="http://octopress.org/docs/deploying/github/">Official Docs</a></p>
 ]]></content>
   </entry>
   
