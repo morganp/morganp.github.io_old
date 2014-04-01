@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="If you use the ⌘I shortcut in finder with a file selected you get a &lsquo;Get Info&rsquo; window. If you do this with 20 files selected you get 20 &hellip;">
+  <meta name="description" content="For ssh and ping to local machines with out the .local extension I added them to my /ets/hosts file. A normal user does not have permission so you &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,67 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mountain-lion-setup-part-5-etchosts/">Mountain Lion Setup, Part 5 /etc/hosts</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-30T20:28:12+01:00" pubdate data-updated="true">Aug 30<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/mountain-lion-setup-part-5-etchosts/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mountain-lion-setup-part-5-etchosts/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For ssh and ping to local machines with out the .local extension I added them to my /ets/hosts file.</p>
+
+<p>A normal user does not have permission so you have to use sudo. If you os x account has admin privlages it will prompt you for your password. If you have not used vim before, i for insert mode (like a standard text editor), esc to exit insert mode and :wq to write and quit.</p>
+
+<pre><code>sudo vim /etc/hosts
+
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.  
+##
+127.0.0.1   localhost
+255.255.255.255 broadcasthost
+::1             localhost 
+fe80::1%lo0 localhost
+
+## Append Local fixed ip Machines
+192.168.10.1   router
+192.168.10.100 macmini
+192.168.10.101 krypton
+192.168.10.250 backup
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -777,56 +838,6 @@ Then select Downloads.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/mountain-lion-default-path/">Mountain Lion Default $PATH</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-16T09:25:37+01:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/mountain-lion-default-path/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mountain-lion-default-path/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
-</code></pre>
-
-<p>To Reset it back to this value run (from /Applications/Utilities/Terminal.app)</p>
-
-<pre><code>export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
-</code></pre>
-
-<p>NB: Note the removal of X11 from this compared to the Lion path:</p>
-
-<pre><code>/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/14/">&larr; Older</a>
@@ -841,11 +852,15 @@ Then select Downloads.</p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (227)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (228)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a>
@@ -861,10 +876,6 @@ Then select Downloads.</p>
     
       <li class="post">
         <a href="/blog/engineering/matlab-leading-0-s/">Matlab: Leading 0&#8217;s</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/mavericks-disable-mail-sound/">Mavericks Disable Mail Sound</a>
       </li>
     
   </ul>

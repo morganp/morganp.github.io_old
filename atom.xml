@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-04-01T20:56:52+01:00</updated>
+  <updated>2014-04-01T21:11:23+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,55 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Fixing Mangled Octopress Tags]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/fixing-mangled-octopress-tags/"/>
+    <updated>2014-04-01T20:59:40+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/fixing-mangled-octopress-tags</id>
+    <content type="html"><![CDATA[<p>When creating my blog I have been inconsistent with the tag <code>command line</code>, <code>Command line</code> and
+<code>Command Line</code> the case in-sensitvities are not picked up in Octopress generation. To some
+extent my <a href="">Downcase plugin</a> hides these differences. The tags page only lists those with full
+downcase, but handles all other mixed case tags.</p>
+
+<p>This has lead to some posts dropping off the tag listing, which are just not accessible this way.</p>
+
+<p>The easy fix is to standardise my use of the tag.</p>
+
+<p>First investigate: List posts containing the downcased version:</p>
+
+<pre><code>grep -R '\- command line' *
+</code></pre>
+
+<p>Correct all :</p>
+
+<pre><code>find ./source/_posts -type f -print0 | xargs -I{} sed -i '' 's/\- [Cc]ommand [Ll]ine/\- Command Line/g' {}
+</code></pre>
+
+<p><code>find</code> outputs all files in folder ‘./‘ Actually had some trouble rerunning this find command so simplified it to :</p>
+
+<pre><code>ls source/_posts/*.markdown | xargs -I{} sed -i '' 's/\- [Cc]ommand [Ll]ine/\- Command Line/g' {}
+</code></pre>
+
+<p><strong>xargs</strong> option <code>i{}</code> takes the input argument and repeats it in the following command where the
+<code>{}</code> are placed. <code>find</code> has a built in <code>-exec</code> option but using xargs allows the first <code>find</code>
+command to be replaced with <code>grep</code> or <code>ls</code> if required.</p>
+
+<p><strong>Sed</strong> options</p>
+
+<ol>
+<li><code>g</code> Replace all the instances</li>
+<li><code>-i ‘’</code> Edits inplace without appending a new file extension.</li>
+</ol>
+
+
+<p>On a Mavericks the default see does not support case insensitive search,
+therefore I have enclosed the first letter of each word with options for lower and upper case.</p>
+
+<p>After performing the updates the tag text is updated to <code>Command Line</code> and the url is
+<a href="http://lizard-spock.co.uk/tag/command-line/"><code>tag/command-line/</code></a>, which lists all of the tagged posts.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Thor Variable Arguments]]></title>
@@ -562,50 +611,6 @@ echo short_string
 The second half <code>$remove</code> does require it.</p>
 
 <p><a href="http://tldp.org/LDP/abs/html/string-manipulation.html">More info</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Puy Lentil Wellington]]></title>
-    <link href="http://lizard-spock.co.uk/blog/cooking/puy-lentil-wellington/"/>
-    <updated>2014-03-04T18:24:42+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/cooking/puy-lentil-wellington</id>
-    <content type="html"><![CDATA[<p>Based on a <a href="http://uktv.co.uk/food/recipe/aid/516620">uktv recipe</a>.</p>
-
-<p><img src="http://lizard-spock.co.uk/images/Cooking/PuyWellington/morganp-20140225-PuyLentil-IMG_6871.jpg" alt="" /></p>
-
-<h2>Ingredients</h2>
-
-<pre><code>150 g     Puy lentils
-400 ml    Water
-  3       Onions
-  1 tbsp  Sugar
-  2 tbsp  Olive oil
-
-  1 tbsp  Rosemary
-  1 tbsp  Thyme
-375 g     Puff Pastry
-</code></pre>
-
-<p><img src="http://lizard-spock.co.uk/images/Cooking/PuyWellington/morganp-20140225-PuyLentil-IMG_6852.jpg" alt="" /></p>
-
-<p>Finely dice onion and fry on low heat with olive oil, after a minute or two add
-the sugar. Mean while simmer the lentils in water</p>
-
-<p><img src="http://lizard-spock.co.uk/images/Cooking/PuyWellington/morganp-20140225-PuyLentil-IMG_6853.jpg" alt="" />
-<img src="http://lizard-spock.co.uk/images/Cooking/PuyWellington/morganp-20140225-PuyLentil-IMG_6856.jpg" alt="" /></p>
-
-<p>Finely chop the Rosemary and Thyme, add to the onions.
-Mix well and keep on a low heat, stir occasionally to stop burning.
-When onions are soft (about 15 minutes) take off heat and allow to cool.</p>
-
-<p>Mix Lentils and onions then place into a sheet of puff pastry then fold over to create the wellington, pinching ends together.</p>
-
-<p>Place in oven for 20-25 minutes.</p>
-
-<p><img src="http://lizard-spock.co.uk/images/Cooking/PuyWellington/morganp-20140225-PuyLentil-IMG_6858.jpg" alt="" />
-<img src="http://lizard-spock.co.uk/images/Cooking/PuyWellington/morganp-20140225-PuyLentil-IMG_6864.jpg" alt="" />
-<img src="http://lizard-spock.co.uk/images/Cooking/PuyWellington/morganp-20140225-PuyLentil-IMG_6871.jpg" alt="" /></p>
 ]]></content>
   </entry>
   

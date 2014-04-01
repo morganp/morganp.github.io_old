@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="The new (July 2011) Mac Book Air is now out, shipping with Lion. The combination of these two fixes some issues I have had with the last air and &hellip;">
+  <meta name="description" content="Install Avahi, it like bonjour auto discovery but for linux, then tell it about your servers samba service. $ sudo apt-get install avahi-daemon
+$ cd &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/make-ubuntu-samba-share-show-up-on-os-x-106-finder/">Make Ubuntu Samba Share Show Up on OS X 10.6 Finder</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-25T20:35:18+01:00" pubdate data-updated="true">Jul 25<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/make-ubuntu-samba-share-show-up-on-os-x-106-finder/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/make-ubuntu-samba-share-show-up-on-os-x-106-finder/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Install Avahi, it like bonjour auto discovery but for linux, then tell it about your servers samba service.</p>
+
+<pre><code>$ sudo apt-get install avahi-daemon
+$ cd /etc/avahi/services/
+$ sudo wget https://raw.github.com/gist/1105096/0dc157711a85a08a1220ecb3fe94f069d2fcecec/etc_avahi_services_samba.service
+$ sudo mv etc_avahi_services_samba.service samba.service
+$ sudo restart avahi-daemon
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -725,90 +772,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/setting-up-postgresql-on-os-x/">Setting Up PostgreSQL on OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-20T11:35:31+01:00" pubdate data-updated="true">Jun 20<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/setting-up-postgresql-on-os-x/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/setting-up-postgresql-on-os-x/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>An old guide is written on the <a href="http://developer.apple.com/internet/opensource/postgres.htmlhttp://developer.apple.com/internet/opensource/postgres.html">Apple Developer Forum</a> however if you are using <a href="https://github.com/mxcl/homebrew">Homebrew</a> it is much simpler.</p>
-
-<pre><code>$ brew install postgresql
-</code></pre>
-
-<p>Define a data area for the database to be stored.</p>
-
-<pre><code>mkdir -p ~/.psgrs/data
-</code></pre>
-
-<p>Initialize the database folder:</p>
-
-<pre><code>#initidb can be found here /usr/local/Cellar/postgresql/9.0.4/bin/
-$ initdb -D ~/.psgrs/data
-</code></pre>
-
-<p>Create the database:</p>
-
-<pre><code>$ createdb example_dev
-</code></pre>
-
-<p>Start the postgresql server:</p>
-
-<pre><code># postgres can be found here /usr/local/Cellar/postgresql/9.0.4/bin
-$ postgres -D ~/.psgrs/data
-</code></pre>
-
-<h2>Summary of Postgresql setup for Development</h2>
-
-<pre><code>$ brew install postgresql
-$ mkdir -p ~/.psgrs/data
-$ initdb -D ~/.psgrs/data
-$ createdb example_dev
-$ postgres -D ~/.psgrs/data
-</code></pre>
-
-<p>A Rails database.yaml file might look something like:</p>
-
-<pre><code>development:
-    adapter: postgresql
-    host: localhost
-    port: 5432
-    username: 
-    password: 
-    database: example_dev
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/21/">&larr; Older</a>
@@ -823,11 +786,15 @@ $ postgres -D ~/.psgrs/data
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (227)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (228)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a>
@@ -843,10 +810,6 @@ $ postgres -D ~/.psgrs/data
     
       <li class="post">
         <a href="/blog/engineering/matlab-leading-0-s/">Matlab: Leading 0&#8217;s</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/mavericks-disable-mail-sound/">Mavericks Disable Mail Sound</a>
       </li>
     
   </ul>
