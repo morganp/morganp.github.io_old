@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/blog/tech/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-04-01T19:12:07+01:00</updated>
+  <updated>2014-04-01T20:46:07+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Thor Variable Arguments]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/thor-variable-arguments/"/>
+    <updated>2014-04-01T19:39:19+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/thor-variable-arguments</id>
+    <content type="html"><![CDATA[<p><a href="http://whatisthor.com/">Thor</a> is a Ruby Gem, which allows you to build command line applications which accept commands, in the same way <code>git</code> accepts <code>add</code> as a command.</p>
+
+<p>The Helloworld example :</p>
+
+<pre><code>require "thor"
+
+class MyCLI &lt; Thor
+  desc "hello NAME", "say hello to NAME"
+  def hello(name)
+    puts "Hello #{name}"
+  end
+end
+MyCLI.start(ARGV)
+</code></pre>
+
+<p>The help and single input.</p>
+
+<pre><code>$ ruby thor_test.rb help hello
+&gt; Usage:
+&gt;  thor_test.rb hello NAME
+&gt;
+&gt; say hello to NAME
+
+
+$ ruby thor_test.rb Hello a
+&gt; Hello a
+</code></pre>
+
+<p>Now with multiple, inputs:</p>
+
+<pre><code>$ ruby thor_test.rb Hello a b
+&gt; thor_test.rb hello requires at least 1 argument: "thor_test.rb hello NAME”.
+</code></pre>
+
+<p>Not really what you want if you were building a command like <code>git add</code> when you
+would want all following arguments as inputs.</p>
+
+<p>To accept a variable number of arguments is not Thor specific but a standard
+ruby idiom. A splat in front of your variable ie <code>*name</code>.</p>
+
+<pre><code>require "thor"
+
+class MyCLI &lt; Thor
+  desc "hello NAME", "say hello to NAME"
+  def hello(*name)
+    puts "Hello #{name * “ "}"
+  end
+end
+MyCLI.start(ARGV)
+
+$ ruby thor_test.rb Hello a b
+&gt; Hello a b
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby Print Array]]></title>
@@ -96,18 +157,6 @@ end
 </code></pre>
 
 <p><a href="http://stackoverflow.com/a/601892/97073">Source</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Macbook Keyboard Light Not Working]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/macbook-keyboard-light-not-working/"/>
-    <updated>2014-03-13T20:00:47+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/macbook-keyboard-light-not-working</id>
-    <content type="html"><![CDATA[<p>Checkout : <a href="http://support.apple.com/kb/HT4882">Apple support</a>.</p>
-
-<p>Disable &lsquo;Adjust keyboard brightness in low light&rsquo;.<br/>
-<img src="/images/Tech/Keyboard_low_light.png" alt="" /></p>
 ]]></content>
   </entry>
   

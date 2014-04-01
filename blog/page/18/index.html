@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="ctrl-r " Actually ctrl-r reg, where &ldquo; is the unnamed register from the last yank or delete. Why If you have done a block selection and you want &hellip;">
+  <meta name="description" content="I have just added the method below to my ruby .irbrc file for quickly calculating image megapixels. from OS X the info panel gives the form of &lsquo &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,64 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/irb-as-a-megapixels-calculator/">Irb as a Megapixels Calculator</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-12T18:56:40+00:00" pubdate data-updated="true">Feb 12<span>th</span>, 2012</time>
+        
+           | <a href="/blog/photography/irb-as-a-megapixels-calculator/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/irb-as-a-megapixels-calculator/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have just added the method below to my ruby .irbrc file for quickly calculating image megapixels. from OS X the info panel gives the form of &lsquo;23309 × 4412&rsquo; this becomes &lsquo;23309???4412&rsquo; when pasted into iTerm.</p>
+
+<pre><code>def megapixels( dimensions )
+  if dimensions.match(/\d*x\d*/)
+    x,y = dimensions.split('x')
+  end
+  if dimensions.match(/\d*\?\?\?\d*/)
+    x,y = dimensions.split('???')
+  end    
+
+  if x.nil? or y.nil? 
+    $stderr.puts "The input #{dimensions} could not be parsed in to megapixels"
+    exit -1
+  end
+  x = x.to_i
+  y = y.to_i
+
+  megapixels = (x*y)/10.0**6
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -790,108 +848,6 @@ options.fetch() {40} :  39.230000   0.000000  39.230000 ( 39.234303)
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/benchmarking-ruby-explicit-vs-implicit-returns/">Benchmarking Ruby, Explicit vs Implicit Returns</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-26T09:12:29+01:00" pubdate data-updated="true">Oct 26<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/benchmarking-ruby-explicit-vs-implicit-returns/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/benchmarking-ruby-explicit-vs-implicit-returns/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Back in 2009 <a href="http://barkingiguana.com/2009/11/11/returning-explicitly-is-slower/">barkingiguana</a> wrote about how explicit returns <code>'return "String"'</code> was slower than an implicit return, ie just letting the last value get returned. The test was performed on ruby 1.8.6 and I thought I would just check with ruby 1.9.2-p290 to see if this still held true.</p>
-
-<p>The test I ran:</p>
-
-<pre><code>require 'benchmark'
-
-def explicit
-  return "TEST"
-end
-
-def implicit
-  "TEST"
-end
-
-def explicit_non_eval
-  return 'TEST'
-end
-
-def implicit_non_eval
-  'TEST'
-end
-
-def explicit_symbol
-  return :TEST
-end
-
-def implicit_symbol
-  :TEST
-end
-
-n = 100_000_000
-Benchmark.bmbm do |x|
-  x.report("Explicit \"\"     return") { n.times { explicit } }
-  x.report("Implicit \"\"     return") { n.times { implicit } }
-  x.report("Explicit ''     return") { n.times { explicit_non_eval } }
-  x.report("Implicit ''     return") { n.times { implicit_non_eval } }
-  x.report("Explicit symbol return") { n.times { explicit_symbol   } }
-  x.report("Implicit symbol return") { n.times { implicit_symbol   } }
-end
-</code></pre>
-
-<p>the results</p>
-
-<pre><code>Rehearsal ----------------------------------------------------------
-Explicit ""     return  37.810000   0.000000  37.810000 ( 37.889241)
-Implicit ""     return  36.300000   0.000000  36.300000 ( 36.310153)
-Explicit ''     return  36.460000   0.000000  36.460000 ( 36.476939)
-Implicit ''     return  36.520000   0.010000  36.530000 ( 36.541361)
-Explicit symbol return  14.330000   0.000000  14.330000 ( 14.352004)
-Implicit symbol return  14.330000   0.000000  14.330000 ( 14.322934)
------------------------------------------------ total: 175.760000sec
-
-                             user     system      total        real
-Explicit ""     return  37.620000   0.000000  37.620000 ( 37.680337)
-Implicit ""     return  36.480000   0.000000  36.480000 ( 36.504694)
-Explicit ''     return  36.560000   0.000000  36.560000 ( 36.574798)
-Implicit ''     return  36.100000   0.010000  36.110000 ( 36.111328)
-Explicit symbol return  14.770000   0.000000  14.770000 ( 14.812874)
-Implicit symbol return  14.710000   0.000000  14.710000 ( 14.829556)
-</code></pre>
-
-<p>For me the difference I see in the results between implicit and explicit returns is negligible. I also prefer the explicit return in all but the simplest of methods, as it is much easier to see what value gets returned and at which point the programmer want the method to exit. It also helps to minimize the side effects of re-factoring.</p>
-
-<p><a href="http://barkingiguana.com/2009/11/11/returning-explicitly-is-slower/">Barkingiguana</a> seems to prefer the implicit style which is possibly more idiomatic ruby, but I personally find that it adds ambiguity to the code for beginners to intermediate rubyists.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/19/">&larr; Older</a>
@@ -906,11 +862,15 @@ Implicit symbol return  14.710000   0.000000  14.710000 ( 14.829556)
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (226)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (227)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
@@ -926,10 +886,6 @@ Implicit symbol return  14.710000   0.000000  14.710000 ( 14.829556)
     
       <li class="post">
         <a href="/blog/tech/mavericks-disable-mail-sound/">Mavericks Disable Mail Sound</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-wrapper-scripts/">Matlab Wrapper Scripts</a>
       </li>
     
   </ul>

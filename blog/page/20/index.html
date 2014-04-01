@@ -9,9 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Ruby 1.9.2-p290 released, if you have RVM installed updating to the latest release is easy rvm get head
-rvm reload
-rvm install 1.9.2 If you do not &hellip;">
+  <meta name="description" content="The new (July 2011) Mac Book Air is now out, shipping with Lion. The combination of these two fixes some issues I have had with the last air and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +81,63 @@ rvm install 1.9.2 If you do not &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/new-macbook-air-2011-os-x-lion/">New Macbook Air (2011) & OS X Lion</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-22T12:05:36+01:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2011</time>
+        
+           | <a href="/blog/tech/new-macbook-air-2011-os-x-lion/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/new-macbook-air-2011-os-x-lion/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The new (July 2011) <a href="http://www.apple.com/macbookair/">Mac Book Air</a> is now out, shipping with Lion.</p>
+
+<p>The combination of these two fixes some issues I have had with the last air and recent OS X editions.</p>
+
+<p>The removal of the back lit keyboard was a deal breaker for me. When you are up late working on code and the lights are dimmed the contrast between the screen and the keyboard is often to high to clear see the keys. so a back lit keyboard makes a big usability difference when working in low light conditions.</p>
+
+<p>Copying a folder to a location will finally try to merge the contents! The old behavior was to replace the entire folder (this is the behavior for files). Every other operating system and the Mac command line will try to merge the contents, I even built my own <a href="http://amaras-tech.co.uk/software/FileExplorer">file browser</a> to fix this issue.</p>
+
+<p>NB: if you lost work due to copying a folder with the same name you did not delete it, it is not in the trash, it is just gone!</p>
+
+<p>We also now get full screen applications which is very useful to those working on small laptop screens. For years the apple fanboys protested that it was not necessary and we should get use to a new way of working, except the pro apps like lightroom have always had a full-screen mode to take advantage of the screen size. Looks like Apple have finally given us some things I felt have been missing for a while.</p>
+
+<p>Full drive encryption, guess this checks a box for some corporate types so business could switch over. I do like this idea for portable devices though, if some one picks up my laptop then all my work is protected.</p>
+
+<p>Apparently they are also going to support NFSv4, NFS = Networked File System and they have scrapped there own AFP Apple file protocol. This should mean connecting to a linux NAS box much easier.</p>
+
+<p>The terminal is now 256 Colours instead of 16.</p>
+
+<p><a href="http://www.apple.com/macosx/whats-new/features.html">Full list of feature</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -754,137 +809,6 @@ $ postgres -D ~/.psgrs/data
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-arrays-part-1/">Ruby Arrays, Part 1</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-23T23:37:26+01:00" pubdate data-updated="true">May 23<span>rd</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-arrays-part-1/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-arrays-part-1/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Some uses of Arrays that were not apparent at first.</p>
-
-<h2>Enumeration</h2>
-
-<p><a href="http://ruby-doc.org/core/classes/Array.html#M000231">each</a> is the basic enumerator method but there is also <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001511">each_with_index</a> (and for hashes <a href="http://ruby-doc.org/core/classes/Hash.html#M000741">each_pair</a>)</p>
-
-<pre><code>['a', 'b', 'c', 'd'].each {|item| puts item }
-['a', 'b', 'c', 'd'].each_with_index {|item,index| puts "#{index}:#{item}" }
-{:a=&gt;1, :b=&gt;2}.each_pair {|key,value| puts "#{key}=&gt;#{value}" }
-</code></pre>
-
-<h2>Sorting</h2>
-
-<p>Sort is very easy with ruby if you want a basic sort [4,5,3,2,7].sort will do. However sorting by any key is possible using sort_by. Sort_by performs a <a href="http://amaras-tech.co.uk/people/morgan/article/98">Schwartzian Transform</a></p>
-
-<pre><code>['a','B','D','c'].sort
-#=&gt; ["B", "D", "a", "c"]
-['a','B','D','c'].sort_by {|x| x.downcase }
-#=&gt; ["a", "B", "c", "D"]    
-</code></pre>
-
-<h2>Return Arrays</h2>
-
-<p>When you want an array, map modifies the contents of each element:</p>
-
-<pre><code>[1,2,3,4].map {|i| i*2 }
-#=&gt; [2,4,6,8]
-# or with any enumerable (Range)
-(1..4).map {|i| i*2 }
-</code></pre>
-
-<p>select and reject can be used to select and remove elements from the enumerable, and return a new enumerable, they are immutable methods.</p>
-
-<pre><code>[0,1,2,3,4,5].select { |x| x &gt; 2 }
-#=&gt; [3,4,5]
-[0,1,2,3,4,5].reject { |x| x &lt; 3 }
-#=&gt; [3,4,5]
-</code></pre>
-
-<p>select! and reject! (bang operators) modify the existing enumerable. They have more natural names that I think should be used when appropriate, keep_if and delete_if.</p>
-
-<pre><code>[0,1,2,3,4,5].keep_if { |x| x &gt; 2 }
-#=&gt; [3,4,5]
-[0,1,2,3,4,5].delete_if { |x| x &lt; 3 }
-#=&gt; [3,4,5]
-</code></pre>
-
-<h2>Reduction to a Single Value</h2>
-
-<p>inject can be called on any enumerable object, it iterates over each item with an accumulator.</p>
-
-<pre><code>[1,2,3,4].inject {|memory, item| memory * (item+1) } 
-</code></pre>
-
-<p>For basic operations there is the reduce method which can be used for summing and multiplying out the arrays.</p>
-
-<p>Sum:</p>
-
-<pre><code> [1,2,3,4].reduce :+
-</code></pre>
-
-<p>Multiply:</p>
-
-<pre><code>[1,2,3,4].reduce :*
-</code></pre>
-
-<h2>Booleans</h2>
-
-<p><a href="http://ruby-doc.org/core/classes/Enumerable.html#M001510">include?</a> is used to check if the array contains the supplied object.</p>
-
-<pre><code>['a','b','c'].include?( 'b' )
-#=&gt; true
-</code></pre>
-
-<p><a href="http://ruby-doc.org/core/classes/Enumerable.html#M001499">all?</a> and <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001500">any?</a> can be used to check if the array matches against given criteria.</p>
-
-<pre><code>[1,2,3,4].any?{|x| x &gt; 3 }
-#=&gt; true
-[1,2,3,4].all?{|x| x &gt; 3 }
-#=&gt; false
-[1,2,3,4].any?{|x| x &gt; 5 }
-#=&gt; false
-[1,2,3,4].all?{|x| x &gt; 0 }
-#=&gt; true
-</code></pre>
-
-<p>I often use <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001500">any?</a> with an array of regular expressions to match a string to any item.</p>
-
-<pre><code>text   = "one"
-search = [/one/, /two/, /three/]
-found  = search.any? { |regexp| text.match( regexp ) }
-#=&gt; true
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/21/">&larr; Older</a>
@@ -899,11 +823,15 @@ found  = search.any? { |regexp| text.match( regexp ) }
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (226)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (227)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
@@ -919,10 +847,6 @@ found  = search.any? { |regexp| text.match( regexp ) }
     
       <li class="post">
         <a href="/blog/tech/mavericks-disable-mail-sound/">Mavericks Disable Mail Sound</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-wrapper-scripts/">Matlab Wrapper Scripts</a>
       </li>
     
   </ul>

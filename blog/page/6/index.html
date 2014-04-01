@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Deciding to see if I could make my vim status line a bit more practical for myself. I decided to try having the modification &lsquo;[+]&rsquo; &hellip;">
+  <meta name="description" content="Here are some aliased commands which stop line wrapping on really long lines, making the output much more readable: # Stop line wrapping
+alias ll '( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,65 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/cshrc-alias-loop/">Cshrc Alias Loop</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-19T22:04:45+00:00" pubdate data-updated="true">Dec 19<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/cshrc-alias-loop/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/cshrc-alias-loop/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Here are some aliased commands which stop line wrapping on really long lines, making the output much more readable:</p>
+
+<pre><code># Stop line wrapping
+alias ll '(tput rmam; ls -lFh  \!*; tput smam)'
+alias la '(tput rmam; ls -lAFh \!*; tput smam)'
+
+alias tree '(tput rmam; tree \!*; tput smam)'
+</code></pre>
+
+<p>In use:</p>
+
+<pre><code>$ tree
+Alias loop
+</code></pre>
+
+<p>The trick is to pre-pend &ldquo;&rdquo; to the command</p>
+
+<pre><code>alias tree '(tput rmam; ""tree \!*; tput smam)'
+</code></pre>
+
+<p><a href="http://docstore.mik.ua/orelly/unix/upt/ch10_06.htm">source</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -815,51 +875,6 @@ ans =
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/os-x-handbrake-install-libdvdcss-decryption/">OS X Handbrake Install Libdvdcss (Decryption)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-10-30T12:38:35+00:00" pubdate data-updated="true">Oct 30<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/os-x-handbrake-install-libdvdcss-decryption/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/os-x-handbrake-install-libdvdcss-decryption/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ol>
-<li><p>Go to the <a href="http://amaras-tech.co.uk/u/7h">Videolan</a> website and download and run the libdvdcss.pkg.</p></li>
-<li><p>Switch VLC preference, Advanced, uncheck Dvd-Video use libdvdnav (instead of libdvdread)</p></li>
-</ol>
-
-
-<p>Also see <a href="http://mackonsti.wordpress.com/2013/07/22/create-backup-dvd-using-handbrake-mac/">Mackonsti.wordpress</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -874,11 +889,15 @@ ans =
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (226)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (227)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
@@ -894,10 +913,6 @@ ans =
     
       <li class="post">
         <a href="/blog/tech/mavericks-disable-mail-sound/">Mavericks Disable Mail Sound</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-wrapper-scripts/">Matlab Wrapper Scripts</a>
       </li>
     
   </ul>

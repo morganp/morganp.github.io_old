@@ -9,7 +9,10 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="For code reuse within I have found Subversion externals really nice to work with. Instead of copy and pasting code between projects you import part &hellip;">
+  <meta name="description" content="For this example we will have a data file with two columns of data labelled A and B. For example A B
+0.1 0.2
+0.3 0.4
+0.5 0.6 Set the working &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +84,84 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/calculating-regression-coefficients-in-r/">Calculating Regression Coefficients in R</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-29T12:10:18+01:00" pubdate data-updated="true">Sep 29<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/calculating-regression-coefficients-in-r/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/calculating-regression-coefficients-in-r/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For this example we will have a data file with two columns of data labelled A and B. For example</p>
+
+<pre><code>A    B
+0.1 0.2
+0.3 0.4
+0.5 0.6
+</code></pre>
+
+<p>Set the working directory and load the data as usual in r:</p>
+
+<pre><code>setwd("~/Code/example")
+data = read.table("data.txt", header=T)
+names(data) # List the header names
+</code></pre>
+
+<h2>Correlation</h2>
+
+<p>Find the correlation between A and B.</p>
+
+<pre><code>cor(data$A, data$b)
+</code></pre>
+
+<p>If you have more than 2 variables calculate the correlation matrix using :</p>
+
+<pre><code>cor(data)
+</code></pre>
+
+<h2>Unstandardised Regression Coefficient</h2>
+
+<p>A predicting B</p>
+
+<pre><code>lm(data$B~data$A)
+</code></pre>
+
+<h2>Standardised Regression Coefficient</h2>
+
+<p>A predicting B</p>
+
+<pre><code>lm( scale( data$B )~scale( data$A ) )
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -645,61 +726,6 @@ fe80::1%lo0 localhost
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/os-x-get-info-summary-for-multiple-items/">OS X Get Info Summary for Multiple Items</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-29T21:02:22+01:00" pubdate data-updated="true">Aug 29<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/os-x-get-info-summary-for-multiple-items/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/os-x-get-info-summary-for-multiple-items/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you use the ⌘I shortcut in finder with a file selected you get a &lsquo;Get Info&rsquo; window. If you do this with 20 files selected you get 20 windows, In Snow Leopard if 10 or more file were selected you got a Summary window. I found this handy for getting the disk usage for a bunch of files.</p>
-
-<p>If you would like to change it to always get the Summary window, which I find useful in case of selecting all in a folder and accidentally hitting ⌘I you do not a have many many windows to close.</p>
-
-<p>Open System preferences, select keyboard.<br/>
-<a href="http://www.flickr.com/photos/morgan_prior/7889683364/" title="01-SysPref_Keyboard.png by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8462/7889683364_21baa38a61.jpg" width="500" height="367" alt="01-SysPref_Keyboard.png"></a></p>
-
-<p>Keyboard Shortcuts &ndash;> Application Shortcut &ndash;> +<br/>
-<a href="http://www.flickr.com/photos/morgan_prior/7889714382/" title="02-Keyboard.png by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8035/7889714382_a81aa4d791.jpg" width="500" height="455" alt="02-Keyboard.png"></a></p>
-
-<p>Application, select Finder.<br/>
-Menu Title, enter &lsquo;Summary Get Info&#8217;<br/>
-Keyboard Shortcut, press  ⌘I <br/>
-<a href="http://www.flickr.com/photos/morgan_prior/7889720574/" title="03-Entry.png by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8032/7889720574_0ed2232077.jpg" width="500" height="455" alt="03-Entry.png"></a></p>
-
-<p>Done<br/>
-<a href="http://www.flickr.com/photos/morgan_prior/7889724254/" title="04-cmdI-final.png by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8443/7889724254_bf1f39f4a7.jpg" width="500" height="455" alt="04-cmdI-final.png"></a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -714,11 +740,15 @@ Keyboard Shortcut, press  ⌘I <br/>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (226)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (227)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
@@ -734,10 +764,6 @@ Keyboard Shortcut, press  ⌘I <br/>
     
       <li class="post">
         <a href="/blog/tech/mavericks-disable-mail-sound/">Mavericks Disable Mail Sound</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-wrapper-scripts/">Matlab Wrapper Scripts</a>
       </li>
     
   </ul>
