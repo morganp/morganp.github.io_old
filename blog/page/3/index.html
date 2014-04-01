@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="In Verilog to output to stdout without a line return use $write(); Equivalent statements : $write("\n");
-$display(""); ">
+  <meta name="description" content="and Remove Orphaned Commits. I use gitx graphical tool on OS X to find the SHAs for commits. Revert back throwing away all changes: git reset --hard &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,153 @@ $display(""); ">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/revert-in-git/">Revert in Git</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-03T19:42:12+00:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2014</time>
+        
+           | <a href="/blog/tech/revert-in-git/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/revert-in-git/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>and Remove Orphaned Commits.</h1>
+
+<p>I use <code>gitx</code> graphical tool on OS X to find the SHAs for commits. Revert back throwing away all changes:</p>
+
+<pre><code>git reset --hard shaqwerty      
+</code></pre>
+
+<p>Now delete the orphaned commits.</p>
+
+<pre><code>git reflog expire --expire=now --expire-unreachable=now --all
+git gc --prune=now
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/oo-magic-bullet/">OO Magic Bullet?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-01T20:04:06+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
+        
+           | <a href="/blog/engineering/oo-magic-bullet/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/oo-magic-bullet/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I do not think that there are any magic bullets, best practises can minimise risk but you have to fully understand the technique. You can not just switch from procedural code to wrapping everything in an object and claim statements like this from <a href="http://www.mathworks.co.uk/company/newsletters/articles/introduction-to-object-oriented-programming-in-matlab.html">mathworks</a>:</p>
+
+<blockquote><p>Because it was built using OO techniques, the application is now robust enough for others to use and maintain and can be integrated with related applications throughout an organization.</p></blockquote>
+
+<p>Sounds like Object-Oriented programming is a magic bullet to solve all you programming woes!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/edit-octopress-posts/">Edit Octopress Posts</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-01T19:28:17+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
+        
+           | <a href="/blog/tech/edit-octopress-posts/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/edit-octopress-posts/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Creating new posts in Octopress is <code>rake new_post["Edit Posts"]</code> which outputs the created filename.</p>
+
+<p>Posts are prefixed with date, which can make it difficult to find a particular post to edit. Tab completion can help if you known the year of the post but it may still list 100&rsquo;s of posts where you have to spot the title, and narrow it done via month and day. To get around this I use this script to launch matching posts in my editor:</p>
+
+<pre><code>#!/bin/bash
+
+editor="mvim"
+post_path="source/_posts/"
+
+for OUTPUT in $(ls $post_path | grep $1)
+do
+  file_list="$file_list $post_path$OUTPUT"
+done
+
+$editor $file_list
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -409,239 +555,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/monkey-patch-octopress/">Monkey Patch Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-18T19:46:55+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/monkey-patch-octopress/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/monkey-patch-octopress/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Based on <a href="https://github.com/imathis/octopress/blob/master/plugins/post_filters.rb">post_filters by imathis</a>.</p>
-
-<p>First Move the original method out the way with <code>alias_method</code>  then create a new method with the original name, calling the original now aliased method if required.</p>
-
-<pre><code>module Jekyll
-  class URL
-    alias_method :old_sanitize_url, :sanitize_url
-    def sanitize_url(in_url)
-      old_sanitize_url(in_url).downcase
-    end
-  end
-end
-</code></pre>
-
-<p>This was used to build my <a href="https://github.com/morganp/octopress_url_downcase">Octopress plugin octopress_url_downcase</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/raised-bed/">Raised Bed</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-18T18:58:30+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/raised-bed/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/raised-bed/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Putting together my first raised bed, 8 foot by 2 foot, 1 plank high.</p>
-
-<p>Cut parts ready for assembly:
-<img src="/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6743.jpg" alt="Parts" /></p>
-
-<p>The timber is pressure treated softwood from <a href="http://www.dremtimberandfencing.co.uk/">Drem Timber</a>. Cost is around £14 for 16 foot (4.8m).</p>
-
-<p>Parts I got:</p>
-
-<pre><code>4 * 8 foot (2 * 4.8m)
-8 * 2 foot (1 * 4.8m)
-8 corner stakes (£1 each)
---
-£49
-</code></pre>
-
-<p>Using right angle clamps to assemble first corner.
-<img src="/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6746.jpg" alt="First Corner" /></p>
-
-<p>Holding the spikes in place with quick clamps.
-<img src="/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6751.jpg" alt="Attaching Spike" />
-<img src="/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6753.jpg" alt="" /></p>
-
-<p>Constructing the second corner.
-<img src="/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6758.jpg" alt="Second Corner" />
-<img src="/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6761.jpg" alt="" /></p>
-
-<p>The final side and 2 corners, using 4 right angle clamps to hold it all in place.
-<img src="/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6766.jpg" alt="Final Corners" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/cooking/beef-wellington/">Beef Wellington</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-17T20:28:28+00:00" pubdate data-updated="true">Feb 17<span>th</span>, 2014</time>
-        
-           | <a href="/blog/cooking/beef-wellington/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/cooking/beef-wellington/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6820.jpg" alt="Beef Wellington" /></p>
-
-<p>Based on :<br/>
-Jamie Olivers Minced Beef Wellington from <a href="https://www.amazon.co.uk/dp/0718148622?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=0718148622&amp;adid=0Q3BGF7F6R1CK541XSZG&amp;">Jamie&rsquo;s Ministry of Food</a>.</p>
-
-<p><img src="/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6774.jpg" alt="Ingredients" /></p>
-
-<p>Ingredients (for 4-6) :</p>
-
-<pre><code>  1         Large Potato
-  1         Medium Onion
-  1         Carrot
-  1  Stick  Celery
-  2  Cloves Garlic
-  2         Large Mushrooms
-  4  Sprigs Fresh Rosemarry
- 50 g       Frozen Peas
-  1         Large Egg
-500 g       Puff Pastry (or 2 300g sheets)
-</code></pre>
-
-<p>Pre-heat oven to 180.</p>
-
-<pre><code>  1         Large Potato
-  1         Medium Onion
-  1         Carrot
-  1  Stick  Celery
-</code></pre>
-
-<p>Add a olive oil to a frying pan start on a medium heat.
-Chop vegetables in to 1cm cubes, Potatoes, Onion, Carrot and Celery.
-Add to frying pan as you go.<br/>
-<img src="/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6782.jpg" alt="Chop" /></p>
-
-<pre><code>  2  Cloves Garlic
-  2         Large Mushrooms
-</code></pre>
-
-<p>Grate garlic into pan, rough chop mushrooms into 1cm chunks.
-<img src="/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6786.jpg" alt="Grate" /></p>
-
-<pre><code>  4  Sprigs Fresh Rosemarry
-</code></pre>
-
-<p>Remove Rosemary leaves and finely dice.
-<img src="/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6796.jpg" alt="Rosemary" /></p>
-
-<pre><code> 50 g       Frozen Peas
-</code></pre>
-
-<p>After 8 minutes, add frozen peas to pan and cook for 1 minute more.
-<img src="/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6792.jpg" alt="Fry" />
-<img src="/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6799.jpg" alt="Peas" /></p>
-
-<pre><code>  1/2       Large Egg
-</code></pre>
-
-<p>Move mixture to a large mixing bowl to cool, Once cool mix in the beef with salt and half a beaten egg.
-<img src="/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6803.jpg" alt="Mixing Bowl" />
-<img src="/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6804.jpg" alt="Mince" /></p>
-
-<pre><code>500 g       Puff Pastry (or 2 300g sheets)
-  1/2       Large Egg
-</code></pre>
-
-<p>Roll out the pastry into tea towel size, or unroll the sheets. Add mixture into the middle and roll up sealing the ends. Apply second half of beaten egg to the top of the wellington with a pastry brush.
-<img src="/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6807.jpg" alt="Pastry" />
-<img src="/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6808.jpg" alt="" />
-<img src="/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6811.jpg" alt="" />
-<img src="/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6812.jpg" alt="" />
-<img src="/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6814.jpg" alt="Wellingtons ready for oven" /></p>
-
-<p>Put in the oven for 180 Degrees for an hour.</p>
-
-<p><img src="/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6820.jpg" alt="Beef Wellington" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -656,11 +569,23 @@ Add to frying pan as you go.<br/>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (18)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (224)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (226)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/screen-scrollback/">Screen Scrollback</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-leading-0-s/">Matlab: Leading 0&#8217;s</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/mavericks-disable-mail-sound/">Mavericks Disable Mail Sound</a>
@@ -668,18 +593,6 @@ Add to frying pan as you go.<br/>
     
       <li class="post">
         <a href="/blog/engineering/matlab-wrapper-scripts/">Matlab Wrapper Scripts</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-sort-by/">Matlab Sort_by</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/raised-bed-update/">Raised Bed, Update</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/tool-acquisition/">Tool Acquisition</a>
       </li>
     
   </ul>

@@ -9,9 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="A better Terminal iTerm2.
-Media Player VLC.
-Dropbox. Developer Apps GitX, rowanj fork. FTP Client Cyberduck, use to be a favourite on Leopard &amp; &hellip;">
+  <meta name="description" content="ctrl-6 Demo For the example we will create 3 new temp files and then open them in vim. touch vim_test1.txt
+touch vim_test2.txt
+touch vim_test3.txt &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +83,187 @@ Dropbox. Developer Apps GitX, rowanj fork. FTP Client Cyberduck, use to be a fav
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vim-toggle-between-last-2-edited-buffers/">#vim Toggle Between Last 2 Edited Buffers</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-29T11:22:06+01:00" pubdate data-updated="true">Aug 29<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/vim-toggle-between-last-2-edited-buffers/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-toggle-between-last-2-edited-buffers/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>ctrl-6
+</code></pre>
+
+<h1>Demo</h1>
+
+<p>For the example we will create 3 new temp files and then open them in vim.</p>
+
+<pre><code>touch vim_test1.txt
+touch vim_test2.txt
+touch vim_test3.txt
+vim vim_test*
+</code></pre>
+
+<p>From with in vim</p>
+
+<pre><code>:ls 
+1 %a   "vim_test1.txt"                line 2
+2      "vim_test2.txt"                line 0
+3      "vim_test3.txt"                line 0
+</code></pre>
+
+<p>Buffer 1 is active (%a) if we jump to buffer 3</p>
+
+<pre><code>:b3
+:ls
+1 #    "vim_test1.txt"                line 2
+2      "vim_test2.txt"                line 0
+3 %a   "vim_test3.txt"                line 2
+</code></pre>
+
+<p>Buffer 3 is active (%a) and 3 is previous edited buffer. ctrl-6 will switch these around. Toggling the active buffer between the two.</p>
+
+<pre><code>ctrl-6
+:ls
+1 %a   "vim_test1.txt"                line 2
+2      "vim_test2.txt"                line 0
+3 #    "vim_test3.txt"                line 2 
+ctrl-6
+:ls
+1 #    "vim_test1.txt"                line 2
+2      "vim_test2.txt"                line 0
+3 %a   "vim_test3.txt"                line 2  
+</code></pre>
+
+<p>To scroll through the buffers in order:</p>
+
+<pre><code>:bn (Next Buffer)
+:bp (Previous Buffer)
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mountain-lion-finding-the-library-folder/">Mountain Lion Finding the Library Folder</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-16T23:56:02+01:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/mountain-lion-finding-the-library-folder/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mountain-lion-finding-the-library-folder/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>From OS X Lion the Users Library folder has been hidden. To find it make Finder the active application, that is when the menu bar displays &lsquo;Finder&rsquo; in the top left, select the &lsquo;Go&rsquo; menu. Then press the option key (⌥) and select Library.</p>
+
+<p>Standard Finder Go Menu
+<a href="http://www.flickr.com/photos/morgan_prior/7798523188/" title="Finder Go Menu by munky morgy, on Flickr"><img src="http://farm8.staticflickr.com/7271/7798523188_0fd97ffe6b.jpg" width="500" height="325" alt="Finder Go Menu"></a></p>
+
+<p>Finder Go Menu with Option (⌥) pressed
+<a href="http://www.flickr.com/photos/morgan_prior/7798528546/" title="Finder Go Menu with Option pressed by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8427/7798528546_78db2dbaac.jpg" width="500" height="338" alt="Finder Go Menu with Option pressed"></a></p>
+
+<p>Option 2, with Finder the active Application press shift-cmd-G (⇧⌘G) for go to folder and type &lsquo;~/Library&rsquo;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/mountain-lion-twitter-and-flickr-integration/">Mountain Lion, Twitter and Flickr Integration</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-16T17:41:38+01:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
+        
+           | <a href="/blog/photography/mountain-lion-twitter-and-flickr-integration/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/mountain-lion-twitter-and-flickr-integration/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The settings for Twitter and Flickr feel a little hidden at first. To set them up go to <code>System Preferences</code> &lsquo;Internet &amp; Wireless&rsquo; &ndash;> &lsquo;Mail, Contacts &amp; Calendars&rsquo;.</p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/7796473036/" title="Mountain Lion, Twitter and Flickr integration by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8284/7796473036_6de41c22c2.jpg" width="500" height="367" alt="Mountain Lion, Twitter and Flickr integration"></a></p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/7796447178/" title="Setup twitter &amp; flickr by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8436/7796447178_78d2913de2.jpg" width="500" height="401" alt="Setup twitter &amp; flickr"></a></p>
+
+<p>Once they are setup the <code>Share Sheet</code> will have new options.</p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/7796459660/" title="New Options in Share Sheet by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8300/7796459660_9dca2c5223.jpg" width="500" height="406" alt="New Options in Share Sheet"></a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -638,207 +819,6 @@ Then select Downloads.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/web-automation-with-watir/">Web Automation with Watir</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-06T13:30:06+01:00" pubdate data-updated="true">Aug 6<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/web-automation-with-watir/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/web-automation-with-watir/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://watir.com/">Watir</a> is a web testing framework implemented in ruby, but can be used for testing or automating any web service.</p>
-
-<pre><code>gem install watir-webdriver
-#or in your Gemfile
-gem "watir-webdriver"
-</code></pre>
-
-<h2>For Internet Explorer on Windows</h2>
-
-<pre><code>require 'watir'
-browser = Watir::Browser.new :ie
-</code></pre>
-
-<h2>Firefox or Chrome</h2>
-
-<pre><code>require 'watir-webdriver'
-browser = Watir::Browser.new :firefox
-# OR
-browser = Watir::Browser.new :chrome
-</code></pre>
-
-<p>For OS X and Automating chrome I had to install the chrome driver from <a href="http://code.google.com/p/chromedriver/downloads/list">chromedriver</a> or using <a href="http://mxcl.github.com/homebrew/">homebrew</a>.</p>
-
-<pre><code>brew install chromedriver
-</code></pre>
-
-<p>A simple script might be:</p>
-
-<pre><code>require 'watir-webdriver'
-browser = Watir::Browser.new :chrome
-browser = Watir::Browser.start 'www.google.com'
-puts browser.title
-browser.close
-</code></pre>
-
-<p>This launches a graphical browser and performs the actions requested.</p>
-
-<h1>Headless</h1>
-
-<p>There is a way to make these compatible with severs which do not have a graphics system, by installing the headless gem.</p>
-
-<pre><code>gem install watir-webdriver
-gem install headless
-#or in your Gemfile
-gem "watir-webdriver"
-gem "healdess"
-</code></pre>
-
-<p>The headless gem uses xvfb to perform graphical actions. If you are not on headless machine these will still be visible.</p>
-
-<pre><code>require 'watir-webdriver'
-require 'headless'
-
-headless = Headless.new
-headless.start
-
-browser = Watir::Browser.start 'www.google.com'
-puts browser.title
-browser.close
-
-headless.destroy
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/transferring-a-memory-map-2012-map-to-ios/">Transferring a Memory Map 2012 Map to iOS</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-17T21:34:30+01:00" pubdate data-updated="true">Jul 17<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/transferring-a-memory-map-2012-map-to-ios/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/transferring-a-memory-map-2012-map-to-ios/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have specifically been trying to find out how to transfer my full GB Memory Map OS 1:50K 2012 GB map to an iPad, finally found <a href="http://www.memory-map.co.uk/kb/questions.php?questionid=86">a working solution here</a>.</p>
-
-<p>Basically find your *.qct and *.qc3 file and transfer them to memory map through the iTunes app section. Memory Map must not be running on the device while doing this.</p>
-
-<p>To view the maps start Memory Map then go to Folder, More Maps, All Maps on Device.</p>
-
-<p>It is worth checking Map Types as new detected types seem to default with a disabled view, the 2012 GB is type &lsquo;Land&rsquo;. Turn this on and then then &lsquo;OS 1:50k Great Britain&rsquo; should show up. on first view it will ask to use one of your 5 enables.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/mac-mountain-lion-compatibility/">Mac Mountain Lion Compatibility</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-16T06:52:09+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/mac-mountain-lion-compatibility/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mac-mountain-lion-compatibility/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>One of the limitations of mountain lion is that they are only going to support 64 bit Kernel extensions, the graphics drivers are are loaded as a kernel extension and some of the older macs (mac pro, iMac, MacBook, MacBook pro) only have a 32bit graphics driver (Kernel extension) avilable and so will not be supported by Mountain Lion.</p>
-
-<p>To check just run this from your terminal (/Applications/Utilities/Terminal.app) :</p>
-
-<pre><code>ioreg -l -p IODeviceTree | grep firmware-abi
-</code></pre>
-
-<p>If it is supported the result should look some thing like:</p>
-
-<pre><code>    | |   "firmware-abi" = &lt;"EFI64"&gt;
-</code></pre>
-
-<p>If you device is not supported you will get:</p>
-
-<pre><code>    | |   "firmware-abi" = &lt;"EFI32"&gt;
-</code></pre>
-
-<p><a href="http://arstechnica.com/apple/2012/07/confirmed-mountain-lion-sends-some-64-bit-macs-gently-into-that-good-night/">Source</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/14/">&larr; Older</a>
@@ -853,11 +833,23 @@ headless.destroy
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (18)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (224)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (226)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/screen-scrollback/">Screen Scrollback</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-leading-0-s/">Matlab: Leading 0&#8217;s</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/mavericks-disable-mail-sound/">Mavericks Disable Mail Sound</a>
@@ -865,18 +857,6 @@ headless.destroy
     
       <li class="post">
         <a href="/blog/engineering/matlab-wrapper-scripts/">Matlab Wrapper Scripts</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-sort-by/">Matlab Sort_by</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/raised-bed-update/">Raised Bed, Update</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/tool-acquisition/">Tool Acquisition</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-03-18T18:03:04+00:00</updated>
+  <updated>2014-04-01T19:12:07+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,90 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Print Array]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/ruby-print-array/"/>
+    <updated>2014-04-01T18:36:00+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/ruby-print-array</id>
+    <content type="html"><![CDATA[<p><code>puts</code> and <code>to_s</code> could be better:</p>
+
+<pre><code>a = [1, 2, 3]
+puts a
+&gt; 1
+&gt; 2
+&gt; 3
+
+puts a.to_s
+&gt; [1, 2, 3]
+</code></pre>
+
+<h2>Nicely print an array</h2>
+
+<p>Multiply it out with spaces:</p>
+
+<pre><code>a = [1, 2, 3]
+puts a * " "
+&gt; 1 2 3
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Screen Scrollback]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/screen-scrollback/"/>
+    <updated>2014-03-25T20:57:28+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/screen-scrollback</id>
+    <content type="html"><![CDATA[<p>Enter copy mode</p>
+
+<pre><code>ctrl-a [
+</code></pre>
+
+<p>Use cursors of vim motions to move to relevant area.</p>
+
+<p>Space to start selection, space again to end selection and copy to screen copy-buffer</p>
+
+<p>Move to virtual screen terminal where you want to paste then</p>
+
+<pre><code>ctrl-a ]
+</code></pre>
+
+<p>To paste to file enter</p>
+
+<pre><code>cat &gt; paste.file
+#// Then press ctrl-a ]
+</code></pre>
+
+<p><a href="http://commandliners.com/2009/12/screen-working-with-the-scrollback-buffer/">More notes on screen scrollback history</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab: Leading 0's]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-leading-0-s/"/>
+    <updated>2014-03-25T20:52:35+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/matlab-leading-0-s</id>
+    <content type="html"><![CDATA[<p>For adding leading zeros to a number the following can be used for 4 decimal places with integer input:</p>
+
+<pre><code>dat = 1;
+sprintf(['%4.4d'], dat)
+</code></pre>
+
+<p>To make this programmable the following can be used:</p>
+
+<pre><code>dat       = 1;
+min_width = 4;
+sprintf(['%',num2str(min_width),'.', num2str(min_width),'d'], 1)
+</code></pre>
+
+<p>For string inputs you need:</p>
+
+<pre><code>dat       = '1'
+min_width = 4;
+sprintf(['%0',num2str(6),'s'], dat)
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mavericks Disable Mail Sound]]></title>
@@ -493,63 +577,6 @@ rake deploy
 </code></pre>
 
 <p><a href="http://octopress.org/docs/deploying/github/">Official Docs</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Revert in Git]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/revert-in-git/"/>
-    <updated>2014-03-03T19:42:12+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/revert-in-git</id>
-    <content type="html"><![CDATA[<h1>and Remove Orphaned Commits.</h1>
-
-<p>I use <code>gitx</code> graphical tool on OS X to find the SHAs for commits. Revert back throwing away all changes:</p>
-
-<pre><code>git reset --hard shaqwerty      
-</code></pre>
-
-<p>Now delete the orphaned commits.</p>
-
-<pre><code>git reflog expire --expire=now --expire-unreachable=now --all
-git gc --prune=now
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[OO Magic Bullet?]]></title>
-    <link href="http://lizard-spock.co.uk/blog/engineering/oo-magic-bullet/"/>
-    <updated>2014-03-01T20:04:06+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/engineering/oo-magic-bullet</id>
-    <content type="html"><![CDATA[<p>I do not think that there are any magic bullets, best practises can minimise risk but you have to fully understand the technique. You can not just switch from procedural code to wrapping everything in an object and claim statements like this from <a href="http://www.mathworks.co.uk/company/newsletters/articles/introduction-to-object-oriented-programming-in-matlab.html">mathworks</a>:</p>
-
-<blockquote><p>Because it was built using OO techniques, the application is now robust enough for others to use and maintain and can be integrated with related applications throughout an organization.</p></blockquote>
-
-<p>Sounds like Object-Oriented programming is a magic bullet to solve all you programming woes!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Edit Octopress Posts]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/edit-octopress-posts/"/>
-    <updated>2014-03-01T19:28:17+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/edit-octopress-posts</id>
-    <content type="html"><![CDATA[<p>Creating new posts in Octopress is <code>rake new_post["Edit Posts"]</code> which outputs the created filename.</p>
-
-<p>Posts are prefixed with date, which can make it difficult to find a particular post to edit. Tab completion can help if you known the year of the post but it may still list 100&rsquo;s of posts where you have to spot the title, and narrow it done via month and day. To get around this I use this script to launch matching posts in my editor:</p>
-
-<pre><code>#!/bin/bash
-
-editor="mvim"
-post_path="source/_posts/"
-
-for OUTPUT in $(ls $post_path | grep $1)
-do
-  file_list="$file_list $post_path$OUTPUT"
-done
-
-$editor $file_list
-</code></pre>
 ]]></content>
   </entry>
   

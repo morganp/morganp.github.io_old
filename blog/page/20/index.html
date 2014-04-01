@@ -9,7 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="When working with HDLs (Hardware Description Languages) there a few things that could be improved/made easier: Renaming a file from an automated tool &hellip;">
+  <meta name="description" content="Ruby 1.9.2-p290 released, if you have RVM installed updating to the latest release is easy rvm get head
+rvm reload
+rvm install 1.9.2 If you do not &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +83,223 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/get-latest-ruby-192-build-with-rvm/">Get Latest Ruby 1.9.2 Build with RVM</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-16T07:47:23+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/get-latest-ruby-192-build-with-rvm/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/get-latest-ruby-192-build-with-rvm/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ruby 1.9.2-p290 released, if you have <a href="http://beginrescueend.com/">RVM</a> installed updating to the latest release is easy</p>
+
+<pre><code>rvm get head
+rvm reload
+rvm install 1.9.2
+</code></pre>
+
+<p>If you do not have <a href="http://beginrescueend.com/">RVM</a> installed you can <a href="http://beginrescueend.com/rvm/install/">read up here</a> or just run:</p>
+
+<pre><code>bash &lt; &lt;(curl -s https://rvm.beginrescueend.com/install/rvm)
+</code></pre>
+
+<p>You may want to check your default gem list in your old version and add then make the new ruby your default. Having bundler present is almost essential for most projects, to install the protected gemsets.</p>
+
+<pre><code>rvm gem list &gt; rvm_old_gemlist.txt
+rvm --default use 1.9.2
+gem install bundler
+</code></pre>
+
+<p>When only specifying a ruby version the latest release will be the default.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/using-sshconfig-and-no-passowrds-with-mac-os-x/">Using ~/.ssh/config and No Passowrds with Mac OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-14T21:56:03+01:00" pubdate data-updated="true">Jul 14<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/using-sshconfig-and-no-passowrds-with-mac-os-x/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/using-sshconfig-and-no-passowrds-with-mac-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Using ssh to securely connect with servers from the terminal is pretty easy. set up a public key and a private key using:</p>
+
+<pre><code>ssh-keygen -t rsa
+</code></pre>
+
+<p>This should save them in ~/.ssh/</p>
+
+<p>However you may want separate keys for work, for home servers and other services like a web server or github. the ~/.ssh/config file is a way to specify a list of possible keys to use and associate them with a host name. I when using this initially Mac OS X always prompted me for my identity file password. instead of acting password-less.</p>
+
+<p>For OS X it looks like you have to add a few more options to get the same behaviour as without the .ssh/config :</p>
+
+<pre><code>Host *
+  RSAAuthentication yes
+  PasswordAuthentication yes
+  ChallengeResponseAuthentication no
+  IdentityFile ~/.ssh/id_rsa
+</code></pre>
+
+<p>Adding more Identity files the first passing will be used</p>
+
+<pre><code>Host *
+  RSAAuthentication yes
+  PasswordAuthentication yes
+  ChallengeResponseAuthentication no
+  IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_rsa_work
+  IdentityFile ~/.ssh/id_rsa_github
+</code></pre>
+
+<p>Multiple Identities, using known identity for known location.</p>
+
+<pre><code>Host *.work.com
+  IdentityFile ~/.ssh/id_rsa
+
+Host *.github.com
+  IdentityFile ~/.ssh/id_rsa_github
+
+Host *
+  RSAAuthentication yes
+  PasswordAuthentication yes
+  ChallengeResponseAuthentication no
+  IdentityFile ~/.ssh/id_rsa
+</code></pre>
+
+<p>For more info try looking at <a href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh_config">the man page</a>, from your terminal:</p>
+
+<pre><code>$ man ssh_config
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/using-sshconfig-and-no-passwords-with-mac-os-x/">Using ~/.ssh/config and No Passwords with Mac OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-14T21:55:31+01:00" pubdate data-updated="true">Jul 14<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/using-sshconfig-and-no-passwords-with-mac-os-x/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/using-sshconfig-and-no-passwords-with-mac-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Using ssh to securely connect with servers from the terminal is pretty easy. set up a public key and a private key using</p>
+
+<p>However you may want separate keys for work, for home servers and other services like a webserver or github. the ~/.ssh /config file is a way to specify a list of possible keys to use and associate them with a host name. I when using this initially Mac OS X always prompted me for my identity file password. instead of acting password-less.</p>
+
+<p>For OS X it looks like you have to add a few more options to get the same behaviour as without the .ssh/config :</p>
+
+<pre><code>Host *
+  RSAAuthentication yes
+  PasswordAuthentication yes
+  IdentityFile ~/.ssh/id_rsa
+</code></pre>
+
+<p>Adding more Identity files the first passing will be used</p>
+
+<pre><code>Host *
+  RSAAuthentication yes
+  PasswordAuthentication yes
+  IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_rsa_work
+  IdentityFile ~/.ssh/id_rsa_github
+</code></pre>
+
+<p>Multiple Identities, using known identity for known location.</p>
+
+<pre><code>Host *.work.com
+  IdentityFile ~/.ssh/id_rsa
+
+Host *.github.com
+  IdentityFile ~/.ssh/id_rsa_github
+
+Host *
+  RSAAuthentication yes
+  PasswordAuthentication yes
+  IdentityFile ~/.ssh/id_rsa
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -666,220 +885,6 @@ found  = search.any? { |regexp| text.match( regexp ) }
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/installing-gistvim/">Installing gist.vim</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-20T20:32:05+01:00" pubdate data-updated="true">May 20<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/installing-gistvim/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/installing-gistvim/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This vim plugin will allow you to gist directly from vim, simple way is just :Gist to gist entire file more options in the <a href="https://github.com/mattn/gist-vim/blob/master/README.mkd">Full Readme</a>.</p>
-
-<p>If you have not heard of gists or Github. Github is a very popular (especially with in the Ruby community) way of sharing open source code. <a href="https://gist.github.com/">Gists</a> are the easy way to save and share small snippets of code.</p>
-
-<h2>Install</h2>
-
-<pre><code>cd ~/.vim/plugin
-wget --nocheck-certificate https://github.com/mattn/gist-vim/raw/master/plugin/gist.vim
-cd ../doc
-wget --no-check-certificate https://github.com/mattn/gist-vim/raw/master/doc/gist-vim.txt
-
-#Now to set Your env variables
-git config --global github.user your-name-here
-git config --global github.token your-token-here
-</code></pre>
-
-<p>You Github token can be found on the <a href="https://github.com/account">GitHub Admin</a> Account Admin tab.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/obnoxious-gem-warnings/">Obnoxious Gem Warnings</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-11T17:11:47+01:00" pubdate data-updated="true">May 11<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/obnoxious-gem-warnings/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/obnoxious-gem-warnings/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>recenlty after updating rubygems Istarted getting a lot of warning like this when running ruby or executable gems:</p>
-
-<p>NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299@global/specifications/rake-0.8.7.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/bundler-1.0.12.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/bundler-1.0.7.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/heroku-1.12.0.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/heroku-2.0.4.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/httparty-0.5.2.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/httparty-0.7.7.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/json-1.4.6.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/json-1.5.1.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.</p>
-
-<h2>Using RVM the fix is to run</h2>
-
-<pre><code> rvm rubygems current
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/recent-issue-with-building-gems/">Recent Issue with Building Gems</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-07T23:25:34+01:00" pubdate data-updated="true">May 7<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/recent-issue-with-building-gems/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/recent-issue-with-building-gems/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When running gem build on a new library I have been working on I started getting the following error:</p>
-
-<pre><code>[ruby_svg_light.gemspec] isn't a Gem::Specification (Rake::FileTask instead).
-ERROR:  While executing gem ... (NoMethodError)
-    undefined method `mark_version' for nil:NilClass
-</code></pre>
-
-<p>It was from a gemspec similar to that below</p>
-
-<pre><code>require 'rake/gempackagetask' 
-
-NAME = "ruby_svg_light" 
-Dir.chdir( './lib/')
-require NAME
-Dir.chdir( './../')
-
-spec = Gem::Specification.new do |s|
-  s.name         = NAME
-  s.version      = RubySVGLight::VERSION
-  s.platform     = Gem::Platform::RUBY
-  s.summary      = 'Basic Helper for creating SVG Files'
-  s.homepage     = 'http://amaras-tech.co.uk/software/RubySVGLight'
-  s.authors      = "Morgan Prior"
-  s.email        = NAME + "_gem@amaras-tech.co.uk"
-  s.description  = %{A basic library for building SVG files. Not all properties of SVG are supported}
-  s.files        = [Dir.glob("LICENSE.rtf")]
-  s.files        += Dir.glob("examples/*")
-  s.files        += Dir.glob("lib/**/*")
-  s.files        += Dir.glob("spec/*") 
-end
-Rake::GemPackageTask.new(spec).define
-</code></pre>
-
-<p>The Fix was to change to this (Removing Rake::GemPackageTask):</p>
-
-<pre><code>NAME = "ruby_svg_light"
-Dir.chdir( './lib/')
-require NAME
-Dir.chdir( './../')
-
-Gem::Specification.new do |s|
-  s.name         = NAME
-  s.version      = RubySVGLight::VERSION
-  s.platform     = Gem::Platform::RUBY
-  s.summary      = 'Basic Helper for creating SVG Files'
-  s.homepage     = 'http://amaras-tech.co.uk/software/RubySVGLight'
-  s.authors      = "Morgan Prior"
-  s.email        = NAME + "_gem@amaras-tech.co.uk"
-  s.description  = %{A basic library for building SVG files. Not all properties of SVG are supported}
-  s.files        = [Dir.glob("LICENSE.rtf")]
-  s.files        += Dir.glob("examples/*")
-  s.files        += Dir.glob("lib/**/*")
-  s.files        += Dir.glob("spec/*")
-end
-</code></pre>
-
-<p>It looks like the new format if for the gemspec is to return a Gem::Specification rather than run the task. I do not know when this change happened.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/21/">&larr; Older</a>
@@ -894,11 +899,23 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (18)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (224)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (226)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/screen-scrollback/">Screen Scrollback</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-leading-0-s/">Matlab: Leading 0&#8217;s</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/mavericks-disable-mail-sound/">Mavericks Disable Mail Sound</a>
@@ -906,18 +923,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/matlab-wrapper-scripts/">Matlab Wrapper Scripts</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-sort-by/">Matlab Sort_by</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/raised-bed-update/">Raised Bed, Update</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/tool-acquisition/">Tool Acquisition</a>
       </li>
     
   </ul>

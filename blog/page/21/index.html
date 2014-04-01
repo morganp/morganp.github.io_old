@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I have captured all 5 lists here, but they are only a ⌘/ away. Library Develop Slideshow Print Web ">
+  <meta name="description" content="This vim plugin will allow you to gist directly from vim, simple way is just :Gist to gist entire file more options in the Full Readme. If you have &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,220 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/installing-gistvim/">Installing gist.vim</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-20T20:32:05+01:00" pubdate data-updated="true">May 20<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/installing-gistvim/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/installing-gistvim/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This vim plugin will allow you to gist directly from vim, simple way is just :Gist to gist entire file more options in the <a href="https://github.com/mattn/gist-vim/blob/master/README.mkd">Full Readme</a>.</p>
+
+<p>If you have not heard of gists or Github. Github is a very popular (especially with in the Ruby community) way of sharing open source code. <a href="https://gist.github.com/">Gists</a> are the easy way to save and share small snippets of code.</p>
+
+<h2>Install</h2>
+
+<pre><code>cd ~/.vim/plugin
+wget --nocheck-certificate https://github.com/mattn/gist-vim/raw/master/plugin/gist.vim
+cd ../doc
+wget --no-check-certificate https://github.com/mattn/gist-vim/raw/master/doc/gist-vim.txt
+
+#Now to set Your env variables
+git config --global github.user your-name-here
+git config --global github.token your-token-here
+</code></pre>
+
+<p>You Github token can be found on the <a href="https://github.com/account">GitHub Admin</a> Account Admin tab.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/obnoxious-gem-warnings/">Obnoxious Gem Warnings</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-11T17:11:47+01:00" pubdate data-updated="true">May 11<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/obnoxious-gem-warnings/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/obnoxious-gem-warnings/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>recenlty after updating rubygems Istarted getting a lot of warning like this when running ruby or executable gems:</p>
+
+<p>NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299@global/specifications/rake-0.8.7.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/bundler-1.0.12.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/bundler-1.0.7.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/heroku-1.12.0.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/heroku-2.0.4.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/httparty-0.5.2.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/httparty-0.7.7.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/json-1.4.6.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/json-1.5.1.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.</p>
+
+<h2>Using RVM the fix is to run</h2>
+
+<pre><code> rvm rubygems current
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/recent-issue-with-building-gems/">Recent Issue with Building Gems</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-07T23:25:34+01:00" pubdate data-updated="true">May 7<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/recent-issue-with-building-gems/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/recent-issue-with-building-gems/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When running gem build on a new library I have been working on I started getting the following error:</p>
+
+<pre><code>[ruby_svg_light.gemspec] isn't a Gem::Specification (Rake::FileTask instead).
+ERROR:  While executing gem ... (NoMethodError)
+    undefined method `mark_version' for nil:NilClass
+</code></pre>
+
+<p>It was from a gemspec similar to that below</p>
+
+<pre><code>require 'rake/gempackagetask' 
+
+NAME = "ruby_svg_light" 
+Dir.chdir( './lib/')
+require NAME
+Dir.chdir( './../')
+
+spec = Gem::Specification.new do |s|
+  s.name         = NAME
+  s.version      = RubySVGLight::VERSION
+  s.platform     = Gem::Platform::RUBY
+  s.summary      = 'Basic Helper for creating SVG Files'
+  s.homepage     = 'http://amaras-tech.co.uk/software/RubySVGLight'
+  s.authors      = "Morgan Prior"
+  s.email        = NAME + "_gem@amaras-tech.co.uk"
+  s.description  = %{A basic library for building SVG files. Not all properties of SVG are supported}
+  s.files        = [Dir.glob("LICENSE.rtf")]
+  s.files        += Dir.glob("examples/*")
+  s.files        += Dir.glob("lib/**/*")
+  s.files        += Dir.glob("spec/*") 
+end
+Rake::GemPackageTask.new(spec).define
+</code></pre>
+
+<p>The Fix was to change to this (Removing Rake::GemPackageTask):</p>
+
+<pre><code>NAME = "ruby_svg_light"
+Dir.chdir( './lib/')
+require NAME
+Dir.chdir( './../')
+
+Gem::Specification.new do |s|
+  s.name         = NAME
+  s.version      = RubySVGLight::VERSION
+  s.platform     = Gem::Platform::RUBY
+  s.summary      = 'Basic Helper for creating SVG Files'
+  s.homepage     = 'http://amaras-tech.co.uk/software/RubySVGLight'
+  s.authors      = "Morgan Prior"
+  s.email        = NAME + "_gem@amaras-tech.co.uk"
+  s.description  = %{A basic library for building SVG files. Not all properties of SVG are supported}
+  s.files        = [Dir.glob("LICENSE.rtf")]
+  s.files        += Dir.glob("examples/*")
+  s.files        += Dir.glob("lib/**/*")
+  s.files        += Dir.glob("spec/*")
+end
+</code></pre>
+
+<p>It looks like the new format if for the gemspec is to return a Gem::Specification rather than run the task. I do not know when this change happened.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -603,172 +817,6 @@ $ bundle install
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/reading-list/">Reading List</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-08T10:19:56+01:00" pubdate data-updated="true">Apr 8<span>th</span>, 2011</time>
-        
-           | <a href="/blog/photography/reading-list/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/reading-list/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>My <a href="http://www.shelfari.com/o1514252429/shelf">Shelfari</a></p>
-
-<h2>To Read</h2>
-
-<p>Photoshop CS5 and Lightroom 3, ISBN 978-1-933952-67-2<br/>
-Developing Vision and Style, ISBN 978-1-9025 38495<br/>
-Pragmatic Thinking and Learning, ISBN 978-1934356050<br/>
-Pragmatic Guide to Git,<br/>
-The RSpec Book,<br/>
-Ruby Best Practises,<br/>
-The Agile Samurai, <br/>
-jQuery Novice to Ninja,<br/>
-Structure and Interpretation of Computer Programming,<br/>
-Metaprogramming Ruby,</p>
-
-<h2>Recommended Computing</h2>
-
-<p>Classic Shell Scripting, ISBN 0-596-00595-4<br/>
-The Passionate Programmer, ISBN 978-1-934356-34-0</p>
-
-<h2>Recommended Photography</h2>
-
-<p>Lightroom 2 Adventure, ISBN 978-0-596-52101-1<br/>
-Black and White, ISBN 978-1-904705-57-4<br/>
-First Light, ISBN 1-902538-24-2</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/unregistered-torrent-flush-the-dns/">&#8216;Unregistered Torrent&#8217; Flush the DNS</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-31T10:45:20+01:00" pubdate data-updated="true">Mar 31<span>st</span>, 2011</time>
-        
-           | <a href="/blog/tech/unregistered-torrent-flush-the-dns/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/unregistered-torrent-flush-the-dns/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If a torrent application has been running and torrents start showing a status of &lsquo;unregistered torrent&rsquo; a likely cause is that the server IP address has changed. To fix this you need to close the application and flush the DNS, before starting the application again.</p>
-
-<p>To flush the DNS cache:</p>
-
-<h2>OS X Leopard / Snow Leopard</h2>
-
-<pre><code>$ sudo dscacheutil -flushcache
-</code></pre>
-
-<h2>Windows XP</h2>
-
-<pre><code>$ lookupd -flushcache
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-cli-user-input-using-gets/">Ruby CLI User Input Using Gets</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-27T06:04:31+01:00" pubdate data-updated="true">Mar 27<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-cli-user-input-using-gets/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-cli-user-input-using-gets/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Using a while true loop with &lsquo;gets&rsquo; and a case statement, can create a compact command line interface for ruby scripts.</p>
-
-<pre><code>while true
-  puts "'q' to quit, 'c' to continue"
-  command = gets
-  case
-    when command.match(/^q/) then
-      puts "Quit"
-      break
-    when command.match(/^c/) then
-      puts "Continue"
-  end # case
-end # while true
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/22/">&larr; Older</a>
@@ -783,11 +831,23 @@ end # while true
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (18)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (224)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (226)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/screen-scrollback/">Screen Scrollback</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-leading-0-s/">Matlab: Leading 0&#8217;s</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/mavericks-disable-mail-sound/">Mavericks Disable Mail Sound</a>
@@ -795,18 +855,6 @@ end # while true
     
       <li class="post">
         <a href="/blog/engineering/matlab-wrapper-scripts/">Matlab Wrapper Scripts</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-sort-by/">Matlab Sort_by</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/raised-bed-update/">Raised Bed, Update</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/tool-acquisition/">Tool Acquisition</a>
       </li>
     
   </ul>

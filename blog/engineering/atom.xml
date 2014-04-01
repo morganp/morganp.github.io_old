@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Engineering | RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/blog/engineering/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-03-18T18:03:04+00:00</updated>
+  <updated>2014-04-01T19:12:07+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab: Leading 0's]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-leading-0-s/"/>
+    <updated>2014-03-25T20:52:35+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/matlab-leading-0-s</id>
+    <content type="html"><![CDATA[<p>For adding leading zeros to a number the following can be used for 4 decimal places with integer input:</p>
+
+<pre><code>dat = 1;
+sprintf(['%4.4d'], dat)
+</code></pre>
+
+<p>To make this programmable the following can be used:</p>
+
+<pre><code>dat       = 1;
+min_width = 4;
+sprintf(['%',num2str(min_width),'.', num2str(min_width),'d'], 1)
+</code></pre>
+
+<p>For string inputs you need:</p>
+
+<pre><code>dat       = '1'
+min_width = 4;
+sprintf(['%0',num2str(6),'s'], dat)
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Matlab Wrapper Scripts]]></title>
@@ -152,30 +179,6 @@ b =
 b =
     20
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Matlab Shuffle Array]]></title>
-    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-shuffle-array/"/>
-    <updated>2014-03-06T20:42:57+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/engineering/matlab-shuffle-array</id>
-    <content type="html"><![CDATA[<p>To shuffle a:</p>
-
-<pre><code>a(randperm(length(a)))
-</code></pre>
-
-<p>Example:</p>
-
-<pre><code>a = [10 2 5 20];
-a = a(randperm(length(a)))
-
-a =
-
- 5    10     2    20
-</code></pre>
-
-<p><a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/239478">Source</a>.</p>
 ]]></content>
   </entry>
   

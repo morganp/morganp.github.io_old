@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Joe Cornish has been a great influence on my photography, he traditionally works with a large format field camera and is well renowned for his colour &hellip;">
+  <meta name="description" content="The camera aperture is how far the iris is kept open during the exposure. A wide aperture, large opening lets in more light so can have a faster &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,220 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/camera-apetures-/">Camera Apetures</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-28T22:29:47+01:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time>
+        
+           | <a href="/blog/photography/camera-apetures-/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/camera-apetures-/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The camera aperture is how far the iris is kept open during the exposure. A wide aperture, large opening lets in more light so can have a faster shutter speed but also has a lower depth of field (DOF). That is less of the image will be in sharp focus.</p>
+
+<p>Lens are sold based on there largest aperture, f2.8, f4 etc but how do these relate to each other? Stops are the often used measurement of photographic equipment. Here if a lens is one stop faster it will have an aperture wide enough to half the exposure time.</p>
+
+<p>From f1 the whole stops are:</p>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th align="center"> 1 </th>
+<th align="center"> 2 </th>
+<th align="center"> 3 </th>
+<th align="center"> 4 </th>
+<th align="center"> 5 </th>
+<th align="center"> 6 </th>
+<th align="center"> 7 </th>
+<th> </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td align="center"> f1.0 </td>
+<td align="center"> f1.4 </td>
+<td align="center"> f2.0 </td>
+<td align="center"> f2.8 </td>
+<td align="center"> f4.0 </td>
+<td align="center"> f5.6 </td>
+<td align="center"> f8.0 </td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+<p>There are a few lenses which are rated as f4-5.6 which we can see represents a full stop, which means at it maximum zoom the lens will be even slower. For a fixed aperture the lens would be slower as we increase focal length (zoom in) because we take the centre portion of the light, here we also suffer from a smaller aperture.</p>
+
+<h2>Area</h2>
+
+<p>The area of the size of the aperture changes by square root of 2 (about 1.41) .  <a href="http://en.wikipedia.org/wiki/Aperture#Aperture_area">Wikipedia</a> has an equation which can be used to calculate the amount (area) of light collected from a lens for a given focal length and aperture.</p>
+
+<pre><code>f = focal length, eg 50mm
+n = f-stop, eg 5.6
+area = pi *( f/(2*n) )^2
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/syntax-error-not-a-valid-color-stop-sassscriptstring-white/">Syntax Error: Not a Valid Color Stop: Sass::Script::String: White</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-28T19:02:50+01:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/syntax-error-not-a-valid-color-stop-sassscriptstring-white/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/syntax-error-not-a-valid-color-stop-sassscriptstring-white/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After making a few updates to my site it stopped working after deploying. The issue was that the gem version of compass had not been tied down and the server was working with newer version.</p>
+
+<p>The error was coming from this line in my sass file :</p>
+
+<pre><code>$gradient = #FFFFFF // This get converted to  'white' in the error message
+background-image:         linear-gradient(to bottom, #{$gradient}, #{$back})
+</code></pre>
+
+<p>Again the error was:</p>
+
+<pre><code>Syntax error: Not a valid color stop: Sass::Script::String: white
+</code></pre>
+
+<p>To fix the issue I had to revert back to  compass 0.10.6</p>
+
+<h2>Reverting Compass</h2>
+
+<p>Bundler Gemfile <code>gem  "compass", "0.10.6"</code><br/>
+then run <code>$ bundle update</code></p>
+
+<p>Or directly from the command line <code>gem install compass -v 0.10.6</code></p>
+
+<p>Now run <code>gem list</code> and remove the newer versions ie<br/>
+<code>gem uninstall compass -v 0.12.1</code></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/minify-your-html-from-sinatra/">Minify Your HTML from Sinatra</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-26T15:13:49+01:00" pubdate data-updated="true">Apr 26<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/minify-your-html-from-sinatra/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/minify-your-html-from-sinatra/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>There are gzip compression options available but when I looked at this a long time ago I found that the extra server load to compress (with out caching) and the extra delay in the browser to decompress was not worth the few bytes it saved and lead to longer times before seeing the fully rendered page.</p>
+
+<p>Minification or minifying is more about removing white space, in the case of javascript it can also optimise variable names. For html we would not want to do that unless our css was going to be converted to match exactly.</p>
+
+<p>After a little digging and trying a few gems which failed to set there dependancies correctly and even <code>required 'pp'</code>*, I found TidyFFI.</p>
+
+<ul>
+<li>Really useful for debugging but I do not think has a place in deployed code.</li>
+</ul>
+
+
+<h1>Minify HTML</h1>
+
+<pre><code>gem install TidyFFI
+</code></pre>
+
+<p>Before:</p>
+
+<pre><code>get '/' do
+  erb :'about'
+end 
+</code></pre>
+
+<p>After :</p>
+
+<pre><code>require 'tidy_ffi'
+get '/' do
+  TidyFFI::Tidy.new( erb :'about' ).clean 
+end 
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -681,195 +895,6 @@ This will overwrite existing gems in ruby-1.9.3-p194 and remove them from ruby-1
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/bash-script-get-current-script-directory/">Bash Script Get Current Script Directory</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-07T13:45:37+01:00" pubdate data-updated="true">Apr 7<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/bash-script-get-current-script-directory/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/bash-script-get-current-script-directory/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sometime a script needs to now the directory that it is executing from, the best solution for this is:</p>
-
-<pre><code>DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &amp;&amp; pwd )"
-</code></pre>
-
-<p>Although the simpler version below should work for most cases the version above is preferred for shell portability.</p>
-
-<pre><code>DIR=`dirname $0` 
-</code></pre>
-
-<p>The usage of this could be for creating shell scripts that a user can double click to execute or drag on to the terminal to execute, as the working directory could change. Uses the scripts folder means that if a user copies the script to a new project it will work in the new project rather than having absolute paths to the old project.</p>
-
-<pre><code>#!/bin/bash
-
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &amp;&amp; pwd )"
-CSS_COLLATION=$DIR/screen.css
-
-#Clean File
-echo '' &gt; $CSS_COLLATION
-
-#Append CSS
-cat $DIR/reset.css &gt;&gt; $CSS_COLLATION
-cat $DIR/960.css &gt;&gt; $CSS_COLLATION
-</code></pre>
-
-<p><a href="http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in">From StackOverflow</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/encodingundefinedconversionerror-/">Encoding::UndefinedConversionError -</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-04T20:37:01+01:00" pubdate data-updated="true">Apr 4<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/encodingundefinedconversionerror-/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/encodingundefinedconversionerror-/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Are you running into the following error</p>
-
-<pre><code>Encoding::UndefinedConversionError - "\xE2" from ASCII-8BIT to UTF-8:
-</code></pre>
-
-<p>If you are using Ruby and SASS for your stylesheets then it might help to start your stylesheets with:</p>
-
-<pre><code>@charset "UTF-8"
-</code></pre>
-
-<p>In my main sinatra app I had</p>
-
-<pre><code>before do
-  content_type 'text/html', :charset =&gt; 'utf-8'
-end
-
-get '/base.css' do
-  sass :'stylesheets/base'
-end
-</code></pre>
-
-<p>Now the before route forces it to be utf-8 so stylesheets/base.sass also needs a charset defining:</p>
-
-<pre><code>@charset "UTF-8"
-
-body
-  font:
-    family: Helvetica, Arial, sans-serif
-
-#head
-  margin: 0
-  padding: 1em
-  background-color: #ccc
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/trying-to-disable-caps-lock-on-unix-systems/">Trying to Disable Caps Lock on Unix Systems</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-02T09:45:19+01:00" pubdate data-updated="true">Apr 2<span>nd</span>, 2012</time>
-        
-           | <a href="/blog/tech/trying-to-disable-caps-lock-on-unix-systems/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/trying-to-disable-caps-lock-on-unix-systems/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Entering the following command in to your .bashrc seems like a simple way forward.</p>
-
-<pre><code>xmodmap -e "remove lock = Caps_Lock"
-</code></pre>
-
-<p>However generates the following error when loading multiple terminals</p>
-
-<pre><code>xmodmap:  commandline:0:  bad keysym in remove modifier list 'Caps_Lock', no corresponding keycodes
-xmodmap:  1 error encountered, aborting.
-</code></pre>
-
-<p>This appear to be a safer variant with out the errors when reloading your .bashrc</p>
-
-<pre><code>xmodmap -e "clear lock"
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/17/">&larr; Older</a>
@@ -884,11 +909,23 @@ xmodmap:  1 error encountered, aborting.
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (18)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (224)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (226)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/screen-scrollback/">Screen Scrollback</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-leading-0-s/">Matlab: Leading 0&#8217;s</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/mavericks-disable-mail-sound/">Mavericks Disable Mail Sound</a>
@@ -896,18 +933,6 @@ xmodmap:  1 error encountered, aborting.
     
       <li class="post">
         <a href="/blog/engineering/matlab-wrapper-scripts/">Matlab Wrapper Scripts</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-sort-by/">Matlab Sort_by</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/raised-bed-update/">Raised Bed, Update</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/tool-acquisition/">Tool Acquisition</a>
       </li>
     
   </ul>

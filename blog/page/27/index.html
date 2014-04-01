@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Homebrew is a new package management system for Mac OS X. A good review/tutorial on EngineYard. Update 20-August-2010
-Then method of installation &hellip;">
+  <meta name="description" content="After updating my website on webfaction nginx kept saying permission denied and when I tried to view my site I got a 502 Bad Gateway error page. To &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,169 @@ Then method of installation &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/webfaction-problems-restarting-nginx/">WebFaction Problems Restarting Nginx</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-27T09:39:48+01:00" pubdate data-updated="true">Jun 27<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/webfaction-problems-restarting-nginx/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/webfaction-problems-restarting-nginx/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After updating my website on <a href="http://www.webfaction.com/?affiliate=morgy">webfaction</a> nginx kept saying permission denied and when I tried to view my site I got a 502 Bad Gateway error page.</p>
+
+<p>To restart nginx I use to call:</p>
+
+<pre><code>  ~/webapps/passenger/bin/restart
+</code></pre>
+
+<p>I had to change this to:</p>
+
+<pre><code>~/webapps/passenger/nginx/sbin/nginx -p ~/webapps/passenger/nginx/ -s stop  
+~/webapps/passenger/nginx/sbin/nginx -p ~/webapps/passenger/nginx/ 
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vim-show-lines-over-80-charaters-long/">Vim Show Lines Over 80 Charaters Long.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-26T07:13:52+01:00" pubdate data-updated="true">Jun 26<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/vim-show-lines-over-80-charaters-long/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-show-lines-over-80-charaters-long/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This snippet can be added to you ~/.vimrc to highlight long lines.</p>
+
+<pre><code>" Highlight lines over 80 characters long with red background
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+</code></pre>
+
+<p>When programming it is recommended to keep lines at 80 characters or under. This makes it easier to find the start of the next line, possible to compare two files side by side on modern monitors and source code should print out nicely if required for code reviews.</p>
+
+<p><a href="http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns">source</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vim-search-and-replace/">Vim Search and Replace</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-24T09:37:37+01:00" pubdate data-updated="true">Jun 24<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/vim-search-and-replace/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-search-and-replace/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To search in Vim just press (apple-f for macvim) / then search string.</p>
+
+<pre><code>/search
+</code></pre>
+
+<p>This will highlight all occurrences of &lsquo;search&rsquo;, to clear the highlighting enter:</p>
+
+<pre><code>:let @/ = ""
+</code></pre>
+
+<p>To search and replace the first occurrence on this line only:</p>
+
+<pre><code>:s/search/replace/
+</code></pre>
+
+<p>Lines 1 to 10 all instance per line (thats the /g global):</p>
+
+<pre><code>:1,10 s/search/replace/g 
+</code></pre>
+
+<p>All Lines All instances</p>
+
+<pre><code>:%s/search/replace/g 
+</code></pre>
+
+<p><a href="http://www.linux.com/learn/tutorials/8255-vim-tips-the-basics-of-search-and-replace">Originals source</a><br  />
+<a href="http://stackoverflow.com/questions/657447/vim-clear-last-search-highlighting">Stack overflow vim clear question</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -599,156 +761,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/m4b-audiobooks-on-android/">M4B Audiobooks on Android</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-07T11:15:46+01:00" pubdate data-updated="true">Jun 7<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/m4b-audiobooks-on-android/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/m4b-audiobooks-on-android/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The *.m4b extension is used for audiobooks on the iTunes Store and is a convenient (if you have an iPod) format that other Audio books can be converted to. It is a wrapper for AAC encoded audio data with chapters.</p>
-
-<p>So far there looks to be two promising players for the Android that can handle DRM free M4B. <a href="http://amblingbookplayer.com/">AmblingBookPlayer</a> and <a href="http://www.absent.fi/mobile/?id=88">BookDroid</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/github-command-line-tools-with-static-paths/">GitHub Command Line Tools with Static Paths</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-04T23:19:58+01:00" pubdate data-updated="true">Jun 4<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/github-command-line-tools-with-static-paths/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/github-command-line-tools-with-static-paths/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have written a few command line tools in ruby which I use to perform file system maintenance. Mainly sorting files and applying standard renames, because the the folders I want to sort are always in the same location I do not want to have to remember to run the command in the correct directory so I add the paths explicitly. This creates a problem with uploading to <a href="http://github.com/morganp">GitHub</a> as other people would then need to modify the script.</p>
-
-<p>Here is a short example of how you can get around it using Environment Variables</p>
-
-<pre><code>#!/usr/bin/env ruby
-## Command Line tools can now be portable while working on static folders.
-
-if ENV['MEDIA_FOLDER'].nil?
-   puts "Add this to ~/.bashrc"
-   puts "Or Windows variables"
-   puts "export MEDIA_FOLDER='[\"/user/name/Movies\", \"/user/name/TV Shows\"]'"
-else
-   puts ENV['MEDIA_FOLDER']
-end
-</code></pre>
-
-<p>NB: when using the variables remember that it is a string and not an array. Convert to ruby Array by calling eval on it.</p>
-
-<pre><code>eval(ENV['TEMP_FILES']).each do |x|
-   puts x
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-parsing-torrent-files-for-meta-info/">Ruby Parsing Torrent Files for Meta Info</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-04T10:03:26+01:00" pubdate data-updated="true">Jun 4<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-parsing-torrent-files-for-meta-info/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-parsing-torrent-files-for-meta-info/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>There currently does not appear to be any really good torrent file parsers available via the gems system.</p>
-
-<p>rubytorrent seems good at first glance but requires some maintenance to handle udp trackers, which has been done by <a href="http://github.com/dydx">dydx</a> available on <a href="http://github.com/dydx/RubyTorrent">github</a>. As I cloned the repo rather than install it via gems the requires do not work properly so I have <a href="http://github.com/morganp/RubyTorrent">cloned it</a> and modified the way it requires files.</p>
-
-<p>Other torrent parsers available are aversa and Bencoding.
-Bencoding was originally <a href="http://robwilliams.me/2009/10/week-6-october-6-2009-torrent-parser/">found here</a> but I have modified it a little bit to make it more user friendly <a href="http://github.com/morganp/scripts_generic/blob/master/bencoding.rb">here</a> and an example of how to use it <a href="http://github.com/morganp/scripts_generic/blob/master/torrent_info.rb">here</a>.</p>
-
-<p>A quick Review of Performance (parsing a handful of torrent files)<br/>
-Bencoding Execution time 96.626849 seconds<br/>
-Aversa Execution time 10.573079 seconds<br/>
-RubyTorrent Execution time 0.689869 seconds</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/28/">&larr; Older</a>
@@ -763,11 +775,23 @@ RubyTorrent Execution time 0.689869 seconds</p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (18)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (224)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (226)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/screen-scrollback/">Screen Scrollback</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-leading-0-s/">Matlab: Leading 0&#8217;s</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/mavericks-disable-mail-sound/">Mavericks Disable Mail Sound</a>
@@ -775,18 +799,6 @@ RubyTorrent Execution time 0.689869 seconds</p>
     
       <li class="post">
         <a href="/blog/engineering/matlab-wrapper-scripts/">Matlab Wrapper Scripts</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-sort-by/">Matlab Sort_by</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/raised-bed-update/">Raised Bed, Update</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/tool-acquisition/">Tool Acquisition</a>
       </li>
     
   </ul>

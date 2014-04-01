@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="After switching my Audio ripper (Max) accidentally to &lsquo;AAC Low Delay&rsquo; rather than plain &lsquo;AAC&rsquo; I realised too late after about &hellip;">
+  <meta name="description" content="ctrl-r " Actually ctrl-r reg, where &ldquo; is the unnamed register from the last yank or delete. Why If you have done a block selection and you want &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,321 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vim-paste-from-insert-mode/">Vim, Paste from Insert Mode</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-27T15:00:55+00:00" pubdate data-updated="true">Jan 27<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/vim-paste-from-insert-mode/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-paste-from-insert-mode/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>ctrl-r "
+</code></pre>
+
+<p>Actually <code>ctrl-r reg</code>, where &ldquo; is the unnamed register from the last yank or delete.</p>
+
+<h2>Why</h2>
+
+<p>If you have done a block selection and you want to paste, normally you would have to leave selection mode to this and there fore not be able to edit multiple lines at once.</p>
+
+<p>say you have (below) and what to prepend &lsquo;number&rsquo;.</p>
+
+<pre><code>number 
+one
+two
+three
+</code></pre>
+
+<p>Place cursor on &lsquo;number&rsquo;, <code>yiw</code> to yank inner word. Move to &lsquo;o&rsquo; of one. <code>ctrl-v</code> to enter block selection, <code>jj</code> to select ott vertically. Then I to enter insert mode. <code>ctrl-r " . ESC</code>.</p>
+
+<pre><code>number 
+number.one
+number.two
+number.three
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/matrix-a-ruby-standard-library/">Matrix: A Ruby Standard Library</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-20T12:09:05+00:00" pubdate data-updated="true">Jan 20<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/matrix-a-ruby-standard-library/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/matrix-a-ruby-standard-library/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://github.com/sandal/guides/wiki/STDLIB:-Matrix">Originally written</a> as an assignment for <a href="http://mendicantuniversity.org/">Ruby Mendicant University</a>.</p>
+
+<p>matrix is part of the <a href="http://ruby-doc.org/stdlib/libdoc/matrix/rdoc/classes/Matrix.html">Ruby Standard Library</a></p>
+
+<h1>Usage</h1>
+
+<p>A note before we start, if using Ruby 1.8 require &lsquo;mathn&rsquo; will make matrix division return more accurate results. With it Rational numbers can be returned with out it Rounded numbers are returned. Ruby 1.9 Rational numbers are used by default.</p>
+
+<pre><code>require 'matrix'
+a = Matrix[[1,2], [3,4]] 
+=&gt; Matrix[[1, 2], [3, 4]] 
+This would look like:  
+   1,2
+   3,4
+
+a = Matrix.columns([ [1,3],[2,4] ]) #Note Rows and columns swapped
+=&gt; Matrix[[1, 2], [3, 4]] 
+
+This would still look like
+   1,2
+   3,4
+</code></pre>
+
+<p>If you already have the row defined as a Arrays then using rows they can be combined into a matrix</p>
+
+<pre><code>row1 = [1,2]
+row2 = [3,4]
+a = Matrix[ row1,row2 ]
+#This is also the same as:
+b = Matrix.rows([ row1, row2 ])
+</code></pre>
+
+<p>This by defaults to copying the arrays, i.e. any change to Matrix a will not effect row1 or row2. If you would like the row1 and row2 to be pointers to the respective rows then a boolean switch can be used to control this behaviour</p>
+
+<pre><code>row1 = [1,2]
+row2 = [3,4]
+a = Matrix.rows([ row1, row2 ], false)
+=&gt; Matrix[[1, 2], [3, 4]]
+row1[0] = 9
+puts a
+=&gt; Matrix[[9, 2], [3, 4]]
+</code></pre>
+
+<p>Note that you can not replace entire rows with:</p>
+
+<pre><code>row1 = [5,6]
+puts a 
+=&gt; Matrix[[9, 2], [3, 4]]
+</code></pre>
+
+<p>This is because row1 has become a new Array and does not modify the existing array, Matrix a now contains the old Array row1.</p>
+
+<h2>Identity &amp; Operators</h2>
+
+<p>For matrix mathematics the identity matrix is very useful, more can be read <a href="http://en.wikipedia.org/wiki/Identity_matrix">here</a>. The identity matrix is often represented by I, its definition, given a matrix M:</p>
+
+<pre><code>M*I = I*M = M
+</code></pre>
+
+<p>As it is a core part of matrices mathematics they are very simple to create in ruby.</p>
+
+<pre><code>i = Matrix.identity(2)
+=&gt; Matrix[[1,0],[0,1]]
+
+i = Matrix.identity(3)
+=&gt; Matrix[[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+</code></pre>
+
+<p>Addition and subtraction (and multiplication by scalars) work as expected</p>
+
+<pre><code>a =  Matrix[ [1,1], [2,2] ] + Matrix.identity(2)
+=&gt; Matrix[[2, 1], [2, 3]]
+
+s = Matrix[ [1,1], [2,2] ] - Matrix.identity(2)
+=&gt; Matrix[[0, 1], [2, 1]]
+
+m =  Matrix.identity(2) * 3
+=&gt; Matrix[[3, 0], [0, 3]] 
+NB: this is the same as Matrix.scalar(2, 3)
+</code></pre>
+
+<p>Matrix by Matrix Multiplication is only possible with m by p multiplied by p by n, i.e. the inner dimension must match. This will result in an m x n matrix. In the next example a 1,4 * 4,1 results in 1,1 a single element matrix.</p>
+
+<pre><code>[ [1 2 3 4] ]*[ [1]    =&gt; 1*1 + 2*2 + 3*3 + 4*4 = Matrix[ [30] ]
+                [2]
+                [3]
+                [4] ]
+</code></pre>
+
+<p>For a 2,2 * 2,2 results in a 2,2</p>
+
+<pre><code>[[a,b],  * [[w,x]   =&gt; [[a*w + b*y], [a*x + b*x]
+ [c,d]]     [y,z]]      [c*w + d*y], [c*x + d*z]]
+</code></pre>
+
+<p>At first glance this might not seem any thing special but there are a few mathematical properties that make this incredibly useful, rotation and solving linear equations for example.</p>
+
+<h1>Rotation</h1>
+
+<p><a href="http://xkcd.com/184/"><img src="http://imgs.xkcd.com/comics/matrix_transform.png"></a>
+<em>Comic from <a href="http://xkcd.com/184/">kxcd</a></em></p>
+
+<p>Rotating a 2,1 matrix is relatively trivial. This can be used to rotate a set of x,y coordinates and makes rotating vector images trivial.</p>
+
+<pre><code>[ [cos(x), -sin(x)]   * [[x] 
+  [sin(x),  cos(x)] ]    [y]]
+</code></pre>
+
+<h1>Solving Linear Equations (Linear Algebra)</h1>
+
+<p>Here I would like to introduce the inverse function. Which is as simple as calling inverse, be careful though as not all matrices have an inverse and then it will throw &lsquo;ExceptionForMatrix::ErrNotRegular: Not Regular Matrix&rsquo;. Any matrix multiplied by its inverse will lead to the identity matrix.</p>
+
+<pre><code>a = Matrix.scalar(4,3) * Matrix.scalar(4,3).inverse
+=&gt; Matrix[[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]
+</code></pre>
+
+<p>Two dimensional matrices are often used to help solve linear equations. Whereby we have x unknowns we can calculate the single solution if it exists with x equations.</p>
+
+<p>For example:</p>
+
+<pre><code>1a + 2b + 3c = 38
+4a + 5b + 6c = 92
+7a + 8b + 0c = 83
+</code></pre>
+
+<p>Can be rewritten as:</p>
+
+<pre><code>[[1, 2, 3], * [[ a ],  = [[ 38 ],
+ [4, 5, 6],    [ b ],     [ 92 ],
+ [7, 8, 0]]    [ c ]]     [ 83 ]]
+
+This can be generalised to A.x = y
+</code></pre>
+
+<p>When the inverse of A exists it can be solved for x, by multiplying both sides by A^-1</p>
+
+<pre><code>A.x = y
+x   = A^-1.y
+
+A = Matrix[ [1, 2, 3], [4,5,6], [7,8,0] ]
+y = Matrix[ [38], [92], [83] ]
+
+x = A.inverse * y
+=&gt; Matrix[[5], [6], [7]]
+</code></pre>
+
+<p>For sanity lets just check that.</p>
+
+<pre><code>a = x[0,0]
+b = x[1,0]
+c = x[2,0]
+
+1*a + 2*b + 3*c 
+=&gt; 38
+4*a + 5*b + 6*c 
+=&gt; 92
+7*a + 8*b + 0*c 
+=&gt; 83
+</code></pre>
+
+<p>All Equations return expected results.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/recursive-grep-with-filtering/">Recursive Grep, with Filtering</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-19T15:56:31+00:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/recursive-grep-with-filtering/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/recursive-grep-with-filtering/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I noticed today that greps recursive function is different to finds recursion.</p>
+
+<pre><code>find ./ -name *.txt
+grep -R 'text' *.text
+</code></pre>
+
+<p>The above find command will search from the sub-directory down while grep will only search the current folder. The FILE_PATTERN must also match the hierarchy in grep.</p>
+
+<p>To apply a file type filter in grep you can do:</p>
+
+<pre><code>grep -R --include=*.txt 'text' ./
+</code></pre>
+
+<p>This looks at all file from the current directory (./) but will only grep files which match the include.</p>
+
+<p>An older article on <a href="http://amaras-tech.co.uk/article/63">Basic grep usage</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -577,181 +892,6 @@ Implicit symbol return  14.710000   0.000000  14.710000 ( 14.829556)
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/tagging-a-git-repo-and-pushing-tag-to-github/">Tagging a Git Repo and Pushing Tag to Github</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-25T21:46:13+01:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/tagging-a-git-repo-and-pushing-tag-to-github/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/tagging-a-git-repo-and-pushing-tag-to-github/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This assumes that <code>origin</code> is the label for github. <br/>
-Tagging a github repo for my gem releases I do:</p>
-
-<pre><code>$ git tag -a 0.0.4 -m 'Tagging gem release 0.0.4'
-$ git push origin 0.0.4
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/arrays-3-write-idiomatic-ruby/">Arrays 3, Write Idiomatic Ruby</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-25T12:44:48+01:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/arrays-3-write-idiomatic-ruby/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/arrays-3-write-idiomatic-ruby/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Previous posts <a href="http://amaras-tech.co.uk/people/morgan/article/108">arrays</a> and <a href="http://amaras-tech.co.uk/people/morgan/article/122">arrays2</a></p>
-
-<p>Based on a post by <a href="http://barkingiguana.com/2011/03/14/be-cool-with-arrays/">barkingiguana</a>, some idiomatic ruby ways to handle arrays.
-Ruby tries to have a natural language style, preferring to be more expressive to designers intent rather than close to the computers internal behavior.</p>
-
-<p>Both the statements are the same but the second is preferred.</p>
-
-<pre><code>bookmarks.size == 0
-bookmarks.empty?
-</code></pre>
-
-<p>Ask an array if it has any elements. Don&rsquo;t check if it has a non-zero size.
-for the inverse of the above statement checking that we have elements, again the second statement is preferred.</p>
-
-<pre><code>bookmarks.size &gt; 0 
-bookmarks.any?
-</code></pre>
-
-<p>Other language might have some thing like:</p>
-
-<pre><code>if (bookmarks.size == 0) {
-  # Add first bookmark
-}
-</code></pre>
-
-<p>Ruby</p>
-
-<pre><code>if bookmarks.empty?
-  #Add first bookmark
-end
-</code></pre>
-
-<p>I think the ruby actually reads better and conveys what you are actually trying to do, check the array is empty. With duck typing any object could get passed to this as long as it has the empty? method defined, an object might have header information and a payload. If the payload was implemented as an Array the object could map the empty? onto it.</p>
-
-<p>Previous posts <a href="http://amaras-tech.co.uk/people/morgan/article/108">arrays</a> and <a href="http://amaras-tech.co.uk/people/morgan/article/122">arrays2</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-search-and-replace-script/">Ruby Search and Replace Script.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-25T12:06:36+01:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-search-and-replace-script/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-search-and-replace-script/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A small standalone script that search through a file doing text substitutions.</p>
-
-<pre><code>#!/usr/bin/env ruby
-# Usage $ ruby_search_and_replace.rb file_to_update.txt
-
-def update_file( file_name )
-  puts "Updating : #{file_name}"
-  ::File.open( file_name, "rb"){ |f| @contents = f.read }
-
-  ## Replace Renamed thing here
-  #@contents.gsub!("search","replace")
-
-  ::File.open( file_name, "w" ){ |f| f.write @contents }
-end
-
-if $0 == __FILE__
-  #If file is called directly execute
-  update_file( ::File.absolute_path( ARGV[0] ) )
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/19/">&larr; Older</a>
@@ -766,11 +906,23 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (18)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (224)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (226)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/screen-scrollback/">Screen Scrollback</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-leading-0-s/">Matlab: Leading 0&#8217;s</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/mavericks-disable-mail-sound/">Mavericks Disable Mail Sound</a>
@@ -778,18 +930,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/matlab-wrapper-scripts/">Matlab Wrapper Scripts</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-sort-by/">Matlab Sort_by</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/raised-bed-update/">Raised Bed, Update</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/tool-acquisition/">Tool Acquisition</a>
       </li>
     
   </ul>

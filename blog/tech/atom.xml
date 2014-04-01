@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/blog/tech/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-03-18T18:03:04+00:00</updated>
+  <updated>2014-04-01T19:12:07+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,63 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Print Array]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/ruby-print-array/"/>
+    <updated>2014-04-01T18:36:00+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/ruby-print-array</id>
+    <content type="html"><![CDATA[<p><code>puts</code> and <code>to_s</code> could be better:</p>
+
+<pre><code>a = [1, 2, 3]
+puts a
+&gt; 1
+&gt; 2
+&gt; 3
+
+puts a.to_s
+&gt; [1, 2, 3]
+</code></pre>
+
+<h2>Nicely print an array</h2>
+
+<p>Multiply it out with spaces:</p>
+
+<pre><code>a = [1, 2, 3]
+puts a * " "
+&gt; 1 2 3
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Screen Scrollback]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/screen-scrollback/"/>
+    <updated>2014-03-25T20:57:28+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/screen-scrollback</id>
+    <content type="html"><![CDATA[<p>Enter copy mode</p>
+
+<pre><code>ctrl-a [
+</code></pre>
+
+<p>Use cursors of vim motions to move to relevant area.</p>
+
+<p>Space to start selection, space again to end selection and copy to screen copy-buffer</p>
+
+<p>Move to virtual screen terminal where you want to paste then</p>
+
+<pre><code>ctrl-a ]
+</code></pre>
+
+<p>To paste to file enter</p>
+
+<pre><code>cat &gt; paste.file
+#// Then press ctrl-a ]
+</code></pre>
+
+<p><a href="http://commandliners.com/2009/12/screen-working-with-the-scrollback-buffer/">More notes on screen scrollback history</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mavericks Disable Mail Sound]]></title>
@@ -51,41 +108,6 @@ end
 
 <p>Disable &lsquo;Adjust keyboard brightness in low light&rsquo;.<br/>
 <img src="/images/Tech/Keyboard_low_light.png" alt="" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Git Tag and Push to Github]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/git-tag-and-push-to-github/"/>
-    <updated>2014-03-13T19:16:57+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/git-tag-and-push-to-github</id>
-    <content type="html"><![CDATA[<pre><code>git tag -a 0.0.1 -m "Tag comment"
-git push --tags
-</code></pre>
-
-<p><em>Note: The use of <a href="http://semver.org/">major.minor.patch Semantic Versioning</a> is a really good idea.</em></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Bash String Manipulation]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/bash-string-manipulation/"/>
-    <updated>2014-03-05T21:32:14+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/bash-string-manipulation</id>
-    <content type="html"><![CDATA[<p>Removal of substring:</p>
-
-<pre><code>string="test string"
-echo $string
-
-remove="test"
-short_string=${string#$remove}
-echo short_string
-</code></pre>
-
-<p>Note that inside the <code>${}</code> <code>string</code> does not have a <code>$</code>, it is implied.
-The second half <code>$remove</code> does require it.</p>
-
-<p><a href="http://tldp.org/LDP/abs/html/string-manipulation.html">More info</a>.</p>
 ]]></content>
   </entry>
   
