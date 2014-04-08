@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="After deciding to try out OVIVO network for my phone I realised that the my Nokia 8310 was network locked and prompted me to enter the &lsquo; &hellip;">
+  <meta name="description" content="cat /etc/redhat-release Returns some thing like: Red Hat Enterprise Linux Client release 5.7 (Tikanga) Find Kernel version using : uname -r
+=&gt; 2.6 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,57 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/find-redhat-version/">Find RedHat Version</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-04T08:13:33+01:00" pubdate data-updated="true">Sep 4<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/find-redhat-version/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/find-redhat-version/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>cat /etc/redhat-release
+</code></pre>
+
+<p>Returns some thing like:</p>
+
+<pre><code>Red Hat Enterprise Linux Client release 5.7 (Tikanga)
+</code></pre>
+
+<p>Find Kernel version using :</p>
+
+<pre><code>uname -r
+=&gt; 2.6.18-348.6.1.el5
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -550,58 +602,6 @@ fi
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/stackoverflow-sites-and-images/">Stackoverflow Sites and Images</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-16T12:32:54+01:00" pubdate data-updated="true">Jun 16<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/stackoverflow-sites-and-images/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/stackoverflow-sites-and-images/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Stackoverflow have supported markdown for a while. The syntax for showing an image is :</p>
-
-<pre><code>![Holes in Leaf 1][1]
-[1]: http://i.stack.imgur.com/ECE47.jpg
-</code></pre>
-
-<p>After having a question edited I discovered that by adding a m to the image url you get the medium sized version for thumbnails. Link 1 becomes the thumbnail shown and wrap it up in a link syntax, when clicked you get link 5, the large version.</p>
-
-<pre><code>[![Holes in Leaf 1][1]][5]
-[1]: http://i.stack.imgur.com/ECE47m.jpg
-[5]: http://i.stack.imgur.com/ECE47.jpg
-</code></pre>
-
-<p><a href="http://i.stack.imgur.com/ECE47.jpg"><img src="http://i.stack.imgur.com/ECE47m.jpg" alt="Holes in Leaf 1" /></a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/9/">&larr; Older</a>
@@ -616,11 +616,15 @@ fi
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (228)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (229)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/iterm-exit-fullscreen/">iTerm Exit Fullscreen</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a>
@@ -636,10 +640,6 @@ fi
     
       <li class="post">
         <a href="/blog/tech/screen-scrollback/">Screen Scrollback</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-leading-0-s/">Matlab: Leading 0&#8217;s</a>
       </li>
     
   </ul>

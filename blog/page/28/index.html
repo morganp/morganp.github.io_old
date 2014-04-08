@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="MacBook3,1 (2007) Intel Core 2 Duo 2.2GHz Hard drive and memory upgraded to 320GB and 4GB Graphics GMA X3100 State Watts va Off 1 6 | Booting 41 89 &hellip;">
+  <meta name="description" content="If you are trying to use the 64 bit version of handbrake on Snow Leopard do not for get that there is currently only one compatible VLC build ( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,47 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/64bit-handbrake-for-video-encoding-on-mac-os-x/">64Bit Handbrake for Video Encoding on Mac OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-16T00:59:24+01:00" pubdate data-updated="true">Jun 16<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/64bit-handbrake-for-video-encoding-on-mac-os-x/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/64bit-handbrake-for-video-encoding-on-mac-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you are trying to use the <a href="http://handbrake.fr/rotation.php?file=HandBrake-0.9.4-MacOSX.5_GUI_x86_64.dmg">64 bit version of handbrake</a> on Snow Leopard do not for get that there is currently only <a href="http://download.videolan.org/pub/videolan/vlc/1.0.2/macosx/vlc-1.0.2-intel64.dmg">one compatible VLC build</a> (Handbrake relies on VLC).</p>
+
+<p>Alternatively use <a href="http://handbrake.fr/rotation.php?file=HandBrake-0.9.4-MacOSX.5_GUI_i386.dmg">32 bit Handbrake</a> and the <a href="http://www.videolan.org/mirror-geo.php?file=vlc/1.0.5/macosx/vlc-1.0.5.dmg">latest VLC</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -645,65 +686,6 @@ $ nginx -s reload
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/nginx-enable-directory-listing/">Nginx Enable Directory Listing</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-10T14:07:23+01:00" pubdate data-updated="true">May 10<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/nginx-enable-directory-listing/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/nginx-enable-directory-listing/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Directory listing can be enabled (disabled by default) by adding this:</p>
-
-<pre><code>autoindex on;
-</code></pre>
-
-<p>Example usage</p>
-
-<pre><code>http{
-   server {
-     #Server with no Directory listing
-     listen 80
-   }
-   server {
-      #Server with Directory listing
-      autoindex on;
-      listen 8080
-   }
-}
-</code></pre>
-
-<p>Original <a href="http://justinbkay.org/2007/12/23/nginx-enable-directory-listing">source</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/29/">&larr; Older</a>
@@ -718,11 +700,15 @@ $ nginx -s reload
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (228)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (229)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/iterm-exit-fullscreen/">iTerm Exit Fullscreen</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a>
@@ -738,10 +724,6 @@ $ nginx -s reload
     
       <li class="post">
         <a href="/blog/tech/screen-scrollback/">Screen Scrollback</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-leading-0-s/">Matlab: Leading 0&#8217;s</a>
       </li>
     
   </ul>

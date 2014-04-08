@@ -9,7 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="This is not a foolproof method, as vim colorschemes are juct vim commands but by default they set: let g:colors_name = "ir_black" so to find out from &hellip;">
+  <meta name="description" content="rtorrent moving torrents upon completion: # Torrents go in ~/Torrents
+# Incomplete Downloads in ~/Incomplete
+# Upon Completion Data is moved to ~/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -87,6 +89,59 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-08T19:53:02+00:00" pubdate data-updated="true">Jan 8<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/rtorrent-move-on-download-completion/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/rtorrent-move-on-download-completion/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>rtorrent moving torrents upon completion:</p>
+
+<pre><code># Torrents go in ~/Torrents
+# Incomplete Downloads in ~/Incomplete
+# Upon Completion Data is moved to ~/Seeding
+
+schedule = watch_directory_standard,10,10,"load_start=~/Torrents/*.torrent,d.set_directory=~/Incomplete/,d.set_custom1=~/Seeding/
+
+#Move upon download completion.
+system.method.set_key =event.download.finished,move_complete,"d.set_directory=$d.get_custom1= ;execute=mv,-n,$d.get_base_path=,$d.get_custom1="
+</code></pre>
+
+<p><a href="https://gist.github.com/morganp/8323448">Link to gist on github</a>.</p>
+
+<p><a href="http://libtorrent.rakshasa.no/wiki/RTorrentCommonTasks#Movecompletedtorrentstodifferentdirectorydependingonwatchdirectory">Recipe</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a></h1>
     
     
@@ -113,7 +168,7 @@
   </header>
 
 
-  <div class="entry-content"><p>This is not a foolproof method, as vim colorschemes are juct vim commands but by default they set:</p>
+  <div class="entry-content"><p>This is not a foolproof method, as vim colorschemes are just vim commands but by default they set:</p>
 
 <pre><code>let g:colors_name = "ir_black"
 </code></pre>
@@ -121,6 +176,11 @@
 <p>so to find out from vim just run</p>
 
 <pre><code>:echo g:colors_name
+</code></pre>
+
+<p>Or even simpler suggestion from farfanoide</p>
+
+<pre><code>:colorscheme
 </code></pre>
 </div>
   
@@ -812,74 +872,6 @@ bunch         Coriander stalks
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-repeat-a-matrix-n-times/">Matlab Repeat a Matrix N Times</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-27T10:57:36+00:00" pubdate data-updated="true">Nov 27<span>th</span>, 2013</time>
-        
-           | <a href="/blog/engineering/matlab-repeat-a-matrix-n-times/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-repeat-a-matrix-n-times/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>repmat(matrix, [repeat_y, repeat_x])</p>
-
-<p>Horizontal</p>
-
-<pre><code>repmat([1 2 3],[1,4])
-
-ans =
-
-     1     2     3     1     2     3     1     2     3     1     2     3
-</code></pre>
-
-<p>Vertical</p>
-
-<pre><code>repmat([1; 2; 3],[4,1])
-
-ans =
-
-     1
-     2
-     3
-     1
-     2
-     3
-     1
-     2
-     3
-     1
-     2
-     3
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -894,11 +886,15 @@ ans =
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (228)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (229)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/iterm-exit-fullscreen/">iTerm Exit Fullscreen</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a>
@@ -914,10 +910,6 @@ ans =
     
       <li class="post">
         <a href="/blog/tech/screen-scrollback/">Screen Scrollback</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-leading-0-s/">Matlab: Leading 0&#8217;s</a>
       </li>
     
   </ul>

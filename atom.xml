@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-04-01T21:11:23+01:00</updated>
+  <updated>2014-04-08T19:31:53+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[iTerm Exit Fullscreen]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/iterm-exit-fullscreen/"/>
+    <updated>2014-04-08T19:27:00+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/iterm-exit-fullscreen</id>
+    <content type="html"><![CDATA[<p><code>⌘-Enter</code> toggles fullscreen in <a href="http://www.iterm2.com/">iTerm</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fixing Mangled Octopress Tags]]></title>
@@ -589,28 +598,6 @@ a =
 </code></pre>
 
 <p><a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/239478">Source</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Bash String Manipulation]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/bash-string-manipulation/"/>
-    <updated>2014-03-05T21:32:14+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/bash-string-manipulation</id>
-    <content type="html"><![CDATA[<p>Removal of substring:</p>
-
-<pre><code>string="test string"
-echo $string
-
-remove="test"
-short_string=${string#$remove}
-echo short_string
-</code></pre>
-
-<p>Note that inside the <code>${}</code> <code>string</code> does not have a <code>$</code>, it is implied.
-The second half <code>$remove</code> does require it.</p>
-
-<p><a href="http://tldp.org/LDP/abs/html/string-manipulation.html">More info</a>.</p>
 ]]></content>
   </entry>
   
