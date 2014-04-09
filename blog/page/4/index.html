@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Mathworks Article on Object-Oriented programming for Matlab. A quick example of the syntax: classdef sads properties Name SampleRate end properties ( &hellip;">
+  <meta name="description" content="In Verilog to output to stdout without a line return use $write(); Equivalent statements : $write("\n");
+$display(""); ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/without-a-line-return/">$display Without a Line Return</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-01T17:49:43+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
+        
+           | <a href="/blog/engineering/without-a-line-return/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/without-a-line-return/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In Verilog to output to stdout without a line return use <code>$write();</code></p>
+
+<p>Equivalent statements :</p>
+
+<pre><code>$write("\n");
+$display("");
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -596,62 +642,6 @@ Add to frying pan as you go.<br/>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-legend-colours/">Matlab: Legend Colours</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-13T20:51:45+00:00" pubdate data-updated="true">Feb 13<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-legend-colours/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-legend-colours/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When plotting several lines in Matlab, I have become aware of how hard it was to see the colours in the legend. Based <a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/267186">on this matlabcentral question</a> I found an easy way to control the line thickness in the legend.</p>
-
-<pre><code>plot(randn(100,1));
-hold on;
-plot(randn(100,1),'k');
-
-
-[legh,objh,outh,outm] = legend('First','Second','Location','Southeast');
-set(objh,'linewidth',2); %%&lt;-- set legend line thickness to 2
-</code></pre>
-
-<p>Or just the following after you define your legend:</p>
-
-<pre><code>% legend('First','Second','Location','Southeast');
-
-[legh,objh,outh,outm] = legend();
-set(objh,'linewidth',2);
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -666,11 +656,15 @@ set(objh,'linewidth',2);
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (231)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (232)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/ruby-methods-and-splat/">Ruby Methods and Splat</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/thor-adding-verbose/">Thor Adding &#8211;verbose</a>
@@ -686,10 +680,6 @@ set(objh,'linewidth',2);
     
       <li class="post">
         <a href="/blog/engineering/verilog-importing-envvar/">Verilog Importing Envvar</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a>
       </li>
     
   </ul>

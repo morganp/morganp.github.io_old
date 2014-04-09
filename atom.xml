@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-04-09T19:45:52+01:00</updated>
+  <updated>2014-04-09T20:02:29+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,50 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby Methods and Splat]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/ruby-methods-and-splat/"/>
+    <updated>2014-04-09T19:47:47+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/ruby-methods-and-splat</id>
+    <content type="html"><![CDATA[<p>Ruby methods can set default values for optional arguments:</p>
+
+<pre><code>def commit(path=Dir.pwd)
+</code></pre>
+
+<p>To take an optional number of arguments a splat can be used:</p>
+
+<pre><code> def amethod( *arg1 )
+</code></pre>
+
+<p>The Problem is now to set defaults or require a set number of arguments.</p>
+
+<ol>
+<li>Splat arguments can not be defaulted.</li>
+<li><p>The splat can accept zero arguments</p>
+
+<p> def commit(*path=[Dir.pwd]) ##THIS DOES NOT WORK</p></li>
+</ol>
+
+
+<p>Splats can follow other arguments. To require at least one argument:</p>
+
+<pre><code>def add(files, *files_splat)
+</code></pre>
+
+<p>No arguments required but the first has a default:</p>
+
+<pre><code>def commit(path=Dir.pwd, *path_splat)
+</code></pre>
+
+<p>These also work as expected in Thor for parsing command line options. I have used them in my <a href="https://github.com/morganp/dssx">dssx</a> gem.</p>
+
+<p>In thor I also add this to the start of my methods to combine <code>path</code> and <code>path_splat</code> which are strings:</p>
+
+<pre><code>path_list = path + ' ' + path_splat * ' '
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Thor Adding --verbose]]></title>
@@ -490,66 +534,6 @@ git push --tags
 </code></pre>
 
 <p><em>Note: The use of <a href="http://semver.org/">major.minor.patch Semantic Versioning</a> is a really good idea.</em></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Beyond the LSB]]></title>
-    <link href="http://lizard-spock.co.uk/blog/engineering/beyond-the-lsb/"/>
-    <updated>2014-03-13T19:07:42+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/engineering/beyond-the-lsb</id>
-    <content type="html"><![CDATA[<p>If we truncate a number, that is to throw away the LSBs (least significant bits) we loose resolution.</p>
-
-<p>A 4 bit number truncated to 2 bits: <em>numbers shown in binary (Base2).</em></p>
-
-<pre><code>0100
-0101
-0110
-0111 
-</code></pre>
-
-<p>Would all become 01.</p>
-
-<h1>Introducing Dither</h1>
-
-<p>Effective dithering increase the accuracy beyond the LSB of the truncated values.
-Consider a small fractional value rounded to an integer. Starting with 0.5 with 1 bit random dither:</p>
-
-<pre><code>Input  Dither Sum &amp; truncate
-00.1   0.1    01
-00.1   0.0    00
-00.1   0.1    01
-00.1   0.0    00
-Average over 4 samples is 0.5
-</code></pre>
-
-<p>If the value is below 0.5 this dither scheme will not work, as it would never
-round to a full integer.</p>
-
-<p>So we increase the dither to 2 bits. Inputting a constant 0.25, Dither cycling
-through all possible values</p>
-
-<pre><code>Input  Dither Sum &amp; truncate
-00.01  0.00   00
-00.01  0.01   00
-00.01  0.10   00
-00.01  0.11   01
-Average of 4 Samples 0.25
-</code></pre>
-
-<p>In the above example we have increased the resolution of the time averaged value
-by 2 bits.</p>
-
-<p>For every doubling of the frequency we gain an effective LSB if dithered correctly.
-Adding more bits than <code>log2(oversampling rate)</code> of dithering will not gain accuracy.
-Although it may help breakup tonal behaviour of a system.</p>
-
-<h2>Summary</h2>
-
-<p>Apply dither to the bits to be truncated. Apply enough bits of dither so it is
-possible for the LSB of the required resolution to effect the truncated value.</p>
-
-<p>The increase in resolution is limited to <code>log2(oversampling rate)</code>.</p>
 ]]></content>
   </entry>
   

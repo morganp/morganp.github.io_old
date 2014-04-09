@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="With a command line Ruby application using Thor for the option parsing I want to be able to run: $ thor_app --version
-&gt; thor_app version 1.0.0 &hellip;">
+  <meta name="description" content="Ruby methods can set default values for optional arguments: def commit(path=Dir.pwd) To take an optional number of arguments a splat can be used: def &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,80 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-methods-and-splat/">Ruby Methods and Splat</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-09T19:47:47+01:00" pubdate data-updated="true">Apr 9<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/ruby-methods-and-splat/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-methods-and-splat/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ruby methods can set default values for optional arguments:</p>
+
+<pre><code>def commit(path=Dir.pwd)
+</code></pre>
+
+<p>To take an optional number of arguments a splat can be used:</p>
+
+<pre><code> def amethod( *arg1 )
+</code></pre>
+
+<p>The Problem is now to set defaults or require a set number of arguments.</p>
+
+<ol>
+<li>Splat arguments can not be defaulted.</li>
+<li><p>The splat can accept zero arguments</p>
+
+<p> def commit(*path=[Dir.pwd]) ##THIS DOES NOT WORK</p></li>
+</ol>
+
+
+<p>Splats can follow other arguments. To require at least one argument:</p>
+
+<pre><code>def add(files, *files_splat)
+</code></pre>
+
+<p>No arguments required but the first has a default:</p>
+
+<pre><code>def commit(path=Dir.pwd, *path_splat)
+</code></pre>
+
+<p>These also work as expected in Thor for parsing command line options. I have used them in my <a href="https://github.com/morganp/dssx">dssx</a> gem.</p>
+
+<p>In thor I also add this to the start of my methods to combine <code>path</code> and <code>path_splat</code> which are strings:</p>
+
+<pre><code>path_list = path + ' ' + path_splat * ' '
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -657,51 +730,6 @@ sprintf(['%0',num2str(6),'s'], dat)
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/mavericks-disable-mail-sound/">Mavericks Disable Mail Sound</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-18T17:41:49+00:00" pubdate data-updated="true">Mar 18<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/mavericks-disable-mail-sound/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mavericks-disable-mail-sound/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Since upgrading to Mavericks I get a sound whenever I get mail. I find this very annoying so first port of call is to disable &lsquo;Play user interface sound effects&rsquo; from  System Preferences &ndash;> Sound.</p>
-
-<p>This did not work, I found a separate option in mail for playing a sound on incoming mail, disabled that and other actions if you want.</p>
-
-<p><img src="/images/Tech/Disable_mail_sound.png" alt="" /></p>
-
-<p><em>NB: On checking things to write this I found that &lsquo;Play user interface sound effects&rsquo; had been enabled again.</em></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -714,11 +742,15 @@ sprintf(['%0',num2str(6),'s'], dat)
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (231)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (232)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/ruby-methods-and-splat/">Ruby Methods and Splat</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/thor-adding-verbose/">Thor Adding &#8211;verbose</a>
@@ -734,10 +766,6 @@ sprintf(['%0',num2str(6),'s'], dat)
     
       <li class="post">
         <a href="/blog/engineering/verilog-importing-envvar/">Verilog Importing Envvar</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a>
       </li>
     
   </ul>
