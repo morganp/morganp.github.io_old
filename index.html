@@ -199,6 +199,54 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/engineering/verilog-importing-envvar/">Verilog Importing Envvar</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-03T18:22:00+01:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
+        
+           | <a href="/blog/engineering/verilog-importing-envvar/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/verilog-importing-envvar/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Based on a <a href="http://stackoverflow.com/a/15103561/97073">Stackoverflow answer</a>, to import environment variables into Verilog you can use:</p>
+
+<pre><code>import "DPI-C" function string getenv(input string env_name);
+
+module top;
+  initial begin
+    $write("env = %s\n", {getenv("HOME"), "/FileName"});
+  end
+endmodule
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a></h1>
     
     
@@ -634,65 +682,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-sort-by/">Matlab Sort_by</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-17T18:55:11+00:00" pubdate data-updated="true">Mar 17<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-sort-by/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-sort-by/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In ruby we can perform schwartzian transforms easily with the sort_by method. This allows sorting enumerators by any property.</p>
-
-<p>For example to do a non case sensitive sort:</p>
-
-<pre><code>some_array.sort_by { |x| x.downcase }
-</code></pre>
-
-<p><a href="http://blogs.mathworks.com/pick/2010/09/17/sorting-structure-arrays-based-on-fields/">Based on this Mathworks blog</a>, I have ported the <a href="http://www.mathworks.com/matlabcentral/fileexchange/28573-nested-sort-of-structure-arrays">Matlab central code</a> to a <a href="https://github.com/Matlab-Toolbox/nested_sort">Toolbox on Github</a>.</p>
-
-<p>After Downloading the toolbox and adding the functions folder to your path.</p>
-
-<pre><code>addpath('../lib/nested_sort/function/');
-</code></pre>
-
-<p>Basic usage is:</p>
-
-<pre><code>A = struct('name', num2cell(1:4), 'value', {5,2,3,1});
-B=sortStruct(A,'value');
-</code></pre>
-
-<p>B is A sorted by &lsquo;value&rsquo;.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -705,7 +694,7 @@ B=sortStruct(A,'value');
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
@@ -720,15 +709,15 @@ B=sortStruct(A,'value');
       </li>
     
       <li class="post">
+        <a href="/blog/engineering/verilog-importing-envvar/">Verilog Importing Envvar</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a>
       </li>
     
       <li class="post">
         <a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
       </li>
     
   </ul>

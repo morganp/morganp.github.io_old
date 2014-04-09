@@ -9,9 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Commutative Configurable order of numbers: x+y = y+x
-xy = yx Associative Order that multiplication is applied : (x+y)+z =x+(y+z)
-(xy)z = x(yz) &hellip;">
+  <meta name="description" content="Testing a matlab array for equality can be doen a few different was some have surprising side effects if your not use to working with vectorised &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +81,114 @@ xy = yx Associative Order that multiplication is applied : (x+y)+z =x+(y+z)
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/testing-matlab-arrays-for-equality/">Testing Matlab Arrays for Equality.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-16T21:22:07+00:00" pubdate data-updated="true">Feb 16<span>th</span>, 2013</time>
+        
+           | <a href="/blog/engineering/testing-matlab-arrays-for-equality/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/testing-matlab-arrays-for-equality/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Testing a matlab array for equality can be doen a few different was some have surprising side effects if your not use to working with vectorised testing.</p>
+
+<p>Initial test :</p>
+
+<pre><code>a = [1,2,3];
+if (a == [1,2,3])
+  disp('equal')
+end
+
+&gt; equal
+</code></pre>
+
+<p>Seems easy, But what happens if the dimensions of the array are incorrect?</p>
+
+<pre><code>a = [1,2,3];
+if (a == [1,2,3,4])
+  disp('equal')
+end
+
+Error using  == 
+Matrix dimensions must agree
+</code></pre>
+
+<p>May be if we check dimensions first using short-circuiting (<code>&amp;&amp;</code>) operators. NB: Short circuiting operators only execute if required, if it failed on the left hand side the right side will not be evaluated.</p>
+
+<pre><code>a = [1,2,3];
+if ((length(a) == 4) &amp;&amp; (a == [1,2,3,4]))
+  disp('equal')
+end
+</code></pre>
+
+<p>So far so good, but lets check it will also pass:</p>
+
+<pre><code>a = [1,2,3];
+if ((length(a) == 3) &amp;&amp; (a == [1,2,3]))
+  disp('equal')
+end
+
+Operands to the || and &amp;&amp; operators must be convertible to logical scalar
+values.
+</code></pre>
+
+<p>This is where it got interesting for me:</p>
+
+<pre><code>a ==[1,2,3]
+ans =
+
+ 1     1     1
+</code></pre>
+
+<p>The basic equality <code>==</code>  test for arrays is vectorised. When this is the only test it gets reduced down to true or false, but can not be combined with scalars.</p>
+
+<p>Then I the discovered the <a href="http://www.mathworks.co.uk/help/matlab/ref/isequal.html">isequal</a> function.</p>
+
+<pre><code>a = [1,2,3];
+isequal(a, [1,2,3])
+
+ans =
+
+     1
+
+a = [1,2,3];
+isequal(a, [1,2,3,4])
+
+ans =
+
+     0
+</code></pre>
+
+<p>For direct comparisons of arrays use <code>isequal(a,b)</code> for vectorised operations use <code>a==b</code>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -757,94 +863,6 @@ killall SystemUIServer
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/lee-wide-angle-hood/">LEE Wide Angle Hood</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-06T19:49:49+01:00" pubdate data-updated="true">Oct 6<span>th</span>, 2012</time>
-        
-           | <a href="/blog/photography/lee-wide-angle-hood/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/lee-wide-angle-hood/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Available to buy from <a href="http://www.dalephotographic.co.uk/mall/productpage.cfm/DalePhotographicOnline/_Lee%20Wide%20Angle%20Slotted%20Hood/-/Lee%20Wide%20Angle%20Slotted%20Hood">Dale Photographic</a> or <a href="http://www.wexphotographic.com/buy-lee-wide-angle-lens-hood/p101">WEX</a>.</p>
-
-<p>Hoods or lens shades help improve contrast by stopping out of frame light source entering the lens. LEE filters are square filters that can be used for effects or managing dynamic range, how ever as they mount in front of the lens with a holder you can no longer use your lenses standard hood. LEE have a standard and wide angle hoods available.</p>
-
-<p>LEE do not provide many specs for the hood on their website. To help others decide if this is right for them I have included measurements and pictures of mine in different configurations.</p>
-
-<h2>Dimensions</h2>
-
-<pre><code>Width x Height:
-External: 21cm x 16cm
-Internal: 18cm x 13.5cm
-</code></pre>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060297008/" title="LEE Wide Filter, A5 Comparison"><img src="http://farm9.staticflickr.com/8313/8060297008_9b8cb916cf.jpg" width="500" height="333" alt="LEE Wide Filter, A5 Comparison"></a></p>
-
-<pre><code>Depth:
-Double slotted : 4cm    (Use 5/8" Screws)  
-Single slot    : 3.75cm (Use 3/8" Screws)  
-No slot        : 3.5cm  (Use 1/4" Screws)  
-</code></pre>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060276438/" title="Lee Wide Angle Hood, 2 Slots Depth 4cm"><img src="http://farm9.staticflickr.com/8317/8060276438_71d5c9fa4e.jpg" width="500" height="333" alt="Lee Wide Angle Hood, 2 Slots Depth 4cm"></a></p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060251896/" title="Lee Wide Angle Hood, 1 Slot Depth 3.75cm"><img src="http://farm9.staticflickr.com/8179/8060251896_73a0001cf3.jpg" width="500" height="333" alt="Lee Wide Angle Hood, 1 Slot Depth 3.75cm"></a></p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060238996/" title="LEE Wide Hood, No Slots Depth 3.5cm"><img src="http://farm9.staticflickr.com/8031/8060238996_ec1e055788.jpg" width="500" height="333" alt="LEE Wide Hood, No Slots Depth 3.5cm"></a></p>
-
-<p>Hood Only (No slots or clip):</p>
-
-<pre><code>Min Expansion : 2.5cm
-Max Expansion : 11cm
-</code></pre>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060276438/" title="Lee Wide Angle Hood, 2 Slots by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8317/8060276438_71d5c9fa4e.jpg" width="500" height="333" alt="Lee Wide Angle Hood, 2 Slots"></a></p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060297741/" title="Lee Wide Angle Filter, 2 Slots expanded by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8171/8060297741_15f4f654e7.jpg" width="500" height="333" alt="Lee Wide Angle Filter, 2 Slots expanded"></a></p>
-
-<h2>Assembly</h2>
-
-<p>Back of slot next to Hood, LEE Logo facing clip, Last slot has blank plate on top covering the logo.</p>
-
-<p>Order is: Clip, plate, slot, slot, Hood.</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060334883/" title="LEE Hood, Clip, 2 Slots by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8034/8060334883_466f06a51b_n.jpg" width="213" height="320" alt="LEE Hood, Clip, 2 Slots"></a></p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060336086/" title="LEE Hood, slots (2) removed from hood and clip by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8176/8060336086_94f5c0e2f8_n.jpg" width="320" height="213" alt="LEE Hood, slots (2) removed from hood and clip"></a></p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/8060332868/" title="LEE Wide Angle Hood, Clip and slots removed by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8452/8060332868_621f3310d1_n.jpg" width="320" height="213" alt="LEE Wide Angle Hood, Clip and slots removed"></a></p>
-
-<p>Available to buy from <a href="http://www.dalephotographic.co.uk/mall/productpage.cfm/DalePhotographicOnline/_Lee%20Wide%20Angle%20Slotted%20Hood/-/Lee%20Wide%20Angle%20Slotted%20Hood">Dale Photographic</a> or <a href="http://www.wexphotographic.com/buy-lee-wide-angle-lens-hood/p101">WEX</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -859,7 +877,7 @@ Max Expansion : 11cm
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
@@ -874,15 +892,15 @@ Max Expansion : 11cm
       </li>
     
       <li class="post">
+        <a href="/blog/engineering/verilog-importing-envvar/">Verilog Importing Envvar</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a>
       </li>
     
       <li class="post">
         <a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
       </li>
     
   </ul>

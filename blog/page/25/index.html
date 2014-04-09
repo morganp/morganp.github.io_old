@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I have for a while wondered about an ideal (good) approach to storing api keys in config files in ruby projects. A few conditions must be met:
-1) A &hellip;">
+  <meta name="description" content="In ruby some times you want to iterate over an array and remove items that meet certain conditions, if using each the results may be unexpected. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,99 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-each-or-delete_if/">Ruby Each or Delete_if</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-25T12:38:50+01:00" pubdate data-updated="true">Sep 25<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-each-or-delete_if/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-each-or-delete_if/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In ruby some times you want to iterate over an array and remove items that meet certain conditions, if using each the results may be unexpected.</p>
+
+<pre><code>require 'pp'
+arr = [1,2,3,4,5,6,7]
+pp arr
+# =&gt; [1, 2, 3, 4, 5, 6, 7, 8]
+
+arr.each do |x|
+   if x &gt; 3
+      arr.delete( x )
+   end
+end
+pp arr
+# =&gt; [1, 2, 3, 5, 7]
+</code></pre>
+
+<p>5 and 7 were above 3 last time I checked, what is happening.<br/>
+NB: ^ points to the current item of the iterator.</p>
+
+<pre><code>#    [1,2,3,4,5,6,7,8]
+#     ^                 -&gt; 1 fails x &gt; 3
+#    [1,2,3,4,5,6,7,8]
+#       ^               -&gt; 2 fails x &gt; 3
+#    [1,2,3,4,5,6,7,8]
+#         ^             -&gt; 3 fails x &gt; 3
+#    [1,2,3,4,5,6,7,8]
+#           ^           -&gt; 4 true  x &gt; 3, delete
+#    [1,2,3,5,6,7,8]    -- Intermidiate Array, before each is incremented
+#           ^
+#    [1,2,3,5,6,7,8]    -- Number 5 has slipped through the evaluation
+#             ^         -&gt; 6 true x &gt; 3, delete
+#    [1,2,3,5,7,8]      -- Intermidiate Array
+#             ^
+#    [1,2,3,5,7,8]      -- Number 7 has slipped through
+#               ^       -&gt; 8 true x &gt; 3, delete
+#    return [1,2,3,5,7] #Not what we expected from the code.
+</code></pre>
+
+<p>Introducing <strong>delete_if</strong></p>
+
+<pre><code>require 'pp'
+arr = [1,2,3,4,5,6,7,8,9,10]
+
+arr.delete_if do |x| 
+   test = x &gt; 3
+
+   # Do something when not being deleted
+   if not test
+      puts x
+   end
+   test
+end
+pp arr
+# =&gt; [1, 2, 3]
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -667,66 +759,6 @@ $ info grep
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/removing-ports-os-x/">Removing Ports OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-17T12:18:48+01:00" pubdate data-updated="true">Aug 17<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/removing-ports-os-x/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/removing-ports-os-x/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have previously mentioned I installed <a href="http://amaras-tech.co.uk/people/morgan/article/44">Homebrew</a> for installing unix packages, I left Ports in place, but removed from my path, just incase. I have tonight noticed that the Mac ports directory is eating up 1.7GB of space and I want it back.</p>
-
-<pre><code>$ du -s -h /opt/local/var/macports
-</code></pre>
-
-<p>Following this <a href="http://guide.macports.org/chunked/installing.macports.uninstalling.html">guide to remove ports</a> I ran:</p>
-
-<pre><code>$ sudo /opt/local/bin/port -f uninstall installed
-$ sudo rm -rf \
-    /opt/local \
-    /Applications/DarwinPorts \
-    /Applications/MacPorts \
-    /Library/LaunchDaemons/org.macports.* \
-    /Library/Receipts/DarwinPorts*.pkg \
-    /Library/Receipts/MacPorts*.pkg \
-    /Library/StartupItems/DarwinPortsStartup \
-    /Library/Tcl/darwinports1.0 \
-    /Library/Tcl/macports1.0 \
-    ~/.macports
-</code></pre>
-
-<p>Now After emptying Trash, probably not necessary though, you should see quite a bit of harddrive space freed up.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/26/">&larr; Older</a>
@@ -741,7 +773,7 @@ $ sudo rm -rf \
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
@@ -756,15 +788,15 @@ $ sudo rm -rf \
       </li>
     
       <li class="post">
+        <a href="/blog/engineering/verilog-importing-envvar/">Verilog Importing Envvar</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a>
       </li>
     
       <li class="post">
         <a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
       </li>
     
   </ul>

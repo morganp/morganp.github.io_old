@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="None of this has been tried yet but from various sources I have created this list: Once you have telescope the next task will be finding objects in &hellip;">
+  <meta name="description" content="Based on an old Article I wrote, investigating incase sensitive sorting performance. I have an active record model call Tag with tag and id &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,123 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ormactiverecord-or-ruby-sort/">ORM(Activerecord) or Ruby Sort</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-20T02:19:17+00:00" pubdate data-updated="true">Feb 20<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/ormactiverecord-or-ruby-sort/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ormactiverecord-or-ruby-sort/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Based on an <a href="http://amaras-tech.co.uk/people/morgan/article/18">old Article</a> I wrote, investigating incase sensitive sorting performance.</p>
+
+<p>I have an active record model call Tag with tag and id properties, it contains 3000 randomly chosen and sorted words.</p>
+
+<h3>My Summary of results:</h3>
+
+
+<p>
+Average time for ORM (Activerecord) to return results 0.1928<br/>
+Average time for ORM to return sorted results 0.1290 (0.0638 quicker!)<br/>
+Ruby to sort (non-case sensitive) results 0.0138<br/>
+Ruby to sort pre-sorted* results 0.0606 (4.4 times slower!)</p>
+
+<p>*Pre-sorted is case sensitive</p>
+
+<p>More investigation is require, results could be effected by caching at the ORM/DB layer, but returning sorted results appears quicker than unsorted. and sorting in ruby is 4.4 times slower with pre sorted data.</p>
+
+<p>The test:</p>
+
+<pre><code>#For Benchmarking 
+require 'benchmark'
+include Benchmark
+
+bm(10) do |b|
+       b.report("ORM") {        @tags = Tag.find(:all) }
+       b.report("Sort by") {    @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
+       b.report("ORM sorted") { @tags = Tag.find(:all, :order =&gt; "tag") }
+       b.report("Sort by") {    @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
+  end
+
+  puts "same test but presorted after ruby sort"
+  bm(10) do |b|
+       b.report("ORM sorted") { @tags = Tag.find(:all, :order =&gt; "tag") }
+       b.report("Sort by") {    @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
+       b.report("ORM") {        @tags = Tag.find(:all) }
+       b.report("Sort by") {    @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
+ end
+</code></pre>
+
+<p>The results collated: ORM returning unsorted results</p>
+
+<pre><code>            user     system      total        real
+ORM         0.200000   0.010000   0.210000 (  0.216162)
+ORM         0.160000   0.000000   0.160000 (  0.171810)
+ORM         0.200000   0.020000   0.220000 (  0.215265)
+ORM         0.160000   0.000000   0.160000 (  0.167882)
+ORM         0.200000   0.020000   0.220000 (  0.216648)
+ORM         0.170000   0.000000   0.170000 (  0.169064)
+</code></pre>
+
+<p>Full ruby sort</p>
+
+<pre><code>Sort by     0.010000   0.000000   0.010000 (  0.014169)
+Sort by     0.020000   0.000000   0.020000 (  0.012673)
+Sort by     0.010000   0.000000   0.010000 (  0.014791)
+Sort by     0.010000   0.000000   0.010000 (  0.012934)
+Sort by     0.020000   0.000000   0.020000 (  0.014387)
+Sort by     0.010000   0.000000   0.010000 (  0.013655)
+</code></pre>
+
+<p>Case-sensitive ORM sorting</p>
+
+<pre><code>ORM sorted  0.110000   0.000000   0.110000 (  0.138993)
+ORM sorted  0.100000   0.010000   0.110000 (  0.135767)
+ORM sorted  0.110000   0.000000   0.110000 (  0.132612)
+ORM sorted  0.100000   0.000000   0.100000 (  0.150029)
+ORM sorted  0.100000   0.000000   0.100000 (  0.108307)
+ORM sorted  0.100000   0.000000   0.100000 (  0.108133)
+</code></pre>
+
+<p>Ruby sorting pre-sorted results</p>
+
+<pre><code>Sort by     0.080000   0.000000   0.080000 (  0.132228)
+Sort by     0.020000   0.000000   0.020000 (  0.015885)
+Sort by     0.090000   0.000000   0.090000 (  0.102128)
+Sort by     0.010000   0.000000   0.010000 (  0.014791)
+Sort by     0.090000   0.000000   0.090000 (  0.086072)
+Sort by     0.010000   0.000000   0.010000 (  0.012341)
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -721,60 +838,6 @@ This vim plugin relies on two others <a href="http://www.vim.org/scripts/script.
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/fixing-ncursers-on-os-x-1063%2b/">Fixing Ncursers on OS X 10.6.3+</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-13T13:59:47+00:00" pubdate data-updated="true">Dec 13<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/fixing-ncursers-on-os-x-1063%2b/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/fixing-ncursers-on-os-x-1063%2b/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Currently OS X 10.6.3 &ndash; 10.6.5 the ncursers library is broken. A hacky fix is to copy the libraries from 10.6.2. I have put my working copies in a public drop box.</p>
-
-<pre><code>$ sudo cp /usr/lib/libncurses.5.dylib /usr/lib/libncurses.5.dylib.backup
-$ sudo cp /usr/lib/libncurses.5.4.dylib /usr/lib/libncurses.5.4.dylib.backup
-
-$ cd /usr/lib/
-$ sudo wget http://dl.dropbox.com/u/8462176/osx-10-6-working-ncurse/libncurses.5.dylib
-$ sudo wget http://dl.dropbox.com/u/8462176/osx-10-6-working-ncurse/libncurses.5.4.dylib
-</code></pre>
-
-<p>Wget can be installed with <a href="https://github.com/mxcl/homebrew">homebrew</a>:</p>
-
-<pre><code>$ brew install wget
-</code></pre>
-
-<p>The Ideas for the fix came from <a href="http://www.uponmyshoulder.com/blog/2010/os-x-10-6-3-broke-ncurses/">source</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/24/">&larr; Older</a>
@@ -789,7 +852,7 @@ $ sudo wget http://dl.dropbox.com/u/8462176/osx-10-6-working-ncurse/libncurses.5
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
@@ -804,15 +867,15 @@ $ sudo wget http://dl.dropbox.com/u/8462176/osx-10-6-working-ncurse/libncurses.5
       </li>
     
       <li class="post">
+        <a href="/blog/engineering/verilog-importing-envvar/">Verilog Importing Envvar</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a>
       </li>
     
       <li class="post">
         <a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
       </li>
     
   </ul>

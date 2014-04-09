@@ -9,7 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="To make an automatic ActiveRecord database connection using ENV[&lsquo;DATABASE_URL&rsquo;] The following snippet can be used: From ActiveRecord 3.2. &hellip;">
+  <meta name="description" content="Working on a joint project an error started showing up when trying to perform migrations. $ rake db:migrate VERSION=0
+&gt;rake aborted!
+&gt; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +83,76 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/uninitialized-constant-compasslogger/">Uninitialized Constant Compass::Logger</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-23T20:21:03+01:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2011</time>
+        
+           | <a href="/blog/tech/uninitialized-constant-compasslogger/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/uninitialized-constant-compasslogger/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Working on a joint project an error started showing up when trying to perform migrations.</p>
+
+<pre><code>$ rake db:migrate VERSION=0
+&gt;rake aborted!
+&gt;uninitialized constant Compass::Logger
+</code></pre>
+
+<p>The Solution was to add a line to the rake file, to correctly load Compass::Logger, still no idea why rake needed it.</p>
+
+<pre><code>require 'compass/logger'
+</code></pre>
+
+<p>Another thing to check might be that compass is being loaded before classes which use it. An issue that can happen in Sinatra and Rails apps.</p>
+
+<p>Example Gemfile (for <a href="http://gembundler.com/">Bundler</a>)</p>
+
+<pre><code>source :rubygems
+
+gem 'rails', '3.0.9'
+
+gem "compass"
+gem "haml-rails"
+gem "pg"
+gem "jquery-rails"
+gem "omniauth", '~&gt; 0.2.5'
+
+group :test do
+  gem "capybara"
+  gem "factory_girl_rails"
+  gem "test-unit"
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -820,53 +892,6 @@ echo "The rest of the script"
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vimfu-end-of-line-character-placement/">Vimfu End of Line Character Placement</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-24T12:07:07+01:00" pubdate data-updated="true">Apr 24<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/vimfu-end-of-line-character-placement/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vimfu-end-of-line-character-placement/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In Vim to insert text before the cursor press &lsquo;i&rsquo;, to insert text after cursor &lsquo;a&rsquo; or to edit at the end of line &lsquo;A&rsquo;. To paste before the cursor &lsquo;p&rsquo; to paste after the cursor &lsquo;P&rsquo;.</p>
-
-<p>While these variants exist I still find it easier to place the cursor &lsquo;correctly&rsquo; and use one variant. However this results in a little trouble with end of lines as I can not move the cursor to paste &lsquo;P&rsquo; after the last character.</p>
-
-<p>Adding the following line to <a href="https://github.com/morganp/dotfiles/blob/master/dotfiles/.vimrc">my .vimrc</a> has helped me work around this:</p>
-
-<pre><code>" Allow cursor to move 1 character past end of line
-set virtualedit=onemore
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/22/">&larr; Older</a>
@@ -881,7 +906,7 @@ set virtualedit=onemore
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
@@ -896,15 +921,15 @@ set virtualedit=onemore
       </li>
     
       <li class="post">
+        <a href="/blog/engineering/verilog-importing-envvar/">Verilog Importing Envvar</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a>
       </li>
     
       <li class="post">
         <a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
       </li>
     
   </ul>

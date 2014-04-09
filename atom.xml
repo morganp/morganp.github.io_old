@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-04-09T01:34:45+01:00</updated>
+  <updated>2014-04-09T18:30:44+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -62,6 +62,24 @@
     <updated>2014-04-08T19:27:00+01:00</updated>
     <id>http://lizard-spock.co.uk/blog/tech/iterm-exit-fullscreen</id>
     <content type="html"><![CDATA[<p><code>⌘-Enter</code> toggles fullscreen in <a href="http://www.iterm2.com/">iTerm</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Verilog Importing Envvar]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/verilog-importing-envvar/"/>
+    <updated>2014-04-03T18:22:00+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/verilog-importing-envvar</id>
+    <content type="html"><![CDATA[<p>Based on a <a href="http://stackoverflow.com/a/15103561/97073">Stackoverflow answer</a>, to import environment variables into Verilog you can use:</p>
+
+<pre><code>import "DPI-C" function string getenv(input string env_name);
+
+module top;
+  initial begin
+    $write("env = %s\n", {getenv("HOME"), "/FileName"});
+  end
+endmodule
+</code></pre>
 ]]></content>
   </entry>
   
@@ -585,38 +603,6 @@ possible for the LSB of the required resolution to effect the truncated value.</
 cake and cover with remaining icing. Top with cocoa powder or dark chocolate shavings.</p>
 
 <p><img src="http://lizard-spock.co.uk/images/Cooking/SpicyChocolateCake/morganp-20131123-SpicyChoclateCake-IMG_5189.jpg" alt="" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Matlab Function Outputs]]></title>
-    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-function-outputs/"/>
-    <updated>2014-03-08T08:02:27+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/engineering/matlab-function-outputs</id>
-    <content type="html"><![CDATA[<p>Handling functions with extraneous leading outputs. For example:</p>
-
-<pre><code>function [a,b] = dummy_function
-  a = 10;
-  b = 20;
-endfunction
-
-
-[a, b] = dummy_function
-
-a =
-    10
-
-b =
-    20
-</code></pre>
-
-<p>If <code>a</code> is not required it can be replaced with a tilda <code>~</code>.</p>
-
-<pre><code>[~, b] = dummy_function
-
-b =
-    20
-</code></pre>
 ]]></content>
   </entry>
   

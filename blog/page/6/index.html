@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I use to use svn revert to roll back local modification and get back to the state I was in last time I checked out. to do the same in git I use : git &hellip;">
+  <meta name="description" content="A flip-flop (D-Type) is essentially 2 latches in series with the enable to one inverted.
+This stops the flip-flop from being transparent or open as a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,100 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/flip-flop/">Flip-flop</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-09T19:15:10+00:00" pubdate data-updated="true">Jan 9<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/flip-flop/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/flip-flop/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A flip-flop (D-Type) is essentially 2 latches in series with the enable to one inverted.
+This stops the flip-flop from being transparent or open as a single latch can be.</p>
+
+<p>For ASIC design it is recommended that all flip-flops use active low asynchronous resets.
+This is often connected to the power on reset circuit and retimed on to the rising edge of the clock at the top level of the chip.</p>
+
+<p>In Verilog a D-Type flip-flop can be implied with the following logic.<br/>
+NB: the reg implies nothing about the flip-flop only that data is assigned inside an always block.</p>
+
+<pre><code>reg [1:0] data; 
+always @(posedge clk or negedge rst_n) begin
+  if (~rst_n) begin
+    data &lt;= 'b0;
+  end
+  else begin
+    data &lt;= new_data;
+  end
+end
+</code></pre>
+
+<p>If your flow supports the use of SystemVerilog, use of the <code>always_comb</code>, <code>always_latch</code> and <code>always_ff</code> are recommended.
+the rules for sensitivity lists are a little stricter to minimize RTL to gates mismatch.
+The added benefit is that it allows the designer to be clear about design intent.
+Using the logic type also removes confusion about reg implying flip-flops and allows code refacoring with out having to switch types.</p>
+
+<pre><code>logic [1:0] data; 
+always_ff @(posedge clk or negedge rst_n) begin
+  if (~rst_n) begin
+    data &lt;= 'b0;
+  end
+  else begin
+    data &lt;= new_data;
+  end
+end
+</code></pre>
+
+<p>With a Synchronous Reset:</p>
+
+<pre><code>logic [1:0] data; 
+always_ff @(posedge clk) begin
+  if (~rst_n) begin
+    data &lt;= 'b0;
+  end
+  else begin
+    data &lt;= new_data;
+  end
+end
+</code></pre>
+
+<p>No Reset:</p>
+
+<pre><code>logic [1:0] data; 
+always_ff @(posedge clk) begin
+  data &lt;= new_data;
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -831,61 +926,6 @@ bunch         Coriander stalks
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/lightroom-library-metadata-panel/">Lightroom Library Metadata Panel</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-04T19:04:14+00:00" pubdate data-updated="true">Dec 4<span>th</span>, 2013</time>
-        
-           | <a href="/blog/photography/lightroom-library-metadata-panel/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/lightroom-library-metadata-panel/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The metadata panel in Lightroom has always felt a little crowded to me. It shows too many dialog boxes or not the ones I want and have to scroll through many panes.</p>
-
-<p>Since most of my photography is uploaded to <a href="http://www.flickr.com/photos/morgan_prior/">flickr</a> there are a few section of metadata which are useful.</p>
-
-<p>I use &lsquo;Job Identifier&rsquo; as the shoot name, this is the same as the folder I put my RAW files in. Whe I export this becomes part of the file name. My export file name is &lsquo;morganp-Date (YYYYMMDD)-Job Identifier-Filename&rsquo;.</p>
-
-<p> <a href="http://www.flickr.com/photos/morgan_prior/11209946034/"><img src="http://farm4.staticflickr.com/3820/11209946034_ecd2792ec2_n.jpg" width="276" height="320" alt="Lightroom Export Filename"></a></p>
-
-<p>The title of the image in my flick export is taken from the IPTC &lsquo;title&rsquo; . So I really only want these to setting present for my flick exports.</p>
-
-<p>Enter <a href="http://regex.info/blog/lightroom-goodies/metadata-presets">Jeffrey&rsquo;s “Metadata-Viewer Preset Editor”</a>. This allows you to create custom metadata views with only the fields you require.</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/11209999464/"><img src="http://farm6.staticflickr.com/5520/11209999464_47aa9e93bd_n.jpg" width="320" height="214" alt="Jeffrey's Metadata-Viewer Preset Editor"></a></p>
-
-<p>The minimal view:</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/11210017855/"><img src="http://farm8.staticflickr.com/7305/11210017855_0a643b1d87_n.jpg" width="320" height="209" alt="Lightroom Library Metadata"></a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -900,7 +940,7 @@ bunch         Coriander stalks
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
@@ -915,15 +955,15 @@ bunch         Coriander stalks
       </li>
     
       <li class="post">
+        <a href="/blog/engineering/verilog-importing-envvar/">Verilog Importing Envvar</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a>
       </li>
     
       <li class="post">
         <a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
       </li>
     
   </ul>

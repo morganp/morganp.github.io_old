@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="snipMate is a useful vim plugin which allows short cuts like for&#8217;tab&#8217; to be set up which will insert the snippet: for (i = 0; i &lt; &hellip;">
+  <meta name="description" content="In gvim and mvim incorrect spellings are highlighted with a squiggly underscore ala MS Word. vim in a terminal (xterm) will highlight the word be &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,54 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vim-consistent-spelling-correction-highlighting/">Vim Consistent Spelling Correction Highlighting</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-11T11:09:36+01:00" pubdate data-updated="true">Sep 11<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/vim-consistent-spelling-correction-highlighting/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-consistent-spelling-correction-highlighting/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In gvim and mvim incorrect spellings are highlighted with a squiggly underscore ala MS Word. vim in a terminal (xterm) will highlight the word be default. The following snippet can be added to your .vimrc file after setting your colorscheme. If you do not set a colorscheme then you are likely using the default and this could be placed any where.</p>
+
+<p>To highlight terminal (xterm) spelling mistakes with an underline rather than a background colour and keep the squiggly underlining in graphical vim:</p>
+
+<pre><code>" Spellings Underline instead of highlight "
+highlight clear SpellBad
+highlight SpellBad cterm=underline 
+" GVIM/MVIM squiggle underline "
+highlight SpellBad gui=undercurl
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -683,131 +731,6 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/mountain-lion-setup-part-2-homebrew-rvm/">Mountain Lion Setup, Part 2 Homebrew & RVM</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-16T11:34:57+01:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/mountain-lion-setup-part-2-homebrew-rvm/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mountain-lion-setup-part-2-homebrew-rvm/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Following on from <a href="http://amaras-tech.co.uk/article/180">Macbook Pro Setup</a>, Now it is time to install some of the command line tools.</p>
-
-<p>I have install XCode 4.4 and the command line tools, this allows brew to compile code, the compiler will then get replaced using homebrew to allow ruby compilation.</p>
-
-<p>Alternatively install <a href="https://github.com/kennethreitz/osx-gcc-installer/">osx-gcc-installer</a> instead of XCode to get home brew running.</p>
-
-<h2><a href="http://mxcl.github.com/homebrew/">Homebrew</a></h2>
-
-<p>From <code>/Applications/Utilities/Terminal.app</code></p>
-
-<pre><code>$ ruby &lt;(curl -fsSkL raw.github.com/mxcl/homebrew/go)
-</code></pre>
-
-<p>Which should run a look some thing like:</p>
-
-<pre><code>==&gt; This script will install:
-/usr/local/bin/brew
-/usr/local/Library/Formula/...
-/usr/local/Library/Homebrew/...
-/usr/local/share/man/man1/brew.1
-
-Press enter to continue
-==&gt; /usr/bin/sudo /bin/mkdir /usr/local
-Password:
-==&gt; /usr/bin/sudo /bin/chmod g+rwx /usr/local
-==&gt; /usr/bin/sudo /usr/bin/chgrp admin /usr/local
-==&gt; Downloading and Installing Homebrew...
-remote: Counting objects: 76442, done.
-remote: Compressing objects: 100% (36866/36866), done.
-remote: Total 76442 (delta 52004), reused 60755 (delta 38765)
-Receiving objects: 100% (76442/76442), 10.90 MiB | 1.02 MiB/s, done.
-Resolving deltas: 100% (52004/52004), done.
-From https://github.com/mxcl/homebrew
- * branch            master     -&gt; FETCH_HEAD
-==&gt; Installation successful!
-You should run `brew doctor' *before* you install anything.
-Now type: brew help
-</code></pre>
-
-<p>Run :</p>
-
-<pre><code>$ brew doctor
-&gt; Your system is raring to brew
-</code></pre>
-
-<p>Test Brew by installing <a href="http://en.wikipedia.org/wiki/Wget">wget</a>:</p>
-
-<pre><code>$ brew install wget
-==&gt; Downloading http://ftpmirror.gnu.org/wget/wget-1.14.tar.gz
-######################################################################## 100.0%
-==&gt; ./configure --disable-debug --prefix=/usr/local/Cellar/wget/1.14 --sysconfdir=/usr
-==&gt; make install
-/usr/local/Cellar/wget/1.14: 7 files, 676K, built in 39 seconds
-</code></pre>
-
-<h2><a href="https://rvm.io/rvm/install/">RVM</a></h2>
-
-<p>We need to update the compiler to a gcc compatible with ruby as XCode4.2+ does not play well with others.</p>
-
-<pre><code>brew update
-brew install libksba
-brew tap homebrew/dupes
-brew install autoconf automake apple-gcc42
-rvm pkg install openssl
-</code></pre>
-
-<p>List available Rubies</p>
-
-<pre><code>rvm list known
-</code></pre>
-
-<p>Install 1.9.3 head</p>
-
-<pre><code>rvm install 1.9.3
-</code></pre>
-
-<p>Make ruby 1.9.3 the default</p>
-
-<pre><code>rvm use 1.9.3 --default
-</code></pre>
-
-<p>Clean up brew and rvm (Remove temp files and source code used to compile executables)</p>
-
-<pre><code>brew cleanup -s
-rm -rf `brew --cache`
-rvm cleanup all
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/14/">&larr; Older</a>
@@ -822,7 +745,7 @@ rvm cleanup all
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
@@ -837,15 +760,15 @@ rvm cleanup all
       </li>
     
       <li class="post">
+        <a href="/blog/engineering/verilog-importing-envvar/">Verilog Importing Envvar</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a>
       </li>
     
       <li class="post">
         <a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
       </li>
     
   </ul>

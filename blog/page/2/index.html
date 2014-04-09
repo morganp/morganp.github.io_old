@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Update to the raised beds. Delivery of top soil: Raised bed lined with weed barrier and then 20mm Gravel. Filled with Top soil, Compost and &hellip;">
+  <meta name="description" content="In ruby we can perform schwartzian transforms easily with the sort_by method. This allows sorting enumerators by any property. For example to do a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,65 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-sort-by/">Matlab Sort_by</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-17T18:55:11+00:00" pubdate data-updated="true">Mar 17<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-sort-by/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-sort-by/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In ruby we can perform schwartzian transforms easily with the sort_by method. This allows sorting enumerators by any property.</p>
+
+<p>For example to do a non case sensitive sort:</p>
+
+<pre><code>some_array.sort_by { |x| x.downcase }
+</code></pre>
+
+<p><a href="http://blogs.mathworks.com/pick/2010/09/17/sorting-structure-arrays-based-on-fields/">Based on this Mathworks blog</a>, I have ported the <a href="http://www.mathworks.com/matlabcentral/fileexchange/28573-nested-sort-of-structure-arrays">Matlab central code</a> to a <a href="https://github.com/Matlab-Toolbox/nested_sort">Toolbox on Github</a>.</p>
+
+<p>After Downloading the toolbox and adding the functions folder to your path.</p>
+
+<pre><code>addpath('../lib/nested_sort/function/');
+</code></pre>
+
+<p>Basic usage is:</p>
+
+<pre><code>A = struct('name', num2cell(1:4), 'value', {5,2,3,1});
+B=sortStruct(A,'value');
+</code></pre>
+
+<p>B is A sorted by &lsquo;value&rsquo;.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -616,68 +675,6 @@ cake and cover with remaining icing. Top with cocoa powder or dark chocolate sha
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-function-outputs/">Matlab Function Outputs</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-08T08:02:27+00:00" pubdate data-updated="true">Mar 8<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-function-outputs/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-function-outputs/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Handling functions with extraneous leading outputs. For example:</p>
-
-<pre><code>function [a,b] = dummy_function
-  a = 10;
-  b = 20;
-endfunction
-
-
-[a, b] = dummy_function
-
-a =
-    10
-
-b =
-    20
-</code></pre>
-
-<p>If <code>a</code> is not required it can be replaced with a tilda <code>~</code>.</p>
-
-<pre><code>[~, b] = dummy_function
-
-b =
-    20
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -692,7 +689,7 @@ b =
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
@@ -707,15 +704,15 @@ b =
       </li>
     
       <li class="post">
+        <a href="/blog/engineering/verilog-importing-envvar/">Verilog Importing Envvar</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a>
       </li>
     
       <li class="post">
         <a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
       </li>
     
   </ul>
