@@ -9,10 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Removal of substring: string="test string"
-echo $string remove="test"
-short_string=${string#$remove}
-echo short_string Note that inside the ${} &hellip;">
+  <meta name="description" content="To shuffle a: a(randperm(length(a))) Example: a = [10 2 5 20];
+a = a(randperm(length(a))) a = 5 10 2 20 Source.
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +83,60 @@ echo short_string Note that inside the ${} &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-shuffle-array/">Matlab Shuffle Array</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-06T20:42:57+00:00" pubdate data-updated="true">Mar 6<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-shuffle-array/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-shuffle-array/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To shuffle a:</p>
+
+<pre><code>a(randperm(length(a)))
+</code></pre>
+
+<p>Example:</p>
+
+<pre><code>a = [10 2 5 20];
+a = a(randperm(length(a)))
+
+a =
+
+ 5    10     2    20
+</code></pre>
+
+<p><a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/239478">Source</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -573,47 +626,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/spring/">Spring</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-25T20:42:28+00:00" pubdate data-updated="true">Feb 25<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/spring/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/spring/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>First signs of spring, bulbs starting to show growth.</p>
-
-<p><img src="/images/Gardening/morganp-20140225-Garden-IMG_6851.jpg" title="Bulbs starting to shoot" alt="" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -628,11 +640,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (229)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/photography/creating-lightroom-metadata-views/">Creating Lightroom Metadata Views</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/iterm-exit-fullscreen/">iTerm Exit Fullscreen</a>
@@ -648,10 +664,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/screen-scrollback/">Screen Scrollback</a>
       </li>
     
   </ul>

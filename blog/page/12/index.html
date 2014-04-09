@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Given a flat hierarchy of data comprising level and a label, aim to nest the lower level of objects in to the parents. Example data: 0, 'a' 1, 'b' 2 &hellip;">
+  <meta name="description" content="Problem Take an array of arrays and format it for displaying to the terminal or outputting to a text file. Sample Data: data = [[1,2,3,4,5],["Four"," &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,111 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/print-nested-array-structures-in-table-format/">Print Nested Array Structures in Table Format</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-03T20:47:13+01:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+        
+           | <a href="/blog/tech/print-nested-array-structures-in-table-format/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/print-nested-array-structures-in-table-format/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Problem</h2>
+
+<p>Take an array of arrays and format it for displaying to the terminal or outputting to a text file.</p>
+
+<p>Sample Data:</p>
+
+<pre><code>data = [[1,2,3,4,5],["Four","Five","Six"],["Seven","Eight","Nine","Ten"]]
+</code></pre>
+
+<h2>Solution</h2>
+
+<p>The main issue I see is working out how wide to make each column. My solution is to iterate over the data keeping track of the maximum width found for each column.</p>
+
+<p>Once we know how wide to make each column printing the table is just a matter of a second iteration over the data using ljust or rjust to align all the columns.</p>
+
+<pre><code>def print_table( data )
+  #Clone/dup nested structure
+  data = Marshal.load(Marshal.dump(data))
+  #data = data_array.dup
+  lengths = []
+
+  data.each do |line| 
+    line.each_with_index do |item, column| 
+      length          = item.to_s.size
+      lengths[column] = length if length &gt; (lengths[column] ||= 0)
+    end
+  end
+
+  data.each do |line| 
+    line.each_with_index do |item, column|
+      line[column] = item.to_s.rjust(4+lengths[column])
+      print line[column]
+    end
+    puts
+  end
+
+  return data
+end
+</code></pre>
+
+<p>The result:</p>
+
+<pre><code>data = [[1,2,3,4,5],["Four","Five","Six"],["Seven","Eight","Nine","Ten"]]
+data = print_table( data )
+
+=&gt;        1        2       3      4    5    
+=&gt;     Four     Five     Six
+=&gt;    Seven    Eight    Nine    Ten
+</code></pre>
+
+<h2>Alternative Solution</h2>
+
+<p>Use the <a href="http://github.com/visionmedia/terminal-table">terminal-table</a> gem. Which creates nice ASCII tables.</p>
+
+<pre><code>#gem install terminal-table
+
+require 'terminal-table'
+data = [[1,2,3,4,5],["Four","Five","Six"],["Seven","Eight","Nine","Ten"]]
+table = Terminal::Table.new :rows =&gt; data
+
+puts table
++-------+-------+------+-----+---+
+| 1     | 2     | 3    | 4   | 5 |
+| Four  | Five  | Six  |
+| Seven | Eight | Nine | Ten |
++-------+-------+------+-----+---+
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -714,71 +819,6 @@ highlight SpellBad gui=undercurl
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/get-snipmate-working-a-vim-plugin/">Get snipMate Working, a #vim Plugin</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-05T00:45:31+01:00" pubdate data-updated="true">Sep 5<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/get-snipmate-working-a-vim-plugin/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/get-snipmate-working-a-vim-plugin/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.vim.org/scripts/script.php?script_id=2540">snipMate</a> is a useful vim plugin which allows short cuts like for&#8217;tab&#8217; to be set up which will insert the snippet:</p>
-
-<pre><code>for (i = 0; i &lt; count; i++) {  
-
-} 
-</code></pre>
-
-<p>To install you just have to download the the zip file from <a href="http://www.vim.org/scripts/script.php?script_id=2540">snipMate</a> and copy the files into your vim folder (~/.vim).</p>
-
-<p>Make sure you have this in your .vimrc file</p>
-
-<pre><code>filetype plugin on
-</code></pre>
-
-<p>I still could not get tab completion to work. running <code>:scriptnames</code> inside vim will list the files it has loaded and should include:</p>
-
-<pre><code>plugin/snipMate.vim
-after/plugin/snipMate.vim
-</code></pre>
-
-<p>On my first install the plugin/snipMate.vim was not executable and therefore the after/plugin/snipMate.vim did not get loaded.</p>
-
-<h2>The Fix</h2>
-
-<pre><code>cd ~/.vim 
-chmod ugo+x plugin/snipMate.vim
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -793,11 +833,15 @@ chmod ugo+x plugin/snipMate.vim
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (229)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/photography/creating-lightroom-metadata-views/">Creating Lightroom Metadata Views</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/iterm-exit-fullscreen/">iTerm Exit Fullscreen</a>
@@ -813,10 +857,6 @@ chmod ugo+x plugin/snipMate.vim
     
       <li class="post">
         <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/screen-scrollback/">Screen Scrollback</a>
       </li>
     
   </ul>

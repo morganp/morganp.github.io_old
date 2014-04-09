@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Photography | RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/blog/photography/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-04-08T19:31:53+01:00</updated>
+  <updated>2014-04-09T01:34:45+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,49 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Creating Lightroom Metadata Views]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/photography/creating-lightroom-metadata-views/"/>
+    <updated>2014-04-09T01:28:27+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/photography/creating-lightroom-metadata-views</id>
+    <content type="html"><![CDATA[<p>Lightroom plugins for metadata views are called metadata tag sets and only require 2 text files.</p>
+
+<p>create a folder called <code>something.lrdevplugin</code> once you are happy with it it can be renamed <code>something.lrplugin</code></p>
+
+<p>Create a file called Info.lua and Tagset.lua</p>
+
+<p>Info.lua:</p>
+
+<pre><code>return {
+  LrSdkVersion = 5.0,
+  LrSdkMinimumVersion = 5.0,
+  LrToolkitIdentifier = ’sample.metadata',
+  LrPluginName = LOC "$$$/CustomMetadata/PluginName=Example View",
+  LrMetadataTagsetFactory = ‘Tagset.lua',
+}
+</code></pre>
+
+<p>Tagset.lua</p>
+
+<pre><code>return {
+  title = LOC "$$$/SampleTagset/Title=Example Meta",
+  id = ‘Tagset',
+  items = {
+    {'com.adobe.jobIdentifier', height_in_lines = 1},
+    'com.adobe.separator',
+    {'com.adobe.title', height_in_lines = 2},
+    'com.adobe.separator',
+    {'com.adobe.caption', height_in_lines = 6},
+  },
+}
+</code></pre>
+
+<p>The full list of options can be seen from page 63 of the <a href="http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/devnet/photoshoplightroom/pdfs/lr5/lightroom-sdk-guide.pdf">lightroom sdk guide</a>.</p>
+
+<p>My <a href="https://github.com/morganp/CopyrightMetadataTagset.lrdevplugin">Copyright view</a> and <a href="https://github.com/morganp/CopyrightMetadataTagset.lrdevplugin">JobID view</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[F-Stop Loka Hydration]]></title>
@@ -87,17 +130,6 @@ Depth: 16.5cm. Width: 27cm. Height: 46cm  External Volume 25L</p>
     <content type="html"><![CDATA[<p>11 Months since the last Release <a href="http://hugin.sourceforge.net/">Hugin 2013.0.0</a> is released.</p>
 
 <p>One of the best photo stitchers available at any cost.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Lightroom 5.3 RC Beta Available]]></title>
-    <link href="http://lizard-spock.co.uk/blog/photography/lightroom-53-rc-beta-available/"/>
-    <updated>2013-11-23T18:14:24+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/photography/Lightroom-53-RC-Beta-available</id>
-    <content type="html"><![CDATA[<p><a href="http://labs.adobe.com/technologies/lightroom5-3/">Lightroom 5.3RC</a></p>
-
-<p>The Lightroom 5.3 release candidate will expire on December 31, 2013.</p>
 ]]></content>
   </entry>
   

@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="To connect to a rails style DB config outside of the normal workflow, or using a database.yml in a different workflow: require 'yaml'
-require ' &hellip;">
+  <meta name="description" content="To make an automatic ActiveRecord database connection using ENV[&lsquo;DATABASE_URL&rsquo;] The following snippet can be used: From ActiveRecord 3.2. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,102 @@ require ' &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/sinatra-activerecord-db-config-on-heroku/">Sinatra ActiveRecord DB Config on Heroku</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-22T10:04:48+01:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2011</time>
+        
+           | <a href="/blog/tech/sinatra-activerecord-db-config-on-heroku/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-activerecord-db-config-on-heroku/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To make an automatic <a href="http://api.rubyonrails.org/classes/ActiveRecord/Base.html">ActiveRecord</a> database connection using ENV[&lsquo;DATABASE_URL&rsquo;] The following snippet can be used:</p>
+
+<p>From <a href="http://apidock.com/rails/v3.2.1/ActiveRecord/Base/establish_connection/class">ActiveRecord 3.2.1</a> connections can be made with :</p>
+
+<pre><code>ActiveRecord::Base.establish_connection(ENV["DATABASE_URL"])
+</code></pre>
+
+<p>At some stage My first example also stopped working, Heroku have this example on there pages:</p>
+
+<pre><code>  db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+
+  ActiveRecord::Base.establish_connection(
+    :adapter  =&gt; db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+    :host     =&gt; db.host,
+    :port     =&gt; db.port,
+    :username =&gt; db.user,
+    :password =&gt; db.password,
+    :database =&gt; db.path[1..-1],
+    :encoding =&gt; 'utf8'
+  )
+</code></pre>
+
+<p>My original example for parsing the env variable and making he DB connection.</p>
+
+<pre><code>module ExampleSinatra
+  class App &lt; Sinatra::Base
+    use Rack::MethodOverride
+    set :public, "public"
+
+    configure :production do
+      db = ENV["DATABASE_URL"]
+      if db.match(/postgres:\/\/(.*):(.*)@(.*)\/(.*)/) 
+        username = $1
+        password = $2
+        hostname = $3
+        database = $4
+
+        ActiveRecord::Base.establish_connection(
+          :adapter  =&gt; 'postgresql',
+          :host     =&gt; hostname,
+          :username =&gt; username,
+          :password =&gt; password,
+          :database =&gt; database
+        )
+      end
+    end
+  end
+end
+if $0 == __FILE__
+  ExampleSinatra::App.run!
+end
+</code></pre>
+
+<p>From Heroku connecting using <a href="http://sequel.rubyforge.org/">Sequel</a> or <a href="http://datamapper.org/">Datamapper</a> is a little simpler:</p>
+
+<pre><code>Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://my.db')
+DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3://my.db')
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -772,83 +867,6 @@ set virtualedit=onemore
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vimfu-reindent/">Vimfu Reindent</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-19T19:55:19+01:00" pubdate data-updated="true">Apr 19<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/vimfu-reindent/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vimfu-reindent/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The latest addition to <a href="https://github.com/morganp/dotfiles/blob/master/dotfiles/.vimrc#L197">my .vimrc</a> below, allows ;g to smart indent the current file. It is the same as gg=G but returning you to the same position.</p>
-
-<p>Update based on Recommendations from <a href="http://drewneil.com/">Drew Neil</a> and <a href="http://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/">Jonathan Palardy</a>, a more generic pereserving state function, which can be mapped to a key sequence with specific commands.</p>
-
-<pre><code>function! Preserve(command)
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  execute a:command
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-
-" SmartIndent keeping cursor position
-map ;g :call Preserve("normal! gg=G")&lt;CR&gt;
-</code></pre>
-
-<p>If this does not work for a particular file type you use you probably need to look at getting a *.syntax file for your language.</p>
-
-<h2>My Original Method </h2>
-
-<pre><code>function! Indent()
-  " Capture Current Line
-  let currentline_num = line(".")
-  let currentcol_num = virtcol('.')
-
-  " Reindent from start to end of file
-   normal! gg=G
-
-   " Restore Current Line and column
-   exe 'normal '.currentline_num.'G'.currentcol_num.'|'
-endfunction
-
-"assign to ;g in normal mode
-map ;g :call Indent()&lt;CR&gt;
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/22/">&larr; Older</a>
@@ -863,11 +881,15 @@ map ;g :call Indent()&lt;CR&gt;
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (229)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/photography/creating-lightroom-metadata-views/">Creating Lightroom Metadata Views</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/iterm-exit-fullscreen/">iTerm Exit Fullscreen</a>
@@ -883,10 +905,6 @@ map ;g :call Indent()&lt;CR&gt;
     
       <li class="post">
         <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/screen-scrollback/">Screen Scrollback</a>
       </li>
     
   </ul>

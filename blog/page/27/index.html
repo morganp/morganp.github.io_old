@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Vim is a great text editor but has quite a steep learning curve. VimCasts is a great podcast for learning about vim. Indenting is a common &hellip;">
+  <meta name="description" content="For running small webapps heroku is free. The real attraction is the simplicity of deployment, if you are use to git you just push to heroku. Current &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,86 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/sinatra-running-on-heroku/">Sinatra Running on Heroku</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-09T08:37:13+01:00" pubdate data-updated="true">Jul 9<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/sinatra-running-on-heroku/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-running-on-heroku/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For running small webapps <a href="http://heroku.com/">heroku</a> is free. The real attraction is the simplicity of deployment, if you are use to git you just push to heroku.</p>
+
+<p><a href="http://blog.heroku.com/archives/2009/3/5/32_deploy_merb_sinatra_or_any_rack_app_to_heroku/">Current instructions</a> are missing the step of creating the .gems file. So here is my quick walk through. Register on <a href="http://heroku.com/">heroku</a> first.</p>
+
+<pre><code>mkdir new_web_app
+cd new_web_app
+gem install heroku
+touch config.ru
+touch app.rb
+touch .gems
+</code></pre>
+
+<p>config.ru</p>
+
+<pre><code>require 'app'
+run Sinatra::Application
+</code></pre>
+
+<p>app.rb</p>
+
+<pre><code>require 'rubygems'
+require 'sinatra'
+
+get '/' do
+   "Hello from Sinatra on Heroku!"
+end
+</code></pre>
+
+<p>.gems</p>
+
+<pre><code>sinatra --version '&gt;=1.0'
+</code></pre>
+
+<p>Now run these commands to finish off and deploy</p>
+
+<pre><code>git init
+git add config.ru app.rb .gems 
+git commit -a -m 'Initial commit'
+heroku create
+git push heroku master
+heroku open
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -662,47 +742,6 @@ a.report
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/save-space-on-your-mac-by-going-monolingual/">Save Space on Your Mac by Going Monolingual</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-16T10:43:30+01:00" pubdate data-updated="true">Jun 16<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/save-space-on-your-mac-by-going-monolingual/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/save-space-on-your-mac-by-going-monolingual/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have just looked through <a href="http://www.minervity.com/features/designer_apps/10-useful-and-free-mac-apps-for-any-designer/">this list</a> of 10 free mac apps I have used most of them in the past but have never come across <a href="http://monolingual.sourceforge.net/">monolingual</a> before. It removes all the extra languages that come as part of OS X and the translations from within most application. I left English, English UK, Scottish, Latin and Greek and saved about 1.4GB. it reported 1.8GB but I think this was a bit optimistic but I did not write down the free space before hand, the removed sections do not go to the trash can so the space starts to free up immediately.</p>
-
-<p>Use <a href="http://monolingual.sourceforge.net/">Monolingual</a> to save space.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/28/">&larr; Older</a>
@@ -717,11 +756,15 @@ a.report
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (229)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/photography/creating-lightroom-metadata-views/">Creating Lightroom Metadata Views</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/iterm-exit-fullscreen/">iTerm Exit Fullscreen</a>
@@ -737,10 +780,6 @@ a.report
     
       <li class="post">
         <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/screen-scrollback/">Screen Scrollback</a>
       </li>
     
   </ul>

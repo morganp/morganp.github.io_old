@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="When working with databases it is often a requirement to have unique elements (columns) which are not the primary key, this can be achieved in the &hellip;">
+  <meta name="description" content="In Active Record when updating records I used to have an very manual process to this some thing like: @todo.done = params['post']['done']
+@todo.desc &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,85 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/active-record-attributes-simplify-update-and-create/">Active Record Attributes Simplify Update and Create.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-13T02:13:17+01:00" pubdate data-updated="true">Aug 13<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/active-record-attributes-simplify-update-and-create/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/active-record-attributes-simplify-update-and-create/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In Active Record when updating records I used to have an very manual process to this some thing like:</p>
+
+<pre><code>@todo.done = params['post']['done']
+@todo.desc = params['post']['desc']
+@todo.save
+</code></pre>
+
+<p>Model of Todo with boolean done and text description field.</p>
+
+<p>This can be done in a more maintainable fashion with:</p>
+
+<pre><code>@todo.update_attributes = params['post']
+</code></pre>
+
+<p>This does pose the security concern that the form (which transmits params[&lsquo;post&rsquo;]) could be hacked to add id fields or such like that you may get unwanted manipulation of the table.</p>
+
+<p>To solve this there is a attr_accessible which specifies fields allowed to be updated by the .attributes . while this might seem now like there is no benefit as if we run a migration to add an extra column we also need to update the Active Record model. While this is true we only need to update the model once and create/new  and update methods should benefit from this.</p>
+
+<pre><code>class Todo &lt; ActiveRecord::Base
+end
+</code></pre>
+
+<p>Becomes</p>
+
+<pre><code>class Todo &lt; ActiveRecord::Base
+   attr_accessible :done
+   attr_accessible :desc
+end
+</code></pre>
+
+<h2>Summary:</h2>
+
+<pre><code>@customer.update_attributes = { "description" =&gt; "Jolly fellow", "credit_rating" =&gt; "Superb" }
+</code></pre>
+
+<p>same as:</p>
+
+<pre><code>@customer.description = "Jolly fellow"
+@customer.credit_rating = "Superb"
+@customer.save
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -714,86 +794,6 @@ res = @db.country(env['HTTP_X_REAL_IP'])
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-running-on-heroku/">Sinatra Running on Heroku</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-09T08:37:13+01:00" pubdate data-updated="true">Jul 9<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/sinatra-running-on-heroku/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-running-on-heroku/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>For running small webapps <a href="http://heroku.com/">heroku</a> is free. The real attraction is the simplicity of deployment, if you are use to git you just push to heroku.</p>
-
-<p><a href="http://blog.heroku.com/archives/2009/3/5/32_deploy_merb_sinatra_or_any_rack_app_to_heroku/">Current instructions</a> are missing the step of creating the .gems file. So here is my quick walk through. Register on <a href="http://heroku.com/">heroku</a> first.</p>
-
-<pre><code>mkdir new_web_app
-cd new_web_app
-gem install heroku
-touch config.ru
-touch app.rb
-touch .gems
-</code></pre>
-
-<p>config.ru</p>
-
-<pre><code>require 'app'
-run Sinatra::Application
-</code></pre>
-
-<p>app.rb</p>
-
-<pre><code>require 'rubygems'
-require 'sinatra'
-
-get '/' do
-   "Hello from Sinatra on Heroku!"
-end
-</code></pre>
-
-<p>.gems</p>
-
-<pre><code>sinatra --version '&gt;=1.0'
-</code></pre>
-
-<p>Now run these commands to finish off and deploy</p>
-
-<pre><code>git init
-git add config.ru app.rb .gems 
-git commit -a -m 'Initial commit'
-heroku create
-git push heroku master
-heroku open
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/27/">&larr; Older</a>
@@ -808,11 +808,15 @@ heroku open
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (229)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/photography/creating-lightroom-metadata-views/">Creating Lightroom Metadata Views</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/iterm-exit-fullscreen/">iTerm Exit Fullscreen</a>
@@ -828,10 +832,6 @@ heroku open
     
       <li class="post">
         <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/screen-scrollback/">Screen Scrollback</a>
       </li>
     
   </ul>

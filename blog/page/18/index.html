@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Cron jobs can have there results returned as mail via the unix mail system. If left unchecked for a while the number of mails can mount up and you &hellip;">
+  <meta name="description" content="Answer: svn commit -m $'Line 1 \nLine 2' The Problem Committing to subversion on the command line and using escaped line returns for multi line &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,82 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/svn-multi-line-comments-on-the-command-line-/">SVN Multi-line Comments on the Command Line</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-28T13:32:53+01:00" pubdate data-updated="true">Mar 28<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/svn-multi-line-comments-on-the-command-line-/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/svn-multi-line-comments-on-the-command-line-/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Answer:</p>
+
+<pre><code>svn commit -m $'Line 1 \nLine 2'
+</code></pre>
+
+<h2>The Problem</h2>
+
+<p>Committing to subversion on the command line and using escaped line returns for multi line comments:</p>
+
+<pre><code>svn commit -m $'Line 1 \nLine 2'
+</code></pre>
+
+<p>svn log will show some thing like</p>
+
+<pre><code>------------------------------------------------------------------------
+r1 | user | 2012-03-28 13:37:48 +0100 (Wed, 28 Mar 2012) | 1 lines
+
+Line 1 \nLine 2
+</code></pre>
+
+<p>Answer originally posted on <a href="http://serverfault.com/questions/148917/use-linefeed-or-carriage-return-in-subversion-commit-message-from-the-command-li">ServerFault</a>. Strings contained in \&lsquo;\&rsquo; should not be interpreted by the command line but:</p>
+
+<pre><code>svn commit -m "Line 1 \nLine 2"
+</code></pre>
+
+<p>Shows the same errors. Starting the comment with a $ does seem to fix it.</p>
+
+<pre><code>svn commit -m $'Line 1 \nLine 2'
+</code></pre>
+
+<p>Will give:</p>
+
+<pre><code>------------------------------------------------------------------------
+r1 | user | 2012-03-28 13:37:48 +0100 (Wed, 28 Mar 2012) | 1 lines
+
+Line 1 
+Line 2
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -742,49 +818,6 @@ real_username = $1
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-send-message-to-stderr/">Ruby Send Message to Stderr</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-12-22T11:56:25+00:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-send-message-to-stderr/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-send-message-to-stderr/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When creating applications normal messages should go to <a href="http://en.wikipedia.org/wiki/Standard_streams#Standard_output_.28stdout.29">stdout</a> and error messages should go to <a href="http://en.wikipedia.org/wiki/Standard_streams#Standard_error_.28stderr.29">stderr</a>, unfortunately there is not a nice ruby way the cleanest I have found is:</p>
-
-<pre><code>put "Message displayed in stdout"
-$stderr.puts "Error displayed in stderr"
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/19/">&larr; Older</a>
@@ -799,11 +832,15 @@ $stderr.puts "Error displayed in stderr"
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (32)</a></li><li><a href='/blog/tech'>Tech (229)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (19)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/photography/creating-lightroom-metadata-views/">Creating Lightroom Metadata Views</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/iterm-exit-fullscreen/">iTerm Exit Fullscreen</a>
@@ -819,10 +856,6 @@ $stderr.puts "Error displayed in stderr"
     
       <li class="post">
         <a href="/blog/tech/ruby-print-array/">Ruby Print Array</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/screen-scrollback/">Screen Scrollback</a>
       </li>
     
   </ul>
