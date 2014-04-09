@@ -117,18 +117,21 @@
 
 <p>To take an optional number of arguments a splat can be used:</p>
 
-<pre><code> def amethod( *arg1 )
+<pre><code>def amethod( *arg1 )
 </code></pre>
 
 <p>The Problem is now to set defaults or require a set number of arguments.</p>
 
 <ol>
 <li>Splat arguments can not be defaulted.</li>
-<li><p>The splat can accept zero arguments</p>
-
-<p> def commit(*path=[Dir.pwd]) ##THIS DOES NOT WORK</p></li>
+<li>The splat can accept zero arguments.</li>
 </ol>
 
+
+<p>The following might be what you would expect for a default in a splat, but this conflicts with its abilliy to accept 0 arguments.</p>
+
+<pre><code>def commit(*path=[Dir.pwd]) ##THIS DOES NOT WORK
+</code></pre>
 
 <p>Splats can follow other arguments. To require at least one argument:</p>
 
