@@ -5,13 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Homebrew List Outdated Packages - RockPaperScissors</title>
+  <title>Thor Adding --verbose - RockPaperScissors</title>
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="brew update
-brew outdated Homebrew.
-">
+  <meta name="description" content="With a command line Ruby application using Thor for the option parsing I want to be able to run: $ thor_app --version
+&gt; thor_app version 1.0.0 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +19,7 @@ brew outdated Homebrew.
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://lizard-spock.co.uk/blog/tech/homebrew-list-outdated-packages">
+  <link rel="canonical" href="http://lizard-spock.co.uk/blog/tech/thor-adding-verbose">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="RockPaperScissors" type="application/atom+xml">
@@ -86,7 +85,7 @@ brew outdated Homebrew.
   
   <header>
     
-      <h1 class="entry-title">Homebrew List Outdated Packages</h1>
+      <h1 class="entry-title">Thor Adding --verbose</h1>
     
     
       <p class="meta">
@@ -102,7 +101,7 @@ brew outdated Homebrew.
   
 
 
-<time datetime="2011-09-21T21:58:22+01:00" pubdate data-updated="true">Sep 21<span>st</span>, 2011</time>
+<time datetime="2014-04-09T19:26:44+01:00" pubdate data-updated="true">Apr 9<span>th</span>, 2014</time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://lizard-spock.co.uk">Comments</a>
@@ -112,11 +111,38 @@ brew outdated Homebrew.
   </header>
 
 
-<div class="entry-content"><pre><code>brew update
-brew outdated
+<div class="entry-content"><p>With a command line Ruby application using Thor for the option parsing I want to be able to run:</p>
+
+<pre><code>$ thor_app --version
+&gt; thor_app version 1.0.0
 </code></pre>
 
-<p><a href="https://github.com/Homebrew/homebrew/wiki/FAQ">Homebrew</a>.</p>
+<p>Create a boolean class option, which does not belong to a task, that can be referenced by other tasks. The often used example for a class option is -v verbose, as all tasks can use this to determine how noisy they should be.</p>
+
+<p>Then create a &lsquo;version&rsquo; task and make it the default task, so when no task is defined the version task is ran and can react to the &mdash;version flag (class option).</p>
+
+<pre><code>class CLI &lt; Thor
+  #include Thor::Actions
+  class_option :version, :type =&gt; :boolean
+
+  desc "version", "Show thor_app version"
+  def version
+    if options[:version]
+      puts "thor_app version #{find_version}"
+    end
+  end
+  default_task :version
+
+  no_tasks do
+    def find_version
+      ## Method can be replaced to look up VERSION
+      '1.0.0'
+    end
+  end
+end
+</code></pre>
+
+<p>This is based on <a href="http://stackoverflow.com/q/22809972/97073">my SO Question</a>.</p>
 </div>
 
 
@@ -139,7 +165,7 @@ brew outdated
   
 
 
-<time datetime="2011-09-21T21:58:22+01:00" pubdate data-updated="true">Sep 21<span>st</span>, 2011</time>
+<time datetime="2014-04-09T19:26:44+01:00" pubdate data-updated="true">Apr 9<span>th</span>, 2014</time>
       
 
 <span class="categories">
@@ -153,7 +179,7 @@ brew outdated
 
 <span class="tags">
   
-    <a class='tag' href='/tag/homebrew/'>Homebrew</a>
+    <a class='tag' href='/tag/command-line/'>Command Line</a>, <a class='tag' href='/tag/programming/'>Programming</a>, <a class='tag' href='/tag/ruby/'>Ruby</a>
   
 </span>
 
@@ -162,7 +188,7 @@ brew outdated
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://lizard-spock.co.uk/blog/tech/homebrew-list-outdated-packages/" data-via="" data-counturl="http://lizard-spock.co.uk/blog/tech/homebrew-list-outdated-packages/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://lizard-spock.co.uk/blog/tech/thor-adding-verbose/" data-via="" data-counturl="http://lizard-spock.co.uk/blog/tech/thor-adding-verbose/" >Tweet</a>
   
   
   
@@ -171,10 +197,8 @@ brew outdated
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/tech/ruby-arrays-concatenation-and-subtraction/" title="Previous Post: Ruby Arrays Concatenation and Subtraction">&laquo; Ruby Arrays Concatenation and Subtraction</a>
+        <a class="basic-alignment left" href="/blog/tech/photography/creating-lightroom-metadata-views/" title="Previous Post: Creating Lightroom Metadata Views">&laquo; Creating Lightroom Metadata Views</a>
       
-      
-        <a class="basic-alignment right" href="/blog/tech/warning-already-initialized-constant/" title="Next Post: warning: already initialized constant">warning: already initialized constant &raquo;</a>
       
     </p>
   </footer>
@@ -270,8 +294,8 @@ brew outdated
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://lizard-spock.co.uk/blog/tech/homebrew-list-outdated-packages/';
-        var disqus_url = 'http://lizard-spock.co.uk/blog/tech/homebrew-list-outdated-packages/';
+        var disqus_identifier = 'http://lizard-spock.co.uk/blog/tech/thor-adding-verbose/';
+        var disqus_url = 'http://lizard-spock.co.uk/blog/tech/thor-adding-verbose/';
         var disqus_script = 'embed.js';
       
     (function () {

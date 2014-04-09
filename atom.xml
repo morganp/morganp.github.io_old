@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-04-09T18:30:44+01:00</updated>
+  <updated>2014-04-09T19:45:52+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Thor Adding --verbose]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/thor-adding-verbose/"/>
+    <updated>2014-04-09T19:26:44+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/thor-adding-verbose</id>
+    <content type="html"><![CDATA[<p>With a command line Ruby application using Thor for the option parsing I want to be able to run:</p>
+
+<pre><code>$ thor_app --version
+&gt; thor_app version 1.0.0
+</code></pre>
+
+<p>Create a boolean class option, which does not belong to a task, that can be referenced by other tasks. The often used example for a class option is -v verbose, as all tasks can use this to determine how noisy they should be.</p>
+
+<p>Then create a &lsquo;version&rsquo; task and make it the default task, so when no task is defined the version task is ran and can react to the &mdash;version flag (class option).</p>
+
+<pre><code>class CLI &lt; Thor
+  #include Thor::Actions
+  class_option :version, :type =&gt; :boolean
+
+  desc "version", "Show thor_app version"
+  def version
+    if options[:version]
+      puts "thor_app version #{find_version}"
+    end
+  end
+  default_task :version
+
+  no_tasks do
+    def find_version
+      ## Method can be replaced to look up VERSION
+      '1.0.0'
+    end
+  end
+end
+</code></pre>
+
+<p>This is based on <a href="http://stackoverflow.com/q/22809972/97073">my SO Question</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Creating Lightroom Metadata Views]]></title>
@@ -510,99 +550,6 @@ Although it may help breakup tonal behaviour of a system.</p>
 possible for the LSB of the required resolution to effect the truncated value.</p>
 
 <p>The increase in resolution is limited to <code>log2(oversampling rate)</code>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Spicy Choclate Cake]]></title>
-    <link href="http://lizard-spock.co.uk/blog/cooking/spicy-choclate-cake/"/>
-    <updated>2014-03-08T09:12:04+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/cooking/spicy-choclate-cake</id>
-    <content type="html"><![CDATA[<p><img src="http://lizard-spock.co.uk/images/Cooking/SpicyChocolateCake/morganp-20131123-SpicyChoclateCake-IMG_5189.jpg" alt="" /></p>
-
-<h2>Ingredients</h2>
-
-<p><img src="http://lizard-spock.co.uk/images/Cooking/SpicyChocolateCake/morganp-20131123-SpicyChoclateCake-IMG_5125.jpg" alt="" /></p>
-
-<p><strong>That is Ginger not stem ginger pictured</strong>, it works, but stem ginger is much better.</p>
-
-<pre><code>          Dark choclate Shavings (for topping)
- 25 ml    Espresso
-  1 ball  Stem Ginger
-  2 large Eggs
-175 g     Self Raising Flour
-250 g     Golden Caster Sugar
- 60 g     Cocoa Powder
-150 ml    Butter milk
-  2 tsp   Coffee Essence
-1/2 tsp   Baking Powder
-120 g     Unsalted Butter
- 10 g     Unslated Butter (for greasing)
-260 g     Icing Sugar
-120 ml    Vegatble Oil
-
- 10 g     Unslated Butter
-</code></pre>
-
-<p>Pre-heat oven to 180 Degrees. Grease with unslated butter 2 20cm/8inch cake tins, line base with grease proof paper.</p>
-
-<pre><code>250 g     Golden Caster Sugar
-120 ml    Vegatble Oil
-  2 large Eggs
-</code></pre>
-
-<p>Whisk golden caster sugar, vegetable Oil and eggs.</p>
-
-<pre><code>150 ml    Butter milk
- 25 ml    Espresso
-</code></pre>
-
-<p>Once pale and fluffy add butter milk and espresso, whisk again.</p>
-
-<pre><code>175 g     Self Raising Flour
- 60 g     Cocoa Powder
-</code></pre>
-
-<p>Slowly add self raising flour and cocoa powder, mixing and folding until well combined.</p>
-
-<p>Add equally into the prepared cake tins, Bake for around 20 minutes, until golden and risen.</p>
-
-<p><img src="http://lizard-spock.co.uk/images/Cooking/SpicyChocolateCake/morganp-20131123-SpicyChoclateCake-IMG_5157-Edit.jpg" alt="" />
-<img src="http://lizard-spock.co.uk/images/Cooking/SpicyChocolateCake/morganp-20131123-SpicyChoclateCake-IMG_5180.jpg" alt="" /></p>
-
-<p>Leave cakes to cool in tins for about 10 minutes than transfer to rack to cool completely.</p>
-
-<pre><code>  1 ball  Stem Ginger
-</code></pre>
-
-<p>Finely chop stem ginger</p>
-
-<pre><code>120 g     Unsalted Butter
-260 g     Icing Sugar
-</code></pre>
-
-<p><img src="http://lizard-spock.co.uk/images/Cooking/SpicyChocolateCake/morganp-20131123-SpicyChoclateCake-IMG_5132.jpg" alt="" />
-<img src="http://lizard-spock.co.uk/images/Cooking/SpicyChocolateCake/morganp-20131123-SpicyChoclateCake-IMG_5148.jpg" alt="" />
-<img src="http://lizard-spock.co.uk/images/Cooking/SpicyChocolateCake/morganp-20131123-SpicyChoclateCake-IMG_5150.jpg" alt="" /></p>
-
-<p>Add butter to large bowl and whisk until smooth (about 1 minute).</p>
-
-<p><img src="http://lizard-spock.co.uk/images/Cooking/SpicyChocolateCake/morganp-20131123-SpicyChoclateCake-IMG_5174.jpg" alt="" /></p>
-
-<p>Gradually add the icing sugar, whisk until light an fluffy.</p>
-
-<pre><code>  2 tsp   Coffee Essence
-</code></pre>
-
-<p>Added chopped stem ginger and coffee essence to bowl and whisk until mixed (30 seconds).</p>
-
-<p><img src="http://lizard-spock.co.uk/images/Cooking/SpicyChocolateCake/morganp-20131123-SpicyChoclateCake-IMG_5183.jpg" alt="" />
-<img src="http://lizard-spock.co.uk/images/Cooking/SpicyChocolateCake/morganp-20131123-SpicyChoclateCake-IMG_5185.jpg" alt="" /></p>
-
-<p>Place one cake on plate, then spread with two thirds of the icing. Add second layer of
-cake and cover with remaining icing. Top with cocoa powder or dark chocolate shavings.</p>
-
-<p><img src="http://lizard-spock.co.uk/images/Cooking/SpicyChocolateCake/morganp-20131123-SpicyChoclateCake-IMG_5189.jpg" alt="" /></p>
 ]]></content>
   </entry>
   

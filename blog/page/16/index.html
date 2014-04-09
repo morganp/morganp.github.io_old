@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="A recent article by sef about how to judge an engineering companies respect engineers and the strength of the engineering culture, used the size of &hellip;">
+  <meta name="description" content="There was an interesting post on hacker news recently, safeshepherd suddenly fell off the google for their own name. The comments had some good &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,70 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/handle-www-and-no-www-for-better-google-juice/">Handle Www. And No-www for Better Google Juice</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-18T23:00:39+01:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/handle-www-and-no-www-for-better-google-juice/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/handle-www-and-no-www-for-better-google-juice/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>There was an interesting post on hacker news recently, <a href="http://blog.safeshepherd.com/post/23218902229/google-just-nerfed-us-a-venture-backed-startup">safeshepherd suddenly fell off the google</a> for their own name. The <a href="http://news.ycombinator.com/item?id=3987935">comments</a> had some good answers especially the first by a google employee.</p>
+
+<p>The gist of it is that if you have <a href="https://">https://</a> and <a href="http://">http://</a> and www.domain.com and domain.com google sees 4 versions of you site. It will pick one of them as the main site each time it ranks your site. This can change every, effecting the ranking, as it looks like duplicated content.</p>
+
+<p>For Sinatra there is a nice bit of middle were called <a href="https://github.com/logicaltext/rack-no-www">rack-no-www</a> which adds the redirect for you.</p>
+
+<p>Add to you gem file</p>
+
+<pre><code>gem  "rack-no-www",  "~&gt; 0.0.2", :require =&gt; 'rack/no-www'
+</code></pre>
+
+<p>Or just <code>gem install rack-no-www</code></p>
+
+<p>Usage in a basic Sinatra App (app.rb)</p>
+
+<pre><code>require 'sinatra'
+require 'rack/no-www'
+
+use Rack::NoWWW
+
+get '/' do
+  'Helloworld'
+end
+</code></pre>
+
+<p>Run with <code>ruby app.rb</code> With web browser view localhost:4567. If that is working then you should find www.localhost:4567 redirects back to localhost:4567</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -645,7 +709,7 @@ fatal: The remote end hung up unexpectedly
 
 <h2>Getting it Working</h2>
 
-<p>Last time I ran into these issues I found I could clone as guest, changed <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#x6d;&#111;&#114;&#x67;&#x61;&#110;&#x70;&#x40;&#103;&#105;&#x74;&#x68;&#x75;&#98;&#46;&#x63;&#x6f;&#109;">&#x6d;&#111;&#114;&#x67;&#x61;&#110;&#112;&#x40;&#103;&#105;&#x74;&#104;&#x75;&#98;&#46;&#x63;&#111;&#x6d;</a> to just github.com. Pushing will then prompt for your github Username and password. Once cloned you can manually update the config file so you do not have to enter your username. Entering your password will still be required.</p>
+<p>Last time I ran into these issues I found I could clone as guest, changed <a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#58;&#109;&#x6f;&#114;&#x67;&#x61;&#110;&#x70;&#x40;&#103;&#105;&#116;&#104;&#x75;&#x62;&#46;&#99;&#111;&#x6d;">&#109;&#x6f;&#114;&#x67;&#x61;&#x6e;&#x70;&#x40;&#x67;&#x69;&#x74;&#x68;&#x75;&#98;&#46;&#x63;&#x6f;&#109;</a> to just github.com. Pushing will then prompt for your github Username and password. Once cloned you can manually update the config file so you do not have to enter your username. Entering your password will still be required.</p>
 
 <pre><code>$ git clone https://github.com/morganp/maruku_snippet.git
 Cloning into maruku_snippet...
@@ -1121,108 +1185,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/light-and-land-book-series/">Light and Land, Book Series</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-24T10:57:53+01:00" pubdate data-updated="true">Apr 24<span>th</span>, 2012</time>
-        
-           | <a href="/blog/photography/light-and-land-book-series/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/light-and-land-book-series/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>While the <a href="http://www.lightandland.co.uk/">Light and Land</a> books do not have to be read in order I think it helps as they occasionally reference earlier work. Finding out the correct order is often tricky, searching amazon and comparing publishing dates. So I have compiled the list here.</p>
-
-<ul>
-<li>Disclaimer: I have used my amazon affiliate links</li>
-</ul>
-
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th align="center"> <a href="http://www.amazon.co.uk/gp/product/1902538463/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1902538463">Working the Light</a> </th>
-<th align="center"> <a href="http://www.amazon.co.uk/gp/product/1902538498/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1902538498">Developing Vision and Style</a> </th>
-<th align="center"> <a href="http://www.amazon.co.uk/gp/product/1902538587/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1902538587">Finding the Picture</a> </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/1902538463/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1902538463"> <img src="http://ecx.images-amazon.com/images/I/51JaR1mbrtL._SL160_.jpg" alt="Working the Light" /> </a> </td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/1902538498/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1902538498"><img src="http://ecx.images-amazon.com/images/I/512nk8Q9cWL._SL160_.jpg" alt="Developing Vision and Stylet" /></a> </td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/1902538587/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1902538587"> <img src="http://ecx.images-amazon.com/images/I/51UMDmmCuML._SL160_.jpg" alt="Finding the Picture" /> </a> |</td>
-</tr>
-<tr>
-<td></td>
-<td align="center"> 2006 </td>
-<td align="center"> 2007 </td>
-<td align="center"> 2009 |</td>
-</tr>
-<tr>
-<td></td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/1902538463/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1902538463">£13</a> </td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/1902538498/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1902538498">£13</a> </td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/1902538587/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1902538587">£13</a> |</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>The latest book is a slightly different from the previous landscape books and has a focus on travel photography.</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th align="center"> <a href="http://www.amazon.co.uk/gp/product/1902538595/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1902538595">Travel Photography Masterclass</a> </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/1902538595/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1902538595"> <img src="http://ecx.images-amazon.com/images/I/51zOXFoM9uL._SL160_.jpg" alt="Travel Photography Masterclass" /> </a> | </td>
-</tr>
-<tr>
-<td></td>
-<td align="center"> 2010 |</td>
-</tr>
-<tr>
-<td></td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/1902538595/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1902538595">£13</a> |</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/17/">&larr; Older</a>
@@ -1237,11 +1199,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (231)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/thor-adding-verbose/">Thor Adding &#8211;verbose</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/photography/creating-lightroom-metadata-views/">Creating Lightroom Metadata Views</a>
@@ -1257,10 +1223,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a>
       </li>
     
   </ul>

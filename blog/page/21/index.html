@@ -9,9 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Working on a joint project an error started showing up when trying to perform migrations. $ rake db:migrate VERSION=0
-&gt;rake aborted!
-&gt; &hellip;">
+  <meta name="description" content="Read text file with one line: ::File.open( absolute_filename, "rb"){ |f| @contents = f.read } Write text with one line : ::File.open( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +81,86 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-basic-file-read-and-write/">Ruby Basic File Read and Write</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-01T20:38:27+01:00" pubdate data-updated="true">Jul 1<span>st</span>, 2011</time>
+        
+           | <a href="/blog/tech/ruby-basic-file-read-and-write/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-basic-file-read-and-write/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Read text file with one line:</p>
+
+<pre><code>::File.open( absolute_filename, "rb"){ |f| @contents = f.read }
+</code></pre>
+
+<p>Write text with one line :</p>
+
+<pre><code>::File.open( absolute_filename, "w" ){ |f| f.write @contents }
+</code></pre>
+
+<h2>Explanation and other ways</h2>
+
+<p>When reading a text file in the open command rb implies &lsquo;read binary&rsquo; mode which creates the .read method for the entire file. The following line looks simpler but the file object in not closed. If a block is passed <code>{ |io| block }</code> then the File is closed after the block completes.</p>
+
+<pre><code>@contents = ::File.open( absolute_filename, "rb").read
+</code></pre>
+
+<p>That should could be broken into 3 lines so that the file object can be closed. This is equivalent to the first one line example.</p>
+
+<pre><code>f = ::File.open( absolute_filename, "rb")
+@contents = f.read
+f.close
+</code></pre>
+
+<p>The File will be automatically closed when program quits but if you create a long life process with hundreds of files not closing might cause performance issues.</p>
+
+<p>Line by Line read, block containd with <code>do end</code></p>
+
+<pre><code>@contents = ''
+::File.open( absolute_filename, "r") do |f|
+  f.each_line do |line|
+    @contents += line
+  end
+end
+</code></pre>
+
+<p>Write file, with explicit close.</p>
+
+<pre><code>f = ::File.open( absolute_filename, "w" )
+f.write @contents
+f.close
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -806,92 +884,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/bash-scripts-and-cron/">Bash Scripts and Cron</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-28T20:01:13+01:00" pubdate data-updated="true">Apr 28<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/bash-scripts-and-cron/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/bash-scripts-and-cron/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have not fully read it but it looks like this is a <a href="http://mywiki.wooledge.org/BashGuide">good guide to bash scripting</a>. A few things that normally catch me out trying to load modules inside a script, but they fail with:</p>
-
-<pre><code>&gt; module: command not found
-</code></pre>
-
-<p>This is due to the module system not being loaded. For Linux/Unix systems adding the 3rd line below should fix the issue.</p>
-
-<pre><code>#!/bin/bash
-
-. /usr/share/modules/init/bash
-module load something
-</code></pre>
-
-<p>NB: Not sure how to do this on Mac OS X</p>
-
-<p>The Second bash scripting issue that trips me up is when adding to cron.</p>
-
-<p>cron or crontab is a way to run scripts at regular intervals, however by default it runs in a minimal environment. This means that a script which executes correctly in your terminal may not work as expected when entered in cron.</p>
-
-<h2>Solution 1</h2>
-
-<pre><code>#!/bin/bash
-source ~/.bashrc
-
-echo "The rest of the script"
-</code></pre>
-
-<p>Sourcing your bashrc in the script while this works it requires the script to be written based on how it will be deployed. Solution 2 fixes the crontab for the environment it will run in.</p>
-
-<h2>Solution 2</h2>
-
-<p>edit the crontab</p>
-
-<pre><code>$ crontab -e
-</code></pre>
-
-<p>From this:</p>
-
-<pre><code>* * * * * /path/to/script
-</code></pre>
-
-<p>to this:</p>
-
-<pre><code>* * * * * /bin/bash -l -c '/path/to/script'
-</code></pre>
-
-<p>-l loads the full environment<br/>
--c tells bash that there is a script to execute</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/22/">&larr; Older</a>
@@ -906,11 +898,15 @@ echo "The rest of the script"
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (230)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (231)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/thor-adding-verbose/">Thor Adding &#8211;verbose</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/photography/creating-lightroom-metadata-views/">Creating Lightroom Metadata Views</a>
@@ -926,10 +922,6 @@ echo "The rest of the script"
     
       <li class="post">
         <a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a>
       </li>
     
   </ul>
