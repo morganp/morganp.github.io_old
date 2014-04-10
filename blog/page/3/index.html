@@ -9,7 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="If we truncate a number, that is to throw away the LSBs (least significant bits) we loose resolution. A 4 bit number truncated to 2 bits: numbers &hellip;">
+  <meta name="description" content="git tag -a 0.0.1 -m "Tag comment"
+git push --tags Note: The use of major.minor.patch Semantic Versioning is a really good idea.
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +83,49 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/git-tag-and-push-to-github/">Git Tag and Push to Github</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-13T19:16:57+00:00" pubdate data-updated="true">Mar 13<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/git-tag-and-push-to-github/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/git-tag-and-push-to-github/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>git tag -a 0.0.1 -m "Tag comment"
+git push --tags
+</code></pre>
+
+<p><em>Note: The use of <a href="http://semver.org/">major.minor.patch Semantic Versioning</a> is a really good idea.</em></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -692,60 +737,6 @@ git gc --prune=now
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/edit-octopress-posts/">Edit Octopress Posts</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-01T19:28:17+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
-        
-           | <a href="/blog/tech/edit-octopress-posts/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/edit-octopress-posts/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Creating new posts in Octopress is <code>rake new_post["Edit Posts"]</code> which outputs the created filename.</p>
-
-<p>Posts are prefixed with date, which can make it difficult to find a particular post to edit. Tab completion can help if you known the year of the post but it may still list 100&rsquo;s of posts where you have to spot the title, and narrow it done via month and day. To get around this I use this script to launch matching posts in my editor:</p>
-
-<pre><code>#!/bin/bash
-
-editor="mvim"
-post_path="source/_posts/"
-
-for OUTPUT in $(ls $post_path | grep $1)
-do
-  file_list="$file_list $post_path$OUTPUT"
-done
-
-$editor $file_list
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -760,11 +751,15 @@ $editor $file_list
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (232)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (232)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/outdoor/craghoppers-up-to-tricks/">Craghoppers Pro Stretch</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/ruby-methods-and-splat/">Ruby Methods and Splat</a>
@@ -780,10 +775,6 @@ $editor $file_list
     
       <li class="post">
         <a href="/blog/tech/iterm-exit-fullscreen/">iTerm Exit Fullscreen</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-importing-envvar/">Verilog Importing Envvar</a>
       </li>
     
   </ul>

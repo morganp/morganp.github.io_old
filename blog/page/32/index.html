@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Just a short first note to announce the fact that the site is finally up. We are running on WebFaction, the site is using Passenger (Rack) to server &hellip;">
+  <meta name="description" content="Ruby has a nice logging function, Update once example of rotating logs finished
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,132 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-logger/">Ruby Logger</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-logger/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-logger/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ruby has a nice logging function,</p>
+
+<p>Update once example of rotating logs finished</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/fourthirds-sinatra-restful-example/">FourThirds Sinatra RESTful Example</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/fourthirds-sinatra-restful-example/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/fourthirds-sinatra-restful-example/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is an example of efficient use of views in <a href="http://www.sinatrarb.com">Sinatra</a> covering RESTful actions. This is a copy of my <a href="http://github.com/morganp/FourThirds/">original post on GitHub</a>. Data will retrieved and modified from a database using ORMs, I have a set of lessons and answers you can follow if you wish to <a href="http://github.com/morganp/Code-Dojo/tree/master/ORM/">learn more about</a> this.</p>
+
+<p>The basic layout of a Sinatra application is:</p>
+
+<pre><code>app.rb     #Contains Routes, Controller and ORM Models
+config.ru  #Contains Information for rack web server
+db/data.db #The Database
+public/    #Static non template data.
+views/     #ERB, HAML etc web page templates
+views/layout.erb #The default structural template applied to all ERB pages
+</code></pre>
+
+<p>Gem is Rubys package management system. They do not install automatically so you do need to install them first. Check what you already have by running:</p>
+
+<pre><code>$ gem list
+</code></pre>
+
+<p>I have (shortened list) versions:</p>
+
+<pre><code>activerecord (2.3.5)
+activeresource (2.3.5)
+activesupport (2.3.5)
+sequel (3.8.0, 3.7.0)
+sinatra (0.9.6, 0.9.4)
+sqlite3-ruby (1.2.5)
+</code></pre>
+
+<p>For this example you will need:</p>
+
+<pre><code>gem install sequel
+gem install activerecord
+gem install sinatra
+gem install sqlite3-ruby
+</code></pre>
+
+<p>To run this example you should be able to:</p>
+
+<pre><code>cd ~/your/local/code/dir
+git clone http://github.com/morganp/FourThirds.git 
+cd FourThirds 
+#Initialise SQLite3 Database
+ruby init_db.rb
+#Run app on Webrick access via http://127.0.0.1:4567/
+ruby app.rb
+</code></pre>
+
+<p>This should be accessible on <a href="http://127.0.0.1:4567/">http://127.0.0.1:4567/</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -222,11 +349,15 @@ Time.now.strftime($date_format)
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (232)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (232)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/outdoor/craghoppers-up-to-tricks/">Craghoppers Pro Stretch</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/ruby-methods-and-splat/">Ruby Methods and Splat</a>
@@ -242,10 +373,6 @@ Time.now.strftime($date_format)
     
       <li class="post">
         <a href="/blog/tech/iterm-exit-fullscreen/">iTerm Exit Fullscreen</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-importing-envvar/">Verilog Importing Envvar</a>
       </li>
     
   </ul>

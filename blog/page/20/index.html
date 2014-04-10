@@ -9,9 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Just making a note to self to check these regularly for updates Joe Cornish 1-2 Day Workshop
-Light and Land
-Lee Filters workshop by Jeremy Walker &hellip;">
+  <meta name="description" content="A small standalone script that search through a file doing text substitutions. #!/usr/bin/env ruby
+# Usage $ ruby_search_and_replace.rb &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +82,64 @@ Lee Filters workshop by Jeremy Walker &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-search-and-replace-script/">Ruby Search and Replace Script.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-25T12:06:36+01:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/ruby-search-and-replace-script/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-search-and-replace-script/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A small standalone script that search through a file doing text substitutions.</p>
+
+<pre><code>#!/usr/bin/env ruby
+# Usage $ ruby_search_and_replace.rb file_to_update.txt
+
+def update_file( file_name )
+  puts "Updating : #{file_name}"
+  ::File.open( file_name, "rb"){ |f| @contents = f.read }
+
+  ## Replace Renamed thing here
+  #@contents.gsub!("search","replace")
+
+  ::File.open( file_name, "w" ){ |f| f.write @contents }
+end
+
+if $0 == __FILE__
+  #If file is called directly execute
+  update_file( ::File.absolute_path( ARGV[0] ) )
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -713,79 +770,6 @@ Host *
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/using-sshconfig-and-no-passwords-with-mac-os-x/">Using ~/.ssh/config and No Passwords with Mac OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-14T21:55:31+01:00" pubdate data-updated="true">Jul 14<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/using-sshconfig-and-no-passwords-with-mac-os-x/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/using-sshconfig-and-no-passwords-with-mac-os-x/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Using ssh to securely connect with servers from the terminal is pretty easy. set up a public key and a private key using</p>
-
-<p>However you may want separate keys for work, for home servers and other services like a webserver or github. the ~/.ssh /config file is a way to specify a list of possible keys to use and associate them with a host name. I when using this initially Mac OS X always prompted me for my identity file password. instead of acting password-less.</p>
-
-<p>For OS X it looks like you have to add a few more options to get the same behaviour as without the .ssh/config :</p>
-
-<pre><code>Host *
-  RSAAuthentication yes
-  PasswordAuthentication yes
-  IdentityFile ~/.ssh/id_rsa
-</code></pre>
-
-<p>Adding more Identity files the first passing will be used</p>
-
-<pre><code>Host *
-  RSAAuthentication yes
-  PasswordAuthentication yes
-  IdentityFile ~/.ssh/id_rsa
-  IdentityFile ~/.ssh/id_rsa_work
-  IdentityFile ~/.ssh/id_rsa_github
-</code></pre>
-
-<p>Multiple Identities, using known identity for known location.</p>
-
-<pre><code>Host *.work.com
-  IdentityFile ~/.ssh/id_rsa
-
-Host *.github.com
-  IdentityFile ~/.ssh/id_rsa_github
-
-Host *
-  RSAAuthentication yes
-  PasswordAuthentication yes
-  IdentityFile ~/.ssh/id_rsa
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/21/">&larr; Older</a>
@@ -800,11 +784,15 @@ Host *
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (232)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (232)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/outdoor/craghoppers-up-to-tricks/">Craghoppers Pro Stretch</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/ruby-methods-and-splat/">Ruby Methods and Splat</a>
@@ -820,10 +808,6 @@ Host *
     
       <li class="post">
         <a href="/blog/tech/iterm-exit-fullscreen/">iTerm Exit Fullscreen</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-importing-envvar/">Verilog Importing Envvar</a>
       </li>
     
   </ul>

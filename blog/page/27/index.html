@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="After adding some USB2 (NTFS formatted) drives to a headless Ubuntu server, they were not auto-mounted so I had to find them and mount them, with &hellip;">
+  <meta name="description" content="Following this article lets you turn a executable java .jar into a mac appliction (.app). The Tools are only available on Mac OS with Xcode installed &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,53 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/turn-a-jar-file-into-a-mac-app/">Turn a .jar File Into a Mac .app</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-18T05:59:31+01:00" pubdate data-updated="true">Jul 18<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/turn-a-jar-file-into-a-mac-app/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/turn-a-jar-file-into-a-mac-app/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Following <a href="http://www.centerkey.com/mac/java/">this article</a> lets you turn a executable java .jar into a mac appliction (.app). The Tools are only available on Mac OS with Xcode installed.</p>
+
+<p>Basically create a 512x512px png for your logo. then use &lsquo;/Developer/Applications/Utilities/Icon Composer.app&rsquo; to create a someFileName.icns, Just drag the png into each of the different size boxes and Icon Composer will resize it correctly.
+Then Save.</p>
+
+<p>Second Stage is to start &lsquo;/Developer/Applications/Utilities/Jar Bundler.app&#8217;<br/>
+For the main class choose your executable .jar for the icon load the icns created in the previous step. Then press the create application button, chose location then your .app should be created.</p>
+
+<p>The only complaint I have about these to applications is there is no ability to save the set-up, so every time you want to rebuild you have to enter all the settings again, I do not know many other applications which do not allow you to save.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -416,6 +463,56 @@ Press ESC to enter normal mode. &lsquo;v&rsquo; to enter Visual mode. use the cu
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/engineering/tasks-using-absolute-delays/">Tasks Using Absolute Delays</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-02T01:10:10+01:00" pubdate data-updated="true">Jul 2<span>nd</span>, 2010</time>
+        
+           | <a href="/blog/engineering/tasks-using-absolute-delays/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/tasks-using-absolute-delays/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As previously mentioned SystemVerilog introduced abolute delays in the form of <code>#1s;</code>, <code>#1ms</code>, <code>#1us</code>, <code>#1ns</code>.
+Using these as values passed into function requires declaring the input to be of type time.</p>
+
+<pre><code>task arduous_delay( time delay );
+  begin
+    #delay;
+  end
+endtask
+
+//Usage
+arduous_delay( 1ms );
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/">jQuery Clear Form on Focus and Restore on Exit</a></h1>
     
     
@@ -537,119 +634,6 @@ Press ESC to enter normal mode. &lsquo;v&rsquo; to enter Visual mode. use the cu
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vim-show-lines-over-80-charaters-long/">Vim Show Lines Over 80 Charaters Long.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-26T07:13:52+01:00" pubdate data-updated="true">Jun 26<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/vim-show-lines-over-80-charaters-long/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-show-lines-over-80-charaters-long/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This snippet can be added to you ~/.vimrc to highlight long lines.</p>
-
-<pre><code>" Highlight lines over 80 characters long with red background
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
-</code></pre>
-
-<p>When programming it is recommended to keep lines at 80 characters or under. This makes it easier to find the start of the next line, possible to compare two files side by side on modern monitors and source code should print out nicely if required for code reviews.</p>
-
-<p><a href="http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns">source</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vim-search-and-replace/">Vim Search and Replace</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-24T09:37:37+01:00" pubdate data-updated="true">Jun 24<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/vim-search-and-replace/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-search-and-replace/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To search in Vim just press (apple-f for macvim) / then search string.</p>
-
-<pre><code>/search
-</code></pre>
-
-<p>This will highlight all occurrences of &lsquo;search&rsquo;, to clear the highlighting enter:</p>
-
-<pre><code>:let @/ = ""
-</code></pre>
-
-<p>To search and replace the first occurrence on this line only:</p>
-
-<pre><code>:s/search/replace/
-</code></pre>
-
-<p>Lines 1 to 10 all instance per line (thats the /g global):</p>
-
-<pre><code>:1,10 s/search/replace/g 
-</code></pre>
-
-<p>All Lines All instances</p>
-
-<pre><code>:%s/search/replace/g 
-</code></pre>
-
-<p><a href="http://www.linux.com/learn/tutorials/8255-vim-tips-the-basics-of-search-and-replace">Originals source</a><br  />
-<a href="http://stackoverflow.com/questions/657447/vim-clear-last-search-highlighting">Stack overflow vim clear question</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/28/">&larr; Older</a>
@@ -664,11 +648,15 @@ match OverLength /\%81v.\+/
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (20)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (232)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (33)</a></li><li><a href='/blog/tech'>Tech (232)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/outdoor/craghoppers-up-to-tricks/">Craghoppers Pro Stretch</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/ruby-methods-and-splat/">Ruby Methods and Splat</a>
@@ -684,10 +672,6 @@ match OverLength /\%81v.\+/
     
       <li class="post">
         <a href="/blog/tech/iterm-exit-fullscreen/">iTerm Exit Fullscreen</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-importing-envvar/">Verilog Importing Envvar</a>
       </li>
     
   </ul>

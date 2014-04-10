@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-04-09T22:06:22+01:00</updated>
+  <updated>2014-04-10T20:56:16+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Craghoppers Pro Stretch]]></title>
+    <link href="http://lizard-spock.co.uk/blog/outdoor/craghoppers-up-to-tricks/"/>
+    <updated>2014-04-10T18:12:22+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/outdoor/craghoppers-up-to-tricks</id>
+    <content type="html"><![CDATA[<p>Last year I got a pair of the pro stretch trousers for walking, they were pretty good for walking in so good I just went back to get another pair.</p>
+
+<p>There are however some changes to the current versions.</p>
+
+<p>The back of the waist band use to fully elasticated. Now only two small side
+sections on the waistband are elasticated this massively reduced the range of
+fit the trousers have. So much so they have introduced a larger size to
+accommodate the change in fit. This does however bring the styling and
+available sizes in-line with the Craghoppers staple Classic Kiwi.</p>
+
+<p>To note my new versions are a size larger, and they still have a small fit than the old ones.</p>
+
+<p>The feel of the new trousers is not as nice as the old ones. They have altered the fabric mix:</p>
+
+<p><code>OLD: 93% Polyamide 7% Elastane</code><br/>
+<code>NEW: 96% Polyamide 4% Elastane</code></p>
+
+<p>I guess the old ones were just to comfortable and stretchy :(</p>
+
+<p>The old style waist band:<br/>
+<img src="http://lizard-spock.co.uk/images/Outdoor/morganp-20140410-CraghopperProStretch-_MG_7421.jpg" title="Old style wasit band" alt="" /></p>
+
+<p>New style Waistband, minimal stretchiness :<br/>
+<img src="http://lizard-spock.co.uk/images/Outdoor/morganp-20140410-CraghopperProStretch-_MG_7425.jpg" alt="" />
+<img src="http://lizard-spock.co.uk/images/Outdoor/morganp-20140410-CraghopperProStretch-_MG_7426.jpg" alt="" /></p>
+
+<p>Old style thigh pocket, completely external:
+<img src="http://lizard-spock.co.uk/images/Outdoor/morganp-20140410-CraghopperProStretch-_MG_7423.jpg" title="Old style thigh pocket, completely external" alt="" /></p>
+
+<p>Inside view of pocket, not much to rub or cause irritation which is good for a close fitting trouser.
+<img src="http://lizard-spock.co.uk/images/Outdoor/morganp-20140410-CraghopperProStretch-_MG_7428.jpg" alt="" /></p>
+
+<p>New style, thigh pocket zipper looks very sleek.
+<img src="http://lizard-spock.co.uk/images/Outdoor/morganp-20140410-CraghopperProStretch-_MG_7427.jpg" alt="" /></p>
+
+<p>New style, internal thigh pocket cleverly designed for maximum irritation while walking.
+<img src="http://lizard-spock.co.uk/images/Outdoor/morganp-20140410-CraghopperProStretch-_MG_7429.jpg" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ruby Methods and Splat]]></title>
@@ -524,19 +569,6 @@ end
 
 <p>Disable &lsquo;Adjust keyboard brightness in low light&rsquo;.<br/>
 <img src="http://lizard-spock.co.uk/images/Tech/Keyboard_low_light.png" alt="" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Git Tag and Push to Github]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/git-tag-and-push-to-github/"/>
-    <updated>2014-03-13T19:16:57+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/git-tag-and-push-to-github</id>
-    <content type="html"><![CDATA[<pre><code>git tag -a 0.0.1 -m "Tag comment"
-git push --tags
-</code></pre>
-
-<p><em>Note: The use of <a href="http://semver.org/">major.minor.patch Semantic Versioning</a> is a really good idea.</em></p>
 ]]></content>
   </entry>
   
