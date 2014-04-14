@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-04-10T20:56:16+01:00</updated>
+  <updated>2014-04-14T19:14:51+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Lightroom Load Canon 6D GPS]]></title>
+    <link href="http://lizard-spock.co.uk/blog/photography/lightroom-load-canon-6d-gps/"/>
+    <updated>2014-04-14T19:01:06+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/photography/lightroom-load-canon-6d-gps</id>
+    <content type="html"><![CDATA[<p>Adobe Lightroom will only load GPX, Canon 6D only saves NMEA data.</p>
+
+<p><a href="http://www.gpsbabel.org/">GPSBabel</a> can be used to convert the <code>*.log</code> from the camera to <code>*.gpx</code>.</p>
+
+<p>Download the software then load the log file for the input setting the type to <code>NMEA 0183 sentences</code>.</p>
+
+<p>Set the output file name and set the format to <code>GPX XML</code>. Click OK to generate the GPX which can now be loaded into Lightroom.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Craghoppers Pro Stretch]]></title>
@@ -557,18 +572,6 @@ end
 </code></pre>
 
 <p><a href="http://stackoverflow.com/a/601892/97073">Source</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Macbook Keyboard Light Not Working]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/macbook-keyboard-light-not-working/"/>
-    <updated>2014-03-13T20:00:47+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/macbook-keyboard-light-not-working</id>
-    <content type="html"><![CDATA[<p>Checkout : <a href="http://support.apple.com/kb/HT4882">Apple support</a>.</p>
-
-<p>Disable &lsquo;Adjust keyboard brightness in low light&rsquo;.<br/>
-<img src="http://lizard-spock.co.uk/images/Tech/Keyboard_low_light.png" alt="" /></p>
 ]]></content>
   </entry>
   
