@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Photography | RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/blog/photography/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-05-05T20:33:33+01:00</updated>
+  <updated>2014-05-05T21:23:48+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,77 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Lee Standard Hood]]></title>
+    <link href="http://lizard-spock.co.uk/blog/photography/lee-standard-hood/"/>
+    <updated>2014-05-05T20:36:43+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/photography/lee-standard-hood</id>
+    <content type="html"><![CDATA[<p>Available to buy from <a href="http://www.wexphotographic.com/buy-lee-standard-lens-hood/p1010398">WEX</a>. Also see <a href="/blog/photography/lee-wide-angle-hood/">Lee Wide Angle Hood</a>.</p>
+
+<p>Hoods or lens shades help improve contrast by stopping out of frame light source entering the lens. LEE filters are square filters that can be used for effects or managing dynamic range, however as they mount in front of the lens with a holder you can no longer use your lenses standard hood. LEE have a standard, universal and wide angle hoods available.</p>
+
+<p>LEE do not provide many specs for the hood on their website. To help others decide
+if this is right for them I have included measurements and pictures.</p>
+
+<p>The Standard is the smallest of the three hoods.
+It actually has a very clever rail system which allows it to be mounted in a slot.
+When mounted on to a lee adapter ring this sits further back out of the way.
+All Lee products should have this and there would be no need for a tandem connector.</p>
+
+<p><img src="/images/Photography/LEE/morganp-20140405-Lee-_MG_7257.jpg" alt="" /></p>
+
+<p>Filter weigh 150g</p>
+
+<h2>Dimensions</h2>
+
+<pre><code>Width Height:
+External: 13.1cm x 13.1cm
+Internal: 11.1cm x 11.1cm
+
+Depth:
+Complete compressed: 3.5cm.
+</code></pre>
+
+<p>Min expansion</p>
+
+<pre><code>complete    : 4.6cm
+hood &amp; mount: 3.6cm
+hood only   : 3.1cm
+</code></pre>
+
+<p><img src="/images/Photography/LEE/morganp-20140405-Lee-_MG_7249.jpg" alt="" /></p>
+
+<p>Max Expansion</p>
+
+<pre><code>complete    : 15.0cm
+hood &amp; mount: 14.0cm
+hood only   : 13.3cm 
+</code></pre>
+
+<p><img src="/images/Photography/LEE/morganp-20140405-Lee-_MG_7251.jpg" alt="" /></p>
+
+<p><strong>This hood is too small for use under 28mm on a full-frame camera.</strong></p>
+
+<p>On a crop sensor it is still good at 16mm</p>
+
+<p>Vignetting examples:
+<img src="/images/Photography/LEE/morganp-20140405-Lee-IMG_0116.jpg" alt="" />
+Setup for following examples, Canon 6D, wide angle adapter, Lee holder 3 slots (2 for filters, 1 for hood) then universal hood at minimal expansion.</p>
+
+<p><img src="/images/Photography/LEE/morganp-20140409--_MG_7416.jpg" title="16mm full-frame" alt="" />
+above 16mm full-frame with filter holder</p>
+
+<p><img src="/images/Photography/LEE/morganp-20140409--_MG_7417.jpg" title="20mm full-frame" alt="" />
+above 20mm full-frame with filter holder</p>
+
+<p><img src="/images/Photography/LEE/morganp-20140409--_MG_7418.jpg" title="24mm full-frame" alt="" />
+above 24mm full-frame with filter holder</p>
+
+<p><img src="/images/Photography/LEE/morganp-20140409--_MG_7419.jpg" title="28mm full-frame" alt="" />
+above 28mm full-frame with filter holder</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Lightroom Load Canon 6D GPS]]></title>
@@ -109,31 +180,6 @@ Depth: 16.5cm. Width: 27cm. Height: 46cm  External Volume 25L</p>
 <p><img class="centre" src="/images/Photography/fstop_icu/morganp-20140102-fstop-IMG_6387.jpg">
 <img class="centre" src="/images/Photography/fstop_icu/morganp-20140102-fstop-IMG_6388.jpg">
 <img class="centre" src="/images/Photography/fstop_icu/morganp-20140102-fstop-IMG_6390.jpg"></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Lightroom Library Metadata Panel]]></title>
-    <link href="http://lizard-spock.co.uk/blog/photography/lightroom-library-metadata-panel/"/>
-    <updated>2013-12-04T19:04:14+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/photography/Lightroom-Library-Metadata-Panel</id>
-    <content type="html"><![CDATA[<p>The metadata panel in Lightroom has always felt a little crowded to me. It shows too many dialog boxes or not the ones I want and have to scroll through many panes.</p>
-
-<p>Since most of my photography is uploaded to <a href="http://www.flickr.com/photos/morgan_prior/">flickr</a> there are a few section of metadata which are useful.</p>
-
-<p>I use &lsquo;Job Identifier&rsquo; as the shoot name, this is the same as the folder I put my RAW files in. Whe I export this becomes part of the file name. My export file name is &lsquo;morganp-Date (YYYYMMDD)-Job Identifier-Filename&rsquo;.</p>
-
-<p> <a href="http://www.flickr.com/photos/morgan_prior/11209946034/"><img src="http://farm4.staticflickr.com/3820/11209946034_ecd2792ec2_n.jpg" width="276" height="320" alt="Lightroom Export Filename"></a></p>
-
-<p>The title of the image in my flick export is taken from the IPTC &lsquo;title&rsquo; . So I really only want these to setting present for my flick exports.</p>
-
-<p>Enter <a href="http://regex.info/blog/lightroom-goodies/metadata-presets">Jeffrey&rsquo;s “Metadata-Viewer Preset Editor”</a>. This allows you to create custom metadata views with only the fields you require.</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/11209999464/"><img src="http://farm6.staticflickr.com/5520/11209999464_47aa9e93bd_n.jpg" width="320" height="214" alt="Jeffrey's Metadata-Viewer Preset Editor"></a></p>
-
-<p>The minimal view:</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/11210017855/"><img src="http://farm8.staticflickr.com/7305/11210017855_0a643b1d87_n.jpg" width="320" height="209" alt="Lightroom Library Metadata"></a></p>
 ]]></content>
   </entry>
   

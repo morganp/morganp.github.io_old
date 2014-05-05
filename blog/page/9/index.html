@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="To check if an environment variable exists in .mycshrc or shell scripts if ($?TERM) then echo "TERM is $TERM" endif ">
+  <meta name="description" content="In the UK you can now get regional weather alerts from the
+Met Office. Unfortunately it does not break it down any further, all I really wanted was a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,50 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/weather-alerts-via-email-from-the-metoffice/">Weather Alerts via eMail from the MetOffice</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-15T12:17:08+01:00" pubdate data-updated="true">Aug 15<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/weather-alerts-via-email-from-the-metoffice/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/weather-alerts-via-email-from-the-metoffice/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In the UK you can now get regional weather alerts from the
+<a href="https://service.govdelivery.com/service/multi_subscribe.html?code=UKMETOFFICE&amp;origin=http://www.metoffice.gov.uk">Met Office</a>.</p>
+
+<p>Unfortunately it does not break it down any further, all I really wanted was a frost alert to look after my plants, but now I will know about any hazards weather 24 hours in advance.</p>
+
+<p>AdamFoster seems to have set up a free service <a href="http://frostalertemail.com/">FrostAlert</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -554,50 +599,6 @@ fi
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-optionally-add-path-separator/">Ruby: Optionally Add Path Separator</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-05T11:46:58+01:00" pubdate data-updated="true">Jun 5<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/ruby-optionally-add-path-separator/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-optionally-add-path-separator/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I was wanting to use Dir.glob to get a file list and wanted to do <code>Dir.glob( path + '*')</code> but nicely handle when the final &lsquo;/&rsquo; of path was missing.</p>
-
-<p>Instead of doing string manipulation we should just be using the file utilities.</p>
-
-<pre><code>Dir.glob( File.join( path, '*')  ) 
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/10/">&larr; Older</a>
@@ -612,11 +613,15 @@ fi
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (34)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/photography/lee-standard-hood/">Lee Standard Hood</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a>
@@ -632,10 +637,6 @@ fi
     
       <li class="post">
         <a href="/blog/tech/ruby-methods-and-splat/">Ruby Methods and Splat</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/thor-adding-verbose/">Thor Adding &#8211;verbose</a>
       </li>
     
   </ul>

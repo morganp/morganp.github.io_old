@@ -9,9 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="One method to save a time and restore it correctly: def get_time_run
-## File Access based on
-## http://rubylearning.com/satishtalim/read_write_files. &hellip;">
+  <meta name="description" content="I recently discovered a feature of regular expressions called lookahead. This means for a match the lookahead must exist but it does not become part &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +81,82 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-regular-expressions-lookahead-lookbehind/">Ruby Regular Expressions Lookahead / Lookbehind</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-07T01:39:28+01:00" pubdate data-updated="true">Sep 7<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-regular-expressions-lookahead-lookbehind/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-regular-expressions-lookahead-lookbehind/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently discovered a feature of regular expressions called lookahead. This means for a match the lookahead must exist but it does not become part of the matched string.
+NB: (group) print first group with \1</p>
+
+<pre><code>"123456".gsub(/(\d\d\d)/, '\1,')
+123,456,
+</code></pre>
+
+<p>Now with lookahead</p>
+
+<pre><code>"123456".gsub(/(\d\d\d)(?=\d)/, '\1,')
+123,456
+</code></pre>
+
+<p>There are 2 types of lookahead</p>
+
+<pre><code>match (?=x)
+not-match (?!x)
+</code></pre>
+
+<p>Ruby 1.8.x does not support these by default but by using <a href="http://oniguruma.rubyforge.org/">Oniguruma</a> which is the default regex engine in Ruby 1.9.x you can also use lookbehind expressions.</p>
+
+<pre><code>match (?&lt;=x)
+not-match (?&lt;!x)
+</code></pre>
+
+<p>Example not using lookbehind</p>
+
+<pre><code> "http://h:5/".gsub(/:/,'=&gt;')
+ http=&gt;//h=&gt;5/
+</code></pre>
+
+<p>With Not lookbehind</p>
+
+<pre><code>"http://h:5/".gsub(/(?&lt;!http):/,'=&gt;')
+ http://h=&gt;5/
+</code></pre>
+
+<p>More info on <a href="http://www.regular-expressions.info/lookaround.html">Lookarounds</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -699,49 +773,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/recover-bulk-download-your-pictures-from-flickr/">Recover (Bulk Download) Your Pictures from Flickr</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-02T10:51:53+01:00" pubdate data-updated="true">Aug 2<span>nd</span>, 2010</time>
-        
-           | <a href="/blog/photography/recover-bulk-download-your-pictures-from-flickr/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/recover-bulk-download-your-pictures-from-flickr/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Flickr is a great way to backup your photos and other images for around £25 a year you get unlimited storage. There are numerous uploader tools but not many bulk download applications.</p>
-
-<p>Today I wanted to download a few of my image sets for use as a screen saver on another computer, after looking at several free application <a href="http://janten.com/downloadr/">&lsquo;downloadr&rsquo;</a> was the only one which came close to offering the functionality I needed. The ability to list sets owned by user and select which images to download. Only minor irritation was when listing photos in a set it only lists the first 50 by default so you have press search again to ge the next 50, again and again until you have got previews for all the photos in the set, then you can download then all.</p>
-
-<p><a href="http://janten.com/downloadr/">Downloadr</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/27/">&larr; Older</a>
@@ -756,11 +787,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (34)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/photography/lee-standard-hood/">Lee Standard Hood</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a>
@@ -776,10 +811,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/ruby-methods-and-splat/">Ruby Methods and Splat</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/thor-adding-verbose/">Thor Adding &#8211;verbose</a>
       </li>
     
   </ul>

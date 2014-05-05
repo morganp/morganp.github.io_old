@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="and Remove Orphaned Commits. I use gitx graphical tool on OS X to find the SHAs for commits. Revert back throwing away all changes: git reset --hard &hellip;">
+  <meta name="description" content="In your sources branch, which is the main branch for writing creating posts, create a CNAME file in the sources directory. vim source/CNAME your- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,68 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/octopress/">Octopress, Pages and Custom Domain</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-04T18:19:25+00:00" pubdate data-updated="true">Mar 4<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/octopress/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/octopress/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In your <code>sources</code> branch, which is the main branch for writing creating posts, create a <code>CNAME</code> file in the sources directory.</p>
+
+<p>vim source/CNAME</p>
+
+<pre><code>your-domain.co.uk
+</code></pre>
+
+<p>Then check-in and deploy</p>
+
+<pre><code>git add source/CNAME
+rake deploy
+</code></pre>
+
+<p>Point your domain to github pages:</p>
+
+<pre><code>A record pointing to 204.232.175.78
+</code></pre>
+
+<p>I also redirect www. to the non-www url</p>
+
+<pre><code>CNAME record for www.example.com to example.com  
+</code></pre>
+
+<p><a href="http://octopress.org/docs/deploying/github/">Official Docs</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -510,51 +572,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/propagator/">Propagator</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-18T20:43:00+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/propagator/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/propagator/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have always had trouble getting seeds to germinate, therefore I have purchased a <a href="https://www.amazon.co.uk/dp/B000YA43HC?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B000YA43HC&amp;adid=18Q38Q8QS33XBPP04WNR&amp;">propagator</a> to help. Ideally I would have a thermostatically controlled unit, but they tend to be a bit more expensive, and non-looked like they wood fit nicely on a windowsill.</p>
-
-<p>Garland Super7, should raise soil temperature by 8 degrees but fluctions of indoor temp will be passed on:</p>
-
-<p><img src="/images/Gardening/morganp-20140218-Propagator-IMG_6827.jpg" title="Garland Super7" alt="Propagator" /></p>
-
-<p>Hopefully I will have some better luck in the future.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -569,11 +586,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (34)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/photography/lee-standard-hood/">Lee Standard Hood</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a>
@@ -589,10 +610,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/ruby-methods-and-splat/">Ruby Methods and Splat</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/thor-adding-verbose/">Thor Adding &#8211;verbose</a>
       </li>
     
   </ul>
