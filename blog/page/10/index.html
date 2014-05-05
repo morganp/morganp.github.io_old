@@ -9,10 +9,10 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Cake (£? a portion) time to table ~?. Ingredients (for 8) 3x25 ml double espresso
-200 g plain flour 3 large eggs
-320 g unsalted butter
-100 g demerara &hellip;">
+  <meta name="description" content="Using gf In your vimrc " gf goto_file, automatically add search for these file extensions
+:set suffixesadd+=.v
+:set suffixesadd+=.sv
+:set suffixesadd &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +84,58 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/navigate-verilog-with-vim/">Navigate Verilog with VIM</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-04T22:08:39+01:00" pubdate data-updated="true">Jun 4<span>th</span>, 2013</time>
+        
+           | <a href="/blog/engineering/navigate-verilog-with-vim/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/navigate-verilog-with-vim/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>Using <code>gf</code></h1>
+
+<p>In your vimrc</p>
+
+<pre><code>" gf goto_file, automatically add search for these file extensions
+:set suffixesadd+=.v
+:set suffixesadd+=.sv
+:set suffixesadd+=.bh.v
+</code></pre>
+
+<p>Now <code>gf</code> on a module name will try to open file.v file.sv and file.bh.v  if they are in the same folder.
+Another good reason to keep module and file names matching.</p>
+
+<p><code>ctrl-6</code> will jump back to the previous file.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -871,47 +923,6 @@ On the same 2 layers also spread some cherry sauce and cherries, then added whip
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/javascript-net-curtain/">JavaScript Net Curtain</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-24T07:44:19+01:00" pubdate data-updated="true">Apr 24<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/javascript-net-curtain/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/javascript-net-curtain/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Normally this would just end up on <a href="http://amaras-tech.co.uk/u">my link blog</a>, but thought it was worthy of a proper mention.</p>
-
-<p><a href="http://amaras-tech.co.uk/u/5m">A JavaScript tear able net curtain</a>, clicking the mouse the moving mouse over curtain the real-time rendering in a browser feels very impressive to me. To see some thing this interactive with out lag being rendered in a browser is quite impressive. Am sure there are still many sites which crash my browser while trying to render little pointless animations.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/11/">&larr; Older</a>
@@ -926,11 +937,15 @@ On the same 2 layers also spread some cherry sauce and cherries, then added whip
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (34)</a></li><li><a href='/blog/tech'>Tech (232)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (34)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/lightroom-load-canon-6d-gps/">Lightroom Load Canon 6D GPS</a>
@@ -946,10 +961,6 @@ On the same 2 layers also spread some cherry sauce and cherries, then added whip
     
       <li class="post">
         <a href="/blog/tech/thor-adding-verbose/">Thor Adding &#8211;verbose</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/photography/creating-lightroom-metadata-views/">Creating Lightroom Metadata Views</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="After updating my website on webfaction nginx kept saying permission denied and when I tried to view my site I got a 502 Bad Gateway error page. To &hellip;">
+  <meta name="description" content="I used this as a jQuery reference to hide and show default text in forms. &lt;head&gt; &lt;script type=”text/javascript” src=”js/jquery.js”&gt;&lt;/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,82 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/">jQuery Clear Form on Focus and Restore on Exit</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-27T10:57:35+01:00" pubdate data-updated="true">Jun 27<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I used <a href="http://www.eggchops.com/web-stuff/jquery/jquery-clear-focus-function/">this as a jQuery reference</a> to hide and show default text in forms.</p>
+
+<pre><code>&lt;head&gt;
+   &lt;script type=”text/javascript” src=”js/jquery.js”&gt;&lt;/script&gt;
+   &lt;script type=”text/javascript”&gt;
+
+   $(document).ready(function(){
+
+      var clearMePrevious = ”;
+
+      // clear input on focus
+      $(’.clearMeFocus’).focus(function()
+      {
+         if($(this).val()==$(this).attr(’title’))
+         {
+            clearMePrevious = $(this).val();
+            $(this).val(”);
+         }
+       });
+
+       // if field is empty afterward, add text again
+       $(’.clearMeFocus’).blur(function()
+       {
+        if($(this).val()==”)
+        {
+          $(this).val(clearMePrevious);
+        }
+    });
+});
+
+&lt;/script&gt;
+&lt;/head&gt;
+</code></pre>
+
+<p>and the for the form</p>
+
+<pre><code>&lt;input type=”text” name=”email” title=”Enter your email” value=”Enter your email” class=”clearMeFocus” /&gt;
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -693,74 +769,6 @@ a.report
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-runnable-and-includeable/">Ruby Runnable and Includeable</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-11T13:24:06+01:00" pubdate data-updated="true">Jun 11<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-runnable-and-includeable/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-runnable-and-includeable/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I might have just made up includable, but I like it.</p>
-
-<p>Some times you have written a ruby script (using classes) which does something awesome and it might be nice if other future scripts function could make use of this object class you have just created, while keeping the script in a runnable stand alone state.</p>
-
-<p>This is quite trivial once you realise that $0 is the file that was called on the command line and __FILE__ is the current file.</p>
-
-<p>Available as a <a href="http://gist.github.com/435161">gist</a>.</p>
-
-<pre><code>#!/usr/bin/env ruby
-
-class HelloWorld
-   def initialize
-      @msg = "HelloWorld!"
-   end
-
-   def to_s
-      return @msg
-   end
-end
-
-#Only execute if called directly
-#ie other file can require/include and this part will not be executed
-# $0 calling file (eneterd at command line)
-# __FILE__ This file
-
-if $0 == __FILE__
-   hi_world = HelloWorld.new
-   puts hi_world
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/29/">&larr; Older</a>
@@ -775,11 +783,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (34)</a></li><li><a href='/blog/tech'>Tech (232)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (34)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/lightroom-load-canon-6d-gps/">Lightroom Load Canon 6D GPS</a>
@@ -795,10 +807,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/thor-adding-verbose/">Thor Adding &#8211;verbose</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/photography/creating-lightroom-metadata-views/">Creating Lightroom Metadata Views</a>
       </li>
     
   </ul>

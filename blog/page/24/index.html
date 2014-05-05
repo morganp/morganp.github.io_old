@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Considering various raid strategies I decided that Raid 5 would be too limiting and have previously found raid striping systems to be too unreliable &hellip;">
+  <meta name="description" content="Finally got my mac mini to accept the 8GB kit I bought from Crucial for £74 (apple upgrade is £409). The Mac mini since mid 2010 has been designed to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,60 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mac-mini-mid-2010-8gb-memory-upgrade/">Mac Mini (Mid 2010) 8GB Memory Upgrade</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-02T08:30:24+00:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2011</time>
+        
+           | <a href="/blog/tech/mac-mini-mid-2010-8gb-memory-upgrade/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mac-mini-mid-2010-8gb-memory-upgrade/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Finally got my mac mini to accept the 8GB kit I bought from <a href="http://www.crucial.com/uk/">Crucial</a> for £74 (apple upgrade is £409).</p>
+
+<p>The Mac mini since mid 2010 has been designed to have user upgradable
+ memory. I however ran in to some issues with it not recognising the new memory, not quite which step fixed it:</p>
+
+<p>First reboot, while switching back on press and hold cmd-opt-p-r <a href="http://support.apple.com/kb/ht1379">Resetting PRAM and NVRAM</a>. This will causes it to continuously reboot, switch off after a cylce not letting it boot up.</p>
+
+<p>Second, Disconnect all cables, open up the back and take the old memory out. pulling the clips to the side the memory pops up at about 45degrees.</p>
+
+<p>Third, insert lower memory, really make sure this is firmly in place by pushing in firmly while at 45-30Degeees,then press down to clip into place. non of the metal from the contacts should be showing. I think this was my main mistake when inserting this memory the first few times. Then insert the second RMA module in the higher position, this seats much easier.</p>
+
+<p>Fourth, Replace back/bottom of mac mini then hold the power button down/in for 4 seconds. This causes a <a href="http://support.apple.com/kb/HT3964">SMC reset</a>.</p>
+
+<p>Last reconnect cables and power up. You can use /Applications/Utilities/Activity Monitor.app to check how much memory you now have.</p>
+
+<p>If the mac just beeps, it is quite likely that the memory is not seated correctly. On a very rare occasion it would be due to a faulty memory chip. They should work one at a time in the top position though so you could test them that way.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -689,67 +743,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-session-extension/">Sinatra Session Extension</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-02T12:49:03+00:00" pubdate data-updated="true">Nov 2<span>nd</span>, 2010</time>
-        
-           | <a href="/blog/tech/sinatra-session-extension/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-session-extension/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have just started to use a <a href="http://www.sinatrarb.com/extensions.html">sinatra extensions</a> called <a href="http://mjijackson.com/sinatra-session/">Sinatra Session</a>. The write up on the <a href="http://mjijackson.com/sinatra-session/">main site</a> is pretty good and only include a short summary below.</p>
-
-<pre><code>gem install sinatra-session
-</code></pre>
-
-<p>In your app (classy style)</p>
-
-<pre><code>require 'sinatra/base'
-require 'sinatra/session'
-
-class MyApp &lt; Sinatra::Base
-  register Sinatra::Session
-
-  # Use helpers as required
-  get '/' do
-    session_start!
-    session[:foo] ||= 'bar'
-
-    #now view helper, etc, can call session[:foo] to get value 'bar'
-  end
-
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/25/">&larr; Older</a>
@@ -764,11 +757,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (34)</a></li><li><a href='/blog/tech'>Tech (232)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (34)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/lightroom-load-canon-6d-gps/">Lightroom Load Canon 6D GPS</a>
@@ -784,10 +781,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/thor-adding-verbose/">Thor Adding &#8211;verbose</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/photography/creating-lightroom-metadata-views/">Creating Lightroom Metadata Views</a>
       </li>
     
   </ul>

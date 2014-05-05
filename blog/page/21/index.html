@@ -9,7 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Using ssh to securely connect with servers from the terminal is pretty easy. set up a public key and a private key using: ssh-keygen -t rsa This &hellip;">
+  <meta name="description" content="Ruby 1.9.2-p290 released, if you have RVM installed updating to the latest release is easy rvm get head
+rvm reload
+rvm install 1.9.2 If you do not &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +83,64 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/get-latest-ruby-192-build-with-rvm/">Get Latest Ruby 1.9.2 Build with RVM</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-16T07:47:23+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/get-latest-ruby-192-build-with-rvm/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/get-latest-ruby-192-build-with-rvm/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ruby 1.9.2-p290 released, if you have <a href="http://beginrescueend.com/">RVM</a> installed updating to the latest release is easy</p>
+
+<pre><code>rvm get head
+rvm reload
+rvm install 1.9.2
+</code></pre>
+
+<p>If you do not have <a href="http://beginrescueend.com/">RVM</a> installed you can <a href="http://beginrescueend.com/rvm/install/">read up here</a> or just run:</p>
+
+<pre><code>bash &lt; &lt;(curl -s https://rvm.beginrescueend.com/install/rvm)
+</code></pre>
+
+<p>You may want to check your default gem list in your old version and add then make the new ruby your default. Having bundler present is almost essential for most projects, to install the protected gemsets.</p>
+
+<pre><code>rvm gem list &gt; rvm_old_gemlist.txt
+rvm --default use 1.9.2
+gem install bundler
+</code></pre>
+
+<p>When only specifying a ruby version the latest release will be the default.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -825,61 +885,6 @@ found  = search.any? { |regexp| text.match( regexp ) }
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/installing-gistvim/">Installing gist.vim</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-20T20:32:05+01:00" pubdate data-updated="true">May 20<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/installing-gistvim/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/installing-gistvim/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This vim plugin will allow you to gist directly from vim, simple way is just :Gist to gist entire file more options in the <a href="https://github.com/mattn/gist-vim/blob/master/README.mkd">Full Readme</a>.</p>
-
-<p>If you have not heard of gists or Github. Github is a very popular (especially with in the Ruby community) way of sharing open source code. <a href="https://gist.github.com/">Gists</a> are the easy way to save and share small snippets of code.</p>
-
-<h2>Install</h2>
-
-<pre><code>cd ~/.vim/plugin
-wget --nocheck-certificate https://github.com/mattn/gist-vim/raw/master/plugin/gist.vim
-cd ../doc
-wget --no-check-certificate https://github.com/mattn/gist-vim/raw/master/doc/gist-vim.txt
-
-#Now to set Your env variables
-git config --global github.user your-name-here
-git config --global github.token your-token-here
-</code></pre>
-
-<p>You Github token can be found on the <a href="https://github.com/account">GitHub Admin</a> Account Admin tab.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/22/">&larr; Older</a>
@@ -894,11 +899,15 @@ git config --global github.token your-token-here
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (34)</a></li><li><a href='/blog/tech'>Tech (232)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (34)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/lightroom-load-canon-6d-gps/">Lightroom Load Canon 6D GPS</a>
@@ -914,10 +923,6 @@ git config --global github.token your-token-here
     
       <li class="post">
         <a href="/blog/tech/thor-adding-verbose/">Thor Adding &#8211;verbose</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/photography/creating-lightroom-metadata-views/">Creating Lightroom Metadata Views</a>
       </li>
     
   </ul>

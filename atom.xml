@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-04-14T19:14:51+01:00</updated>
+  <updated>2014-05-05T20:33:33+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Licence Types and Short Identifiers]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/licence-types-and-short-identifiers/"/>
+    <updated>2014-05-05T20:17:43+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/licence-types-and-short-identifiers</id>
+    <content type="html"><![CDATA[<p>Some time ago <a href="http://guides.rubygems.org/specification-reference/">gemspec</a> files for ruby gems added the ability to
+specify the short identifier for the license type.</p>
+
+<pre><code>Gem::Specification.new do |s|
+  s.licenses    = ['MIT']
+end
+</code></pre>
+
+<p>The unofficial list of short identifiers is available from <a href="https://spdx.org/licenses/">spdx</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Lightroom Load Canon 6D GPS]]></title>
@@ -558,20 +575,6 @@ Left shoulder, under chest harness.</p>
 
 <p><img src="http://lizard-spock.co.uk/images/Photography/Loka/morganp-20140315-Loka-IMG_6970.jpg" alt="" />
 <img src="http://lizard-spock.co.uk/images/Photography/Loka/morganp-20140315-Loka-IMG_6976.jpg" alt="" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Ruby Iterate Over Lines in a String]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/ruby-iterate-over-lines-in-a-string/"/>
-    <updated>2014-03-13T21:03:54+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/ruby-iterate-over-lines-in-a-string</id>
-    <content type="html"><![CDATA[<pre><code>str.each_line do |line|
-  #do something with line
-end
-</code></pre>
-
-<p><a href="http://stackoverflow.com/a/601892/97073">Source</a>.</p>
 ]]></content>
   </entry>
   

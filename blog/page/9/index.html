@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="As the growhouse stops the plants recieving rain I decided to try micro-irrigtion.
-It comes with a gardnen computer to time the water automation, &hellip;">
+  <meta name="description" content="To check if an environment variable exists in .mycshrc or shell scripts if ($?TERM) then echo "TERM is $TERM" endif ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,50 @@ It comes with a gardnen computer to time the water automation, &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/tcsh-check-a-var-exists/">Tcsh Check a Var Exists</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-07T07:04:38+01:00" pubdate data-updated="true">Aug 7<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/tcsh-check-a-var-exists/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/tcsh-check-a-var-exists/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To check if an environment variable exists in .mycshrc or shell scripts</p>
+
+<pre><code>if ($?TERM) then
+  echo "TERM is $TERM" 
+endif
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -555,58 +598,6 @@ fi
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/navigate-verilog-with-vim/">Navigate Verilog with VIM</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-06-04T22:08:39+01:00" pubdate data-updated="true">Jun 4<span>th</span>, 2013</time>
-        
-           | <a href="/blog/engineering/navigate-verilog-with-vim/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/navigate-verilog-with-vim/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1>Using <code>gf</code></h1>
-
-<p>In your vimrc</p>
-
-<pre><code>" gf goto_file, automatically add search for these file extensions
-:set suffixesadd+=.v
-:set suffixesadd+=.sv
-:set suffixesadd+=.bh.v
-</code></pre>
-
-<p>Now <code>gf</code> on a module name will try to open file.v file.sv and file.bh.v  if they are in the same folder.
-Another good reason to keep module and file names matching.</p>
-
-<p><code>ctrl-6</code> will jump back to the previous file.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/10/">&larr; Older</a>
@@ -621,11 +612,15 @@ Another good reason to keep module and file names matching.</p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (34)</a></li><li><a href='/blog/tech'>Tech (232)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (34)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/lightroom-load-canon-6d-gps/">Lightroom Load Canon 6D GPS</a>
@@ -641,10 +636,6 @@ Another good reason to keep module and file names matching.</p>
     
       <li class="post">
         <a href="/blog/tech/thor-adding-verbose/">Thor Adding &#8211;verbose</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/photography/creating-lightroom-metadata-views/">Creating Lightroom Metadata Views</a>
       </li>
     
   </ul>

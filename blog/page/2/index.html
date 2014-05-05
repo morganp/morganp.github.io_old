@@ -9,7 +9,12 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Enter copy mode ctrl-a [ Use cursors of vim motions to move to relevant area. Space to start selection, space again to end selection and copy to &hellip;">
+  <meta name="description" content="puts and to_s could be better: a = [1, 2, 3]
+puts a
+&gt; 1
+&gt; 2
+&gt; 3 puts a.to_s
+&gt; [1, 2, 3] Nicely print an array Multiply it out with spaces &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +86,64 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-print-array/">Ruby Print Array</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-01T18:36:00+01:00" pubdate data-updated="true">Apr 1<span>st</span>, 2014</time>
+        
+           | <a href="/blog/tech/ruby-print-array/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-print-array/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>puts</code> and <code>to_s</code> could be better:</p>
+
+<pre><code>a = [1, 2, 3]
+puts a
+&gt; 1
+&gt; 2
+&gt; 3
+
+puts a.to_s
+&gt; [1, 2, 3]
+</code></pre>
+
+<h2>Nicely print an array</h2>
+
+<p>Multiply it out with spaces:</p>
+
+<pre><code>a = [1, 2, 3]
+puts a * " "
+&gt; 1 2 3
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -545,50 +608,6 @@ Left shoulder, under chest harness.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-iterate-over-lines-in-a-string/">Ruby Iterate Over Lines in a String</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-13T21:03:54+00:00" pubdate data-updated="true">Mar 13<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/ruby-iterate-over-lines-in-a-string/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-iterate-over-lines-in-a-string/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>str.each_line do |line|
-  #do something with line
-end
-</code></pre>
-
-<p><a href="http://stackoverflow.com/a/601892/97073">Source</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -603,11 +622,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (34)</a></li><li><a href='/blog/tech'>Tech (232)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (34)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/lightroom-load-canon-6d-gps/">Lightroom Load Canon 6D GPS</a>
@@ -623,10 +646,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/thor-adding-verbose/">Thor Adding &#8211;verbose</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/photography/creating-lightroom-metadata-views/">Creating Lightroom Metadata Views</a>
       </li>
     
   </ul>
