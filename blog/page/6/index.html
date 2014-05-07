@@ -9,8 +9,10 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="2013 I got my first garden and I had no idea where to begin.
-So I picked up a few books on garden design with good reviews, they were: Small Garden, &hellip;">
+  <meta name="description" content="Remove all values of 3 from array a = [1 2 3 4 3];
+a(any(a==3,1)) = []
+a = 1 2 4 Remove 2 or less from array a = [1 2 3 4 3];
+a(any(a&lt;=2,1)) = [] &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +84,176 @@ So I picked up a few books on garden design with good reviews, they were: Small 
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-remove-values-from-array/">Matlab Remove Values from Array</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-11T21:21:44+00:00" pubdate data-updated="true">Feb 11<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-remove-values-from-array/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-remove-values-from-array/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Remove all values of 3 from array</p>
+
+<pre><code>a = [1 2 3 4 3];
+a(any(a==3,1)) = []
+a =
+
+
+     1     2     4
+</code></pre>
+
+<p>Remove 2 or less from array</p>
+
+<pre><code>a = [1 2 3 4 3];
+a(any(a&lt;=2,1)) = []
+a =
+
+
+     3     4     3
+</code></pre>
+
+<p>Remove values between 2 and 3</p>
+
+<pre><code>a = [1 2 3 4 3];
+a(any((a&gt;=2)&amp;(a&lt;=3),1)) = []
+a =
+
+
+     1     4
+</code></pre>
+
+<p>Based on <a href="http://matlabnewbie.blogspot.co.uk/2011/11/remove-any-rows-that-contains-specific.html">examples from matlabnewbie</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/brew-update-fail/">Brew Update Fail</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-11T21:17:24+00:00" pubdate data-updated="true">Feb 11<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/brew-update-fail/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/brew-update-fail/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Received the following errors when doing <code>brew update</code> on mountain lion:</p>
+
+<pre><code>error: The following untracked working tree files would be overwritten by merge:
+        Library/Formula/platypus.rb
+Please move or remove them before you can merge.
+Aborting
+Error: Failure while executing: git pull -q origin refs/heads/master:refs/remotes/origin/master
+</code></pre>
+
+<p>A solution found on <a href="http://stackoverflow.com/questions/10762859/brew-update-the-following-untracked-working-tree-files-would-be-overwritten-by">Stackoverflow</a></p>
+
+<pre><code>cd /usr/local
+git fetch origin
+git reset --hard origin/master
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/garden/birdbox/">BirdBox</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-09T19:23:22+00:00" pubdate data-updated="true">Feb 9<span>th</span>, 2014</time>
+        
+           | <a href="/blog/garden/birdbox/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/birdbox/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.dunbargardencentre.co.uk/">Dunbar Garden Centre</a> Over Jan &amp; Feb 2014 ran
+a 2 for £12 offer on <a href="http://www.chapelwoodwildlife.co.uk/Store/Category/Brands/Solus%20Brands/Chapelwood/Natural%20Range.aspx">Chapelwood bird boxes</a>. Due to some extra vouchers we got these two for 95 pence.</p>
+
+<p><img src="/images/Gardening/morganp-20140209-BirdBox-IMG_6740.jpg" alt="Bird Box" /></p>
+
+<p>Instructions that came with them:</p>
+
+<p>Locate at height 2-5m off the ground, shelter from strong winds and direct sunlight. Do not locate adjacent to feeding sites.</p>
+
+<p>Do not disturb once it is in use, clean out once a year between September and October, always wear rubber gloves.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -506,168 +678,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/reverting-in-git/">Reverting in Git</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-08T20:10:31+00:00" pubdate data-updated="true">Jan 8<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/reverting-in-git/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/reverting-in-git/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I use to use <code>svn revert</code> to roll back local modification and get back to the state I was in last time I checked out.</p>
-
-<p>to do the same in git  I use :</p>
-
-<pre><code>git checkout -- filename
-</code></pre>
-
-<p>As git does not automatically push to a server the way subversion does you have an opportunity to revert local commits.</p>
-
-<pre><code>git reset --soft HEAD^
-</code></pre>
-
-<p>Here the <code>^</code> means previous. ie go back 1 commit. Using soft the files will still appear modified and we can use the previous command to reset the files as required.</p>
-
-<p>Further reading <a href="http://stackoverflow.com/q/2530060/97073">what “git reset” does in plain english?</a>, <a href="http://marklodato.github.io/visual-git-guide/index-en.html">Visual Git Reference</a> and <a href="http://git-scm.com/blog/2011/07/11/reset.html">Reset Demystified</a></p>
-
-<p>&mdash;
-<a href="http://www.norbauer.com/rails-consulting/notes/git-revert-reset-a-single-file.html">git checkout source</a>.  <br/>
-<a href="http://stackoverflow.com/questions/2845731/how-to-uncommit-my-last-commit-in-git">git reset source</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/rtorrent-move-on-download-completion/">Rtorrent Move on Download Completion</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-08T19:53:02+00:00" pubdate data-updated="true">Jan 8<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/rtorrent-move-on-download-completion/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/rtorrent-move-on-download-completion/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>rtorrent moving torrents upon completion:</p>
-
-<pre><code># Torrents go in ~/Torrents
-# Incomplete Downloads in ~/Incomplete
-# Upon Completion Data is moved to ~/Seeding
-
-schedule = watch_directory_standard,10,10,"load_start=~/Torrents/*.torrent,d.set_directory=~/Incomplete/,d.set_custom1=~/Seeding/
-
-#Move upon download completion.
-system.method.set_key =event.download.finished,move_complete,"d.set_directory=$d.get_custom1= ;execute=mv,-n,$d.get_base_path=,$d.get_custom1="
-</code></pre>
-
-<p><a href="https://gist.github.com/morganp/8323448">Link to gist on github</a>.</p>
-
-<p><a href="http://libtorrent.rakshasa.no/wiki/RTorrentCommonTasks#Movecompletedtorrentstodifferentdirectorydependingonwatchdirectory">Recipe</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-20T19:43:16+00:00" pubdate data-updated="true">Dec 20<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/check-you-current-vim-colorscheme/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/check-you-current-vim-colorscheme/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This is not a foolproof method, as vim colorschemes are just vim commands but by default they set:</p>
-
-<pre><code>let g:colors_name = "ir_black"
-</code></pre>
-
-<p>so to find out from vim just run</p>
-
-<pre><code>:echo g:colors_name
-</code></pre>
-
-<p>Or even simpler suggestion from farfanoide</p>
-
-<pre><code>:colorscheme
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -682,11 +692,23 @@ system.method.set_key =event.download.finished,move_complete,"d.set_directory=$d
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (24)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-toolboxes-with-absolute-path-setup/">Matlab Toolboxes with Absolute Path Setup</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-array-content-check/">Matlab: Array Content Check</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-split-odd-and-even-array-elements/">Matlab: Split Odd &amp; Even Array Elements</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/lee-standard-hood/">Lee Standard Hood</a>
@@ -694,18 +716,6 @@ system.method.set_key =event.download.finished,move_complete,"d.set_directory=$d
     
       <li class="post">
         <a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/lightroom-load-canon-6d-gps/">Lightroom Load Canon 6D GPS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/outdoor/craghoppers-up-to-tricks/">Craghoppers Pro Stretch</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/ruby-methods-and-splat/">Ruby Methods and Splat</a>
       </li>
     
   </ul>

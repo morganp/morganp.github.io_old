@@ -9,7 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="In your sources branch, which is the main branch for writing creating posts, create a CNAME file in the sources directory. vim source/CNAME your- &hellip;">
+  <meta name="description" content="To shuffle a: a(randperm(length(a))) Example: a = [10 2 5 20];
+a = a(randperm(length(a))) a = 5 10 2 20 Source.
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +83,186 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-shuffle-array/">Matlab Shuffle Array</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-06T20:42:57+00:00" pubdate data-updated="true">Mar 6<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-shuffle-array/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-shuffle-array/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To shuffle a:</p>
+
+<pre><code>a(randperm(length(a)))
+</code></pre>
+
+<p>Example:</p>
+
+<pre><code>a = [10 2 5 20];
+a = a(randperm(length(a)))
+
+a =
+
+ 5    10     2    20
+</code></pre>
+
+<p><a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/239478">Source</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/bash-string-manipulation/">Bash String Manipulation</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-05T21:32:14+00:00" pubdate data-updated="true">Mar 5<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/bash-string-manipulation/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/bash-string-manipulation/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Removal of substring:</p>
+
+<pre><code>string="test string"
+echo $string
+
+remove="test"
+short_string=${string#$remove}
+echo short_string
+</code></pre>
+
+<p>Note that inside the <code>${}</code> <code>string</code> does not have a <code>$</code>, it is implied.
+The second half <code>$remove</code> does require it.</p>
+
+<p><a href="http://tldp.org/LDP/abs/html/string-manipulation.html">More info</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/cooking/puy-lentil-wellington/">Puy Lentil Wellington</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-04T18:24:42+00:00" pubdate data-updated="true">Mar 4<span>th</span>, 2014</time>
+        
+           | <a href="/blog/cooking/puy-lentil-wellington/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/cooking/puy-lentil-wellington/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Based on a <a href="http://uktv.co.uk/food/recipe/aid/516620">uktv recipe</a>.</p>
+
+<p><img src="/images/Cooking/PuyWellington/morganp-20140225-PuyLentil-IMG_6871.jpg" alt="" /></p>
+
+<h2>Ingredients</h2>
+
+<pre><code>150 g     Puy lentils
+400 ml    Water
+  3       Onions
+  1 tbsp  Sugar
+  2 tbsp  Olive oil
+
+  1 tbsp  Rosemary
+  1 tbsp  Thyme
+375 g     Puff Pastry
+</code></pre>
+
+<p><img src="/images/Cooking/PuyWellington/morganp-20140225-PuyLentil-IMG_6852.jpg" alt="" /></p>
+
+<p>Finely dice onion and fry on low heat with olive oil, after a minute or two add
+the sugar. Mean while simmer the lentils in water</p>
+
+<p><img src="/images/Cooking/PuyWellington/morganp-20140225-PuyLentil-IMG_6853.jpg" alt="" />
+<img src="/images/Cooking/PuyWellington/morganp-20140225-PuyLentil-IMG_6856.jpg" alt="" /></p>
+
+<p>Finely chop the Rosemary and Thyme, add to the onions.
+Mix well and keep on a low heat, stir occasionally to stop burning.
+When onions are soft (about 15 minutes) take off heat and allow to cool.</p>
+
+<p>Mix Lentils and onions then place into a sheet of puff pastry then fold over to create the wellington, pinching ends together.</p>
+
+<p>Place in oven for 20-25 minutes.</p>
+
+<p><img src="/images/Cooking/PuyWellington/morganp-20140225-PuyLentil-IMG_6858.jpg" alt="" />
+<img src="/images/Cooking/PuyWellington/morganp-20140225-PuyLentil-IMG_6864.jpg" alt="" />
+<img src="/images/Cooking/PuyWellington/morganp-20140225-PuyLentil-IMG_6871.jpg" alt="" /></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -444,134 +626,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/spring/">Spring</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-25T20:42:28+00:00" pubdate data-updated="true">Feb 25<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/spring/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/spring/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>First signs of spring, bulbs starting to show growth.</p>
-
-<p><img src="/images/Gardening/morganp-20140225-Garden-IMG_6851.jpg" title="Bulbs starting to shoot" alt="" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/gnome-disable-focus-tracking/">Gnome: Disable Focus Tracking</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-20T20:31:44+00:00" pubdate data-updated="true">Feb 20<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/gnome-disable-focus-tracking/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/gnome-disable-focus-tracking/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sometime ago I enabled focus tracking the mouse on Gnome. It took a while to find how to disable it again, so with out further a do the setting can be found in:</p>
-
-<pre><code>System -&gt; Preferences -&gt; Windows
-</code></pre>
-
-<p><img src="/images/Tech/Disable_Mouse_focus_tracking.png" alt="" />§</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/rocket/">Rocket</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-19T21:08:38+00:00" pubdate data-updated="true">Feb 19<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/rocket/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/rocket/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>On Saturday I placed Rocket seeds in my propagator and by Tuesday it had germinated and started to sprout.</p>
-
-<p>So far so good:</p>
-
-<p><img src="/images/Gardening/morganp-20140218-Propagator-IMG_6838.jpg" title="Rocket" alt="Rocket" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -586,11 +640,23 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (24)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-toolboxes-with-absolute-path-setup/">Matlab Toolboxes with Absolute Path Setup</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-array-content-check/">Matlab: Array Content Check</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-split-odd-and-even-array-elements/">Matlab: Split Odd &amp; Even Array Elements</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/lee-standard-hood/">Lee Standard Hood</a>
@@ -598,18 +664,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/lightroom-load-canon-6d-gps/">Lightroom Load Canon 6D GPS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/outdoor/craghoppers-up-to-tricks/">Craghoppers Pro Stretch</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/ruby-methods-and-splat/">Ruby Methods and Splat</a>
       </li>
     
   </ul>

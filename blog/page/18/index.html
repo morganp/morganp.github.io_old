@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Update RVM $ rvm get head List current versions, and all versions $ rvm list
-$ rvm list known Select the version you want to upgrade to : $ rvm &hellip;">
+  <meta name="description" content="When working with digital images some effort should be put into understanding the colour space. Which basically means that for each colour the range &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,169 @@ $ rvm list known Select the version you want to upgrade to : $ rvm &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/understanding-colour-spaces-digital-imaging/">Understanding Colour Spaces (Digital Imaging)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-23T18:36:19+01:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2012</time>
+        
+           | <a href="/blog/photography/understanding-colour-spaces-digital-imaging/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/understanding-colour-spaces-digital-imaging/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When working with digital images some effort should be put into understanding the colour space. Which basically means that for each colour the range that you can represent. Knowing the range of colours the file can hold, the range you can see on your screen and the range that you can print will let you get the best results from your images.</p>
+
+<p><a href="http://www.cambridgeincolour.com/tutorials/sRGB-AdobeRGB1998.htm">This article compares sRGB to AdobeRGB</a> is a good introduction to the two most common formats. My very simplified conclusion from this is that sRGB should be used for targeting 8 bit formats and AdobeRGB for 16 bit formats.</p>
+
+<p>I recently re-profiled my monitor using my datacolor  Spyder3Elite. The results are shown below, note that the smallest colour space (red triangle) is the range my mac book screen can display :(</p>
+
+<p><a href="http://www.flickr.com/photos/morgan_prior/6960821554/" title="ColourProfile  by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8021/6960821554_94f22c6e4f_z.jpg" width="640" height="354" alt="ColourProfile "></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/on-location-with-jeremy-cowart-kelby-training/">On Location with Jeremy Cowart (Kelby Training)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-22T12:34:23+01:00" pubdate data-updated="true">Apr 22<span>nd</span>, 2012</time>
+        
+           | <a href="/blog/photography/on-location-with-jeremy-cowart-kelby-training/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/on-location-with-jeremy-cowart-kelby-training/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>While enjoy photography I am not that interested in portrait, fashion or lifestyle photography but for some reason I decided to watch the <a href="http://jeremycowart.com/">Jeremy Cowart</a> classes on <a href="http://kelbytraining.com/">Kelby Training</a>. The two classes I watched were the <a href="http://kelbytraining.com/course/cowart_on_location_1/">On Location Part 1</a> and <a href="http://kelbytraining.com/course/cowart_on_location_2/">On Location Part 2</a>.</p>
+
+<p>I found these on location classes really interesting, Scott Kelby shadowing Jeremy and asking questions while he was shooting. Seeing this insight into how people approach a shoot and what they look for to make the picture.  Jeremy has a great ability to find interesting backgrounds for portraits. Shoots in mostly manual and using simple lighting setups starting with natural light and bringing in a reflector and or strobe when required.</p>
+
+<p><a href="http://jeremycowart.com/">Jeremy Cowart</a> Also has a 4 hour DVD out covering 7 shoots, <a href="http://lifefinderdvd.com/">LIFEFINDER</a>. I have not watched this yet but based on what I have seen from Jeremy it is going to be really good, expect it to cost around $150.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/sinatra-application-in-lib-and-views-public-routes-not-working/">Sinatra Application in ./lib and Views, Public Routes Not Working</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-20T23:26:34+01:00" pubdate data-updated="true">Apr 20<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/sinatra-application-in-lib-and-views-public-routes-not-working/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-application-in-lib-and-views-public-routes-not-working/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have been setting up my recent Sinatra projects with a standard ruby project layout putting all of the application code within a lib folder. When running locally I have been cding in to the lib folder and just running:</p>
+
+<pre><code>ruby app.rb
+</code></pre>
+
+<p>I often found that when deploying (WebFaction or Heroku) that I had to make several attempts to get the config.ru correct. I then found that thin can load and run using the config.ru.</p>
+
+<pre><code>thin start --port 4567 -R config.ru
+</code></pre>
+
+<p>Which worked until I tried it on a non trivial application which used (erb) templates and then I started seeing these errors, when viewing 127:0.0.1:4567</p>
+
+<pre><code>Errno::ENOENT at /
+No such file or directory - ./views/home.erb
+file: template.rb location: binread line: 67
+</code></pre>
+
+<p>The problem is that we are now a level above where we use to be, not sure whay this has never been a problem in production before.</p>
+
+<pre><code>module AnotherWebApp
+  VERSION = '0.0.1'
+  class App &lt; Sinatra::Base
+    use Rack::MethodOverride
+    #set :public_folder, "public" # &lt;-- Old version
+    set :public_folder, "#{File.dirname(__FILE__)}/public"   # &lt;-- New Version
+
+    # Older ersions of Thin/Sinatra May require
+    set :public, "#{File.dirname(__FILE__)}/public"              # &lt;-- public changed to public_folder in newer release
+    set :views, "#{File.dirname(__FILE__)}/views"                # &lt;-- Need to set View
+
+    get '/' do
+      erb :home
+    end
+
+  end
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -704,193 +866,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/svn-multi-line-comments-on-the-command-line-/">SVN Multi-line Comments on the Command Line</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-28T13:32:53+01:00" pubdate data-updated="true">Mar 28<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/svn-multi-line-comments-on-the-command-line-/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/svn-multi-line-comments-on-the-command-line-/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Answer:</p>
-
-<pre><code>svn commit -m $'Line 1 \nLine 2'
-</code></pre>
-
-<h2>The Problem</h2>
-
-<p>Committing to subversion on the command line and using escaped line returns for multi line comments:</p>
-
-<pre><code>svn commit -m $'Line 1 \nLine 2'
-</code></pre>
-
-<p>svn log will show some thing like</p>
-
-<pre><code>------------------------------------------------------------------------
-r1 | user | 2012-03-28 13:37:48 +0100 (Wed, 28 Mar 2012) | 1 lines
-
-Line 1 \nLine 2
-</code></pre>
-
-<p>Answer originally posted on <a href="http://serverfault.com/questions/148917/use-linefeed-or-carriage-return-in-subversion-commit-message-from-the-command-li">ServerFault</a>. Strings contained in \&lsquo;\&rsquo; should not be interpreted by the command line but:</p>
-
-<pre><code>svn commit -m "Line 1 \nLine 2"
-</code></pre>
-
-<p>Shows the same errors. Starting the comment with a $ does seem to fix it.</p>
-
-<pre><code>svn commit -m $'Line 1 \nLine 2'
-</code></pre>
-
-<p>Will give:</p>
-
-<pre><code>------------------------------------------------------------------------
-r1 | user | 2012-03-28 13:37:48 +0100 (Wed, 28 Mar 2012) | 1 lines
-
-Line 1 
-Line 2
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/unix-mail-command-delete-all-messages/">Unix Mail Command, Delete All Messages</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-03-01T20:44:36+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2012</time>
-        
-           | <a href="/blog/tech/unix-mail-command-delete-all-messages/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/unix-mail-command-delete-all-messages/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Cron jobs can have there results returned as mail via the unix mail system. If left unchecked for a while the number of mails can mount up and you probably do not care about the old results. the command <code>d *</code> will delete all mails</p>
-
-<pre><code>$ mail
-Mail version 8.1 6/6/93.  Type ? for help.
-"/var/mail/lounge": 2726 messages 25 new 2726 unread
-? d *
-? quit
-
-$ mail
-No mail for user
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/list_temp_files-script/">List_temp_files Script</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-20T12:18:21+00:00" pubdate data-updated="true">Feb 20<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/list_temp_files-script/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/list_temp_files-script/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A simple script for finding temp files from the current directory and below. I often run this before adding a new project to a revision control system to ensure temp files do not get added into the repo.</p>
-
-<pre><code>#!/bin/sh
-
-echo "Searching for temp local files/directories"
-#vim accidental saves
-find . -name "1" -type f 
-
-#Other Temp files
-find . -name "*.log" -type f 
-find . -name "*.key" -type f
-find . -name "*.swp" -type f 
-find . -name "results" -type d 
-find . -name "waveforms" -type d  
-
-echo "Searching for temp links"
-find . -name "results" -type l 
-find . -name "waveforms" -type l 
-
-#Accidental checkins
-find . -name "*.log" -type l
-find . -name "*.key" -type l
-find . -name "*.swp" -type l
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/19/">&larr; Older</a>
@@ -905,11 +880,23 @@ find . -name "*.swp" -type l
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (24)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-toolboxes-with-absolute-path-setup/">Matlab Toolboxes with Absolute Path Setup</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-array-content-check/">Matlab: Array Content Check</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-split-odd-and-even-array-elements/">Matlab: Split Odd &amp; Even Array Elements</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/lee-standard-hood/">Lee Standard Hood</a>
@@ -917,18 +904,6 @@ find . -name "*.swp" -type l
     
       <li class="post">
         <a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/lightroom-load-canon-6d-gps/">Lightroom Load Canon 6D GPS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/outdoor/craghoppers-up-to-tricks/">Craghoppers Pro Stretch</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/ruby-methods-and-splat/">Ruby Methods and Splat</a>
       </li>
     
   </ul>

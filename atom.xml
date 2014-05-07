@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-05-05T21:23:48+01:00</updated>
+  <updated>2014-05-07T18:28:53+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,98 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab Toolboxes with Absolute Path Setup]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-toolboxes-with-absolute-path-setup/"/>
+    <updated>2014-05-07T18:22:48+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/matlab-toolboxes-with-absolute-path-setup</id>
+    <content type="html"><![CDATA[<p>When a script or function is called with <code>run(./relative/path/script)</code> the working directory is changed to the <code>./relative/path</code>. This means <code>pwd</code> it can be used to specify absolute paths:</p>
+
+<pre><code>run(./libs/example_toolbox/load_toolbox)
+</code></pre>
+
+<p>Which contains :</p>
+
+<pre><code>addpath([pwd, '/function']);
+</code></pre>
+
+<p>Now  The path will contain <code>C:/ ... /libs/example_toolbox/function</code></p>
+
+<p>As shown in the example this is useful for toolboxes etc which could be distributed with a top level script which adds the toolbox functions on to the path.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab: Array Content Check]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-array-content-check/"/>
+    <updated>2014-05-07T18:13:24+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/matlab-array-content-check</id>
+    <content type="html"><![CDATA[<p>Checking if an Array contains a number:</p>
+
+<pre><code>input = [1,2,3,4];
+check = 4;
+any(input==4)
+</code></pre>
+
+<p>Check if a number is contained in an array:</p>
+
+<pre><code>input = 32;
+check = [32,64,128];
+any( check==input )
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab: Split Odd &amp; Even Array Elements]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-split-odd-and-even-array-elements/"/>
+    <updated>2014-05-07T17:58:33+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/matlab-split-odd-and-even-array-elements</id>
+    <content type="html"><![CDATA[<p>Using Matlab to splitting data into odd and even samples.</p>
+
+<p>A for loop approach:</p>
+
+<pre><code>data_odd  = [];
+data_even = [];
+for i = 1:length(data)
+  if mod(i,2)
+    %% disp('odd')
+    data_odd = [data_odd, data(i)]
+  else
+    %% disp('even')
+    data_even = [data_even, data(i)]
+  end
+end
+</code></pre>
+
+<p>Matlab approach using ranges to remap values:</p>
+
+<pre><code>data_odd =data(1:2:end);
+data_even=data(2:2:end);
+</code></pre>
+
+<p>Ranges are composed of <code>start_index:step_size:end_index</code>. If step_size is omitted, 1 is assumed.</p>
+
+<p><code>end</code> has a special meaning when used inside an array, it is the position of the last element.
+To append to an array you could use <code>data(end+1) = append_value</code></p>
+
+<p>No error or warning is triggered if the <code>end_index</code> can not be reached with the given step size, which is why this works with <code>end</code> as the stop point of both sides.</p>
+
+<h2>Example</h2>
+
+<pre><code>a   = [1, 2, 3, 4, 5];
+odd = a(1:2:end)
+even= a(2:2:end)
+
+odd =
+     1     3     5
+
+even =
+     2     4
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Lee Standard Hood]]></title>
@@ -574,65 +666,6 @@ B=sortStruct(A,'value');
 </code></pre>
 
 <p>B is A sorted by &lsquo;value&rsquo;.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Raised Bed, Update]]></title>
-    <link href="http://lizard-spock.co.uk/blog/garden/raised-bed-update/"/>
-    <updated>2014-03-16T21:36:59+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/garden/raised-bed-update</id>
-    <content type="html"><![CDATA[<p>Update to the raised beds. Delivery of top soil:
-<img src="http://lizard-spock.co.uk/images/Gardening/RaisedBed2/morganp-20140226-Garden-_MG_6875.jpg" alt="" /></p>
-
-<p>Raised bed lined with weed barrier and then 20mm Gravel. Filled with Top soil, Compost and Vermiculite mix.
-My version of <a href="http://www.mysquarefootgarden.net/mels-mix/">Mels Mix</a>.</p>
-
-<p><img src="http://lizard-spock.co.uk/images/Gardening/RaisedBed2/morganp-20140226-Garden-_MG_6877.jpg" alt="" /></p>
-
-<p>The first bed prepared. With make shift cat deterrent.
-<img src="http://lizard-spock.co.uk/images/Gardening/RaisedBed2/morganp-20140226-Garden-_MG_6881.jpg" alt="" /></p>
-
-<p>The two raised bed in place for this (2014) year. The second raised bed has a deeper section for Carrots.
-<img src="http://lizard-spock.co.uk/images/Gardening/RaisedBed2/morganp-20140316-Garden-_MG_7028.jpg" alt="" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Tool Acquisition]]></title>
-    <link href="http://lizard-spock.co.uk/blog/garden/tool-acquisition/"/>
-    <updated>2014-03-16T19:37:57+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/garden/tool-acquisition</id>
-    <content type="html"><![CDATA[<p><img src="http://lizard-spock.co.uk/images/Gardening/morganp-20140316-Garden-_MG_7012.jpg" alt="" /></p>
-
-<p>Just after Christmas I got a Joseph Bently digging spade (larger than the border spade). Bought from <a href="http://www.dunbargardencentre.co.uk/">Dunbar Garden Center</a> for £22 as I had a £5 Off voucher for spending over £50 during December. Actually had 2 vouchers one was used for the <a href="http://lizard-spock.co.uk/blog/garden/birdbox/">bird boxes</a>.</p>
-
-<p><img src="http://lizard-spock.co.uk/images/Gardening/morganp-20140209-Spade-IMG_6737.jpg" alt="" /></p>
-
-<p>Used for preparing ground for the raised beds.</p>
-
-<p>The latest acquisition was a Joseph Bently Edging knife.</p>
-
-<p><img src="http://lizard-spock.co.uk/images/Gardening/morganp-20140316-Garden-_MG_7008.jpg" alt="" />
-Really should have got this before digging up the turf to put the raised beds in.
-This should result in much cleaner edges when removing turf.</p>
-
-<p><img src="http://lizard-spock.co.uk/images/Gardening/morganp-20140316-Garden-_MG_7016.jpg" alt="" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Propagator Trays]]></title>
-    <link href="http://lizard-spock.co.uk/blog/garden/propagator-trays/"/>
-    <updated>2014-03-16T19:23:48+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/garden/propagator-trays</id>
-    <content type="html"><![CDATA[<p>Sunday trip to <a href="http://www.merryhatton.co.uk/">Marryhatton</a>. Getting serious about propagation now, got these seed trays to move the seedlings to after they have germinated in the heated propagator.</p>
-
-<p><img src="http://lizard-spock.co.uk/images/Gardening/morganp-20140316-Garden-_MG_6991.jpg" alt="" /></p>
-
-<p>Saw (&amp; bought) this reed 5m by 2m screen on sale for £12.99!</p>
-
-<p><img src="http://lizard-spock.co.uk/images/Gardening/morganp-20140316-Garden-_MG_7002.jpg" alt="" /></p>
 ]]></content>
   </entry>
   

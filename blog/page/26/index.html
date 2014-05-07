@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I recently discovered a feature of regular expressions called lookahead. This means for a match the lookahead must exist but it does not become part &hellip;">
+  <meta name="description" content="I have for a while wondered about an ideal (good) approach to storing api keys in config files in ruby projects. A few conditions must be met:
+1) A &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,225 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/storing-secret-keys-in-ruby-config-files-an-approach/">Storing Secret Keys in Ruby Config Files an Approach</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-11T19:04:53+01:00" pubdate data-updated="true">Sep 11<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/storing-secret-keys-in-ruby-config-files-an-approach/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/storing-secret-keys-in-ruby-config-files-an-approach/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have for a while wondered about an ideal (good) approach to storing api keys in config files in ruby projects. A few conditions must be met:<br/>
+1) A new user must be given clear instructions on what has to be configured (until it is done), with boiler plate to complete.<br/>
+2) git must not accidentally let you submit the key.</p>
+
+<p>Gregory Brown steered me towards this setup. Create a config.rb file fill out the template for adding data. Then copy it to config.rb.example and add config.rb to the .gitignore</p>
+
+<pre><code>touch config.rb
+#setup template of config.rb
+cp config.rb config.rb.example
+echo "config.rb" &gt;&gt; .gitignore
+git add config.rb.example
+</code></pre>
+
+<p>The file requiring the keys can then do something like:</p>
+
+<pre><code>begin
+  require "config"
+rescue LoadError
+  STDERR.puts "You need to create a file called config.rb. See config.rb.example"
+exit
+</code></pre>
+
+<p>A slightly larger example.<br/>
+shorturl.rb</p>
+
+<pre><code>  require 'net/http'
+  require 'rubygems'
+  require 'json'
+  require 'cgi'
+
+  begin 
+     require File.dirname(__FILE__) + '/bit_ly_key'
+  rescue LoadError
+   STDERR.puts "You need to create a file called bit_ly_key.rb. See bit_ly_key.rb.example"
+   exit
+  end
+
+  module TechNews
+     class Shorturl
+        def initialize( url=nil )
+           bit_ly_keys = TechNews::BitLyKey.new
+
+           ##  url encode
+           url ||= "http://amaras-tech.co.uk"
+           @long_url = CGI.escape( url )
+           payload   = "http://api.bit.ly/v3/shorten?login=#{bit_ly_keys.login}&amp;apiKey=#{bit_ly_keys.apiKey}&amp;longUrl=#{@long_url}&amp;format=json"
+           @response = Net::HTTP.get URI.parse(payload)
+           @response = JSON.parse( @response )
+        end
+
+        def get_shorturl
+           return @response["data"]["url"]
+        end
+
+     end
+  end
+
+  if $0 == __FILE__
+     x = TechNews::Shorturl.new()
+     puts x.get_shorturl
+  end
+</code></pre>
+
+<p>bit_ly_key.rb</p>
+
+<pre><code># Register at [1] and get api key [2]
+# [1]: http://bit.ly
+# [2]: http://bit.ly/a/your_api_key
+
+module TechNews
+   class BitLyKey
+      attr_reader :login, :apiKey
+
+      def initialize
+         @login  = ""
+         @apiKey = ""
+      end
+
+   end
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/remove-sensitive-data-from-git/">Remove Sensitive Data from Git</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-10T04:16:56+01:00" pubdate data-updated="true">Sep 10<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/remove-sensitive-data-from-git/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/remove-sensitive-data-from-git/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://help.github.com/removing-sensitive-data/">Removing Sensitive data from git and eliminate history</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/amazon-drops-ec2-web-service-prices/">Amazon Drops EC2 Web Service Prices</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-09T02:24:49+01:00" pubdate data-updated="true">Sep 9<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/amazon-drops-ec2-web-service-prices/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/amazon-drops-ec2-web-service-prices/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The new <a href="http://aws.amazon.com/ec2/#pricing">EC2-Pricing</a> also includes a new Micro service. This micro service is intended for small apps servicing tens of requests per second.</p>
+
+<p>The standard price (EU) is $0.025 so if it was running 24/7/365 that would be:</p>
+
+<pre><code>(24*365*0.025) = $219 or $18.25/month  
+</code></pre>
+
+<p><a href="http://www.webfaction.com/?affiliate=morgy">Webfaction</a> can run the same thing for $9.50 a month, limited to fair use of 80MB memory.</p>
+
+<p>With a 1 year Reserved instance, $54 + $0.01 hourly charge this drops to $11.8/month.</p>
+
+<pre><code>((24*365*0.01)+54)/12 = 11.8
+</code></pre>
+
+<p>This could be dropped further with a 3 year Reserved instance.</p>
+
+<pre><code>((24*365*0.01*3)+82)/36 = $9.58/month
+</code></pre>
+
+<p>If the web then stays deactivated for half this time (site is country specific or only popular around new article posts) then this could drop the monthly cost down to $5.92</p>
+
+<pre><code>((12*365*0.01*3)+82)/36
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -507,272 +727,6 @@ $ sudo rm -rf \
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/active-record-attributes-simplify-update-and-create/">Active Record Attributes Simplify Update and Create.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-13T02:13:17+01:00" pubdate data-updated="true">Aug 13<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/active-record-attributes-simplify-update-and-create/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/active-record-attributes-simplify-update-and-create/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In Active Record when updating records I used to have an very manual process to this some thing like:</p>
-
-<pre><code>@todo.done = params['post']['done']
-@todo.desc = params['post']['desc']
-@todo.save
-</code></pre>
-
-<p>Model of Todo with boolean done and text description field.</p>
-
-<p>This can be done in a more maintainable fashion with:</p>
-
-<pre><code>@todo.update_attributes = params['post']
-</code></pre>
-
-<p>This does pose the security concern that the form (which transmits params[&lsquo;post&rsquo;]) could be hacked to add id fields or such like that you may get unwanted manipulation of the table.</p>
-
-<p>To solve this there is a attr_accessible which specifies fields allowed to be updated by the .attributes . while this might seem now like there is no benefit as if we run a migration to add an extra column we also need to update the Active Record model. While this is true we only need to update the model once and create/new  and update methods should benefit from this.</p>
-
-<pre><code>class Todo &lt; ActiveRecord::Base
-end
-</code></pre>
-
-<p>Becomes</p>
-
-<pre><code>class Todo &lt; ActiveRecord::Base
-   attr_accessible :done
-   attr_accessible :desc
-end
-</code></pre>
-
-<h2>Summary:</h2>
-
-<pre><code>@customer.update_attributes = { "description" =&gt; "Jolly fellow", "credit_rating" =&gt; "Superb" }
-</code></pre>
-
-<p>same as:</p>
-
-<pre><code>@customer.description = "Jolly fellow"
-@customer.credit_rating = "Superb"
-@customer.save
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/active-record-create-unique-or-return-existing-element/">Active Record Create Unique or Return Existing Element</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-08T09:20:39+01:00" pubdate data-updated="true">Aug 8<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/active-record-create-unique-or-return-existing-element/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/active-record-create-unique-or-return-existing-element/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When working with databases it is often a requirement to have unique elements (columns) which are not the primary key, this can be achieved in the active record model with:</p>
-
-<pre><code>require 'rubygems'
-require 'sequel'
-DB = Sequel.sqlite('./lesson4.db')
-DB.create_table :tags do
-   primary_key :id
-   varchar :tag
-end  
-
-require 'rubygems'
-require 'active_record'
-ActiveRecord::Base.establish_connection(
-  :adapter   =&gt; 'sqlite3',
-  :database  =&gt; './lesson4.db'
-)
-class Tag &lt;  ActiveRecord::Base
-   validates_uniqueness_of :tag, :scope =&gt; :tag
-end
-
-@tag = Tag.create( :tag =&gt; "duck" )
-##&lt;Tag id: 1, tag: "duck"&gt;
-@tag = Tag.create( :tag =&gt; "duck" )
-##&lt;Tag id: nil, tag: "duck"&gt;
-</code></pre>
-
-<p>So you can see that this constraint works nicely to stop duplicates, if it does find one it does not return the existing element, good for creating but not reusing existing elements.</p>
-
-<p>I find that the following method is usually what I want:</p>
-
-<pre><code>require 'rubygems'
-require 'active_record'
-ActiveRecord::Base.establish_connection(
-  :adapter   =&gt; 'sqlite3',
-  :database  =&gt; './lesson4.db'
-)
-class Tag &lt;  ActiveRecord::Base
-end 
-
-@tag = Tag.find_or_create_by_tag("lazy")
-##&lt;Tag id: 2, tag: "lazy"&gt;
-@tag = Tag.find_or_create_by_tag("lazy")
-##&lt;Tag id: 2, tag: "lazy"&gt;
-</code></pre>
-
-<p>[Added Friday 13/08/2010]
-If you need to run some code between creating and saving the object there is also find_or_initialize_by_</p>
-
-<pre><code>@tag = Tag.find_or_initialize_by_tag("quack")
-@tag.save
-</code></pre>
-
-<p>This may be useful if you have  accessible or protected attributes, &lsquo;attr_accessible&rsquo; &lsquo;attr_protected&rsquo; which may block some properties from being initialised correctly.</p>
-
-<p>I discovered this in the depths of <a href="http://api.rubyonrails.org/classes/ActiveRecord/Base.html">ActiveRecord Base</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/activerecord-queries-on-table-joins/">Activerecord Queries on Table Joins</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-02T11:33:16+01:00" pubdate data-updated="true">Aug 2<span>nd</span>, 2010</time>
-        
-           | <a href="/blog/tech/activerecord-queries-on-table-joins/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/activerecord-queries-on-table-joins/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>An example of joining tables through active record models. There is <a href="http://guides.rubyonrails.org/association_basics.html">a good tutorial on the basics</a> of Activerecord joins.
-For this example we will have Posts and People, we will not use a grammatical parser and will beusing plural of people as peoples. (Note: should be person and persons) Create table with something like:</p>
-
-<pre><code>require 'rubygems'
-require 'sequel'
-DB = Sequel.sqlite('./example.db')
-
-DB.create_table :posts do
-   primary_key :id
-   foreign_key :people_id, :peoples
-   varchar :title
-   text :body
-end
-
-DB.create_table :peoples do
-   primary_key :id
-   varchar :first_name
-   varchar :last_name
-   varchar :short_name
-end
-</code></pre>
-
-<p>Now the active record model should be something like:
-NB I have added the foreign key specifier as I could not find migrations to modify it.</p>
-
-<pre><code>require 'rubygems'
-require 'active_record'
-
-ActiveRecord::Base.establish_connection(
-   :adapter   =&gt; "sqlite3",
-   :database  =&gt; "./example.db"
-)
-
-class People &lt; ActiveRecord::Base
-   has_many :post, :foreign_key =&gt; :people_id
-
-end
-
-class Post &lt; ActiveRecord::Base
-   # mmm No foregin key required for this
-   belongs_to :people
-end
-</code></pre>
-
-<p>This allows ORM automatic joins:</p>
-
-<pre><code>@person = People.first
-@posts  = @person.post
-
-@post   = Post.first
-@person_name = @post.people.first_name
-
-#Now get 3 posts by a particular author and sort
-@person = People.first
-@posts = @person.post.find(:all, :order =&gt; "id DESC", :limit =&gt; 3) 
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/27/">&larr; Older</a>
@@ -787,11 +741,23 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (21)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (24)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-toolboxes-with-absolute-path-setup/">Matlab Toolboxes with Absolute Path Setup</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-array-content-check/">Matlab: Array Content Check</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-split-odd-and-even-array-elements/">Matlab: Split Odd &amp; Even Array Elements</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/lee-standard-hood/">Lee Standard Hood</a>
@@ -799,18 +765,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/lightroom-load-canon-6d-gps/">Lightroom Load Canon 6D GPS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/outdoor/craghoppers-up-to-tricks/">Craghoppers Pro Stretch</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/ruby-methods-and-splat/">Ruby Methods and Splat</a>
       </li>
     
   </ul>
