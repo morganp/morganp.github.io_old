@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-05-28T18:59:46+01:00</updated>
+  <updated>2014-05-28T19:13:48+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab: Listing Field Name Values of a Struct]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-listing-field-name-values-of-a-struct/"/>
+    <updated>2014-05-28T19:05:01+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/matlab-listing-field-name-values-of-a-struct</id>
+    <content type="html"><![CDATA[<pre><code>s = struct ;
+s(1).dat =‘a' ;
+s(1).freq=11 ;
+s(2).dat =‘b' ;
+s(2).freq=22 ;
+</code></pre>
+
+<p>Where:</p>
+
+<pre><code>s(1)
+
+ans =
+
+     dat: 'a'
+    freq: 11
+</code></pre>
+
+<p>How do you access [‘a’, ‘b’] and [11, 22]?</p>
+
+<pre><code>[s.dat] , [s.freq]
+</code></pre>
+
+<p>The <code>[]</code> are really important here.</p>
+
+<pre><code>[s.freq]
+
+ans =
+
+    11    22
+</code></pre>
+
+<p><a href="http://blogs.mathworks.com/loren/2007/04/19/vectorizing-access-to-an-array-of-structures/">Solution found on a Loren Post</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Fstop ICU Strobies]]></title>
@@ -630,21 +670,6 @@ sprintf(['%',num2str(min_width),'.', num2str(min_width),'d'], 1)
 min_width = 4;
 sprintf(['%0',num2str(6),'s'], dat)
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mavericks Disable Mail Sound]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/mavericks-disable-mail-sound/"/>
-    <updated>2014-03-18T17:41:49+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/mavericks-disable-mail-sound</id>
-    <content type="html"><![CDATA[<p>Since upgrading to Mavericks I get a sound whenever I get mail. I find this very annoying so first port of call is to disable &lsquo;Play user interface sound effects&rsquo; from  System Preferences &ndash;> Sound.</p>
-
-<p>This did not work, I found a separate option in mail for playing a sound on incoming mail, disabled that and other actions if you want.</p>
-
-<p><img src="http://lizard-spock.co.uk/images/Tech/Disable_mail_sound.png" alt="" /></p>
-
-<p><em>NB: On checking things to write this I found that &lsquo;Play user interface sound effects&rsquo; had been enabled again.</em></p>
 ]]></content>
   </entry>
   

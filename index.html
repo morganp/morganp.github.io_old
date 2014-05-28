@@ -9,7 +9,11 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="My large ICU loaded with my Strobies portrait kit and Canon 580EX MKII. The collapsed soft box is folded into the right hand side. Additional &hellip;">
+  <meta name="description" content="s = struct ;
+s(1).dat =‘a' ;
+s(1).freq=11 ;
+s(2).dat =‘b' ;
+s(2).freq=22 ; Where: s(1) ans = dat: 'a' freq: 11 How do you access [‘a’, ‘b’] and [11, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +85,76 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Matlab: Listing Field Name Values of a Struct</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-28T19:05:01+01:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>s = struct ;
+s(1).dat =‘a' ;
+s(1).freq=11 ;
+s(2).dat =‘b' ;
+s(2).freq=22 ;
+</code></pre>
+
+<p>Where:</p>
+
+<pre><code>s(1)
+
+ans =
+
+     dat: 'a'
+    freq: 11
+</code></pre>
+
+<p>How do you access [‘a’, ‘b’] and [11, 22]?</p>
+
+<pre><code>[s.dat] , [s.freq]
+</code></pre>
+
+<p>The <code>[]</code> are really important here.</p>
+
+<pre><code>[s.freq]
+
+ans =
+
+    11    22
+</code></pre>
+
+<p><a href="http://blogs.mathworks.com/loren/2007/04/19/vectorizing-access-to-an-array-of-structures/">Solution found on a Loren Post</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -621,83 +695,6 @@ available sizes in-line with the Craghoppers staple Classic Kiwi.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-methods-and-splat/">Ruby Methods and Splat</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-09T19:47:47+01:00" pubdate data-updated="true">Apr 9<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/ruby-methods-and-splat/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-methods-and-splat/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Ruby methods can set default values for optional arguments:</p>
-
-<pre><code>def commit(path=Dir.pwd)
-</code></pre>
-
-<p>To take an optional number of arguments a splat can be used:</p>
-
-<pre><code>def amethod( *arg1 )
-</code></pre>
-
-<p>The Problem is now to set defaults or require a set number of arguments.</p>
-
-<ol>
-<li>Splat arguments can not be defaulted.</li>
-<li>The splat can accept zero arguments.</li>
-</ol>
-
-
-<p>The following might be what you would expect for a default in a splat, but this conflicts with its abilliy to accept 0 arguments.</p>
-
-<pre><code>def commit(*path=[Dir.pwd]) ##THIS DOES NOT WORK
-</code></pre>
-
-<p>Splats can follow other arguments. To require at least one argument:</p>
-
-<pre><code>def add(files, *files_splat)
-</code></pre>
-
-<p>No arguments required but the first has a default:</p>
-
-<pre><code>def commit(path=Dir.pwd, *path_splat)
-</code></pre>
-
-<p>These also work as expected in Thor for parsing command line options. I have used them in my <a href="https://github.com/morganp/dssx">dssx</a> gem.</p>
-
-<p>In thor I also add this to the start of my methods to combine <code>path</code> and <code>path_splat</code> which are strings:</p>
-
-<pre><code>path_list = path + ' ' + path_splat * ' '
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -710,11 +707,15 @@ available sizes in-line with the Craghoppers staple Classic Kiwi.</p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (24)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (25)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Matlab: Listing Field Name Values of a Struct</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/fstop-icu-strobies/">Fstop ICU Strobies</a>
@@ -730,10 +731,6 @@ available sizes in-line with the Craghoppers staple Classic Kiwi.</p>
     
       <li class="post">
         <a href="/blog/engineering/matlab-array-content-check/">Matlab: Array Content Check</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-split-odd-and-even-array-elements/">Matlab: Split Odd &amp; Even Array Elements</a>
       </li>
     
   </ul>

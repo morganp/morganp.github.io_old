@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I think it is good practise to create a read only tag when releasing an application. This allows you to create a branch from it at any time or a bug &hellip;">
+  <meta name="description" content="A new very cool plugin for Rubyists using Vim. RubyBlock TextObjects created by Drew Neil from Vimcasts.org. Once installed it will add the commands &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,71 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-block-selection-in-vim-plugin/">Ruby Block Selection in Vim (Plugin)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-28T22:42:03+00:00" pubdate data-updated="true">Dec 28<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-block-selection-in-vim-plugin/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-block-selection-in-vim-plugin/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A new very cool plugin for Rubyists using Vim. <a href="http://vimcasts.org/blog/2010/12/a-text-object-for-ruby-blocks/">RubyBlock</a> TextObjects created by <a href="http://drewneil.com/">Drew Neil</a> from <a href="http://vimcasts.org/">Vimcasts.org</a>. Once installed it will add the commands var, vir, sr &amp; ir for selecting Ruby blocks, Drew Neil has explained it well on <a href="http://vimcasts.org/blog/2010/12/a-text-object-for-ruby-blocks/">VimCasts</a>.
+This vim plugin relies on two others <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> and <a href="http://www.vim.org/scripts/script.php?script_id=2100">textobj-user</a>. I believe that <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> is built in to current builds of vim and only requires enabling by adding the following to you .vimrc file:</p>
+
+<pre><code>runtime macros/matchit.vim    
+</code></pre>
+
+<p>If it is not built in to your build or you want the latest you can get a zip file from the <a href="http://www.vim.org/scripts/script.php?script_id=39">vim scripts</a> Uncompress it and put matchit.vim into your vim/plugin folder and matchit.txt in to your vim/doc. these are typically ~/.vim/plugin ~/.vim/doc but can be any where on thr $VIMRUNTIME, I redefine mine ot a github repo via (in .vimrc):</p>
+
+<pre><code>set runtimepath=$HOME/.unix_config/vim,$VIMRUNTIME
+</code></pre>
+
+<p>To add the new help files to vim help you run (using the path to you vim help files):</p>
+
+<pre><code>:helptags ~/.vim/doc
+</code></pre>
+
+<p>Next, <a href="http://www.vim.org/scripts/script.php?script_id=2100">textobj-user</a> plugin which is a generic wrapper for text objects and provides no added vim functionality by itself. Installation of this plugin confused me as the zip file and github all had make files and I do not like having to compile my plugins. However after uncompressing the zip file I moved the contents of the autoload folder to vim/autoload and contents of the docs folder to vim/docs, the RubyBlock plugin seems to work so I assume that this is all that is required.</p>
+
+<p>Drew Neil has distributed his plugin as a vimball (*.vba) which is the simplest to install way of distributing vim plugins. Download file from <a href="http://www.vim.org/scripts/script.php?script_id=3382">vim scripts</a>. Open the file with vim and  then :source %</p>
+
+<pre><code>$ vim ~/Downloads/textobj-rubyblock.vba
+:source %
+</code></pre>
+
+<p>Now open a ruby file move to a line inside a block and start trying out your new commands: var, vir, ar &amp; ir.</p>
+
+<p>Thanks to <a href="http://drewneil.com/">Drew Neil</a> of <a href="http://vimcasts.org/">Vimcasts.org</a> for creating this plugin.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -630,50 +695,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/stopstart-and-restart-samba-on-os-x/">Stop/Start and Restart Samba on OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-10-10T10:13:52+01:00" pubdate data-updated="true">Oct 10<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/stopstart-and-restart-samba-on-os-x/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/stopstart-and-restart-samba-on-os-x/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To Stop Start and Restart Samba on Mac OS X 10.6:</p>
-
-<pre><code>sudo /usr/sbin/smbd stop
-sudo /usr/sbin/smbd start
-sudo /usr/sbin/smbd restart
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/26/">&larr; Older</a>
@@ -688,11 +709,15 @@ sudo /usr/sbin/smbd restart
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (24)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (25)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Matlab: Listing Field Name Values of a Struct</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/fstop-icu-strobies/">Fstop ICU Strobies</a>
@@ -708,10 +733,6 @@ sudo /usr/sbin/smbd restart
     
       <li class="post">
         <a href="/blog/engineering/matlab-array-content-check/">Matlab: Array Content Check</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-split-odd-and-even-array-elements/">Matlab: Split Odd &amp; Even Array Elements</a>
       </li>
     
   </ul>
