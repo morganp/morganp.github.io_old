@@ -9,11 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="s = struct ;
-s(1).dat =‘a' ;
-s(1).freq=11 ;
-s(2).dat =‘b' ;
-s(2).freq=22 ; Where: s(1) ans = dat: 'a' freq: 11 How do you access [‘a’, ‘b’] and [11, &hellip;">
+  <meta name="description" content="Wrap strings with sprintf to allow the \n to be escaped correctly. &gt;&gt; disp('hello\nworld')
+hello\nworld &gt;&gt; disp(sprintf('hello\nworld')) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +82,53 @@ s(2).freq=22 ; Where: s(1) ans = dat: 'a' freq: 11 How do you access [‘a’, �
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-linebreaks-in-strings/">Matlab: Line Breaks in Strings</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-28T19:34:30+01:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-linebreaks-in-strings/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-linebreaks-in-strings/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Wrap strings with <code>sprintf</code> to allow the <code>\n</code> to be escaped correctly.</p>
+
+<pre><code>&gt;&gt; disp('hello\nworld')
+hello\nworld
+
+&gt;&gt; disp(sprintf('hello\nworld'))
+hello
+world
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -620,81 +664,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/outdoor/craghoppers-up-to-tricks/">Craghoppers Pro Stretch</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-10T18:12:22+01:00" pubdate data-updated="true">Apr 10<span>th</span>, 2014</time>
-        
-           | <a href="/blog/outdoor/craghoppers-up-to-tricks/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/outdoor/craghoppers-up-to-tricks/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Last year I got a pair of the pro stretch trousers for walking, they were pretty good for walking in so good I just went back to get another pair.</p>
-
-<p>There are however some changes to the current versions.</p>
-
-<p>The back of the waist band use to fully elasticated. Now only two small side
-sections on the waistband are elasticated this massively reduced the range of
-fit the trousers have. So much so they have introduced a larger size to
-accommodate the change in fit. This does however bring the styling and
-available sizes in-line with the Craghoppers staple Classic Kiwi.</p>
-
-<p>To note my new versions are a size larger, and they still have a small fit than the old ones.</p>
-
-<p>The feel of the new trousers is not as nice as the old ones. They have altered the fabric mix:</p>
-
-<p><code>OLD: 93% Polyamide 7% Elastane</code><br/>
-<code>NEW: 96% Polyamide 4% Elastane</code></p>
-
-<p>I guess the old ones were just to comfortable and stretchy :(</p>
-
-<p>The old style waist band:<br/>
-<img src="/images/Outdoor/morganp-20140410-CraghopperProStretch-_MG_7421.jpg" title="Old style wasit band" alt="" /></p>
-
-<p>New style Waistband, minimal stretchiness :<br/>
-<img src="/images/Outdoor/morganp-20140410-CraghopperProStretch-_MG_7425.jpg" alt="" />
-<img src="/images/Outdoor/morganp-20140410-CraghopperProStretch-_MG_7426.jpg" alt="" /></p>
-
-<p>Old style thigh pocket, completely external:
-<img src="/images/Outdoor/morganp-20140410-CraghopperProStretch-_MG_7423.jpg" title="Old style thigh pocket, completely external" alt="" /></p>
-
-<p>Inside view of pocket, not much to rub or cause irritation which is good for a close fitting trouser.
-<img src="/images/Outdoor/morganp-20140410-CraghopperProStretch-_MG_7428.jpg" alt="" /></p>
-
-<p>New style, thigh pocket zipper looks very sleek.
-<img src="/images/Outdoor/morganp-20140410-CraghopperProStretch-_MG_7427.jpg" alt="" /></p>
-
-<p>New style, internal thigh pocket cleverly designed for maximum irritation while walking.
-<img src="/images/Outdoor/morganp-20140410-CraghopperProStretch-_MG_7429.jpg" alt="" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -707,11 +676,15 @@ available sizes in-line with the Craghoppers staple Classic Kiwi.</p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (25)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (26)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-linebreaks-in-strings/">Matlab: Line Breaks in Strings</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Matlab: Listing Field Name Values of a Struct</a>
@@ -727,10 +700,6 @@ available sizes in-line with the Craghoppers staple Classic Kiwi.</p>
     
       <li class="post">
         <a href="/blog/engineering/matlab-toolboxes-with-absolute-path-setup/">Matlab Toolboxes with Absolute Path Setup</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-array-content-check/">Matlab: Array Content Check</a>
       </li>
     
   </ul>

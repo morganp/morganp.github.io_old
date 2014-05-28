@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Since upgrading to Mavericks I get a sound whenever I get mail. I find this very annoying so first port of call is to disable &lsquo;Play user &hellip;">
+  <meta name="description" content="For adding leading zeros to a number the following can be used for 4 decimal places with integer input: dat = 1;
+sprintf(['%4.4d'], dat) To make this &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,63 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-leading-0-s/">Matlab: Leading 0&#8217;s</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-25T20:52:35+00:00" pubdate data-updated="true">Mar 25<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-leading-0-s/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-leading-0-s/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For adding leading zeros to a number the following can be used for 4 decimal places with integer input:</p>
+
+<pre><code>dat = 1;
+sprintf(['%4.4d'], dat)
+</code></pre>
+
+<p>To make this programmable the following can be used:</p>
+
+<pre><code>dat       = 1;
+min_width = 4;
+sprintf(['%',num2str(min_width),'.', num2str(min_width),'d'], 1)
+</code></pre>
+
+<p>For string inputs you need:</p>
+
+<pre><code>dat       = '1'
+min_width = 4;
+sprintf(['%0',num2str(6),'s'], dat)
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -515,49 +573,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/git-tag-and-push-to-github/">Git Tag and Push to Github</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-13T19:16:57+00:00" pubdate data-updated="true">Mar 13<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/git-tag-and-push-to-github/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/git-tag-and-push-to-github/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>git tag -a 0.0.1 -m "Tag comment"
-git push --tags
-</code></pre>
-
-<p><em>Note: The use of <a href="http://semver.org/">major.minor.patch Semantic Versioning</a> is a really good idea.</em></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -572,11 +587,15 @@ git push --tags
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (25)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (26)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-linebreaks-in-strings/">Matlab: Line Breaks in Strings</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Matlab: Listing Field Name Values of a Struct</a>
@@ -592,10 +611,6 @@ git push --tags
     
       <li class="post">
         <a href="/blog/engineering/matlab-toolboxes-with-absolute-path-setup/">Matlab Toolboxes with Absolute Path Setup</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-array-content-check/">Matlab: Array Content Check</a>
       </li>
     
   </ul>

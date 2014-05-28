@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="After switching my Audio ripper (Max) accidentally to &lsquo;AAC Low Delay&rsquo; rather than plain &lsquo;AAC&rsquo; I realised too late after about &hellip;">
+  <meta name="description" content="I noticed today that greps recursive function is different to finds recursion. find ./ -name *.txt
+grep -R 'text' *.text The above find command will &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,60 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/recursive-grep-with-filtering/">Recursive Grep, with Filtering</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-19T15:56:31+00:00" pubdate data-updated="true">Jan 19<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/recursive-grep-with-filtering/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/recursive-grep-with-filtering/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I noticed today that greps recursive function is different to finds recursion.</p>
+
+<pre><code>find ./ -name *.txt
+grep -R 'text' *.text
+</code></pre>
+
+<p>The above find command will search from the sub-directory down while grep will only search the current folder. The FILE_PATTERN must also match the hierarchy in grep.</p>
+
+<p>To apply a file type filter in grep you can do:</p>
+
+<pre><code>grep -R --include=*.txt 'text' ./
+</code></pre>
+
+<p>This looks at all file from the current directory (./) but will only grep files which match the include.</p>
+
+<p>An older article on <a href="http://amaras-tech.co.uk/article/63">Basic grep usage</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -694,64 +749,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-search-and-replace-script/">Ruby Search and Replace Script.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-25T12:06:36+01:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-search-and-replace-script/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-search-and-replace-script/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A small standalone script that search through a file doing text substitutions.</p>
-
-<pre><code>#!/usr/bin/env ruby
-# Usage $ ruby_search_and_replace.rb file_to_update.txt
-
-def update_file( file_name )
-  puts "Updating : #{file_name}"
-  ::File.open( file_name, "rb"){ |f| @contents = f.read }
-
-  ## Replace Renamed thing here
-  #@contents.gsub!("search","replace")
-
-  ::File.open( file_name, "w" ){ |f| f.write @contents }
-end
-
-if $0 == __FILE__
-  #If file is called directly execute
-  update_file( ::File.absolute_path( ARGV[0] ) )
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/21/">&larr; Older</a>
@@ -766,11 +763,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (25)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (26)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-linebreaks-in-strings/">Matlab: Line Breaks in Strings</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Matlab: Listing Field Name Values of a Struct</a>
@@ -786,10 +787,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/matlab-toolboxes-with-absolute-path-setup/">Matlab Toolboxes with Absolute Path Setup</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-array-content-check/">Matlab: Array Content Check</a>
       </li>
     
   </ul>

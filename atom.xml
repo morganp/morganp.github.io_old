@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-05-28T19:13:48+01:00</updated>
+  <updated>2014-05-28T19:43:32+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab: Line Breaks in Strings]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-linebreaks-in-strings/"/>
+    <updated>2014-05-28T19:34:30+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/matlab-linebreaks-in-strings</id>
+    <content type="html"><![CDATA[<p>Wrap strings with <code>sprintf</code> to allow the <code>\n</code> to be escaped correctly.</p>
+
+<pre><code>&gt;&gt; disp('hello\nworld')
+hello\nworld
+
+&gt;&gt; disp(sprintf('hello\nworld'))
+hello
+world
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Matlab: Listing Field Name Values of a Struct]]></title>
@@ -643,33 +660,6 @@ puts a * " "
 </code></pre>
 
 <p><a href="http://commandliners.com/2009/12/screen-working-with-the-scrollback-buffer/">More notes on screen scrollback history</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Matlab: Leading 0's]]></title>
-    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-leading-0-s/"/>
-    <updated>2014-03-25T20:52:35+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/engineering/matlab-leading-0-s</id>
-    <content type="html"><![CDATA[<p>For adding leading zeros to a number the following can be used for 4 decimal places with integer input:</p>
-
-<pre><code>dat = 1;
-sprintf(['%4.4d'], dat)
-</code></pre>
-
-<p>To make this programmable the following can be used:</p>
-
-<pre><code>dat       = 1;
-min_width = 4;
-sprintf(['%',num2str(min_width),'.', num2str(min_width),'d'], 1)
-</code></pre>
-
-<p>For string inputs you need:</p>
-
-<pre><code>dat       = '1'
-min_width = 4;
-sprintf(['%0',num2str(6),'s'], dat)
-</code></pre>
 ]]></content>
   </entry>
   

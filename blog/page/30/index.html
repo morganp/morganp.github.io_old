@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="There currently does not appear to be any really good torrent file parsers available via the gems system. rubytorrent seems good at first glance but &hellip;">
+  <meta name="description" content="I have written a few command line tools in ruby which I use to perform file system maintenance. Mainly sorting files and applying standard renames, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,66 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/github-command-line-tools-with-static-paths/">GitHub Command Line Tools with Static Paths</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-04T23:19:58+01:00" pubdate data-updated="true">Jun 4<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/github-command-line-tools-with-static-paths/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/github-command-line-tools-with-static-paths/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have written a few command line tools in ruby which I use to perform file system maintenance. Mainly sorting files and applying standard renames, because the the folders I want to sort are always in the same location I do not want to have to remember to run the command in the correct directory so I add the paths explicitly. This creates a problem with uploading to <a href="http://github.com/morganp">GitHub</a> as other people would then need to modify the script.</p>
+
+<p>Here is a short example of how you can get around it using Environment Variables</p>
+
+<pre><code>#!/usr/bin/env ruby
+## Command Line tools can now be portable while working on static folders.
+
+if ENV['MEDIA_FOLDER'].nil?
+   puts "Add this to ~/.bashrc"
+   puts "Or Windows variables"
+   puts "export MEDIA_FOLDER='[\"/user/name/Movies\", \"/user/name/TV Shows\"]'"
+else
+   puts ENV['MEDIA_FOLDER']
+end
+</code></pre>
+
+<p>NB: when using the variables remember that it is a string and not an array. Convert to ruby Array by calling eval on it.</p>
+
+<pre><code>eval(ENV['TEMP_FILES']).each do |x|
+   puts x
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -606,105 +666,6 @@ $ sudo ~/bin/nginx/sbin/nginx -s reload
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/installing-ruby-enterprise-on-mac-os-x/">Installing Ruby Enterprise on Mac OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-04T11:13:48+01:00" pubdate data-updated="true">May 4<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/installing-ruby-enterprise-on-mac-os-x/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/installing-ruby-enterprise-on-mac-os-x/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.rubyenterpriseedition.com/download.html">Download ruby enterprise</a> and follow instructions on page. The exact commands I used are:</p>
-
-<pre><code>$ cd ~/bin
-$ wget http://rubyforge.org/frs/download.php/68719/ruby-enterprise-1.8.7-2010.01.tar.gz
-$ tar xzvf ruby-enterprise-1.8.7-2010.01.tar.gz
-$ cd ruby-enterprise-1.8.7-2010.01
-$ rm -rf ../ruby-enterprise-1.8.7-2010.01.tar.gz
-$ ./installer
-</code></pre>
-
-<p>I installed to /Users/me/bin/ruby-ee-1.8.7</p>
-
-<pre><code>$ cd /Users/me/bin/ruby-ee-1.8.7
-$ rm -rf ~/bin/ruby-enterprise-1.8.7-2010.01/
-</code></pre>
-
-<p>Add this to your ~/.bashrc</p>
-
-<pre><code>#Ruby Enterprise 1.8.7
-export PATH=~/bin/ruby-ee-1.8.7/bin:$PATH
-</code></pre>
-
-<p>On with the install (of Passenger)</p>
-
-<pre><code>~/bin/ruby-ee-1.8.7/bin/passenger-install-nginx-module
-</code></pre>
-
-<p>I chose option 1, to get nginx installed for me, I chose /Users/me/bin/nginx for the location.</p>
-
-<p>Start the service</p>
-
-<pre><code>$ sudo ~/bin/nginx/sbin/nginx
-</code></pre>
-
-<p>For help and reloading</p>
-
-<pre><code>$ sudo ~/bin/nginx/sbin/nginx -h
-$ sudo ~/bin/nginx/sbin/nginx -s reload
-</code></pre>
-
-<p>Visit 127.0.0.1 in you rbrowser and the default screen should be there.
-The web application that it is loading is set in:</p>
-
-<pre><code>~/bin/nginx/conf/nginx.conf
-</code></pre>
-
-<p>I added in a root to my Sinatra application that I have been working on:</p>
-
-<pre><code>server {
-    listen       80;
-    server_name  localhost;
-    root /Users/morgy/Documents/Code/Amaras-Site/public;   # &lt;--- be sure to point to 'public'!
-    passenger_enabled on;
-}
-</code></pre>
-
-<p>This then returned a 403 error&hellip;
-Still a little work todo will post update on resolving this.</p>
-
-<p>[Update]
-I forgot that root had to point to the public folder inside the rack (Sinatra) application. I know there is a big comment there saying make sure but I just read that to be a permissions issue rather than the more literal a folder called public.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/31/">&larr; Older</a>
@@ -719,11 +680,15 @@ I forgot that root had to point to the public folder inside the rack (Sinatra) a
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (25)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (26)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-linebreaks-in-strings/">Matlab: Line Breaks in Strings</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Matlab: Listing Field Name Values of a Struct</a>
@@ -739,10 +704,6 @@ I forgot that root had to point to the public folder inside the rack (Sinatra) a
     
       <li class="post">
         <a href="/blog/engineering/matlab-toolboxes-with-absolute-path-setup/">Matlab Toolboxes with Absolute Path Setup</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-array-content-check/">Matlab: Array Content Check</a>
       </li>
     
   </ul>
