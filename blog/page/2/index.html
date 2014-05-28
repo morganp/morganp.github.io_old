@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Last year I got a pair of the pro stretch trousers for walking, they were pretty good for walking in so good I just went back to get another pair. &hellip;">
+  <meta name="description" content="Adobe Lightroom will only load GPX, Canon 6D only saves NMEA data. GPSBabel can be used to convert the *.log from the camera to *.gpx. Download the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/lightroom-load-canon-6d-gps/">Lightroom Load Canon 6D GPS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-14T19:01:06+01:00" pubdate data-updated="true">Apr 14<span>th</span>, 2014</time>
+        
+           | <a href="/blog/photography/lightroom-load-canon-6d-gps/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/lightroom-load-canon-6d-gps/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Adobe Lightroom will only load GPX, Canon 6D only saves NMEA data.</p>
+
+<p><a href="http://www.gpsbabel.org/">GPSBabel</a> can be used to convert the <code>*.log</code> from the camera to <code>*.gpx</code>.</p>
+
+<p>Download the software then load the log file for the input setting the type to <code>NMEA 0183 sentences</code>.</p>
+
+<p>Set the output file name and set the format to <code>GPX XML</code>. Click OK to generate the GPX which can now be loaded into Lightroom.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -692,65 +737,6 @@ puts a * " "
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/screen-scrollback/">Screen Scrollback</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-25T20:57:28+00:00" pubdate data-updated="true">Mar 25<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/screen-scrollback/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/screen-scrollback/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Enter copy mode</p>
-
-<pre><code>ctrl-a [
-</code></pre>
-
-<p>Use cursors of vim motions to move to relevant area.</p>
-
-<p>Space to start selection, space again to end selection and copy to screen copy-buffer</p>
-
-<p>Move to virtual screen terminal where you want to paste then</p>
-
-<pre><code>ctrl-a ]
-</code></pre>
-
-<p>To paste to file enter</p>
-
-<pre><code>cat &gt; paste.file
-#// Then press ctrl-a ]
-</code></pre>
-
-<p><a href="http://commandliners.com/2009/12/screen-working-with-the-scrollback-buffer/">More notes on screen scrollback history</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -765,11 +751,15 @@ puts a * " "
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (26)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (27)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-grid/">Matlab: Grid</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-linebreaks-in-strings/">Matlab: Line Breaks in Strings</a>
@@ -785,10 +775,6 @@ puts a * " "
     
       <li class="post">
         <a href="/blog/home/kettlebell-rack/">Kettlebell Rack</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-toolboxes-with-absolute-path-setup/">Matlab Toolboxes with Absolute Path Setup</a>
       </li>
     
   </ul>

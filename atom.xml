@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-05-28T19:43:32+01:00</updated>
+  <updated>2014-05-28T19:56:45+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Matlab: Grid]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-grid/"/>
+    <updated>2014-05-28T19:49:38+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/matlab-grid</id>
+    <content type="html"><![CDATA[<p><img src="http://lizard-spock.co.uk/images/Engineering/matlab_grid/grid_on.png" alt="" /></p>
+
+<p>To add X and Y grids to plots :</p>
+
+<pre><code>grid on;
+</code></pre>
+
+<p><img src="http://lizard-spock.co.uk/images/Engineering/matlab_grid/y_grid_on.png" alt="" /></p>
+
+<p>To add Y only grid:</p>
+
+<pre><code>set(gca,'XGrid','off','YGrid','on');
+</code></pre>
+
+<p><img src="http://lizard-spock.co.uk/images/Engineering/matlab_grid/x_grid_on.png" alt="" /></p>
+
+<p>To add X only grid</p>
+
+<pre><code>set(gca,'XGrid','on','YGrid',’off');
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Matlab: Line Breaks in Strings]]></title>
@@ -631,35 +659,6 @@ puts a.to_s
 puts a * " "
 &gt; 1 2 3
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Screen Scrollback]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/screen-scrollback/"/>
-    <updated>2014-03-25T20:57:28+00:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/screen-scrollback</id>
-    <content type="html"><![CDATA[<p>Enter copy mode</p>
-
-<pre><code>ctrl-a [
-</code></pre>
-
-<p>Use cursors of vim motions to move to relevant area.</p>
-
-<p>Space to start selection, space again to end selection and copy to screen copy-buffer</p>
-
-<p>Move to virtual screen terminal where you want to paste then</p>
-
-<pre><code>ctrl-a ]
-</code></pre>
-
-<p>To paste to file enter</p>
-
-<pre><code>cat &gt; paste.file
-#// Then press ctrl-a ]
-</code></pre>
-
-<p><a href="http://commandliners.com/2009/12/screen-working-with-the-scrollback-buffer/">More notes on screen scrollback history</a></p>
 ]]></content>
   </entry>
   
