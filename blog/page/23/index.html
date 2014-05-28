@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="The latest addition to my .vimrc below, allows ;g to smart indent the current file. It is the same as gg=G but returning you to the same position. &hellip;">
+  <meta name="description" content="I have not fully read it but it looks like this is a good guide to bash scripting. A few things that normally catch me out trying to load modules &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,139 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/bash-scripts-and-cron/">Bash Scripts and Cron</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-28T20:01:13+01:00" pubdate data-updated="true">Apr 28<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/bash-scripts-and-cron/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/bash-scripts-and-cron/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have not fully read it but it looks like this is a <a href="http://mywiki.wooledge.org/BashGuide">good guide to bash scripting</a>. A few things that normally catch me out trying to load modules inside a script, but they fail with:</p>
+
+<pre><code>&gt; module: command not found
+</code></pre>
+
+<p>This is due to the module system not being loaded. For Linux/Unix systems adding the 3rd line below should fix the issue.</p>
+
+<pre><code>#!/bin/bash
+
+. /usr/share/modules/init/bash
+module load something
+</code></pre>
+
+<p>NB: Not sure how to do this on Mac OS X</p>
+
+<p>The Second bash scripting issue that trips me up is when adding to cron.</p>
+
+<p>cron or crontab is a way to run scripts at regular intervals, however by default it runs in a minimal environment. This means that a script which executes correctly in your terminal may not work as expected when entered in cron.</p>
+
+<h2>Solution 1</h2>
+
+<pre><code>#!/bin/bash
+source ~/.bashrc
+
+echo "The rest of the script"
+</code></pre>
+
+<p>Sourcing your bashrc in the script while this works it requires the script to be written based on how it will be deployed. Solution 2 fixes the crontab for the environment it will run in.</p>
+
+<h2>Solution 2</h2>
+
+<p>edit the crontab</p>
+
+<pre><code>$ crontab -e
+</code></pre>
+
+<p>From this:</p>
+
+<pre><code>* * * * * /path/to/script
+</code></pre>
+
+<p>to this:</p>
+
+<pre><code>* * * * * /bin/bash -l -c '/path/to/script'
+</code></pre>
+
+<p>-l loads the full environment<br/>
+-c tells bash that there is a script to execute</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vimfu-end-of-line-character-placement/">Vimfu End of Line Character Placement</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-24T12:07:07+01:00" pubdate data-updated="true">Apr 24<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/vimfu-end-of-line-character-placement/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vimfu-end-of-line-character-placement/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In Vim to insert text before the cursor press &lsquo;i&rsquo;, to insert text after cursor &lsquo;a&rsquo; or to edit at the end of line &lsquo;A&rsquo;. To paste before the cursor &lsquo;p&rsquo; to paste after the cursor &lsquo;P&rsquo;.</p>
+
+<p>While these variants exist I still find it easier to place the cursor &lsquo;correctly&rsquo; and use one variant. However this results in a little trouble with end of lines as I can not move the cursor to paste &lsquo;P&rsquo; after the last character.</p>
+
+<p>Adding the following line to <a href="https://github.com/morganp/dotfiles/blob/master/dotfiles/.vimrc">my .vimrc</a> has helped me work around this:</p>
+
+<pre><code>" Allow cursor to move 1 character past end of line
+set virtualedit=onemore
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -618,166 +751,6 @@ end # while true
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/amaras-site-updates/">Amaras Site Updates</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-28T13:19:09+00:00" pubdate data-updated="true">Feb 28<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/amaras-site-updates/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/amaras-site-updates/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have just finished some minor updates to the site. The largest is the move to Droid Fonts, <a href="http://www.google.com/webfonts">Google Fonts</a> provides a way for free cross platform fonts to be used. <a href="http://www.fontsquirrel.com/">Font Squirrel</a> is also meant to be a good alternative.</p>
-
-<p>The link colours have also been changed around and dropped the underline. The graduated colour in the header is now a repeated image instead of css as the original method of the graduation forced a horizontal scroll bar.</p>
-
-<p>Articles can now be filtered by tag <a href="/article/tag/Ruby">/tag/Ruby</a>, and the <a href="/article/rss">RSS</a> works again.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ormactiverecord-or-ruby-sort/">ORM(Activerecord) or Ruby Sort</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-20T02:19:17+00:00" pubdate data-updated="true">Feb 20<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/ormactiverecord-or-ruby-sort/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ormactiverecord-or-ruby-sort/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Based on an <a href="http://amaras-tech.co.uk/people/morgan/article/18">old Article</a> I wrote, investigating incase sensitive sorting performance.</p>
-
-<p>I have an active record model call Tag with tag and id properties, it contains 3000 randomly chosen and sorted words.</p>
-
-<h3>My Summary of results:</h3>
-
-
-<p>
-Average time for ORM (Activerecord) to return results 0.1928<br/>
-Average time for ORM to return sorted results 0.1290 (0.0638 quicker!)<br/>
-Ruby to sort (non-case sensitive) results 0.0138<br/>
-Ruby to sort pre-sorted* results 0.0606 (4.4 times slower!)</p>
-
-<p>*Pre-sorted is case sensitive</p>
-
-<p>More investigation is require, results could be effected by caching at the ORM/DB layer, but returning sorted results appears quicker than unsorted. and sorting in ruby is 4.4 times slower with pre sorted data.</p>
-
-<p>The test:</p>
-
-<pre><code>#For Benchmarking 
-require 'benchmark'
-include Benchmark
-
-bm(10) do |b|
-       b.report("ORM") {        @tags = Tag.find(:all) }
-       b.report("Sort by") {    @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
-       b.report("ORM sorted") { @tags = Tag.find(:all, :order =&gt; "tag") }
-       b.report("Sort by") {    @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
-  end
-
-  puts "same test but presorted after ruby sort"
-  bm(10) do |b|
-       b.report("ORM sorted") { @tags = Tag.find(:all, :order =&gt; "tag") }
-       b.report("Sort by") {    @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
-       b.report("ORM") {        @tags = Tag.find(:all) }
-       b.report("Sort by") {    @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
- end
-</code></pre>
-
-<p>The results collated: ORM returning unsorted results</p>
-
-<pre><code>            user     system      total        real
-ORM         0.200000   0.010000   0.210000 (  0.216162)
-ORM         0.160000   0.000000   0.160000 (  0.171810)
-ORM         0.200000   0.020000   0.220000 (  0.215265)
-ORM         0.160000   0.000000   0.160000 (  0.167882)
-ORM         0.200000   0.020000   0.220000 (  0.216648)
-ORM         0.170000   0.000000   0.170000 (  0.169064)
-</code></pre>
-
-<p>Full ruby sort</p>
-
-<pre><code>Sort by     0.010000   0.000000   0.010000 (  0.014169)
-Sort by     0.020000   0.000000   0.020000 (  0.012673)
-Sort by     0.010000   0.000000   0.010000 (  0.014791)
-Sort by     0.010000   0.000000   0.010000 (  0.012934)
-Sort by     0.020000   0.000000   0.020000 (  0.014387)
-Sort by     0.010000   0.000000   0.010000 (  0.013655)
-</code></pre>
-
-<p>Case-sensitive ORM sorting</p>
-
-<pre><code>ORM sorted  0.110000   0.000000   0.110000 (  0.138993)
-ORM sorted  0.100000   0.010000   0.110000 (  0.135767)
-ORM sorted  0.110000   0.000000   0.110000 (  0.132612)
-ORM sorted  0.100000   0.000000   0.100000 (  0.150029)
-ORM sorted  0.100000   0.000000   0.100000 (  0.108307)
-ORM sorted  0.100000   0.000000   0.100000 (  0.108133)
-</code></pre>
-
-<p>Ruby sorting pre-sorted results</p>
-
-<pre><code>Sort by     0.080000   0.000000   0.080000 (  0.132228)
-Sort by     0.020000   0.000000   0.020000 (  0.015885)
-Sort by     0.090000   0.000000   0.090000 (  0.102128)
-Sort by     0.010000   0.000000   0.010000 (  0.014791)
-Sort by     0.090000   0.000000   0.090000 (  0.086072)
-Sort by     0.010000   0.000000   0.010000 (  0.012341)
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/24/">&larr; Older</a>
@@ -792,11 +765,19 @@ Sort by     0.010000   0.000000   0.010000 (  0.012341)
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (24)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (24)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/photography/fstop-icu-strobies/">Fstop ICU Strobies</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/home/kettlebell-rack/">Kettlebell Rack</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-toolboxes-with-absolute-path-setup/">Matlab Toolboxes with Absolute Path Setup</a>
@@ -808,14 +789,6 @@ Sort by     0.010000   0.000000   0.010000 (  0.012341)
     
       <li class="post">
         <a href="/blog/engineering/matlab-split-odd-and-even-array-elements/">Matlab: Split Odd &amp; Even Array Elements</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/lee-standard-hood/">Lee Standard Hood</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a>
       </li>
     
   </ul>

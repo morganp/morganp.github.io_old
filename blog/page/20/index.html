@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="When creating applications normal messages should go to stdout and error messages should go to stderr, unfortunately there is not a nice ruby way the &hellip;">
+  <meta name="description" content="Lightroom 3.6 has been released. Downloads for Mac and Windows. Hugin 2011.04 has also been released.
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,92 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/photo-software-update-hugin-201104-lightroom-36/">Photo Software Update, Hugin 2011.04 & Lightroom 3.6</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-26T18:17:30+00:00" pubdate data-updated="true">Dec 26<span>th</span>, 2011</time>
+        
+           | <a href="/blog/photography/photo-software-update-hugin-201104-lightroom-36/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/photo-software-update-hugin-201104-lightroom-36/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Lightroom 3.6 has been released. Downloads for <a href="http://www.adobe.com/support/downloads/thankyou.jsp?ftpID=5307&amp;fileID=4949">Mac</a> and <a href="http://www.adobe.com/support/downloads/detail.jsp?ftpID=5308">Windows</a>.</p>
+
+<p><a href="http://hugin.sourceforge.net/releases/2011.4.0/">Hugin 2011.04</a> has also been released.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-get-a-users-real-name/">Ruby Get a Users Real Name</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-22T12:06:08+00:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2011</time>
+        
+           | <a href="/blog/tech/ruby-get-a-users-real-name/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-get-a-users-real-name/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>There does not appear to be a nice way to get a current users real name in ruby. The best way I have found on *nix systems (Not windows) is:</p>
+
+<pre><code>%x{finger `whoami`}.match(/Name: ([\w ]*)/)
+real_username = $1
+</code></pre>
+
+<p>There are other ways including parsing the git profile if it exists. At some point I will try to get these packaged up into a gem which can work its way through a list of possible sources.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -638,120 +725,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/warning-already-initialized-constant/">Warning: Already Initialized Constant</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-06T00:57:30+01:00" pubdate data-updated="true">Oct 6<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/warning-already-initialized-constant/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/warning-already-initialized-constant/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Do you some times see:</p>
-
-<pre><code>FileUtils.rb:93: warning: already initialized constant OPT_TABLE
-FileUtils.rb:1176: warning: already initialized constant S_IF_DOOR
-FileUtils.rb:1406: warning: already initialized constant DIRECTORY_TERM
-FileUtils.rb:1408: warning: already initialized constant SYSCASE
-FileUtils.rb:1527: warning: already initialized constant LOW_METHODS
-FileUtils.rb:1533: warning: already initialized constant METHODS
-</code></pre>
-
-<p>After quite some searching I discovered the cause of these errors. require is clever it only allows you to require each file once.</p>
-
-<pre><code>ruby-1.9.2-p290 :001 &gt; require 'fileutils'
- =&gt; true 
-ruby-1.9.2-p290 :002 &gt; require 'fileutils'
- =&gt; false 
-</code></pre>
-
-<p>However it is not case sensitive.</p>
-
-<pre><code>ruby-1.9.2-p290 :003 &gt; require 'FileUtils'
-.... 
-=&gt; true 
-</code></pre>
-
-<p>So if you accidentally include FileUtils this is the same as reopening the module and re-declaring the constants a second time. you should always require the lowercase version. you can <a href="http://www.ruby-forum.com/topic/123026">include the camelcase</a> version for mixins.</p>
-
-<p>If you are getting this during development of a program you could do something like :</p>
-
-<pre><code>grep -Rn "require 'FileUtils'" ~/Code
-</code></pre>
-
-<p>Incase the error seems to be coming from a file other than fileutils.rb it is likely that tehre is a camelcase version of it being included somewhere, try searching for it be modifying the above command.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/homebrew-list-outdated-packages/">Homebrew List Outdated Packages</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-21T21:58:22+01:00" pubdate data-updated="true">Sep 21<span>st</span>, 2011</time>
-        
-           | <a href="/blog/tech/homebrew-list-outdated-packages/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/homebrew-list-outdated-packages/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>brew update
-brew outdated
-</code></pre>
-
-<p><a href="https://github.com/Homebrew/homebrew/wiki/FAQ">Homebrew</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/21/">&larr; Older</a>
@@ -766,11 +739,19 @@ brew outdated
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (24)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (24)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/photography/fstop-icu-strobies/">Fstop ICU Strobies</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/home/kettlebell-rack/">Kettlebell Rack</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-toolboxes-with-absolute-path-setup/">Matlab Toolboxes with Absolute Path Setup</a>
@@ -782,14 +763,6 @@ brew outdated
     
       <li class="post">
         <a href="/blog/engineering/matlab-split-odd-and-even-array-elements/">Matlab: Split Odd &amp; Even Array Elements</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/lee-standard-hood/">Lee Standard Hood</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a>
       </li>
     
   </ul>

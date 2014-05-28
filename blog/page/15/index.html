@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Some info on what has changed in Xcode 4.3. Latest is 4.4 but a lot changed in 4.3 making this a good reference point. Downloaded the XCode app, but &hellip;">
+  <meta name="description" content="Little Snitch There is currently a preview (Beta) of [Little Snitch 3][littelsnitch3]. If you have not come across Little Snitch before it is a Third &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,229 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mountain-lion-setup-part-3-little-snitch-dotfiles/">Mountain Lion Setup, Part 3 : Little Snitch & Dotfiles</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-16T12:44:04+01:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/mountain-lion-setup-part-3-little-snitch-dotfiles/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mountain-lion-setup-part-3-little-snitch-dotfiles/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Little Snitch</h2>
+
+<p>There is currently a preview (Beta) of [Little Snitch 3][littelsnitch3]. If you have not come across Little Snitch before it is a Third Party Firewall for OS X. When an application tries to make a network connection (connecting to the internet) it allerts you and allows the application to be blocked. Controllability is based on the application, the place it is connecting to and the port that it is connecting on.</p>
+
+<p>From Version 3 of Little Snitch we also get control of incoming connections. Version 3 is a free preview until September 15, 2012.</p>
+
+<p>Installation of Little Snitch requires a restart.</p>
+
+<h2>Dotfiles</h2>
+
+<p>For last few years I have ket [my dotfiles][dotfiles] (configuration files) on <a href="https://github.com/">github</a>.</p>
+
+<p>First create a new set of RSA keys (if on a new machine) from <code>/Applications/Utilities/Terminal.app</code>:</p>
+
+<pre><code>ssh-keygen -t rsa
+cat ~/.ssh/id_rsa.pub
+</code></pre>
+
+<p>Then copy this output and add it to your <a href="https://github.com/settings/ssh">github ssh keys</a>.</p>
+
+<p>if git is not installed <code>brew install git</code></p>
+
+<pre><code>#Configure Git Globals
+git config --global user.name "Your Name"
+git config --global user.name your@email.com
+# Get Dotfiles Repo
+cd ~
+git clone git@github.com:morganp/dotfiles.git
+</code></pre>
+
+<p>Add ssh to Little Snitch, Forever, Any Connection, Allow.</p>
+
+<p>Once the cloning of the repo has completed, I go into my dotfiles folder and run the installer.</p>
+
+<pre><code>cd ~/dotfiles 
+./install --all
+</code></pre>
+
+<p>There are 2 types of bash config, .bashrc and .bash_login.</p>
+
+<p>For consistency I change the .bash_login to just load the .bashrc</p>
+
+<pre><code>if [ -f $HOME/.bashrc ]; 
+then
+  source $HOME/.bashrc ; 
+fi
+</code></pre>
+
+<p>This may alter some of the things that RVM has put in place my github dotfiles include this but you need to make sure that included in your .basrc is :</p>
+
+<pre><code>[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+</code></pre>
+
+<p>Lets also install Mac VIM for good measure:</p>
+
+<pre><code>brew install macvim
+</code></pre>
+
+<p>Adding Curl to Little Snitch, Forever, Any Connection, Allow.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mountain-lion-setup-part-2-homebrew-rvm/">Mountain Lion Setup, Part 2 Homebrew & RVM</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-16T11:34:57+01:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/mountain-lion-setup-part-2-homebrew-rvm/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mountain-lion-setup-part-2-homebrew-rvm/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Following on from <a href="http://amaras-tech.co.uk/article/180">Macbook Pro Setup</a>, Now it is time to install some of the command line tools.</p>
+
+<p>I have install XCode 4.4 and the command line tools, this allows brew to compile code, the compiler will then get replaced using homebrew to allow ruby compilation.</p>
+
+<p>Alternatively install <a href="https://github.com/kennethreitz/osx-gcc-installer/">osx-gcc-installer</a> instead of XCode to get home brew running.</p>
+
+<h2><a href="http://mxcl.github.com/homebrew/">Homebrew</a></h2>
+
+<p>From <code>/Applications/Utilities/Terminal.app</code></p>
+
+<pre><code>$ ruby &lt;(curl -fsSkL raw.github.com/mxcl/homebrew/go)
+</code></pre>
+
+<p>Which should run a look some thing like:</p>
+
+<pre><code>==&gt; This script will install:
+/usr/local/bin/brew
+/usr/local/Library/Formula/...
+/usr/local/Library/Homebrew/...
+/usr/local/share/man/man1/brew.1
+
+Press enter to continue
+==&gt; /usr/bin/sudo /bin/mkdir /usr/local
+Password:
+==&gt; /usr/bin/sudo /bin/chmod g+rwx /usr/local
+==&gt; /usr/bin/sudo /usr/bin/chgrp admin /usr/local
+==&gt; Downloading and Installing Homebrew...
+remote: Counting objects: 76442, done.
+remote: Compressing objects: 100% (36866/36866), done.
+remote: Total 76442 (delta 52004), reused 60755 (delta 38765)
+Receiving objects: 100% (76442/76442), 10.90 MiB | 1.02 MiB/s, done.
+Resolving deltas: 100% (52004/52004), done.
+From https://github.com/mxcl/homebrew
+ * branch            master     -&gt; FETCH_HEAD
+==&gt; Installation successful!
+You should run `brew doctor' *before* you install anything.
+Now type: brew help
+</code></pre>
+
+<p>Run :</p>
+
+<pre><code>$ brew doctor
+&gt; Your system is raring to brew
+</code></pre>
+
+<p>Test Brew by installing <a href="http://en.wikipedia.org/wiki/Wget">wget</a>:</p>
+
+<pre><code>$ brew install wget
+==&gt; Downloading http://ftpmirror.gnu.org/wget/wget-1.14.tar.gz
+######################################################################## 100.0%
+==&gt; ./configure --disable-debug --prefix=/usr/local/Cellar/wget/1.14 --sysconfdir=/usr
+==&gt; make install
+/usr/local/Cellar/wget/1.14: 7 files, 676K, built in 39 seconds
+</code></pre>
+
+<h2><a href="https://rvm.io/rvm/install/">RVM</a></h2>
+
+<p>We need to update the compiler to a gcc compatible with ruby as XCode4.2+ does not play well with others.</p>
+
+<pre><code>brew update
+brew install libksba
+brew tap homebrew/dupes
+brew install autoconf automake apple-gcc42
+rvm pkg install openssl
+</code></pre>
+
+<p>List available Rubies</p>
+
+<pre><code>rvm list known
+</code></pre>
+
+<p>Install 1.9.3 head</p>
+
+<pre><code>rvm install 1.9.3
+</code></pre>
+
+<p>Make ruby 1.9.3 the default</p>
+
+<pre><code>rvm use 1.9.3 --default
+</code></pre>
+
+<p>Clean up brew and rvm (Remove temp files and source code used to compile executables)</p>
+
+<pre><code>brew cleanup -s
+rm -rf `brew --cache`
+rvm cleanup all
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -603,88 +826,6 @@ headless.destroy
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/lightroom-41-available/">Lightroom 4.1 Available</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-18T19:28:53+01:00" pubdate data-updated="true">Jun 18<span>th</span>, 2012</time>
-        
-           | <a href="/blog/photography/lightroom-41-available/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/lightroom-41-available/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Lightroom 4.1 is <a href="http://blogs.adobe.com/lightroomjournal/2012/05/lr41nowavailable.html">now available</a>. Not much looks like it has changed between this and the RC1 release version. But the <a href="http://blogs.adobe.com/lightroomjournal/2012/05/lr41nowavailable.html">adobe page</a> lists the changes and added camera support since 4.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/subscribe-to-a-channel-on-youtube-ipad/">Subscribe to a Channel on YouTube iPad</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-10T09:40:13+01:00" pubdate data-updated="true">Jun 10<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/subscribe-to-a-channel-on-youtube-ipad/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/subscribe-to-a-channel-on-youtube-ipad/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The subscribe button on the iPad youtube app is quite well hidden.</p>
-
-<p>View a video from the channel you are interested in in the non-fullscreen mode, from the left column select &ldquo;More From&rdquo; Subscribe/Unsubscribe should be the first option.</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/7357055670/" title="iPad YouTube Subscribe by munky morgy, on Flickr"><img src="http://farm8.staticflickr.com/7226/7357055670_3b8706d846.jpg" width="500" height="375" alt="iPad YouTube Subscribe"></a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/16/">&larr; Older</a>
@@ -699,11 +840,19 @@ headless.destroy
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (24)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (24)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/photography/fstop-icu-strobies/">Fstop ICU Strobies</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/home/kettlebell-rack/">Kettlebell Rack</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-toolboxes-with-absolute-path-setup/">Matlab Toolboxes with Absolute Path Setup</a>
@@ -715,14 +864,6 @@ headless.destroy
     
       <li class="post">
         <a href="/blog/engineering/matlab-split-odd-and-even-array-elements/">Matlab: Split Odd &amp; Even Array Elements</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/lee-standard-hood/">Lee Standard Hood</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a>
       </li>
     
   </ul>

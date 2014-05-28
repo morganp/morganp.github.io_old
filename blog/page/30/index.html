@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I do not like having to use sudo to run development servers for testing web applications. sudo should be reserved for commands that really need that &hellip;">
+  <meta name="description" content="Open office by default does not have a mode to auto start the presentation when launched. With the ImpressRunner plugin you can: http://extensions. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,109 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/open-office-impress-autostart/">Open Office Impress AutoStart</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-31T10:27:17+01:00" pubdate data-updated="true">May 31<span>st</span>, 2010</time>
+        
+           | <a href="/blog/tech/open-office-impress-autostart/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/open-office-impress-autostart/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Open office by default does not have a mode to auto start the presentation when launched. With the ImpressRunner plugin you can:</p>
+
+<p><a href="http://extensions.services.openoffice.org/project/ImpressRunner"><a href="http://extensions.services.openoffice.org/project/ImpressRunner">http://extensions.services.openoffice.org/project/ImpressRunner</a></a></p>
+
+<p>The tool bar does not seem to work with newer version of Open Office but it can be controlled via the presintations properties.</p>
+
+<p>File->Properties->Custom Properties and insert &lsquo;autostart&rsquo; as the value of &lsquo;Info 1&rsquo;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/super-simple-ruby-list-directory-contents/">Super Simple Ruby List Directory Contents</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-16T08:14:52+01:00" pubdate data-updated="true">May 16<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/super-simple-ruby-list-directory-contents/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/super-simple-ruby-list-directory-contents/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A very simple Ruby way for listing files in a directory is the glob function:</p>
+
+<pre><code>#!/usr/bin/env ruby
+
+@directory_to_list = '/some/path/'
+files = Dir.glob(@directory_to_list + '*')
+
+files.each do |x|
+   puts x
+end
+</code></pre>
+
+<p>To avoid the separate each block, select could be used to iterate over the results. Used below with entries instead of glob.</p>
+
+<pre><code>Dir.entries(@directory_to_list).select do |f| 
+  puts f
+end
+</code></pre>
+
+<p>NB Dir.glob takes a pattern as an argument, Dir.entries takes a path.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -603,112 +706,6 @@ This post has served as a test with Ruby Enterprise. I now when posting (assumin
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-scripting-axes-properties/">Matlab Scripting Axes Properties</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-03T06:47:06+01:00" pubdate data-updated="true">May 3<span>rd</span>, 2010</time>
-        
-           | <a href="/blog/engineering/matlab-scripting-axes-properties/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-scripting-axes-properties/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Matlab figure properties which can be set through the properties editor can also be set by scripts. My main stumbling block was not realising that gca is a builtin function which returns the current axes. A list of <a href="http://www.mathworks.co.uk/access/helpdesk/help/techdoc/ref/axes_props.html">all properties</a>.</p>
-
-<p>Below is a example matlab script which plots a graph then adds minor ticks to the X-axis:</p>
-
-<pre><code>a =   1:100 ;
-b = 101:200 ;
-
-figure
-plot(a, b)
-% gca : get current axes
-set(gca, 'XMinorTick','on')
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-file-upload/">Sinatra File Upload</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-01T07:54:03+01:00" pubdate data-updated="true">May 1<span>st</span>, 2010</time>
-        
-           | <a href="/blog/tech/sinatra-file-upload/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-file-upload/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A simple Sinatra web app to upload a single file. Also available as a <a href="http://gist.github.com/386495">gist</a>, based on <a href="http://pastie.caboo.se/134681">http://pastie.caboo.se/134681</a></p>
-
-<pre><code>require 'rubygems'
-require 'sinatra'
-
-get '/upload' do
-   erb '&lt;form action="upload" method="post" enctype="multipart/form-data" accept-charset="utf-8"&gt;
-   &lt;input type="file" name="uploaded_data" id="uploaded_data"&gt;
-   &lt;p&gt;&lt;input type="submit" value="Continue"&gt;&lt;/p&gt;
-   &lt;/form&gt;'
-end
-
-post '/upload' do
-   FileUtils.mkdir_p('./Uploads/')
-   FileUtils.mv(params[:uploaded_data][:tempfile].path, "./Uploads/#{params[:uploaded_data][:filename]}")
-   erb 'Upload Complete'
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/31/">&larr; Older</a>
@@ -723,11 +720,19 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (24)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (4)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (24)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (233)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/photography/fstop-icu-strobies/">Fstop ICU Strobies</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/home/kettlebell-rack/">Kettlebell Rack</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-toolboxes-with-absolute-path-setup/">Matlab Toolboxes with Absolute Path Setup</a>
@@ -739,14 +744,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/matlab-split-odd-and-even-array-elements/">Matlab: Split Odd &amp; Even Array Elements</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/lee-standard-hood/">Lee Standard Hood</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a>
       </li>
     
   </ul>
