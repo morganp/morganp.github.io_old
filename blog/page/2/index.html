@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Adobe Lightroom will only load GPX, Canon 6D only saves NMEA data. GPSBabel can be used to convert the *.log from the camera to *.gpx. Download the &hellip;">
+  <meta name="description" content="Some time ago gemspec files for ruby gems added the ability to
+specify the short identifier for the license type. Gem::Specification.new do |s| s. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,53 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-05T20:17:43+01:00" pubdate data-updated="true">May 5<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/licence-types-and-short-identifiers/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/licence-types-and-short-identifiers/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Some time ago <a href="http://guides.rubygems.org/specification-reference/">gemspec</a> files for ruby gems added the ability to
+specify the short identifier for the license type.</p>
+
+<pre><code>Gem::Specification.new do |s|
+  s.licenses    = ['MIT']
+end
+</code></pre>
+
+<p>The unofficial list of short identifiers is available from <a href="https://spdx.org/licenses/">spdx</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -679,64 +727,6 @@ $ ruby thor_test.rb Hello a b
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-print-array/">Ruby Print Array</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-01T18:36:00+01:00" pubdate data-updated="true">Apr 1<span>st</span>, 2014</time>
-        
-           | <a href="/blog/tech/ruby-print-array/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-print-array/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>puts</code> and <code>to_s</code> could be better:</p>
-
-<pre><code>a = [1, 2, 3]
-puts a
-&gt; 1
-&gt; 2
-&gt; 3
-
-puts a.to_s
-&gt; [1, 2, 3]
-</code></pre>
-
-<h2>Nicely print an array</h2>
-
-<p>Multiply it out with spaces:</p>
-
-<pre><code>a = [1, 2, 3]
-puts a * " "
-&gt; 1 2 3
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -751,11 +741,15 @@ puts a * " "
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (27)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (28)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-grid/">Matlab: Grid</a>
@@ -771,10 +765,6 @@ puts a * " "
     
       <li class="post">
         <a href="/blog/photography/fstop-icu-strobies/">Fstop ICU Strobies</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/home/kettlebell-rack/">Kettlebell Rack</a>
       </li>
     
   </ul>

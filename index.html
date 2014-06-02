@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="To add X and Y grids to plots : grid on; To add Y only grid: set(gca,'XGrid','off','YGrid','on'); To add X only grid set(gca,'XGrid','on','YGrid',’ &hellip;">
+  <meta name="description" content="The official documentation can be found on mathworks. To display a number with 3 Integer decimal places and 3 fraction places
+$f7.3 7 rather than 6 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,83 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-02T18:46:09+01:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-formatting-strings/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-formatting-strings/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The official documentation can be found on <a href="http://www.mathworks.co.uk/help/matlab/matlab_prog/formatting-strings.html#bq0z8vc-6">mathworks</a>.</p>
+
+<p>To display a number with 3 Integer decimal places and 3 fraction places
+<code>$f7.3</code> 7 rather than 6 as need place for the decimal point.</p>
+
+<pre><code>&gt;&gt; a = sprintf('6.3-%6.3f-', 123.678)
+a =
+6.3-123.678-
+
+&gt;&gt; a = sprintf('6.3-%6.3f-', 23.678)
+a =
+6.3-23.678-
+
+&gt;&gt; a = sprintf('6.3-%6.3f-', 3.678)
+a =
+6.3- 3.678-
+</code></pre>
+
+<h2>-ve numbers</h2>
+
+<p>If signed you need to leave space for -ve <code>$f8.3</code> :</p>
+
+<pre><code>&gt;&gt; a = sprintf('7.3-%7.3f-', -123.678)
+a =
+7.3--123.678-
+
+&gt;&gt; a = sprintf('7.3-%7.3f-', -23.678)
+a =
+7.3--23.678-
+
+&gt;&gt; a = sprintf('8.3-%8.3f-', -23.678)
+a =
+8.3- -23.678-
+</code></pre>
+
+<p>For reliable and consistent floating point displays use:</p>
+
+<pre><code>%(fractional places + integer places + 2).(fractional places)f
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -629,53 +707,6 @@ above 28mm full-frame with filter holder</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-05T20:17:43+01:00" pubdate data-updated="true">May 5<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/licence-types-and-short-identifiers/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/licence-types-and-short-identifiers/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Some time ago <a href="http://guides.rubygems.org/specification-reference/">gemspec</a> files for ruby gems added the ability to
-specify the short identifier for the license type.</p>
-
-<pre><code>Gem::Specification.new do |s|
-  s.licenses    = ['MIT']
-end
-</code></pre>
-
-<p>The unofficial list of short identifiers is available from <a href="https://spdx.org/licenses/">spdx</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -688,11 +719,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (27)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (28)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-grid/">Matlab: Grid</a>
@@ -708,10 +743,6 @@ end
     
       <li class="post">
         <a href="/blog/photography/fstop-icu-strobies/">Fstop ICU Strobies</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/home/kettlebell-rack/">Kettlebell Rack</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="CSS or Cascading Style Sheets are used for styling html elements. HTML elements can have id&rsquo;s, which must be unique to all other elements on &hellip;">
+  <meta name="description" content="I have been wondering how to do this for a while and accidentally discovered it while perusing this heroku page. ab is the ApacheBench marking tool, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,98 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/benchmark-your-website-for-load-times/">Benchmark Your Website for Load Times.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-27T16:09:53+01:00" pubdate data-updated="true">Jul 27<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/benchmark-your-website-for-load-times/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/benchmark-your-website-for-load-times/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have been wondering how to do this for a while and accidentally discovered it while perusing <a href="http://docs.heroku.com/performance">this heroku page</a>. ab is the ApacheBench marking tool, it lets you set how many requests (for better averaging) and how many concurrent requests (for load testing) to send to your website. ab id installed by default on most unix/linux/mac os x.</p>
+
+<p>50 requests 2 at atime</p>
+
+<pre><code>$ ab -c 2 -n 50 http://amaras-tech.co.uk/
+</code></pre>
+
+<p>Outputs:</p>
+
+<pre><code>This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking amaras-tech.co.uk (be patient).....done
+
+
+Server Software:        nginx
+Server Hostname:        amaras-tech.co.uk
+Server Port:            80
+
+Document Path:          /
+Document Length:        0 bytes
+
+Concurrency Level:      2
+Time taken for tests:   9.951 seconds
+Complete requests:      50
+Failed requests:        0
+Write errors:           0
+Non-2xx responses:      50
+Total transferred:      11400 bytes
+HTML transferred:       0 bytes
+Requests per second:    5.02 [#/sec] (mean)
+Time per request:       398.030 [ms] (mean)
+Time per request:       199.015 [ms] (mean, across all concurrent requests)
+Transfer rate:          1.12 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:      146  162  16.7    158     214
+Processing:   149  229 198.3    159    1113
+Waiting:      148  228 198.2    159    1112
+Total:        298  392 198.0    328    1262
+
+Percentage of the requests served within a certain time (ms)
+  50%    328
+  66%    343
+  75%    351
+  80%    360
+  90%    612
+  95%    961
+  98%   1262
+  99%   1262
+ 100%   1262 (longest request)
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -609,82 +701,6 @@ arduous_delay( 1ms );
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/">jQuery Clear Form on Focus and Restore on Exit</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-27T10:57:35+01:00" pubdate data-updated="true">Jun 27<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I used <a href="http://www.eggchops.com/web-stuff/jquery/jquery-clear-focus-function/">this as a jQuery reference</a> to hide and show default text in forms.</p>
-
-<pre><code>&lt;head&gt;
-   &lt;script type=”text/javascript” src=”js/jquery.js”&gt;&lt;/script&gt;
-   &lt;script type=”text/javascript”&gt;
-
-   $(document).ready(function(){
-
-      var clearMePrevious = ”;
-
-      // clear input on focus
-      $(’.clearMeFocus’).focus(function()
-      {
-         if($(this).val()==$(this).attr(’title’))
-         {
-            clearMePrevious = $(this).val();
-            $(this).val(”);
-         }
-       });
-
-       // if field is empty afterward, add text again
-       $(’.clearMeFocus’).blur(function()
-       {
-        if($(this).val()==”)
-        {
-          $(this).val(clearMePrevious);
-        }
-    });
-});
-
-&lt;/script&gt;
-&lt;/head&gt;
-</code></pre>
-
-<p>and the for the form</p>
-
-<pre><code>&lt;input type=”text” name=”email” title=”Enter your email” value=”Enter your email” class=”clearMeFocus” /&gt;
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/29/">&larr; Older</a>
@@ -699,11 +715,15 @@ arduous_delay( 1ms );
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (27)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (28)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-grid/">Matlab: Grid</a>
@@ -719,10 +739,6 @@ arduous_delay( 1ms );
     
       <li class="post">
         <a href="/blog/photography/fstop-icu-strobies/">Fstop ICU Strobies</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/home/kettlebell-rack/">Kettlebell Rack</a>
       </li>
     
   </ul>

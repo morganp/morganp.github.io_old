@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Also available as a gist. Very simple way of measuring execution time in seconds using Ruby #!/usr/bin/env ruby
-# Measure performance in seconds of &hellip;">
+  <meta name="description" content="Also a gist on github. This is an example of how you can require files in a relative path to the script. As Ruby scripts execute from which ever path &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,59 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-include-require-local-files/">Ruby Include (Require) Local Files</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-include-require-local-files/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-include-require-local-files/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Also a <a href="http://gist.github.com/341255">gist</a> on github. This is an example of how you can require files in a relative path to the script. As Ruby scripts execute from which ever path they were called.</p>
+
+<pre><code>#!/usr/bin/env ruby
+
+#A way of including local functions in sub folders 
+path = File.expand_path $0
+path = File.dirname(path)
+
+require "#{path}/SubDir/function_1.rb"
+require "#{path}/SubDir/function_2.rb"
+require "#{path}/SubDir/function_3.rb"
+
+#or change working dir of script
+Dir.chdir(path) 
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -407,11 +459,15 @@ Time.now.strftime($date_format)
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (27)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (28)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-grid/">Matlab: Grid</a>
@@ -427,10 +483,6 @@ Time.now.strftime($date_format)
     
       <li class="post">
         <a href="/blog/photography/fstop-icu-strobies/">Fstop ICU Strobies</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/home/kettlebell-rack/">Kettlebell Rack</a>
       </li>
     
   </ul>

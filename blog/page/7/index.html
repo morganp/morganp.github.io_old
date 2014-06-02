@@ -9,9 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="A new feature in the dining room. Approximate materials and cost: Section of plywood ~£10
-16 meters of 2.5mm chain ~£50
-40 Ikea Lanterns £80 ">
+  <meta name="description" content="In 2007 I built our coffee table from 2.5&#8221; thick Elm purchased from Lanarkshire Hardwoods. The wood was rough sanded. For the finish it took &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +81,50 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/home/coffee-table/">Coffee Table</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-07T21:18:14+00:00" pubdate data-updated="true">Feb 7<span>th</span>, 2014</time>
+        
+           | <a href="/blog/home/coffee-table/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/home/coffee-table/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In 2007 I built our coffee table from 2.5&#8221; thick Elm purchased from <a href="http://www.lanarkshirehardwoods.co.uk/">Lanarkshire Hardwoods</a>.</p>
+
+<p>The wood was rough sanded. For the finish it took about 48 hours of sanding with a belt sander, and finished with <a href="http://www.organoil.com/danishoil/index.html">Danish oil</a>.</p>
+
+<p><img src="/images/Home/Table/morganp-20070609-Table-IMG_8640.jpg" alt="Coffee Table" />
+<img src="/images/Home/Table/morganp-20070609-Table-IMG_8648.jpg" alt="Coffee Table" /></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -608,73 +650,6 @@ Alias loop
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vim-status-line/">Vim: Status Line</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-17T19:04:42+00:00" pubdate data-updated="true">Dec 17<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/vim-status-line/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-status-line/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Deciding to see if I could make my vim status line a bit more practical for myself. I decided to try having the modification &lsquo;[+]&rsquo; warning as the first thing on the line. I do not want the rest of the line jumping about when it changes from empty to +, using min widths that should be no problem:</p>
-
-<pre><code>" m is the [+] when modified
-set statusline=-%-01h-%10m-%-01r
-</code></pre>
-
-<p>This becomes empty except the  &lsquo;&ndash; &ndash; &ndash;&rsquo; when no flags are set, from :help statusline</p>
-
-<blockquote><p>When all items in a group becomes an empty string (i.e. flags that are
-not set) and a minwid is not set for the group, the whole group will
-become empty.  This will make a group like the following disappear
-completely from the statusline when none of the flags are set. ></p>
-
-<pre><code>     :set statusline=...%(\ [%M%R%H]%)...
-</code></pre></blockquote>
-
-<p><a href="http://got-ravings.blogspot.co.uk/2008/08/vim-pr0n-making-statuslines-that-own.html">The answer (source)</a></p>
-
-<pre><code>You can also group several items together and apply formatting 
-to the group as a whole. To do this, use the %(...%) syntax. 
-For example: %20(%l/%L%) would display&lt;current-line&gt;/&lt;total-lines&gt; 
-at a minimum width of 20 characters.
-</code></pre>
-
-<p>Winner: create a group with %width( &hellip; %)</p>
-
-<pre><code>" m is the [+] when modified
-set statusline=%10(-%h-%m-%r%)
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -689,11 +664,15 @@ set statusline=%10(-%h-%m-%r%)
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (27)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (28)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-grid/">Matlab: Grid</a>
@@ -709,10 +688,6 @@ set statusline=%10(-%h-%m-%r%)
     
       <li class="post">
         <a href="/blog/photography/fstop-icu-strobies/">Fstop ICU Strobies</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/home/kettlebell-rack/">Kettlebell Rack</a>
       </li>
     
   </ul>
