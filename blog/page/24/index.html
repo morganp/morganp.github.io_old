@@ -9,9 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="My Shelfari To Read Photoshop CS5 and Lightroom 3, ISBN 978-1-933952-67-2
-Developing Vision and Style, ISBN 978-1-9025 38495
-Pragmatic Thinking and &hellip;">
+  <meta name="description" content="I recently heard about the Schwartzian transform, which is a sorting idiom from perl. It allows an array of objects to be efficiently sorted by any &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +81,57 @@ Pragmatic Thinking and &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/schwartzian-transform/">Schwartzian Transform</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-08T10:37:44+01:00" pubdate data-updated="true">Apr 8<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/schwartzian-transform/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/schwartzian-transform/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently heard about the Schwartzian transform, which is a sorting idiom from perl. It allows an array of objects to be efficiently sorted by any property. Part of the cleverness is the use of anonymous arrays which allows them to be garbage collected quickly.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Schwartzian_transform">Wikipedia</a> has a detailed description, however the general form (in perl) is:</p>
+
+<pre><code>@sorted = map  { $_-&gt;[0] }
+          sort { $a-&gt;[1] cmp $b-&gt;[1] }
+          map  { [$_, foo($_)] }
+              @unsorted;
+</code></pre>
+
+<p>A good history of it can be <a href="http://www.stonehenge.com/merlyn/UnixReview/col64.html">read here</a>.</p>
+
+<p>My point of bring all of this up other than pointing out a cool sorting algorithm is that any <strong>ruby</strong> class including <a href="http://ruby-doc.org/core/classes/Enumerable.html">Enumerable</a> (Arrays, Hashes etc) has this built in with the <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001481"><strong>.sort_by</strong></a> method.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -679,79 +728,6 @@ RubyGems Environment:
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-regex-routes/">Sinatra Regex Routes</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-12T06:41:10+00:00" pubdate data-updated="true">Feb 12<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/sinatra-regex-routes/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-regex-routes/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The routes for my site have been growing since adding pagination (/articles/older/) and tag filtering. As well as the small amount of logic for each route was getting duplicated.</p>
-
-<p>I have been experimenting with real regex routes, so far some thing like this looks like it could be a good solution:</p>
-
-<pre><code>$items_per_page = 10
-get /^\/article(\/older(\/\d+)?)?(\/tag\/\w*)?\/?$/ do |pagination, page, tag|
-
-if pagination.nil?
-   @offset = 0
-  else
-    if page.nil?
-      @offset = $items_per_page
-    else
-      @offset = page.gsub(/^\//, "").to_i
-  end
-
-  if not tag.nil?
-   tag.gsub!(/\/tag\//, "")
-  end
-
-  result = "Pagination #{@offset} &lt;br  /&gt;"
-  result &lt;&lt; "Tag #{tag} &lt;br  /&gt;"
-  result &lt;&lt; "captures #{ params[:captures] }"
-  return result 
-end
-</code></pre>
-
-<p>This means the following routes will be handled:<br/>
-/article<br/>
-/article/<br/>
-/article/older/<br/>
-/article/older/10<br/>
-/article/tag/Ruby<br/>
-/article/older/10/tag/Ruby<br/>
-/article/older/tag/Ruby</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/25/">&larr; Older</a>
@@ -766,11 +742,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (28)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (29)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
@@ -786,10 +766,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Matlab: Listing Field Name Values of a Struct</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/fstop-icu-strobies/">Fstop ICU Strobies</a>
       </li>
     
   </ul>

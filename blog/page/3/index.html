@@ -9,12 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="puts and to_s could be better: a = [1, 2, 3]
-puts a
-&gt; 1
-&gt; 2
-&gt; 3 puts a.to_s
-&gt; [1, 2, 3] Nicely print an array Multiply it out with spaces &hellip;">
+  <meta name="description" content="Thor is a Ruby Gem, which allows you to build command line applications which accept commands, in the same way git accepts add as a command. The &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +81,97 @@ puts a
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-01T19:39:19+01:00" pubdate data-updated="true">Apr 1<span>st</span>, 2014</time>
+        
+           | <a href="/blog/tech/thor-variable-arguments/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/thor-variable-arguments/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://whatisthor.com/">Thor</a> is a Ruby Gem, which allows you to build command line applications which accept commands, in the same way <code>git</code> accepts <code>add</code> as a command.</p>
+
+<p>The Helloworld example :</p>
+
+<pre><code>require "thor"
+
+class MyCLI &lt; Thor
+  desc "hello NAME", "say hello to NAME"
+  def hello(name)
+    puts "Hello #{name}"
+  end
+end
+MyCLI.start(ARGV)
+</code></pre>
+
+<p>The help and single input.</p>
+
+<pre><code>$ ruby thor_test.rb help hello
+&gt; Usage:
+&gt;  thor_test.rb hello NAME
+&gt;
+&gt; say hello to NAME
+
+
+$ ruby thor_test.rb Hello a
+&gt; Hello a
+</code></pre>
+
+<p>Now with multiple, inputs:</p>
+
+<pre><code>$ ruby thor_test.rb Hello a b
+&gt; thor_test.rb hello requires at least 1 argument: "thor_test.rb hello NAME”.
+</code></pre>
+
+<p>Not really what you want if you were building a command like <code>git add</code> when you
+would want all following arguments as inputs.</p>
+
+<p>To accept a variable number of arguments is not Thor specific but a standard
+ruby idiom. A splat in front of your variable ie <code>*name</code>.</p>
+
+<pre><code>require "thor"
+
+class MyCLI &lt; Thor
+  desc "hello NAME", "say hello to NAME"
+  def hello(*name)
+    puts "Hello #{name * “ "}"
+  end
+end
+MyCLI.start(ARGV)
+
+$ ruby thor_test.rb Hello a b
+&gt; Hello a b
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -565,49 +651,6 @@ This should result in much cleaner edges when removing turf.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/f-stop-loka-hydration/">F-Stop Loka Hydration</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-16T18:13:55+00:00" pubdate data-updated="true">Mar 16<span>th</span>, 2014</time>
-        
-           | <a href="/blog/photography/f-stop-loka-hydration/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/f-stop-loka-hydration/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Not a review, just noting the default position of the velcro hydration loop, before I remove it.
-Left shoulder, under chest harness.</p>
-
-<p><img src="/images/Photography/Loka/morganp-20140315-Loka-IMG_6970.jpg" alt="" />
-<img src="/images/Photography/Loka/morganp-20140315-Loka-IMG_6976.jpg" alt="" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -622,11 +665,15 @@ Left shoulder, under chest harness.</p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (28)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (29)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
@@ -642,10 +689,6 @@ Left shoulder, under chest harness.</p>
     
       <li class="post">
         <a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Matlab: Listing Field Name Values of a Struct</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/fstop-icu-strobies/">Fstop ICU Strobies</a>
       </li>
     
   </ul>

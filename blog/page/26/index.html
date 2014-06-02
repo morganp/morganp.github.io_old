@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I have just started to use a sinatra extensions called Sinatra Session. The write up on the main site is pretty good and only include a short summary &hellip;">
+  <meta name="description" content="Rack applications often require a config.ru for deployment. The standard config.ru for classic sinatra applications is well documented: require 'app &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,80 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/sinatra-heroku-and-configru/">Sinatra Heroku and config.ru</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-03T16:43:22+00:00" pubdate data-updated="true">Nov 3<span>rd</span>, 2010</time>
+        
+           | <a href="/blog/tech/sinatra-heroku-and-configru/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-heroku-and-configru/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Rack applications often require a config.ru for deployment. The standard config.ru for classic sinatra applications is well documented:</p>
+
+<pre><code>require 'app'
+run Sinatra::Application
+</code></pre>
+
+<p>The requirments for classy apps is not very well documented, currently I use this on heroku:</p>
+
+<pre><code>#For Ruby 1.8.7 (the 1.9.2 version should also work) on Heroku
+require 'app'
+run MyModule::MyApp
+</code></pre>
+
+<p>After trying Ruby 1.9.2 I had to add ./ to my app require. The current directory has been removed from the load path adding ./ removes the problem because it explicitly defines the path.</p>
+
+<pre><code>#For Ruby 1.9.2 on Heroku
+require './app'
+run MyModule::MyApp
+</code></pre>
+
+<p>For a sinatra Application which may look like:</p>
+
+<pre><code>require 'sinatra/base'
+module MyModule
+  class MyApp &lt; Sinatra::Base
+    get '/' do
+      'HelloWorld!'
+    end
+  end
+end
+
+#if file called directly launch app (ie ruby my_app.rb)
+if $0 == __FILE__
+  MyModule::MyApp.run!
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -643,82 +717,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-regular-expressions-lookahead-lookbehind/">Ruby Regular Expressions Lookahead / Lookbehind</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-07T01:39:28+01:00" pubdate data-updated="true">Sep 7<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-regular-expressions-lookahead-lookbehind/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-regular-expressions-lookahead-lookbehind/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I recently discovered a feature of regular expressions called lookahead. This means for a match the lookahead must exist but it does not become part of the matched string.
-NB: (group) print first group with \1</p>
-
-<pre><code>"123456".gsub(/(\d\d\d)/, '\1,')
-123,456,
-</code></pre>
-
-<p>Now with lookahead</p>
-
-<pre><code>"123456".gsub(/(\d\d\d)(?=\d)/, '\1,')
-123,456
-</code></pre>
-
-<p>There are 2 types of lookahead</p>
-
-<pre><code>match (?=x)
-not-match (?!x)
-</code></pre>
-
-<p>Ruby 1.8.x does not support these by default but by using <a href="http://oniguruma.rubyforge.org/">Oniguruma</a> which is the default regex engine in Ruby 1.9.x you can also use lookbehind expressions.</p>
-
-<pre><code>match (?&lt;=x)
-not-match (?&lt;!x)
-</code></pre>
-
-<p>Example not using lookbehind</p>
-
-<pre><code> "http://h:5/".gsub(/:/,'=&gt;')
- http=&gt;//h=&gt;5/
-</code></pre>
-
-<p>With Not lookbehind</p>
-
-<pre><code>"http://h:5/".gsub(/(?&lt;!http):/,'=&gt;')
- http://h=&gt;5/
-</code></pre>
-
-<p>More info on <a href="http://www.regular-expressions.info/lookaround.html">Lookarounds</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/27/">&larr; Older</a>
@@ -733,11 +731,15 @@ not-match (?&lt;!x)
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (28)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (29)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
@@ -753,10 +755,6 @@ not-match (?&lt;!x)
     
       <li class="post">
         <a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Matlab: Listing Field Name Values of a Struct</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/fstop-icu-strobies/">Fstop ICU Strobies</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="The camera aperture is how far the iris is kept open during the exposure. A wide aperture, large opening lets in more light so can have a faster &hellip;">
+  <meta name="description" content="I started off following the ubuntu guide for installing a new drive, which uses fdsik to create the partitions how ever after formatting and mounting &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,133 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ubuntu-formatting-a-3tb-drive/">Ubuntu, Formatting a 3TB Drive</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-03T21:34:20+01:00" pubdate data-updated="true">May 3<span>rd</span>, 2012</time>
+        
+           | <a href="/blog/tech/ubuntu-formatting-a-3tb-drive/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ubuntu-formatting-a-3tb-drive/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I started off following <a href="https://help.ubuntu.com/community/InstallingANewHardDrive">the ubuntu guide for installing a new drive</a>, which uses fdsik to create the partitions how ever after formatting and mounting I ran <code>df -h</code>:</p>
+
+<pre><code>Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdb1       2.0T   28G  1.9T   2% /mnt/kryten/disk5
+</code></pre>
+
+<h2>Which is not 3TB</h2>
+
+<p>I then found <a href="http://www.cyberciti.biz/tips/fdisk-unable-to-create-partition-greater-2tb.html">this article</a> which worked in the long run not sure if I typo&rsquo;d a command but similar to <a href="http://archlinuxarm.org/forum/viewtopic.php?t=1935&amp;p=10490">this other user</a> I had to run through the commands a second time for them to work.</p>
+
+<p>To start with use <code>parted</code> instead of fdisk, this allows the gpt partition table that fdisk does not.</p>
+
+<pre><code>(parted) mklabel gpt 
+Warning: The existing disk label on /dev/sdb will be destroyed and all data on
+this disk will be lost. Do you want to continue?
+Yes/No? yes    
+(parted) unit TB 
+(parted) mkpart primary 0.00TB 3.00TB                                     
+Warning: You requested a partition from 0.00TB to 3.00TB.                 
+The closest location we can manage is 0.00TB to 0.00TB.
+Is this still acceptable to you?
+Yes/No? yes
+</code></pre>
+
+<p>basically after this point it showed up as a few KB after formatting, tried it again and it seemed to work much better.</p>
+
+<pre><code>(parted) mklabel gpt                                                       
+Warning: The existing disk label on /dev/sdb will be destroyed and all data on
+this disk will be lost. Do you want to continue?
+Yes/No? yes                                                               
+(parted) unit TB                                                          
+(parted) mkpart primary 0.00TB 3.00TB                                     
+(parted) print                                                            
+odel: Unknown (unknown)
+Disk /dev/sdb1: 3001GB
+Sector size (logical/physical): 512B/4096B
+Partition Table: loop
+
+Number  Start   End     Size    File system  Name     Flags
+1      0.00TB  3.00TB  3.00TB               primary
+
+(parted) quit                                                             
+Information: You may need to update /etc/fstab.                           
+</code></pre>
+
+<h2>Format</h2>
+
+<pre><code>$ sudo mkfs.ext4 /dev/sdb1
+$sudo parted /dev/sdb1
+(parted) print
+Model: Unknown (unknown)
+Disk /dev/sdb1: 3001GB 
+Sector size (logical/physical): 512B/4096B
+Partition Table: loop
+
+Number  Start  End     Size    File system  Flags
+1      0.00B  3001GB  3001GB  ext4
+</code></pre>
+
+<h2>Reduce Reserved Space</h2>
+
+<p>By default 5% is reserved for the root to stop the driving becoming unusable when full, for data and not the main OS drive this does not matter too much, and 5% was decided when drives where much small. 5% of 3TB is 150 GB, way too much.  Turn this down to 1% with:</p>
+
+<pre><code>sudo tune2fs -m 1 /dev/sdb1
+</code></pre>
+
+<h2>Mount </h2>
+
+<pre><code>sudo mkdir /mnt/kryten/disk5 
+sudo mount /dev/sdb1 /mnt/kryten/disk5
+</code></pre>
+
+<h2>Find UUID</h2>
+
+<pre><code>$ sudo blkid
+/dev/sda1: UUID="c41cba49-bd3a-41d7-961c-b4ad45d48ed1" TYPE="ext4" 
+/dev/sdb1: UUID="d822c6af-9802-4d00-8de8-61f1653a854a" TYPE="ext4" 
+/dev/sdc1: UUID="59a61ceb-fee3-460a-97c5-e9f115776daf" TYPE="ext4" 
+/dev/sdc5: UUID="80f9c384-9a5a-4563-921a-5c25628e1b2e" TYPE="swap"
+</code></pre>
+
+<h2>Update /etc/fstab </h2>
+
+<pre><code>$sudo vim /etc/fstab
+
+#/dev/sdb1 3TB drive replacing 1.5TB old UUID Below
+UUID=d822c6af-9802-4d00-8de8-61f1653a854a     /mnt/kryten/disk4 ext4 rw,auto,user,exec,async,errors=remount-ro 0 1
+#UUID=c41cba49-bd3a-41d7-961c-b4ad45d48ed1    /mnt/kryten/disk4 ext4 rw,auto,user,exec,async,errors=remount-ro 0 1
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -837,64 +964,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/update-your-rvm-ruby-and-migrate-gemsets/">Update Your RVM Ruby and Migrate Gemsets</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-20T22:08:43+01:00" pubdate data-updated="true">Apr 20<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/update-your-rvm-ruby-and-migrate-gemsets/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/update-your-rvm-ruby-and-migrate-gemsets/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Update RVM</p>
-
-<pre><code>$ rvm get head
-</code></pre>
-
-<p>List current versions, and all versions</p>
-
-<pre><code>$ rvm list
-$ rvm list known
-</code></pre>
-
-<p>Select the version you want to upgrade to :</p>
-
-<pre><code>$ rvm upgrade 1.9.3
-
-Are you sure you wish to upgrade from ruby-1.9.3-p125 to ruby-1.9.3-p194? (Y/n): Y  
-...
-Are you sure you wish to MOVE gems from ruby-1.9.3-p125 to ruby-1.9.3-p194?
-This will overwrite existing gems in ruby-1.9.3-p194 and remove them from ruby-1.9.3-p125 (Y/n): Y
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/19/">&larr; Older</a>
@@ -909,11 +978,15 @@ This will overwrite existing gems in ruby-1.9.3-p194 and remove them from ruby-1
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (28)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (29)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
@@ -929,10 +1002,6 @@ This will overwrite existing gems in ruby-1.9.3-p194 and remove them from ruby-1
     
       <li class="post">
         <a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Matlab: Listing Field Name Values of a Struct</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/fstop-icu-strobies/">Fstop ICU Strobies</a>
       </li>
     
   </ul>

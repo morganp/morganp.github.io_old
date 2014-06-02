@@ -118,8 +118,6 @@ a(any(a&lt;=2,1)) = [] &hellip;">
 <pre><code>a = [1 2 3 4 3];
 a(any(a==3,1)) = []
 a =
-
-
      1     2     4
 </code></pre>
 
@@ -128,8 +126,6 @@ a =
 <pre><code>a = [1 2 3 4 3];
 a(any(a&lt;=2,1)) = []
 a =
-
-
      3     4     3
 </code></pre>
 
@@ -138,12 +134,18 @@ a =
 <pre><code>a = [1 2 3 4 3];
 a(any((a&gt;=2)&amp;(a&lt;=3),1)) = []
 a =
-
-
      1     4
 </code></pre>
 
 <p>Based on <a href="http://matlabnewbie.blogspot.co.uk/2011/11/remove-any-rows-that-contains-specific.html">examples from matlabnewbie</a>.</p>
+
+<p>Remove values (<code>12 &amp; 13</code>) based on a set (array):</p>
+
+<pre><code>a = 11:20;
+a = setdiff(a,[12,13])
+a = 
+    11    14    15    16    17    18    19    20
+</code></pre>
 </div>
 
 
@@ -219,11 +221,15 @@ a =
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (28)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (29)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
@@ -239,10 +245,6 @@ a =
     
       <li class="post">
         <a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Matlab: Listing Field Name Values of a Struct</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/fstop-icu-strobies/">Fstop ICU Strobies</a>
       </li>
     
   </ul>
