@@ -9,7 +9,10 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="In your sources branch, which is the main branch for writing creating posts, create a CNAME file in the sources directory. vim source/CNAME your- &hellip;">
+  <meta name="description" content="Removal of substring: string="test string"
+echo $string remove="test"
+short_string=${string#$remove}
+echo short_string Note that inside the ${} &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +84,104 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/bash-string-manipulation/">Bash String Manipulation</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-05T21:32:14+00:00" pubdate data-updated="true">Mar 5<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/bash-string-manipulation/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/bash-string-manipulation/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Removal of substring:</p>
+
+<pre><code>string="test string"
+echo $string
+
+remove="test"
+short_string=${string#$remove}
+echo short_string
+</code></pre>
+
+<p>Note that inside the <code>${}</code> <code>string</code> does not have a <code>$</code>, it is implied.
+The second half <code>$remove</code> does require it.</p>
+
+<p><a href="http://tldp.org/LDP/abs/html/string-manipulation.html">More info</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/cooking/puy-lentil-wellington/">Puy Lentil Wellington</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-04T18:24:42+00:00" pubdate data-updated="true">Mar 4<span>th</span>, 2014</time>
+        
+           | <a href="/blog/cooking/puy-lentil-wellington/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/cooking/puy-lentil-wellington/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Based on a <a href="http://uktv.co.uk/food/recipe/aid/516620">uktv recipe</a>.</p>
+
+<p><img src="/images/Cooking/PuyWellington/morganp-20140225-PuyLentil-IMG_6871.jpg" alt="" /></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/cooking/puy-lentil-wellington/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -485,93 +586,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/gnome-disable-focus-tracking/">Gnome: Disable Focus Tracking</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-20T20:31:44+00:00" pubdate data-updated="true">Feb 20<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/gnome-disable-focus-tracking/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/gnome-disable-focus-tracking/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sometime ago I enabled focus tracking the mouse on Gnome. It took a while to find how to disable it again, so with out further a do the setting can be found in:</p>
-
-<pre><code>System -&gt; Preferences -&gt; Windows
-</code></pre>
-
-<p><img src="/images/Tech/Disable_Mouse_focus_tracking.png" alt="" />§</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/rocket/">Rocket</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-19T21:08:38+00:00" pubdate data-updated="true">Feb 19<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/rocket/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/rocket/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>On Saturday I placed Rocket seeds in my propagator and by Tuesday it had germinated and started to sprout.</p>
-
-<p>So far so good:</p>
-
-<p><img src="/images/Gardening/morganp-20140218-Propagator-IMG_6838.jpg" title="Rocket" alt="Rocket" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/6/">&larr; Older</a>
@@ -586,11 +600,19 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (29)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (30)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-timeout/">Verilog: Timeout</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
@@ -602,14 +624,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/matlab-grid/">Matlab: Grid</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-linebreaks-in-strings/">Matlab: Line Breaks in Strings</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Matlab: Listing Field Name Values of a Struct</a>
       </li>
     
   </ul>

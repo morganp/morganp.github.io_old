@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Engineering | RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/blog/engineering/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-06-11T23:08:08+01:00</updated>
+  <updated>2014-06-14T08:43:49+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Verilog: Timeout]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/verilog-timeout/"/>
+    <updated>2014-06-14T08:08:26+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/verilog-timeout</id>
+    <content type="html"><![CDATA[<p>To wait for a maximum of <code>10ns</code> for positive edge on clk then carry on with simulation.</p>
+
+<pre><code>fork : wait_or_timeout
+  begin
+    #10ms;
+    disable wait_or_timeout;
+  end
+  begin
+    @(posedge clk);
+    disable wait_or_timeout;
+  end
+join
+</code></pre>
+
+<p>Often use to fail simulation if the expected signal does not occur,
+this stops simulation hanging and allows status reports to be generated.</p>
+
+<p>Originally posted as <a href="http://stackoverflow.com/a/12372233/97073">SO answer</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Matlab Remove Elements from Array]]></title>
@@ -127,46 +153,6 @@ hello\nworld
 hello
 world
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Matlab: Listing Field Name Values of a Struct]]></title>
-    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-listing-field-name-values-of-a-struct/"/>
-    <updated>2014-05-28T19:05:01+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/engineering/matlab-listing-field-name-values-of-a-struct</id>
-    <content type="html"><![CDATA[<pre><code>s = struct ;
-s(1).dat =‘a' ;
-s(1).freq=11 ;
-s(2).dat =‘b' ;
-s(2).freq=22 ;
-</code></pre>
-
-<p>Where:</p>
-
-<pre><code>s(1)
-
-ans =
-
-     dat: 'a'
-    freq: 11
-</code></pre>
-
-<p>How do you access [‘a’, ‘b’] and [11, 22]?</p>
-
-<pre><code>[s.dat] , [s.freq]
-</code></pre>
-
-<p>The <code>[]</code> are really important here.</p>
-
-<pre><code>[s.freq]
-
-ans =
-
-    11    22
-</code></pre>
-
-<p><a href="http://blogs.mathworks.com/loren/2007/04/19/vectorizing-access-to-an-array-of-structures/">Solution found on a Loren Post</a>.</p>
 ]]></content>
   </entry>
   

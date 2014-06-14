@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-06-11T23:08:08+01:00</updated>
+  <updated>2014-06-14T08:43:49+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,91 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress Categories with Different Styles]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/octopress-categories-with-different-styles/"/>
+    <updated>2014-06-14T08:24:01+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/octopress-categories-with-different-styles</id>
+    <content type="html"><![CDATA[<p>As I use the code blocks for ingredient lists on my recipe pages I wanted to
+have a different style, lighter background instead of black.</p>
+
+<p>I currently manually set a different layout in the _post header:</p>
+
+<pre><code>layout: post
+categories: 
+- Tech
+
+layout: recipe
+categories: 
+- Cooking
+</code></pre>
+
+<!-- more -->
+
+
+<p>The layout will then look for a matching layout in <code>source/_layouts</code></p>
+
+<p>Manually create your new layout (instructions from top level Octopress site):</p>
+
+<pre><code>cp source/_layouts/post.html source/_layouts/recipe.html
+</code></pre>
+
+<p>Edit <code>source/_layouts/recipe.html</code> changing the role to <code>recipe</code>:</p>
+
+<pre><code>---
+layout: default
+single: true
+---
+
+&lt;div&gt;
+&lt;article class="hentry" role="recipe"&gt;
+  \{\% include article.html \%\}
+  &lt;footer&gt;
+    &lt;p class="meta"&gt;
+</code></pre>
+
+<p>This will now pick up the styling that <code>post</code> also gets but we can target our modifications to <code>article[role="recipe"]</code>.
+For custom stylings apply changes in to the relevant file in <code>sass/custom/</code>.</p>
+
+<p>To modify the background colour of a code block<br/>
+<code>sass/custom/_styles.scss</code> add:</p>
+
+<pre><code>// Customise the recipe layout
+article[role="recipe"] pre {
+  background-color: $sidebar-bg;
+}
+</code></pre>
+
+<p>NB: <code>$sidebar-bg</code> is defined in <code>sass/base/_theme.scss</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Verilog: Timeout]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/verilog-timeout/"/>
+    <updated>2014-06-14T08:08:26+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/verilog-timeout</id>
+    <content type="html"><![CDATA[<p>To wait for a maximum of <code>10ns</code> for positive edge on clk then carry on with simulation.</p>
+
+<pre><code>fork : wait_or_timeout
+  begin
+    #10ms;
+    disable wait_or_timeout;
+  end
+  begin
+    @(posedge clk);
+    disable wait_or_timeout;
+  end
+join
+</code></pre>
+
+<p>Often use to fail simulation if the expected signal does not occur,
+this stops simulation hanging and allows status reports to be generated.</p>
+
+<p>Originally posted as <a href="http://stackoverflow.com/a/12372233/97073">SO answer</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Matlab Remove Elements from Array]]></title>
@@ -578,73 +663,6 @@ end
     <updated>2014-04-08T19:27:00+01:00</updated>
     <id>http://lizard-spock.co.uk/blog/tech/iterm-exit-fullscreen</id>
     <content type="html"><![CDATA[<p><code>⌘-Enter</code> toggles fullscreen in <a href="http://www.iterm2.com/">iTerm</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Verilog Importing Envvar]]></title>
-    <link href="http://lizard-spock.co.uk/blog/engineering/verilog-importing-envvar/"/>
-    <updated>2014-04-03T18:22:00+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/engineering/verilog-importing-envvar</id>
-    <content type="html"><![CDATA[<p>Based on a <a href="http://stackoverflow.com/a/15103561/97073">Stackoverflow answer</a>, to import environment variables into Verilog you can use:</p>
-
-<pre><code>import "DPI-C" function string getenv(input string env_name);
-
-module top;
-  initial begin
-    $write("env = %s\n", {getenv("HOME"), "/FileName"});
-  end
-endmodule
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Fixing Mangled Octopress Tags]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/fixing-mangled-octopress-tags/"/>
-    <updated>2014-04-01T20:59:40+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/fixing-mangled-octopress-tags</id>
-    <content type="html"><![CDATA[<p>When creating my blog I have been inconsistent with the tag <code>command line</code>, <code>Command line</code> and
-<code>Command Line</code> the case in-sensitvities are not picked up in Octopress generation. To some
-extent my <a href="">Downcase plugin</a> hides these differences. The tags page only lists those with full
-downcase, but handles all other mixed case tags.</p>
-
-<p>This has lead to some posts dropping off the tag listing, which are just not accessible this way.</p>
-
-<p>The easy fix is to standardise my use of the tag.</p>
-
-<p>First investigate: List posts containing the downcased version:</p>
-
-<pre><code>grep -R '\- command line' *
-</code></pre>
-
-<p>Correct all :</p>
-
-<pre><code>find ./source/_posts -type f -print0 | xargs -I{} sed -i '' 's/\- [Cc]ommand [Ll]ine/\- Command Line/g' {}
-</code></pre>
-
-<p><code>find</code> outputs all files in folder ‘./‘ Actually had some trouble rerunning this find command so simplified it to :</p>
-
-<pre><code>ls source/_posts/*.markdown | xargs -I{} sed -i '' 's/\- [Cc]ommand [Ll]ine/\- Command Line/g' {}
-</code></pre>
-
-<p><strong>xargs</strong> option <code>i{}</code> takes the input argument and repeats it in the following command where the
-<code>{}</code> are placed. <code>find</code> has a built in <code>-exec</code> option but using xargs allows the first <code>find</code>
-command to be replaced with <code>grep</code> or <code>ls</code> if required.</p>
-
-<p><strong>Sed</strong> options</p>
-
-<ol>
-<li><code>g</code> Replace all the instances</li>
-<li><code>-i ‘’</code> Edits inplace without appending a new file extension.</li>
-</ol>
-
-
-<p>On a Mavericks the default see does not support case insensitive search,
-therefore I have enclosed the first letter of each word with options for lower and upper case.</p>
-
-<p>After performing the updates the tag text is updated to <code>Command Line</code> and the url is
-<a href="http://lizard-spock.co.uk/tag/command-line/"><code>tag/command-line/</code></a>, which lists all of the tagged posts.</p>
 ]]></content>
   </entry>
   

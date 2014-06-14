@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I recently heard about the Schwartzian transform, which is a sorting idiom from perl. It allows an array of objects to be efficiently sorted by any &hellip;">
+  <meta name="description" content="Classes are a basic Object Orientated Structure which encapsulate state and behaviour. Some times you just require to capture state/storage of a data &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,207 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/behaviour-and-state/">Behaviour and State</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-16T17:59:44+01:00" pubdate data-updated="true">Apr 16<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/behaviour-and-state/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/behaviour-and-state/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Classes are a basic Object Orientated Structure which encapsulate state and behaviour. Some times you just require to capture state/storage of a data structure with out any behaviour, in this case Ruby&rsquo;s Stuct can be useful.</p>
+
+<pre><code>class Desk
+  attr_accessor :height, :width, :depth
+
+  def initialize(height=nil, width=nil, depth=nil)
+    @height = height
+    @width = width
+    @depth = depth
+  end
+end
+</code></pre>
+
+<p>Becomes (Is the same as):</p>
+
+<pre><code>DeskS = Struct.new(:height, :width, :depth)
+</code></pre>
+
+<p>Instantiation</p>
+
+<pre><code>a = Desk.new(12, 13, 14)
+b = DeskS.new(12, 13, 14)
+
+a.height
+ =&gt; 12
+
+b.height
+ =&gt; 12 
+</code></pre>
+
+<p>Taking this further for less code in a basic class. This might be too far!</p>
+
+<pre><code>#In herriting from a Struct
+# class DeskWithBehaviour &lt; DeskS
+class DeskWithBehaviour &lt; Struct.new(:height, :width, :depth)
+  def volume
+    height * width * depth
+  end
+end
+
+# Or Pass Struct a block
+DeskSPlus = Struct.new(:height, :width, :depth) do
+  def volume
+    height * width * depth
+  end
+end
+
+c = DeskWithBehaviour.new(1,2,3)
+c.volume
+ =&gt; 6
+c.class
+ =&gt; DeskWithBehaviour
+
+d = DeskSPlus.new(1,2,3)
+d.volume
+ =&gt; 6
+d.class
+ =&gt; DeskSPlus
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/better-open-source-project-setup-with-rvm-bundler/">Better Open Source Project Setup, with RVM & Bundler</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T06:35:10+01:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/better-open-source-project-setup-with-rvm-bundler/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/better-open-source-project-setup-with-rvm-bundler/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Based on &lsquo;Raise the bar, lower the pressure&rsquo; given by Durran Jordan at ScotRubyConf 2011.</p>
+
+<p>There has been some debate as to whether the project .rvmrc should be included in git. With the correct options including .rvmrc and bundler can make working on open source projects easier. I have an example on <a href="https://github.com/morganp/OpenSourceExample">github</a>. If you have not hear of Ruby Version Manager RVM I suggest you <a href="https://rvm.beginrescueend.com/rvm/install/">check it out</a>.</p>
+
+<p>An example project .rvmrc</p>
+
+<pre><code>rvm_gemset_create_on_use_flag=1
+rvm 1.9.2@OpenSourceExample
+</code></pre>
+
+<p>The first line is really important here on first time cd&#8217;ing into the folder it creates the gemset instead of outputting a warning that it does not exist.</p>
+
+<p>The second line specifies the version of ruby to use and defines the name of the gemset. Gemsets create a sandboxed gem area so that it does not pollute your global gem space.</p>
+
+<p><a href="http://gembundler.com/">Bundler</a> is then used to manage the gems.</p>
+
+<h2>Install Bundler</h2>
+
+<p>Bundler requires gem &mdash;version greater than 1.3.6, but it is a good idea to upgrade.</p>
+
+<pre><code>cd OpenSourceExample
+gem update --system
+rvm gemset global
+gem install bundler
+cd .. &amp;&amp; cd -
+</code></pre>
+
+<p>Write your [gemfile][<a href="http://gembundler.com/gemfile.html">http://gembundler.com/gemfile.html</a>] <br/>
+1) With at least 1 source <br/>
+2) If the gem install has a different name to require then :require has to be specified eg.</p>
+
+<p>   gem install sinatra-session
+   *.rb  contains require &ldquo;sinatra/session&rdquo;</p>
+
+<p>Example ./gemfile</p>
+
+<pre><code>source "http://rubygems.org"   
+
+gem "sinatra", "~&gt; 1"    
+gem "sinatra-session", :require =&gt; 'sinatra/session'
+
+group :development do
+  gem "sinatra-reloader", "~&gt; 0"
+  gem "thin", "~&gt; 1"
+end
+
+group :test do
+  gem "rspec", :require =&gt; "spec"
+end
+</code></pre>
+
+<p>Then install the gems specified and add the gemfile and Gemfile.lock to git</p>
+
+<pre><code>$ bundle install
+$ git add gemfile Gemfile.lock
+</code></pre>
+
+<h2>Workflow</h2>
+
+<p>When picking up an open source project set up like this, the workflow should just be:</p>
+
+<pre><code>$ git clone https://github.com/morganp/OpenSourceExample
+$ cd OpenSourceExample
+#Review the .rvmrc and type yes if it is safe
+$ bundle install
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -554,180 +755,6 @@ t-adapter may not be required if telescope offers direct connection.
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/activerecord-find-allmultiple/">Activerecord Find All/Multiple</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-19T06:31:03+00:00" pubdate data-updated="true">Feb 19<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/activerecord-find-allmultiple/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/activerecord-find-allmultiple/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Using Tags (An active record model) to find tags by the tag property:</p>
-
-<pre><code>Tag.find_by_tag("Ruby")
-Ruby
-
-Tag.find_by_tag(["Ruby", "Gem"])
-Ruby
-</code></pre>
-
-<p> That did not return what I expected, find<em> returns one object by default. first</em> last<em> or all</em> modifiers can be used. So to find multiple tags by the same property:</p>
-
-<pre><code>Tag.find_all_by_tag(["Ruby", "Gem"]) 
-Ruby
-Gem
-</code></pre>
-
-<p>Again with slightly less active record magic:<br/>
-Note the = ? for singular items and IN (?) for a list of items.</p>
-
-<pre><code>Tag.find(:all, :conditions =&gt; ["tag = ?", "Ruby"])
-Ruby
-
-Tag.find(:all, :conditions =&gt; ["tag IN (?)", ["Ruby", "Gem"]])
-Ruby
-Gem
-</code></pre>
-
-<p>More info can be read on <a href="http://lenary.co.uk/guides/active_record_querying.html#dynamic-finders">Rails Guides</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/gem-permissions-on-webfaction/">Gem Permissions on WebFaction</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-12T14:10:56+00:00" pubdate data-updated="true">Feb 12<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/gem-permissions-on-webfaction/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/gem-permissions-on-webfaction/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After making a few updates to my site I decided to upgrade the version of sinatra I was using in my web faction account. for some reason I started getting these errors:</p>
-
-<pre><code>$ gem update sinatra
-Updating installed gems
-Updating sinatra
-ERROR:  While executing gem ... (Gem::FilePermissionError)
-    You don't have write permissions into the /usr/local/ruby1.8.7ee/lib/ruby/gems/1.8 directory.
-</code></pre>
-
-<p>This error was resolved by adding this line to my ~/.gemrc file (create it if it does not exist)</p>
-
-<pre><code> gemhome: /home/webfaction-username/.gem/ruby/1.8
-</code></pre>
-
-<p>The results of gem env before and after fix:</p>
-
-<pre><code>$ ./gem env
-RubyGems Environment:
-  - RUBYGEMS VERSION: 1.3.7
-  - RUBY VERSION: 1.8.7 (2009-12-24 patchlevel 248) [i686-linux]
-  - INSTALLATION DIRECTORY: /usr/local/ruby1.8.7ee/lib/ruby/gems/1.8
-  - RUBY EXECUTABLE: /usr/local/ruby1.8.7ee/bin/ruby
-  - EXECUTABLE DIRECTORY: /usr/local/ruby1.8.7ee/bin
-  - RUBYGEMS PLATFORMS:
-    - ruby
-    - x86-linux
-  - GEM PATHS:
-     - /usr/local/ruby1.8.7ee/lib/ruby/gems/1.8
-     - /home/webfaction-user/.gem/ruby/1.8
-  - GEM CONFIGURATION:
-     - :update_sources =&gt; true
-     - :verbose =&gt; true
-     - :benchmark =&gt; false
-     - :backtrace =&gt; false
-     - :bulk_threshold =&gt; 1000
-     - :sources =&gt; ["http://rubygems.org", "http://gems.github.com"]
-     - "gem" =&gt; "--no-ri --no-rdoc"
-  - REMOTE SOURCES:
-     - http://rubygems.org
-     - http://gems.github.com
-</code></pre>
-
-<p>After fix</p>
-
-<pre><code>$ ~/webapps/passenger/gems/bin/gem env
-RubyGems Environment:
-  - RUBYGEMS VERSION: 1.3.7
-  - RUBY VERSION: 1.8.7 (2009-12-24 patchlevel 248) [i686-linux]
-  - INSTALLATION DIRECTORY: /home/webfaction-user/.gem/ruby/1.8
-  - RUBY EXECUTABLE: /usr/local/ruby1.8.7ee/bin/ruby
-  - EXECUTABLE DIRECTORY: /home/webfaction-user/.gem/ruby/1.8/bin
-  - RUBYGEMS PLATFORMS:
-    - ruby
-    - x86-linux
-  - GEM PATHS:
-     - /home/webfaction-user/.gem/ruby/1.8
-     - /usr/local/ruby1.8.7ee/lib/ruby/gems/1.8
-  - GEM CONFIGURATION:
-     - :update_sources =&gt; true
-     - :verbose =&gt; true
-     - :benchmark =&gt; false
-     - :backtrace =&gt; false
-     - :bulk_threshold =&gt; 1000
-     - :sources =&gt; ["http://rubygems.org", "http://gems.github.com"]
-     - "gem" =&gt; "--no-ri --no-rdoc"
-     - "gemhome" =&gt; "/home/webfaction-user/.gem/ruby/1.8"
-  - REMOTE SOURCES:
-     - http://rubygems.org
-     - http://gems.github.com
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/25/">&larr; Older</a>
@@ -742,11 +769,19 @@ RubyGems Environment:
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (29)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (30)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-timeout/">Verilog: Timeout</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
@@ -758,14 +793,6 @@ RubyGems Environment:
     
       <li class="post">
         <a href="/blog/engineering/matlab-grid/">Matlab: Grid</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-linebreaks-in-strings/">Matlab: Line Breaks in Strings</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Matlab: Listing Field Name Values of a Struct</a>
       </li>
     
   </ul>

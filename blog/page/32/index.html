@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Ruby has a .sort method which sorts basic objects. it is case sensitive though so Zebra is before apple. Using sort_by instead you can specify the &hellip;">
+  <meta name="description" content="This feature of ruby keeps catching me out as the behaviour is quite unexpected (by me). I can use a &lsquo;!&rsquo; modifying function like so: &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,118 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-ruby-ruby-why-are-you-so-wierd-at-times/">Ruby, Ruby, Ruby, Why Are You So Wierd at Times?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-26T07:48:47+01:00" pubdate data-updated="true">Apr 26<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-ruby-ruby-why-are-you-so-wierd-at-times/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-ruby-ruby-why-are-you-so-wierd-at-times/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This feature of ruby keeps catching me out as the behaviour is quite unexpected (by me).</p>
+
+<p>I can use a &lsquo;!&rsquo; modifying function like so:</p>
+
+<pre><code>html_string.gsub!("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
+</code></pre>
+
+<p>Which works great apart from when the match string &ldquo;&lt;pre&gt;&rdquo; in this case is not found then it returns nil. Surely I would want the string unaltered instead, why would I want nil. So I generally have to replace it with the following:</p>
+
+<pre><code>html_string = html_string.gsub("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
+</code></pre>
+
+<p>[Update 27/04/2010]</p>
+
+<p>Turns out it should not modify the the string but the function returns nil. This was the last line in a function call and so was an implicit return. The following would probably have been better:</p>
+
+<pre><code>html_string.gsub!("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
+return html_string
+</code></pre>
+
+<p>The returned nil could then be used as an if statment to take a different execution path if not modified:</p>
+
+<pre><code>if /&lt;pre&gt;/ === html_string
+   html_string = html_string.gsub("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
+else
+   puts "Does not contain &lt;pre&gt;"
+end
+</code></pre>
+
+<p>Could just become:</p>
+
+<pre><code>if not html_string.gsub!("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
+   puts "Does not contain &lt;pre&gt;"
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/testing-tweets-from-production-server-this-should-be-working%21/">Testing Tweets from Production Server This Should Be Working!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-18T13:45:45+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/testing-tweets-from-production-server-this-should-be-working%21/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/testing-tweets-from-production-server-this-should-be-working%21/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -697,114 +809,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-and-compass-sending-compressed-cached-css/">Sinatra and Compass Sending Compressed Cached CSS</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/sinatra-and-compass-sending-compressed-cached-css/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-and-compass-sending-compressed-cached-css/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have previously mentioned on <a href="http://munkymorgy.blogspot.com/">blogger</a> how to use Compass and SASS with Sinatra for rendering the stylesheets.</p>
-
-<p>I have added a few options which are not in the main tutorials. Compress the stylesheet, this removes all the white space saving bandwidth when transmitting the file.</p>
-
-<pre><code>configure do
-....
-
-  ##Compass CSS/SASS stuff below
-  Compass.configuration do |config|
-     config.project_path = File.dirname(__FILE__)
-     config.sass_dir = 'views/stylesheets'
-     config.output_style = :compressed
-  end
-end
-</code></pre>
-
-<p>The second setting is to tell browsers to cache the stylesheet so that passenger does not have to keep building the file via compass.</p>
-
-<pre><code>##CSS rendering
-get '/stylesheets/:name.css' do
-   content_type 'text/css', :charset =&gt; 'utf-8'
-   response['Expires'] = (Time.now + 60*60*24*356*3).httpdate
-   sass(:"stylesheets/#{params[:name]}" )
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-10-released/">Sinatra 1.0 Released</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/sinatra-10-released/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-10-released/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sinatra 1.0 has been released!</p>
-
-<p>When you install the new version the old one are still left behind. This is an example of how to upgrade, and remove old versions:</p>
-
-<pre><code>$ gem install sinatra
-$ gem cleanup sinatra
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/33/">&larr; Older</a>
@@ -819,11 +823,19 @@ $ gem cleanup sinatra
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (29)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (30)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-timeout/">Verilog: Timeout</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
@@ -835,14 +847,6 @@ $ gem cleanup sinatra
     
       <li class="post">
         <a href="/blog/engineering/matlab-grid/">Matlab: Grid</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-linebreaks-in-strings/">Matlab: Line Breaks in Strings</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Matlab: Listing Field Name Values of a Struct</a>
       </li>
     
   </ul>

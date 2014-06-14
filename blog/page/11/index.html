@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I was wanting to use Dir.glob to get a file list and wanted to do Dir.glob( path + '*') but nicely handle when the final &lsquo;/&rsquo; of path was &hellip;">
+  <meta name="description" content="Stackoverflow have supported markdown for a while. The syntax for showing an image is : ![Holes in Leaf 1][1]
+[1]: http://i.stack.imgur.com/ECE47.jpg &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,103 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/stackoverflow-sites-and-images/">Stackoverflow Sites and Images</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-16T12:32:54+01:00" pubdate data-updated="true">Jun 16<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/stackoverflow-sites-and-images/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/stackoverflow-sites-and-images/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Stackoverflow have supported markdown for a while. The syntax for showing an image is :</p>
+
+<pre><code>![Holes in Leaf 1][1]
+[1]: http://i.stack.imgur.com/ECE47.jpg
+</code></pre>
+
+<p>After having a question edited I discovered that by adding a m to the image url you get the medium sized version for thumbnails. Link 1 becomes the thumbnail shown and wrap it up in a link syntax, when clicked you get link 5, the large version.</p>
+
+<pre><code>[![Holes in Leaf 1][1]][5]
+[1]: http://i.stack.imgur.com/ECE47m.jpg
+[5]: http://i.stack.imgur.com/ECE47.jpg
+</code></pre>
+
+<p><a href="http://i.stack.imgur.com/ECE47.jpg"><img src="http://i.stack.imgur.com/ECE47m.jpg" alt="Holes in Leaf 1" /></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/garden/first-tree/">First Tree</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-08T16:38:55+01:00" pubdate data-updated="true">Jun 8<span>th</span>, 2013</time>
+        
+           | <a href="/blog/garden/first-tree/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/first-tree/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The first tree I purchased was this Yoshino Cherry: Prunus x yedoensis Ivensii for £40 from <a href="http://www.smeatonnurserygardens.co.uk/">Smeaton Nursery</a>.</p>
+
+<p><img src="/images/Gardening/morganp-20130608-Garden-IMG_1200.jpg" alt="Yoshino Cherry: Prunus x yedoensis Ivensii" /></p>
+
+<p>For the first year it was plagued with cherry black fly. Which was <a href="http://gardening.stackexchange.com/q/7664/2381">my first question on Gardening SE</a>.</p>
+
+<p><img src="/images/Gardening/morganp-20130616-Blackfly-IMG_1983.jpg" alt="Cherry Black Fly Attack Cherry Tree" /></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -481,121 +579,6 @@ footer: true
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ubuntu-and-the-jetway-adpe4s/">Ubuntu and the Jetway ADPE4S</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-02T17:02:37+01:00" pubdate data-updated="true">May 2<span>nd</span>, 2013</time>
-        
-           | <a href="/blog/tech/ubuntu-and-the-jetway-adpe4s/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ubuntu-and-the-jetway-adpe4s/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><strong>Still unresolved</strong></p>
-
-<p>The Jetway ADPE4S uses a Marvell 88SE6145 chip which a number of users have had trouble getting to work with Linux.</p>
-
-<p>Currently there is <a href="https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1087790">bug report</a> open for ubuntu about it.</p>
-
-<p>Also there is a report on the <a href="http://wiki.debian.org/pata_marvell">debian wiki</a> about fixing it so far I have:</p>
-
-<p>/etc/modprobe.d/my-marvell.conf</p>
-
-<pre><code>install pata_marvell /bin/true
-</code></pre>
-
-<p>/etc/modprobe.d/my-marvel.conf //&lt;&mdash; spelling mistake?</p>
-
-<pre><code>options ahci marvell_enable=1
-</code></pre>
-
-<p>Run (rebuilds some boot thingy):</p>
-
-<pre><code>sudo update-initramfs -u
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ubuntu-linux-list-disks/">Ubuntu (Linux) List Disks</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-02T13:39:24+01:00" pubdate data-updated="true">May 2<span>nd</span>, 2013</time>
-        
-           | <a href="/blog/tech/ubuntu-linux-list-disks/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ubuntu-linux-list-disks/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>sudo lshw -class disk -class storage -short
-</code></pre>
-
-<p>Outputs :</p>
-
-<pre><code>H/W path           Device     Class       Description
-=====================================================
-/0/100/1c.3/0      scsi0      storage     JMB363 SATA/IDE Controller
-/0/100/1c.3/0/0    /dev/sda   disk        3TB ST3000DM001-9YN1
-/0/100/1c.3/0/1    /dev/sdb   disk        2TB SAMSUNG HD204UI
-/0/100/1c.3/0.1               storage     JMB368 IDE controller
-/0/100/1f.2        scsi2      storage     N10/ICH7 Family SATA Controller [IDE mode]
-/0/100/1f.2/0      /dev/sdc   disk        3TB ST3000DM001-9YN1
-/0/100/1f.2/1      /dev/sdd   disk        2TB SAMSUNG HD204UI
-/0/1               scsi6      storage
-/0/1/0.0.0         /dev/sde   disk        8019MB SCSI Disk
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -610,11 +593,19 @@ footer: true
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (29)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (234)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (30)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-timeout/">Verilog: Timeout</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
@@ -626,14 +617,6 @@ footer: true
     
       <li class="post">
         <a href="/blog/engineering/matlab-grid/">Matlab: Grid</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-linebreaks-in-strings/">Matlab: Line Breaks in Strings</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Matlab: Listing Field Name Values of a Struct</a>
       </li>
     
   </ul>

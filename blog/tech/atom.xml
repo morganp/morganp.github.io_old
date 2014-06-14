@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/blog/tech/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-06-11T23:08:08+01:00</updated>
+  <updated>2014-06-14T08:43:49+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress Categories with Different Styles]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/octopress-categories-with-different-styles/"/>
+    <updated>2014-06-14T08:24:01+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/octopress-categories-with-different-styles</id>
+    <content type="html"><![CDATA[<p>As I use the code blocks for ingredient lists on my recipe pages I wanted to
+have a different style, lighter background instead of black.</p>
+
+<p>I currently manually set a different layout in the _post header:</p>
+
+<pre><code>layout: post
+categories: 
+- Tech
+
+layout: recipe
+categories: 
+- Cooking
+</code></pre>
+
+<!-- more -->
+
+
+<p>The layout will then look for a matching layout in <code>source/_layouts</code></p>
+
+<p>Manually create your new layout (instructions from top level Octopress site):</p>
+
+<pre><code>cp source/_layouts/post.html source/_layouts/recipe.html
+</code></pre>
+
+<p>Edit <code>source/_layouts/recipe.html</code> changing the role to <code>recipe</code>:</p>
+
+<pre><code>---
+layout: default
+single: true
+---
+
+&lt;div&gt;
+&lt;article class="hentry" role="recipe"&gt;
+  \{\% include article.html \%\}
+  &lt;footer&gt;
+    &lt;p class="meta"&gt;
+</code></pre>
+
+<p>This will now pick up the styling that <code>post</code> also gets but we can target our modifications to <code>article[role="recipe"]</code>.
+For custom stylings apply changes in to the relevant file in <code>sass/custom/</code>.</p>
+
+<p>To modify the background colour of a code block<br/>
+<code>sass/custom/_styles.scss</code> add:</p>
+
+<pre><code>// Customise the recipe layout
+article[role="recipe"] pre {
+  background-color: $sidebar-bg;
+}
+</code></pre>
+
+<p>NB: <code>$sidebar-bg</code> is defined in <code>sass/base/_theme.scss</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Licence Types and Short Identifiers]]></title>
@@ -157,15 +216,6 @@ end
 <p>The full list of options can be seen from page 63 of the <a href="http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/devnet/photoshoplightroom/pdfs/lr5/lightroom-sdk-guide.pdf">lightroom sdk guide</a>.</p>
 
 <p>My <a href="https://github.com/morganp/CopyrightMetadataTagset.lrdevplugin">Copyright view</a> and <a href="https://github.com/morganp/CopyrightMetadataTagset.lrdevplugin">JobID view</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iTerm Exit Fullscreen]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/iterm-exit-fullscreen/"/>
-    <updated>2014-04-08T19:27:00+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/iterm-exit-fullscreen</id>
-    <content type="html"><![CDATA[<p><code>⌘-Enter</code> toggles fullscreen in <a href="http://www.iterm2.com/">iTerm</a>.</p>
 ]]></content>
   </entry>
   
