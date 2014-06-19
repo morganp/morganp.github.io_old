@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Some info on what has changed in Xcode 4.3. Latest is 4.4 but a lot changed in 4.3 making this a good reference point. Downloaded the XCode app, but &hellip;">
+  <meta name="description" content="Following on from Macbook Pro Setup, Now it is time to install some of the command line tools. I have install XCode 4.4 and the command line tools, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,131 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mountain-lion-setup-part-2-homebrew-rvm/">Mountain Lion Setup, Part 2 Homebrew & RVM</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-16T11:34:57+01:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/mountain-lion-setup-part-2-homebrew-rvm/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mountain-lion-setup-part-2-homebrew-rvm/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Following on from <a href="http://amaras-tech.co.uk/article/180">Macbook Pro Setup</a>, Now it is time to install some of the command line tools.</p>
+
+<p>I have install XCode 4.4 and the command line tools, this allows brew to compile code, the compiler will then get replaced using homebrew to allow ruby compilation.</p>
+
+<p>Alternatively install <a href="https://github.com/kennethreitz/osx-gcc-installer/">osx-gcc-installer</a> instead of XCode to get home brew running.</p>
+
+<h2><a href="http://mxcl.github.com/homebrew/">Homebrew</a></h2>
+
+<p>From <code>/Applications/Utilities/Terminal.app</code></p>
+
+<pre><code>$ ruby &lt;(curl -fsSkL raw.github.com/mxcl/homebrew/go)
+</code></pre>
+
+<p>Which should run a look some thing like:</p>
+
+<pre><code>==&gt; This script will install:
+/usr/local/bin/brew
+/usr/local/Library/Formula/...
+/usr/local/Library/Homebrew/...
+/usr/local/share/man/man1/brew.1
+
+Press enter to continue
+==&gt; /usr/bin/sudo /bin/mkdir /usr/local
+Password:
+==&gt; /usr/bin/sudo /bin/chmod g+rwx /usr/local
+==&gt; /usr/bin/sudo /usr/bin/chgrp admin /usr/local
+==&gt; Downloading and Installing Homebrew...
+remote: Counting objects: 76442, done.
+remote: Compressing objects: 100% (36866/36866), done.
+remote: Total 76442 (delta 52004), reused 60755 (delta 38765)
+Receiving objects: 100% (76442/76442), 10.90 MiB | 1.02 MiB/s, done.
+Resolving deltas: 100% (52004/52004), done.
+From https://github.com/mxcl/homebrew
+ * branch            master     -&gt; FETCH_HEAD
+==&gt; Installation successful!
+You should run `brew doctor' *before* you install anything.
+Now type: brew help
+</code></pre>
+
+<p>Run :</p>
+
+<pre><code>$ brew doctor
+&gt; Your system is raring to brew
+</code></pre>
+
+<p>Test Brew by installing <a href="http://en.wikipedia.org/wiki/Wget">wget</a>:</p>
+
+<pre><code>$ brew install wget
+==&gt; Downloading http://ftpmirror.gnu.org/wget/wget-1.14.tar.gz
+######################################################################## 100.0%
+==&gt; ./configure --disable-debug --prefix=/usr/local/Cellar/wget/1.14 --sysconfdir=/usr
+==&gt; make install
+/usr/local/Cellar/wget/1.14: 7 files, 676K, built in 39 seconds
+</code></pre>
+
+<h2><a href="https://rvm.io/rvm/install/">RVM</a></h2>
+
+<p>We need to update the compiler to a gcc compatible with ruby as XCode4.2+ does not play well with others.</p>
+
+<pre><code>brew update
+brew install libksba
+brew tap homebrew/dupes
+brew install autoconf automake apple-gcc42
+rvm pkg install openssl
+</code></pre>
+
+<p>List available Rubies</p>
+
+<pre><code>rvm list known
+</code></pre>
+
+<p>Install 1.9.3 head</p>
+
+<pre><code>rvm install 1.9.3
+</code></pre>
+
+<p>Make ruby 1.9.3 the default</p>
+
+<pre><code>rvm use 1.9.3 --default
+</code></pre>
+
+<p>Clean up brew and rvm (Remove temp files and source code used to compile executables)</p>
+
+<pre><code>brew cleanup -s
+rm -rf `brew --cache`
+rvm cleanup all
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -642,49 +767,6 @@ headless.destroy
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/subscribe-to-a-channel-on-youtube-ipad/">Subscribe to a Channel on YouTube iPad</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-10T09:40:13+01:00" pubdate data-updated="true">Jun 10<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/subscribe-to-a-channel-on-youtube-ipad/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/subscribe-to-a-channel-on-youtube-ipad/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The subscribe button on the iPad youtube app is quite well hidden.</p>
-
-<p>View a video from the channel you are interested in in the non-fullscreen mode, from the left column select &ldquo;More From&rdquo; Subscribe/Unsubscribe should be the first option.</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/7357055670/" title="iPad YouTube Subscribe by munky morgy, on Flickr"><img src="http://farm8.staticflickr.com/7226/7357055670_3b8706d846.jpg" width="500" height="375" alt="iPad YouTube Subscribe"></a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/17/">&larr; Older</a>
@@ -699,11 +781,15 @@ headless.destroy
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (30)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
@@ -719,10 +805,6 @@ headless.destroy
     
       <li class="post">
         <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
       </li>
     
   </ul>

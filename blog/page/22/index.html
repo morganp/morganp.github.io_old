@@ -9,10 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Building on my original Ruby Arrays article a few more things you can do with Ruby Arrays. Concatenation a = [1,2,3]
-b = [4,5,6]
-c = [a,b]
-&gt; [[1,2 &hellip;">
+  <meta name="description" content="brew update
+brew outdated Homebrew.
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +83,49 @@ c = [a,b]
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/homebrew-list-outdated-packages/">Homebrew List Outdated Packages</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-21T21:58:22+01:00" pubdate data-updated="true">Sep 21<span>st</span>, 2011</time>
+        
+           | <a href="/blog/tech/homebrew-list-outdated-packages/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/homebrew-list-outdated-packages/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>brew update
+brew outdated
+</code></pre>
+
+<p><a href="https://github.com/Homebrew/homebrew/wiki/FAQ">Homebrew</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -746,76 +788,6 @@ f.close
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/uninitialized-constant-compasslogger/">Uninitialized Constant Compass::Logger</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-06-23T20:21:03+01:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2011</time>
-        
-           | <a href="/blog/tech/uninitialized-constant-compasslogger/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/uninitialized-constant-compasslogger/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Working on a joint project an error started showing up when trying to perform migrations.</p>
-
-<pre><code>$ rake db:migrate VERSION=0
-&gt;rake aborted!
-&gt;uninitialized constant Compass::Logger
-</code></pre>
-
-<p>The Solution was to add a line to the rake file, to correctly load Compass::Logger, still no idea why rake needed it.</p>
-
-<pre><code>require 'compass/logger'
-</code></pre>
-
-<p>Another thing to check might be that compass is being loaded before classes which use it. An issue that can happen in Sinatra and Rails apps.</p>
-
-<p>Example Gemfile (for <a href="http://gembundler.com/">Bundler</a>)</p>
-
-<pre><code>source :rubygems
-
-gem 'rails', '3.0.9'
-
-gem "compass"
-gem "haml-rails"
-gem "pg"
-gem "jquery-rails"
-gem "omniauth", '~&gt; 0.2.5'
-
-group :test do
-  gem "capybara"
-  gem "factory_girl_rails"
-  gem "test-unit"
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/23/">&larr; Older</a>
@@ -830,11 +802,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (30)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
@@ -850,10 +826,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
       </li>
     
   </ul>

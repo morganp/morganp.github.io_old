@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="⌘-Enter toggles fullscreen in iTerm.
-">
+  <meta name="description" content="Lightroom plugins for metadata views are called metadata tag sets and only require 2 text files. create a folder called something.lrdevplugin once &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,79 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/photography/creating-lightroom-metadata-views/">Creating Lightroom Metadata Views</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-09T01:28:27+01:00" pubdate data-updated="true">Apr 9<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/photography/creating-lightroom-metadata-views/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/photography/creating-lightroom-metadata-views/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Lightroom plugins for metadata views are called metadata tag sets and only require 2 text files.</p>
+
+<p>create a folder called <code>something.lrdevplugin</code> once you are happy with it it can be renamed <code>something.lrplugin</code></p>
+
+<p>Create a file called Info.lua and Tagset.lua</p>
+
+<p>Info.lua:</p>
+
+<pre><code>return {
+  LrSdkVersion = 5.0,
+  LrSdkMinimumVersion = 5.0,
+  LrToolkitIdentifier = ’sample.metadata',
+  LrPluginName = LOC "$$$/CustomMetadata/PluginName=Example View",
+  LrMetadataTagsetFactory = ‘Tagset.lua',
+}
+</code></pre>
+
+<p>Tagset.lua</p>
+
+<pre><code>return {
+  title = LOC "$$$/SampleTagset/Title=Example Meta",
+  id = ‘Tagset',
+  items = {
+    {'com.adobe.jobIdentifier', height_in_lines = 1},
+    'com.adobe.separator',
+    {'com.adobe.title', height_in_lines = 2},
+    'com.adobe.separator',
+    {'com.adobe.caption', height_in_lines = 6},
+  },
+}
+</code></pre>
+
+<p>The full list of options can be seen from page 63 of the <a href="http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/devnet/photoshoplightroom/pdfs/lr5/lightroom-sdk-guide.pdf">lightroom sdk guide</a>.</p>
+
+<p>My <a href="https://github.com/morganp/CopyrightMetadataTagset.lrdevplugin">Copyright view</a> and <a href="https://github.com/morganp/CopyrightMetadataTagset.lrdevplugin">JobID view</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -610,65 +682,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-sort-by/">Matlab Sort_by</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-17T18:55:11+00:00" pubdate data-updated="true">Mar 17<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-sort-by/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-sort-by/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In ruby we can perform schwartzian transforms easily with the sort_by method. This allows sorting enumerators by any property.</p>
-
-<p>For example to do a non case sensitive sort:</p>
-
-<pre><code>some_array.sort_by { |x| x.downcase }
-</code></pre>
-
-<p><a href="http://blogs.mathworks.com/pick/2010/09/17/sorting-structure-arrays-based-on-fields/">Based on this Mathworks blog</a>, I have ported the <a href="http://www.mathworks.com/matlabcentral/fileexchange/28573-nested-sort-of-structure-arrays">Matlab central code</a> to a <a href="https://github.com/Matlab-Toolbox/nested_sort">Toolbox on Github</a>.</p>
-
-<p>After Downloading the toolbox and adding the functions folder to your path.</p>
-
-<pre><code>addpath('../lib/nested_sort/function/');
-</code></pre>
-
-<p>Basic usage is:</p>
-
-<pre><code>A = struct('name', num2cell(1:4), 'value', {5,2,3,1});
-B=sortStruct(A,'value');
-</code></pre>
-
-<p>B is A sorted by &lsquo;value&rsquo;.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -683,11 +696,15 @@ B=sortStruct(A,'value');
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (30)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
@@ -703,10 +720,6 @@ B=sortStruct(A,'value');
     
       <li class="post">
         <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
       </li>
     
   </ul>
