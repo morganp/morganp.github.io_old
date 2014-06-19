@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="This is not necessarily the correct way of creating executable gems but a method which worked for me. Assuming we are working in folder just for this &hellip;">
+  <meta name="description" content="Homebrew is a new package management system for Mac OS X. A good review/tutorial on EngineYard. Update 20-August-2010
+Then method of installation &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,81 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/homebrew-package-management-for-mac-os-x/">Homebrew Package Management for Mac OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-22T07:45:14+01:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2010</time>
+        
+           | <a href="/blog/tech/homebrew-package-management-for-mac-os-x/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/homebrew-package-management-for-mac-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Homebrew is a new package management system for Mac OS X. <a href="http://www.engineyard.com/blog/2010/homebrew-os-xs-missing-package-manager/">A good review/tutorial on EngineYard</a>.</p>
+
+<p>Update 20-August-2010<br/>
+Then method of installation below adds lots (4) extra folders to your home area making it look clutered so I now preffer this method of installation.</p>
+
+<pre><code>ruby -e "$(curl -fsS http://gist.github.com/raw/323731/install_homebrew.rb)";
+</code></pre>
+
+<p>Then just make sure &lsquo;/usr/local/bin/&rsquo; and &lsquo;/usr/local/sbin/&rsquo; are on your path.<br/>
+Update End</p>
+
+<p>Although I do not like the idea of changing permissions on /usr/local/, so I did:</p>
+
+<pre><code>mkdir -p ~/bin/homebrew
+curl -L http://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C ~/bin/homebrew
+ln -s ~/bin/homebrew/bin/brew ~/bin/brew
+
+#and make sure ~/bin is on your path with soem thing like this in your ~/.bashrc
+# export PATH=$PATH:~/bin
+</code></pre>
+
+<p>Now try it out:</p>
+
+<pre><code>$ brew --version
+&gt; 0.6
+$ brew install wget
+Warning: It appears you have Macports or Fink installed
+Although, unlikely, this can break builds or cause obscure runtime issues.
+If you experience problems try uninstalling these tools.
+==&gt; Downloading http://ftp.gnu.org/gnu/wget/wget-1.12.tar.bz2
+######################################################################## 100.0%
+==&gt; ./configure --disable-debug --prefix=/Users/morgy/bin/homebrew/Cellar/wget/1.12 --disable-iri
+==&gt; make install
+/Users/morgy/bin/homebrew/Cellar/wget/1.12: 7 files, 576K, built in 44 seconds
+</code></pre>
+
+<p>Done</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -673,51 +749,6 @@ RubyTorrent Execution time 0.689869 seconds</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/open-office-impress-autostart/">Open Office Impress AutoStart</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-31T10:27:17+01:00" pubdate data-updated="true">May 31<span>st</span>, 2010</time>
-        
-           | <a href="/blog/tech/open-office-impress-autostart/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/open-office-impress-autostart/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Open office by default does not have a mode to auto start the presentation when launched. With the ImpressRunner plugin you can:</p>
-
-<p><a href="http://extensions.services.openoffice.org/project/ImpressRunner"><a href="http://extensions.services.openoffice.org/project/ImpressRunner">http://extensions.services.openoffice.org/project/ImpressRunner</a></a></p>
-
-<p>The tool bar does not seem to work with newer version of Open Office but it can be controlled via the presintations properties.</p>
-
-<p>File->Properties->Custom Properties and insert &lsquo;autostart&rsquo; as the value of &lsquo;Info 1&rsquo;</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/31/">&larr; Older</a>
@@ -732,11 +763,15 @@ RubyTorrent Execution time 0.689869 seconds</p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (236)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
@@ -752,10 +787,6 @@ RubyTorrent Execution time 0.689869 seconds</p>
     
       <li class="post">
         <a href="/blog/engineering/verilog-timeout/">Verilog: Timeout</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
       </li>
     
   </ul>

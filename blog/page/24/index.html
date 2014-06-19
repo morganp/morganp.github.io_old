@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="In Vim to insert text before the cursor press &lsquo;i&rsquo;, to insert text after cursor &lsquo;a&rsquo; or to edit at the end of line &lsquo;A& &hellip;">
+  <meta name="description" content="I have not fully read it but it looks like this is a good guide to bash scripting. A few things that normally catch me out trying to load modules &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,92 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/bash-scripts-and-cron/">Bash Scripts and Cron</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-28T20:01:13+01:00" pubdate data-updated="true">Apr 28<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/bash-scripts-and-cron/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/bash-scripts-and-cron/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have not fully read it but it looks like this is a <a href="http://mywiki.wooledge.org/BashGuide">good guide to bash scripting</a>. A few things that normally catch me out trying to load modules inside a script, but they fail with:</p>
+
+<pre><code>&gt; module: command not found
+</code></pre>
+
+<p>This is due to the module system not being loaded. For Linux/Unix systems adding the 3rd line below should fix the issue.</p>
+
+<pre><code>#!/bin/bash
+
+. /usr/share/modules/init/bash
+module load something
+</code></pre>
+
+<p>NB: Not sure how to do this on Mac OS X</p>
+
+<p>The Second bash scripting issue that trips me up is when adding to cron.</p>
+
+<p>cron or crontab is a way to run scripts at regular intervals, however by default it runs in a minimal environment. This means that a script which executes correctly in your terminal may not work as expected when entered in cron.</p>
+
+<h2>Solution 1</h2>
+
+<pre><code>#!/bin/bash
+source ~/.bashrc
+
+echo "The rest of the script"
+</code></pre>
+
+<p>Sourcing your bashrc in the script while this works it requires the script to be written based on how it will be deployed. Solution 2 fixes the crontab for the environment it will run in.</p>
+
+<h2>Solution 2</h2>
+
+<p>edit the crontab</p>
+
+<pre><code>$ crontab -e
+</code></pre>
+
+<p>From this:</p>
+
+<pre><code>* * * * * /path/to/script
+</code></pre>
+
+<p>to this:</p>
+
+<pre><code>* * * * * /bin/bash -l -c '/path/to/script'
+</code></pre>
+
+<p>-l loads the full environment<br/>
+-c tells bash that there is a script to execute</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -665,49 +751,6 @@ end # while true
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/amaras-site-updates/">Amaras Site Updates</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-28T13:19:09+00:00" pubdate data-updated="true">Feb 28<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/amaras-site-updates/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/amaras-site-updates/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have just finished some minor updates to the site. The largest is the move to Droid Fonts, <a href="http://www.google.com/webfonts">Google Fonts</a> provides a way for free cross platform fonts to be used. <a href="http://www.fontsquirrel.com/">Font Squirrel</a> is also meant to be a good alternative.</p>
-
-<p>The link colours have also been changed around and dropped the underline. The graduated colour in the header is now a repeated image instead of css as the original method of the graduation forced a horizontal scroll bar.</p>
-
-<p>Articles can now be filtered by tag <a href="/article/tag/Ruby">/tag/Ruby</a>, and the <a href="/article/rss">RSS</a> works again.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/25/">&larr; Older</a>
@@ -722,11 +765,15 @@ end # while true
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (236)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
@@ -742,10 +789,6 @@ end # while true
     
       <li class="post">
         <a href="/blog/engineering/verilog-timeout/">Verilog: Timeout</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
       </li>
     
   </ul>

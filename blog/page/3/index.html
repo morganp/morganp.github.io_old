@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Lightroom plugins for metadata views are called metadata tag sets and only require 2 text files. create a folder called something.lrdevplugin once &hellip;">
+  <meta name="description" content="With a command line Ruby application using Thor for the option parsing I want to be able to run: $ thor_app --version
+&gt; thor_app version 1.0.0 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,76 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/thor-adding-verbose/">Thor Adding &#8211;verbose</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-09T19:26:44+01:00" pubdate data-updated="true">Apr 9<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/thor-adding-verbose/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/thor-adding-verbose/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>With a command line Ruby application using Thor for the option parsing I want to be able to run:</p>
+
+<pre><code>$ thor_app --version
+&gt; thor_app version 1.0.0
+</code></pre>
+
+<p>Create a boolean class option, which does not belong to a task, that can be referenced by other tasks. The often used example for a class option is -v verbose, as all tasks can use this to determine how noisy they should be.</p>
+
+<p>Then create a &lsquo;version&rsquo; task and make it the default task, so when no task is defined the version task is ran and can react to the &mdash;version flag (class option).</p>
+
+<pre><code>class CLI &lt; Thor
+  #include Thor::Actions
+  class_option :version, :type =&gt; :boolean
+
+  desc "version", "Show thor_app version"
+  def version
+    if options[:version]
+      puts "thor_app version #{find_version}"
+    end
+  end
+  default_task :version
+
+  no_tasks do
+    def find_version
+      ## Method can be replaced to look up VERSION
+      '1.0.0'
+    end
+  end
+end
+</code></pre>
+
+<p>This is based on <a href="http://stackoverflow.com/q/22809972/97073">my SO Question</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -631,57 +702,6 @@ sprintf(['%0',num2str(6),'s'], dat)
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-wrapper-scripts/">Matlab Wrapper Scripts</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-17T19:48:57+00:00" pubdate data-updated="true">Mar 17<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-wrapper-scripts/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-wrapper-scripts/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To wrap a function with variable input arguments and pass them all on to the wrapped function.
-Based on a <a href="http://stackoverflow.com/questions/4895556/how-to-wrap-a-function-using-varargin-and-varargout">StackOverflow answer</a>:</p>
-
-<pre><code>function varargout = wrapper( varargin )
-[varargout{1:nargout}] = someFunction( varargin{:} ); 
-</code></pre>
-
-<p>Used in the <a href="https://github.com/Matlab-Toolbox/printf">printf toolbox</a>: where we wrap fprint to print directly to stdout.</p>
-
-<pre><code>function printf( varargin )
-  fprintf(1, varargin{:}); 
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -696,11 +716,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (236)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
@@ -716,10 +740,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/verilog-timeout/">Verilog: Timeout</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
       </li>
     
   </ul>

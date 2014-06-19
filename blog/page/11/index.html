@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I have decided to clean up my vim colorschemes. I have been using ir_black for sometime but it does not look the same as others who use it. I think I &hellip;">
+  <meta name="description" content="After using Lightroom for over 6 years I still do not see the point in Lightroom Collections. Scott Kelby Describes his usage, but it is very similar &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,59 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/lightroom-collections-whats-the-point/">Lightroom Collections Whats the Point?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-12T22:47:25+01:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
+        
+           | <a href="/blog/photography/lightroom-collections-whats-the-point/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/lightroom-collections-whats-the-point/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After using Lightroom for over 6 years I still do not see the point in Lightroom Collections.</p>
+
+<p><a href="http://scottkelby.com/2009/how-i-use-lightrooms-collections/">Scott Kelby</a> Describes <a href="http://scottkelby.com/2009/how-i-use-lightrooms-collections/">his usage</a>, but it is very similar to my workflow without them.</p>
+
+<p>I create a folder, via a script, which increments a shoot number and a description i.e. <strong>0101-SpaceRocket</strong></p>
+
+<p>I then import my images into this folder. A quick scan through the images rejecting (shortcut x) really bad ones. A second scan I Flag (shortcut p) the ones worth spending time to develop. I can change my mind later and remove them from the top selection (shortcut u).</p>
+
+<p>Rejecting photos has the advantage that you can get lightroom to clean up, removing from the catalog and deleting from disk.</p>
+
+<p>So far this does everything Scott Kelby talks about having a Full and Picks Collection. If I want to choose just the very best of a set them I could apply star filters.</p>
+
+<p>Scott then takes the the breakdown a bit further and creates Full and Picks folders for multiple events throughout a shoot. If we new we wanted this breakdown then the folder hierarchy can reflect it. So I still do not see the need for collections.</p>
+
+<p>My first use of collections was a mistake and it may be from this that I stay away. My first collection I had inadvertently set it to have different light room develop data. When viewing the photo from the lightroom file browser the images were not flagged or developed. Lightroom offered no way to merge a collections data back into the standard image view. I am now for ever stuck with one collection from many years ago which is the only place the develop data is held for that particular shoot.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -567,50 +620,6 @@ footer: true
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/push-local-folder-to-remote-server-over-ssh/">Push Local Folder to Remote Server Over Ssh</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-10T21:30:00+01:00" pubdate data-updated="true">May 10<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/push-local-folder-to-remote-server-over-ssh/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/push-local-folder-to-remote-server-over-ssh/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After struggling to get the rake task for octopress to deploy I decided to fall back to the command line and use rsync and ssh to push the static website to the server.</p>
-
-<p>To copy the local folder public to webapp/x/ folder on my webserver:</p>
-
-<pre><code> rsync -avz ./public/  user@server:~/webapps/x/
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -625,11 +634,15 @@ footer: true
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (236)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
@@ -645,10 +658,6 @@ footer: true
     
       <li class="post">
         <a href="/blog/engineering/verilog-timeout/">Verilog: Timeout</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
       </li>
     
   </ul>

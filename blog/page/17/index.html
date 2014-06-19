@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="The subscribe button on the iPad youtube app is quite well hidden. View a video from the channel you are interested in in the non-fullscreen mode, &hellip;">
+  <meta name="description" content="Lightroom 4.1 is now available. Not much looks like it has changed between this and the RC1 release version. But the adobe page lists the changes and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,45 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/lightroom-41-available/">Lightroom 4.1 Available</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-18T19:28:53+01:00" pubdate data-updated="true">Jun 18<span>th</span>, 2012</time>
+        
+           | <a href="/blog/photography/lightroom-41-available/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/lightroom-41-available/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Lightroom 4.1 is <a href="http://blogs.adobe.com/lightroomjournal/2012/05/lr41nowavailable.html">now available</a>. Not much looks like it has changed between this and the RC1 release version. But the <a href="http://blogs.adobe.com/lightroomjournal/2012/05/lr41nowavailable.html">adobe page</a> lists the changes and added camera support since 4.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -582,70 +621,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/handle-www-and-no-www-for-better-google-juice/">Handle Www. And No-www for Better Google Juice</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-18T23:00:39+01:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/handle-www-and-no-www-for-better-google-juice/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/handle-www-and-no-www-for-better-google-juice/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>There was an interesting post on hacker news recently, <a href="http://blog.safeshepherd.com/post/23218902229/google-just-nerfed-us-a-venture-backed-startup">safeshepherd suddenly fell off the google</a> for their own name. The <a href="http://news.ycombinator.com/item?id=3987935">comments</a> had some good answers especially the first by a google employee.</p>
-
-<p>The gist of it is that if you have <a href="https://">https://</a> and <a href="http://">http://</a> and www.domain.com and domain.com google sees 4 versions of you site. It will pick one of them as the main site each time it ranks your site. This can change every, effecting the ranking, as it looks like duplicated content.</p>
-
-<p>For Sinatra there is a nice bit of middle were called <a href="https://github.com/logicaltext/rack-no-www">rack-no-www</a> which adds the redirect for you.</p>
-
-<p>Add to you gem file</p>
-
-<pre><code>gem  "rack-no-www",  "~&gt; 0.0.2", :require =&gt; 'rack/no-www'
-</code></pre>
-
-<p>Or just <code>gem install rack-no-www</code></p>
-
-<p>Usage in a basic Sinatra App (app.rb)</p>
-
-<pre><code>require 'sinatra'
-require 'rack/no-www'
-
-use Rack::NoWWW
-
-get '/' do
-  'Helloworld'
-end
-</code></pre>
-
-<p>Run with <code>ruby app.rb</code> With web browser view localhost:4567. If that is working then you should find www.localhost:4567 redirects back to localhost:4567</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/18/">&larr; Older</a>
@@ -660,11 +635,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (236)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
@@ -680,10 +659,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/verilog-timeout/">Verilog: Timeout</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
       </li>
     
   </ul>

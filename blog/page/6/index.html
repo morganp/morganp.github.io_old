@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="The first batch of seeds in the propagator are off to a good start. Rocket: De Cayenne, Chilli Peppers: Soon will re-pot and start hardening off.
-">
+  <meta name="description" content="Mathworks Article on Object-Oriented programming for Matlab. A quick example of the syntax: classdef sads properties Name SampleRate end properties ( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,67 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/object-oriented-matlab/">Object-Oriented Matlab</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-28T19:58:53+00:00" pubdate data-updated="true">Feb 28<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/object-oriented-matlab/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/object-oriented-matlab/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.mathworks.co.uk/help/matlab/matlab_oop/using-objects-to-write-data-to-a-file.html">Mathworks Article on Object-Oriented programming for Matlab</a>.</p>
+
+<p>A quick example of the syntax:</p>
+
+<pre><code>classdef sads
+  properties
+    Name
+    SampleRate
+  end
+  properties (Dependent)
+    Frequency
+  end
+  methods
+    %% Next function is the constructor
+    function  obj=sads(Name, SampleRate)
+  end
+end
+</code></pre>
+
+<p>Similar to structures but can not arbitrarily add new fields by assigning values to them.</p>
+
+<p><a href="http://www.mathworks.co.uk/discovery/object-oriented-programming.html">Mathworks top level, introduction to OO programming for matlab</a>.
+<a href="http://www.mathworks.co.uk/help/matlab/object-oriented-programming.html">Links to other Mathworks OO articles</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -503,89 +563,6 @@ set(objh,'linewidth',2);
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/home/cooking-le-crueset-sizes/">Kitchen: Le Creuset</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-12T21:03:49+00:00" pubdate data-updated="true">Feb 12<span>th</span>, 2014</time>
-        
-           | <a href="/blog/home/cooking-le-crueset-sizes/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/home/cooking-le-crueset-sizes/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Le Creuset do not list pan volumes on there site so for <strong>Round Cast Iron</strong>:</p>
-
-<table>
-<thead>
-<tr>
-<th align="center"> Diameter  </th>
-<th align="center">  Volume</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center">18cm</td>
-<td align="center"> 1.8 Litres </td>
-</tr>
-<tr>
-<td align="center">20cm</td>
-<td align="center"> 2.4 Litres </td>
-</tr>
-<tr>
-<td align="center">22cm</td>
-<td align="center"> 3.3 Litres </td>
-</tr>
-<tr>
-<td align="center">24cm</td>
-<td align="center"> 4.2 Litres </td>
-</tr>
-<tr>
-<td align="center">26cm</td>
-<td align="center"> 5.5 Litres </td>
-</tr>
-<tr>
-<td align="center">28cm</td>
-<td align="center"> 6.7 Litres </td>
-</tr>
-<tr>
-<td align="center">30cm</td>
-<td align="center"> 8.4 Litres </td>
-</tr>
-<tr>
-<td align="center">34cm</td>
-<td align="center">12.4 Litres </td>
-</tr>
-</tbody>
-</table>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -600,11 +577,15 @@ set(objh,'linewidth',2);
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (236)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
@@ -620,10 +601,6 @@ set(objh,'linewidth',2);
     
       <li class="post">
         <a href="/blog/engineering/verilog-timeout/">Verilog: Timeout</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a>
       </li>
     
   </ul>

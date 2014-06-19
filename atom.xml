@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-06-19T20:09:10+01:00</updated>
+  <updated>2014-06-19T20:12:51+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Shell Redirection]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/shell-redirection/"/>
+    <updated>2014-06-19T20:10:57+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/shell-redirection</id>
+    <content type="html"><![CDATA[<p>To redirect stdout and stderr in bash we use:</p>
+
+<pre><code>./ShellFile.sh &amp;&gt; test.log
+</code></pre>
+
+<p>However in tcsh that results in:</p>
+
+<pre><code>Invalid null command.
+</code></pre>
+
+<p>Switch the order of <code>&amp;</code> and <code>&gt;</code> in tcsh :</p>
+
+<pre><code>./ShellFile.sh &gt;&amp; test.log
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Floating Point Arithmetic Is Not Associative]]></title>
@@ -641,46 +663,6 @@ available sizes in-line with the Craghoppers staple Classic Kiwi.</p>
 
 <pre><code>path_list = path + ' ' + path_splat * ' '
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Thor Adding --verbose]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/thor-adding-verbose/"/>
-    <updated>2014-04-09T19:26:44+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/thor-adding-verbose</id>
-    <content type="html"><![CDATA[<p>With a command line Ruby application using Thor for the option parsing I want to be able to run:</p>
-
-<pre><code>$ thor_app --version
-&gt; thor_app version 1.0.0
-</code></pre>
-
-<p>Create a boolean class option, which does not belong to a task, that can be referenced by other tasks. The often used example for a class option is -v verbose, as all tasks can use this to determine how noisy they should be.</p>
-
-<p>Then create a &lsquo;version&rsquo; task and make it the default task, so when no task is defined the version task is ran and can react to the &mdash;version flag (class option).</p>
-
-<pre><code>class CLI &lt; Thor
-  #include Thor::Actions
-  class_option :version, :type =&gt; :boolean
-
-  desc "version", "Show thor_app version"
-  def version
-    if options[:version]
-      puts "thor_app version #{find_version}"
-    end
-  end
-  default_task :version
-
-  no_tasks do
-    def find_version
-      ## Method can be replaced to look up VERSION
-      '1.0.0'
-    end
-  end
-end
-</code></pre>
-
-<p>This is based on <a href="http://stackoverflow.com/q/22809972/97073">my SO Question</a>.</p>
 ]]></content>
   </entry>
   
