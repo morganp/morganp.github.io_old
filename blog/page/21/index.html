@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Lightroom 3.6 has been released. Downloads for Mac and Windows. Hugin 2011.04 has also been released.
-">
+  <meta name="description" content="After switching my Audio ripper (Max) accidentally to &lsquo;AAC Low Delay&rsquo; rather than plain &lsquo;AAC&rsquo; I realised too late after about &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,96 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/finding-tracks-not-in-itunes/">Finding Tracks Not in iTunes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-01-14T18:19:45+00:00" pubdate data-updated="true">Jan 14<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/finding-tracks-not-in-itunes/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/finding-tracks-not-in-itunes/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After switching my Audio ripper (<a href="http://sbooth.org/Max">Max</a>) accidentally to &lsquo;AAC Low Delay&rsquo; rather than plain &lsquo;AAC&rsquo; I realised too late after about 20-30cd rips that they were not appearing in iTunes.</p>
+
+<p>I also convert to flac to converting to the correct format from source is still relatively easy. Finding which track are in my iTunes folder but not in the iTunes library is a little bit more tricky. Well it was going to be until I found <a href="http://dougscripts.com/itunes/scripts/ss.php?sp=musicfolderfilesnotadded2">this Dougs Script</a>.</p>
+
+<p>I did not have to instal any script for this just ran the app insdie the download for &lsquo;Music Folder Files Not Added v3.0&rsquo;. My iTune folder is in the default location so I just had to press &lsquo;find&rsquo; and it took around a minute to list all the music tracks I had but iTunes had not added to its library.</p>
+
+<p>Working my way through the list recreating the tracks in the correct AAC format, just adding the &lsquo;iTunes Music&rsquo; folder to iTunes after every ablum fix and hitting &lsquo;find&rsquo; in Dougs app to refresh the list.</p>
+
+<p>Easy, almsot got a ruby version of it working but only got so far:</p>
+
+<pre><code>gem install 'itunes-library'
+</code></pre>
+
+<p>The Script:</p>
+
+<pre><code>require 'itunes/library'
+
+path       = File.expand_path( "~/Music/iTunes/iTunes Music" )
+itunes_lib = File.expand_path( "~/Music/iTunes/iTunes Library.xml" )
+library    = ITunes::Library.load( itunes_lib )
+
+puts  "#{library.music.tracks.size} Tracks have been loaded"
+
+files = Dir.glob( File.join(path, '**', '*.m4a'  ) )
+
+files.each do |music_file|
+  music_file_nice = music_file.dup
+  music_file.gsub!(' ', '%20')
+  music_file.gsub!('#', '%231')
+  #music_file.gsub!('´', '%C2%B4')
+
+  #This comes last so it the # does not get replace
+  music_file.gsub!('&amp;', '&amp;') 
+
+  #Correcting filename prefix / location
+  music_file.gsub!('/Users/morgy/Music', 'file://localhost/Volumes/Queeg500TimeM')
+
+  found = []
+  #found = library.music.tracks.keep_if { |t| t.to_hash['Location'] == music_file }
+  library.music.tracks.each { |t| 
+    if t.to_hash['Location'] == music_file
+      found &lt;&lt; t
+    end
+  }
+
+  if found.empty? 
+    puts
+    puts "MISSING #{music_file_nice}"
+  end
+
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -663,68 +752,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/photography-workshops/">Photography Workshops</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-12T21:31:15+01:00" pubdate data-updated="true">Oct 12<span>th</span>, 2011</time>
-        
-           | <a href="/blog/photography/photography-workshops/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/photography-workshops/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Just making a note to self to check these regularly for updates</p>
-
-<p><a href="http://www.joecornishgallery.co.uk/workshops">Joe Cornish 1-2 Day Workshop</a><br/>
-<a href="http://www.lightandland.co.uk/tours">Light and Land</a><br/>
-<a href="http://www.leefilters.com/camera/products/range/ref:I4A00067D65336/">Lee Filters workshop by Jeremy Walker</a><br/>
-<a href="http://www.davidnoton.com/workshops.htm">David Norton</a><br/>
-<a href="http://www.andyrouse.co.uk/index.php?page_id=40">Andy Rouse</a></p>
-
-<p><a href="http://www.phaseone.com/sv-se/Workshops/PODAS/Workshops.aspx">Phase One</a> Includes a Scottish tour and use of a medium format camera for the length of the course.</p>
-
-<p><a href="http://www.brucepercy.co.uk/pages/workshops/photo-workshops.php">Bruce Percy</a>
-<a href="http://photography.info/">Skye Photography Weeks</a><br/>
-<a href="http://www.wildarena.com/">UK Wildarena</a><br/>
-<a href="http://www.lightstalkersscotland.com/workshops">LightStalker Workshop</a><br/>
-<a href="http://www.lightstalkersscotland.com/photo-tours">LightStalker Tour</a><br/>
-<a href="http://ebirder.net/MullBirdPhotographyTour.aspx">Mull Bird Tour</a><br/>
-<a href="http://www.earthsbeautytours.com/photo-shoot/scotland/">Earths Beauty Scotland</a><br/>
-<a href="http://www.earthsbeautytours.com/photo-shoot/england/">Earths Beauty England</a>  <br/>
-<a href="http://highlandlodges-scotland.com/PhotoToursWorkshops.html">Highland Lodges Photo Workshops</a><br/>
-<a href="http://www.islandscapephotography.co.uk/">Mull Photography Tours</a></p>
-
-<p><a href="http://www.crianlarich-hotel.co.uk/photography-breaks">Crianlarich Landscape Courses</a></p>
-
-<p><a href="http://www.hfholidays.co.uk/activities/photography">Photo Holiday Directory</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/22/">&larr; Older</a>
@@ -739,11 +766,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (236)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (237)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/error-storage-class-specified-for-parameter/">Error: Storage Class Specified for Parameter</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
@@ -759,10 +790,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-timeout/">Verilog: Timeout</a>
       </li>
     
   </ul>

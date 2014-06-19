@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="After struggling to get the rake task for octopress to deploy I decided to fall back to the command line and use rsync and ssh to push the static &hellip;">
+  <meta name="description" content="To add static about page to octopress blog, assuming that octopress has been already setup: Create the page from the command line: rake new_page[" &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,81 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/add-about-page-to-octopress/">Add About Page to Octopress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-19T08:41:53+01:00" pubdate data-updated="true">May 19<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/add-about-page-to-octopress/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/add-about-page-to-octopress/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To add  static about page to octopress blog, assuming that octopress has been already setup:</p>
+
+<p>Create the page from the command line:</p>
+
+<pre><code>rake new_page["about"]
+</code></pre>
+
+<p>You can now edit the page at ./source/about/index.markdown which should look like:</p>
+
+<pre><code>---
+layout: page
+title: "about" 
+date: 2013-05-19 09:04
+comments: true
+sharing: true
+footer: true
+---
+</code></pre>
+
+<p>Add the link to the site navigation menu.</p>
+
+<p>Edit source/_includes/custom/navigation.html from :</p>
+
+<pre><code>&lt;ul class="main-navigation"&gt;
+  &lt;li&gt;&lt;a href="/"&gt;Blog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="/blog/archives"&gt;Archives&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>To (adding about link):</p>
+
+<pre><code>&lt;ul class="main-navigation"&gt;
+  &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="/"&gt;Blog&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="/blog/archives"&gt;Archives&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -523,47 +598,6 @@ Improved photo book creation – Create beautiful photo books from your images. 
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/iso-8601-standardised-date-format-yyyy-mm-dd/">ISO 8601 - Standardised Date Format YYYY-MM-DD</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-12T14:47:28+01:00" pubdate data-updated="true">Apr 12<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/iso-8601-standardised-date-format-yyyy-mm-dd/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/iso-8601-standardised-date-format-yyyy-mm-dd/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://xkcd.com/1179/"> <img src="http://imgs.xkcd.com/comics/iso_8601.png" alt="ISO 8601" /> </a></p>
-
-<p>ISO 8601, to me looks a lot like reversed British format which has been my standard for including in file names for some time as it makes sorting a lot easier (without having to specify by date created).</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -578,11 +612,15 @@ Improved photo book creation – Create beautiful photo books from your images. 
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (236)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (237)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/error-storage-class-specified-for-parameter/">Error: Storage Class Specified for Parameter</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
@@ -598,10 +636,6 @@ Improved photo book creation – Create beautiful photo books from your images. 
     
       <li class="post">
         <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-timeout/">Verilog: Timeout</a>
       </li>
     
   </ul>
