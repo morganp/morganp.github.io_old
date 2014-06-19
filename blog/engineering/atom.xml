@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Engineering | RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/blog/engineering/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-06-19T20:05:54+01:00</updated>
+  <updated>2014-06-19T20:09:10+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -47,6 +47,9 @@ ans =
 ans =
 0.00600000000000000012
 </code></pre>
+
+<p>By default gcc will not rearrange equations for optimal performance as this would change the accuracy.
+The GCC flag <code>-ffast-math</code> optimizes equations as if they were associative.</p>
 
 <p>The examples shown here were found on <a href="https://news.ycombinator.com/item?id=7479550">Hacker News</a>.</p>
 ]]></content>
