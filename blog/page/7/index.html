@@ -9,7 +9,10 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Received the following errors when doing brew update on mountain lion: error: The following untracked working tree files would be overwritten by &hellip;">
+  <meta name="description" content="Remove all values of 3 from array a = [1 2 3 4 3];
+a(any(a==3,1)) = []
+a = 1 2 4 Remove 2 or less from array a = [1 2 3 4 3];
+a(any(a&lt;=2,1)) = [] &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +84,77 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-remove-values-from-array/">Matlab Remove Values from Array</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-11T21:21:44+00:00" pubdate data-updated="true">Feb 11<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-remove-values-from-array/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-remove-values-from-array/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Remove all values of 3 from array</p>
+
+<pre><code>a = [1 2 3 4 3];
+a(any(a==3,1)) = []
+a =
+     1     2     4
+</code></pre>
+
+<p>Remove 2 or less from array</p>
+
+<pre><code>a = [1 2 3 4 3];
+a(any(a&lt;=2,1)) = []
+a =
+     3     4     3
+</code></pre>
+
+<p>Remove values between 2 and 3</p>
+
+<pre><code>a = [1 2 3 4 3];
+a(any((a&gt;=2)&amp;(a&lt;=3),1)) = []
+a =
+     1     4
+</code></pre>
+
+<p>Based on <a href="http://matlabnewbie.blogspot.co.uk/2011/11/remove-any-rows-that-contains-specific.html">examples from matlabnewbie</a>.</p>
+
+<p>Remove values (<code>12 &amp; 13</code>) based on a set (array):</p>
+
+<pre><code>a = 11:20;
+a = setdiff(a,[12,13])
+a = 
+    11    14    15    16    17    18    19    20
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -606,63 +680,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/reverting-in-git/">Reverting in Git</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-08T20:10:31+00:00" pubdate data-updated="true">Jan 8<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/reverting-in-git/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/reverting-in-git/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I use to use <code>svn revert</code> to roll back local modification and get back to the state I was in last time I checked out.</p>
-
-<p>to do the same in git  I use :</p>
-
-<pre><code>git checkout -- filename
-</code></pre>
-
-<p>As git does not automatically push to a server the way subversion does you have an opportunity to revert local commits.</p>
-
-<pre><code>git reset --soft HEAD^
-</code></pre>
-
-<p>Here the <code>^</code> means previous. ie go back 1 commit. Using soft the files will still appear modified and we can use the previous command to reset the files as required.</p>
-
-<p>Further reading <a href="http://stackoverflow.com/q/2530060/97073">what “git reset” does in plain english?</a>, <a href="http://marklodato.github.io/visual-git-guide/index-en.html">Visual Git Reference</a> and <a href="http://git-scm.com/blog/2011/07/11/reset.html">Reset Demystified</a></p>
-
-<p>&mdash;
-<a href="http://www.norbauer.com/rails-consulting/notes/git-revert-reset-a-single-file.html">git checkout source</a>.  <br/>
-<a href="http://stackoverflow.com/questions/2845731/how-to-uncommit-my-last-commit-in-git">git reset source</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -677,11 +694,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (30)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (30)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
@@ -697,10 +718,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-grid/">Matlab: Grid</a>
       </li>
     
   </ul>

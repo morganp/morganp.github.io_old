@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Using the new IR ANYWHERE IR OVER IP MODULE you can send web requests that get turned into standard consumer InfaRed signals, to control your tv, &hellip;">
+  <meta name="description" content="I do not like having to use sudo to run development servers for testing web applications. sudo should be reserved for commands that really need that &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,95 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mac-os-x-run-nginx-as-a-user-process/">Mac OS X Run Nginx as a User Process</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-11T12:51:49+01:00" pubdate data-updated="true">May 11<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/mac-os-x-run-nginx-as-a-user-process/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mac-os-x-run-nginx-as-a-user-process/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I do not like having to use sudo to run development servers for testing web applications. sudo should be reserved for commands that really need that level of privilege. After <a href="http://amaras-tech.co.uk/people/morgan/article/26">installing passenger and nginx</a> on Mac OS X Snow Leopard I had trouble getting nginx to run without sudo.</p>
+
+<p>NB: sudo runs the command with superuser privileges ie things that could break your system if you do not know what you are doing, or typo a command so should be used sparingly.</p>
+
+<p>if you have been running with sudo stop the service</p>
+
+<pre><code>$ sudo nginx -s stop
+</code></pre>
+
+<p>find and remove the log files for me this is:</p>
+
+<pre><code>$ rm -rf ~/bin/nginx/logs/*
+</code></pre>
+
+<p>Assuming nginx is on your path (if not you must know its location) to find its location you can try which ie:</p>
+
+<pre><code>$ which nginx
+</code></pre>
+
+<p>A few changes to the default config file:</p>
+
+<pre><code>vim ~/bin/nginx/conf/nginx.conf
+
+#user morgy; #&lt;-- comment out when running as user process
+worker_processes  1;
+
+http {
+   passenger_root /path/ruby-ee-1.8.7/lib/ruby/gems/1.8/gems/passenger-2.2.11;
+   passenger_ruby /path/ruby-ee-1.8.7/bin/ruby;
+
+   include       mime.types;
+   default_type  application/octet-stream;
+
+   client_max_body_size 20M;
+
+   server {
+      listen       8080; #&lt;-- superuser only has acess to 80
+      server_name  localhost, www.localhost;
+      passenger_enabled on;
+      root /your/path/public;   # &lt;--- be sure to point to 'public'!
+   }
+}
+</code></pre>
+
+<p>That is all I had to do to get nginx working without sudo</p>
+
+<pre><code>$ nginx
+$ nginx -s reload
+</code></pre>
+
+<p>Just point your browser to localhost:8080 or 127.0.0.1:8080</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -620,89 +709,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/webfaction-new-user-with-access-to-their-own-site/">Webfaction New User with Access to Their Own Site</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-28T09:24:58+01:00" pubdate data-updated="true">Apr 28<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/webfaction-new-user-with-access-to-their-own-site/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/webfaction-new-user-with-access-to-their-own-site/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>With <a href="http://www.webfaction.com/?affiliate=morgy">Webfaction</a> you can create new users with there own home area but there is no straight forward way to host their site.</p>
-
-<p>There is a posted method where the site is hosted in YOUR home/webapps directory, but that requires you reset your permissions every time you create a new site and if you forget there could be a security hole.</p>
-
-<p>Hosting the site in THEIR home directory requires you to set permissions in there directory so YOU can see it. This is much safer if all goes wrong the site does not have permission to be displayed rather than compromising your new site.</p>
-
-<p>Create new user with bash login via with <a href="http://panel.webfaction.com">Web interface</a></p>
-
-<p>set password, as this can be tricky getting a random string a cheat is to do:</p>
-
-<pre><code>echo "some random string" | md5
-</code></pre>
-
-<p>Choose 8 or more characters for the password.</p>
-
-<p>SSH login as normal</p>
-
-<pre><code>ssh user@user.webfactional.com
-</code></pre>
-
-<p>then</p>
-
-<pre><code>su new_user
-cd ~
-mkdir myweb.com
-</code></pre>
-
-<p>then set</p>
-
-<pre><code>setfacl -m u:nginx:rx ~
-setfacl -R -m u:nginx:rx myweb.com/
-
-setfacl -m u:apache:rx ~
-setfacl -R -m u:apache:rx myweb.com/
-
-setfacl -m u:Your_Username:rx ~
-setfacl -R -m u:Your_Username:rx myweb.com/
-</code></pre>
-
-<p>Back to <a href="http://www.webfaction.com/?affiliate=morgy">webfaction</a> main control panel and create a new app ( symbolic link to PHP/static )</p>
-
-<p>The info section for this needs to be:
-/home/new_user/myweb.com</p>
-
-<p>NB: currently only works with apache not nginx</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/32/">&larr; Older</a>
@@ -717,11 +723,15 @@ setfacl -R -m u:Your_Username:rx myweb.com/
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (30)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (30)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
@@ -737,10 +747,6 @@ setfacl -R -m u:Your_Username:rx myweb.com/
     
       <li class="post">
         <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-grid/">Matlab: Grid</a>
       </li>
     
   </ul>

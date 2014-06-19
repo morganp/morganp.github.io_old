@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-06-14T08:43:49+01:00</updated>
+  <updated>2014-06-19T19:12:06+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Adobe Creative Cloud Is ...]]></title>
+    <link href="http://lizard-spock.co.uk/blog/photography/adobe-creative-cloud-is-dot-dot-dot/"/>
+    <updated>2014-06-19T18:15:59+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/photography/adobe-creative-cloud-is-dot-dot-dot</id>
+    <content type="html"><![CDATA[<p>Inconsistent, annoying, <strong>cheap</strong>?</p>
+
+<!-- more -->
+
+
+<p>My main bugbear with the creative cloud application is the way it updates applications.
+Photoshop CC and Lightroom are handled differently.</p>
+
+<p>Photoshop switches from installed to update. Which is great it will pull in the update on my command.</p>
+
+<p>Lightroom switches from Installed to <strong>Try</strong>.</p>
+
+<p>Not only that but I have now have 2 version of Photoshop CC and CC (2014) ready
+for updates, one of which has not already been installed.</p>
+
+<p>SO I have 2 applications with updates ready, one wants an update the other refuses
+to acknowledge it has been installed and wants a new install. A new program,
+Photoshop CC (2014), which only requires an update.</p>
+
+<p><img src="http://lizard-spock.co.uk/images/Photography/CC_update.png" title="Adobe Creative Cloud is Inconsistent" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress Categories with Different Styles]]></title>
@@ -654,15 +682,6 @@ end
 <p>The full list of options can be seen from page 63 of the <a href="http://wwwimages.adobe.com/www.adobe.com/content/dam/Adobe/en/devnet/photoshoplightroom/pdfs/lr5/lightroom-sdk-guide.pdf">lightroom sdk guide</a>.</p>
 
 <p>My <a href="https://github.com/morganp/CopyrightMetadataTagset.lrdevplugin">Copyright view</a> and <a href="https://github.com/morganp/CopyrightMetadataTagset.lrdevplugin">JobID view</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[iTerm Exit Fullscreen]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/iterm-exit-fullscreen/"/>
-    <updated>2014-04-08T19:27:00+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/iterm-exit-fullscreen</id>
-    <content type="html"><![CDATA[<p><code>⌘-Enter</code> toggles fullscreen in <a href="http://www.iterm2.com/">iTerm</a>.</p>
 ]]></content>
   </entry>
   

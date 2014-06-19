@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Classes are a basic Object Orientated Structure which encapsulate state and behaviour. Some times you just require to capture state/storage of a data &hellip;">
+  <meta name="description" content="The latest addition to my .vimrc below, allows ;g to smart indent the current file. It is the same as gg=G but returning you to the same position. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,83 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vimfu-reindent/">Vimfu Reindent</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-19T19:55:19+01:00" pubdate data-updated="true">Apr 19<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/vimfu-reindent/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vimfu-reindent/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The latest addition to <a href="https://github.com/morganp/dotfiles/blob/master/dotfiles/.vimrc#L197">my .vimrc</a> below, allows ;g to smart indent the current file. It is the same as gg=G but returning you to the same position.</p>
+
+<p>Update based on Recommendations from <a href="http://drewneil.com/">Drew Neil</a> and <a href="http://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/">Jonathan Palardy</a>, a more generic pereserving state function, which can be mapped to a key sequence with specific commands.</p>
+
+<pre><code>function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+" SmartIndent keeping cursor position
+map ;g :call Preserve("normal! gg=G")&lt;CR&gt;
+</code></pre>
+
+<p>If this does not work for a particular file type you use you probably need to look at getting a *.syntax file for your language.</p>
+
+<h2>My Original Method </h2>
+
+<pre><code>function! Indent()
+  " Capture Current Line
+  let currentline_num = line(".")
+  let currentcol_num = virtcol('.')
+
+  " Reindent from start to end of file
+   normal! gg=G
+
+   " Restore Current Line and column
+   exe 'normal '.currentline_num.'G'.currentcol_num.'|'
+endfunction
+
+"assign to ;g in normal mode
+map ;g :call Indent()&lt;CR&gt;
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -701,60 +778,6 @@ Sort by     0.010000   0.000000   0.010000 (  0.012341)
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/beginning-astro-photography/">Beginning Astro Photography</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-19T23:34:17+00:00" pubdate data-updated="true">Feb 19<span>th</span>, 2011</time>
-        
-           | <a href="/blog/photography/beginning-astro-photography/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/beginning-astro-photography/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>None of this has been tried yet but from various sources I have created this list:</p>
-
-<p>Once you have telescope the next task will be finding objects in the sky.<br/>
-Book: <a href="https://www.amazon.co.uk/dp/0521781906?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=0521781906&amp;adid=0T095V4ZAX026FDZPXPG&amp;">Turn left at Orion</a> seems to get good reviews and is recommend on several sites.<br/>
-Software: <a href="http://www.stellarium.org/">Stellarium</a> is free software for most major OS platforms. This will create maps of the sky.</p>
-
-<p>To start Capturing images with a DSLR you will need a t-ring (about £15), this connects to you DSLR instead of a lens. This gives you a t-thread. Some telescopes like skywatcher dobsoians offer a direct connection (t-ring to telescope) others will require a t-adaper which will be 2&#8221; or 1.25&#8221; to a t-thread.</p>
-
-<pre><code>t-ring:    DSLR     -&gt; t-thread (manufacturer specifc)
-t-adapter: t-thread -&gt; 2" or 1.25" eyepiece
-t-adapter may not be required if telescope offers direct connection.
-</code></pre>
-
-<p>Digital cameras tend to suffer from noise during long exposures, image stacking is a technique using multiple images added together to give good exposure while avoiding long exposure noise. <a href="https://www.amazon.co.uk/dp/B003N7O3CI?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B003N7O3CI&amp;adid=0NP2Z411SY7PT8G7G8WH&amp;">Lightroom</a> is my favourite image management/editing toll and image stack is possible with the <a href="http://www.photographers-toolbox.com/products/lrenfuse.php">Enfuse</a> plug-in.</p>
-
-<p>The <a href="http://stargazerslounge.com/">Stargazers Lounge</a> looks like a good forum for asking questions and reading beginner articles.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/25/">&larr; Older</a>
@@ -769,11 +792,15 @@ t-adapter may not be required if telescope offers direct connection.
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (30)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (30)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
@@ -789,10 +816,6 @@ t-adapter may not be required if telescope offers direct connection.
     
       <li class="post">
         <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-grid/">Matlab: Grid</a>
       </li>
     
   </ul>

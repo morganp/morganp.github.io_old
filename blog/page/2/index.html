@@ -9,10 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Checking if an Array contains a number: input = [1,2,3,4];
-check = 4;
-any(input==4) Check if a number is contained in an array: input = 32;
-check = [ &hellip;">
+  <meta name="description" content="When a script or function is called with run(./relative/path/script) the working directory is changed to the ./relative/path. This means pwd it can &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +81,57 @@ check = [ &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-toolboxes-with-absolute-path-setup/">Matlab Toolboxes with Absolute Path Setup</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-07T18:22:48+01:00" pubdate data-updated="true">May 7<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-toolboxes-with-absolute-path-setup/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-toolboxes-with-absolute-path-setup/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When a script or function is called with <code>run(./relative/path/script)</code> the working directory is changed to the <code>./relative/path</code>. This means <code>pwd</code> it can be used to specify absolute paths:</p>
+
+<pre><code>run(./libs/example_toolbox/load_toolbox)
+</code></pre>
+
+<p>Which contains :</p>
+
+<pre><code>addpath([pwd, '/function']);
+</code></pre>
+
+<p>Now  The path will contain <code>C:/ ... /libs/example_toolbox/function</code></p>
+
+<p>As shown in the example this is useful for toolboxes etc which could be distributed with a top level script which adds the toolbox functions on to the path.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -688,45 +736,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/iterm-exit-fullscreen/">iTerm Exit Fullscreen</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-08T19:27:00+01:00" pubdate data-updated="true">Apr 8<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/iterm-exit-fullscreen/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/iterm-exit-fullscreen/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><code>⌘-Enter</code> toggles fullscreen in <a href="http://www.iterm2.com/">iTerm</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -741,11 +750,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (30)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (30)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
@@ -761,10 +774,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-grid/">Matlab: Grid</a>
       </li>
     
   </ul>

@@ -9,8 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Removing Sensitive data from git and eliminate history
-">
+  <meta name="description" content="I have for a while wondered about an ideal (good) approach to storing api keys in config files in ruby projects. A few conditions must be met:
+1) A &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,125 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/storing-secret-keys-in-ruby-config-files-an-approach/">Storing Secret Keys in Ruby Config Files an Approach</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-11T19:04:53+01:00" pubdate data-updated="true">Sep 11<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/storing-secret-keys-in-ruby-config-files-an-approach/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/storing-secret-keys-in-ruby-config-files-an-approach/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have for a while wondered about an ideal (good) approach to storing api keys in config files in ruby projects. A few conditions must be met:<br/>
+1) A new user must be given clear instructions on what has to be configured (until it is done), with boiler plate to complete.<br/>
+2) git must not accidentally let you submit the key.</p>
+
+<p>Gregory Brown steered me towards this setup. Create a config.rb file fill out the template for adding data. Then copy it to config.rb.example and add config.rb to the .gitignore</p>
+
+<pre><code>touch config.rb
+#setup template of config.rb
+cp config.rb config.rb.example
+echo "config.rb" &gt;&gt; .gitignore
+git add config.rb.example
+</code></pre>
+
+<p>The file requiring the keys can then do something like:</p>
+
+<pre><code>begin
+  require "config"
+rescue LoadError
+  STDERR.puts "You need to create a file called config.rb. See config.rb.example"
+exit
+</code></pre>
+
+<p>A slightly larger example.<br/>
+shorturl.rb</p>
+
+<pre><code>  require 'net/http'
+  require 'rubygems'
+  require 'json'
+  require 'cgi'
+
+  begin 
+     require File.dirname(__FILE__) + '/bit_ly_key'
+  rescue LoadError
+   STDERR.puts "You need to create a file called bit_ly_key.rb. See bit_ly_key.rb.example"
+   exit
+  end
+
+  module TechNews
+     class Shorturl
+        def initialize( url=nil )
+           bit_ly_keys = TechNews::BitLyKey.new
+
+           ##  url encode
+           url ||= "http://amaras-tech.co.uk"
+           @long_url = CGI.escape( url )
+           payload   = "http://api.bit.ly/v3/shorten?login=#{bit_ly_keys.login}&amp;apiKey=#{bit_ly_keys.apiKey}&amp;longUrl=#{@long_url}&amp;format=json"
+           @response = Net::HTTP.get URI.parse(payload)
+           @response = JSON.parse( @response )
+        end
+
+        def get_shorturl
+           return @response["data"]["url"]
+        end
+
+     end
+  end
+
+  if $0 == __FILE__
+     x = TechNews::Shorturl.new()
+     puts x.get_shorturl
+  end
+</code></pre>
+
+<p>bit_ly_key.rb</p>
+
+<pre><code># Register at [1] and get api key [2]
+# [1]: http://bit.ly
+# [2]: http://bit.ly/a/your_api_key
+
+module TechNews
+   class BitLyKey
+      attr_reader :login, :apiKey
+
+      def initialize
+         @login  = ""
+         @apiKey = ""
+      end
+
+   end
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -608,85 +727,6 @@ $ sudo rm -rf \
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/active-record-attributes-simplify-update-and-create/">Active Record Attributes Simplify Update and Create.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-13T02:13:17+01:00" pubdate data-updated="true">Aug 13<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/active-record-attributes-simplify-update-and-create/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/active-record-attributes-simplify-update-and-create/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In Active Record when updating records I used to have an very manual process to this some thing like:</p>
-
-<pre><code>@todo.done = params['post']['done']
-@todo.desc = params['post']['desc']
-@todo.save
-</code></pre>
-
-<p>Model of Todo with boolean done and text description field.</p>
-
-<p>This can be done in a more maintainable fashion with:</p>
-
-<pre><code>@todo.update_attributes = params['post']
-</code></pre>
-
-<p>This does pose the security concern that the form (which transmits params[&lsquo;post&rsquo;]) could be hacked to add id fields or such like that you may get unwanted manipulation of the table.</p>
-
-<p>To solve this there is a attr_accessible which specifies fields allowed to be updated by the .attributes . while this might seem now like there is no benefit as if we run a migration to add an extra column we also need to update the Active Record model. While this is true we only need to update the model once and create/new  and update methods should benefit from this.</p>
-
-<pre><code>class Todo &lt; ActiveRecord::Base
-end
-</code></pre>
-
-<p>Becomes</p>
-
-<pre><code>class Todo &lt; ActiveRecord::Base
-   attr_accessible :done
-   attr_accessible :desc
-end
-</code></pre>
-
-<h2>Summary:</h2>
-
-<pre><code>@customer.update_attributes = { "description" =&gt; "Jolly fellow", "credit_rating" =&gt; "Superb" }
-</code></pre>
-
-<p>same as:</p>
-
-<pre><code>@customer.description = "Jolly fellow"
-@customer.credit_rating = "Superb"
-@customer.save
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/28/">&larr; Older</a>
@@ -701,11 +741,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (30)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (35)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (30)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (235)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
@@ -721,10 +765,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-grid/">Matlab: Grid</a>
       </li>
     
   </ul>
