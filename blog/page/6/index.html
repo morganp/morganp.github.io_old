@@ -9,8 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="In Verilog to output to stdout without a line return use $write(); Equivalent statements : $write("\n");
-$display(""); ">
+  <meta name="description" content="To shuffle a: a(randperm(length(a))) Example: a = [10 2 5 20];
+a = a(randperm(length(a))) a = 5 10 2 20 Source.
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +83,367 @@ $display(""); ">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-shuffle-array/">Matlab Shuffle Array</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-06T20:42:57+00:00" pubdate data-updated="true">Mar 6<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-shuffle-array/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-shuffle-array/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To shuffle a:</p>
+
+<pre><code>a(randperm(length(a)))
+</code></pre>
+
+<p>Example:</p>
+
+<pre><code>a = [10 2 5 20];
+a = a(randperm(length(a)))
+
+a =
+
+ 5    10     2    20
+</code></pre>
+
+<p><a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/239478">Source</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/bash-string-manipulation/">Bash String Manipulation</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-05T21:32:14+00:00" pubdate data-updated="true">Mar 5<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/bash-string-manipulation/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/bash-string-manipulation/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Removal of substring:</p>
+
+<pre><code>string="test string"
+echo $string
+
+remove="test"
+short_string=${string#$remove}
+echo short_string
+</code></pre>
+
+<p>Note that inside the <code>${}</code> <code>string</code> does not have a <code>$</code>, it is implied.
+The second half <code>$remove</code> does require it.</p>
+
+<p><a href="http://tldp.org/LDP/abs/html/string-manipulation.html">More info</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/cooking/puy-lentil-wellington/">Puy Lentil Wellington</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-04T18:24:42+00:00" pubdate data-updated="true">Mar 4<span>th</span>, 2014</time>
+        
+           | <a href="/blog/cooking/puy-lentil-wellington/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/cooking/puy-lentil-wellington/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Based on a <a href="http://uktv.co.uk/food/recipe/aid/516620">uktv recipe</a>.</p>
+
+<p><img src="/images/Cooking/PuyWellington/morganp-20140225-PuyLentil-IMG_6871.jpg" alt="" /></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/cooking/puy-lentil-wellington/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/octopress/">Octopress, Pages and Custom Domain</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-04T18:19:25+00:00" pubdate data-updated="true">Mar 4<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/octopress/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/octopress/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In your <code>sources</code> branch, which is the main branch for writing creating posts, create a <code>CNAME</code> file in the sources directory.</p>
+
+<p>vim source/CNAME</p>
+
+<pre><code>your-domain.co.uk
+</code></pre>
+
+<p>Then check-in and deploy</p>
+
+<pre><code>git add source/CNAME
+rake deploy
+</code></pre>
+
+<p>Point your domain to github pages:</p>
+
+<pre><code>A record pointing to 204.232.175.78
+</code></pre>
+
+<p>I also redirect www. to the non-www url</p>
+
+<pre><code>CNAME record for www.example.com to example.com  
+</code></pre>
+
+<p><a href="http://octopress.org/docs/deploying/github/">Official Docs</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/revert-in-git/">Revert in Git</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-03T19:42:12+00:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2014</time>
+        
+           | <a href="/blog/tech/revert-in-git/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/revert-in-git/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>and Remove Orphaned Commits.</h1>
+
+<p>I use <code>gitx</code> graphical tool on OS X to find the SHAs for commits. Revert back throwing away all changes:</p>
+
+<pre><code>git reset --hard shaqwerty      
+</code></pre>
+
+<p>Now delete the orphaned commits.</p>
+
+<pre><code>git reflog expire --expire=now --expire-unreachable=now --all
+git gc --prune=now
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/oo-magic-bullet/">OO Magic Bullet?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-01T20:04:06+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
+        
+           | <a href="/blog/engineering/oo-magic-bullet/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/oo-magic-bullet/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I do not think that there are any magic bullets, best practises can minimise risk but you have to fully understand the technique. You can not just switch from procedural code to wrapping everything in an object and claim statements like this from <a href="http://www.mathworks.co.uk/company/newsletters/articles/introduction-to-object-oriented-programming-in-matlab.html">mathworks</a>:</p>
+
+<blockquote><p>Because it was built using OO techniques, the application is now robust enough for others to use and maintain and can be integrated with related applications throughout an organization.</p></blockquote>
+
+<p>Sounds like Object-Oriented programming is a magic bullet to solve all you programming woes!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/edit-octopress-posts/">Edit Octopress Posts</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-01T19:28:17+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
+        
+           | <a href="/blog/tech/edit-octopress-posts/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/edit-octopress-posts/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Creating new posts in Octopress is <code>rake new_post["Edit Posts"]</code> which outputs the created filename.</p>
+
+<p>Posts are prefixed with date, which can make it difficult to find a particular post to edit. Tab completion can help if you known the year of the post but it may still list 100&rsquo;s of posts where you have to spot the title, and narrow it done via month and day. To get around this I use this script to launch matching posts in my editor:</p>
+
+<pre><code>#!/bin/bash
+
+editor="mvim"
+post_path="source/_posts/"
+
+for OUTPUT in $(ls $post_path | grep $1)
+do
+  file_list="$file_list $post_path$OUTPUT"
+done
+
+$editor $file_list
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -236,323 +598,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/spring/">Spring</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-25T20:42:28+00:00" pubdate data-updated="true">Feb 25<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/spring/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/spring/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>First signs of spring, bulbs starting to show growth.</p>
-
-<p><img src="/images/Gardening/morganp-20140225-Garden-IMG_6851.jpg" title="Bulbs starting to shoot" alt="" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/gnome-disable-focus-tracking/">Gnome: Disable Focus Tracking</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-20T20:31:44+00:00" pubdate data-updated="true">Feb 20<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/gnome-disable-focus-tracking/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/gnome-disable-focus-tracking/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sometime ago I enabled focus tracking the mouse on Gnome. It took a while to find how to disable it again, so with out further a do the setting can be found in:</p>
-
-<pre><code>System -&gt; Preferences -&gt; Windows
-</code></pre>
-
-<p><img src="/images/Tech/Disable_Mouse_focus_tracking.png" alt="" />§</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/rocket/">Rocket</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-19T21:08:38+00:00" pubdate data-updated="true">Feb 19<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/rocket/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/rocket/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>On Saturday I placed Rocket seeds in my propagator and by Tuesday it had germinated and started to sprout.</p>
-
-<p>So far so good:</p>
-
-<p><img src="/images/Gardening/morganp-20140218-Propagator-IMG_6838.jpg" title="Rocket" alt="Rocket" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/propagator/">Propagator</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-18T20:43:00+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/propagator/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/propagator/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have always had trouble getting seeds to germinate, therefore I have purchased a <a href="https://www.amazon.co.uk/dp/B000YA43HC?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B000YA43HC&amp;adid=18Q38Q8QS33XBPP04WNR&amp;">propagator</a> to help. Ideally I would have a thermostatically controlled unit, but they tend to be a bit more expensive, and non-looked like they wood fit nicely on a windowsill.</p>
-
-<p>Garland Super7, should raise soil temperature by 8 degrees but fluctions of indoor temp will be passed on:</p>
-
-<p><img src="/images/Gardening/morganp-20140218-Propagator-IMG_6827.jpg" title="Garland Super7" alt="Propagator" /></p>
-
-<p>Hopefully I will have some better luck in the future.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/monkey-patch-octopress/">Monkey Patch Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-18T19:46:55+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/monkey-patch-octopress/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/monkey-patch-octopress/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Based on <a href="https://github.com/imathis/octopress/blob/master/plugins/post_filters.rb">post_filters by imathis</a>.</p>
-
-<p>First Move the original method out the way with <code>alias_method</code>  then create a new method with the original name, calling the original now aliased method if required.</p>
-
-<pre><code>module Jekyll
-  class URL
-    alias_method :old_sanitize_url, :sanitize_url
-    def sanitize_url(in_url)
-      old_sanitize_url(in_url).downcase
-    end
-  end
-end
-</code></pre>
-
-<p>This was used to build my <a href="https://github.com/morganp/octopress_url_downcase">Octopress plugin octopress_url_downcase</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/raised-bed/">Raised Bed</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-18T18:58:30+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/raised-bed/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/raised-bed/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Putting together my first raised bed, 8 foot by 2 foot, 1 plank high.</p>
-
-<p>Cut parts ready for assembly:
-<img src="/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6743.jpg" alt="Parts" /></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/garden/raised-bed/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/cooking/beef-wellington/">Beef Wellington</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-17T20:28:28+00:00" pubdate data-updated="true">Feb 17<span>th</span>, 2014</time>
-        
-           | <a href="/blog/cooking/beef-wellington/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/cooking/beef-wellington/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6820.jpg" alt="Beef Wellington" /></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/cooking/beef-wellington/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -567,30 +612,30 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (237)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (239)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/tech/error-storage-class-specified-for-parameter/">Error: Storage Class Specified for Parameter</a>
+        <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+        <a href="/blog/tech/xkill/">Xkill</a>
       </li>
     
       <li class="post">
-        <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
+        <a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a>
       </li>
     
       <li class="post">
-        <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
+        <a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Simulink: Scroll Wheel Erratic Behaviour</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
+        <a href="/blog/engineering/simulink-globally-set-sample-time/">Simulink: Globally Set Sample Time</a>
       </li>
     
   </ul>

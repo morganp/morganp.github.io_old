@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="A the time of writing Google exchange syncing only works on mobile devices, which is slightly annoying but mail, contacts and calendar can all be &hellip;">
+  <meta name="description" content="Problem Take an array of arrays and format it for displaying to the terminal or outputting to a text file. Sample Data: data = [[1,2,3,4,5],["Four"," &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,582 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/print-nested-array-structures-in-table-format/">Print Nested Array Structures in Table Format</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-03T20:47:13+01:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+        
+           | <a href="/blog/tech/print-nested-array-structures-in-table-format/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/print-nested-array-structures-in-table-format/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Problem</h2>
+
+<p>Take an array of arrays and format it for displaying to the terminal or outputting to a text file.</p>
+
+<p>Sample Data:</p>
+
+<pre><code>data = [[1,2,3,4,5],["Four","Five","Six"],["Seven","Eight","Nine","Ten"]]
+</code></pre>
+
+<h2>Solution</h2>
+
+<p>The main issue I see is working out how wide to make each column. My solution is to iterate over the data keeping track of the maximum width found for each column.</p>
+
+<p>Once we know how wide to make each column printing the table is just a matter of a second iteration over the data using ljust or rjust to align all the columns.</p>
+
+<pre><code>def print_table( data )
+  #Clone/dup nested structure
+  data = Marshal.load(Marshal.dump(data))
+  #data = data_array.dup
+  lengths = []
+
+  data.each do |line| 
+    line.each_with_index do |item, column| 
+      length          = item.to_s.size
+      lengths[column] = length if length &gt; (lengths[column] ||= 0)
+    end
+  end
+
+  data.each do |line| 
+    line.each_with_index do |item, column|
+      line[column] = item.to_s.rjust(4+lengths[column])
+      print line[column]
+    end
+    puts
+  end
+
+  return data
+end
+</code></pre>
+
+<p>The result:</p>
+
+<pre><code>data = [[1,2,3,4,5],["Four","Five","Six"],["Seven","Eight","Nine","Ten"]]
+data = print_table( data )
+
+=&gt;        1        2       3      4    5    
+=&gt;     Four     Five     Six
+=&gt;    Seven    Eight    Nine    Ten
+</code></pre>
+
+<h2>Alternative Solution</h2>
+
+<p>Use the <a href="http://github.com/visionmedia/terminal-table">terminal-table</a> gem. Which creates nice ASCII tables.</p>
+
+<pre><code>#gem install terminal-table
+
+require 'terminal-table'
+data = [[1,2,3,4,5],["Four","Five","Six"],["Seven","Eight","Nine","Ten"]]
+table = Terminal::Table.new :rows =&gt; data
+
+puts table
++-------+-------+------+-----+---+
+| 1     | 2     | 3    | 4   | 5 |
+| Four  | Five  | Six  |
+| Seven | Eight | Nine | Ten |
++-------+-------+------+-----+---+
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/converting-flat-structure-into-a-nested-structure/">Converting Flat Structure Into a Nested Structure</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-03T20:11:12+01:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+        
+           | <a href="/blog/tech/converting-flat-structure-into-a-nested-structure/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/converting-flat-structure-into-a-nested-structure/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Given a flat hierarchy of data comprising level and a label, aim to nest the lower level of objects in to the parents.</p>
+
+<p>Example data:</p>
+
+<pre><code>  0, 'a'
+  1, 'b'
+  2, 'c'
+  2, 'd'
+  1, 'e'
+  2, 'f'
+</code></pre>
+
+<p>Converted to a structure similar to:</p>
+
+<pre><code>a
++b
+|+c
+|+d
++e
+ +f
+</code></pre>
+
+<h2>An Unoptimised Solution</h2>
+
+<p>A simple object, which allows adding child objects</p>
+
+<pre><code>Thing = Struct.new(:level, :label, :children)
+class Thing
+  def add_child (child)
+    children &lt;&lt; child
+  end
+end
+</code></pre>
+
+<p>The data:</p>
+
+<pre><code>list =
+[ Thing.new(0, "a", []),
+  Thing.new(1, "b", []),
+  Thing.new(2, "c", []),
+  Thing.new(2, "d", []),
+  Thing.new(1, "e", []),
+  Thing.new(2, "f", [])
+]
+</code></pre>
+
+<p>My approach is to find the lowest children and fold them in to the parent above it. The first step is a method to calculate the nesting depth.</p>
+
+<pre><code>def lowest_level( list )
+  level = 0
+  list.each do |obj|
+    level = obj.level if obj.level &gt; level
+  end
+  return level
+end
+
+puts "Lowest Level is #{lowest_level( list )}"
+=&gt; Lowest Level is 2
+</code></pre>
+
+<p>The main part of the solution now is to loop over the list, adding the object at the lowest_level to its parent, then removing it from its original position. The parent object is defined as being in the position before with a level 1 above the current node.</p>
+
+<pre><code>      current_fold = lowest_level( list )
+
+      list.each_with_index do |thing, index|
+        # Identify if on a lowest leaf which can be folded
+        if ( ( thing.level == current_fold ) &amp;&amp; (list[index-1].level == current_fold-1))
+          list[index-1].add_child( thing )
+          list.delete_at(index)
+        end
+      end
+</code></pre>
+
+<p>The main performance issue I have with this solution is it requires an iteration for every object at the same level wiith the same parent. ie 1222 would take 3 iterations to fold the 2s, 122212 would still take 3 iterations.</p>
+
+<p>The loop in full:</p>
+
+<pre><code>def fold_list( list )
+  ## Clone data for immutable operation
+  list = Marshal.load(Marshal.dump( list ))
+  fold_list!( list )
+end
+
+def fold_list!( list )
+  while ( lowest_level( list ) &gt; 0 ) do
+    #Find Current lowest Level and fold
+    current_fold = lowest_level( list )
+
+    while( current_fold == lowest_level( list ) ) do
+      list.each_with_index do |thing, index|
+        # Identify if on a lowest leaf which can be folded
+        if ( ( thing.level == current_fold ) &amp;&amp; (list[index-1].level == current_fold-1))
+          list[index-1].add_child( thing )
+          list.delete_at(index)
+        end
+      end
+    end
+  end
+
+  return list
+end
+
+require 'pp'
+pp  fold_list( list )
+</code></pre>
+
+<p>The result, showing the folding:</p>
+
+<pre><code>[#&lt;struct Thing
+  level=0,
+  label="a",
+  children=
+   [#&lt;struct Thing
+     level=1,
+     label="b",
+     children=
+      [#&lt;struct Thing level=2, label="c", children=[]&gt;,
+       #&lt;struct Thing level=2, label="d", children=[]&gt;]&gt;,
+    #&lt;struct Thing
+     level=1,
+     label="e",
+     children=[#&lt;struct Thing level=2, label="f", children=[]&gt;]&gt;]&gt;]
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/safari-6-not-playing-youtube-content/">Safari 6 Not Playing YouTube Content</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-30T08:30:42+01:00" pubdate data-updated="true">Sep 30<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/safari-6-not-playing-youtube-content/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/safari-6-not-playing-youtube-content/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After getting Safari 6 it seems that YouTube is no longer letting my watch video as html5 video formats and requires me to have flash installed.</p>
+
+<p>To avoid installing flash there is safari plugin which forces YouTube to give HTML5 video.</p>
+
+<p><a href="http://www.macupdate.com/app/mac/35606/youtube5-safari-extension">youtube5-safari-extension</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/calculating-regression-coefficients-in-r/">Calculating Regression Coefficients in R</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-29T12:10:18+01:00" pubdate data-updated="true">Sep 29<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/calculating-regression-coefficients-in-r/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/calculating-regression-coefficients-in-r/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For this example we will have a data file with two columns of data labelled A and B. For example</p>
+
+<pre><code>A    B
+0.1 0.2
+0.3 0.4
+0.5 0.6
+</code></pre>
+
+<p>Set the working directory and load the data as usual in r:</p>
+
+<pre><code>setwd("~/Code/example")
+data = read.table("data.txt", header=T)
+names(data) # List the header names
+</code></pre>
+
+<h2>Correlation</h2>
+
+<p>Find the correlation between A and B.</p>
+
+<pre><code>cor(data$A, data$b)
+</code></pre>
+
+<p>If you have more than 2 variables calculate the correlation matrix using :</p>
+
+<pre><code>cor(data)
+</code></pre>
+
+<h2>Unstandardised Regression Coefficient</h2>
+
+<p>A predicting B</p>
+
+<pre><code>lm(data$B~data$A)
+</code></pre>
+
+<h2>Standardised Regression Coefficient</h2>
+
+<p>A predicting B</p>
+
+<pre><code>lm( scale( data$B )~scale( data$A ) )
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/git-submodules/">Git Submodules</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-28T11:40:17+01:00" pubdate data-updated="true">Sep 28<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/git-submodules/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/git-submodules/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For code reuse within I have found Subversion externals really nice to work with. Instead of copy and pasting code between projects you import part or a whole Subversion repository, at trunk, a pinned revision of trunk or a tag.</p>
+
+<p>Git has some thing similar called submodules. Git Submodules are covered in <a href="http://git-scm.com/book/en/Git-Tools-Submodules">Chapter 6.6</a> of [Pro Git][progit] by Scott Chacon. Which has been <a href="http://git-scm.com/book">released for free</a>.</p>
+
+<p>My example is based on <a href="http://git-scm.com/book/en/Git-Tools-Submodules">Chapter 6.6</a> with a little bit of experimenting.</p>
+
+<p>For the example we will have git repos <code>project_top</code> and <code>project_sub</code>.</p>
+
+<pre><code>$ cd project_top
+$ git submodule add git@github.com:morganp/project_sub.git sub
+</code></pre>
+
+<p>We now have a folder in project_top called sub.</p>
+
+<pre><code>$ git status
+# On branch master
+# Changes to be committed:
+#     new file: .gitmodules
+#     new file: sub
+</code></pre>
+
+<p>The .gitmodules keeps track of which git repos map to folder names. sub is interesting it is actually recording the commit (hash) that you currently have cloned in sub.</p>
+
+<p>If you commit these changes.</p>
+
+<pre><code>$git commit -am 'Added Sub module sub'
+</code></pre>
+
+<p>Then go into folder sub and create or modify a file, you will see that git status works as expected if you were in a standalone repository.</p>
+
+<p>If you then commit and push the changes to sub :</p>
+
+<pre><code>git commit -am 'Modifying project_sub'
+git push origin master
+</code></pre>
+
+<p>Pushing back to the location everyone else will pull from is important as the next stage will move the project_sub sumodule on to that revision and if the commit hash does not exist and git clone or pull would fail.</p>
+
+<p>Going back to the main project_top and lets see what modifications to sub (project_sub) look like.</p>
+
+<pre><code>$ git status
+# On branch master
+# Changes not staged for commit:
+#        modified: sub (new commits)
+</code></pre>
+
+<p>Now release the changes in project_sub to every one else on project_top.</p>
+
+<pre><code>git commit sub -m 'moving to point to latest project_sub'
+git push origin master
+</code></pre>
+
+<p>Done.<br/>
+Note that github understands submodules and will display sub as a special folder in project_top. Sub will link to to the master page, there will also be a hash which will link to the included revision in that commit of project_top.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/retina-support-for-background-images/">Retina Support for Background Images</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-26T21:07:35+01:00" pubdate data-updated="true">Sep 26<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/retina-support-for-background-images/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/retina-support-for-background-images/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is based on a <a href="http://www.kylejlarson.com/blog/2012/creating-retina-images-for-your-website/">guide to adding retina support to websites</a>.</p>
+
+<p>To add a tiled (repeating) background cretae 2 images one at 100x100px and the other with the &lsquo;_@2&rsquo; added to the file name at 200x200px then use the following css.</p>
+
+<pre><code>body {background: url(../images/bg.png) repeat; background-size: 100px 100px;}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+   body {background: url(../images/bg_@2x.png) repeat;}
+}
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/speed-up-mission-control-animation/">Speed Up Mission Control Animation</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-18T16:18:56+01:00" pubdate data-updated="true">Sep 18<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/speed-up-mission-control-animation/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/speed-up-mission-control-animation/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If entering Mission Control (ctrl-up) is taking to long you can speed up the animation entering the following in the Terminal (/Applications/Utilities/Terminal.app):</p>
+
+<pre><code>defaults write com.apple.dock expose-animation-duration -float 0.2; killall Dock
+</code></pre>
+
+<p>To disable the animation altogether :</p>
+
+<pre><code>defaults write com.apple.dock expose-animation-duration -float 0; killall Dock
+</code></pre>
+
+<p>I prefer to have a fast animation rather than none as it provides context, it shows me where the applications are coming from on the screen.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -243,455 +819,6 @@ highlight SpellBad gui=undercurl
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/get-snipmate-working-a-vim-plugin/">Get snipMate Working, a #vim Plugin</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-05T00:45:31+01:00" pubdate data-updated="true">Sep 5<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/get-snipmate-working-a-vim-plugin/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/get-snipmate-working-a-vim-plugin/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.vim.org/scripts/script.php?script_id=2540">snipMate</a> is a useful vim plugin which allows short cuts like for&#8217;tab&#8217; to be set up which will insert the snippet:</p>
-
-<pre><code>for (i = 0; i &lt; count; i++) {  
-
-} 
-</code></pre>
-
-<p>To install you just have to download the the zip file from <a href="http://www.vim.org/scripts/script.php?script_id=2540">snipMate</a> and copy the files into your vim folder (~/.vim).</p>
-
-<p>Make sure you have this in your .vimrc file</p>
-
-<pre><code>filetype plugin on
-</code></pre>
-
-<p>I still could not get tab completion to work. running <code>:scriptnames</code> inside vim will list the files it has loaded and should include:</p>
-
-<pre><code>plugin/snipMate.vim
-after/plugin/snipMate.vim
-</code></pre>
-
-<p>On my first install the plugin/snipMate.vim was not executable and therefore the after/plugin/snipMate.vim did not get loaded.</p>
-
-<h2>The Fix</h2>
-
-<pre><code>cd ~/.vim 
-chmod ugo+x plugin/snipMate.vim
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/os-x-installing-r/">OS X Installing R</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-03T20:11:46+01:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2012</time>
-        
-           | <a href="/blog/tech/os-x-installing-r/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/os-x-installing-r/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.r-project.org/">R</a> is a language for statistical computing and graphics. It is the choice of <a href="http://coursera.org">Coursera</a> Statistics One.</p>
-
-<p>It can be installed on OS X via the <a href="http://cran.r-project.org/bin/macosx/">pkg</a> available on the main website which is my recommendation or via <a href="http://mxcl.github.com/homebrew/">Homebrew</a>.</p>
-
-<p><em>I have been unable to get the homebrew version to install correctly.</em><br/>
-<em>On Mountain Lion the homebrew install also requires a few additional packages.</em></p>
-
-<h2>Install R with Homebrew</h2>
-
-<p><strong>Update</strong> First run <code>brew tap homebrew/science</code> to make the R package available <strong>/Update</strong></p>
-
-<p>If you run <code>brew install r</code> when you do not have a fortran compiler you will see the following error:</p>
-
-<blockquote><p>This formula requires a fortran compiler, but we could not find one by
-looking at the FC environment variable or searching your PATH for <code>gfortran</code>.
-Please take one of the following actions:</p>
-
-<ul>
-<li><p>Decide to use the build of gfortran 4.2.x provided by Homebrew using
-    <code>brew install gfortran</code></p></li>
-<li><p>Choose another Fortran compiler by setting the FC environment variable:
-    export FC=/path/to/some/fortran/compiler
-Using an alternative compiler may produce more efficient code, but we will
-not be able to provide support for build errors.</p></li>
-</ul>
-</blockquote>
-
-<p>To save time just run :</p>
-
-<pre><code>brew update
-brew install gfortran r
-</code></pre>
-
-<p>Although I ran into some issues with linking libtiff and jpeg and had to run:</p>
-
-<pre><code>brew link -f  libtiff jpeg
-brew install r
-</code></pre>
-
-<p>I still got checksum fails. Might have to wait for a brew update.</p>
-
-<p>If you are running Mountain Lion then you will also run into this:</p>
-
-<blockquote><p>Unsatisfied dependency: XQuartz
-Please install the latest version of XQuartz:
- <a href="https://xquartz.macosforge.org">https://xquartz.macosforge.org</a>
-Error: An unsatisfied requirement failed this build.</p></blockquote>
-
-<p>The easiest way to install R on OS X really does seem to be just run the <a href="http://cran.r-project.org/bin/macosx/">package</a>. 134MB install size.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/mountain-lion-setup-part-5-etchosts/">Mountain Lion Setup, Part 5 /etc/hosts</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-30T20:28:12+01:00" pubdate data-updated="true">Aug 30<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/mountain-lion-setup-part-5-etchosts/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mountain-lion-setup-part-5-etchosts/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>For ssh and ping to local machines with out the .local extension I added them to my /ets/hosts file.</p>
-
-<p>A normal user does not have permission so you have to use sudo. If you os x account has admin privlages it will prompt you for your password. If you have not used vim before, i for insert mode (like a standard text editor), esc to exit insert mode and :wq to write and quit.</p>
-
-<pre><code>sudo vim /etc/hosts
-
-##
-# Host Database
-#
-# localhost is used to configure the loopback interface
-# when the system is booting.  Do not change this entry.  
-##
-127.0.0.1   localhost
-255.255.255.255 broadcasthost
-::1             localhost 
-fe80::1%lo0 localhost
-
-## Append Local fixed ip Machines
-192.168.10.1   router
-192.168.10.100 macmini
-192.168.10.101 krypton
-192.168.10.250 backup
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/os-x-get-info-summary-for-multiple-items/">OS X Get Info Summary for Multiple Items</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-29T21:02:22+01:00" pubdate data-updated="true">Aug 29<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/os-x-get-info-summary-for-multiple-items/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/os-x-get-info-summary-for-multiple-items/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If you use the ⌘I shortcut in finder with a file selected you get a &lsquo;Get Info&rsquo; window. If you do this with 20 files selected you get 20 windows, In Snow Leopard if 10 or more file were selected you got a Summary window. I found this handy for getting the disk usage for a bunch of files.</p>
-
-<p>If you would like to change it to always get the Summary window, which I find useful in case of selecting all in a folder and accidentally hitting ⌘I you do not a have many many windows to close.</p>
-
-<p>Open System preferences, select keyboard.<br/>
-<a href="http://www.flickr.com/photos/morgan_prior/7889683364/" title="01-SysPref_Keyboard.png by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8462/7889683364_21baa38a61.jpg" width="500" height="367" alt="01-SysPref_Keyboard.png"></a></p>
-
-<p>Keyboard Shortcuts &ndash;> Application Shortcut &ndash;> +<br/>
-<a href="http://www.flickr.com/photos/morgan_prior/7889714382/" title="02-Keyboard.png by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8035/7889714382_a81aa4d791.jpg" width="500" height="455" alt="02-Keyboard.png"></a></p>
-
-<p>Application, select Finder.<br/>
-Menu Title, enter &lsquo;Summary Get Info&#8217;<br/>
-Keyboard Shortcut, press  ⌘I <br/>
-<a href="http://www.flickr.com/photos/morgan_prior/7889720574/" title="03-Entry.png by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8032/7889720574_0ed2232077.jpg" width="500" height="455" alt="03-Entry.png"></a></p>
-
-<p>Done<br/>
-<a href="http://www.flickr.com/photos/morgan_prior/7889724254/" title="04-cmdI-final.png by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8443/7889724254_bf1f39f4a7.jpg" width="500" height="455" alt="04-cmdI-final.png"></a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vim-toggle-between-last-2-edited-buffers/">#vim Toggle Between Last 2 Edited Buffers</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-29T11:22:06+01:00" pubdate data-updated="true">Aug 29<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/vim-toggle-between-last-2-edited-buffers/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-toggle-between-last-2-edited-buffers/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>ctrl-6
-</code></pre>
-
-<h1>Demo</h1>
-
-<p>For the example we will create 3 new temp files and then open them in vim.</p>
-
-<pre><code>touch vim_test1.txt
-touch vim_test2.txt
-touch vim_test3.txt
-vim vim_test*
-</code></pre>
-
-<p>From with in vim</p>
-
-<pre><code>:ls 
-1 %a   "vim_test1.txt"                line 2
-2      "vim_test2.txt"                line 0
-3      "vim_test3.txt"                line 0
-</code></pre>
-
-<p>Buffer 1 is active (%a) if we jump to buffer 3</p>
-
-<pre><code>:b3
-:ls
-1 #    "vim_test1.txt"                line 2
-2      "vim_test2.txt"                line 0
-3 %a   "vim_test3.txt"                line 2
-</code></pre>
-
-<p>Buffer 3 is active (%a) and 3 is previous edited buffer. ctrl-6 will switch these around. Toggling the active buffer between the two.</p>
-
-<pre><code>ctrl-6
-:ls
-1 %a   "vim_test1.txt"                line 2
-2      "vim_test2.txt"                line 0
-3 #    "vim_test3.txt"                line 2 
-ctrl-6
-:ls
-1 #    "vim_test1.txt"                line 2
-2      "vim_test2.txt"                line 0
-3 %a   "vim_test3.txt"                line 2  
-</code></pre>
-
-<p>To scroll through the buffers in order:</p>
-
-<pre><code>:bn (Next Buffer)
-:bp (Previous Buffer)
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/mountain-lion-finding-the-library-folder/">Mountain Lion Finding the Library Folder</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-16T23:56:02+01:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/mountain-lion-finding-the-library-folder/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mountain-lion-finding-the-library-folder/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>From OS X Lion the Users Library folder has been hidden. To find it make Finder the active application, that is when the menu bar displays &lsquo;Finder&rsquo; in the top left, select the &lsquo;Go&rsquo; menu. Then press the option key (⌥) and select Library.</p>
-
-<p>Standard Finder Go Menu
-<a href="http://www.flickr.com/photos/morgan_prior/7798523188/" title="Finder Go Menu by munky morgy, on Flickr"><img src="http://farm8.staticflickr.com/7271/7798523188_0fd97ffe6b.jpg" width="500" height="325" alt="Finder Go Menu"></a></p>
-
-<p>Finder Go Menu with Option (⌥) pressed
-<a href="http://www.flickr.com/photos/morgan_prior/7798528546/" title="Finder Go Menu with Option pressed by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8427/7798528546_78db2dbaac.jpg" width="500" height="338" alt="Finder Go Menu with Option pressed"></a></p>
-
-<p>Option 2, with Finder the active Application press shift-cmd-G (⇧⌘G) for go to folder and type &lsquo;~/Library&rsquo;</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/mountain-lion-twitter-and-flickr-integration/">Mountain Lion, Twitter and Flickr Integration</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-16T17:41:38+01:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
-        
-           | <a href="/blog/photography/mountain-lion-twitter-and-flickr-integration/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/mountain-lion-twitter-and-flickr-integration/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The settings for Twitter and Flickr feel a little hidden at first. To set them up go to <code>System Preferences</code> &lsquo;Internet &amp; Wireless&rsquo; &ndash;> &lsquo;Mail, Contacts &amp; Calendars&rsquo;.</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/7796473036/" title="Mountain Lion, Twitter and Flickr integration by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8284/7796473036_6de41c22c2.jpg" width="500" height="367" alt="Mountain Lion, Twitter and Flickr integration"></a></p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/7796447178/" title="Setup twitter &amp; flickr by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8436/7796447178_78d2913de2.jpg" width="500" height="401" alt="Setup twitter &amp; flickr"></a></p>
-
-<p>Once they are setup the <code>Share Sheet</code> will have new options.</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/7796459660/" title="New Options in Share Sheet by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8300/7796459660_9dca2c5223.jpg" width="500" height="406" alt="New Options in Share Sheet"></a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/16/">&larr; Older</a>
@@ -706,30 +833,30 @@ ctrl-6
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (237)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (239)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/tech/error-storage-class-specified-for-parameter/">Error: Storage Class Specified for Parameter</a>
+        <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+        <a href="/blog/tech/xkill/">Xkill</a>
       </li>
     
       <li class="post">
-        <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
+        <a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a>
       </li>
     
       <li class="post">
-        <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
+        <a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Simulink: Scroll Wheel Erratic Behaviour</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
+        <a href="/blog/engineering/simulink-globally-set-sample-time/">Simulink: Globally Set Sample Time</a>
       </li>
     
   </ul>

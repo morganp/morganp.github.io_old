@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="After adding some USB2 (NTFS formatted) drives to a headless Ubuntu server, they were not auto-mounted so I had to find them and mount them, with &hellip;">
+  <meta name="description" content="In Active Record when updating records I used to have an very manual process to this some thing like: @todo.done = params['post']['done']
+@todo.desc &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,555 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/active-record-attributes-simplify-update-and-create/">Active Record Attributes Simplify Update and Create.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-13T02:13:17+01:00" pubdate data-updated="true">Aug 13<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/active-record-attributes-simplify-update-and-create/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/active-record-attributes-simplify-update-and-create/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In Active Record when updating records I used to have an very manual process to this some thing like:</p>
+
+<pre><code>@todo.done = params['post']['done']
+@todo.desc = params['post']['desc']
+@todo.save
+</code></pre>
+
+<p>Model of Todo with boolean done and text description field.</p>
+
+<p>This can be done in a more maintainable fashion with:</p>
+
+<pre><code>@todo.update_attributes = params['post']
+</code></pre>
+
+<p>This does pose the security concern that the form (which transmits params[&lsquo;post&rsquo;]) could be hacked to add id fields or such like that you may get unwanted manipulation of the table.</p>
+
+<p>To solve this there is a attr_accessible which specifies fields allowed to be updated by the .attributes . while this might seem now like there is no benefit as if we run a migration to add an extra column we also need to update the Active Record model. While this is true we only need to update the model once and create/new  and update methods should benefit from this.</p>
+
+<pre><code>class Todo &lt; ActiveRecord::Base
+end
+</code></pre>
+
+<p>Becomes</p>
+
+<pre><code>class Todo &lt; ActiveRecord::Base
+   attr_accessible :done
+   attr_accessible :desc
+end
+</code></pre>
+
+<h2>Summary:</h2>
+
+<pre><code>@customer.update_attributes = { "description" =&gt; "Jolly fellow", "credit_rating" =&gt; "Superb" }
+</code></pre>
+
+<p>same as:</p>
+
+<pre><code>@customer.description = "Jolly fellow"
+@customer.credit_rating = "Superb"
+@customer.save
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/active-record-create-unique-or-return-existing-element/">Active Record Create Unique or Return Existing Element</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-08T09:20:39+01:00" pubdate data-updated="true">Aug 8<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/active-record-create-unique-or-return-existing-element/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/active-record-create-unique-or-return-existing-element/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When working with databases it is often a requirement to have unique elements (columns) which are not the primary key, this can be achieved in the active record model with:</p>
+
+<pre><code>require 'rubygems'
+require 'sequel'
+DB = Sequel.sqlite('./lesson4.db')
+DB.create_table :tags do
+   primary_key :id
+   varchar :tag
+end  
+
+require 'rubygems'
+require 'active_record'
+ActiveRecord::Base.establish_connection(
+  :adapter   =&gt; 'sqlite3',
+  :database  =&gt; './lesson4.db'
+)
+class Tag &lt;  ActiveRecord::Base
+   validates_uniqueness_of :tag, :scope =&gt; :tag
+end
+
+@tag = Tag.create( :tag =&gt; "duck" )
+##&lt;Tag id: 1, tag: "duck"&gt;
+@tag = Tag.create( :tag =&gt; "duck" )
+##&lt;Tag id: nil, tag: "duck"&gt;
+</code></pre>
+
+<p>So you can see that this constraint works nicely to stop duplicates, if it does find one it does not return the existing element, good for creating but not reusing existing elements.</p>
+
+<p>I find that the following method is usually what I want:</p>
+
+<pre><code>require 'rubygems'
+require 'active_record'
+ActiveRecord::Base.establish_connection(
+  :adapter   =&gt; 'sqlite3',
+  :database  =&gt; './lesson4.db'
+)
+class Tag &lt;  ActiveRecord::Base
+end 
+
+@tag = Tag.find_or_create_by_tag("lazy")
+##&lt;Tag id: 2, tag: "lazy"&gt;
+@tag = Tag.find_or_create_by_tag("lazy")
+##&lt;Tag id: 2, tag: "lazy"&gt;
+</code></pre>
+
+<p>[Added Friday 13/08/2010]
+If you need to run some code between creating and saving the object there is also find_or_initialize_by_</p>
+
+<pre><code>@tag = Tag.find_or_initialize_by_tag("quack")
+@tag.save
+</code></pre>
+
+<p>This may be useful if you have  accessible or protected attributes, &lsquo;attr_accessible&rsquo; &lsquo;attr_protected&rsquo; which may block some properties from being initialised correctly.</p>
+
+<p>I discovered this in the depths of <a href="http://api.rubyonrails.org/classes/ActiveRecord/Base.html">ActiveRecord Base</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/activerecord-queries-on-table-joins/">Activerecord Queries on Table Joins</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-02T11:33:16+01:00" pubdate data-updated="true">Aug 2<span>nd</span>, 2010</time>
+        
+           | <a href="/blog/tech/activerecord-queries-on-table-joins/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/activerecord-queries-on-table-joins/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>An example of joining tables through active record models. There is <a href="http://guides.rubyonrails.org/association_basics.html">a good tutorial on the basics</a> of Activerecord joins.
+For this example we will have Posts and People, we will not use a grammatical parser and will beusing plural of people as peoples. (Note: should be person and persons) Create table with something like:</p>
+
+<pre><code>require 'rubygems'
+require 'sequel'
+DB = Sequel.sqlite('./example.db')
+
+DB.create_table :posts do
+   primary_key :id
+   foreign_key :people_id, :peoples
+   varchar :title
+   text :body
+end
+
+DB.create_table :peoples do
+   primary_key :id
+   varchar :first_name
+   varchar :last_name
+   varchar :short_name
+end
+</code></pre>
+
+<p>Now the active record model should be something like:
+NB I have added the foreign key specifier as I could not find migrations to modify it.</p>
+
+<pre><code>require 'rubygems'
+require 'active_record'
+
+ActiveRecord::Base.establish_connection(
+   :adapter   =&gt; "sqlite3",
+   :database  =&gt; "./example.db"
+)
+
+class People &lt; ActiveRecord::Base
+   has_many :post, :foreign_key =&gt; :people_id
+
+end
+
+class Post &lt; ActiveRecord::Base
+   # mmm No foregin key required for this
+   belongs_to :people
+end
+</code></pre>
+
+<p>This allows ORM automatic joins:</p>
+
+<pre><code>@person = People.first
+@posts  = @person.post
+
+@post   = Post.first
+@person_name = @post.people.first_name
+
+#Now get 3 posts by a particular author and sort
+@person = People.first
+@posts = @person.post.find(:all, :order =&gt; "id DESC", :limit =&gt; 3) 
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/recover-bulk-download-your-pictures-from-flickr/">Recover (Bulk Download) Your Pictures from Flickr</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-02T10:51:53+01:00" pubdate data-updated="true">Aug 2<span>nd</span>, 2010</time>
+        
+           | <a href="/blog/photography/recover-bulk-download-your-pictures-from-flickr/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/recover-bulk-download-your-pictures-from-flickr/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Flickr is a great way to backup your photos and other images for around £25 a year you get unlimited storage. There are numerous uploader tools but not many bulk download applications.</p>
+
+<p>Today I wanted to download a few of my image sets for use as a screen saver on another computer, after looking at several free application <a href="http://janten.com/downloadr/">&lsquo;downloadr&rsquo;</a> was the only one which came close to offering the functionality I needed. The ability to list sets owned by user and select which images to download. Only minor irritation was when listing photos in a set it only lists the first 50 by default so you have press search again to ge the next 50, again and again until you have got previews for all the photos in the set, then you can download then all.</p>
+
+<p><a href="http://janten.com/downloadr/">Downloadr</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/benchmark-your-website-for-load-times/">Benchmark Your Website for Load Times.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-27T16:09:53+01:00" pubdate data-updated="true">Jul 27<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/benchmark-your-website-for-load-times/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/benchmark-your-website-for-load-times/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have been wondering how to do this for a while and accidentally discovered it while perusing <a href="http://docs.heroku.com/performance">this heroku page</a>. ab is the ApacheBench marking tool, it lets you set how many requests (for better averaging) and how many concurrent requests (for load testing) to send to your website. ab id installed by default on most unix/linux/mac os x.</p>
+
+<p>50 requests 2 at atime</p>
+
+<pre><code>$ ab -c 2 -n 50 http://amaras-tech.co.uk/
+</code></pre>
+
+<p>Outputs:</p>
+
+<pre><code>This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking amaras-tech.co.uk (be patient).....done
+
+
+Server Software:        nginx
+Server Hostname:        amaras-tech.co.uk
+Server Port:            80
+
+Document Path:          /
+Document Length:        0 bytes
+
+Concurrency Level:      2
+Time taken for tests:   9.951 seconds
+Complete requests:      50
+Failed requests:        0
+Write errors:           0
+Non-2xx responses:      50
+Total transferred:      11400 bytes
+HTML transferred:       0 bytes
+Requests per second:    5.02 [#/sec] (mean)
+Time per request:       398.030 [ms] (mean)
+Time per request:       199.015 [ms] (mean, across all concurrent requests)
+Transfer rate:          1.12 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:      146  162  16.7    158     214
+Processing:   149  229 198.3    159    1113
+Waiting:      148  228 198.2    159    1112
+Total:        298  392 198.0    328    1262
+
+Percentage of the requests served within a certain time (ms)
+  50%    328
+  66%    343
+  75%    351
+  80%    360
+  90%    612
+  95%    961
+  98%   1262
+  99%   1262
+ 100%   1262 (longest request)
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/philip_roberts-taught-me-a-thing-or-two-about-css/">@philip_roberts Taught Me a Thing or Two About CSS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-22T10:15:50+01:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2010</time>
+        
+           | <a href="/blog/tech/philip_roberts-taught-me-a-thing-or-two-about-css/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/philip_roberts-taught-me-a-thing-or-two-about-css/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>CSS or Cascading Style Sheets are used for styling html elements. HTML elements can have id&rsquo;s, which must be unique to all other elements on the page. HTML elements can also have a type class, an item can belong to multiple classes and a page can have multiple items in a class.</p>
+
+<p>Example page:</p>
+
+<pre><code>&lt;html&gt;
+   &lt;head&gt;
+   &lt;/head&gt;
+   &lt;body id="about"&gt;
+      &lt;div id="nav"&gt;
+        &lt;a href="next"&gt;next&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div id="body"&gt;
+        &lt;a class="small, underline"href="a"&gt;something&lt;/a&gt;
+        &lt;a class="small" href="b"&gt;something&lt;/a&gt;
+        &lt;a class="small" href="c"&gt;something&lt;/a&gt;
+      &lt;/div&gt;
+   &lt;/body&gt;
+&lt;html&gt;
+</code></pre>
+
+<p>To refer to id&rsquo;s use a # symbol and . for classes. eg</p>
+
+<pre><code>div#nav
+a.small
+</code></pre>
+
+<p>If you want to apply the same style to multiple elements they can be written in a list before the style. Make h1 h2 and h3 all text 2x normal:</p>
+
+<pre><code>h1, h2, h3 {
+    test-size: 200%;
+}
+</code></pre>
+
+<p>Now for the new stuff, if the &lsquo;,&rsquo; are removed from the list it specifies a hierarchy which for the element which you are matching:</p>
+
+<pre><code>body#about div#nav a {
+   background-color:yellow;
+}
+</code></pre>
+
+<p>The second thing that I had not realised is that the more specific the higher the precedent.</p>
+
+<pre><code>a { 
+  background-color:black;
+}
+body#about div#nav a {
+  background-color:yellow;
+}
+</code></pre>
+
+<p>Will render the same as</p>
+
+<pre><code>body#about div#nav a {
+   background-color:yellow;
+}
+a { 
+   background-color:black;
+}
+</code></pre>
+
+<p>I had previously assumed in the last example that the last a define would have been all encompassing.</p>
+
+<p>NB: For debugging CSS I think that the <a href="http://getfirebug.com/">FireBug plugin</a> for firefox is great. Watch the Video to get the most out of it.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/turn-a-jar-file-into-a-mac-app/">Turn a .jar File Into a Mac .app</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-18T05:59:31+01:00" pubdate data-updated="true">Jul 18<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/turn-a-jar-file-into-a-mac-app/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/turn-a-jar-file-into-a-mac-app/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Following <a href="http://www.centerkey.com/mac/java/">this article</a> lets you turn a executable java .jar into a mac appliction (.app). The Tools are only available on Mac OS with Xcode installed.</p>
+
+<p>Basically create a 512x512px png for your logo. then use &lsquo;/Developer/Applications/Utilities/Icon Composer.app&rsquo; to create a someFileName.icns, Just drag the png into each of the different size boxes and Icon Composer will resize it correctly.
+Then Save.</p>
+
+<p>Second Stage is to start &lsquo;/Developer/Applications/Utilities/Jar Bundler.app&#8217;<br/>
+For the main class choose your executable .jar for the icon load the icns created in the previous step. Then press the create application button, chose location then your .app should be created.</p>
+
+<p>The only complaint I have about these to applications is there is no ability to save the set-up, so every time you want to rebuild you have to enter all the settings again, I do not know many other applications which do not allow you to save.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -244,397 +794,6 @@ res = @db.country(env['HTTP_X_REAL_IP'])
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-running-on-heroku/">Sinatra Running on Heroku</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-09T08:37:13+01:00" pubdate data-updated="true">Jul 9<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/sinatra-running-on-heroku/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-running-on-heroku/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>For running small webapps <a href="http://heroku.com/">heroku</a> is free. The real attraction is the simplicity of deployment, if you are use to git you just push to heroku.</p>
-
-<p><a href="http://blog.heroku.com/archives/2009/3/5/32_deploy_merb_sinatra_or_any_rack_app_to_heroku/">Current instructions</a> are missing the step of creating the .gems file. So here is my quick walk through. Register on <a href="http://heroku.com/">heroku</a> first.</p>
-
-<pre><code>mkdir new_web_app
-cd new_web_app
-gem install heroku
-touch config.ru
-touch app.rb
-touch .gems
-</code></pre>
-
-<p>config.ru</p>
-
-<pre><code>require 'app'
-run Sinatra::Application
-</code></pre>
-
-<p>app.rb</p>
-
-<pre><code>require 'rubygems'
-require 'sinatra'
-
-get '/' do
-   "Hello from Sinatra on Heroku!"
-end
-</code></pre>
-
-<p>.gems</p>
-
-<pre><code>sinatra --version '&gt;=1.0'
-</code></pre>
-
-<p>Now run these commands to finish off and deploy</p>
-
-<pre><code>git init
-git add config.ru app.rb .gems 
-git commit -a -m 'Initial commit'
-heroku create
-git push heroku master
-heroku open
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vim-indenting-with-vim-/">[Vim] Indenting with Vim</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-07T07:50:53+01:00" pubdate data-updated="true">Jul 7<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/vim-indenting-with-vim-/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-indenting-with-vim-/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Vim is a great text editor but has quite a steep learning curve. <a href="http://vimcasts.org">VimCasts</a> is a great podcast for learning about vim.</p>
-
-<p>Indenting is a common programming activity so doing this effectively can greatly speed editing up.</p>
-
-<p>Pressing i to enter INSERT mode then pressing tab will insert a tab or white space as expected. There is a quicker method especially for multiline.</p>
-
-<p><strong>Vim Multi-Line Indent</strong>
-Press ESC to enter normal mode. &lsquo;v&rsquo; to enter Visual mode. use the cursors or your normal navigation keys to highlight multiple lines then press &lsquo;&lt;&lt;&rsquo; or &lsquo;>>&rsquo;. This indents in or out but notice that you have gone back to normal mode and your higlighted region has been lost. this is quite frustrating until you realise that you can redo the same command by pressing &lsquo;.&rsquo; and undo with &lsquo;u&rsquo; if you indented to far.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/os-x-itunes-play-ogg-videos/">OS X iTunes Play .ogg Videos</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-06T09:18:22+01:00" pubdate data-updated="true">Jul 6<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/os-x-itunes-play-ogg-videos/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/os-x-itunes-play-ogg-videos/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://pragmatic.tv">Pragmatic TV</a> release there screen casts in iPod, Quicktime and Theora Ogg formats. Since Theora Ogg seems to be the best quality and I want to be able to read the text from the video clearly I would like to integrate playback better into the mac ecosystem.</p>
-
-<p>This is actually fairly trivial with <a href="http://xiph.org/quicktime/download.html">Xiph</a>. Just download, open the .dmg and place the .component in the /Library/Components folder. .ogg videos can now be dragged into and played with iTunes.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/tasks-using-absolute-delays/">Tasks Using Absolute Delays</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-02T01:10:10+01:00" pubdate data-updated="true">Jul 2<span>nd</span>, 2010</time>
-        
-           | <a href="/blog/engineering/tasks-using-absolute-delays/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/tasks-using-absolute-delays/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>As previously mentioned SystemVerilog introduced abolute delays in the form of <code>#1s;</code>, <code>#1ms</code>, <code>#1us</code>, <code>#1ns</code>.
-Using these as values passed into function requires declaring the input to be of type time.</p>
-
-<pre><code>task arduous_delay( time delay );
-  begin
-    #delay;
-  end
-endtask
-
-//Usage
-arduous_delay( 1ms );
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/">jQuery Clear Form on Focus and Restore on Exit</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-27T10:57:35+01:00" pubdate data-updated="true">Jun 27<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/jquery-clear-form-on-focus-and-restore-on-exit/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I used <a href="http://www.eggchops.com/web-stuff/jquery/jquery-clear-focus-function/">this as a jQuery reference</a> to hide and show default text in forms.</p>
-
-<pre><code>&lt;head&gt;
-   &lt;script type=”text/javascript” src=”js/jquery.js”&gt;&lt;/script&gt;
-   &lt;script type=”text/javascript”&gt;
-
-   $(document).ready(function(){
-
-      var clearMePrevious = ”;
-
-      // clear input on focus
-      $(’.clearMeFocus’).focus(function()
-      {
-         if($(this).val()==$(this).attr(’title’))
-         {
-            clearMePrevious = $(this).val();
-            $(this).val(”);
-         }
-       });
-
-       // if field is empty afterward, add text again
-       $(’.clearMeFocus’).blur(function()
-       {
-        if($(this).val()==”)
-        {
-          $(this).val(clearMePrevious);
-        }
-    });
-});
-
-&lt;/script&gt;
-&lt;/head&gt;
-</code></pre>
-
-<p>and the for the form</p>
-
-<pre><code>&lt;input type=”text” name=”email” title=”Enter your email” value=”Enter your email” class=”clearMeFocus” /&gt;
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/webfaction-problems-restarting-nginx/">WebFaction Problems Restarting Nginx</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-27T09:39:48+01:00" pubdate data-updated="true">Jun 27<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/webfaction-problems-restarting-nginx/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/webfaction-problems-restarting-nginx/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After updating my website on <a href="http://www.webfaction.com/?affiliate=morgy">webfaction</a> nginx kept saying permission denied and when I tried to view my site I got a 502 Bad Gateway error page.</p>
-
-<p>To restart nginx I use to call:</p>
-
-<pre><code>  ~/webapps/passenger/bin/restart
-</code></pre>
-
-<p>I had to change this to:</p>
-
-<pre><code>~/webapps/passenger/nginx/sbin/nginx -p ~/webapps/passenger/nginx/ -s stop  
-~/webapps/passenger/nginx/sbin/nginx -p ~/webapps/passenger/nginx/ 
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vim-show-lines-over-80-charaters-long/">Vim Show Lines Over 80 Charaters Long.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-26T07:13:52+01:00" pubdate data-updated="true">Jun 26<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/vim-show-lines-over-80-charaters-long/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-show-lines-over-80-charaters-long/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This snippet can be added to you ~/.vimrc to highlight long lines.</p>
-
-<pre><code>" Highlight lines over 80 characters long with red background
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
-</code></pre>
-
-<p>When programming it is recommended to keep lines at 80 characters or under. This makes it easier to find the start of the next line, possible to compare two files side by side on modern monitors and source code should print out nicely if required for code reviews.</p>
-
-<p><a href="http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns">source</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/30/">&larr; Older</a>
@@ -649,30 +808,30 @@ match OverLength /\%81v.\+/
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (237)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (239)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/tech/error-storage-class-specified-for-parameter/">Error: Storage Class Specified for Parameter</a>
+        <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+        <a href="/blog/tech/xkill/">Xkill</a>
       </li>
     
       <li class="post">
-        <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
+        <a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a>
       </li>
     
       <li class="post">
-        <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
+        <a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Simulink: Scroll Wheel Erratic Behaviour</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
+        <a href="/blog/engineering/simulink-globally-set-sample-time/">Simulink: Globally Set Sample Time</a>
       </li>
     
   </ul>

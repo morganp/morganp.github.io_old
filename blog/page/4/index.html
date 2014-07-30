@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Since upgrading to Mavericks I get a sound whenever I get mail. I find this very annoying so first port of call is to disable &lsquo;Play user &hellip;">
+  <meta name="description" content="⌘-Enter toggles fullscreen in iTerm.
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,437 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/iterm-exit-fullscreen/">iTerm Exit Fullscreen</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-08T19:27:00+01:00" pubdate data-updated="true">Apr 8<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/iterm-exit-fullscreen/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/iterm-exit-fullscreen/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>⌘-Enter</code> toggles fullscreen in <a href="http://www.iterm2.com/">iTerm</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/verilog-importing-envvar/">Verilog Importing Envvar</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-03T18:22:00+01:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
+        
+           | <a href="/blog/engineering/verilog-importing-envvar/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/verilog-importing-envvar/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Based on a <a href="http://stackoverflow.com/a/15103561/97073">Stackoverflow answer</a>, to import environment variables into Verilog you can use:</p>
+
+<pre><code>import "DPI-C" function string getenv(input string env_name);
+
+module top;
+  initial begin
+    $write("env = %s\n", {getenv("HOME"), "/FileName"});
+  end
+endmodule
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-01T20:59:40+01:00" pubdate data-updated="true">Apr 1<span>st</span>, 2014</time>
+        
+           | <a href="/blog/tech/fixing-mangled-octopress-tags/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/fixing-mangled-octopress-tags/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When creating my blog I have been inconsistent with the tag <code>command line</code>, <code>Command line</code> and
+<code>Command Line</code> the case in-sensitvities are not picked up in Octopress generation. To some
+extent my <a href="">Downcase plugin</a> hides these differences. The tags page only lists those with full
+downcase, but handles all other mixed case tags.</p>
+
+<p>This has lead to some posts dropping off the tag listing, which are just not accessible this way.</p>
+
+<p>The easy fix is to standardise my use of the tag.</p>
+
+<p>First investigate: List posts containing the downcased version:</p>
+
+<pre><code>grep -R '\- command line' *
+</code></pre>
+
+<p>Correct all :</p>
+
+<pre><code>find ./source/_posts -type f -print0 | xargs -I{} sed -i '' 's/\- [Cc]ommand [Ll]ine/\- Command Line/g' {}
+</code></pre>
+
+<p><code>find</code> outputs all files in folder ‘./‘ Actually had some trouble rerunning this find command so simplified it to :</p>
+
+<pre><code>ls source/_posts/*.markdown | xargs -I{} sed -i '' 's/\- [Cc]ommand [Ll]ine/\- Command Line/g' {}
+</code></pre>
+
+<p><strong>xargs</strong> option <code>i{}</code> takes the input argument and repeats it in the following command where the
+<code>{}</code> are placed. <code>find</code> has a built in <code>-exec</code> option but using xargs allows the first <code>find</code>
+command to be replaced with <code>grep</code> or <code>ls</code> if required.</p>
+
+<p><strong>Sed</strong> options</p>
+
+<ol>
+<li><code>g</code> Replace all the instances</li>
+<li><code>-i ‘’</code> Edits inplace without appending a new file extension.</li>
+</ol>
+
+
+<p>On a Mavericks the default see does not support case insensitive search,
+therefore I have enclosed the first letter of each word with options for lower and upper case.</p>
+
+<p>After performing the updates the tag text is updated to <code>Command Line</code> and the url is
+<a href="/tag/command-line/"><code>tag/command-line/</code></a>, which lists all of the tagged posts.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/thor-variable-arguments/">Thor Variable Arguments</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-01T19:39:19+01:00" pubdate data-updated="true">Apr 1<span>st</span>, 2014</time>
+        
+           | <a href="/blog/tech/thor-variable-arguments/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/thor-variable-arguments/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://whatisthor.com/">Thor</a> is a Ruby Gem, which allows you to build command line applications which accept commands, in the same way <code>git</code> accepts <code>add</code> as a command.</p>
+
+<p>The Helloworld example :</p>
+
+<pre><code>require "thor"
+
+class MyCLI &lt; Thor
+  desc "hello NAME", "say hello to NAME"
+  def hello(name)
+    puts "Hello #{name}"
+  end
+end
+MyCLI.start(ARGV)
+</code></pre>
+
+<p>The help and single input.</p>
+
+<pre><code>$ ruby thor_test.rb help hello
+&gt; Usage:
+&gt;  thor_test.rb hello NAME
+&gt;
+&gt; say hello to NAME
+
+
+$ ruby thor_test.rb Hello a
+&gt; Hello a
+</code></pre>
+
+<p>Now with multiple, inputs:</p>
+
+<pre><code>$ ruby thor_test.rb Hello a b
+&gt; thor_test.rb hello requires at least 1 argument: "thor_test.rb hello NAME”.
+</code></pre>
+
+<p>Not really what you want if you were building a command like <code>git add</code> when you
+would want all following arguments as inputs.</p>
+
+<p>To accept a variable number of arguments is not Thor specific but a standard
+ruby idiom. A splat in front of your variable ie <code>*name</code>.</p>
+
+<pre><code>require "thor"
+
+class MyCLI &lt; Thor
+  desc "hello NAME", "say hello to NAME"
+  def hello(*name)
+    puts "Hello #{name * “ "}"
+  end
+end
+MyCLI.start(ARGV)
+
+$ ruby thor_test.rb Hello a b
+&gt; Hello a b
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-print-array/">Ruby Print Array</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-01T18:36:00+01:00" pubdate data-updated="true">Apr 1<span>st</span>, 2014</time>
+        
+           | <a href="/blog/tech/ruby-print-array/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-print-array/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>puts</code> and <code>to_s</code> could be better:</p>
+
+<pre><code>a = [1, 2, 3]
+puts a
+&gt; 1
+&gt; 2
+&gt; 3
+
+puts a.to_s
+&gt; [1, 2, 3]
+</code></pre>
+
+<h2>Nicely print an array</h2>
+
+<p>Multiply it out with spaces:</p>
+
+<pre><code>a = [1, 2, 3]
+puts a * " "
+&gt; 1 2 3
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/screen-scrollback/">Screen Scrollback</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-25T20:57:28+00:00" pubdate data-updated="true">Mar 25<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/screen-scrollback/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/screen-scrollback/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Enter copy mode</p>
+
+<pre><code>ctrl-a [
+</code></pre>
+
+<p>Use cursors of vim motions to move to relevant area.</p>
+
+<p>Space to start selection, space again to end selection and copy to screen copy-buffer</p>
+
+<p>Move to virtual screen terminal where you want to paste then</p>
+
+<pre><code>ctrl-a ]
+</code></pre>
+
+<p>To paste to file enter</p>
+
+<pre><code>cat &gt; paste.file
+#// Then press ctrl-a ]
+</code></pre>
+
+<p><a href="http://commandliners.com/2009/12/screen-working-with-the-scrollback-buffer/">More notes on screen scrollback history</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-leading-0-s/">Matlab: Leading 0&#8217;s</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-25T20:52:35+00:00" pubdate data-updated="true">Mar 25<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-leading-0-s/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-leading-0-s/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For adding leading zeros to a number the following can be used for 4 decimal places with integer input:</p>
+
+<pre><code>dat = 1;
+sprintf(['%4.4d'], dat)
+</code></pre>
+
+<p>To make this programmable the following can be used:</p>
+
+<pre><code>dat       = 1;
+min_width = 4;
+sprintf(['%',num2str(min_width),'.', num2str(min_width),'d'], 1)
+</code></pre>
+
+<p>For string inputs you need:</p>
+
+<pre><code>dat       = '1'
+min_width = 4;
+sprintf(['%0',num2str(6),'s'], dat)
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -237,317 +669,6 @@ B=sortStruct(A,'value');
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/raised-bed-update/">Raised Bed, Update</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-16T21:36:59+00:00" pubdate data-updated="true">Mar 16<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/raised-bed-update/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/raised-bed-update/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Update to the raised beds. Delivery of top soil:
-<img src="/images/Gardening/RaisedBed2/morganp-20140226-Garden-_MG_6875.jpg" alt="" /></p>
-
-<p>Raised bed lined with weed barrier and then 20mm Gravel. Filled with Top soil, Compost and Vermiculite mix.
-My version of <a href="http://www.mysquarefootgarden.net/mels-mix/">Mels Mix</a>.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/garden/raised-bed-update/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/tool-acquisition/">Tool Acquisition</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-16T19:37:57+00:00" pubdate data-updated="true">Mar 16<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/tool-acquisition/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/tool-acquisition/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/images/Gardening/morganp-20140316-Garden-_MG_7012.jpg" alt="" /></p>
-
-<p>Just after Christmas I got a Joseph Bently digging spade (larger than the border spade). Bought from <a href="http://www.dunbargardencentre.co.uk/">Dunbar Garden Center</a> for £22 as I had a £5 Off voucher for spending over £50 during December. Actually had 2 vouchers one was used for the <a href="/blog/garden/birdbox/">bird boxes</a>.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/garden/tool-acquisition/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/propagator-trays/">Propagator Trays</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-16T19:23:48+00:00" pubdate data-updated="true">Mar 16<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/propagator-trays/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/propagator-trays/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sunday trip to <a href="http://www.merryhatton.co.uk/">Marryhatton</a>. Getting serious about propagation now, got these seed trays to move the seedlings to after they have germinated in the heated propagator.</p>
-
-<p><img src="/images/Gardening/morganp-20140316-Garden-_MG_6991.jpg" alt="" /></p>
-
-<p>Saw (&amp; bought) this reed 5m by 2m screen on sale for £12.99!</p>
-
-<p><img src="/images/Gardening/morganp-20140316-Garden-_MG_7002.jpg" alt="" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/f-stop-loka-hydration/">F-Stop Loka Hydration</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-16T18:13:55+00:00" pubdate data-updated="true">Mar 16<span>th</span>, 2014</time>
-        
-           | <a href="/blog/photography/f-stop-loka-hydration/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/f-stop-loka-hydration/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Not a review, just noting the default position of the velcro hydration loop, before I remove it.
-Left shoulder, under chest harness.</p>
-
-<p><img src="/images/Photography/Loka/morganp-20140315-Loka-IMG_6970.jpg" alt="" />
-<img src="/images/Photography/Loka/morganp-20140315-Loka-IMG_6976.jpg" alt="" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-iterate-over-lines-in-a-string/">Ruby Iterate Over Lines in a String</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-13T21:03:54+00:00" pubdate data-updated="true">Mar 13<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/ruby-iterate-over-lines-in-a-string/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-iterate-over-lines-in-a-string/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>str.each_line do |line|
-  #do something with line
-end
-</code></pre>
-
-<p><a href="http://stackoverflow.com/a/601892/97073">Source</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/macbook-keyboard-light-not-working/">Macbook Keyboard Light Not Working</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-13T20:00:47+00:00" pubdate data-updated="true">Mar 13<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/macbook-keyboard-light-not-working/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/macbook-keyboard-light-not-working/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Checkout : <a href="http://support.apple.com/kb/HT4882">Apple support</a>.</p>
-
-<p>Disable &lsquo;Adjust keyboard brightness in low light&rsquo;.<br/>
-<img src="/images/Tech/Keyboard_low_light.png" alt="" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/git-tag-and-push-to-github/">Git Tag and Push to Github</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-13T19:16:57+00:00" pubdate data-updated="true">Mar 13<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/git-tag-and-push-to-github/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/git-tag-and-push-to-github/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>git tag -a 0.0.1 -m "Tag comment"
-git push --tags
-</code></pre>
-
-<p><em>Note: The use of <a href="http://semver.org/">major.minor.patch Semantic Versioning</a> is a really good idea.</em></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -562,30 +683,30 @@ git push --tags
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (237)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (239)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/tech/error-storage-class-specified-for-parameter/">Error: Storage Class Specified for Parameter</a>
+        <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+        <a href="/blog/tech/xkill/">Xkill</a>
       </li>
     
       <li class="post">
-        <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
+        <a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a>
       </li>
     
       <li class="post">
-        <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
+        <a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Simulink: Scroll Wheel Erratic Behaviour</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
+        <a href="/blog/engineering/simulink-globally-set-sample-time/">Simulink: Globally Set Sample Time</a>
       </li>
     
   </ul>

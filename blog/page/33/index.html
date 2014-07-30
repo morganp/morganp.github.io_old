@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="[Update]
-As this is a long post I am putting this update at the top. If you just want to install gems that require a newer version of RubyGems please &hellip;">
+  <meta name="description" content="With Webfaction you can create new users with there own home area but there is no straight forward way to host their site. There is a posted method &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,451 @@ As this is a long post I am putting this update at the top. If you just want to 
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/webfaction-new-user-with-access-to-their-own-site/">Webfaction New User with Access to Their Own Site</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-28T09:24:58+01:00" pubdate data-updated="true">Apr 28<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/webfaction-new-user-with-access-to-their-own-site/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/webfaction-new-user-with-access-to-their-own-site/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>With <a href="http://www.webfaction.com/?affiliate=morgy">Webfaction</a> you can create new users with there own home area but there is no straight forward way to host their site.</p>
+
+<p>There is a posted method where the site is hosted in YOUR home/webapps directory, but that requires you reset your permissions every time you create a new site and if you forget there could be a security hole.</p>
+
+<p>Hosting the site in THEIR home directory requires you to set permissions in there directory so YOU can see it. This is much safer if all goes wrong the site does not have permission to be displayed rather than compromising your new site.</p>
+
+<p>Create new user with bash login via with <a href="http://panel.webfaction.com">Web interface</a></p>
+
+<p>set password, as this can be tricky getting a random string a cheat is to do:</p>
+
+<pre><code>echo "some random string" | md5
+</code></pre>
+
+<p>Choose 8 or more characters for the password.</p>
+
+<p>SSH login as normal</p>
+
+<pre><code>ssh user@user.webfactional.com
+</code></pre>
+
+<p>then</p>
+
+<pre><code>su new_user
+cd ~
+mkdir myweb.com
+</code></pre>
+
+<p>then set</p>
+
+<pre><code>setfacl -m u:nginx:rx ~
+setfacl -R -m u:nginx:rx myweb.com/
+
+setfacl -m u:apache:rx ~
+setfacl -R -m u:apache:rx myweb.com/
+
+setfacl -m u:Your_Username:rx ~
+setfacl -R -m u:Your_Username:rx myweb.com/
+</code></pre>
+
+<p>Back to <a href="http://www.webfaction.com/?affiliate=morgy">webfaction</a> main control panel and create a new app ( symbolic link to PHP/static )</p>
+
+<p>The info section for this needs to be:
+/home/new_user/myweb.com</p>
+
+<p>NB: currently only works with apache not nginx</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-ruby-ruby-why-are-you-so-wierd-at-times/">Ruby, Ruby, Ruby, Why Are You So Wierd at Times?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-26T07:48:47+01:00" pubdate data-updated="true">Apr 26<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-ruby-ruby-why-are-you-so-wierd-at-times/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-ruby-ruby-why-are-you-so-wierd-at-times/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This feature of ruby keeps catching me out as the behaviour is quite unexpected (by me).</p>
+
+<p>I can use a &lsquo;!&rsquo; modifying function like so:</p>
+
+<pre><code>html_string.gsub!("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
+</code></pre>
+
+<p>Which works great apart from when the match string &ldquo;&lt;pre&gt;&rdquo; in this case is not found then it returns nil. Surely I would want the string unaltered instead, why would I want nil. So I generally have to replace it with the following:</p>
+
+<pre><code>html_string = html_string.gsub("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
+</code></pre>
+
+<p>[Update 27/04/2010]</p>
+
+<p>Turns out it should not modify the the string but the function returns nil. This was the last line in a function call and so was an implicit return. The following would probably have been better:</p>
+
+<pre><code>html_string.gsub!("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
+return html_string
+</code></pre>
+
+<p>The returned nil could then be used as an if statment to take a different execution path if not modified:</p>
+
+<pre><code>if /&lt;pre&gt;/ === html_string
+   html_string = html_string.gsub("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
+else
+   puts "Does not contain &lt;pre&gt;"
+end
+</code></pre>
+
+<p>Could just become:</p>
+
+<pre><code>if not html_string.gsub!("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
+   puts "Does not contain &lt;pre&gt;"
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/testing-tweets-from-production-server-this-should-be-working%21/">Testing Tweets from Production Server This Should Be Working!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-18T13:45:45+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/testing-tweets-from-production-server-this-should-be-working%21/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/testing-tweets-from-production-server-this-should-be-working%21/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-incase-sensitive-sort/">Ruby Incase Sensitive Sort</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-18T11:13:51+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-incase-sensitive-sort/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-incase-sensitive-sort/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ruby has a .sort method which sorts basic objects. it is case sensitive though so Zebra is before apple. Using sort_by instead you can specify the sort key.</p>
+
+<pre><code>some_array.sort_by { |x| x.downcase }
+</code></pre>
+
+<p>There is a good description/discussion of the performance issues of this on <a href="http://ruby-doc.org/core/classes/Enumerable.html#M003120">ruby-docs</a></p>
+
+<p>Since the <a href="http://ruby-doc.org/core/classes/Enumerable.html#M003120">ruby-docs</a> mention performance issues I though it would be worth noting  that in my blog app I have the option to pre sort with the ORM. this shouldmake the ruby sory much faster to execute as it is already mostly sorted, but how does this effect the performance of the ORM</p>
+
+<pre><code>def all_tags_sort
+   @tags = Tags.find(:all, :order =&gt; "tag")
+   @tags = @tags.sort_by { |tag| tag.tag.downcase }
+end
+</code></pre>
+
+<p>VS</p>
+
+<pre><code>def all_tags_sort
+   @tags = Tags.find(:all)
+   @tags = @tags.sort_by { |tag| tag.tag.downcase }
+end
+</code></pre>
+
+<p>For the performance test I added this to one of views that displays the tags</p>
+
+<pre><code>#For Benchmarking
+require 'benchmark'
+include Benchmark
+
+bm(10) do |b|
+   b.report("ORM") { @tags = Tags.find(:all) }
+   b.report("Sort by") { @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
+   b.report("ORM sorted") { @tags = Tags.find(:all, :order =&gt; "tag") }
+   b.report("Sort by") { @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
+end
+</code></pre>
+
+<p>To test I built up a small dictionary using this <a href="http://gist.github.com/370533">gist</a> (sorted by default so have to randomise it alittle bit)</p>
+
+<pre><code>                   user     system      total        real
+ORM           53.920000   3.650000  57.570000 ( 57.960210)
+Sort by        4.750000   0.320000   5.070000 (  5.091083)
+ORM sorted    45.080000   3.590000  48.670000 ( 49.554891)
+Sort by        2.700000   0.310000   3.010000 (  3.016042)
+</code></pre>
+
+<p>mmm, data does not look write as retrieving and sorting was quicker than just retrieving will run with the order swapped.</p>
+
+<pre><code>                user     system      total        real
+ORM sorted 10.290000   1.740000  12.030000 ( 12.087005)
+Sort by     0.930000   0.130000   1.060000 (  1.054450)
+ORM        11.740000   1.700000  13.440000 ( 13.453623)
+Sort by     0.760000   0.130000   0.890000 (  0.886095)
+</code></pre>
+
+<p>Sorting in the ORM layer still seems to be quicker than not sorting, and the Ruby sorting takes same length of time. So looks like applying the sort is a worthwhile.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/itunes-play-flac-on-os-x/">iTunes Play FLAC on OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-18T07:33:36+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/itunes-play-flac-on-os-x/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/itunes-play-flac-on-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://code.google.com/p/flukeformac/">Fluke for mac</a> can be used to get iTunes playing <a href="http://flac.sourceforge.net/">FLAC</a> audio files. However it is currently broken for Snow Leopard due to the upgraded version of python.</p>
+
+<p>Once Fluke is installed open your .flac files with fluke.app and they should be added to your iTunes library.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-and-gemspec/">Ruby and Gemspec</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-16T10:01:58+01:00" pubdate data-updated="true">Apr 16<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-and-gemspec/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-and-gemspec/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have just forked and cloned a project on github and discovered *.gemspec files. They are a nice way of specifying the gem dependencies in your project. once you have the copied/cloned a project before you run it just call:</p>
+
+<pre><code>$ gem build something.gemspec
+</code></pre>
+
+<p>The <a href="http://docs.rubygems.org/read/chapter/20">gemspec documentation</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-nil-tests-fail-you-really-want-/">Ruby .nil? Tests Fail ? You Really Want ||=</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-15T07:43:50+01:00" pubdate data-updated="true">Apr 15<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-nil-tests-fail-you-really-want-/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-nil-tests-fail-you-really-want-/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently discovered ||= in ruby. Its main use is for initialising a variable if it does not already exists, this is great for extending templates with new functions and maintaining backwards compatibility.</p>
+
+<pre><code>irb(main):001:0&gt; x 
+NameError: undefined local variable or method `x' for main:Object
+from (irb):1
+irb(main):002:0&gt; x ||= 0
+=&gt; 0
+irb(main):003:0&gt; x = 10
+=&gt; 10
+irb(main):004:0&gt; x ||= 0
+=&gt; 10
+</code></pre>
+
+<p>I previously used :</p>
+
+<pre><code>if @x.nil? 
+    @x = 10   
+end
+</code></pre>
+
+<p>which is 3 times as many lines of code and does not work with all variable types infact .nil? is only valid for global ($) and instance (@) variables.</p>
+
+<pre><code>irb(main):001:0&gt; $x.nil?
+=&gt; true
+irb(main):002:0&gt; @x.nil?
+=&gt; true
+irb(main):003:0&gt; @@x.nil?
+NameError: uninitialized class variable @@x in Object
+   from (irb):3
+irb(main):004:0&gt; x.nil?
+NameError: undefined local variable or method `x' for main:Object
+   from (irb):4
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -389,380 +833,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sequel-orm-migrations/">Sequel ORM Migrations</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-31T09:07:51+01:00" pubdate data-updated="true">Mar 31<span>st</span>, 2010</time>
-        
-           | <a href="/blog/tech/sequel-orm-migrations/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sequel-orm-migrations/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Available as a <a href="http://gist.github.com/348121">gist</a> a Sequel Migration to rename a database column.</p>
-
-<pre><code>## Command line to apply Migration
-#sequel -m ./db/migrate/ -M 1 sqlite://db/data.db
-## Command to roll back
-#sequel -m ./db/migrate/ -M 0 sqlite://db/data.db
-
-Class.new(Sequel::Migration) do
-   def up
-      DB.alter_table :aTable do
-         rename_column :old, :new
-      end
-   end
-
-   def down
-     DB.alter_table :aTable do
-        rename_column :new, :old
-     end
-   end
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-and-compass-sending-compressed-cached-css/">Sinatra and Compass Sending Compressed Cached CSS</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/sinatra-and-compass-sending-compressed-cached-css/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-and-compass-sending-compressed-cached-css/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have previously mentioned on <a href="http://munkymorgy.blogspot.com/">blogger</a> how to use Compass and SASS with Sinatra for rendering the stylesheets.</p>
-
-<p>I have added a few options which are not in the main tutorials. Compress the stylesheet, this removes all the white space saving bandwidth when transmitting the file.</p>
-
-<pre><code>configure do
-....
-
-  ##Compass CSS/SASS stuff below
-  Compass.configuration do |config|
-     config.project_path = File.dirname(__FILE__)
-     config.sass_dir = 'views/stylesheets'
-     config.output_style = :compressed
-  end
-end
-</code></pre>
-
-<p>The second setting is to tell browsers to cache the stylesheet so that passenger does not have to keep building the file via compass.</p>
-
-<pre><code>##CSS rendering
-get '/stylesheets/:name.css' do
-   content_type 'text/css', :charset =&gt; 'utf-8'
-   response['Expires'] = (Time.now + 60*60*24*356*3).httpdate
-   sass(:"stylesheets/#{params[:name]}" )
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-10-released/">Sinatra 1.0 Released</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/sinatra-10-released/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-10-released/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sinatra 1.0 has been released!</p>
-
-<p>When you install the new version the old one are still left behind. This is an example of how to upgrade, and remove old versions:</p>
-
-<pre><code>$ gem install sinatra
-$ gem cleanup sinatra
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-run-execute-command-line/">Ruby Run (Execute) Command Line</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-run-execute-command-line/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-run-execute-command-line/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Also a <a href="http://gist.github.com/341670">gist</a> on github. This code snippet is an example of how to execute a command line argument in ruby and display the output</p>
-
-<pre><code>#!/usr/bin/env ruby
-do_and_report("ls")
-
-#Small function to run a command and output return values
-def do_and_report(command)
-   f = open("| #{command}")
-   g = Array.new
-   while (foo = f.gets)
-      g &lt;&lt; foo
-   end
-   g.each do |element|
-      puts element
-   end
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-include-require-local-files/">Ruby Include (Require) Local Files</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-include-require-local-files/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-include-require-local-files/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Also a <a href="http://gist.github.com/341255">gist</a> on github. This is an example of how you can require files in a relative path to the script. As Ruby scripts execute from which ever path they were called.</p>
-
-<pre><code>#!/usr/bin/env ruby
-
-#A way of including local functions in sub folders 
-path = File.expand_path $0
-path = File.dirname(path)
-
-require "#{path}/SubDir/function_1.rb"
-require "#{path}/SubDir/function_2.rb"
-require "#{path}/SubDir/function_3.rb"
-
-#or change working dir of script
-Dir.chdir(path) 
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-performance-measure/">Ruby Performance Measure</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-performance-measure/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-performance-measure/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Also available as a <a href="http://gist.github.com/342639">gist</a>. Very simple way of measuring execution time in seconds using Ruby</p>
-
-<pre><code>#!/usr/bin/env ruby
-# Measure performance in seconds of tasks
-# Record Startime For performance measurements
-startTime = Time.now
-
-#Main part of script goes here
-
-#Calculate and Display Execution Time in seconds
-execTime = Time.now - startTime
-puts "Execution time #{execTime} seconds."
-</code></pre>
-
-<p>Matlab has a slightly simpler function for this</p>
-
-<pre><code>tic
-%Main part goes here
-toc
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-logger/">Ruby Logger</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-logger/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-logger/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Ruby has a nice logging function,</p>
-
-<p>Update once example of rotating logs finished</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/34/">&larr; Older</a>
@@ -777,30 +847,30 @@ toc
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (237)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (239)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/tech/error-storage-class-specified-for-parameter/">Error: Storage Class Specified for Parameter</a>
+        <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+        <a href="/blog/tech/xkill/">Xkill</a>
       </li>
     
       <li class="post">
-        <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
+        <a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a>
       </li>
     
       <li class="post">
-        <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
+        <a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Simulink: Scroll Wheel Erratic Behaviour</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
+        <a href="/blog/engineering/simulink-globally-set-sample-time/">Simulink: Globally Set Sample Time</a>
       </li>
     
   </ul>

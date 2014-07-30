@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I while ago I made a post about installing ruby 1.9 on my webfaction shared host. They then pointed out to me that if I had gone into my webapps/ &hellip;">
+  <meta name="description" content="I do not like having to use sudo to run development servers for testing web applications. sudo should be reserved for commands that really need that &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,477 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mac-os-x-run-nginx-as-a-user-process/">Mac OS X Run Nginx as a User Process</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-11T12:51:49+01:00" pubdate data-updated="true">May 11<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/mac-os-x-run-nginx-as-a-user-process/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mac-os-x-run-nginx-as-a-user-process/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I do not like having to use sudo to run development servers for testing web applications. sudo should be reserved for commands that really need that level of privilege. After <a href="http://amaras-tech.co.uk/people/morgan/article/26">installing passenger and nginx</a> on Mac OS X Snow Leopard I had trouble getting nginx to run without sudo.</p>
+
+<p>NB: sudo runs the command with superuser privileges ie things that could break your system if you do not know what you are doing, or typo a command so should be used sparingly.</p>
+
+<p>if you have been running with sudo stop the service</p>
+
+<pre><code>$ sudo nginx -s stop
+</code></pre>
+
+<p>find and remove the log files for me this is:</p>
+
+<pre><code>$ rm -rf ~/bin/nginx/logs/*
+</code></pre>
+
+<p>Assuming nginx is on your path (if not you must know its location) to find its location you can try which ie:</p>
+
+<pre><code>$ which nginx
+</code></pre>
+
+<p>A few changes to the default config file:</p>
+
+<pre><code>vim ~/bin/nginx/conf/nginx.conf
+
+#user morgy; #&lt;-- comment out when running as user process
+worker_processes  1;
+
+http {
+   passenger_root /path/ruby-ee-1.8.7/lib/ruby/gems/1.8/gems/passenger-2.2.11;
+   passenger_ruby /path/ruby-ee-1.8.7/bin/ruby;
+
+   include       mime.types;
+   default_type  application/octet-stream;
+
+   client_max_body_size 20M;
+
+   server {
+      listen       8080; #&lt;-- superuser only has acess to 80
+      server_name  localhost, www.localhost;
+      passenger_enabled on;
+      root /your/path/public;   # &lt;--- be sure to point to 'public'!
+   }
+}
+</code></pre>
+
+<p>That is all I had to do to get nginx working without sudo</p>
+
+<pre><code>$ nginx
+$ nginx -s reload
+</code></pre>
+
+<p>Just point your browser to localhost:8080 or 127.0.0.1:8080</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/add-http-web-control-over-your-infared-devices/">Add HTTP (Web) Control Over Your InfaRed Devices</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-11T01:49:48+01:00" pubdate data-updated="true">May 11<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/add-http-web-control-over-your-infared-devices/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/add-http-web-control-over-your-infared-devices/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Using the new <a href="http://www.keene.co.uk/electronic/keene-electronics/keene-ir-anywhere-ir-over-ip-module-%28128-code%29/KIRA128.html">IR ANYWHERE IR OVER IP MODULE</a> you can send web requests that get turned into standard consumer InfaRed signals, to control your tv, hifi units. I have thought for along time that manufacturers should just be adding web control to all new electronics, but this seems like it could be a good interim measure.</p>
+
+<p>This then allows app/web based control of you home entertainment system, which would be very slick from an iPhone/iTouch/iPad.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/nginx-enable-directory-listing/">Nginx Enable Directory Listing</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-10T14:07:23+01:00" pubdate data-updated="true">May 10<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/nginx-enable-directory-listing/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/nginx-enable-directory-listing/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Directory listing can be enabled (disabled by default) by adding this:</p>
+
+<pre><code>autoindex on;
+</code></pre>
+
+<p>Example usage</p>
+
+<pre><code>http{
+   server {
+     #Server with no Directory listing
+     listen 80
+   }
+   server {
+      #Server with Directory listing
+      autoindex on;
+      listen 8080
+   }
+}
+</code></pre>
+
+<p>Original <a href="http://justinbkay.org/2007/12/23/nginx-enable-directory-listing">source</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/stop-git-status-monitoring-file-permissions/">Stop Git Status Monitoring File Permissions</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-08T06:52:33+01:00" pubdate data-updated="true">May 8<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/stop-git-status-monitoring-file-permissions/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/stop-git-status-monitoring-file-permissions/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>By default git status returned differences in file permissions. To turn if off run:</p>
+
+<pre><code>$ git config core.filemode false
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/how-to-test-subdomains-on-a-development-machine/">How to Test Subdomains on a Development Machine</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-08T05:04:51+01:00" pubdate data-updated="true">May 8<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/how-to-test-subdomains-on-a-development-machine/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/how-to-test-subdomains-on-a-development-machine/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently documented how I <a href="http://amaras-tech.co.uk/people/morgan/article/26">installed Ruby Enterprise and nginx on Mac OS X</a>. Here we see how to make subdomains work on your local development machine using <a href="http://nginx.org/">nginx</a>. These instructions should be relevant for most unix based systems.</p>
+
+<p>Why use subdomains. On shared hosts like <a href="http://www.webfaction.com?affiliate=morgy">webfaction</a> it is more efficient to serve images, downloads, etc from a nginx server rather than run them through your web application, like rails, sinatra, etc.</p>
+
+<p>First modify you hosts file, adding in all the subdomains you need.</p>
+
+<pre><code>$ vim /etc/hosts
+
+127.0.0.1     localhost
+127.0.0.1     downloads.localhost
+</code></pre>
+
+<p>Then modify the nginx.config file, making it listen for the new subdomains.</p>
+
+<pre><code>http { 
+   server {
+      listen       80;
+      server_name  localhost;
+      passenger_enabled on;
+      root /Users/Shared/Code/Amaras-Site/public;   # &lt;--- be sure to point to 'public'!
+   }
+
+   server {
+      listen 80;
+      server_name downloads.localhost;
+      root  /Users/Shared/Code/Amaras-Site/Uploads; # &lt;-- Not a Rack application just plain static files
+   }
+}
+</code></pre>
+
+<p>NB: to find the location of your nginx.conf file:</p>
+
+<pre><code>$ find / -iname "nginx.conf"
+</code></pre>
+
+<p>Start or restart the nginx server</p>
+
+<pre><code>$ sudo ~/bin/nginx/sbin/nginx
+$ sudo ~/bin/nginx/sbin/nginx -s reload
+</code></pre>
+
+<p>For portability in Sinatra applications I refer to subdomains using this method:</p>
+
+<pre><code>&lt;% url = request.env["HTTP_HOST"] %&gt;
+&lt;a href="http://downloads.&lt;%=url%&gt;/something"&gt;link to subdomain&lt;/a&gt;
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/413-request-entity-too-large/">413 Request Entity Too Large</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-08T03:22:08+01:00" pubdate data-updated="true">May 8<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/413-request-entity-too-large/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/413-request-entity-too-large/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The &lsquo;413 Request Entity Too Large&rsquo; Error message is because you have filled in a form and are submitting it with too much data in the form. Typically this comes from uploading files.</p>
+
+<p>The default size for <a href="http://nginx.org/">nginx</a> seems to be around 1MB.</p>
+
+<p>To increase the form size limit update your nginx.conf with :</p>
+
+<pre><code>http {
+   client_max_body_size 20M;
+
+   server {
+      ...
+   }
+}
+</code></pre>
+
+<p>To find the location of your nginx.conf file you can run:</p>
+
+<pre><code>find / -iname "nginx.conf"
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/installing-ruby-enterprise-on-mac-os-x/">Installing Ruby Enterprise on Mac OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-04T11:13:48+01:00" pubdate data-updated="true">May 4<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/installing-ruby-enterprise-on-mac-os-x/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/installing-ruby-enterprise-on-mac-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.rubyenterpriseedition.com/download.html">Download ruby enterprise</a> and follow instructions on page. The exact commands I used are:</p>
+
+<pre><code>$ cd ~/bin
+$ wget http://rubyforge.org/frs/download.php/68719/ruby-enterprise-1.8.7-2010.01.tar.gz
+$ tar xzvf ruby-enterprise-1.8.7-2010.01.tar.gz
+$ cd ruby-enterprise-1.8.7-2010.01
+$ rm -rf ../ruby-enterprise-1.8.7-2010.01.tar.gz
+$ ./installer
+</code></pre>
+
+<p>I installed to /Users/me/bin/ruby-ee-1.8.7</p>
+
+<pre><code>$ cd /Users/me/bin/ruby-ee-1.8.7
+$ rm -rf ~/bin/ruby-enterprise-1.8.7-2010.01/
+</code></pre>
+
+<p>Add this to your ~/.bashrc</p>
+
+<pre><code>#Ruby Enterprise 1.8.7
+export PATH=~/bin/ruby-ee-1.8.7/bin:$PATH
+</code></pre>
+
+<p>On with the install (of Passenger)</p>
+
+<pre><code>~/bin/ruby-ee-1.8.7/bin/passenger-install-nginx-module
+</code></pre>
+
+<p>I chose option 1, to get nginx installed for me, I chose /Users/me/bin/nginx for the location.</p>
+
+<p>Start the service</p>
+
+<pre><code>$ sudo ~/bin/nginx/sbin/nginx
+</code></pre>
+
+<p>For help and reloading</p>
+
+<pre><code>$ sudo ~/bin/nginx/sbin/nginx -h
+$ sudo ~/bin/nginx/sbin/nginx -s reload
+</code></pre>
+
+<p>Visit 127.0.0.1 in you rbrowser and the default screen should be there.
+The web application that it is loading is set in:</p>
+
+<pre><code>~/bin/nginx/conf/nginx.conf
+</code></pre>
+
+<p>I added in a root to my Sinatra application that I have been working on:</p>
+
+<pre><code>server {
+    listen       80;
+    server_name  localhost;
+    root /Users/morgy/Documents/Code/Amaras-Site/public;   # &lt;--- be sure to point to 'public'!
+    passenger_enabled on;
+}
+</code></pre>
+
+<p>This then returned a 403 error&hellip;
+Still a little work todo will post update on resolving this.</p>
+
+<p>[Update]
+I forgot that root had to point to the public folder inside the rack (Sinatra) application. I know there is a big comment there saying make sure but I just read that to be a permissions issue rather than the more literal a folder called public.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -238,451 +709,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/webfaction-new-user-with-access-to-their-own-site/">Webfaction New User with Access to Their Own Site</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-28T09:24:58+01:00" pubdate data-updated="true">Apr 28<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/webfaction-new-user-with-access-to-their-own-site/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/webfaction-new-user-with-access-to-their-own-site/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>With <a href="http://www.webfaction.com/?affiliate=morgy">Webfaction</a> you can create new users with there own home area but there is no straight forward way to host their site.</p>
-
-<p>There is a posted method where the site is hosted in YOUR home/webapps directory, but that requires you reset your permissions every time you create a new site and if you forget there could be a security hole.</p>
-
-<p>Hosting the site in THEIR home directory requires you to set permissions in there directory so YOU can see it. This is much safer if all goes wrong the site does not have permission to be displayed rather than compromising your new site.</p>
-
-<p>Create new user with bash login via with <a href="http://panel.webfaction.com">Web interface</a></p>
-
-<p>set password, as this can be tricky getting a random string a cheat is to do:</p>
-
-<pre><code>echo "some random string" | md5
-</code></pre>
-
-<p>Choose 8 or more characters for the password.</p>
-
-<p>SSH login as normal</p>
-
-<pre><code>ssh user@user.webfactional.com
-</code></pre>
-
-<p>then</p>
-
-<pre><code>su new_user
-cd ~
-mkdir myweb.com
-</code></pre>
-
-<p>then set</p>
-
-<pre><code>setfacl -m u:nginx:rx ~
-setfacl -R -m u:nginx:rx myweb.com/
-
-setfacl -m u:apache:rx ~
-setfacl -R -m u:apache:rx myweb.com/
-
-setfacl -m u:Your_Username:rx ~
-setfacl -R -m u:Your_Username:rx myweb.com/
-</code></pre>
-
-<p>Back to <a href="http://www.webfaction.com/?affiliate=morgy">webfaction</a> main control panel and create a new app ( symbolic link to PHP/static )</p>
-
-<p>The info section for this needs to be:
-/home/new_user/myweb.com</p>
-
-<p>NB: currently only works with apache not nginx</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-ruby-ruby-why-are-you-so-wierd-at-times/">Ruby, Ruby, Ruby, Why Are You So Wierd at Times?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-26T07:48:47+01:00" pubdate data-updated="true">Apr 26<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-ruby-ruby-why-are-you-so-wierd-at-times/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-ruby-ruby-why-are-you-so-wierd-at-times/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This feature of ruby keeps catching me out as the behaviour is quite unexpected (by me).</p>
-
-<p>I can use a &lsquo;!&rsquo; modifying function like so:</p>
-
-<pre><code>html_string.gsub!("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
-</code></pre>
-
-<p>Which works great apart from when the match string &ldquo;&lt;pre&gt;&rdquo; in this case is not found then it returns nil. Surely I would want the string unaltered instead, why would I want nil. So I generally have to replace it with the following:</p>
-
-<pre><code>html_string = html_string.gsub("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
-</code></pre>
-
-<p>[Update 27/04/2010]</p>
-
-<p>Turns out it should not modify the the string but the function returns nil. This was the last line in a function call and so was an implicit return. The following would probably have been better:</p>
-
-<pre><code>html_string.gsub!("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
-return html_string
-</code></pre>
-
-<p>The returned nil could then be used as an if statment to take a different execution path if not modified:</p>
-
-<pre><code>if /&lt;pre&gt;/ === html_string
-   html_string = html_string.gsub("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
-else
-   puts "Does not contain &lt;pre&gt;"
-end
-</code></pre>
-
-<p>Could just become:</p>
-
-<pre><code>if not html_string.gsub!("&lt;pre&gt;","&lt;pre class=\"prettyprint\"&gt;")
-   puts "Does not contain &lt;pre&gt;"
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/testing-tweets-from-production-server-this-should-be-working%21/">Testing Tweets from Production Server This Should Be Working!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-18T13:45:45+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/testing-tweets-from-production-server-this-should-be-working%21/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/testing-tweets-from-production-server-this-should-be-working%21/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-incase-sensitive-sort/">Ruby Incase Sensitive Sort</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-18T11:13:51+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-incase-sensitive-sort/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-incase-sensitive-sort/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Ruby has a .sort method which sorts basic objects. it is case sensitive though so Zebra is before apple. Using sort_by instead you can specify the sort key.</p>
-
-<pre><code>some_array.sort_by { |x| x.downcase }
-</code></pre>
-
-<p>There is a good description/discussion of the performance issues of this on <a href="http://ruby-doc.org/core/classes/Enumerable.html#M003120">ruby-docs</a></p>
-
-<p>Since the <a href="http://ruby-doc.org/core/classes/Enumerable.html#M003120">ruby-docs</a> mention performance issues I though it would be worth noting  that in my blog app I have the option to pre sort with the ORM. this shouldmake the ruby sory much faster to execute as it is already mostly sorted, but how does this effect the performance of the ORM</p>
-
-<pre><code>def all_tags_sort
-   @tags = Tags.find(:all, :order =&gt; "tag")
-   @tags = @tags.sort_by { |tag| tag.tag.downcase }
-end
-</code></pre>
-
-<p>VS</p>
-
-<pre><code>def all_tags_sort
-   @tags = Tags.find(:all)
-   @tags = @tags.sort_by { |tag| tag.tag.downcase }
-end
-</code></pre>
-
-<p>For the performance test I added this to one of views that displays the tags</p>
-
-<pre><code>#For Benchmarking
-require 'benchmark'
-include Benchmark
-
-bm(10) do |b|
-   b.report("ORM") { @tags = Tags.find(:all) }
-   b.report("Sort by") { @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
-   b.report("ORM sorted") { @tags = Tags.find(:all, :order =&gt; "tag") }
-   b.report("Sort by") { @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
-end
-</code></pre>
-
-<p>To test I built up a small dictionary using this <a href="http://gist.github.com/370533">gist</a> (sorted by default so have to randomise it alittle bit)</p>
-
-<pre><code>                   user     system      total        real
-ORM           53.920000   3.650000  57.570000 ( 57.960210)
-Sort by        4.750000   0.320000   5.070000 (  5.091083)
-ORM sorted    45.080000   3.590000  48.670000 ( 49.554891)
-Sort by        2.700000   0.310000   3.010000 (  3.016042)
-</code></pre>
-
-<p>mmm, data does not look write as retrieving and sorting was quicker than just retrieving will run with the order swapped.</p>
-
-<pre><code>                user     system      total        real
-ORM sorted 10.290000   1.740000  12.030000 ( 12.087005)
-Sort by     0.930000   0.130000   1.060000 (  1.054450)
-ORM        11.740000   1.700000  13.440000 ( 13.453623)
-Sort by     0.760000   0.130000   0.890000 (  0.886095)
-</code></pre>
-
-<p>Sorting in the ORM layer still seems to be quicker than not sorting, and the Ruby sorting takes same length of time. So looks like applying the sort is a worthwhile.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/itunes-play-flac-on-os-x/">iTunes Play FLAC on OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-18T07:33:36+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/itunes-play-flac-on-os-x/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/itunes-play-flac-on-os-x/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://code.google.com/p/flukeformac/">Fluke for mac</a> can be used to get iTunes playing <a href="http://flac.sourceforge.net/">FLAC</a> audio files. However it is currently broken for Snow Leopard due to the upgraded version of python.</p>
-
-<p>Once Fluke is installed open your .flac files with fluke.app and they should be added to your iTunes library.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-and-gemspec/">Ruby and Gemspec</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-16T10:01:58+01:00" pubdate data-updated="true">Apr 16<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-and-gemspec/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-and-gemspec/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have just forked and cloned a project on github and discovered *.gemspec files. They are a nice way of specifying the gem dependencies in your project. once you have the copied/cloned a project before you run it just call:</p>
-
-<pre><code>$ gem build something.gemspec
-</code></pre>
-
-<p>The <a href="http://docs.rubygems.org/read/chapter/20">gemspec documentation</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-nil-tests-fail-you-really-want-/">Ruby .nil? Tests Fail ? You Really Want ||=</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-15T07:43:50+01:00" pubdate data-updated="true">Apr 15<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-nil-tests-fail-you-really-want-/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-nil-tests-fail-you-really-want-/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I recently discovered ||= in ruby. Its main use is for initialising a variable if it does not already exists, this is great for extending templates with new functions and maintaining backwards compatibility.</p>
-
-<pre><code>irb(main):001:0&gt; x 
-NameError: undefined local variable or method `x' for main:Object
-from (irb):1
-irb(main):002:0&gt; x ||= 0
-=&gt; 0
-irb(main):003:0&gt; x = 10
-=&gt; 10
-irb(main):004:0&gt; x ||= 0
-=&gt; 10
-</code></pre>
-
-<p>I previously used :</p>
-
-<pre><code>if @x.nil? 
-    @x = 10   
-end
-</code></pre>
-
-<p>which is 3 times as many lines of code and does not work with all variable types infact .nil? is only valid for global ($) and instance (@) variables.</p>
-
-<pre><code>irb(main):001:0&gt; $x.nil?
-=&gt; true
-irb(main):002:0&gt; @x.nil?
-=&gt; true
-irb(main):003:0&gt; @@x.nil?
-NameError: uninitialized class variable @@x in Object
-   from (irb):3
-irb(main):004:0&gt; x.nil?
-NameError: undefined local variable or method `x' for main:Object
-   from (irb):4
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/33/">&larr; Older</a>
@@ -697,30 +723,30 @@ NameError: undefined local variable or method `x' for main:Object
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (237)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (239)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/tech/error-storage-class-specified-for-parameter/">Error: Storage Class Specified for Parameter</a>
+        <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+        <a href="/blog/tech/xkill/">Xkill</a>
       </li>
     
       <li class="post">
-        <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
+        <a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a>
       </li>
     
       <li class="post">
-        <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
+        <a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Simulink: Scroll Wheel Erratic Behaviour</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
+        <a href="/blog/engineering/simulink-globally-set-sample-time/">Simulink: Globally Set Sample Time</a>
       </li>
     
   </ul>

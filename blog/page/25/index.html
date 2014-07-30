@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="While trying to get my setup to work from home I thought I would give enfuse a go at merging 3 different exposures. ">
+  <meta name="description" content="The latest addition to my .vimrc below, allows ;g to smart indent the current file. It is the same as gg=G but returning you to the same position. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,501 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vimfu-reindent/">Vimfu Reindent</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-19T19:55:19+01:00" pubdate data-updated="true">Apr 19<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/vimfu-reindent/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vimfu-reindent/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The latest addition to <a href="https://github.com/morganp/dotfiles/blob/master/dotfiles/.vimrc#L197">my .vimrc</a> below, allows ;g to smart indent the current file. It is the same as gg=G but returning you to the same position.</p>
+
+<p>Update based on Recommendations from <a href="http://drewneil.com/">Drew Neil</a> and <a href="http://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/">Jonathan Palardy</a>, a more generic pereserving state function, which can be mapped to a key sequence with specific commands.</p>
+
+<pre><code>function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+" SmartIndent keeping cursor position
+map ;g :call Preserve("normal! gg=G")&lt;CR&gt;
+</code></pre>
+
+<p>If this does not work for a particular file type you use you probably need to look at getting a *.syntax file for your language.</p>
+
+<h2>My Original Method </h2>
+
+<pre><code>function! Indent()
+  " Capture Current Line
+  let currentline_num = line(".")
+  let currentcol_num = virtcol('.')
+
+  " Reindent from start to end of file
+   normal! gg=G
+
+   " Restore Current Line and column
+   exe 'normal '.currentline_num.'G'.currentcol_num.'|'
+endfunction
+
+"assign to ;g in normal mode
+map ;g :call Indent()&lt;CR&gt;
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/behaviour-and-state/">Behaviour and State</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-16T17:59:44+01:00" pubdate data-updated="true">Apr 16<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/behaviour-and-state/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/behaviour-and-state/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Classes are a basic Object Orientated Structure which encapsulate state and behaviour. Some times you just require to capture state/storage of a data structure with out any behaviour, in this case Ruby&rsquo;s Stuct can be useful.</p>
+
+<pre><code>class Desk
+  attr_accessor :height, :width, :depth
+
+  def initialize(height=nil, width=nil, depth=nil)
+    @height = height
+    @width = width
+    @depth = depth
+  end
+end
+</code></pre>
+
+<p>Becomes (Is the same as):</p>
+
+<pre><code>DeskS = Struct.new(:height, :width, :depth)
+</code></pre>
+
+<p>Instantiation</p>
+
+<pre><code>a = Desk.new(12, 13, 14)
+b = DeskS.new(12, 13, 14)
+
+a.height
+ =&gt; 12
+
+b.height
+ =&gt; 12 
+</code></pre>
+
+<p>Taking this further for less code in a basic class. This might be too far!</p>
+
+<pre><code>#In herriting from a Struct
+# class DeskWithBehaviour &lt; DeskS
+class DeskWithBehaviour &lt; Struct.new(:height, :width, :depth)
+  def volume
+    height * width * depth
+  end
+end
+
+# Or Pass Struct a block
+DeskSPlus = Struct.new(:height, :width, :depth) do
+  def volume
+    height * width * depth
+  end
+end
+
+c = DeskWithBehaviour.new(1,2,3)
+c.volume
+ =&gt; 6
+c.class
+ =&gt; DeskWithBehaviour
+
+d = DeskSPlus.new(1,2,3)
+d.volume
+ =&gt; 6
+d.class
+ =&gt; DeskSPlus
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/better-open-source-project-setup-with-rvm-bundler/">Better Open Source Project Setup, with RVM & Bundler</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-10T06:35:10+01:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/better-open-source-project-setup-with-rvm-bundler/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/better-open-source-project-setup-with-rvm-bundler/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Based on &lsquo;Raise the bar, lower the pressure&rsquo; given by Durran Jordan at ScotRubyConf 2011.</p>
+
+<p>There has been some debate as to whether the project .rvmrc should be included in git. With the correct options including .rvmrc and bundler can make working on open source projects easier. I have an example on <a href="https://github.com/morganp/OpenSourceExample">github</a>. If you have not hear of Ruby Version Manager RVM I suggest you <a href="https://rvm.beginrescueend.com/rvm/install/">check it out</a>.</p>
+
+<p>An example project .rvmrc</p>
+
+<pre><code>rvm_gemset_create_on_use_flag=1
+rvm 1.9.2@OpenSourceExample
+</code></pre>
+
+<p>The first line is really important here on first time cd&#8217;ing into the folder it creates the gemset instead of outputting a warning that it does not exist.</p>
+
+<p>The second line specifies the version of ruby to use and defines the name of the gemset. Gemsets create a sandboxed gem area so that it does not pollute your global gem space.</p>
+
+<p><a href="http://gembundler.com/">Bundler</a> is then used to manage the gems.</p>
+
+<h2>Install Bundler</h2>
+
+<p>Bundler requires gem &mdash;version greater than 1.3.6, but it is a good idea to upgrade.</p>
+
+<pre><code>cd OpenSourceExample
+gem update --system
+rvm gemset global
+gem install bundler
+cd .. &amp;&amp; cd -
+</code></pre>
+
+<p>Write your [gemfile][<a href="http://gembundler.com/gemfile.html">http://gembundler.com/gemfile.html</a>] <br/>
+1) With at least 1 source <br/>
+2) If the gem install has a different name to require then :require has to be specified eg.</p>
+
+<p>   gem install sinatra-session
+   *.rb  contains require &ldquo;sinatra/session&rdquo;</p>
+
+<p>Example ./gemfile</p>
+
+<pre><code>source "http://rubygems.org"   
+
+gem "sinatra", "~&gt; 1"    
+gem "sinatra-session", :require =&gt; 'sinatra/session'
+
+group :development do
+  gem "sinatra-reloader", "~&gt; 0"
+  gem "thin", "~&gt; 1"
+end
+
+group :test do
+  gem "rspec", :require =&gt; "spec"
+end
+</code></pre>
+
+<p>Then install the gems specified and add the gemfile and Gemfile.lock to git</p>
+
+<pre><code>$ bundle install
+$ git add gemfile Gemfile.lock
+</code></pre>
+
+<h2>Workflow</h2>
+
+<p>When picking up an open source project set up like this, the workflow should just be:</p>
+
+<pre><code>$ git clone https://github.com/morganp/OpenSourceExample
+$ cd OpenSourceExample
+#Review the .rvmrc and type yes if it is safe
+$ bundle install
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/schwartzian-transform/">Schwartzian Transform</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-08T10:37:44+01:00" pubdate data-updated="true">Apr 8<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/schwartzian-transform/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/schwartzian-transform/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently heard about the Schwartzian transform, which is a sorting idiom from perl. It allows an array of objects to be efficiently sorted by any property. Part of the cleverness is the use of anonymous arrays which allows them to be garbage collected quickly.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Schwartzian_transform">Wikipedia</a> has a detailed description, however the general form (in perl) is:</p>
+
+<pre><code>@sorted = map  { $_-&gt;[0] }
+          sort { $a-&gt;[1] cmp $b-&gt;[1] }
+          map  { [$_, foo($_)] }
+              @unsorted;
+</code></pre>
+
+<p>A good history of it can be <a href="http://www.stonehenge.com/merlyn/UnixReview/col64.html">read here</a>.</p>
+
+<p>My point of bring all of this up other than pointing out a cool sorting algorithm is that any <strong>ruby</strong> class including <a href="http://ruby-doc.org/core/classes/Enumerable.html">Enumerable</a> (Arrays, Hashes etc) has this built in with the <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001481"><strong>.sort_by</strong></a> method.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/reading-list/">Reading List</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-08T10:19:56+01:00" pubdate data-updated="true">Apr 8<span>th</span>, 2011</time>
+        
+           | <a href="/blog/photography/reading-list/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/reading-list/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>My <a href="http://www.shelfari.com/o1514252429/shelf">Shelfari</a></p>
+
+<h2>To Read</h2>
+
+<p>Photoshop CS5 and Lightroom 3, ISBN 978-1-933952-67-2<br/>
+Developing Vision and Style, ISBN 978-1-9025 38495<br/>
+Pragmatic Thinking and Learning, ISBN 978-1934356050<br/>
+Pragmatic Guide to Git,<br/>
+The RSpec Book,<br/>
+Ruby Best Practises,<br/>
+The Agile Samurai, <br/>
+jQuery Novice to Ninja,<br/>
+Structure and Interpretation of Computer Programming,<br/>
+Metaprogramming Ruby,</p>
+
+<h2>Recommended Computing</h2>
+
+<p>Classic Shell Scripting, ISBN 0-596-00595-4<br/>
+The Passionate Programmer, ISBN 978-1-934356-34-0</p>
+
+<h2>Recommended Photography</h2>
+
+<p>Lightroom 2 Adventure, ISBN 978-0-596-52101-1<br/>
+Black and White, ISBN 978-1-904705-57-4<br/>
+First Light, ISBN 1-902538-24-2</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/unregistered-torrent-flush-the-dns/">&#8216;Unregistered Torrent&#8217; Flush the DNS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-31T10:45:20+01:00" pubdate data-updated="true">Mar 31<span>st</span>, 2011</time>
+        
+           | <a href="/blog/tech/unregistered-torrent-flush-the-dns/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/unregistered-torrent-flush-the-dns/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If a torrent application has been running and torrents start showing a status of &lsquo;unregistered torrent&rsquo; a likely cause is that the server IP address has changed. To fix this you need to close the application and flush the DNS, before starting the application again.</p>
+
+<p>To flush the DNS cache:</p>
+
+<h2>OS X Leopard / Snow Leopard</h2>
+
+<pre><code>$ sudo dscacheutil -flushcache
+</code></pre>
+
+<h2>Windows XP</h2>
+
+<pre><code>$ lookupd -flushcache
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-cli-user-input-using-gets/">Ruby CLI User Input Using Gets</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-03-27T06:04:31+01:00" pubdate data-updated="true">Mar 27<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/ruby-cli-user-input-using-gets/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-cli-user-input-using-gets/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Using a while true loop with &lsquo;gets&rsquo; and a case statement, can create a compact command line interface for ruby scripts.</p>
+
+<pre><code>while true
+  puts "'q' to quit, 'c' to continue"
+  command = gets
+  case
+    when command.match(/^q/) then
+      puts "Quit"
+      break
+    when command.match(/^c/) then
+      puts "Continue"
+  end # case
+end # while true
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -283,517 +778,6 @@ Sort by     0.010000   0.000000   0.010000 (  0.012341)
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/beginning-astro-photography/">Beginning Astro Photography</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-19T23:34:17+00:00" pubdate data-updated="true">Feb 19<span>th</span>, 2011</time>
-        
-           | <a href="/blog/photography/beginning-astro-photography/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/beginning-astro-photography/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>None of this has been tried yet but from various sources I have created this list:</p>
-
-<p>Once you have telescope the next task will be finding objects in the sky.<br/>
-Book: <a href="https://www.amazon.co.uk/dp/0521781906?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=0521781906&amp;adid=0T095V4ZAX026FDZPXPG&amp;">Turn left at Orion</a> seems to get good reviews and is recommend on several sites.<br/>
-Software: <a href="http://www.stellarium.org/">Stellarium</a> is free software for most major OS platforms. This will create maps of the sky.</p>
-
-<p>To start Capturing images with a DSLR you will need a t-ring (about £15), this connects to you DSLR instead of a lens. This gives you a t-thread. Some telescopes like skywatcher dobsoians offer a direct connection (t-ring to telescope) others will require a t-adaper which will be 2&#8221; or 1.25&#8221; to a t-thread.</p>
-
-<pre><code>t-ring:    DSLR     -&gt; t-thread (manufacturer specifc)
-t-adapter: t-thread -&gt; 2" or 1.25" eyepiece
-t-adapter may not be required if telescope offers direct connection.
-</code></pre>
-
-<p>Digital cameras tend to suffer from noise during long exposures, image stacking is a technique using multiple images added together to give good exposure while avoiding long exposure noise. <a href="https://www.amazon.co.uk/dp/B003N7O3CI?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B003N7O3CI&amp;adid=0NP2Z411SY7PT8G7G8WH&amp;">Lightroom</a> is my favourite image management/editing toll and image stack is possible with the <a href="http://www.photographers-toolbox.com/products/lrenfuse.php">Enfuse</a> plug-in.</p>
-
-<p>The <a href="http://stargazerslounge.com/">Stargazers Lounge</a> looks like a good forum for asking questions and reading beginner articles.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/activerecord-find-allmultiple/">Activerecord Find All/Multiple</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-19T06:31:03+00:00" pubdate data-updated="true">Feb 19<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/activerecord-find-allmultiple/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/activerecord-find-allmultiple/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Using Tags (An active record model) to find tags by the tag property:</p>
-
-<pre><code>Tag.find_by_tag("Ruby")
-Ruby
-
-Tag.find_by_tag(["Ruby", "Gem"])
-Ruby
-</code></pre>
-
-<p> That did not return what I expected, find<em> returns one object by default. first</em> last<em> or all</em> modifiers can be used. So to find multiple tags by the same property:</p>
-
-<pre><code>Tag.find_all_by_tag(["Ruby", "Gem"]) 
-Ruby
-Gem
-</code></pre>
-
-<p>Again with slightly less active record magic:<br/>
-Note the = ? for singular items and IN (?) for a list of items.</p>
-
-<pre><code>Tag.find(:all, :conditions =&gt; ["tag = ?", "Ruby"])
-Ruby
-
-Tag.find(:all, :conditions =&gt; ["tag IN (?)", ["Ruby", "Gem"]])
-Ruby
-Gem
-</code></pre>
-
-<p>More info can be read on <a href="http://lenary.co.uk/guides/active_record_querying.html#dynamic-finders">Rails Guides</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/gem-permissions-on-webfaction/">Gem Permissions on WebFaction</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-12T14:10:56+00:00" pubdate data-updated="true">Feb 12<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/gem-permissions-on-webfaction/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/gem-permissions-on-webfaction/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After making a few updates to my site I decided to upgrade the version of sinatra I was using in my web faction account. for some reason I started getting these errors:</p>
-
-<pre><code>$ gem update sinatra
-Updating installed gems
-Updating sinatra
-ERROR:  While executing gem ... (Gem::FilePermissionError)
-    You don't have write permissions into the /usr/local/ruby1.8.7ee/lib/ruby/gems/1.8 directory.
-</code></pre>
-
-<p>This error was resolved by adding this line to my ~/.gemrc file (create it if it does not exist)</p>
-
-<pre><code> gemhome: /home/webfaction-username/.gem/ruby/1.8
-</code></pre>
-
-<p>The results of gem env before and after fix:</p>
-
-<pre><code>$ ./gem env
-RubyGems Environment:
-  - RUBYGEMS VERSION: 1.3.7
-  - RUBY VERSION: 1.8.7 (2009-12-24 patchlevel 248) [i686-linux]
-  - INSTALLATION DIRECTORY: /usr/local/ruby1.8.7ee/lib/ruby/gems/1.8
-  - RUBY EXECUTABLE: /usr/local/ruby1.8.7ee/bin/ruby
-  - EXECUTABLE DIRECTORY: /usr/local/ruby1.8.7ee/bin
-  - RUBYGEMS PLATFORMS:
-    - ruby
-    - x86-linux
-  - GEM PATHS:
-     - /usr/local/ruby1.8.7ee/lib/ruby/gems/1.8
-     - /home/webfaction-user/.gem/ruby/1.8
-  - GEM CONFIGURATION:
-     - :update_sources =&gt; true
-     - :verbose =&gt; true
-     - :benchmark =&gt; false
-     - :backtrace =&gt; false
-     - :bulk_threshold =&gt; 1000
-     - :sources =&gt; ["http://rubygems.org", "http://gems.github.com"]
-     - "gem" =&gt; "--no-ri --no-rdoc"
-  - REMOTE SOURCES:
-     - http://rubygems.org
-     - http://gems.github.com
-</code></pre>
-
-<p>After fix</p>
-
-<pre><code>$ ~/webapps/passenger/gems/bin/gem env
-RubyGems Environment:
-  - RUBYGEMS VERSION: 1.3.7
-  - RUBY VERSION: 1.8.7 (2009-12-24 patchlevel 248) [i686-linux]
-  - INSTALLATION DIRECTORY: /home/webfaction-user/.gem/ruby/1.8
-  - RUBY EXECUTABLE: /usr/local/ruby1.8.7ee/bin/ruby
-  - EXECUTABLE DIRECTORY: /home/webfaction-user/.gem/ruby/1.8/bin
-  - RUBYGEMS PLATFORMS:
-    - ruby
-    - x86-linux
-  - GEM PATHS:
-     - /home/webfaction-user/.gem/ruby/1.8
-     - /usr/local/ruby1.8.7ee/lib/ruby/gems/1.8
-  - GEM CONFIGURATION:
-     - :update_sources =&gt; true
-     - :verbose =&gt; true
-     - :benchmark =&gt; false
-     - :backtrace =&gt; false
-     - :bulk_threshold =&gt; 1000
-     - :sources =&gt; ["http://rubygems.org", "http://gems.github.com"]
-     - "gem" =&gt; "--no-ri --no-rdoc"
-     - "gemhome" =&gt; "/home/webfaction-user/.gem/ruby/1.8"
-  - REMOTE SOURCES:
-     - http://rubygems.org
-     - http://gems.github.com
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-regex-routes/">Sinatra Regex Routes</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-12T06:41:10+00:00" pubdate data-updated="true">Feb 12<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/sinatra-regex-routes/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-regex-routes/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The routes for my site have been growing since adding pagination (/articles/older/) and tag filtering. As well as the small amount of logic for each route was getting duplicated.</p>
-
-<p>I have been experimenting with real regex routes, so far some thing like this looks like it could be a good solution:</p>
-
-<pre><code>$items_per_page = 10
-get /^\/article(\/older(\/\d+)?)?(\/tag\/\w*)?\/?$/ do |pagination, page, tag|
-
-if pagination.nil?
-   @offset = 0
-  else
-    if page.nil?
-      @offset = $items_per_page
-    else
-      @offset = page.gsub(/^\//, "").to_i
-  end
-
-  if not tag.nil?
-   tag.gsub!(/\/tag\//, "")
-  end
-
-  result = "Pagination #{@offset} &lt;br  /&gt;"
-  result &lt;&lt; "Tag #{tag} &lt;br  /&gt;"
-  result &lt;&lt; "captures #{ params[:captures] }"
-  return result 
-end
-</code></pre>
-
-<p>This means the following routes will be handled:<br/>
-/article<br/>
-/article/<br/>
-/article/older/<br/>
-/article/older/10<br/>
-/article/tag/Ruby<br/>
-/article/older/10/tag/Ruby<br/>
-/article/older/tag/Ruby</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/mac-mini-mid-2010-8gb-memory-upgrade/">Mac Mini (Mid 2010) 8GB Memory Upgrade</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-02T08:30:24+00:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2011</time>
-        
-           | <a href="/blog/tech/mac-mini-mid-2010-8gb-memory-upgrade/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mac-mini-mid-2010-8gb-memory-upgrade/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Finally got my mac mini to accept the 8GB kit I bought from <a href="http://www.crucial.com/uk/">Crucial</a> for £74 (apple upgrade is £409).</p>
-
-<p>The Mac mini since mid 2010 has been designed to have user upgradable
- memory. I however ran in to some issues with it not recognising the new memory, not quite which step fixed it:</p>
-
-<p>First reboot, while switching back on press and hold cmd-opt-p-r <a href="http://support.apple.com/kb/ht1379">Resetting PRAM and NVRAM</a>. This will causes it to continuously reboot, switch off after a cylce not letting it boot up.</p>
-
-<p>Second, Disconnect all cables, open up the back and take the old memory out. pulling the clips to the side the memory pops up at about 45degrees.</p>
-
-<p>Third, insert lower memory, really make sure this is firmly in place by pushing in firmly while at 45-30Degeees,then press down to clip into place. non of the metal from the contacts should be showing. I think this was my main mistake when inserting this memory the first few times. Then insert the second RMA module in the higher position, this seats much easier.</p>
-
-<p>Fourth, Replace back/bottom of mac mini then hold the power button down/in for 4 seconds. This causes a <a href="http://support.apple.com/kb/HT3964">SMC reset</a>.</p>
-
-<p>Last reconnect cables and power up. You can use /Applications/Utilities/Activity Monitor.app to check how much memory you now have.</p>
-
-<p>If the mac just beeps, it is quite likely that the memory is not seated correctly. On a very rare occasion it would be due to a faulty memory chip. They should work one at a time in the top position though so you could test them that way.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/my-backup-strategy/">My Backup Strategy</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-01-18T10:25:12+00:00" pubdate data-updated="true">Jan 18<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/my-backup-strategy/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/my-backup-strategy/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Considering various raid strategies I decided that Raid 5 would be too limiting and have previously found raid striping systems to be too unreliable. I decided to have a bunch of disks (JBOD if you will) directly connected to a machine. At some point in the future I would like a merged view of the drives, potentially through a fuse file system or a soft linking script.</p>
-
-<p>To protect against hardware failures, firmware updates etc I back up to a server running a different OS, instead of any raid mirroring. My mac mini backups to a headless Ubunutu. This has a power advantage that the backup drives are powered down most of the time.</p>
-
-<p>Whenever I add a drive to the main server I add at least the same size to the backup server. I then run rsync to back each drive up.</p>
-
-<pre><code>$ REMOTE_IP=192.168.0.2
-$ rsync -av --ignore-errors --delete --exclude '.Trashes' --exclude '.Spotlight-V100' --exclude '.DS_Store' /Volumes/Drive1/ $REMOTE_IP:/mnt/backup/drive1/
-</code></pre>
-
-<p>For some reason once it was scripted up it stopped deleting files from the backup drive adding the &lsquo;&mdash;ignore-errors&rsquo; fixed this issue.</p>
-
-<p>The other small gotcha that I ran into was that by default ext3 drives reserve 5% of the space for root. This is so that the main drive does not get so full it stops to function correctly and root can not get in to fix things. I am not sure how useful it is on non-root drives. This had the consequence that when backing up a nearly full drive it would not fit in to the back up drive. NB: 5% of a 2TB drive is 100GB, which is quite a lot of space.</p>
-
-<p>To reset the amount of reserved space I used (for 0%):</p>
-
-<pre><code>$ sudo tune2fs -m 0 /dev/sda1
-</code></pre>
-
-<p>My full backup script</p>
-
-<pre><code>#!/bin/bash
-ARCHIVE_SERVER="192.168.0.2"
-
-disk[0]="/Volumes/disk1/ $ARCHIVE_SERVER:/mnt/archive_server/disk1/"
-disk[1]="/Volumes/disk2/ $ARCHIVE_SERVER:/mnt/archive_server/disk2/"
-disk[2]="/Volumes/disk3/ $ARCHIVE_SERVER:/mnt/archive_server/disk3/"
-
-for backup in "${disk[@]}"
-do
-  #Split in to $1 and $2
-  set -- $backup
-  if [ -d $1 ]
-  then 
-    rsync -av --ignore-errors --delete --exclude '.Trashes'   \
---exclude '.Spotlight-V100' --exclude '.DS_Store' $1 $2
-  else
-    echo "Drive offline $1 (Not Backed Up)"
-  fi
-done
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/screen-x-not-connecting-when-running-as-an-other-user/">Screen -x Not Connecting When Running as an Other User</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-30T13:06:42+00:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/screen-x-not-connecting-when-running-as-an-other-user/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/screen-x-not-connecting-when-running-as-an-other-user/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have been running into issues with screen when switching to another user:</p>
-
-<pre><code>$ su otheruser
-&gt; password
-$ screen -x
-&gt; Cannot open your terminal '/dev/ttys002' - please check.
-</code></pre>
-
-<p>From <a href="http://www.linuxquestions.org/questions/linux-general-1/problem-using-screen-cannot-open-your-terminal-dev-pts-0-please-check-338313/">this post</a> I have discovered that it was due to a permissions issue.</p>
-
-<pre><code>$ ls -l /dev/ttys002
-&gt; crw--w----  1 user  tty   16,   2 Dec 30 23:34 /dev/ttys002
-</code></pre>
-
-<p>To fix I had to set other permissions.</p>
-
-<pre><code>$ su otheruser
-$ sudo chmod go+wr /dev/ttys002
-</code></pre>
-
-<p>You still have to su to the owners account and therefore it is still secure. ie user can not just connect to a /dev/ttys002 currently in use by otheruser.</p>
-
-<pre><code> #As user, otheruser currently using /dev/ttys002
- $ screen -x /dev/ttys002
-&gt; Must run suid root for multiuser support. 
-</code></pre>
-
-<p>The issue has kept recurring and I have had to reset the permissions every time I wanted to connect. This could be Mac OS X specific but I edited the root crontab to fix.</p>
-
-<pre><code>$ sudo crontab -e
-# Added the text below
-# MIN   HOUR   MDAY  MON  DOW   COMMAND 
-  0,15,30,45 * * * * chmod o+wr /dev/ttys000
-  0,15,30,45 * * * * chmod o+wr /dev/ttys001
-  0,15,30,45 * * * * chmod o+wr /dev/ttys002
-  0,15,30,45 * * * * chmod o+wr /dev/ttys003
-  0,15,30,45 * * * * chmod o+wr /dev/ttys004
-  0,15,30,45 * * * * chmod o+wr /dev/ttys005
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/26/">&larr; Older</a>
@@ -808,30 +792,30 @@ $ sudo chmod go+wr /dev/ttys002
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (237)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (239)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/tech/error-storage-class-specified-for-parameter/">Error: Storage Class Specified for Parameter</a>
+        <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+        <a href="/blog/tech/xkill/">Xkill</a>
       </li>
     
       <li class="post">
-        <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
+        <a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a>
       </li>
     
       <li class="post">
-        <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
+        <a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Simulink: Scroll Wheel Erratic Behaviour</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
+        <a href="/blog/engineering/simulink-globally-set-sample-time/">Simulink: Globally Set Sample Time</a>
       </li>
     
   </ul>

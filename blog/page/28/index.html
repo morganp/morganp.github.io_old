@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="When running a sequel migration I kept getting this error: Error: NoMethodError: undefined method `compact&#8217; for nil:NilClass My setup looked &hellip;">
+  <meta name="description" content="I have for a while wondered about an ideal (good) approach to storing api keys in config files in ruby projects. A few conditions must be met:
+1) A &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,462 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/storing-secret-keys-in-ruby-config-files-an-approach/">Storing Secret Keys in Ruby Config Files an Approach</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-11T19:04:53+01:00" pubdate data-updated="true">Sep 11<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/storing-secret-keys-in-ruby-config-files-an-approach/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/storing-secret-keys-in-ruby-config-files-an-approach/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have for a while wondered about an ideal (good) approach to storing api keys in config files in ruby projects. A few conditions must be met:<br/>
+1) A new user must be given clear instructions on what has to be configured (until it is done), with boiler plate to complete.<br/>
+2) git must not accidentally let you submit the key.</p>
+
+<p>Gregory Brown steered me towards this setup. Create a config.rb file fill out the template for adding data. Then copy it to config.rb.example and add config.rb to the .gitignore</p>
+
+<pre><code>touch config.rb
+#setup template of config.rb
+cp config.rb config.rb.example
+echo "config.rb" &gt;&gt; .gitignore
+git add config.rb.example
+</code></pre>
+
+<p>The file requiring the keys can then do something like:</p>
+
+<pre><code>begin
+  require "config"
+rescue LoadError
+  STDERR.puts "You need to create a file called config.rb. See config.rb.example"
+exit
+</code></pre>
+
+<p>A slightly larger example.<br/>
+shorturl.rb</p>
+
+<pre><code>  require 'net/http'
+  require 'rubygems'
+  require 'json'
+  require 'cgi'
+
+  begin 
+     require File.dirname(__FILE__) + '/bit_ly_key'
+  rescue LoadError
+   STDERR.puts "You need to create a file called bit_ly_key.rb. See bit_ly_key.rb.example"
+   exit
+  end
+
+  module TechNews
+     class Shorturl
+        def initialize( url=nil )
+           bit_ly_keys = TechNews::BitLyKey.new
+
+           ##  url encode
+           url ||= "http://amaras-tech.co.uk"
+           @long_url = CGI.escape( url )
+           payload   = "http://api.bit.ly/v3/shorten?login=#{bit_ly_keys.login}&amp;apiKey=#{bit_ly_keys.apiKey}&amp;longUrl=#{@long_url}&amp;format=json"
+           @response = Net::HTTP.get URI.parse(payload)
+           @response = JSON.parse( @response )
+        end
+
+        def get_shorturl
+           return @response["data"]["url"]
+        end
+
+     end
+  end
+
+  if $0 == __FILE__
+     x = TechNews::Shorturl.new()
+     puts x.get_shorturl
+  end
+</code></pre>
+
+<p>bit_ly_key.rb</p>
+
+<pre><code># Register at [1] and get api key [2]
+# [1]: http://bit.ly
+# [2]: http://bit.ly/a/your_api_key
+
+module TechNews
+   class BitLyKey
+      attr_reader :login, :apiKey
+
+      def initialize
+         @login  = ""
+         @apiKey = ""
+      end
+
+   end
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/remove-sensitive-data-from-git/">Remove Sensitive Data from Git</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-10T04:16:56+01:00" pubdate data-updated="true">Sep 10<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/remove-sensitive-data-from-git/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/remove-sensitive-data-from-git/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://help.github.com/removing-sensitive-data/">Removing Sensitive data from git and eliminate history</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/amazon-drops-ec2-web-service-prices/">Amazon Drops EC2 Web Service Prices</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-09T02:24:49+01:00" pubdate data-updated="true">Sep 9<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/amazon-drops-ec2-web-service-prices/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/amazon-drops-ec2-web-service-prices/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The new <a href="http://aws.amazon.com/ec2/#pricing">EC2-Pricing</a> also includes a new Micro service. This micro service is intended for small apps servicing tens of requests per second.</p>
+
+<p>The standard price (EU) is $0.025 so if it was running 24/7/365 that would be:</p>
+
+<pre><code>(24*365*0.025) = $219 or $18.25/month  
+</code></pre>
+
+<p><a href="http://www.webfaction.com/?affiliate=morgy">Webfaction</a> can run the same thing for $9.50 a month, limited to fair use of 80MB memory.</p>
+
+<p>With a 1 year Reserved instance, $54 + $0.01 hourly charge this drops to $11.8/month.</p>
+
+<pre><code>((24*365*0.01)+54)/12 = 11.8
+</code></pre>
+
+<p>This could be dropped further with a 3 year Reserved instance.</p>
+
+<pre><code>((24*365*0.01*3)+82)/36 = $9.58/month
+</code></pre>
+
+<p>If the web then stays deactivated for half this time (site is country specific or only popular around new article posts) then this could drop the monthly cost down to $5.92</p>
+
+<pre><code>((12*365*0.01*3)+82)/36
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-regular-expressions-lookahead-lookbehind/">Ruby Regular Expressions Lookahead / Lookbehind</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-07T01:39:28+01:00" pubdate data-updated="true">Sep 7<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-regular-expressions-lookahead-lookbehind/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-regular-expressions-lookahead-lookbehind/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently discovered a feature of regular expressions called lookahead. This means for a match the lookahead must exist but it does not become part of the matched string.
+NB: (group) print first group with \1</p>
+
+<pre><code>"123456".gsub(/(\d\d\d)/, '\1,')
+123,456,
+</code></pre>
+
+<p>Now with lookahead</p>
+
+<pre><code>"123456".gsub(/(\d\d\d)(?=\d)/, '\1,')
+123,456
+</code></pre>
+
+<p>There are 2 types of lookahead</p>
+
+<pre><code>match (?=x)
+not-match (?!x)
+</code></pre>
+
+<p>Ruby 1.8.x does not support these by default but by using <a href="http://oniguruma.rubyforge.org/">Oniguruma</a> which is the default regex engine in Ruby 1.9.x you can also use lookbehind expressions.</p>
+
+<pre><code>match (?&lt;=x)
+not-match (?&lt;!x)
+</code></pre>
+
+<p>Example not using lookbehind</p>
+
+<pre><code> "http://h:5/".gsub(/:/,'=&gt;')
+ http=&gt;//h=&gt;5/
+</code></pre>
+
+<p>With Not lookbehind</p>
+
+<pre><code>"http://h:5/".gsub(/(?&lt;!http):/,'=&gt;')
+ http://h=&gt;5/
+</code></pre>
+
+<p>More info on <a href="http://www.regular-expressions.info/lookaround.html">Lookarounds</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-time-save-and-restore-serialise/">Ruby Time Save and Restore (Serialise)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-06T16:25:45+01:00" pubdate data-updated="true">Sep 6<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-time-save-and-restore-serialise/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-time-save-and-restore-serialise/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>One method to save a time and restore it correctly:</p>
+
+<pre><code>def get_time_run
+## File Access based on
+## http://rubylearning.com/satishtalim/read_write_files.html
+
+ if File.exists?('time.log') 
+   File.open('time.log', 'r') do |f|  
+      while line = f.gets  
+         @last_run = Time.at(line.to_i)
+      end  
+   end 
+ end
+ #Nice default if anything above failed
+ @last_run ||= Time.at(0) 
+end
+
+def set_run_time
+   if File.exists?("run.time")
+      File.delete("run.time")
+   end
+   File.open('time.log', 'w') do |f|  
+      f.puts Time.now.to_i  
+   end  
+end
+</code></pre>
+
+<p>Previously I had missed off the to_i but that meant when the time was loaded it was a string representation of it, quite a bit trickier to convert back into a time object.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mac-os-x-harddrive-spin-down-time/">Mac OS X Harddrive Spin Down Time</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-01T13:05:32+01:00" pubdate data-updated="true">Sep 1<span>st</span>, 2010</time>
+        
+           | <a href="/blog/tech/mac-os-x-harddrive-spin-down-time/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mac-os-x-harddrive-spin-down-time/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The Preferences menu in OS x give you the option to turn off Hard Disks whenever possible to save power however the default 10 minutes idle before shutdown can not be adjusted from this panel. This could also be causing excessive ware on desktop 3.5&#8221; drives.</p>
+
+<p>If you have the developer tools installed then you should have the SpindownHD tool. located in /Developer &ndash;> Applications &ndash;> Performance Tools &ndash;> CHUD &ndash;> Hardware</p>
+
+<p>If you do not have the developer tools installed there is no need just for this tool the changes can be made manually be editing: Library &ndash;> Preferences &ndash;> SystemConfiguration &ndash;> com.apple.PowerManagement.plist
+under &lsquo;Disk Sleep Timer&rsquo; adjust the minutes of idle time before shutting drives down.</p>
+
+<p><a href="http://hints.macworld.com/article.php?story=20050601044914357">source1</a>
+<a href="http://hints.macworld.com/article.php?story=20060922231408751">source2</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mac-os-x-default-path/">Mac OS X Default Path</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-26T09:36:06+01:00" pubdate data-updated="true">Aug 26<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/mac-os-x-default-path/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mac-os-x-default-path/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As this seemed to be a useful post on my old blog I am reposting it.
+Just in case the $PATH terminal variable gets corrupted, for MAC OS X 10.5. 10.6.</p>
+
+<pre><code>export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
+</code></pre>
+
+<p>to add to you path</p>
+
+<pre><code>export PATH=$PATH:/usr/local/sbin:/usr/local/bin
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -270,555 +727,6 @@ $ sudo rm -rf \
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/active-record-attributes-simplify-update-and-create/">Active Record Attributes Simplify Update and Create.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-13T02:13:17+01:00" pubdate data-updated="true">Aug 13<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/active-record-attributes-simplify-update-and-create/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/active-record-attributes-simplify-update-and-create/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In Active Record when updating records I used to have an very manual process to this some thing like:</p>
-
-<pre><code>@todo.done = params['post']['done']
-@todo.desc = params['post']['desc']
-@todo.save
-</code></pre>
-
-<p>Model of Todo with boolean done and text description field.</p>
-
-<p>This can be done in a more maintainable fashion with:</p>
-
-<pre><code>@todo.update_attributes = params['post']
-</code></pre>
-
-<p>This does pose the security concern that the form (which transmits params[&lsquo;post&rsquo;]) could be hacked to add id fields or such like that you may get unwanted manipulation of the table.</p>
-
-<p>To solve this there is a attr_accessible which specifies fields allowed to be updated by the .attributes . while this might seem now like there is no benefit as if we run a migration to add an extra column we also need to update the Active Record model. While this is true we only need to update the model once and create/new  and update methods should benefit from this.</p>
-
-<pre><code>class Todo &lt; ActiveRecord::Base
-end
-</code></pre>
-
-<p>Becomes</p>
-
-<pre><code>class Todo &lt; ActiveRecord::Base
-   attr_accessible :done
-   attr_accessible :desc
-end
-</code></pre>
-
-<h2>Summary:</h2>
-
-<pre><code>@customer.update_attributes = { "description" =&gt; "Jolly fellow", "credit_rating" =&gt; "Superb" }
-</code></pre>
-
-<p>same as:</p>
-
-<pre><code>@customer.description = "Jolly fellow"
-@customer.credit_rating = "Superb"
-@customer.save
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/active-record-create-unique-or-return-existing-element/">Active Record Create Unique or Return Existing Element</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-08T09:20:39+01:00" pubdate data-updated="true">Aug 8<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/active-record-create-unique-or-return-existing-element/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/active-record-create-unique-or-return-existing-element/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When working with databases it is often a requirement to have unique elements (columns) which are not the primary key, this can be achieved in the active record model with:</p>
-
-<pre><code>require 'rubygems'
-require 'sequel'
-DB = Sequel.sqlite('./lesson4.db')
-DB.create_table :tags do
-   primary_key :id
-   varchar :tag
-end  
-
-require 'rubygems'
-require 'active_record'
-ActiveRecord::Base.establish_connection(
-  :adapter   =&gt; 'sqlite3',
-  :database  =&gt; './lesson4.db'
-)
-class Tag &lt;  ActiveRecord::Base
-   validates_uniqueness_of :tag, :scope =&gt; :tag
-end
-
-@tag = Tag.create( :tag =&gt; "duck" )
-##&lt;Tag id: 1, tag: "duck"&gt;
-@tag = Tag.create( :tag =&gt; "duck" )
-##&lt;Tag id: nil, tag: "duck"&gt;
-</code></pre>
-
-<p>So you can see that this constraint works nicely to stop duplicates, if it does find one it does not return the existing element, good for creating but not reusing existing elements.</p>
-
-<p>I find that the following method is usually what I want:</p>
-
-<pre><code>require 'rubygems'
-require 'active_record'
-ActiveRecord::Base.establish_connection(
-  :adapter   =&gt; 'sqlite3',
-  :database  =&gt; './lesson4.db'
-)
-class Tag &lt;  ActiveRecord::Base
-end 
-
-@tag = Tag.find_or_create_by_tag("lazy")
-##&lt;Tag id: 2, tag: "lazy"&gt;
-@tag = Tag.find_or_create_by_tag("lazy")
-##&lt;Tag id: 2, tag: "lazy"&gt;
-</code></pre>
-
-<p>[Added Friday 13/08/2010]
-If you need to run some code between creating and saving the object there is also find_or_initialize_by_</p>
-
-<pre><code>@tag = Tag.find_or_initialize_by_tag("quack")
-@tag.save
-</code></pre>
-
-<p>This may be useful if you have  accessible or protected attributes, &lsquo;attr_accessible&rsquo; &lsquo;attr_protected&rsquo; which may block some properties from being initialised correctly.</p>
-
-<p>I discovered this in the depths of <a href="http://api.rubyonrails.org/classes/ActiveRecord/Base.html">ActiveRecord Base</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/activerecord-queries-on-table-joins/">Activerecord Queries on Table Joins</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-02T11:33:16+01:00" pubdate data-updated="true">Aug 2<span>nd</span>, 2010</time>
-        
-           | <a href="/blog/tech/activerecord-queries-on-table-joins/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/activerecord-queries-on-table-joins/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>An example of joining tables through active record models. There is <a href="http://guides.rubyonrails.org/association_basics.html">a good tutorial on the basics</a> of Activerecord joins.
-For this example we will have Posts and People, we will not use a grammatical parser and will beusing plural of people as peoples. (Note: should be person and persons) Create table with something like:</p>
-
-<pre><code>require 'rubygems'
-require 'sequel'
-DB = Sequel.sqlite('./example.db')
-
-DB.create_table :posts do
-   primary_key :id
-   foreign_key :people_id, :peoples
-   varchar :title
-   text :body
-end
-
-DB.create_table :peoples do
-   primary_key :id
-   varchar :first_name
-   varchar :last_name
-   varchar :short_name
-end
-</code></pre>
-
-<p>Now the active record model should be something like:
-NB I have added the foreign key specifier as I could not find migrations to modify it.</p>
-
-<pre><code>require 'rubygems'
-require 'active_record'
-
-ActiveRecord::Base.establish_connection(
-   :adapter   =&gt; "sqlite3",
-   :database  =&gt; "./example.db"
-)
-
-class People &lt; ActiveRecord::Base
-   has_many :post, :foreign_key =&gt; :people_id
-
-end
-
-class Post &lt; ActiveRecord::Base
-   # mmm No foregin key required for this
-   belongs_to :people
-end
-</code></pre>
-
-<p>This allows ORM automatic joins:</p>
-
-<pre><code>@person = People.first
-@posts  = @person.post
-
-@post   = Post.first
-@person_name = @post.people.first_name
-
-#Now get 3 posts by a particular author and sort
-@person = People.first
-@posts = @person.post.find(:all, :order =&gt; "id DESC", :limit =&gt; 3) 
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/recover-bulk-download-your-pictures-from-flickr/">Recover (Bulk Download) Your Pictures from Flickr</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-02T10:51:53+01:00" pubdate data-updated="true">Aug 2<span>nd</span>, 2010</time>
-        
-           | <a href="/blog/photography/recover-bulk-download-your-pictures-from-flickr/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/recover-bulk-download-your-pictures-from-flickr/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Flickr is a great way to backup your photos and other images for around £25 a year you get unlimited storage. There are numerous uploader tools but not many bulk download applications.</p>
-
-<p>Today I wanted to download a few of my image sets for use as a screen saver on another computer, after looking at several free application <a href="http://janten.com/downloadr/">&lsquo;downloadr&rsquo;</a> was the only one which came close to offering the functionality I needed. The ability to list sets owned by user and select which images to download. Only minor irritation was when listing photos in a set it only lists the first 50 by default so you have press search again to ge the next 50, again and again until you have got previews for all the photos in the set, then you can download then all.</p>
-
-<p><a href="http://janten.com/downloadr/">Downloadr</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/benchmark-your-website-for-load-times/">Benchmark Your Website for Load Times.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-27T16:09:53+01:00" pubdate data-updated="true">Jul 27<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/benchmark-your-website-for-load-times/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/benchmark-your-website-for-load-times/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have been wondering how to do this for a while and accidentally discovered it while perusing <a href="http://docs.heroku.com/performance">this heroku page</a>. ab is the ApacheBench marking tool, it lets you set how many requests (for better averaging) and how many concurrent requests (for load testing) to send to your website. ab id installed by default on most unix/linux/mac os x.</p>
-
-<p>50 requests 2 at atime</p>
-
-<pre><code>$ ab -c 2 -n 50 http://amaras-tech.co.uk/
-</code></pre>
-
-<p>Outputs:</p>
-
-<pre><code>This is ApacheBench, Version 2.3 &lt;$Revision: 655654 $&gt;
-Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
-Licensed to The Apache Software Foundation, http://www.apache.org/
-
-Benchmarking amaras-tech.co.uk (be patient).....done
-
-
-Server Software:        nginx
-Server Hostname:        amaras-tech.co.uk
-Server Port:            80
-
-Document Path:          /
-Document Length:        0 bytes
-
-Concurrency Level:      2
-Time taken for tests:   9.951 seconds
-Complete requests:      50
-Failed requests:        0
-Write errors:           0
-Non-2xx responses:      50
-Total transferred:      11400 bytes
-HTML transferred:       0 bytes
-Requests per second:    5.02 [#/sec] (mean)
-Time per request:       398.030 [ms] (mean)
-Time per request:       199.015 [ms] (mean, across all concurrent requests)
-Transfer rate:          1.12 [Kbytes/sec] received
-
-Connection Times (ms)
-              min  mean[+/-sd] median   max
-Connect:      146  162  16.7    158     214
-Processing:   149  229 198.3    159    1113
-Waiting:      148  228 198.2    159    1112
-Total:        298  392 198.0    328    1262
-
-Percentage of the requests served within a certain time (ms)
-  50%    328
-  66%    343
-  75%    351
-  80%    360
-  90%    612
-  95%    961
-  98%   1262
-  99%   1262
- 100%   1262 (longest request)
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/philip_roberts-taught-me-a-thing-or-two-about-css/">@philip_roberts Taught Me a Thing or Two About CSS</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-22T10:15:50+01:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2010</time>
-        
-           | <a href="/blog/tech/philip_roberts-taught-me-a-thing-or-two-about-css/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/philip_roberts-taught-me-a-thing-or-two-about-css/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>CSS or Cascading Style Sheets are used for styling html elements. HTML elements can have id&rsquo;s, which must be unique to all other elements on the page. HTML elements can also have a type class, an item can belong to multiple classes and a page can have multiple items in a class.</p>
-
-<p>Example page:</p>
-
-<pre><code>&lt;html&gt;
-   &lt;head&gt;
-   &lt;/head&gt;
-   &lt;body id="about"&gt;
-      &lt;div id="nav"&gt;
-        &lt;a href="next"&gt;next&lt;/a&gt;
-      &lt;/div&gt;
-      &lt;div id="body"&gt;
-        &lt;a class="small, underline"href="a"&gt;something&lt;/a&gt;
-        &lt;a class="small" href="b"&gt;something&lt;/a&gt;
-        &lt;a class="small" href="c"&gt;something&lt;/a&gt;
-      &lt;/div&gt;
-   &lt;/body&gt;
-&lt;html&gt;
-</code></pre>
-
-<p>To refer to id&rsquo;s use a # symbol and . for classes. eg</p>
-
-<pre><code>div#nav
-a.small
-</code></pre>
-
-<p>If you want to apply the same style to multiple elements they can be written in a list before the style. Make h1 h2 and h3 all text 2x normal:</p>
-
-<pre><code>h1, h2, h3 {
-    test-size: 200%;
-}
-</code></pre>
-
-<p>Now for the new stuff, if the &lsquo;,&rsquo; are removed from the list it specifies a hierarchy which for the element which you are matching:</p>
-
-<pre><code>body#about div#nav a {
-   background-color:yellow;
-}
-</code></pre>
-
-<p>The second thing that I had not realised is that the more specific the higher the precedent.</p>
-
-<pre><code>a { 
-  background-color:black;
-}
-body#about div#nav a {
-  background-color:yellow;
-}
-</code></pre>
-
-<p>Will render the same as</p>
-
-<pre><code>body#about div#nav a {
-   background-color:yellow;
-}
-a { 
-   background-color:black;
-}
-</code></pre>
-
-<p>I had previously assumed in the last example that the last a define would have been all encompassing.</p>
-
-<p>NB: For debugging CSS I think that the <a href="http://getfirebug.com/">FireBug plugin</a> for firefox is great. Watch the Video to get the most out of it.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/turn-a-jar-file-into-a-mac-app/">Turn a .jar File Into a Mac .app</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-18T05:59:31+01:00" pubdate data-updated="true">Jul 18<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/turn-a-jar-file-into-a-mac-app/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/turn-a-jar-file-into-a-mac-app/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Following <a href="http://www.centerkey.com/mac/java/">this article</a> lets you turn a executable java .jar into a mac appliction (.app). The Tools are only available on Mac OS with Xcode installed.</p>
-
-<p>Basically create a 512x512px png for your logo. then use &lsquo;/Developer/Applications/Utilities/Icon Composer.app&rsquo; to create a someFileName.icns, Just drag the png into each of the different size boxes and Icon Composer will resize it correctly.
-Then Save.</p>
-
-<p>Second Stage is to start &lsquo;/Developer/Applications/Utilities/Jar Bundler.app&#8217;<br/>
-For the main class choose your executable .jar for the icon load the icns created in the previous step. Then press the create application button, chose location then your .app should be created.</p>
-
-<p>The only complaint I have about these to applications is there is no ability to save the set-up, so every time you want to rebuild you have to enter all the settings again, I do not know many other applications which do not allow you to save.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/29/">&larr; Older</a>
@@ -833,30 +741,30 @@ For the main class choose your executable .jar for the icon load the icns create
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (237)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (239)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/tech/error-storage-class-specified-for-parameter/">Error: Storage Class Specified for Parameter</a>
+        <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+        <a href="/blog/tech/xkill/">Xkill</a>
       </li>
     
       <li class="post">
-        <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
+        <a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a>
       </li>
     
       <li class="post">
-        <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
+        <a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Simulink: Scroll Wheel Erratic Behaviour</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
+        <a href="/blog/engineering/simulink-globally-set-sample-time/">Simulink: Globally Set Sample Time</a>
       </li>
     
   </ul>

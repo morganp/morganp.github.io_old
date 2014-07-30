@@ -9,11 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="s = struct ;
-s(1).dat =‘a' ;
-s(1).freq=11 ;
-s(2).dat =‘b' ;
-s(2).freq=22 ; Where: s(1) ans = dat: 'a' freq: 11 How do you access [‘a’, ‘b’] and [11, &hellip;">
+  <meta name="description" content="Inconsistent, annoying, cheap? ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +81,387 @@ s(2).freq=22 ; Where: s(1) ans = dat: 'a' freq: 11 How do you access [‘a’, �
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-19T18:15:59+01:00" pubdate data-updated="true">Jun 19<span>th</span>, 2014</time>
+        
+           | <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Inconsistent, annoying, <strong>cheap</strong>?</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-14T08:24:01+01:00" pubdate data-updated="true">Jun 14<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/octopress-categories-with-different-styles/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/octopress-categories-with-different-styles/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As I use the code blocks for ingredient lists on my recipe pages I wanted to
+have a different style, lighter background instead of black.</p>
+
+<p>I currently manually set a different layout in the _post header:</p>
+
+<pre><code>layout: post
+categories: 
+- Tech
+
+layout: recipe
+categories: 
+- Cooking
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/tech/octopress-categories-with-different-styles/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/verilog-timeout/">Verilog: Timeout</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-14T08:08:26+01:00" pubdate data-updated="true">Jun 14<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/verilog-timeout/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/verilog-timeout/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To wait for a maximum of <code>10ns</code> for positive edge on clk then carry on with simulation.</p>
+
+<pre><code>fork : wait_or_timeout
+  begin
+    #10ms;
+    disable wait_or_timeout;
+  end
+  begin
+    @(posedge clk);
+    disable wait_or_timeout;
+  end
+join
+</code></pre>
+
+<p>Often use to fail simulation if the expected signal does not occur,
+this stops simulation hanging and allows status reports to be generated.</p>
+
+<p>Originally posted as <a href="http://stackoverflow.com/a/12372233/97073">SO answer</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-02T19:08:09+01:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-remove-elements-from-array/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-remove-elements-from-array/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Removing elements based on index</p>
+
+<pre><code>A      = 1:10    ; % 1-D array
+A =
+ 1     2     3     4     5     6     7     8     9    10
+
+ind    = [1 4 7] ; % indices to be removed
+A(ind) = []      ; % remove
+
+A =
+ 2     3     5     6     8     9    10
+</code></pre>
+
+<p>Based on <a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/1486880">Matlab Central</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-02T18:46:09+01:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-formatting-strings/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-formatting-strings/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The official documentation can be found on <a href="http://www.mathworks.co.uk/help/matlab/matlab_prog/formatting-strings.html#bq0z8vc-6">mathworks</a>.</p>
+
+<p>To display a number with 3 Integer decimal places and 3 fraction places
+<code>$f7.3</code> 7 rather than 6 as need place for the decimal point.</p>
+
+<pre><code>&gt;&gt; a = sprintf('6.3-%6.3f-', 123.678)
+a =
+6.3-123.678-
+
+&gt;&gt; a = sprintf('6.3-%6.3f-', 23.678)
+a =
+6.3-23.678-
+
+&gt;&gt; a = sprintf('6.3-%6.3f-', 3.678)
+a =
+6.3- 3.678-
+</code></pre>
+
+<h2>-ve numbers</h2>
+
+<p>If signed you need to leave space for -ve <code>$f8.3</code> :</p>
+
+<pre><code>&gt;&gt; a = sprintf('7.3-%7.3f-', -123.678)
+a =
+7.3--123.678-
+
+&gt;&gt; a = sprintf('7.3-%7.3f-', -23.678)
+a =
+7.3--23.678-
+
+&gt;&gt; a = sprintf('8.3-%8.3f-', -23.678)
+a =
+8.3- -23.678-
+</code></pre>
+
+<p>For reliable and consistent floating point displays use:</p>
+
+<pre><code>%(fractional places + integer places + 2).(fractional places)f
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-grid/">Matlab: Grid</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-28T19:49:38+01:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-grid/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-grid/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/images/Engineering/matlab_grid/grid_on.png" alt="" /></p>
+
+<p>To add X and Y grids to plots :</p>
+
+<pre><code>grid on;
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/engineering/matlab-grid/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-linebreaks-in-strings/">Matlab: Line Breaks in Strings</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-28T19:34:30+01:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-linebreaks-in-strings/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-linebreaks-in-strings/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Wrap strings with <code>sprintf</code> to allow the <code>\n</code> to be escaped correctly.</p>
+
+<pre><code>&gt;&gt; disp('hello\nworld')
+hello\nworld
+
+&gt;&gt; disp(sprintf('hello\nworld'))
+hello
+world
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -245,440 +622,6 @@ Underside of rack.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-toolboxes-with-absolute-path-setup/">Matlab Toolboxes with Absolute Path Setup</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-07T18:22:48+01:00" pubdate data-updated="true">May 7<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-toolboxes-with-absolute-path-setup/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-toolboxes-with-absolute-path-setup/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When a script or function is called with <code>run(./relative/path/script)</code> the working directory is changed to the <code>./relative/path</code>. This means <code>pwd</code> it can be used to specify absolute paths:</p>
-
-<pre><code>run(./libs/example_toolbox/load_toolbox)
-</code></pre>
-
-<p>Which contains :</p>
-
-<pre><code>addpath([pwd, '/function']);
-</code></pre>
-
-<p>Now  The path will contain <code>C:/ ... /libs/example_toolbox/function</code></p>
-
-<p>As shown in the example this is useful for toolboxes etc which could be distributed with a top level script which adds the toolbox functions on to the path.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-array-content-check/">Matlab: Array Content Check</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-07T18:13:24+01:00" pubdate data-updated="true">May 7<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-array-content-check/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-array-content-check/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Checking if an Array contains a number:</p>
-
-<pre><code>input = [1,2,3,4];
-check = 4;
-any(input==4)
-</code></pre>
-
-<p>Check if a number is contained in an array:</p>
-
-<pre><code>input = 32;
-check = [32,64,128];
-any( check==input )
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-split-odd-and-even-array-elements/">Matlab: Split Odd &amp; Even Array Elements</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-07T17:58:33+01:00" pubdate data-updated="true">May 7<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-split-odd-and-even-array-elements/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-split-odd-and-even-array-elements/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Using Matlab to splitting data into odd and even samples.</p>
-
-<p>A for loop approach:</p>
-
-<pre><code>data_odd  = [];
-data_even = [];
-for i = 1:length(data)
-  if mod(i,2)
-    %% disp('odd')
-    data_odd = [data_odd, data(i)]
-  else
-    %% disp('even')
-    data_even = [data_even, data(i)]
-  end
-end
-</code></pre>
-
-<p>Matlab approach using ranges to remap values:</p>
-
-<pre><code>data_odd =data(1:2:end);
-data_even=data(2:2:end);
-</code></pre>
-
-<p>Ranges are composed of <code>start_index:step_size:end_index</code>. If step_size is omitted, 1 is assumed.</p>
-
-<p><code>end</code> has a special meaning when used inside an array, it is the position of the last element.
-To append to an array you could use <code>data(end+1) = append_value</code></p>
-
-<p>No error or warning is triggered if the <code>end_index</code> can not be reached with the given step size, which is why this works with <code>end</code> as the stop point of both sides.</p>
-
-<h2>Example</h2>
-
-<pre><code>a   = [1, 2, 3, 4, 5];
-odd = a(1:2:end)
-even= a(2:2:end)
-
-odd =
-     1     3     5
-
-even =
-     2     4
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/lee-standard-hood/">Lee Standard Hood</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-05T20:36:43+01:00" pubdate data-updated="true">May 5<span>th</span>, 2014</time>
-        
-           | <a href="/blog/photography/lee-standard-hood/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/lee-standard-hood/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Available to buy from <a href="http://www.wexphotographic.com/buy-lee-standard-lens-hood/p1010398">WEX</a>. Also see <a href="/blog/photography/lee-wide-angle-hood/">Lee Wide Angle Hood</a>.</p>
-
-<p>Hoods or lens shades help improve contrast by stopping out of frame light source entering the lens. LEE filters are square filters that can be used for effects or managing dynamic range, however as they mount in front of the lens with a holder you can no longer use your lenses standard hood. LEE have a standard, universal and wide angle hoods available.</p>
-
-<p>LEE do not provide many specs for the hood on their website. To help others decide
-if this is right for them I have included measurements and pictures.</p>
-
-<p>The Standard is the smallest of the three hoods.
-It actually has a very clever rail system which allows it to be mounted in a slot.
-When mounted on to a lee adapter ring this sits further back out of the way.
-All Lee products should have this and there would be no need for a tandem connector.</p>
-
-<p><img src="/images/Photography/LEE/morganp-20140405-Lee-_MG_7257.jpg" alt="" /></p>
-
-<p>Filter weigh 150g</p>
-
-<h2>Dimensions</h2>
-
-<pre><code>Width Height:
-External: 13.1cm x 13.1cm
-Internal: 11.1cm x 11.1cm
-
-Depth:
-Complete compressed: 3.5cm.
-</code></pre>
-
-<p>Min expansion</p>
-
-<pre><code>complete    : 4.6cm
-hood &amp; mount: 3.6cm
-hood only   : 3.1cm
-</code></pre>
-
-<p><img src="/images/Photography/LEE/morganp-20140405-Lee-_MG_7249.jpg" alt="" /></p>
-
-<p>Max Expansion</p>
-
-<pre><code>complete    : 15.0cm
-hood &amp; mount: 14.0cm
-hood only   : 13.3cm 
-</code></pre>
-
-<p><img src="/images/Photography/LEE/morganp-20140405-Lee-_MG_7251.jpg" alt="" /></p>
-
-<p><strong>This hood is too small for use under 28mm on a full-frame camera.</strong></p>
-
-<p>On a crop sensor it is still good at 16mm</p>
-
-<p>Vignetting examples:
-<img src="/images/Photography/LEE/morganp-20140405-Lee-IMG_0116.jpg" alt="" />
-Setup for following examples, Canon 6D, wide angle adapter, Lee holder 3 slots (2 for filters, 1 for hood) then universal hood at minimal expansion.</p>
-
-<p><img src="/images/Photography/LEE/morganp-20140409--_MG_7416.jpg" title="16mm full-frame" alt="" />
-above 16mm full-frame with filter holder</p>
-
-<p><img src="/images/Photography/LEE/morganp-20140409--_MG_7417.jpg" title="20mm full-frame" alt="" />
-above 20mm full-frame with filter holder</p>
-
-<p><img src="/images/Photography/LEE/morganp-20140409--_MG_7418.jpg" title="24mm full-frame" alt="" />
-above 24mm full-frame with filter holder</p>
-
-<p><img src="/images/Photography/LEE/morganp-20140409--_MG_7419.jpg" title="28mm full-frame" alt="" />
-above 28mm full-frame with filter holder</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/licence-types-and-short-identifiers/">Licence Types and Short Identifiers</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-05T20:17:43+01:00" pubdate data-updated="true">May 5<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/licence-types-and-short-identifiers/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/licence-types-and-short-identifiers/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Some time ago <a href="http://guides.rubygems.org/specification-reference/">gemspec</a> files for ruby gems added the ability to
-specify the short identifier for the license type.</p>
-
-<pre><code>Gem::Specification.new do |s|
-  s.licenses    = ['MIT']
-end
-</code></pre>
-
-<p>The unofficial list of short identifiers is available from <a href="https://spdx.org/licenses/">spdx</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/lightroom-load-canon-6d-gps/">Lightroom Load Canon 6D GPS</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-14T19:01:06+01:00" pubdate data-updated="true">Apr 14<span>th</span>, 2014</time>
-        
-           | <a href="/blog/photography/lightroom-load-canon-6d-gps/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/lightroom-load-canon-6d-gps/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Adobe Lightroom will only load GPX, Canon 6D only saves NMEA data.</p>
-
-<p><a href="http://www.gpsbabel.org/">GPSBabel</a> can be used to convert the <code>*.log</code> from the camera to <code>*.gpx</code>.</p>
-
-<p>Download the software then load the log file for the input setting the type to <code>NMEA 0183 sentences</code>.</p>
-
-<p>Set the output file name and set the format to <code>GPX XML</code>. Click OK to generate the GPX which can now be loaded into Lightroom.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/outdoor/craghoppers-up-to-tricks/">Craghoppers Pro Stretch</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-10T18:12:22+01:00" pubdate data-updated="true">Apr 10<span>th</span>, 2014</time>
-        
-           | <a href="/blog/outdoor/craghoppers-up-to-tricks/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/outdoor/craghoppers-up-to-tricks/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Last year I got a pair of the pro stretch trousers for walking, they were pretty good for walking in so good I just went back to get another pair.</p>
-
-<p>There are however some changes to the current versions.</p>
-
-<p>The back of the waist band use to fully elasticated. Now only two small side
-sections on the waistband are elasticated this massively reduced the range of
-fit the trousers have. So much so they have introduced a larger size to
-accommodate the change in fit. This does however bring the styling and
-available sizes in-line with the Craghoppers staple Classic Kiwi.</p>
-
-<p>To note my new versions are a size larger, and they still have a small fit than the old ones.</p>
-
-<p>The feel of the new trousers is not as nice as the old ones. They have altered the fabric mix:</p>
-
-<p><code>OLD: 93% Polyamide 7% Elastane</code><br/>
-<code>NEW: 96% Polyamide 4% Elastane</code></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/outdoor/craghoppers-up-to-tricks/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -693,30 +636,30 @@ available sizes in-line with the Craghoppers staple Classic Kiwi.</p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (237)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (239)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/tech/error-storage-class-specified-for-parameter/">Error: Storage Class Specified for Parameter</a>
+        <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+        <a href="/blog/tech/xkill/">Xkill</a>
       </li>
     
       <li class="post">
-        <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
+        <a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a>
       </li>
     
       <li class="post">
-        <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
+        <a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Simulink: Scroll Wheel Erratic Behaviour</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
+        <a href="/blog/engineering/simulink-globally-set-sample-time/">Simulink: Globally Set Sample Time</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="error: storage class specified for parameter There is probably a missing semicolon ; in a header file! Just written my first C Header and received &hellip;">
+  <meta name="description" content="From Github Training &amp; Guides. git ls-files --others --ignored --exclude-standard ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,340 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-30T20:18:07+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/list-files-ignored-by-git/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/list-files-ignored-by-git/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="https://www.youtube.com/watch?v=4VBG9FlyiOw">From Github Training &amp; Guides</a>.</p>
+
+<pre><code>git ls-files --others --ignored --exclude-standard
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/xkill/">Xkill</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-30T20:16:39+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/xkill/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/xkill/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I just discovered the <code>xkill</code> command, when a window has crashed you
+can call xkill and get a skull and crossbones cursor to kill the application.</p>
+
+<p>It even works well with remote GUI applications (Sun Grid Engine SGE).</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-30T20:13:23+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/submit-to-sge-as-if-working-locally/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/submit-to-sge-as-if-working-locally/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Setting an alias in you .tcshrc</p>
+
+<pre><code>alias qrun 'qrsh -V -noshell -cwd !*'
+</code></pre>
+
+<p>or bash</p>
+
+<pre><code>alias qrun='qrsh -V -noshell -cwd !*'
+</code></pre>
+
+<p>Which makes submitting any script to the grid just:</p>
+
+<pre><code>qrun helloworld.sh
+</code></pre>
+
+<p>Originally asked on <a href="http://superuser.com/a/751162/42141">superuser</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Simulink: Scroll Wheel Erratic Behaviour</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-30T20:08:10+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>On Mac OS X matlab behaves quite oddly with the track pad zooming
+in and out very quickly and erratically to remove this behaviour
+<strong>Disable Mouse Scroll Wheel Zoom Behavior</strong>.</p>
+
+<p>To disable the zoom behavior for the scroll wheel:</p>
+
+<pre><code>File &gt; 
+  Simulink Preferences &gt; 
+    Editor Defaults &gt; 
+      Scroll wheel controls zooming preference.
+</code></pre>
+
+<p>If you hold the Ctrl key and use the scroll wheel, the scroll wheel behavior is the opposite of how the preference is set.</p>
+
+<p><a href="http://www.mathworks.co.uk/help/simulink/ug/zooming-block-diagrams.html">source</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/simulink-globally-set-sample-time/">Simulink: Globally Set Sample Time</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-30T20:01:49+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/simulink-globally-set-sample-time/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/simulink-globally-set-sample-time/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To set each constant in a model to sample time -1:</p>
+
+<pre><code>blks = find_system(dut, 'BlockType', 'Constant');
+for i = 1:length(blks)
+    set_param(blks{i}, 'SampleTime', '-1');
+ end
+</code></pre>
+
+<p><a href="http://www.mathworks.co.uk/help/hdlcoder/ug/resource-sharing.html#btg_5ht-1">Source</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/simulink-list-programmable-block-properties/">Simulink: List Programmable Block Properties</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-30T20:00:28+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/simulink-list-programmable-block-properties/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/simulink-list-programmable-block-properties/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Select a block ie gain in Simulink then in Matlab type:</p>
+
+<pre><code>get(gcbh)
+</code></pre>
+
+<p>This shows the list of properties which can be controlled from Matlab. TO change one for example changing the gain paramter from double to a 10 bit fixed point number (<code>sfix10_en9</code>).</p>
+
+<pre><code>set_param(gcbh, 'ParamDataTypeStr', 'fixdt(1,10,9)'); 
+</code></pre>
+
+<p><a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/306640">From Matlab Central</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-find-all-gain-blocks/">Matlab: Find All Gain Blocks</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-30T19:58:53+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-find-all-gain-blocks/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-find-all-gain-blocks/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>find_system('BlockType', 'Gain')
+</code></pre>
+
+<p>This will list all gain blocks in currently loaded models. to limit to a particulat model:</p>
+
+<pre><code>find_system('testharness', 'BlockType', 'Gain')
+</code></pre>
+
+<p><a href="http://www.mathworks.co.uk/help/simulink/slref/find_system.html">From Mathworks</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -248,387 +582,6 @@ The GCC flag <code>-ffast-math</code> optimizes equations as if they were associ
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-19T18:15:59+01:00" pubdate data-updated="true">Jun 19<span>th</span>, 2014</time>
-        
-           | <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Inconsistent, annoying, <strong>cheap</strong>?</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-14T08:24:01+01:00" pubdate data-updated="true">Jun 14<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/octopress-categories-with-different-styles/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/octopress-categories-with-different-styles/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>As I use the code blocks for ingredient lists on my recipe pages I wanted to
-have a different style, lighter background instead of black.</p>
-
-<p>I currently manually set a different layout in the _post header:</p>
-
-<pre><code>layout: post
-categories: 
-- Tech
-
-layout: recipe
-categories: 
-- Cooking
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/tech/octopress-categories-with-different-styles/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/verilog-timeout/">Verilog: Timeout</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-14T08:08:26+01:00" pubdate data-updated="true">Jun 14<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/verilog-timeout/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/verilog-timeout/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To wait for a maximum of <code>10ns</code> for positive edge on clk then carry on with simulation.</p>
-
-<pre><code>fork : wait_or_timeout
-  begin
-    #10ms;
-    disable wait_or_timeout;
-  end
-  begin
-    @(posedge clk);
-    disable wait_or_timeout;
-  end
-join
-</code></pre>
-
-<p>Often use to fail simulation if the expected signal does not occur,
-this stops simulation hanging and allows status reports to be generated.</p>
-
-<p>Originally posted as <a href="http://stackoverflow.com/a/12372233/97073">SO answer</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-02T19:08:09+01:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-remove-elements-from-array/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-remove-elements-from-array/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Removing elements based on index</p>
-
-<pre><code>A      = 1:10    ; % 1-D array
-A =
- 1     2     3     4     5     6     7     8     9    10
-
-ind    = [1 4 7] ; % indices to be removed
-A(ind) = []      ; % remove
-
-A =
- 2     3     5     6     8     9    10
-</code></pre>
-
-<p>Based on <a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/1486880">Matlab Central</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-02T18:46:09+01:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-formatting-strings/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-formatting-strings/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The official documentation can be found on <a href="http://www.mathworks.co.uk/help/matlab/matlab_prog/formatting-strings.html#bq0z8vc-6">mathworks</a>.</p>
-
-<p>To display a number with 3 Integer decimal places and 3 fraction places
-<code>$f7.3</code> 7 rather than 6 as need place for the decimal point.</p>
-
-<pre><code>&gt;&gt; a = sprintf('6.3-%6.3f-', 123.678)
-a =
-6.3-123.678-
-
-&gt;&gt; a = sprintf('6.3-%6.3f-', 23.678)
-a =
-6.3-23.678-
-
-&gt;&gt; a = sprintf('6.3-%6.3f-', 3.678)
-a =
-6.3- 3.678-
-</code></pre>
-
-<h2>-ve numbers</h2>
-
-<p>If signed you need to leave space for -ve <code>$f8.3</code> :</p>
-
-<pre><code>&gt;&gt; a = sprintf('7.3-%7.3f-', -123.678)
-a =
-7.3--123.678-
-
-&gt;&gt; a = sprintf('7.3-%7.3f-', -23.678)
-a =
-7.3--23.678-
-
-&gt;&gt; a = sprintf('8.3-%8.3f-', -23.678)
-a =
-8.3- -23.678-
-</code></pre>
-
-<p>For reliable and consistent floating point displays use:</p>
-
-<pre><code>%(fractional places + integer places + 2).(fractional places)f
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-grid/">Matlab: Grid</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-28T19:49:38+01:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-grid/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-grid/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/images/Engineering/matlab_grid/grid_on.png" alt="" /></p>
-
-<p>To add X and Y grids to plots :</p>
-
-<pre><code>grid on;
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/engineering/matlab-grid/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-linebreaks-in-strings/">Matlab: Line Breaks in Strings</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-28T19:34:30+01:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-linebreaks-in-strings/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-linebreaks-in-strings/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Wrap strings with <code>sprintf</code> to allow the <code>\n</code> to be escaped correctly.</p>
-
-<pre><code>&gt;&gt; disp('hello\nworld')
-hello\nworld
-
-&gt;&gt; disp(sprintf('hello\nworld'))
-hello
-world
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -641,30 +594,30 @@ world
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (237)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (239)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/tech/error-storage-class-specified-for-parameter/">Error: Storage Class Specified for Parameter</a>
+        <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+        <a href="/blog/tech/xkill/">Xkill</a>
       </li>
     
       <li class="post">
-        <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
+        <a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a>
       </li>
     
       <li class="post">
-        <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
+        <a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Simulink: Scroll Wheel Erratic Behaviour</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
+        <a href="/blog/engineering/simulink-globally-set-sample-time/">Simulink: Globally Set Sample Time</a>
       </li>
     
   </ul>

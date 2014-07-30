@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="ISO 8601, to me looks a lot like reversed British format which has been my standard for including in file names for some time as it makes sorting a &hellip;">
+  <meta name="description" content="Lamb curry (£1.95 a serving) time to table ~1 hour. ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,357 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/cooking/lamb-keema/">Lamb Keema</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-06T23:03:00+01:00" pubdate data-updated="true">May 6<span>th</span>, 2013</time>
+        
+           | <a href="/blog/cooking/lamb-keema/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/cooking/lamb-keema/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Lamb curry (£1.95 a serving) time to table ~1 hour.</p>
+
+<p><img class="left" src="/images/LambKeema/morganp-20130505-LambKeema-IMG_0759-Final.jpg"></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/cooking/lamb-keema/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ubuntu-and-the-jetway-adpe4s/">Ubuntu and the Jetway ADPE4S</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-02T17:02:37+01:00" pubdate data-updated="true">May 2<span>nd</span>, 2013</time>
+        
+           | <a href="/blog/tech/ubuntu-and-the-jetway-adpe4s/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ubuntu-and-the-jetway-adpe4s/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><strong>Still unresolved</strong></p>
+
+<p>The Jetway ADPE4S uses a Marvell 88SE6145 chip which a number of users have had trouble getting to work with Linux.</p>
+
+<p>Currently there is <a href="https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1087790">bug report</a> open for ubuntu about it.</p>
+
+<p>Also there is a report on the <a href="http://wiki.debian.org/pata_marvell">debian wiki</a> about fixing it so far I have:</p>
+
+<p>/etc/modprobe.d/my-marvell.conf</p>
+
+<pre><code>install pata_marvell /bin/true
+</code></pre>
+
+<p>/etc/modprobe.d/my-marvel.conf //&lt;&mdash; spelling mistake?</p>
+
+<pre><code>options ahci marvell_enable=1
+</code></pre>
+
+<p>Run (rebuilds some boot thingy):</p>
+
+<pre><code>sudo update-initramfs -u
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ubuntu-linux-list-disks/">Ubuntu (Linux) List Disks</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-02T13:39:24+01:00" pubdate data-updated="true">May 2<span>nd</span>, 2013</time>
+        
+           | <a href="/blog/tech/ubuntu-linux-list-disks/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ubuntu-linux-list-disks/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>sudo lshw -class disk -class storage -short
+</code></pre>
+
+<p>Outputs :</p>
+
+<pre><code>H/W path           Device     Class       Description
+=====================================================
+/0/100/1c.3/0      scsi0      storage     JMB363 SATA/IDE Controller
+/0/100/1c.3/0/0    /dev/sda   disk        3TB ST3000DM001-9YN1
+/0/100/1c.3/0/1    /dev/sdb   disk        2TB SAMSUNG HD204UI
+/0/100/1c.3/0.1               storage     JMB368 IDE controller
+/0/100/1f.2        scsi2      storage     N10/ICH7 Family SATA Controller [IDE mode]
+/0/100/1f.2/0      /dev/sdc   disk        3TB ST3000DM001-9YN1
+/0/100/1f.2/1      /dev/sdd   disk        2TB SAMSUNG HD204UI
+/0/1               scsi6      storage
+/0/1/0.0.0         /dev/sde   disk        8019MB SCSI Disk
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/bt-broadband-messing-around-with-your-dns/">BT Broadband Messing Around with Your DNS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-25T09:02:48+01:00" pubdate data-updated="true">Apr 25<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/bt-broadband-messing-around-with-your-dns/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/bt-broadband-messing-around-with-your-dns/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>BT broadband has <strong>BT Web Address Help</strong> enabled by default. This allows then to redirect you to another site if they think you typed the URL incorrectly.</p>
+
+<p>This can cause problems when connecting to a VPN, which is setup to no route normal websites through the VPN. When the URL is rejected your VPN then picks it up as a fall back and tries over its connection. However when these Smart systems are enabled by your isp they will never reject them and always try to offer useful content.</p>
+
+<p>To <a href="http://preferences.webaddresshelp.bt.com/selfcare/preferences.cgi">turn off your BT Web Address Help</a> go to : <a href="http://preferences.webaddresshelp.bt.com/selfcare/preferences.cgi">BT Preferences</a>. You can read more about it in <a href="http://bt.custhelp.com/app/answers/detail/a_id/14244/c/346,402,405">this discussion</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/javascript-net-curtain/">JavaScript Net Curtain</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-24T07:44:19+01:00" pubdate data-updated="true">Apr 24<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/javascript-net-curtain/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/javascript-net-curtain/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Normally this would just end up on <a href="http://amaras-tech.co.uk/u">my link blog</a>, but thought it was worthy of a proper mention.</p>
+
+<p><a href="http://amaras-tech.co.uk/u/5m">A JavaScript tear able net curtain</a>, clicking the mouse the moving mouse over curtain the real-time rendering in a browser feels very impressive to me. To see some thing this interactive with out lag being rendered in a browser is quite impressive. Am sure there are still many sites which crash my browser while trying to render little pointless animations.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/bittorrent-sync-free-rival-to-dropbox/">BitTorrent Sync, Free Rival to DropBox</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-24T07:11:47+01:00" pubdate data-updated="true">Apr 24<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/bittorrent-sync-free-rival-to-dropbox/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/bittorrent-sync-free-rival-to-dropbox/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://labs.bittorrent.com/experiments/sync.html">BitTorrent Sync</a> although still in Beta offers a App and protocol for <a href="http://db.tt/ZZzJ5LBq">DropBox</a> like file syncing. As it is an app rather than a service you use you own disk space. Hope fully it can also be run on <a href="http://www.webfaction.com?affiliate=morgy">webfaction</a> to setup a private cloud.</p>
+
+<p>The advantages I can see are:</p>
+
+<ol>
+<li>Private Storage &ndash; Secure, third party can not be forced to hand over data if hosting it on own hardware.</li>
+<li>Private Storage &ndash; Unlimted space, Dropbox give 2GB free basic webfation account has 20-40Gb storage. S3 offers very cheap way to scale for cloud storage. Synced from home computer TB available.</li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/lightroom-5-public-beta/">Lightroom 5 Public Beta</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-16T06:54:05+01:00" pubdate data-updated="true">Apr 16<span>th</span>, 2013</time>
+        
+           | <a href="/blog/photography/lightroom-5-public-beta/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/lightroom-5-public-beta/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The <a href="https://www.adobe.com/cfusion/entitlement/index.cfm?e=labs_lightroom5&amp;sdid=KFENU">Lightroom 5 Beta</a> is out now, Free and active until June 2013.</p>
+
+<p>From adobe :</p>
+
+<p><strong>New Features in Lightroom 5 Beta</strong></p>
+
+<ul>
+<li>Advanced Healing Brush – Easily remove objects and fix defects—even those with irregular shapes such as threads or lint—with a single brush stroke. Take precise control over what&rsquo;s being removed as you make unwanted objects just disappear.</li>
+<li>Upright – Straighten tilted images with a single click. Upright analyzes images and detects skewed horizontal or vertical lines. You choose one of four correction methods, and Upright can even straighten images where the horizon is hidden.</li>
+<li>Radial Gradient – Lead your viewer&rsquo;s eye through your images with more flexibility and control. The radial gradient tool lets you create off-center vignette effects, or multiple vignette areas within a single image.
+Offline editing with Smart Previews – Easily work with images without bringing your entire library with you. Just generate smaller stand-in files called Smart Previews. Make adjustments or metadata additions to Smart Previews and your changes will be automatically applied to the full-size originals later.</li>
+<li>Video slideshow sharing – Easily share your work in elegant video slideshows. Combine still images, video clips, and music in creative HD videos that can be viewed on almost any computer or device.
+Improved photo book creation – Create beautiful photo books from your images. Lightroom includes a variety of easy-to-use book templates, and now you can edit them to create a customized look. Upload your book for printing with just a few clicks.</li>
+</ul>
+
+
+<p>&mdash;</p>
+
+<p>Unfortunately non of these features seem to fix the things that they broke going from Lightroom 3 to 4. That would be it runs incredibly slowly and takes an age to render the previews, this is actually very critical as it introduces a lot of lag making fine grain edits incredibly difficult when a sliders change takes seconds to be reflected in the preview there value diminishes quickly.</p>
+
+<p>A better write up of the features by the <a href="http://www.lightroomqueen.com/2013/04/15/whats-new-in-lightroom-5-0-beta/">Lightroom Queen</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -293,431 +644,6 @@ ans =
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/algebra-properties-of-real-x211d-numbers/">Algebra : Properties of Real (&#x211D) Numbers</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-14T17:57:46+00:00" pubdate data-updated="true">Feb 14<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/algebra-properties-of-real-x211d-numbers/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/algebra-properties-of-real-x211d-numbers/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Commutative</h2>
-
-<p>Configurable order of numbers:</p>
-
-<pre><code>x+y = y+x
-xy  = yx
-</code></pre>
-
-<h2>Associative </h2>
-
-<p>Order that multiplication is applied :</p>
-
-<pre><code>(x+y)+z =x+(y+z)
-(xy)z     = x(yz)
-</code></pre>
-
-<h2>Identity</h2>
-
-<pre><code>x+0 = x
-0+x = x
-x.1  = x
-1.x  = x
-</code></pre>
-
-<h2>Distributive</h2>
-
-<pre><code>(x + y)z = xz+xy
-</code></pre>
-
-<h2>Inverse</h2>
-
-<pre><code> x+(-x) = 0
--x + x  = 0
-
-1/x . x = 1
-x . 1/x  =1
-</code></pre>
-
-<h2>Multiplication Property of Zero</h2>
-
-<pre><code>x.0 = 0
-0.x = 0
-</code></pre>
-
-<p><a href="http://en.wikipedia.org/wiki/Real_number">Wikipedia Real Numbers</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vim-code-folding/">Vim Code Folding</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-22T16:37:17+00:00" pubdate data-updated="true">Jan 22<span>nd</span>, 2013</time>
-        
-           | <a href="/blog/tech/vim-code-folding/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-code-folding/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To enable code folding in Vim type (from normal mode):</p>
-
-<pre><code>:set foldmethod=marker
-</code></pre>
-
-<p>Or add this to your <code>.vimrc</code></p>
-
-<pre><code>set foldmethod=marker
-</code></pre>
-
-<p>Now anything contained with in <code>}</code> will be folded.</p>
-
-<h2>Commands</h2>
-
-<p>From Normal mode</p>
-
-<p>unfold <code>zo</code> (open)<br/>
-fold  <code>zc</code> (collapse)<br/>
-unfold all <code>zr</code><br/>
-Fold all <code>zm</code></p>
-
-<p>Read more on <a href="http://vim.wikia.com/wiki/Folding">vim wiki</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/nik-hdr-efex-pro-20-8499-even-in-the-uk/">Nik HDR Efex Pro 2.0 $84.99 (Even in the UK)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-29T11:58:24+00:00" pubdate data-updated="true">Dec 29<span>th</span>, 2012</time>
-        
-           | <a href="/blog/photography/nik-hdr-efex-pro-20-8499-even-in-the-uk/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/nik-hdr-efex-pro-20-8499-even-in-the-uk/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Initially Launched at $99 in the US or £99 in the UK. Today they seem to be charging $99 regardless of location.</p>
-
-<p>15% Dicount Code <em>NIKPSS</em> brings total to $84.99 (£53)!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/the-unworkable-lightroom-to-ipad-workflow/">The Unworkable Lightroom to iPad Workflow</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-24T16:05:49+00:00" pubdate data-updated="true">Dec 24<span>th</span>, 2012</time>
-        
-           | <a href="/blog/photography/the-unworkable-lightroom-to-ipad-workflow/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/the-unworkable-lightroom-to-ipad-workflow/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After a bit of research I decided to give <a href="http://www.photosmithapp.com/">PhotoSmith</a> Version 2.2 a go, it is the most expensive iPad app I have bought to-date. It fills a niche market and nothing else promised what it could deliver it might be worth it. Due to failed promises and many things not work as you would expect it was a massive drain on my time investigating how to get it to work. so the real cost of the app is the hours of you life it wasted!</p>
-
-<p>What I was initially looking for was the ability to import photos to Lightroom, Sit on the sofa with iPad pick my favourites sort out my tags then go back to edit it Lightroom. The other important feature for me was to export photoshoots so I could show people my edited photos in fullscreen on the ipad.</p>
-
-<p>The sync process was not very smooth and forced me to start using collection, well something might have to give to add this into the workflow. but on a whole the syncing back and forth between photosmith and Lightroom just did not work.</p>
-
-<p>May be I can export my final pictures, but they end up in the Camera Roll and photostream, What! this is potentially disastrous, if I was on a client shoot and took pictures export to Photosmith on the iPad to  show the client how they were coming out and found that they had also been shared with friends and family breaking clients confidentiality.</p>
-
-<p>Oh and the app will not start if you block access to your camera roll!</p>
-
-<p>After exporting one picture it seemed to be fine. Restarted app NO pictures, great it just lost the last sync. Lets try again, sent 3 photos over. Photos show up, lets view full screen, quiet good can flick between them. Then Boom, I know have some how got 887 photos in photosmith, while viewing fullscreen it decided to import my entire camera roll. I have specifically configured it not to load apps from any where but a Lightroom export.</p>
-
-<p>They say they are working on a new version, but I am not holding my breath.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-duck-typing-strings-and-arrays/">Ruby Duck Typing Strings and Arrays</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-20T16:12:08+00:00" pubdate data-updated="true">Dec 20<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/ruby-duck-typing-strings-and-arrays/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-duck-typing-strings-and-arrays/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>How to get method which handles a single string input or an array of strings?</p>
-
-<h2>Splat *</h2>
-
-<p>* turns single strings into Arrays, leaves arrays alone.</p>
-
-<pre><code>a = "hello"
-a = *a
-puts a.inspect
-=&gt;  ["hello"]
-
-a = ["hello", "world"]
-a = *a
-puts a.inspect
-=&gt; ["hello", "world"]
-</code></pre>
-
-<h2>Example Usage</h2>
-
-<pre><code>def unknown_input( input_data )
-  input_data = *input_data
-  input_data.each do |input_item|
-      puts input_item
-  end
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/reverting-rtorrent-version-on-snow-leopard/">Reverting Rtorrent Version on Snow Leopard</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-06T20:22:33+00:00" pubdate data-updated="true">Dec 6<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/reverting-rtorrent-version-on-snow-leopard/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/reverting-rtorrent-version-on-snow-leopard/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After running  a <code>brew upgrade</code> rtorrent was plagued with segmentation faults. Which look something like :</p>
-
-<pre><code>Caught Segmentation fault, dumping stack:B] [Port: 16006]                                                                    [U 0/14]    [D 0/30] [H 28/32] [S 196/198/208] [F 15/16]
-0 0   rtorrent                            0x0000000100001c8c _Z8do_panici + 130
-1 1   rtorrent                            0x0000000100044d48 _ZN13SignalHandler6caughtEi + 234
-2 2   libSystem.B.dylib                   0x00007fff872b51ba _sigtramp + 26
-3 3   libcrypto.0.9.8.dylib               0x00007fff81414491 ERR_get_state + 65
-4 4   libtorrent.14.dylib                 0x00000001002a75a9 _ZN7torrent13DiffieHellman13store_pub_keyEPhj + 45
-5 5   libtorrent.14.dylib                 0x0000000100292fb0 _ZN7torrent9Handshake20prepare_key_plus_padEv + 74
-6 6   libtorrent.14.dylib                 0x00000001002932ac _ZN7torrent9Handshake11event_writeEv + 284
-7 7   libtorrent.14.dylib                 0x0000000100247322 _ZN7torrent10PollKQueue7performEv + 236
-8 8   libtorrent.14.dylib                 0x0000000100247d69 _ZN7torrent10PollKQueue7do_pollExi + 383
-9 9   libtorrent.14.dylib                 0x000000010026b608 _ZN7torrent11thread_base10event_loopEPS0_ + 330
-10 10  rtorrent                            0x0000000100005af4 main + 12976
-11 11  rtorrent                            0x0000000100001820 start + 52
-12 12  ???                                 0x0000000000000001 0x0 + 1
-Abort trap
-</code></pre>
-
-<p>Since mid 2011 brew has added a versions command. Lets check what versions are available:</p>
-
-<pre><code>$ brew versions rtorrent
-0.9.2 git checkout 6b8d25f /usr/local/Library/Formula/rtorrent.rb
-0.8.9 git checkout e459d51 /usr/local/Library/Formula/rtorrent.rb
-0.9.0 git checkout 9b5cba7 /usr/local/Library/Formula/rtorrent.rb
-0.8.6 git checkout b782d9d /usr/local/Library/Formula/rtorrent.rb
-0.8.5 git checkout b92799d /usr/local/Library/Formula/rtorrent.rb
-
-$ brew versions libtorrent
-0.13.2 git checkout 8d5b242 /usr/local/Library/Formula/libtorrent.rb
-0.12.9 git checkout edd213c /usr/local/Library/Formula/libtorrent.rb
-0.13.0 git checkout 130b408 /usr/local/Library/Formula/libtorrent.rb
-0.12.6 git checkout 0476235 /usr/local/Library/Formula/libtorrent.rb
-0.12.5 git checkout d0ec1e6 /usr/local/Library/Formula/libtorrent.rb
-</code></pre>
-
-<p>The version giving me the segmentation faults is 0.9.2 with libtorrent 0.13.2, lets roll back to the previous version 0.8.9/0.12.9.</p>
-
-<pre><code>brew uninstall rtorrent libtorrent
-cd /usr/local/Library/Formula/
-git checkout edd213c
-# Not sure why brew thinks these are installed again but I had to run
-brew uninstall rtorrent libtorrent 
-brew install rtorrent libtorrent 
-</code></pre>
-
-<p>Once that has completed rtorrent should run as 0.8.9/0.12.9, which seems a whole lot more reliable on a mid 2010 Mac mini running snow leopard.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/lightroom-43-rc1-support-for-hidpi-retina-displays/">Lightroom 4.3 RC1, Support for HiDPI (Retina) Displays</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-09T00:15:53+00:00" pubdate data-updated="true">Nov 9<span>th</span>, 2012</time>
-        
-           | <a href="/blog/photography/lightroom-43-rc1-support-for-hidpi-retina-displays/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/lightroom-43-rc1-support-for-hidpi-retina-displays/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A new Release Candidate for Lightroom is out, <a href="http://labs.adobe.com/downloads/lightroom4-3.html">Lightroom 4.3 RC1</a>. Expires 31st Jan 2013.</p>
-
-<p>For me the main feature will be the support for hi resolution screens in the Develop module.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/14/">&larr; Older</a>
@@ -732,30 +658,30 @@ brew install rtorrent libtorrent
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (237)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (239)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/tech/error-storage-class-specified-for-parameter/">Error: Storage Class Specified for Parameter</a>
+        <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+        <a href="/blog/tech/xkill/">Xkill</a>
       </li>
     
       <li class="post">
-        <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
+        <a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a>
       </li>
     
       <li class="post">
-        <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
+        <a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Simulink: Scroll Wheel Erratic Behaviour</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
+        <a href="/blog/engineering/simulink-globally-set-sample-time/">Simulink: Globally Set Sample Time</a>
       </li>
     
   </ul>

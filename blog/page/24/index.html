@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I have captured all 5 lists here, but they are only a ⌘/ away. Library Develop Slideshow Print Web ">
+  <meta name="description" content="To make an automatic ActiveRecord database connection using ENV[&lsquo;DATABASE_URL&rsquo;] The following snippet can be used: From ActiveRecord 3.2. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,599 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/sinatra-activerecord-db-config-on-heroku/">Sinatra ActiveRecord DB Config on Heroku</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-22T10:04:48+01:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2011</time>
+        
+           | <a href="/blog/tech/sinatra-activerecord-db-config-on-heroku/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-activerecord-db-config-on-heroku/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To make an automatic <a href="http://api.rubyonrails.org/classes/ActiveRecord/Base.html">ActiveRecord</a> database connection using ENV[&lsquo;DATABASE_URL&rsquo;] The following snippet can be used:</p>
+
+<p>From <a href="http://apidock.com/rails/v3.2.1/ActiveRecord/Base/establish_connection/class">ActiveRecord 3.2.1</a> connections can be made with :</p>
+
+<pre><code>ActiveRecord::Base.establish_connection(ENV["DATABASE_URL"])
+</code></pre>
+
+<p>At some stage My first example also stopped working, Heroku have this example on there pages:</p>
+
+<pre><code>  db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+
+  ActiveRecord::Base.establish_connection(
+    :adapter  =&gt; db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+    :host     =&gt; db.host,
+    :port     =&gt; db.port,
+    :username =&gt; db.user,
+    :password =&gt; db.password,
+    :database =&gt; db.path[1..-1],
+    :encoding =&gt; 'utf8'
+  )
+</code></pre>
+
+<p>My original example for parsing the env variable and making he DB connection.</p>
+
+<pre><code>module ExampleSinatra
+  class App &lt; Sinatra::Base
+    use Rack::MethodOverride
+    set :public, "public"
+
+    configure :production do
+      db = ENV["DATABASE_URL"]
+      if db.match(/postgres:\/\/(.*):(.*)@(.*)\/(.*)/) 
+        username = $1
+        password = $2
+        hostname = $3
+        database = $4
+
+        ActiveRecord::Base.establish_connection(
+          :adapter  =&gt; 'postgresql',
+          :host     =&gt; hostname,
+          :username =&gt; username,
+          :password =&gt; password,
+          :database =&gt; database
+        )
+      end
+    end
+  end
+end
+if $0 == __FILE__
+  ExampleSinatra::App.run!
+end
+</code></pre>
+
+<p>From Heroku connecting using <a href="http://sequel.rubyforge.org/">Sequel</a> or <a href="http://datamapper.org/">Datamapper</a> is a little simpler:</p>
+
+<pre><code>Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://my.db')
+DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3://my.db')
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-script-connect-to-db-using-databaseyml/">Ruby Script Connect to DB Using database.yml</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-20T12:07:51+01:00" pubdate data-updated="true">Jun 20<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/ruby-script-connect-to-db-using-databaseyml/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-script-connect-to-db-using-databaseyml/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To connect to a rails style DB config outside of the normal workflow, or using a database.yml in a different workflow:</p>
+
+<pre><code>require 'yaml'
+require 'active_record'
+
+environment = ENV['RACK_ENV'] || 'development'
+dbconfig    = YAML.load(File.read('config/database.yml'))
+ActiveRecord::Base.establish_connection dbconfig[environment]
+
+#Load All models 
+Dir.glob("./app/models/*").each do |file|
+  require file 
+end
+
+#Now use Active record as you normally would
+# @user = User.create( :name =&gt; 'Dave' )
+# @user.save
+# @first_person = User.first
+</code></pre>
+
+<p>An example database.yml</p>
+
+<pre><code>development:
+    adapter: postgresql
+    host: localhost
+    port: 5432
+    username: 
+    password: 
+    database: example_dev
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/setting-up-postgresql-on-os-x/">Setting Up PostgreSQL on OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-20T11:35:31+01:00" pubdate data-updated="true">Jun 20<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/setting-up-postgresql-on-os-x/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/setting-up-postgresql-on-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>An old guide is written on the <a href="http://developer.apple.com/internet/opensource/postgres.htmlhttp://developer.apple.com/internet/opensource/postgres.html">Apple Developer Forum</a> however if you are using <a href="https://github.com/mxcl/homebrew">Homebrew</a> it is much simpler.</p>
+
+<pre><code>$ brew install postgresql
+</code></pre>
+
+<p>Define a data area for the database to be stored.</p>
+
+<pre><code>mkdir -p ~/.psgrs/data
+</code></pre>
+
+<p>Initialize the database folder:</p>
+
+<pre><code>#initidb can be found here /usr/local/Cellar/postgresql/9.0.4/bin/
+$ initdb -D ~/.psgrs/data
+</code></pre>
+
+<p>Create the database:</p>
+
+<pre><code>$ createdb example_dev
+</code></pre>
+
+<p>Start the postgresql server:</p>
+
+<pre><code># postgres can be found here /usr/local/Cellar/postgresql/9.0.4/bin
+$ postgres -D ~/.psgrs/data
+</code></pre>
+
+<h2>Summary of Postgresql setup for Development</h2>
+
+<pre><code>$ brew install postgresql
+$ mkdir -p ~/.psgrs/data
+$ initdb -D ~/.psgrs/data
+$ createdb example_dev
+$ postgres -D ~/.psgrs/data
+</code></pre>
+
+<p>A Rails database.yaml file might look something like:</p>
+
+<pre><code>development:
+    adapter: postgresql
+    host: localhost
+    port: 5432
+    username: 
+    password: 
+    database: example_dev
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-arrays-part-1/">Ruby Arrays, Part 1</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-23T23:37:26+01:00" pubdate data-updated="true">May 23<span>rd</span>, 2011</time>
+        
+           | <a href="/blog/tech/ruby-arrays-part-1/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-arrays-part-1/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Some uses of Arrays that were not apparent at first.</p>
+
+<h2>Enumeration</h2>
+
+<p><a href="http://ruby-doc.org/core/classes/Array.html#M000231">each</a> is the basic enumerator method but there is also <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001511">each_with_index</a> (and for hashes <a href="http://ruby-doc.org/core/classes/Hash.html#M000741">each_pair</a>)</p>
+
+<pre><code>['a', 'b', 'c', 'd'].each {|item| puts item }
+['a', 'b', 'c', 'd'].each_with_index {|item,index| puts "#{index}:#{item}" }
+{:a=&gt;1, :b=&gt;2}.each_pair {|key,value| puts "#{key}=&gt;#{value}" }
+</code></pre>
+
+<h2>Sorting</h2>
+
+<p>Sort is very easy with ruby if you want a basic sort [4,5,3,2,7].sort will do. However sorting by any key is possible using sort_by. Sort_by performs a <a href="http://amaras-tech.co.uk/people/morgan/article/98">Schwartzian Transform</a></p>
+
+<pre><code>['a','B','D','c'].sort
+#=&gt; ["B", "D", "a", "c"]
+['a','B','D','c'].sort_by {|x| x.downcase }
+#=&gt; ["a", "B", "c", "D"]    
+</code></pre>
+
+<h2>Return Arrays</h2>
+
+<p>When you want an array, map modifies the contents of each element:</p>
+
+<pre><code>[1,2,3,4].map {|i| i*2 }
+#=&gt; [2,4,6,8]
+# or with any enumerable (Range)
+(1..4).map {|i| i*2 }
+</code></pre>
+
+<p>select and reject can be used to select and remove elements from the enumerable, and return a new enumerable, they are immutable methods.</p>
+
+<pre><code>[0,1,2,3,4,5].select { |x| x &gt; 2 }
+#=&gt; [3,4,5]
+[0,1,2,3,4,5].reject { |x| x &lt; 3 }
+#=&gt; [3,4,5]
+</code></pre>
+
+<p>select! and reject! (bang operators) modify the existing enumerable. They have more natural names that I think should be used when appropriate, keep_if and delete_if.</p>
+
+<pre><code>[0,1,2,3,4,5].keep_if { |x| x &gt; 2 }
+#=&gt; [3,4,5]
+[0,1,2,3,4,5].delete_if { |x| x &lt; 3 }
+#=&gt; [3,4,5]
+</code></pre>
+
+<h2>Reduction to a Single Value</h2>
+
+<p>inject can be called on any enumerable object, it iterates over each item with an accumulator.</p>
+
+<pre><code>[1,2,3,4].inject {|memory, item| memory * (item+1) } 
+</code></pre>
+
+<p>For basic operations there is the reduce method which can be used for summing and multiplying out the arrays.</p>
+
+<p>Sum:</p>
+
+<pre><code> [1,2,3,4].reduce :+
+</code></pre>
+
+<p>Multiply:</p>
+
+<pre><code>[1,2,3,4].reduce :*
+</code></pre>
+
+<h2>Booleans</h2>
+
+<p><a href="http://ruby-doc.org/core/classes/Enumerable.html#M001510">include?</a> is used to check if the array contains the supplied object.</p>
+
+<pre><code>['a','b','c'].include?( 'b' )
+#=&gt; true
+</code></pre>
+
+<p><a href="http://ruby-doc.org/core/classes/Enumerable.html#M001499">all?</a> and <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001500">any?</a> can be used to check if the array matches against given criteria.</p>
+
+<pre><code>[1,2,3,4].any?{|x| x &gt; 3 }
+#=&gt; true
+[1,2,3,4].all?{|x| x &gt; 3 }
+#=&gt; false
+[1,2,3,4].any?{|x| x &gt; 5 }
+#=&gt; false
+[1,2,3,4].all?{|x| x &gt; 0 }
+#=&gt; true
+</code></pre>
+
+<p>I often use <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001500">any?</a> with an array of regular expressions to match a string to any item.</p>
+
+<pre><code>text   = "one"
+search = [/one/, /two/, /three/]
+found  = search.any? { |regexp| text.match( regexp ) }
+#=&gt; true
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/installing-gistvim/">Installing gist.vim</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-20T20:32:05+01:00" pubdate data-updated="true">May 20<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/installing-gistvim/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/installing-gistvim/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This vim plugin will allow you to gist directly from vim, simple way is just :Gist to gist entire file more options in the <a href="https://github.com/mattn/gist-vim/blob/master/README.mkd">Full Readme</a>.</p>
+
+<p>If you have not heard of gists or Github. Github is a very popular (especially with in the Ruby community) way of sharing open source code. <a href="https://gist.github.com/">Gists</a> are the easy way to save and share small snippets of code.</p>
+
+<h2>Install</h2>
+
+<pre><code>cd ~/.vim/plugin
+wget --nocheck-certificate https://github.com/mattn/gist-vim/raw/master/plugin/gist.vim
+cd ../doc
+wget --no-check-certificate https://github.com/mattn/gist-vim/raw/master/doc/gist-vim.txt
+
+#Now to set Your env variables
+git config --global github.user your-name-here
+git config --global github.token your-token-here
+</code></pre>
+
+<p>You Github token can be found on the <a href="https://github.com/account">GitHub Admin</a> Account Admin tab.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/obnoxious-gem-warnings/">Obnoxious Gem Warnings</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-11T17:11:47+01:00" pubdate data-updated="true">May 11<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/obnoxious-gem-warnings/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/obnoxious-gem-warnings/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>recenlty after updating rubygems Istarted getting a lot of warning like this when running ruby or executable gems:</p>
+
+<p>NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299@global/specifications/rake-0.8.7.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/bundler-1.0.12.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/bundler-1.0.7.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/heroku-1.12.0.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/heroku-2.0.4.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/httparty-0.5.2.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/httparty-0.7.7.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/json-1.4.6.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/json-1.5.1.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.</p>
+
+<h2>Using RVM the fix is to run</h2>
+
+<pre><code> rvm rubygems current
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/recent-issue-with-building-gems/">Recent Issue with Building Gems</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-07T23:25:34+01:00" pubdate data-updated="true">May 7<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/recent-issue-with-building-gems/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/recent-issue-with-building-gems/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When running gem build on a new library I have been working on I started getting the following error:</p>
+
+<pre><code>[ruby_svg_light.gemspec] isn't a Gem::Specification (Rake::FileTask instead).
+ERROR:  While executing gem ... (NoMethodError)
+    undefined method `mark_version' for nil:NilClass
+</code></pre>
+
+<p>It was from a gemspec similar to that below</p>
+
+<pre><code>require 'rake/gempackagetask' 
+
+NAME = "ruby_svg_light" 
+Dir.chdir( './lib/')
+require NAME
+Dir.chdir( './../')
+
+spec = Gem::Specification.new do |s|
+  s.name         = NAME
+  s.version      = RubySVGLight::VERSION
+  s.platform     = Gem::Platform::RUBY
+  s.summary      = 'Basic Helper for creating SVG Files'
+  s.homepage     = 'http://amaras-tech.co.uk/software/RubySVGLight'
+  s.authors      = "Morgan Prior"
+  s.email        = NAME + "_gem@amaras-tech.co.uk"
+  s.description  = %{A basic library for building SVG files. Not all properties of SVG are supported}
+  s.files        = [Dir.glob("LICENSE.rtf")]
+  s.files        += Dir.glob("examples/*")
+  s.files        += Dir.glob("lib/**/*")
+  s.files        += Dir.glob("spec/*") 
+end
+Rake::GemPackageTask.new(spec).define
+</code></pre>
+
+<p>The Fix was to change to this (Removing Rake::GemPackageTask):</p>
+
+<pre><code>NAME = "ruby_svg_light"
+Dir.chdir( './lib/')
+require NAME
+Dir.chdir( './../')
+
+Gem::Specification.new do |s|
+  s.name         = NAME
+  s.version      = RubySVGLight::VERSION
+  s.platform     = Gem::Platform::RUBY
+  s.summary      = 'Basic Helper for creating SVG Files'
+  s.homepage     = 'http://amaras-tech.co.uk/software/RubySVGLight'
+  s.authors      = "Morgan Prior"
+  s.email        = NAME + "_gem@amaras-tech.co.uk"
+  s.description  = %{A basic library for building SVG files. Not all properties of SVG are supported}
+  s.files        = [Dir.glob("LICENSE.rtf")]
+  s.files        += Dir.glob("examples/*")
+  s.files        += Dir.glob("lib/**/*")
+  s.files        += Dir.glob("spec/*")
+end
+</code></pre>
+
+<p>It looks like the new format if for the gemspec is to return a Gem::Specification rather than run the task. I do not know when this change happened.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -274,501 +867,6 @@ set virtualedit=onemore
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vimfu-reindent/">Vimfu Reindent</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-19T19:55:19+01:00" pubdate data-updated="true">Apr 19<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/vimfu-reindent/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vimfu-reindent/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The latest addition to <a href="https://github.com/morganp/dotfiles/blob/master/dotfiles/.vimrc#L197">my .vimrc</a> below, allows ;g to smart indent the current file. It is the same as gg=G but returning you to the same position.</p>
-
-<p>Update based on Recommendations from <a href="http://drewneil.com/">Drew Neil</a> and <a href="http://technotales.wordpress.com/2010/03/31/preserve-a-vim-function-that-keeps-your-state/">Jonathan Palardy</a>, a more generic pereserving state function, which can be mapped to a key sequence with specific commands.</p>
-
-<pre><code>function! Preserve(command)
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  execute a:command
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-
-" SmartIndent keeping cursor position
-map ;g :call Preserve("normal! gg=G")&lt;CR&gt;
-</code></pre>
-
-<p>If this does not work for a particular file type you use you probably need to look at getting a *.syntax file for your language.</p>
-
-<h2>My Original Method </h2>
-
-<pre><code>function! Indent()
-  " Capture Current Line
-  let currentline_num = line(".")
-  let currentcol_num = virtcol('.')
-
-  " Reindent from start to end of file
-   normal! gg=G
-
-   " Restore Current Line and column
-   exe 'normal '.currentline_num.'G'.currentcol_num.'|'
-endfunction
-
-"assign to ;g in normal mode
-map ;g :call Indent()&lt;CR&gt;
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/behaviour-and-state/">Behaviour and State</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-16T17:59:44+01:00" pubdate data-updated="true">Apr 16<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/behaviour-and-state/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/behaviour-and-state/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Classes are a basic Object Orientated Structure which encapsulate state and behaviour. Some times you just require to capture state/storage of a data structure with out any behaviour, in this case Ruby&rsquo;s Stuct can be useful.</p>
-
-<pre><code>class Desk
-  attr_accessor :height, :width, :depth
-
-  def initialize(height=nil, width=nil, depth=nil)
-    @height = height
-    @width = width
-    @depth = depth
-  end
-end
-</code></pre>
-
-<p>Becomes (Is the same as):</p>
-
-<pre><code>DeskS = Struct.new(:height, :width, :depth)
-</code></pre>
-
-<p>Instantiation</p>
-
-<pre><code>a = Desk.new(12, 13, 14)
-b = DeskS.new(12, 13, 14)
-
-a.height
- =&gt; 12
-
-b.height
- =&gt; 12 
-</code></pre>
-
-<p>Taking this further for less code in a basic class. This might be too far!</p>
-
-<pre><code>#In herriting from a Struct
-# class DeskWithBehaviour &lt; DeskS
-class DeskWithBehaviour &lt; Struct.new(:height, :width, :depth)
-  def volume
-    height * width * depth
-  end
-end
-
-# Or Pass Struct a block
-DeskSPlus = Struct.new(:height, :width, :depth) do
-  def volume
-    height * width * depth
-  end
-end
-
-c = DeskWithBehaviour.new(1,2,3)
-c.volume
- =&gt; 6
-c.class
- =&gt; DeskWithBehaviour
-
-d = DeskSPlus.new(1,2,3)
-d.volume
- =&gt; 6
-d.class
- =&gt; DeskSPlus
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/better-open-source-project-setup-with-rvm-bundler/">Better Open Source Project Setup, with RVM & Bundler</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-10T06:35:10+01:00" pubdate data-updated="true">Apr 10<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/better-open-source-project-setup-with-rvm-bundler/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/better-open-source-project-setup-with-rvm-bundler/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Based on &lsquo;Raise the bar, lower the pressure&rsquo; given by Durran Jordan at ScotRubyConf 2011.</p>
-
-<p>There has been some debate as to whether the project .rvmrc should be included in git. With the correct options including .rvmrc and bundler can make working on open source projects easier. I have an example on <a href="https://github.com/morganp/OpenSourceExample">github</a>. If you have not hear of Ruby Version Manager RVM I suggest you <a href="https://rvm.beginrescueend.com/rvm/install/">check it out</a>.</p>
-
-<p>An example project .rvmrc</p>
-
-<pre><code>rvm_gemset_create_on_use_flag=1
-rvm 1.9.2@OpenSourceExample
-</code></pre>
-
-<p>The first line is really important here on first time cd&#8217;ing into the folder it creates the gemset instead of outputting a warning that it does not exist.</p>
-
-<p>The second line specifies the version of ruby to use and defines the name of the gemset. Gemsets create a sandboxed gem area so that it does not pollute your global gem space.</p>
-
-<p><a href="http://gembundler.com/">Bundler</a> is then used to manage the gems.</p>
-
-<h2>Install Bundler</h2>
-
-<p>Bundler requires gem &mdash;version greater than 1.3.6, but it is a good idea to upgrade.</p>
-
-<pre><code>cd OpenSourceExample
-gem update --system
-rvm gemset global
-gem install bundler
-cd .. &amp;&amp; cd -
-</code></pre>
-
-<p>Write your [gemfile][<a href="http://gembundler.com/gemfile.html">http://gembundler.com/gemfile.html</a>] <br/>
-1) With at least 1 source <br/>
-2) If the gem install has a different name to require then :require has to be specified eg.</p>
-
-<p>   gem install sinatra-session
-   *.rb  contains require &ldquo;sinatra/session&rdquo;</p>
-
-<p>Example ./gemfile</p>
-
-<pre><code>source "http://rubygems.org"   
-
-gem "sinatra", "~&gt; 1"    
-gem "sinatra-session", :require =&gt; 'sinatra/session'
-
-group :development do
-  gem "sinatra-reloader", "~&gt; 0"
-  gem "thin", "~&gt; 1"
-end
-
-group :test do
-  gem "rspec", :require =&gt; "spec"
-end
-</code></pre>
-
-<p>Then install the gems specified and add the gemfile and Gemfile.lock to git</p>
-
-<pre><code>$ bundle install
-$ git add gemfile Gemfile.lock
-</code></pre>
-
-<h2>Workflow</h2>
-
-<p>When picking up an open source project set up like this, the workflow should just be:</p>
-
-<pre><code>$ git clone https://github.com/morganp/OpenSourceExample
-$ cd OpenSourceExample
-#Review the .rvmrc and type yes if it is safe
-$ bundle install
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/schwartzian-transform/">Schwartzian Transform</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-08T10:37:44+01:00" pubdate data-updated="true">Apr 8<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/schwartzian-transform/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/schwartzian-transform/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I recently heard about the Schwartzian transform, which is a sorting idiom from perl. It allows an array of objects to be efficiently sorted by any property. Part of the cleverness is the use of anonymous arrays which allows them to be garbage collected quickly.</p>
-
-<p><a href="http://en.wikipedia.org/wiki/Schwartzian_transform">Wikipedia</a> has a detailed description, however the general form (in perl) is:</p>
-
-<pre><code>@sorted = map  { $_-&gt;[0] }
-          sort { $a-&gt;[1] cmp $b-&gt;[1] }
-          map  { [$_, foo($_)] }
-              @unsorted;
-</code></pre>
-
-<p>A good history of it can be <a href="http://www.stonehenge.com/merlyn/UnixReview/col64.html">read here</a>.</p>
-
-<p>My point of bring all of this up other than pointing out a cool sorting algorithm is that any <strong>ruby</strong> class including <a href="http://ruby-doc.org/core/classes/Enumerable.html">Enumerable</a> (Arrays, Hashes etc) has this built in with the <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001481"><strong>.sort_by</strong></a> method.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/reading-list/">Reading List</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-08T10:19:56+01:00" pubdate data-updated="true">Apr 8<span>th</span>, 2011</time>
-        
-           | <a href="/blog/photography/reading-list/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/reading-list/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>My <a href="http://www.shelfari.com/o1514252429/shelf">Shelfari</a></p>
-
-<h2>To Read</h2>
-
-<p>Photoshop CS5 and Lightroom 3, ISBN 978-1-933952-67-2<br/>
-Developing Vision and Style, ISBN 978-1-9025 38495<br/>
-Pragmatic Thinking and Learning, ISBN 978-1934356050<br/>
-Pragmatic Guide to Git,<br/>
-The RSpec Book,<br/>
-Ruby Best Practises,<br/>
-The Agile Samurai, <br/>
-jQuery Novice to Ninja,<br/>
-Structure and Interpretation of Computer Programming,<br/>
-Metaprogramming Ruby,</p>
-
-<h2>Recommended Computing</h2>
-
-<p>Classic Shell Scripting, ISBN 0-596-00595-4<br/>
-The Passionate Programmer, ISBN 978-1-934356-34-0</p>
-
-<h2>Recommended Photography</h2>
-
-<p>Lightroom 2 Adventure, ISBN 978-0-596-52101-1<br/>
-Black and White, ISBN 978-1-904705-57-4<br/>
-First Light, ISBN 1-902538-24-2</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/unregistered-torrent-flush-the-dns/">&#8216;Unregistered Torrent&#8217; Flush the DNS</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-31T10:45:20+01:00" pubdate data-updated="true">Mar 31<span>st</span>, 2011</time>
-        
-           | <a href="/blog/tech/unregistered-torrent-flush-the-dns/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/unregistered-torrent-flush-the-dns/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If a torrent application has been running and torrents start showing a status of &lsquo;unregistered torrent&rsquo; a likely cause is that the server IP address has changed. To fix this you need to close the application and flush the DNS, before starting the application again.</p>
-
-<p>To flush the DNS cache:</p>
-
-<h2>OS X Leopard / Snow Leopard</h2>
-
-<pre><code>$ sudo dscacheutil -flushcache
-</code></pre>
-
-<h2>Windows XP</h2>
-
-<pre><code>$ lookupd -flushcache
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-cli-user-input-using-gets/">Ruby CLI User Input Using Gets</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-27T06:04:31+01:00" pubdate data-updated="true">Mar 27<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-cli-user-input-using-gets/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-cli-user-input-using-gets/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Using a while true loop with &lsquo;gets&rsquo; and a case statement, can create a compact command line interface for ruby scripts.</p>
-
-<pre><code>while true
-  puts "'q' to quit, 'c' to continue"
-  command = gets
-  case
-    when command.match(/^q/) then
-      puts "Quit"
-      break
-    when command.match(/^c/) then
-      puts "Continue"
-  end # case
-end # while true
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/25/">&larr; Older</a>
@@ -783,30 +881,30 @@ end # while true
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (31)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (237)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (239)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/tech/error-storage-class-specified-for-parameter/">Error: Storage Class Specified for Parameter</a>
+        <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/shell-redirection/">Shell Redirection</a>
+        <a href="/blog/tech/xkill/">Xkill</a>
       </li>
     
       <li class="post">
-        <a href="/blog/engineering/floating-point-arithmetic-is-not-associative/">Floating Point Arithmetic Is Not Associative</a>
+        <a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a>
       </li>
     
       <li class="post">
-        <a href="/blog/photography/adobe-creative-cloud-is-dot-dot-dot/">Adobe Creative Cloud Is &#8230;</a>
+        <a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Simulink: Scroll Wheel Erratic Behaviour</a>
       </li>
     
       <li class="post">
-        <a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a>
+        <a href="/blog/engineering/simulink-globally-set-sample-time/">Simulink: Globally Set Sample Time</a>
       </li>
     
   </ul>

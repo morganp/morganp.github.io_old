@@ -1473,20 +1473,56 @@
         <lastmod>2014-06-19T20:49:02+01:00</lastmod>
     </url>
     <url>
+        <loc>http://lizard-spock.co.uk/blog/engineering/matlab-find-all-gain-blocks/</loc>
+        <lastmod>2014-07-30T19:59:59+01:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/engineering/simulink-list-programmable-block-properties/
+        </loc>
+        <lastmod>2014-07-30T20:01:16+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/engineering/simulink-globally-set-sample-time/</loc>
+        <lastmod>2014-07-30T20:02:54+01:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/engineering/simulink-scroll-wheel-erratic-behaviour/
+        </loc>
+        <lastmod>2014-07-30T20:21:55+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/engineering/submit-to-sge-as-if-working-locally/</loc>
+        <lastmod>2014-07-30T20:16:07+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/xkill/</loc>
+        <lastmod>2014-07-30T20:17:24+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/list-files-ignored-by-git/</loc>
+        <lastmod>2014-07-30T20:19:10+01:00</lastmod>
+    </url>
+    <url>
         <loc>http://lizard-spock.co.uk/about/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>http://lizard-spock.co.uk/blog/archives/</loc>
-        <lastmod>2014-06-19T20:49:02+01:00</lastmod>
+        <lastmod>2014-07-30T20:21:55+01:00</lastmod>
     </url>
     <url>
         <loc>http://lizard-spock.co.uk/</loc>
-        <lastmod>2014-06-19T20:49:02+01:00</lastmod>
+        <lastmod>2014-07-30T20:21:55+01:00</lastmod>
     </url>
     <url>
         <loc>http://lizard-spock.co.uk/license/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/matlab-find-all-gain-blocks/</loc>
+        <lastmod>2014-07-30T19:56:34+01:00</lastmod>
     </url>
     <url>
         <loc>http://lizard-spock.co.uk/robots.txt</loc>
