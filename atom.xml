@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-07-30T20:22:16+01:00</updated>
+  <updated>2014-08-19T06:28:42+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Word WORD the Difference]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/word-word-the-difference/"/>
+    <updated>2014-08-19T06:27:30+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/word-word-the-difference</id>
+    <content type="html"><![CDATA[<p>Just realised there is a difference between word and WORD in Vim.</p>
+
+<p>WORD is non-blank delimited by whitespace.
+word is alpha-numeric and other non-blank characters delimited by whitespace and punctuation. &lsquo;iskeyword&rsquo; can be used to move delimiters in to part of the selection of the word.</p>
+
+<p>by default :</p>
+
+<pre><code>this-is-four-words
+this-is-one-WORD
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[List Files Ignored by Git]]></title>
@@ -493,22 +511,6 @@ ans =
 <p><img src="http://lizard-spock.co.uk/images/Photography/fstop_icu_large_lighting/morganp-20140517-FStop-_MG_8927.jpg" alt="" /></p>
 
 <p>The collapsed soft box is folded into the right hand side. Additional accessories are a <a href="https://www.amazon.co.uk/dp/B0007DDK7A?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B0007DDK7A&amp;adid=1VSQ11QZRMHHASH7FHN9&amp;">3M Lastolite off camera cord</a>, <a href="https://www.amazon.co.uk/dp/B002D4AHT0?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B002D4AHT0&amp;adid=0PB41F04SGBY01WKVJYB&amp;">Colorvision SpyderCube</a> and a <a href="https://www.amazon.co.uk/dp/B0007DDK7A?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B0007DDK7A&amp;adid=1VSQ11QZRMHHASH7FHN9&amp;">Stofen</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Kettlebell Rack]]></title>
-    <link href="http://lizard-spock.co.uk/blog/home/kettlebell-rack/"/>
-    <updated>2014-05-28T18:32:43+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/home/kettlebell-rack</id>
-    <content type="html"><![CDATA[<p><img src="http://lizard-spock.co.uk/images/Home/KettlebellRack/morganp-20140518-diy-_MG_8954.jpg" alt="" />
-Kettlebell rack with 24kg, 16kg, 8kg, 12kg, 16kg, 20kg.</p>
-
-<p><img src="http://lizard-spock.co.uk/images/Home/KettlebellRack/morganp-20140518-diy-_MG_8960.jpg" alt="" />
-End detail showing bracing.</p>
-
-<p><img src="http://lizard-spock.co.uk/images/Home/KettlebellRack/morganp-20140518-diy-_MG_8968.jpg" alt="" />
-Underside of rack.</p>
 ]]></content>
   </entry>
   

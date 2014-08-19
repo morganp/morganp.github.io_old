@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/blog/tech/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-07-30T20:22:16+01:00</updated>
+  <updated>2014-08-19T06:28:42+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Word WORD the Difference]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/word-word-the-difference/"/>
+    <updated>2014-08-19T06:27:30+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/word-word-the-difference</id>
+    <content type="html"><![CDATA[<p>Just realised there is a difference between word and WORD in Vim.</p>
+
+<p>WORD is non-blank delimited by whitespace.
+word is alpha-numeric and other non-blank characters delimited by whitespace and punctuation. &lsquo;iskeyword&rsquo; can be used to move delimiters in to part of the selection of the word.</p>
+
+<p>by default :</p>
+
+<pre><code>this-is-four-words
+this-is-one-WORD
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[List Files Ignored by Git]]></title>
@@ -68,65 +86,6 @@ can call xkill and get a skull and crossbones cursor to kill the application.</p
 
 <pre><code>./ShellFile.sh &gt;&amp; test.log
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Octopress Categories with Different Styles]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/octopress-categories-with-different-styles/"/>
-    <updated>2014-06-14T08:24:01+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/octopress-categories-with-different-styles</id>
-    <content type="html"><![CDATA[<p>As I use the code blocks for ingredient lists on my recipe pages I wanted to
-have a different style, lighter background instead of black.</p>
-
-<p>I currently manually set a different layout in the _post header:</p>
-
-<pre><code>layout: post
-categories: 
-- Tech
-
-layout: recipe
-categories: 
-- Cooking
-</code></pre>
-
-<!-- more -->
-
-
-<p>The layout will then look for a matching layout in <code>source/_layouts</code></p>
-
-<p>Manually create your new layout (instructions from top level Octopress site):</p>
-
-<pre><code>cp source/_layouts/post.html source/_layouts/recipe.html
-</code></pre>
-
-<p>Edit <code>source/_layouts/recipe.html</code> changing the role to <code>recipe</code>:</p>
-
-<pre><code>---
-layout: default
-single: true
----
-
-&lt;div&gt;
-&lt;article class="hentry" role="recipe"&gt;
-  \{\% include article.html \%\}
-  &lt;footer&gt;
-    &lt;p class="meta"&gt;
-</code></pre>
-
-<p>This will now pick up the styling that <code>post</code> also gets but we can target our modifications to <code>article[role="recipe"]</code>.
-For custom stylings apply changes in to the relevant file in <code>sass/custom/</code>.</p>
-
-<p>To modify the background colour of a code block<br/>
-<code>sass/custom/_styles.scss</code> add:</p>
-
-<pre><code>// Customise the recipe layout
-article[role="recipe"] pre {
-  background-color: $sidebar-bg;
-}
-</code></pre>
-
-<p>NB: <code>$sidebar-bg</code> is defined in <code>sass/base/_theme.scss</code></p>
 ]]></content>
   </entry>
   

@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="While not attempted getting good images of the milkyway yet every so often I see some good examples and do a little bit more research. This thread on &hellip;">
+  <meta name="description" content="A typical work flow in Matlab involves a folder filled with scripts and functions.
+Over time this folder grows until it becomes completely &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,119 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/name-spacing-in-matlab/">Name Spacing in Matlab</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-12T20:51:19+01:00" pubdate data-updated="true">Sep 12<span>th</span>, 2013</time>
+        
+           | <a href="/blog/engineering/name-spacing-in-matlab/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/name-spacing-in-matlab/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A typical work flow in Matlab involves a folder filled with scripts and functions.
+Over time this folder grows until it becomes completely unmaintainable and
+dependencies between scripts can not be tracked.</p>
+
+<p>The next step is to group the related functions into folders in maintainable
+collections. They can then be added to the scripts that require them by adding to
+Matlabs search path via:</p>
+
+<pre><code>addpath('../collection_of_functions_a/');
+addpath('../collection_of_functions_b/');
+</code></pre>
+
+<p>The main issue I have with this is that of name spacing when working with third
+party functions or developing your own it would be easy to override other functions
+even internal ones. For toolbox developers it is hard to known all the function names
+from matlabs toolboxes. After a name collision which one is picked up is
+dependent on the path order. Other languages often use name spacing to avoid these
+name conflicts.</p>
+
+<p>Since MATLAB Version 7.6 <a href="http://www.mathworks.co.uk/help/matlab/matlab_oop/scoping-classes-with-packages.html">Packages</a> have been available for just this, adding
+name spacing to classes, but it also works for raw (plain) functions.</p>
+
+<p>To create a package, as before place functions in a folder, start the folder name
+with a <code>+</code>, ie <code>+mypkg</code> then you have created package mypkg.</p>
+
+<p>To use the package functions in a script they must be <a href="http://www.mathworks.co.uk/help/matlab/ref/import.html">imported</a>.</p>
+
+<pre><code>import mypkg.*
+
+%% call function_x
+a = mypkg.function_x() ;
+</code></pre>
+
+<p>As packages themselves can not be on the path you have to <a href="http://www.mathworks.co.uk/help/matlab/matlab_env/files-and-folders-that-matlab-accesses.html">make the parent folder accessible</a>.</p>
+
+<p>If you have a folder containing a lot of packages then this is quite useful.
+Add one folder to path then import the required packages.</p>
+
+<p>If the packages are being independently maintained then it is likely that they
+all have separate hierarchy (I think this is good from a development point of
+view). To avoid adding unnecessary items to your search path I would recommend a
+hierarchy of:</p>
+
+<pre><code>Top_level_package
+  function
+  +my_pkg
+    function_x.m
+    function_y.m
+  test
+    run_test_function_x.m
+    run_test_function_y.m
+</code></pre>
+
+<p>run_test_function_x.m :</p>
+
+<pre><code>addpath('../function/');
+import my_pkg.function_x
+
+%% test function_x
+% ...
+</code></pre>
+
+<p>The downside of this is that every package needs an <code>addpath</code> and <code>import</code>.
+Which you will have unless all your packages live under one parent directory.</p>
+
+<p>An excerpt from <a href="http://www.mathworks.co.uk/help/matlab/matlab_env/what-is-the-matlab-search-path.html">What is in the Matlab Search Path</a>:</p>
+
+<blockquote><p>The userpath folder is first on the search path, above the folders supplied by
+MathWorks. By default, MATLAB adds the userpath folder to the search path at
+startup. Therefore, the userpath is convenient for storing files where MATLAB
+can access them.</p>
+
+<p>The userpath consists of a primary path, and on Macintosh and UNIX® platforms,
+it also contains a secondary path. The primary path is only one folder, but the
+secondary path can contain multiple folders.</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -524,84 +638,6 @@ puts expand_envvars( s )
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/terminal-colours/">Terminal Colours</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-12T19:16:31+01:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/terminal-colours/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/terminal-colours/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have decided to clean up my vim colorschemes. I have been using ir_black for sometime but it does not look the same as others who use it. I think I was forcing it into 256 or 16 color mode.</p>
-
-<p>Some vim command line on some terminals looked awful and I had to switch to another colorscheme just so I could see the text.</p>
-
-<p>I have decided to pick an 8,16,256 and full color scheme and load them automatically, rather than trying to find a colorscheme which degraded gracefully, they just never seemed to do it that well.</p>
-
-<p>From <a href="http://blog.sanctum.geek.nz/tag/xterm-256color/">sanctum.geek.nz</a> I discovered the <code>tput colors</code> command. Vims <code>&amp;t_Co</code> will reflect this value.  But it only reflects the calling terminals capabilities, so calling gvim or mvim from an 8 bit color terminal your &amp;t_Co will still be 8.</p>
-
-<p>After some trouble getting the 8 colour scheme to work posted a question on <a href="http://superuser.com/questions/604589/vim-non-gui-background-will-not-go-white">superuser</a>.</p>
-
-<p>The main solution seems to be to append your TERM envar with -256color to force 256 Colour detection.  I was originally hesitant to blindly apply 256 color to any system I may be working on, but I think it would be rare to come across a terminal that does not support 256 colors these days. This would also have to be a system/network where I have already set-up my dotfiles.</p>
-
-<p>Adding -256color to term makes tput return 256 and makes vim t_Co 256 as well.
-For csh:</p>
-
-<pre><code>setenv TERM $TERM-256color
-</code></pre>
-
-<p>For a bit more protection you should stop multiple -256colors being appended i.e. stop xterm-256color-256color if called from bash with 256color extension already applied.</p>
-
-<pre><code>if ($TERM =~ *256color*) then
-  #Already 256color
-else
-  setenv TERM $TERM-256color
-endif
-</code></pre>
-
-<p>For Bash:</p>
-
-<pre><code>if [[ "$TERM" != *256color* ]]
-then
-  export TERM=$TERM-256color
-fi
-</code></pre>
-
-<p>Using a <a href="https://github.com/wardi/xterm_colour_chart">python script</a> you can display color charts in the terminal. It should be clear if 256 colors is not working, you would only see 16 colour blocks.</p>
-
-<p><a href="http://flickr.com/gp/morgan_prior/45kh8P"> <img src="http://farm6.staticflickr.com/5542/9272025578_7a86fc474c_n.jpg" alt="colour block" /> </a></p>
-
-<p>After all of this instead of getting my vim colour schemes to degrade gracefully I force everything into 256 colours mode. Which I think is actually ok and I get to use better colour schemes all/more of the time.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -616,11 +652,15 @@ fi
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (239)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (240)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/word-word-the-difference/">Word WORD the Difference</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
@@ -636,10 +676,6 @@ fi
     
       <li class="post">
         <a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Simulink: Scroll Wheel Erratic Behaviour</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/simulink-globally-set-sample-time/">Simulink: Globally Set Sample Time</a>
       </li>
     
   </ul>
