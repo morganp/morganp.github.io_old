@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="When displaying blog/articles it is often nice to have previous and next posts. Simply -1 +1 from the current post.id is not enough because posts &hellip;">
+  <meta name="description" content="When I install gems on my server I do not get any of the documentation which is normally 3-5 times larger than the gem itself. Installing gems with &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,61 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/gem-install-with-out-the-docs/">Gem Install with Out the Docs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-10T14:11:26+01:00" pubdate data-updated="true">Apr 10<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/gem-install-with-out-the-docs/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/gem-install-with-out-the-docs/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When I install gems on my server I do not get any of the documentation which is normally 3-5 times larger than the gem itself. Installing gems with out docs can be done via</p>
+
+<pre><code>$ gem install --no-ri --no-rdoc gem_name 
+</code></pre>
+
+<p>Based this <a href="http://bparanj.blogspot.com/2008/11/how-to-install-gem-without-rdoc-or-ri.html">blog post</a> I have created a ~/.gemrc so that it does the no docs automatically.</p>
+
+<pre><code>:update_sources: true
+:bulk_threshold: 1000
+:sources: 
+- http://rubygems.org
+- http://gems.github.com
+gem: --no-ri --no-rdoc
+:verbose: true
+:benchmark: false
+:backtrace: false
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -596,47 +651,6 @@ ruby app.rb
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/amaras-finally-online/">Amaras Finally Online</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/amaras-finally-online/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/amaras-finally-online/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Just a short first note to announce the fact that the site is finally up.</p>
-
-<p>We are running on <a href="http://www.webfaction.com/?affiliate=morgy">WebFaction</a>, the site is using <a href="http://www.modrails.com/">Passenger</a> (Rack) to server a <a href="http://www.sinatrarb.com">Sinatra</a> based application.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/35/">&larr; Older</a>
@@ -651,11 +665,15 @@ ruby app.rb
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (36)</a></li><li><a href='/blog/tech'>Tech (240)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (240)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/photography/f-stop-loka-and-tripod/">F-Stop Loka &amp; Tripod</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/word-word-the-difference/">Word WORD the Difference</a>
@@ -671,10 +689,6 @@ ruby app.rb
     
       <li class="post">
         <a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Simulink: Scroll Wheel Erratic Behaviour</a>
       </li>
     
   </ul>
