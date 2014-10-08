@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Le Creuset do not list pan volumes on there site so for Round Cast Iron: Diameter Volume 18cm 1.8 Litres 20cm 2.4 Litres 22cm 3.3 Litres 24cm 4.2 &hellip;">
+  <meta name="description" content="When plotting several lines in Matlab, I have become aware of how hard it was to see the colours in the legend. Based on this matlabcentral question &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,62 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-legend-colours/">Matlab: Legend Colours</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-13T20:51:45+00:00" pubdate data-updated="true">Feb 13<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-legend-colours/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-legend-colours/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When plotting several lines in Matlab, I have become aware of how hard it was to see the colours in the legend. Based <a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/267186">on this matlabcentral question</a> I found an easy way to control the line thickness in the legend.</p>
+
+<pre><code>plot(randn(100,1));
+hold on;
+plot(randn(100,1),'k');
+
+
+[legh,objh,outh,outm] = legend('First','Second','Location','Southeast');
+set(objh,'linewidth',2); %%&lt;-- set legend line thickness to 2
+</code></pre>
+
+<p>Or just the following after you define your legend:</p>
+
+<pre><code>% legend('First','Second','Location','Southeast');
+
+[legh,objh,outh,outm] = legend();
+set(objh,'linewidth',2);
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -625,59 +681,6 @@ Depth: 16.5cm. Width: 27cm. Height: 46cm  External Volume 25L</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/git-submodule-update-fatal/">Git Submodule Update Fatal</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-21T20:32:16+00:00" pubdate data-updated="true">Jan 21<span>st</span>, 2014</time>
-        
-           | <a href="/blog/tech/git-submodule-update-fatal/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/git-submodule-update-fatal/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>$ git submodule update
-fatal: Needed a single revision
-Unable to find current revision in submodule path 'vim/bundle/systemverilog'
-</code></pre>
-
-<p>To resolve the issue :</p>
-
-<pre><code>rm -rf vim/bundle/systemverilog
-git submodule update
-</code></pre>
-
-<p>Check your .gimodules, one of mine was an http instead of https, (gitub is https only now).
-Update to the latest version I find a minimum of git 1.8.5 is required for reliable module checkout.</p>
-
-<p>Solution based <a href="http://www.gostai.com/downloads/urbi-sdk-2.0/doc/urbi-sdk.htmldir/faq.html#x22-10400014.1.4">on gostais docs</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/9/">&larr; Older</a>
@@ -692,11 +695,15 @@ Update to the latest version I find a minimum of git 1.8.5 is required for relia
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (240)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/tcsh-remove-trailing-slash/">Tcsh Remove Trailing /</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/f-stop-loka-and-tripod/">F-Stop Loka &amp; Tripod</a>
@@ -712,10 +719,6 @@ Update to the latest version I find a minimum of git 1.8.5 is required for relia
     
       <li class="post">
         <a href="/blog/tech/xkill/">Xkill</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a>
       </li>
     
   </ul>

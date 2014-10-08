@@ -9,7 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="There was an interesting post on hacker news recently, safeshepherd suddenly fell off the google for their own name. The comments had some good &hellip;">
+  <meta name="description" content="In ruby you can catch StandardErrors using begin rescue end begin #Some thing which might fails
+rescue $stderr.puts $!
+end We can add a mnemonic &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +83,65 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-special-exception-variables-made-mnemonic/">Ruby Special Exception Variables Made Mnemonic</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-19T14:56:56+01:00" pubdate data-updated="true">May 19<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/ruby-special-exception-variables-made-mnemonic/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-special-exception-variables-made-mnemonic/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In ruby you can catch StandardErrors using begin rescue end</p>
+
+<pre><code>begin
+  #Some thing which might fails
+rescue
+  $stderr.puts $!
+end
+</code></pre>
+
+<p>We can add a mnemonic variable name to the captured error using :</p>
+
+<pre><code>begin
+  #Some thing which might fails
+rescue =&gt; error
+  $stderr.puts error
+end
+</code></pre>
+
+<p>Other <a href="http://ruby.wikia.com/wiki/Special_variable">Special Ruby Variables</a>. I am not sure on the completeness of that list so <a href="http://ruby.runpaint.org/globals">here is another</a> and <a href="http://www.zenspider.com/Languages/Ruby/QuickRef.html#pre-defined-variables">another</a>.</p>
+
+<p>For more on Ruby error handling I would recommend <a href="http://exceptionalruby.com">Avdi Grimms book Exceptional Ruby</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -709,7 +770,7 @@ fatal: The remote end hung up unexpectedly
 
 <h2>Getting it Working</h2>
 
-<p>Last time I ran into these issues I found I could clone as guest, changed <a href="&#109;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#x6d;&#111;&#x72;&#x67;&#x61;&#x6e;&#x70;&#64;&#x67;&#105;&#x74;&#104;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;">&#x6d;&#x6f;&#114;&#x67;&#x61;&#x6e;&#x70;&#x40;&#103;&#x69;&#x74;&#104;&#x75;&#x62;&#46;&#99;&#111;&#x6d;</a> to just github.com. Pushing will then prompt for your github Username and password. Once cloned you can manually update the config file so you do not have to enter your username. Entering your password will still be required.</p>
+<p>Last time I ran into these issues I found I could clone as guest, changed <a href="&#x6d;&#97;&#x69;&#108;&#116;&#111;&#58;&#109;&#x6f;&#x72;&#103;&#97;&#x6e;&#112;&#64;&#103;&#105;&#x74;&#x68;&#117;&#x62;&#x2e;&#x63;&#111;&#x6d;">&#109;&#111;&#x72;&#103;&#x61;&#110;&#x70;&#x40;&#103;&#x69;&#x74;&#104;&#x75;&#x62;&#x2e;&#99;&#111;&#109;</a> to just github.com. Pushing will then prompt for your github Username and password. Once cloned you can manually update the config file so you do not have to enter your username. Entering your password will still be required.</p>
 
 <pre><code>$ git clone https://github.com/morganp/maruku_snippet.git
 Cloning into maruku_snippet...
@@ -1073,118 +1134,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/joe-cornish-book-series/">Joe Cornish, Book Series</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-26T09:25:18+01:00" pubdate data-updated="true">Apr 26<span>th</span>, 2012</time>
-        
-           | <a href="/blog/photography/joe-cornish-book-series/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/joe-cornish-book-series/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Joe Cornish has been a great influence on my photography, he traditionally works with a large format field camera and is well renowned for his colour works of the british landscape. Trying to find his books in order can be tricky, so I have created this list.</p>
-
-<ul>
-<li>Disclaimer : Amazon affiliate links used</li>
-</ul>
-
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th align="center"> First Light </th>
-<th align="center"> Scotland&rsquo;s Coast </th>
-<th align="center"> The Northumberland Coast </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/1902538242/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1902538242"> <img src="https://images-na.ssl-images-amazon.com/images/I/41348YH062L._SL160_.jpg" alt="First Light" /> </a> </td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/1845130790/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1845130790"> <img src="https://images-na.ssl-images-amazon.com/images/I/51LOIatnGlL._SL160_.jpg" alt="Scotland's Coast" /> </a> </td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/0711226849/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=0711226849"> <img src="https://images-na.ssl-images-amazon.com/images/I/5135Xe%2BnKvL._SL160_.jpg" alt="Northumberland Coast" /> </a>|</td>
-</tr>
-<tr>
-<td></td>
-<td align="center"> 2002 </td>
-<td align="center"> 2005 </td>
-<td align="center"> 2008 |</td>
-</tr>
-<tr>
-<td></td>
-<td align="center"><a href="http://www.amazon.co.uk/gp/product/1902538242/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1902538242">£16.25</a> </td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/1845130790/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1845130790">£16.25</a> </td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/0711226849/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=0711226849">£11.04</a> |</td>
-</tr>
-</tbody>
-</table>
-
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th align="center"> Scotland&rsquo;s Mountains </th>
-<th align="center"> A Photographer at Work </th>
-<th align="center"> With Landscape in Mind (DVD) </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/1845133463/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1845133463"> <img src="https://images-na.ssl-images-amazon.com/images/I/51BAEWRZkOL._SL160_.jpg" alt="Scotland's Mountains" /> </a> </td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/1902538609/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1902538609"> <img src="http://ecx.images-amazon.com/images/I/51J4ZTt-4rL._SL160_.jpg" alt="A Photographer at Work" /> </a> </td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/B005CUXCRG/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B005CUXCRG"> <img src="https://images-na.ssl-images-amazon.com/images/I/51Gyl09G2OL._SL160_.jpg" alt="With Landscape in Mind (DVD" /> </a></td>
-</tr>
-<tr>
-<td></td>
-<td align="center"> 2009 </td>
-<td align="center"> 2010 </td>
-<td align="center"> 2011 |</td>
-</tr>
-<tr>
-<td></td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/1845133463/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1845133463">£16.25</a> </td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/1902538609/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1902538609">£13</a> </td>
-<td align="center"> <a href="http://www.amazon.co.uk/gp/product/B005CUXCRG/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B005CUXCRG">£20</a> |</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>I also own many of the books above and would especially recommend <a href="http://www.amazon.co.uk/gp/product/1902538242/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=1902538242">First Light</a> and the <a href="http://www.amazon.co.uk/gp/product/B005CUXCRG/ref=as_li_ss_il?ie=UTF8&amp;tag=morgue-21&amp;linkCode=as2&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B005CUXCRG">With Landscape in Mind DVD</a>, both offer a lot of insight into how he approaches taking photographs and are filled with great images.</p>
-
-<p>Joe Cornish has contributed toward many other books especially the <a href="http://amaras-tech.co.uk/article/153/Light_and_Land%2C_Book_Series">light and land series</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/20/">&larr; Older</a>
@@ -1199,11 +1148,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (240)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/tcsh-remove-trailing-slash/">Tcsh Remove Trailing /</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/f-stop-loka-and-tripod/">F-Stop Loka &amp; Tripod</a>
@@ -1219,10 +1172,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/xkill/">Xkill</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a>
       </li>
     
   </ul>

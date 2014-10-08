@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/blog/tech/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-09-18T11:56:53+01:00</updated>
+  <updated>2014-10-08T21:19:46+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Tcsh Remove Trailing /]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/tcsh-remove-trailing-slash/"/>
+    <updated>2014-10-08T21:15:43+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/tcsh-remove-trailing-slash</id>
+    <content type="html"><![CDATA[<pre><code>#!/bin/tcsh
+
+set var = "helloworld/"
+
+## http://dbaspot.com/shell/350417-sed-removing-trailing.html
+set var = `echo "$var" | sed -e 's,\(.\)/$,\1,'`
+
+echo $var
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Word WORD the Difference]]></title>
@@ -64,28 +81,6 @@ can call xkill and get a skull and crossbones cursor to kill the application.</p
 </code></pre>
 
 <p><a href="http://stackoverflow.com/q/3676969/97073">There is probably a missing semicolon <code>;</code> in a header file!</a> Just written my first C Header and received the above warning. It was indeed due to a missing semicolon.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Shell Redirection]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/shell-redirection/"/>
-    <updated>2014-06-19T20:10:57+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/shell-redirection</id>
-    <content type="html"><![CDATA[<p>To redirect stdout and stderr in bash we use:</p>
-
-<pre><code>./ShellFile.sh &amp;&gt; test.log
-</code></pre>
-
-<p>However in tcsh that results in:</p>
-
-<pre><code>Invalid null command.
-</code></pre>
-
-<p>Switch the order of <code>&amp;</code> and <code>&gt;</code> in tcsh :</p>
-
-<pre><code>./ShellFile.sh &gt;&amp; test.log
-</code></pre>
 ]]></content>
   </entry>
   

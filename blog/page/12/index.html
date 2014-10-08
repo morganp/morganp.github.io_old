@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="After using Lightroom for over 6 years I still do not see the point in Lightroom Collections. Scott Kelby Describes his usage, but it is very similar &hellip;">
+  <meta name="description" content="In ruby Dir.entries takes a path and returns a list of its contents. However it does not deal with paths (strings) which contain Enviroment Variables &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,67 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-evaluate-envvars-in-string/">Ruby Evaluate Envvars in String.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-12T22:59:37+01:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/ruby-evaluate-envvars-in-string/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-evaluate-envvars-in-string/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In ruby Dir.entries takes a path and returns a list of its contents. However it does not deal with paths (strings) which contain Enviroment Variables (envvars), first they need to be expanded.</p>
+
+<p>Given:SHELL:</p>
+
+<pre><code>export DIR=x
+export FILE=y.z
+</code></pre>
+
+<p>Ruby string:</p>
+
+<pre><code>s = "$DIR/test/$FILE"
+puts s
+=&gt; "$DIR/test/$FILE"
+
+def expand_envvars( in_string )
+  return in_string.gsub(/\$(\w+)/) { ENV[$1] }
+end
+
+puts expand_envvars( s )
+=&gt; "x/test/y.z"
+</code></pre>
+
+<p>Based on: <a href="http://www.ruby-forum.com/topic/180340">http://www.ruby-forum.com/topic/180340</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -545,81 +606,6 @@ Another good reason to keep module and file names matching.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/add-about-page-to-octopress/">Add About Page to Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-19T08:41:53+01:00" pubdate data-updated="true">May 19<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/add-about-page-to-octopress/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/add-about-page-to-octopress/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To add  static about page to octopress blog, assuming that octopress has been already setup:</p>
-
-<p>Create the page from the command line:</p>
-
-<pre><code>rake new_page["about"]
-</code></pre>
-
-<p>You can now edit the page at ./source/about/index.markdown which should look like:</p>
-
-<pre><code>---
-layout: page
-title: "about" 
-date: 2013-05-19 09:04
-comments: true
-sharing: true
-footer: true
----
-</code></pre>
-
-<p>Add the link to the site navigation menu.</p>
-
-<p>Edit source/_includes/custom/navigation.html from :</p>
-
-<pre><code>&lt;ul class="main-navigation"&gt;
-  &lt;li&gt;&lt;a href="/"&gt;Blog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="/blog/archives"&gt;Archives&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</code></pre>
-
-<p>To (adding about link):</p>
-
-<pre><code>&lt;ul class="main-navigation"&gt;
-  &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="/"&gt;Blog&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="/blog/archives"&gt;Archives&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -634,11 +620,15 @@ footer: true
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (240)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/tcsh-remove-trailing-slash/">Tcsh Remove Trailing /</a>
+      </li>
     
       <li class="post">
         <a href="/blog/photography/f-stop-loka-and-tripod/">F-Stop Loka &amp; Tripod</a>
@@ -654,10 +644,6 @@ footer: true
     
       <li class="post">
         <a href="/blog/tech/xkill/">Xkill</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a>
       </li>
     
   </ul>
