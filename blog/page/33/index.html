@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I while ago I made a post about installing ruby 1.9 on my webfaction shared host. They then pointed out to me that if I had gone into my webapps/ &hellip;">
+  <meta name="description" content="Download ruby enterprise and follow instructions on page. The exact commands I used are: $ cd ~/bin
+$ wget http://rubyforge.org/frs/download.php/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,105 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/installing-ruby-enterprise-on-mac-os-x/">Installing Ruby Enterprise on Mac OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-04T11:13:48+01:00" pubdate data-updated="true">May 4<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/installing-ruby-enterprise-on-mac-os-x/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/installing-ruby-enterprise-on-mac-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.rubyenterpriseedition.com/download.html">Download ruby enterprise</a> and follow instructions on page. The exact commands I used are:</p>
+
+<pre><code>$ cd ~/bin
+$ wget http://rubyforge.org/frs/download.php/68719/ruby-enterprise-1.8.7-2010.01.tar.gz
+$ tar xzvf ruby-enterprise-1.8.7-2010.01.tar.gz
+$ cd ruby-enterprise-1.8.7-2010.01
+$ rm -rf ../ruby-enterprise-1.8.7-2010.01.tar.gz
+$ ./installer
+</code></pre>
+
+<p>I installed to /Users/me/bin/ruby-ee-1.8.7</p>
+
+<pre><code>$ cd /Users/me/bin/ruby-ee-1.8.7
+$ rm -rf ~/bin/ruby-enterprise-1.8.7-2010.01/
+</code></pre>
+
+<p>Add this to your ~/.bashrc</p>
+
+<pre><code>#Ruby Enterprise 1.8.7
+export PATH=~/bin/ruby-ee-1.8.7/bin:$PATH
+</code></pre>
+
+<p>On with the install (of Passenger)</p>
+
+<pre><code>~/bin/ruby-ee-1.8.7/bin/passenger-install-nginx-module
+</code></pre>
+
+<p>I chose option 1, to get nginx installed for me, I chose /Users/me/bin/nginx for the location.</p>
+
+<p>Start the service</p>
+
+<pre><code>$ sudo ~/bin/nginx/sbin/nginx
+</code></pre>
+
+<p>For help and reloading</p>
+
+<pre><code>$ sudo ~/bin/nginx/sbin/nginx -h
+$ sudo ~/bin/nginx/sbin/nginx -s reload
+</code></pre>
+
+<p>Visit 127.0.0.1 in you rbrowser and the default screen should be there.
+The web application that it is loading is set in:</p>
+
+<pre><code>~/bin/nginx/conf/nginx.conf
+</code></pre>
+
+<p>I added in a root to my Sinatra application that I have been working on:</p>
+
+<pre><code>server {
+    listen       80;
+    server_name  localhost;
+    root /Users/morgy/Documents/Code/Amaras-Site/public;   # &lt;--- be sure to point to 'public'!
+    passenger_enabled on;
+}
+</code></pre>
+
+<p>This then returned a 403 error&hellip;
+Still a little work todo will post update on resolving this.</p>
+
+<p>[Update]
+I forgot that root had to point to the public folder inside the rack (Sinatra) application. I know there is a big comment there saying make sure but I just read that to be a permissions issue rather than the more literal a folder called public.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -612,77 +712,6 @@ Sort by     0.760000   0.130000   0.890000 (  0.886095)
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-nil-tests-fail-you-really-want-/">Ruby .nil? Tests Fail ? You Really Want ||=</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-04-15T07:43:50+01:00" pubdate data-updated="true">Apr 15<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-nil-tests-fail-you-really-want-/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-nil-tests-fail-you-really-want-/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I recently discovered ||= in ruby. Its main use is for initialising a variable if it does not already exists, this is great for extending templates with new functions and maintaining backwards compatibility.</p>
-
-<pre><code>irb(main):001:0&gt; x 
-NameError: undefined local variable or method `x' for main:Object
-from (irb):1
-irb(main):002:0&gt; x ||= 0
-=&gt; 0
-irb(main):003:0&gt; x = 10
-=&gt; 10
-irb(main):004:0&gt; x ||= 0
-=&gt; 10
-</code></pre>
-
-<p>I previously used :</p>
-
-<pre><code>if @x.nil? 
-    @x = 10   
-end
-</code></pre>
-
-<p>which is 3 times as many lines of code and does not work with all variable types infact .nil? is only valid for global ($) and instance (@) variables.</p>
-
-<pre><code>irb(main):001:0&gt; $x.nil?
-=&gt; true
-irb(main):002:0&gt; @x.nil?
-=&gt; true
-irb(main):003:0&gt; @@x.nil?
-NameError: uninitialized class variable @@x in Object
-   from (irb):3
-irb(main):004:0&gt; x.nil?
-NameError: undefined local variable or method `x' for main:Object
-   from (irb):4
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/34/">&larr; Older</a>
@@ -697,11 +726,15 @@ NameError: undefined local variable or method `x' for main:Object
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-calculate-primes/">Verilog: Calculate Primes</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/tcsh-remove-trailing-slash/">Tcsh Remove Trailing /</a>
@@ -717,10 +750,6 @@ NameError: undefined local variable or method `x' for main:Object
     
       <li class="post">
         <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/xkill/">Xkill</a>
       </li>
     
   </ul>

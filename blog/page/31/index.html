@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="To search in Vim just press (apple-f for macvim) / then search string. /search This will highlight all occurrences of &lsquo;search&rsquo;, to clear &hellip;">
+  <meta name="description" content="This snippet can be added to you ~/.vimrc to highlight long lines. " Highlight lines over 80 characters long with red background
+highlight OverLength &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,54 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vim-show-lines-over-80-charaters-long/">Vim Show Lines Over 80 Charaters Long.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-26T07:13:52+01:00" pubdate data-updated="true">Jun 26<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/vim-show-lines-over-80-charaters-long/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-show-lines-over-80-charaters-long/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This snippet can be added to you ~/.vimrc to highlight long lines.</p>
+
+<pre><code>" Highlight lines over 80 characters long with red background
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+</code></pre>
+
+<p>When programming it is recommended to keep lines at 80 characters or under. This makes it easier to find the start of the next line, possible to compare two files side by side on modern monitors and source code should print out nicely if required for code reviews.</p>
+
+<p><a href="http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns">source</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -704,66 +753,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/github-command-line-tools-with-static-paths/">GitHub Command Line Tools with Static Paths</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-04T23:19:58+01:00" pubdate data-updated="true">Jun 4<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/github-command-line-tools-with-static-paths/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/github-command-line-tools-with-static-paths/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have written a few command line tools in ruby which I use to perform file system maintenance. Mainly sorting files and applying standard renames, because the the folders I want to sort are always in the same location I do not want to have to remember to run the command in the correct directory so I add the paths explicitly. This creates a problem with uploading to <a href="http://github.com/morganp">GitHub</a> as other people would then need to modify the script.</p>
-
-<p>Here is a short example of how you can get around it using Environment Variables</p>
-
-<pre><code>#!/usr/bin/env ruby
-## Command Line tools can now be portable while working on static folders.
-
-if ENV['MEDIA_FOLDER'].nil?
-   puts "Add this to ~/.bashrc"
-   puts "Or Windows variables"
-   puts "export MEDIA_FOLDER='[\"/user/name/Movies\", \"/user/name/TV Shows\"]'"
-else
-   puts ENV['MEDIA_FOLDER']
-end
-</code></pre>
-
-<p>NB: when using the variables remember that it is a string and not an array. Convert to ruby Array by calling eval on it.</p>
-
-<pre><code>eval(ENV['TEMP_FILES']).each do |x|
-   puts x
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/32/">&larr; Older</a>
@@ -778,11 +767,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-calculate-primes/">Verilog: Calculate Primes</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/tcsh-remove-trailing-slash/">Tcsh Remove Trailing /</a>
@@ -798,10 +791,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/xkill/">Xkill</a>
       </li>
     
   </ul>

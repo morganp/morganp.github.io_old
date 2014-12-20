@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="error: storage class specified for parameter There is probably a missing semicolon ; in a header file! Just written my first C Header and received &hellip;">
+  <meta name="description" content="find_system('BlockType', 'Gain') This will list all gain blocks in currently loaded models. to limit to a particulat model: find_system('testharness &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,53 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-find-all-gain-blocks/">Matlab: Find All Gain Blocks</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-30T19:58:53+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-find-all-gain-blocks/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-find-all-gain-blocks/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>find_system('BlockType', 'Gain')
+</code></pre>
+
+<p>This will list all gain blocks in currently loaded models. to limit to a particulat model:</p>
+
+<pre><code>find_system('testharness', 'BlockType', 'Gain')
+</code></pre>
+
+<p><a href="http://www.mathworks.co.uk/help/simulink/slref/find_system.html">From Mathworks</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -582,53 +629,6 @@ a =
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-linebreaks-in-strings/">Matlab: Line Breaks in Strings</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-28T19:34:30+01:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-linebreaks-in-strings/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-linebreaks-in-strings/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Wrap strings with <code>sprintf</code> to allow the <code>\n</code> to be escaped correctly.</p>
-
-<pre><code>&gt;&gt; disp('hello\nworld')
-hello\nworld
-
-&gt;&gt; disp(sprintf('hello\nworld'))
-hello
-world
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -643,11 +643,15 @@ world
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (36)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-calculate-primes/">Verilog: Calculate Primes</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/tcsh-remove-trailing-slash/">Tcsh Remove Trailing /</a>
@@ -663,10 +667,6 @@ world
     
       <li class="post">
         <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/xkill/">Xkill</a>
       </li>
     
   </ul>
