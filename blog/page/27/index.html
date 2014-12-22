@@ -9,10 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I have been running into issues with screen when switching to another user: $ su otheruser
-&gt; password
-$ screen -x
-&gt; Cannot open your terminal &hellip;">
+  <meta name="description" content="Considering various raid strategies I decided that Raid 5 would be too limiting and have previously found raid striping systems to be too unreliable &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +81,85 @@ $ screen -x
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/my-backup-strategy/">My Backup Strategy</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-18T10:25:12+00:00" pubdate data-updated="true">Jan 18<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/my-backup-strategy/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/my-backup-strategy/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Considering various raid strategies I decided that Raid 5 would be too limiting and have previously found raid striping systems to be too unreliable. I decided to have a bunch of disks (JBOD if you will) directly connected to a machine. At some point in the future I would like a merged view of the drives, potentially through a fuse file system or a soft linking script.</p>
+
+<p>To protect against hardware failures, firmware updates etc I back up to a server running a different OS, instead of any raid mirroring. My mac mini backups to a headless Ubunutu. This has a power advantage that the backup drives are powered down most of the time.</p>
+
+<p>Whenever I add a drive to the main server I add at least the same size to the backup server. I then run rsync to back each drive up.</p>
+
+<pre><code>$ REMOTE_IP=192.168.0.2
+$ rsync -av --ignore-errors --delete --exclude '.Trashes' --exclude '.Spotlight-V100' --exclude '.DS_Store' /Volumes/Drive1/ $REMOTE_IP:/mnt/backup/drive1/
+</code></pre>
+
+<p>For some reason once it was scripted up it stopped deleting files from the backup drive adding the &lsquo;&mdash;ignore-errors&rsquo; fixed this issue.</p>
+
+<p>The other small gotcha that I ran into was that by default ext3 drives reserve 5% of the space for root. This is so that the main drive does not get so full it stops to function correctly and root can not get in to fix things. I am not sure how useful it is on non-root drives. This had the consequence that when backing up a nearly full drive it would not fit in to the back up drive. NB: 5% of a 2TB drive is 100GB, which is quite a lot of space.</p>
+
+<p>To reset the amount of reserved space I used (for 0%):</p>
+
+<pre><code>$ sudo tune2fs -m 0 /dev/sda1
+</code></pre>
+
+<p>My full backup script</p>
+
+<pre><code>#!/bin/bash
+ARCHIVE_SERVER="192.168.0.2"
+
+disk[0]="/Volumes/disk1/ $ARCHIVE_SERVER:/mnt/archive_server/disk1/"
+disk[1]="/Volumes/disk2/ $ARCHIVE_SERVER:/mnt/archive_server/disk2/"
+disk[2]="/Volumes/disk3/ $ARCHIVE_SERVER:/mnt/archive_server/disk3/"
+
+for backup in "${disk[@]}"
+do
+  #Split in to $1 and $2
+  set -- $backup
+  if [ -d $1 ]
+  then 
+    rsync -av --ignore-errors --delete --exclude '.Trashes'   \
+--exclude '.Spotlight-V100' --exclude '.DS_Store' $1 $2
+  else
+    echo "Drive offline $1 (Not Backed Up)"
+  fi
+done
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -674,65 +750,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-reload-source-file-changes-in-development-mode/">Sinatra Reload Source File Changes in Development Mode</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-02T11:03:26+00:00" pubdate data-updated="true">Nov 2<span>nd</span>, 2010</time>
-        
-           | <a href="/blog/tech/sinatra-reload-source-file-changes-in-development-mode/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-reload-source-file-changes-in-development-mode/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://github.com/rkh/sinatra-reloader">Sinatra Reloader</a> is a sinatra extension which reloads source files while in development mode, this functionality was removed from base sinatra in 0.9.2</p>
-
-<pre><code>gem install sinatra-reloader
-</code></pre>
-
-<p>In your app (classy style)</p>
-
-<pre><code>require "sinatra/base"
-require "sinatra/reloader"
-
-class Foo &lt; Sinatra::Base
-  configure(:development) do
-    register Sinatra::Reloader
-    also_reload "models/*.rb"
-    also_reload "helpers/*.rb"
-    #dont_reload "lib/**/*.rb"
-  end
-end
-</code></pre>
-
-<p><a href="http://github.com/rkh/sinatra-reloader">Source</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/28/">&larr; Older</a>
@@ -747,11 +764,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/cooking/bread-doves-gluten-free/">Bread: Doves Gluten Free</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-calculate-primes/">Verilog: Calculate Primes</a>
@@ -767,10 +788,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/word-word-the-difference/">Word WORD the Difference</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
       </li>
     
   </ul>

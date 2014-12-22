@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="For adding leading zeros to a number the following can be used for 4 decimal places with integer input: dat = 1;
-sprintf(['%4.4d'], dat) To make this &hellip;">
+  <meta name="description" content="Enter copy mode ctrl-a [ Use cursors of vim motions to move to relevant area. Space to start selection, space again to end selection and copy to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,65 @@ sprintf(['%4.4d'], dat) To make this &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/screen-scrollback/">Screen Scrollback</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-25T20:57:28+00:00" pubdate data-updated="true">Mar 25<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/screen-scrollback/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/screen-scrollback/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Enter copy mode</p>
+
+<pre><code>ctrl-a [
+</code></pre>
+
+<p>Use cursors of vim motions to move to relevant area.</p>
+
+<p>Space to start selection, space again to end selection and copy to screen copy-buffer</p>
+
+<p>Move to virtual screen terminal where you want to paste then</p>
+
+<pre><code>ctrl-a ]
+</code></pre>
+
+<p>To paste to file enter</p>
+
+<pre><code>cat &gt; paste.file
+#// Then press ctrl-a ]
+</code></pre>
+
+<p><a href="http://commandliners.com/2009/12/screen-working-with-the-scrollback-buffer/">More notes on screen scrollback history</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -521,48 +579,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/macbook-keyboard-light-not-working/">Macbook Keyboard Light Not Working</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-13T20:00:47+00:00" pubdate data-updated="true">Mar 13<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/macbook-keyboard-light-not-working/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/macbook-keyboard-light-not-working/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Checkout : <a href="http://support.apple.com/kb/HT4882">Apple support</a>.</p>
-
-<p>Disable &lsquo;Adjust keyboard brightness in low light&rsquo;.<br/>
-<img src="/images/Tech/Keyboard_low_light.png" alt="" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/6/">&larr; Older</a>
@@ -577,11 +593,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/cooking/bread-doves-gluten-free/">Bread: Doves Gluten Free</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-calculate-primes/">Verilog: Calculate Primes</a>
@@ -597,10 +617,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/word-word-the-difference/">Word WORD the Difference</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
       </li>
     
   </ul>

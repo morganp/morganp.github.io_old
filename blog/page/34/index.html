@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I recently discovered ||= in ruby. Its main use is for initialising a variable if it does not already exists, this is great for extending templates &hellip;">
+  <meta name="description" content="I have just forked and cloned a project on github and discovered *.gemspec files. They are a nice way of specifying the gem dependencies in your &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,50 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-and-gemspec/">Ruby and Gemspec</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-16T10:01:58+01:00" pubdate data-updated="true">Apr 16<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-and-gemspec/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-and-gemspec/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have just forked and cloned a project on github and discovered *.gemspec files. They are a nice way of specifying the gem dependencies in your project. once you have the copied/cloned a project before you run it just call:</p>
+
+<pre><code>$ gem build something.gemspec
+</code></pre>
+
+<p>The <a href="http://docs.rubygems.org/read/chapter/20">gemspec documentation</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -734,64 +778,6 @@ Dir.chdir(path)
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-performance-measure/">Ruby Performance Measure</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-performance-measure/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-performance-measure/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Also available as a <a href="http://gist.github.com/342639">gist</a>. Very simple way of measuring execution time in seconds using Ruby</p>
-
-<pre><code>#!/usr/bin/env ruby
-# Measure performance in seconds of tasks
-# Record Startime For performance measurements
-startTime = Time.now
-
-#Main part of script goes here
-
-#Calculate and Display Execution Time in seconds
-execTime = Time.now - startTime
-puts "Execution time #{execTime} seconds."
-</code></pre>
-
-<p>Matlab has a slightly simpler function for this</p>
-
-<pre><code>tic
-%Main part goes here
-toc
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/35/">&larr; Older</a>
@@ -806,11 +792,15 @@ toc
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/cooking/bread-doves-gluten-free/">Bread: Doves Gluten Free</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-calculate-primes/">Verilog: Calculate Primes</a>
@@ -826,10 +816,6 @@ toc
     
       <li class="post">
         <a href="/blog/tech/word-word-the-difference/">Word WORD the Difference</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
       </li>
     
   </ul>

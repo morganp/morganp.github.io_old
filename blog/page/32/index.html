@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I have written a few command line tools in ruby which I use to perform file system maintenance. Mainly sorting files and applying standard renames, &hellip;">
+  <meta name="description" content="The *.m4b extension is used for audiobooks on the iTunes Store and is a convenient (if you have an iPod) format that other Audio books can be &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,47 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/m4b-audiobooks-on-android/">M4B Audiobooks on Android</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-07T11:15:46+01:00" pubdate data-updated="true">Jun 7<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/m4b-audiobooks-on-android/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/m4b-audiobooks-on-android/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The *.m4b extension is used for audiobooks on the iTunes Store and is a convenient (if you have an iPod) format that other Audio books can be converted to. It is a wrapper for AAC encoded audio data with chapters.</p>
+
+<p>So far there looks to be two promising players for the Android that can handle DRM free M4B. <a href="http://amblingbookplayer.com/">AmblingBookPlayer</a> and <a href="http://www.absent.fi/mobile/?id=88">BookDroid</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -609,63 +650,6 @@ $ sudo ~/bin/nginx/sbin/nginx -s reload
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/413-request-entity-too-large/">413 Request Entity Too Large</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-08T03:22:08+01:00" pubdate data-updated="true">May 8<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/413-request-entity-too-large/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/413-request-entity-too-large/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The &lsquo;413 Request Entity Too Large&rsquo; Error message is because you have filled in a form and are submitting it with too much data in the form. Typically this comes from uploading files.</p>
-
-<p>The default size for <a href="http://nginx.org/">nginx</a> seems to be around 1MB.</p>
-
-<p>To increase the form size limit update your nginx.conf with :</p>
-
-<pre><code>http {
-   client_max_body_size 20M;
-
-   server {
-      ...
-   }
-}
-</code></pre>
-
-<p>To find the location of your nginx.conf file you can run:</p>
-
-<pre><code>find / -iname "nginx.conf"
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/33/">&larr; Older</a>
@@ -680,11 +664,15 @@ $ sudo ~/bin/nginx/sbin/nginx -s reload
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/cooking/bread-doves-gluten-free/">Bread: Doves Gluten Free</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-calculate-primes/">Verilog: Calculate Primes</a>
@@ -700,10 +688,6 @@ $ sudo ~/bin/nginx/sbin/nginx -s reload
     
       <li class="post">
         <a href="/blog/tech/word-word-the-difference/">Word WORD the Difference</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
       </li>
     
   </ul>

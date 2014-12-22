@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-12-20T07:59:37+00:00</updated>
+  <updated>2014-12-22T21:10:27+00:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,66 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Bread: Doves Gluten Free]]></title>
+    <link href="http://lizard-spock.co.uk/blog/cooking/bread-doves-gluten-free/"/>
+    <updated>2014-12-21T20:12:44+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/cooking/bread-doves-gluten-free</id>
+    <content type="html"><![CDATA[<p>For use with the Panasonic Bread Maker SD-2501 &amp; SD-2500.<br/>
+<strong><a href="http://www.lakeland.co.uk/content/documents/Panasonic_Bread_Maker_Instructions_15352.pdf">Online Manual</a>.</strong></p>
+
+<p>Gluten Recipes can not use timer function.</p>
+
+<p>For best results follow this order of ingredients: <br/>
+water, salt, fat, gluten free bread mix.</p>
+
+<h2>Doves Farm Gluten Free (Panasonic recipe)</h2>
+
+<p> SD-2501 Menu 12<br/>
+ SD-2500 Menu 11</p>
+
+<p> Dark Crust (1hr 55min)</p>
+
+<pre><code>Water              320ml (330ml for Brown flour)
+Cider Vinegar      1 teaspoon
+Salt               1 teaspoon
+Vegtable Oil       4 tablespoon
+Medium Egg         1
+Medium Egg White   1
+Sugar              1 tablespoon
+Flour              450g
+Yeast              2 teaspoon
+</code></pre>
+
+<h2><a href="http://www.dovesfarm.co.uk/recipes/gluten-free-white-bread-for-bread-machines">Doves farm recommends these ingredients</a>:</h2>
+
+<p> SD-2501 Menu 12<br/>
+ SD-2500 Menu 11</p>
+
+<p> Dark Crust (1hr 55min)</p>
+
+<pre><code>         Medium        Large
+Milk     310g          465g
+Vinegar  1 teaspoon    1.5 teaspoon
+Oil      6 tablespoon  9   tablespoon
+Eggs     2             3
+Flour    450g          675g
+Salt     1 teaspoon    1.5 teaspoon
+Sugar    2 tablespoon  3   tablespoon
+Yeast    2 teaspoon    3   teaspoon
+</code></pre>
+
+<ol>
+<li>Mix milk, vinegar, oil and eggs. Pour into the bread machine.</li>
+<li>Add flour, salt and sugar, stir.</li>
+<li>Sprinkle Yeast on top</li>
+<li>Start machine, pausing after a few minutes to scrape down the sides.</li>
+<li>Resume programme until completion</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Verilog: Calculate Primes]]></title>
@@ -514,37 +574,6 @@ a =
 <p>For reliable and consistent floating point displays use:</p>
 
 <pre><code>%(fractional places + integer places + 2).(fractional places)f
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Matlab: Grid]]></title>
-    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-grid/"/>
-    <updated>2014-05-28T19:49:38+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/engineering/matlab-grid</id>
-    <content type="html"><![CDATA[<p><img src="http://lizard-spock.co.uk/images/Engineering/matlab_grid/grid_on.png" alt="" /></p>
-
-<p>To add X and Y grids to plots :</p>
-
-<pre><code>grid on;
-</code></pre>
-
-<!-- more -->
-
-
-<p><img src="http://lizard-spock.co.uk/images/Engineering/matlab_grid/y_grid_on.png" alt="" /></p>
-
-<p>To add Y only grid:</p>
-
-<pre><code>set(gca,'XGrid','off','YGrid','on');
-</code></pre>
-
-<p><img src="http://lizard-spock.co.uk/images/Engineering/matlab_grid/x_grid_on.png" alt="" /></p>
-
-<p>To add X only grid</p>
-
-<pre><code>set(gca,'XGrid','on','YGrid',’off');
 </code></pre>
 ]]></content>
   </entry>

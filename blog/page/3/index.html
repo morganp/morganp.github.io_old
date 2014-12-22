@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Wrap strings with sprintf to allow the \n to be escaped correctly. &gt;&gt; disp('hello\nworld')
-hello\nworld &gt;&gt; disp(sprintf('hello\nworld')) &hellip;">
+  <meta name="description" content=" To add X and Y grids to plots : grid on; ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,55 @@ hello\nworld &gt;&gt; disp(sprintf('hello\nworld')) &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-grid/">Matlab: Grid</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-28T19:49:38+01:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-grid/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-grid/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/images/Engineering/matlab_grid/grid_on.png" alt="" /></p>
+
+<p>To add X and Y grids to plots :</p>
+
+<pre><code>grid on;
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/engineering/matlab-grid/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -619,51 +667,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/lightroom-load-canon-6d-gps/">Lightroom Load Canon 6D GPS</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-14T19:01:06+01:00" pubdate data-updated="true">Apr 14<span>th</span>, 2014</time>
-        
-           | <a href="/blog/photography/lightroom-load-canon-6d-gps/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/lightroom-load-canon-6d-gps/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Adobe Lightroom will only load GPX, Canon 6D only saves NMEA data.</p>
-
-<p><a href="http://www.gpsbabel.org/">GPSBabel</a> can be used to convert the <code>*.log</code> from the camera to <code>*.gpx</code>.</p>
-
-<p>Download the software then load the log file for the input setting the type to <code>NMEA 0183 sentences</code>.</p>
-
-<p>Set the output file name and set the format to <code>GPX XML</code>. Click OK to generate the GPX which can now be loaded into Lightroom.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -678,11 +681,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (11)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/cooking/bread-doves-gluten-free/">Bread: Doves Gluten Free</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-calculate-primes/">Verilog: Calculate Primes</a>
@@ -698,10 +705,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/word-word-the-difference/">Word WORD the Difference</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a>
       </li>
     
   </ul>
