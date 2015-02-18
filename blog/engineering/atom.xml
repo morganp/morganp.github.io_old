@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Engineering | RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/blog/engineering/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2015-02-18T16:49:30+00:00</updated>
+  <updated>2015-02-18T18:28:25+00:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[SystemVerilog: Constrained Random]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/systemverilog-constrained-random/"/>
+    <updated>2015-02-18T17:01:56+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/systemverilog-constrained-random</id>
+    <content type="html"><![CDATA[<p>A minimal example of constrained random to constraining a 4 bit value to 0 to 11 when randomised.</p>
+
+<pre><code>module tb;
+
+  class cr_example_t
+    rand bit val;
+    rand bit [3:0] sel;
+
+    constrain c1 {
+      sel &lt; 12;
+    }
+  endclass
+
+  cr_example_t cr_example = new;
+
+  initial begin :test_program
+    cr_example.randomise();
+    $display(cr_example.val);
+    $display(cr_example.sel);
+
+    $finish;
+  end
+
+endmodule
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Verilog: Thermometer Code]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/verilog-thermometer-code/"/>
+    <updated>2015-02-18T16:51:43+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/verilog-thermometer-code</id>
+    <content type="html"><![CDATA[<p>Efficiently create a <a href="http://en.wikipedia.org/wiki/Unary_coding">thermometer code</a> in verilog:</p>
+
+<pre><code>localparam M = 32;
+
+function [M-1:0] therm_code;
+  input    [$clog2(M):0] val;
+  begin
+    for (int i = 0; i&lt;M; i++) begin
+      therm_code[i] = (i&lt;val);
+    end
+  end
+endfunction
+</code></pre>
+
+<p>Other methods which do not synthesis as well:</p>
+
+<pre><code>therm_code  = (2**val) - 1;
+
+therm_code = ~({M{1'b1}} &lt;&lt; val);
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Verilog: Calculate Primes]]></title>
@@ -129,42 +190,6 @@ in and out very quickly and erratically to remove this behaviour
 <p>If you hold the Ctrl key and use the scroll wheel, the scroll wheel behavior is the opposite of how the preference is set.</p>
 
 <p><a href="http://www.mathworks.co.uk/help/simulink/ug/zooming-block-diagrams.html">source</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Simulink: Globally Set Sample Time]]></title>
-    <link href="http://lizard-spock.co.uk/blog/engineering/simulink-globally-set-sample-time/"/>
-    <updated>2014-07-30T20:01:49+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/engineering/simulink-globally-set-sample-time</id>
-    <content type="html"><![CDATA[<p>To set each constant in a model to sample time -1:</p>
-
-<pre><code>blks = find_system(dut, 'BlockType', 'Constant');
-for i = 1:length(blks)
-    set_param(blks{i}, 'SampleTime', '-1');
- end
-</code></pre>
-
-<p><a href="http://www.mathworks.co.uk/help/hdlcoder/ug/resource-sharing.html#btg_5ht-1">Source</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Simulink: List Programmable Block Properties]]></title>
-    <link href="http://lizard-spock.co.uk/blog/engineering/simulink-list-programmable-block-properties/"/>
-    <updated>2014-07-30T20:00:28+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/engineering/simulink-list-programmable-block-properties</id>
-    <content type="html"><![CDATA[<p>Select a block ie gain in Simulink then in Matlab type:</p>
-
-<pre><code>get(gcbh)
-</code></pre>
-
-<p>This shows the list of properties which can be controlled from Matlab. TO change one for example changing the gain paramter from double to a 10 bit fixed point number (<code>sfix10_en9</code>).</p>
-
-<pre><code>set_param(gcbh, 'ParamDataTypeStr', 'fixdt(1,10,9)'); 
-</code></pre>
-
-<p><a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/306640">From Matlab Central</a>.</p>
 ]]></content>
   </entry>
   

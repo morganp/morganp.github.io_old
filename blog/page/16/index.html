@@ -9,10 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="For this example we will have a data file with two columns of data labelled A and B. For example A B
-0.1 0.2
-0.3 0.4
-0.5 0.6 Set the working &hellip;">
+  <meta name="description" content="Problem Take an array of arrays and format it for displaying to the terminal or outputting to a text file. Sample Data: data = [[1,2,3,4,5],["Four"," &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +81,315 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/print-nested-array-structures-in-table-format/">Print Nested Array Structures in Table Format</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-03T20:47:13+01:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+        
+           | <a href="/blog/tech/print-nested-array-structures-in-table-format/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/print-nested-array-structures-in-table-format/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Problem</h2>
+
+<p>Take an array of arrays and format it for displaying to the terminal or outputting to a text file.</p>
+
+<p>Sample Data:</p>
+
+<pre><code>data = [[1,2,3,4,5],["Four","Five","Six"],["Seven","Eight","Nine","Ten"]]
+</code></pre>
+
+<h2>Solution</h2>
+
+<p>The main issue I see is working out how wide to make each column. My solution is to iterate over the data keeping track of the maximum width found for each column.</p>
+
+<p>Once we know how wide to make each column printing the table is just a matter of a second iteration over the data using ljust or rjust to align all the columns.</p>
+
+<pre><code>def print_table( data )
+  #Clone/dup nested structure
+  data = Marshal.load(Marshal.dump(data))
+  #data = data_array.dup
+  lengths = []
+
+  data.each do |line| 
+    line.each_with_index do |item, column| 
+      length          = item.to_s.size
+      lengths[column] = length if length &gt; (lengths[column] ||= 0)
+    end
+  end
+
+  data.each do |line| 
+    line.each_with_index do |item, column|
+      line[column] = item.to_s.rjust(4+lengths[column])
+      print line[column]
+    end
+    puts
+  end
+
+  return data
+end
+</code></pre>
+
+<p>The result:</p>
+
+<pre><code>data = [[1,2,3,4,5],["Four","Five","Six"],["Seven","Eight","Nine","Ten"]]
+data = print_table( data )
+
+=&gt;        1        2       3      4    5    
+=&gt;     Four     Five     Six
+=&gt;    Seven    Eight    Nine    Ten
+</code></pre>
+
+<h2>Alternative Solution</h2>
+
+<p>Use the <a href="http://github.com/visionmedia/terminal-table">terminal-table</a> gem. Which creates nice ASCII tables.</p>
+
+<pre><code>#gem install terminal-table
+
+require 'terminal-table'
+data = [[1,2,3,4,5],["Four","Five","Six"],["Seven","Eight","Nine","Ten"]]
+table = Terminal::Table.new :rows =&gt; data
+
+puts table
++-------+-------+------+-----+---+
+| 1     | 2     | 3    | 4   | 5 |
+| Four  | Five  | Six  |
+| Seven | Eight | Nine | Ten |
++-------+-------+------+-----+---+
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/converting-flat-structure-into-a-nested-structure/">Converting Flat Structure Into a Nested Structure</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-03T20:11:12+01:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+        
+           | <a href="/blog/tech/converting-flat-structure-into-a-nested-structure/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/converting-flat-structure-into-a-nested-structure/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Given a flat hierarchy of data comprising level and a label, aim to nest the lower level of objects in to the parents.</p>
+
+<p>Example data:</p>
+
+<pre><code>  0, 'a'
+  1, 'b'
+  2, 'c'
+  2, 'd'
+  1, 'e'
+  2, 'f'
+</code></pre>
+
+<p>Converted to a structure similar to:</p>
+
+<pre><code>a
++b
+|+c
+|+d
++e
+ +f
+</code></pre>
+
+<h2>An Unoptimised Solution</h2>
+
+<p>A simple object, which allows adding child objects</p>
+
+<pre><code>Thing = Struct.new(:level, :label, :children)
+class Thing
+  def add_child (child)
+    children &lt;&lt; child
+  end
+end
+</code></pre>
+
+<p>The data:</p>
+
+<pre><code>list =
+[ Thing.new(0, "a", []),
+  Thing.new(1, "b", []),
+  Thing.new(2, "c", []),
+  Thing.new(2, "d", []),
+  Thing.new(1, "e", []),
+  Thing.new(2, "f", [])
+]
+</code></pre>
+
+<p>My approach is to find the lowest children and fold them in to the parent above it. The first step is a method to calculate the nesting depth.</p>
+
+<pre><code>def lowest_level( list )
+  level = 0
+  list.each do |obj|
+    level = obj.level if obj.level &gt; level
+  end
+  return level
+end
+
+puts "Lowest Level is #{lowest_level( list )}"
+=&gt; Lowest Level is 2
+</code></pre>
+
+<p>The main part of the solution now is to loop over the list, adding the object at the lowest_level to its parent, then removing it from its original position. The parent object is defined as being in the position before with a level 1 above the current node.</p>
+
+<pre><code>      current_fold = lowest_level( list )
+
+      list.each_with_index do |thing, index|
+        # Identify if on a lowest leaf which can be folded
+        if ( ( thing.level == current_fold ) &amp;&amp; (list[index-1].level == current_fold-1))
+          list[index-1].add_child( thing )
+          list.delete_at(index)
+        end
+      end
+</code></pre>
+
+<p>The main performance issue I have with this solution is it requires an iteration for every object at the same level wiith the same parent. ie 1222 would take 3 iterations to fold the 2s, 122212 would still take 3 iterations.</p>
+
+<p>The loop in full:</p>
+
+<pre><code>def fold_list( list )
+  ## Clone data for immutable operation
+  list = Marshal.load(Marshal.dump( list ))
+  fold_list!( list )
+end
+
+def fold_list!( list )
+  while ( lowest_level( list ) &gt; 0 ) do
+    #Find Current lowest Level and fold
+    current_fold = lowest_level( list )
+
+    while( current_fold == lowest_level( list ) ) do
+      list.each_with_index do |thing, index|
+        # Identify if on a lowest leaf which can be folded
+        if ( ( thing.level == current_fold ) &amp;&amp; (list[index-1].level == current_fold-1))
+          list[index-1].add_child( thing )
+          list.delete_at(index)
+        end
+      end
+    end
+  end
+
+  return list
+end
+
+require 'pp'
+pp  fold_list( list )
+</code></pre>
+
+<p>The result, showing the folding:</p>
+
+<pre><code>[#&lt;struct Thing
+  level=0,
+  label="a",
+  children=
+   [#&lt;struct Thing
+     level=1,
+     label="b",
+     children=
+      [#&lt;struct Thing level=2, label="c", children=[]&gt;,
+       #&lt;struct Thing level=2, label="d", children=[]&gt;]&gt;,
+    #&lt;struct Thing
+     level=1,
+     label="e",
+     children=[#&lt;struct Thing level=2, label="f", children=[]&gt;]&gt;]&gt;]
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/safari-6-not-playing-youtube-content/">Safari 6 Not Playing YouTube Content</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-30T08:30:42+01:00" pubdate data-updated="true">Sep 30<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/safari-6-not-playing-youtube-content/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/safari-6-not-playing-youtube-content/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After getting Safari 6 it seems that YouTube is no longer letting my watch video as html5 video formats and requires me to have flash installed.</p>
+
+<p>To avoid installing flash there is safari plugin which forces YouTube to give HTML5 video.</p>
+
+<p><a href="http://www.macupdate.com/app/mac/35606/youtube5-safari-extension">youtube5-safari-extension</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -513,219 +819,6 @@ highlight SpellBad gui=undercurl
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/get-snipmate-working-a-vim-plugin/">Get snipMate Working, a #vim Plugin</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-05T00:45:31+01:00" pubdate data-updated="true">Sep 5<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/get-snipmate-working-a-vim-plugin/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/get-snipmate-working-a-vim-plugin/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.vim.org/scripts/script.php?script_id=2540">snipMate</a> is a useful vim plugin which allows short cuts like for&#8217;tab&#8217; to be set up which will insert the snippet:</p>
-
-<pre><code>for (i = 0; i &lt; count; i++) {  
-
-} 
-</code></pre>
-
-<p>To install you just have to download the the zip file from <a href="http://www.vim.org/scripts/script.php?script_id=2540">snipMate</a> and copy the files into your vim folder (~/.vim).</p>
-
-<p>Make sure you have this in your .vimrc file</p>
-
-<pre><code>filetype plugin on
-</code></pre>
-
-<p>I still could not get tab completion to work. running <code>:scriptnames</code> inside vim will list the files it has loaded and should include:</p>
-
-<pre><code>plugin/snipMate.vim
-after/plugin/snipMate.vim
-</code></pre>
-
-<p>On my first install the plugin/snipMate.vim was not executable and therefore the after/plugin/snipMate.vim did not get loaded.</p>
-
-<h2>The Fix</h2>
-
-<pre><code>cd ~/.vim 
-chmod ugo+x plugin/snipMate.vim
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/os-x-installing-r/">OS X Installing R</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-03T20:11:46+01:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2012</time>
-        
-           | <a href="/blog/tech/os-x-installing-r/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/os-x-installing-r/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.r-project.org/">R</a> is a language for statistical computing and graphics. It is the choice of <a href="http://coursera.org">Coursera</a> Statistics One.</p>
-
-<p>It can be installed on OS X via the <a href="http://cran.r-project.org/bin/macosx/">pkg</a> available on the main website which is my recommendation or via <a href="http://mxcl.github.com/homebrew/">Homebrew</a>.</p>
-
-<p><em>I have been unable to get the homebrew version to install correctly.</em><br/>
-<em>On Mountain Lion the homebrew install also requires a few additional packages.</em></p>
-
-<h2>Install R with Homebrew</h2>
-
-<p><strong>Update</strong> First run <code>brew tap homebrew/science</code> to make the R package available <strong>/Update</strong></p>
-
-<p>If you run <code>brew install r</code> when you do not have a fortran compiler you will see the following error:</p>
-
-<blockquote><p>This formula requires a fortran compiler, but we could not find one by
-looking at the FC environment variable or searching your PATH for <code>gfortran</code>.
-Please take one of the following actions:</p>
-
-<ul>
-<li><p>Decide to use the build of gfortran 4.2.x provided by Homebrew using
-    <code>brew install gfortran</code></p></li>
-<li><p>Choose another Fortran compiler by setting the FC environment variable:
-    export FC=/path/to/some/fortran/compiler
-Using an alternative compiler may produce more efficient code, but we will
-not be able to provide support for build errors.</p></li>
-</ul>
-</blockquote>
-
-<p>To save time just run :</p>
-
-<pre><code>brew update
-brew install gfortran r
-</code></pre>
-
-<p>Although I ran into some issues with linking libtiff and jpeg and had to run:</p>
-
-<pre><code>brew link -f  libtiff jpeg
-brew install r
-</code></pre>
-
-<p>I still got checksum fails. Might have to wait for a brew update.</p>
-
-<p>If you are running Mountain Lion then you will also run into this:</p>
-
-<blockquote><p>Unsatisfied dependency: XQuartz
-Please install the latest version of XQuartz:
- <a href="https://xquartz.macosforge.org">https://xquartz.macosforge.org</a>
-Error: An unsatisfied requirement failed this build.</p></blockquote>
-
-<p>The easiest way to install R on OS X really does seem to be just run the <a href="http://cran.r-project.org/bin/macosx/">package</a>. 134MB install size.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/mountain-lion-setup-part-5-etchosts/">Mountain Lion Setup, Part 5 /etc/hosts</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-30T20:28:12+01:00" pubdate data-updated="true">Aug 30<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/mountain-lion-setup-part-5-etchosts/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mountain-lion-setup-part-5-etchosts/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>For ssh and ping to local machines with out the .local extension I added them to my /ets/hosts file.</p>
-
-<p>A normal user does not have permission so you have to use sudo. If you os x account has admin privlages it will prompt you for your password. If you have not used vim before, i for insert mode (like a standard text editor), esc to exit insert mode and :wq to write and quit.</p>
-
-<pre><code>sudo vim /etc/hosts
-
-##
-# Host Database
-#
-# localhost is used to configure the loopback interface
-# when the system is booting.  Do not change this entry.  
-##
-127.0.0.1   localhost
-255.255.255.255 broadcasthost
-::1             localhost 
-fe80::1%lo0 localhost
-
-## Append Local fixed ip Machines
-192.168.10.1   router
-192.168.10.100 macmini
-192.168.10.101 krypton
-192.168.10.250 backup
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/17/">&larr; Older</a>
@@ -740,11 +833,23 @@ fe80::1%lo0 localhost
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (243)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (39)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-thermometer-code/">Verilog: Thermometer Code</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/vim-macro/">Vim: Macro</a>
@@ -752,18 +857,6 @@ fe80::1%lo0 localhost
     
       <li class="post">
         <a href="/blog/tech/find-your-ruby-gems-path/">Find Your Ruby Gems Path</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/cooking/bread-doves-gluten-free/">Bread: Doves Gluten Free</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-calculate-primes/">Verilog: Calculate Primes</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/tcsh-remove-trailing-slash/">Tcsh Remove Trailing /</a>
       </li>
     
   </ul>

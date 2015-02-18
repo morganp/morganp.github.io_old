@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2015-02-18T16:49:30+00:00</updated>
+  <updated>2015-02-18T18:28:25+00:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,82 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[OS X Disable Back Gesture]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/os-x-disable-back-gesture/"/>
+    <updated>2015-02-18T18:26:07+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/os-x-disable-back-gesture</id>
+    <content type="html"><![CDATA[<p>After accidentally scrolling back a page when browsing the web in chrome too many times. Figured out how to disable it: from your terminal</p>
+
+<pre><code>defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool FALSE
+</code></pre>
+
+<p><a href="http://apple.stackexchange.com/questions/21236/how-do-i-disable-chromes-two-finger-back-forward-navigation">From
+http://apple.stackexchange.com</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SystemVerilog: Constrained Random]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/systemverilog-constrained-random/"/>
+    <updated>2015-02-18T17:01:56+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/systemverilog-constrained-random</id>
+    <content type="html"><![CDATA[<p>A minimal example of constrained random to constraining a 4 bit value to 0 to 11 when randomised.</p>
+
+<pre><code>module tb;
+
+  class cr_example_t
+    rand bit val;
+    rand bit [3:0] sel;
+
+    constrain c1 {
+      sel &lt; 12;
+    }
+  endclass
+
+  cr_example_t cr_example = new;
+
+  initial begin :test_program
+    cr_example.randomise();
+    $display(cr_example.val);
+    $display(cr_example.sel);
+
+    $finish;
+  end
+
+endmodule
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Verilog: Thermometer Code]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/verilog-thermometer-code/"/>
+    <updated>2015-02-18T16:51:43+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/verilog-thermometer-code</id>
+    <content type="html"><![CDATA[<p>Efficiently create a <a href="http://en.wikipedia.org/wiki/Unary_coding">thermometer code</a> in verilog:</p>
+
+<pre><code>localparam M = 32;
+
+function [M-1:0] therm_code;
+  input    [$clog2(M):0] val;
+  begin
+    for (int i = 0; i&lt;M; i++) begin
+      therm_code[i] = (i&lt;val);
+    end
+  end
+endfunction
+</code></pre>
+
+<p>Other methods which do not synthesis as well:</p>
+
+<pre><code>therm_code  = (2**val) - 1;
+
+therm_code = ~({M{1'b1}} &lt;&lt; val);
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Vim: Macro]]></title>
@@ -435,119 +511,6 @@ ans =
 The GCC flag <code>-ffast-math</code> optimizes equations as if they were associative.</p>
 
 <p>The examples shown here were found on <a href="https://news.ycombinator.com/item?id=7479550">Hacker News</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Adobe Creative Cloud Is ...]]></title>
-    <link href="http://lizard-spock.co.uk/blog/photography/adobe-creative-cloud-is-dot-dot-dot/"/>
-    <updated>2014-06-19T18:15:59+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/photography/adobe-creative-cloud-is-dot-dot-dot</id>
-    <content type="html"><![CDATA[<p>Inconsistent, annoying, <strong>cheap</strong>?</p>
-
-<!-- more -->
-
-
-<p>My main bugbear with the creative cloud application is the way it updates applications.
-Photoshop CC and Lightroom are handled differently.</p>
-
-<p>Photoshop switches from installed to update. Which is great it will pull in the update on my command.</p>
-
-<p>Lightroom switches from Installed to <strong>Try</strong>.</p>
-
-<p>Not only that but I have now have 2 version of Photoshop CC and CC (2014) ready
-for updates, one of which has not already been installed.</p>
-
-<p>SO I have 2 applications with updates ready, one wants an update the other refuses
-to acknowledge it has been installed and wants a new install. A new program,
-Photoshop CC (2014), which only requires an update.</p>
-
-<p><img src="http://lizard-spock.co.uk/images/Photography/CC_update.png" title="Adobe Creative Cloud is Inconsistent" alt="" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Octopress Categories with Different Styles]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/octopress-categories-with-different-styles/"/>
-    <updated>2014-06-14T08:24:01+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/octopress-categories-with-different-styles</id>
-    <content type="html"><![CDATA[<p>As I use the code blocks for ingredient lists on my recipe pages I wanted to
-have a different style, lighter background instead of black.</p>
-
-<p>I currently manually set a different layout in the _post header:</p>
-
-<pre><code>layout: post
-categories: 
-- Tech
-
-layout: recipe
-categories: 
-- Cooking
-</code></pre>
-
-<!-- more -->
-
-
-<p>The layout will then look for a matching layout in <code>source/_layouts</code></p>
-
-<p>Manually create your new layout (instructions from top level Octopress site):</p>
-
-<pre><code>cp source/_layouts/post.html source/_layouts/recipe.html
-</code></pre>
-
-<p>Edit <code>source/_layouts/recipe.html</code> changing the role to <code>recipe</code>:</p>
-
-<pre><code>---
-layout: default
-single: true
----
-
-&lt;div&gt;
-&lt;article class="hentry" role="recipe"&gt;
-  \{\% include article.html \%\}
-  &lt;footer&gt;
-    &lt;p class="meta"&gt;
-</code></pre>
-
-<p>This will now pick up the styling that <code>post</code> also gets but we can target our modifications to <code>article[role="recipe"]</code>.
-For custom stylings apply changes in to the relevant file in <code>sass/custom/</code>.</p>
-
-<p>To modify the background colour of a code block<br/>
-<code>sass/custom/_styles.scss</code> add:</p>
-
-<pre><code>// Customise the recipe layout
-article[role="recipe"] pre {
-  background-color: $sidebar-bg;
-}
-</code></pre>
-
-<p>NB: <code>$sidebar-bg</code> is defined in <code>sass/base/_theme.scss</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Verilog: Timeout]]></title>
-    <link href="http://lizard-spock.co.uk/blog/engineering/verilog-timeout/"/>
-    <updated>2014-06-14T08:08:26+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/engineering/verilog-timeout</id>
-    <content type="html"><![CDATA[<p>To wait for a maximum of <code>10ns</code> for positive edge on clk then carry on with simulation.</p>
-
-<pre><code>fork : wait_or_timeout
-  begin
-    #10ms;
-    disable wait_or_timeout;
-  end
-  begin
-    @(posedge clk);
-    disable wait_or_timeout;
-  end
-join
-</code></pre>
-
-<p>Often use to fail simulation if the expected signal does not occur,
-this stops simulation hanging and allows status reports to be generated.</p>
-
-<p>Originally posted as <a href="http://stackoverflow.com/a/12372233/97073">SO answer</a>.</p>
 ]]></content>
   </entry>
   

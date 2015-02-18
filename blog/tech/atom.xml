@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/blog/tech/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2015-02-18T16:49:30+00:00</updated>
+  <updated>2015-02-18T18:28:25+00:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[OS X Disable Back Gesture]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/os-x-disable-back-gesture/"/>
+    <updated>2015-02-18T18:26:07+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/os-x-disable-back-gesture</id>
+    <content type="html"><![CDATA[<p>After accidentally scrolling back a page when browsing the web in chrome too many times. Figured out how to disable it: from your terminal</p>
+
+<pre><code>defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool FALSE
+</code></pre>
+
+<p><a href="http://apple.stackexchange.com/questions/21236/how-do-i-disable-chromes-two-finger-back-forward-navigation">From
+http://apple.stackexchange.com</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Vim: Macro]]></title>
@@ -86,18 +101,6 @@ word is alpha-numeric and other non-blank characters delimited by whitespace and
 
 <pre><code>this-is-four-words
 this-is-one-WORD
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[List Files Ignored by Git]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/list-files-ignored-by-git/"/>
-    <updated>2014-07-30T20:18:07+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/list-files-ignored-by-git</id>
-    <content type="html"><![CDATA[<p><a href="https://www.youtube.com/watch?v=4VBG9FlyiOw">From Github Training &amp; Guides</a>.</p>
-
-<pre><code>git ls-files --others --ignored --exclude-standard
 </code></pre>
 ]]></content>
   </entry>

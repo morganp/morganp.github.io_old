@@ -1518,7 +1518,7 @@
     </url>
     <url>
         <loc>http://lizard-spock.co.uk/blog/engineering/verilog-calculate-primes/</loc>
-        <lastmod>2014-12-20T07:59:31+00:00</lastmod>
+        <lastmod>2015-02-18T17:01:13+00:00</lastmod>
     </url>
     <url>
         <loc>http://lizard-spock.co.uk/blog/cooking/bread-doves-gluten-free/</loc>
@@ -1530,7 +1530,19 @@
     </url>
     <url>
         <loc>http://lizard-spock.co.uk/blog/tech/vim-macro/</loc>
-        <lastmod>2015-02-18T16:49:07+00:00</lastmod>
+        <lastmod>2015-02-18T16:52:40+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/engineering/verilog-thermometer-code/</loc>
+        <lastmod>2015-02-18T17:01:30+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/engineering/systemverilog-constrained-random/</loc>
+        <lastmod>2015-02-18T17:03:59+00:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/tech/os-x-disable-back-gesture/</loc>
+        <lastmod>2015-02-18T18:28:14+00:00</lastmod>
     </url>
     <url>
         <loc>http://lizard-spock.co.uk/about/</loc>
@@ -1538,11 +1550,11 @@
     </url>
     <url>
         <loc>http://lizard-spock.co.uk/blog/archives/</loc>
-        <lastmod>2015-02-18T16:49:07+00:00</lastmod>
+        <lastmod>2015-02-18T18:28:14+00:00</lastmod>
     </url>
     <url>
         <loc>http://lizard-spock.co.uk/</loc>
-        <lastmod>2015-02-18T16:49:07+00:00</lastmod>
+        <lastmod>2015-02-18T18:28:14+00:00</lastmod>
     </url>
     <url>
         <loc>http://lizard-spock.co.uk/license/</loc>
