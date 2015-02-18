@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-12-22T21:10:27+00:00</updated>
+  <updated>2015-02-18T16:49:30+00:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,48 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Vim: Macro]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/vim-macro/"/>
+    <updated>2015-02-18T16:41:40+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/vim-macro</id>
+    <content type="html"><![CDATA[<p>When <code>.</code> just will not do (repeats last action) because you need to capture  a movement as well, macros are quick to create and use.</p>
+
+<pre><code>q&lt;number&gt;&lt;actions&gt;q
+</code></pre>
+
+<p>Replay macro</p>
+
+<pre><code>@&lt;number&gt; 
+</code></pre>
+
+<p>Replay macro 10 times</p>
+
+<pre><code>10@&lt;number&gt;
+</code></pre>
+
+<p>Example
+Yank and put line, then repeat 10 times.</p>
+
+<pre><code>q1 yyP q
+
+10@1
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Find Your Ruby Gems Path]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/find-your-ruby-gems-path/"/>
+    <updated>2015-02-18T16:39:32+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/find-your-ruby-gems-path</id>
+    <content type="html"><![CDATA[<pre><code> ruby -r rubygems -e "p Gem.path"
+</code></pre>
+
+<p>From <a href="http://gilesbowkett.blogspot.co.uk/2009/06/find-your-ruby-gems-path.html">Giles Bowkett</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Bread: Doves Gluten Free]]></title>
@@ -506,75 +548,6 @@ join
 this stops simulation hanging and allows status reports to be generated.</p>
 
 <p>Originally posted as <a href="http://stackoverflow.com/a/12372233/97073">SO answer</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Matlab Remove Elements from Array]]></title>
-    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-remove-elements-from-array/"/>
-    <updated>2014-06-02T19:08:09+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/engineering/matlab-remove-elements-from-array</id>
-    <content type="html"><![CDATA[<p>Removing elements based on index</p>
-
-<pre><code>A      = 1:10    ; % 1-D array
-A =
- 1     2     3     4     5     6     7     8     9    10
-
-ind    = [1 4 7] ; % indices to be removed
-A(ind) = []      ; % remove
-
-A =
- 2     3     5     6     8     9    10
-</code></pre>
-
-<p>Based on <a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/1486880">Matlab Central</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Matlab: Formatting Strings]]></title>
-    <link href="http://lizard-spock.co.uk/blog/engineering/matlab-formatting-strings/"/>
-    <updated>2014-06-02T18:46:09+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/engineering/matlab-formatting-strings</id>
-    <content type="html"><![CDATA[<p>The official documentation can be found on <a href="http://www.mathworks.co.uk/help/matlab/matlab_prog/formatting-strings.html#bq0z8vc-6">mathworks</a>.</p>
-
-<p>To display a number with 3 Integer decimal places and 3 fraction places
-<code>$f7.3</code> 7 rather than 6 as need place for the decimal point.</p>
-
-<pre><code>&gt;&gt; a = sprintf('6.3-%6.3f-', 123.678)
-a =
-6.3-123.678-
-
-&gt;&gt; a = sprintf('6.3-%6.3f-', 23.678)
-a =
-6.3-23.678-
-
-&gt;&gt; a = sprintf('6.3-%6.3f-', 3.678)
-a =
-6.3- 3.678-
-</code></pre>
-
-<h2>-ve numbers</h2>
-
-<p>If signed you need to leave space for -ve <code>$f8.3</code> :</p>
-
-<pre><code>&gt;&gt; a = sprintf('7.3-%7.3f-', -123.678)
-a =
-7.3--123.678-
-
-&gt;&gt; a = sprintf('7.3-%7.3f-', -23.678)
-a =
-7.3--23.678-
-
-&gt;&gt; a = sprintf('8.3-%8.3f-', -23.678)
-a =
-8.3- -23.678-
-</code></pre>
-
-<p>For reliable and consistent floating point displays use:</p>
-
-<pre><code>%(fractional places + integer places + 2).(fractional places)f
-</code></pre>
 ]]></content>
   </entry>
   

@@ -9,7 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Select a block ie gain in Simulink then in Matlab type: get(gcbh) This shows the list of properties which can be controlled from Matlab. TO change &hellip;">
+  <meta name="description" content="On Mac OS X matlab behaves quite oddly with the track pad zooming
+in and out very quickly and erratically to remove this behaviour
+Disable Mouse &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +83,106 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Simulink: Scroll Wheel Erratic Behaviour</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-30T20:08:10+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>On Mac OS X matlab behaves quite oddly with the track pad zooming
+in and out very quickly and erratically to remove this behaviour
+<strong>Disable Mouse Scroll Wheel Zoom Behavior</strong>.</p>
+
+<p>To disable the zoom behavior for the scroll wheel:</p>
+
+<pre><code>File &gt; 
+  Simulink Preferences &gt; 
+    Editor Defaults &gt; 
+      Scroll wheel controls zooming preference.
+</code></pre>
+
+<p>If you hold the Ctrl key and use the scroll wheel, the scroll wheel behavior is the opposite of how the preference is set.</p>
+
+<p><a href="http://www.mathworks.co.uk/help/simulink/ug/zooming-block-diagrams.html">source</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/simulink-globally-set-sample-time/">Simulink: Globally Set Sample Time</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-30T20:01:49+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/simulink-globally-set-sample-time/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/simulink-globally-set-sample-time/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To set each constant in a model to sample time -1:</p>
+
+<pre><code>blks = find_system(dut, 'BlockType', 'Constant');
+for i = 1:length(blks)
+    set_param(blks{i}, 'SampleTime', '-1');
+ end
+</code></pre>
+
+<p><a href="http://www.mathworks.co.uk/help/hdlcoder/ug/resource-sharing.html#btg_5ht-1">Source</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -500,135 +602,6 @@ this stops simulation hanging and allows status reports to be generated.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-remove-elements-from-array/">Matlab Remove Elements from Array</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-02T19:08:09+01:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-remove-elements-from-array/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-remove-elements-from-array/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Removing elements based on index</p>
-
-<pre><code>A      = 1:10    ; % 1-D array
-A =
- 1     2     3     4     5     6     7     8     9    10
-
-ind    = [1 4 7] ; % indices to be removed
-A(ind) = []      ; % remove
-
-A =
- 2     3     5     6     8     9    10
-</code></pre>
-
-<p>Based on <a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/1486880">Matlab Central</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-formatting-strings/">Matlab: Formatting Strings</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-02T18:46:09+01:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-formatting-strings/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-formatting-strings/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The official documentation can be found on <a href="http://www.mathworks.co.uk/help/matlab/matlab_prog/formatting-strings.html#bq0z8vc-6">mathworks</a>.</p>
-
-<p>To display a number with 3 Integer decimal places and 3 fraction places
-<code>$f7.3</code> 7 rather than 6 as need place for the decimal point.</p>
-
-<pre><code>&gt;&gt; a = sprintf('6.3-%6.3f-', 123.678)
-a =
-6.3-123.678-
-
-&gt;&gt; a = sprintf('6.3-%6.3f-', 23.678)
-a =
-6.3-23.678-
-
-&gt;&gt; a = sprintf('6.3-%6.3f-', 3.678)
-a =
-6.3- 3.678-
-</code></pre>
-
-<h2>-ve numbers</h2>
-
-<p>If signed you need to leave space for -ve <code>$f8.3</code> :</p>
-
-<pre><code>&gt;&gt; a = sprintf('7.3-%7.3f-', -123.678)
-a =
-7.3--123.678-
-
-&gt;&gt; a = sprintf('7.3-%7.3f-', -23.678)
-a =
-7.3--23.678-
-
-&gt;&gt; a = sprintf('8.3-%8.3f-', -23.678)
-a =
-8.3- -23.678-
-</code></pre>
-
-<p>For reliable and consistent floating point displays use:</p>
-
-<pre><code>%(fractional places + integer places + 2).(fractional places)f
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -643,11 +616,19 @@ a =
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (243)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/vim-macro/">Vim: Macro</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/find-your-ruby-gems-path/">Find Your Ruby Gems Path</a>
+      </li>
     
       <li class="post">
         <a href="/blog/cooking/bread-doves-gluten-free/">Bread: Doves Gluten Free</a>
@@ -659,14 +640,6 @@ a =
     
       <li class="post">
         <a href="/blog/tech/tcsh-remove-trailing-slash/">Tcsh Remove Trailing /</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/f-stop-loka-and-tripod/">F-Stop Loka &amp; Tripod</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/word-word-the-difference/">Word WORD the Difference</a>
       </li>
     
   </ul>
@@ -708,7 +681,7 @@ a =
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Morgan Prior -
+  Copyright &copy; 2015 - Morgan Prior -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

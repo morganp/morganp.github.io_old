@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tech | RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/blog/tech/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2014-12-22T21:10:27+00:00</updated>
+  <updated>2015-02-18T16:49:30+00:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,48 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Vim: Macro]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/vim-macro/"/>
+    <updated>2015-02-18T16:41:40+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/vim-macro</id>
+    <content type="html"><![CDATA[<p>When <code>.</code> just will not do (repeats last action) because you need to capture  a movement as well, macros are quick to create and use.</p>
+
+<pre><code>q&lt;number&gt;&lt;actions&gt;q
+</code></pre>
+
+<p>Replay macro</p>
+
+<pre><code>@&lt;number&gt; 
+</code></pre>
+
+<p>Replay macro 10 times</p>
+
+<pre><code>10@&lt;number&gt;
+</code></pre>
+
+<p>Example
+Yank and put line, then repeat 10 times.</p>
+
+<pre><code>q1 yyP q
+
+10@1
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Find Your Ruby Gems Path]]></title>
+    <link href="http://lizard-spock.co.uk/blog/tech/find-your-ruby-gems-path/"/>
+    <updated>2015-02-18T16:39:32+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/tech/find-your-ruby-gems-path</id>
+    <content type="html"><![CDATA[<pre><code> ruby -r rubygems -e "p Gem.path"
+</code></pre>
+
+<p>From <a href="http://gilesbowkett.blogspot.co.uk/2009/06/find-your-ruby-gems-path.html">Giles Bowkett</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Tcsh Remove Trailing /]]></title>
@@ -57,30 +99,6 @@ this-is-one-WORD
 
 <pre><code>git ls-files --others --ignored --exclude-standard
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Xkill]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/xkill/"/>
-    <updated>2014-07-30T20:16:39+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/xkill</id>
-    <content type="html"><![CDATA[<p>I just discovered the <code>xkill</code> command, when a window has crashed you
-can call xkill and get a skull and crossbones cursor to kill the application.</p>
-
-<p>It even works well with remote GUI applications (Sun Grid Engine SGE).</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Error: Storage Class Specified for Parameter]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/error-storage-class-specified-for-parameter/"/>
-    <updated>2014-06-19T20:42:33+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/error-storage-class-specified-for-parameter</id>
-    <content type="html"><![CDATA[<pre><code>error: storage class specified for parameter
-</code></pre>
-
-<p><a href="http://stackoverflow.com/q/3676969/97073">There is probably a missing semicolon <code>;</code> in a header file!</a> Just written my first C Header and received the above warning. It was indeed due to a missing semicolon.</p>
 ]]></content>
   </entry>
   

@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I have just forked and cloned a project on github and discovered *.gemspec files. They are a nice way of specifying the gem dependencies in your &hellip;">
+  <meta name="description" content="Ruby has a .sort method which sorts basic objects. it is case sensitive though so Zebra is before apple. Using sort_by instead you can specify the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,141 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-incase-sensitive-sort/">Ruby Incase Sensitive Sort</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-18T11:13:51+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-incase-sensitive-sort/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-incase-sensitive-sort/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Ruby has a .sort method which sorts basic objects. it is case sensitive though so Zebra is before apple. Using sort_by instead you can specify the sort key.</p>
+
+<pre><code>some_array.sort_by { |x| x.downcase }
+</code></pre>
+
+<p>There is a good description/discussion of the performance issues of this on <a href="http://ruby-doc.org/core/classes/Enumerable.html#M003120">ruby-docs</a></p>
+
+<p>Since the <a href="http://ruby-doc.org/core/classes/Enumerable.html#M003120">ruby-docs</a> mention performance issues I though it would be worth noting  that in my blog app I have the option to pre sort with the ORM. this shouldmake the ruby sory much faster to execute as it is already mostly sorted, but how does this effect the performance of the ORM</p>
+
+<pre><code>def all_tags_sort
+   @tags = Tags.find(:all, :order =&gt; "tag")
+   @tags = @tags.sort_by { |tag| tag.tag.downcase }
+end
+</code></pre>
+
+<p>VS</p>
+
+<pre><code>def all_tags_sort
+   @tags = Tags.find(:all)
+   @tags = @tags.sort_by { |tag| tag.tag.downcase }
+end
+</code></pre>
+
+<p>For the performance test I added this to one of views that displays the tags</p>
+
+<pre><code>#For Benchmarking
+require 'benchmark'
+include Benchmark
+
+bm(10) do |b|
+   b.report("ORM") { @tags = Tags.find(:all) }
+   b.report("Sort by") { @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
+   b.report("ORM sorted") { @tags = Tags.find(:all, :order =&gt; "tag") }
+   b.report("Sort by") { @tags = @tags.sort_by { |tag| tag.tag.downcase }  }
+end
+</code></pre>
+
+<p>To test I built up a small dictionary using this <a href="http://gist.github.com/370533">gist</a> (sorted by default so have to randomise it alittle bit)</p>
+
+<pre><code>                   user     system      total        real
+ORM           53.920000   3.650000  57.570000 ( 57.960210)
+Sort by        4.750000   0.320000   5.070000 (  5.091083)
+ORM sorted    45.080000   3.590000  48.670000 ( 49.554891)
+Sort by        2.700000   0.310000   3.010000 (  3.016042)
+</code></pre>
+
+<p>mmm, data does not look write as retrieving and sorting was quicker than just retrieving will run with the order swapped.</p>
+
+<pre><code>                user     system      total        real
+ORM sorted 10.290000   1.740000  12.030000 ( 12.087005)
+Sort by     0.930000   0.130000   1.060000 (  1.054450)
+ORM        11.740000   1.700000  13.440000 ( 13.453623)
+Sort by     0.760000   0.130000   0.890000 (  0.886095)
+</code></pre>
+
+<p>Sorting in the ORM layer still seems to be quicker than not sorting, and the Ruby sorting takes same length of time. So looks like applying the sort is a worthwhile.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/itunes-play-flac-on-os-x/">iTunes Play FLAC on OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-18T07:33:36+01:00" pubdate data-updated="true">Apr 18<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/itunes-play-flac-on-os-x/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/itunes-play-flac-on-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://code.google.com/p/flukeformac/">Fluke for mac</a> can be used to get iTunes playing <a href="http://flac.sourceforge.net/">FLAC</a> audio files. However it is currently broken for Snow Leopard due to the upgraded version of python.</p>
+
+<p>Once Fluke is installed open your .flac files with fluke.app and they should be added to your iTunes library.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -670,114 +805,6 @@ $ gem cleanup sinatra
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-run-execute-command-line/">Ruby Run (Execute) Command Line</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-run-execute-command-line/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-run-execute-command-line/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Also a <a href="http://gist.github.com/341670">gist</a> on github. This code snippet is an example of how to execute a command line argument in ruby and display the output</p>
-
-<pre><code>#!/usr/bin/env ruby
-do_and_report("ls")
-
-#Small function to run a command and output return values
-def do_and_report(command)
-   f = open("| #{command}")
-   g = Array.new
-   while (foo = f.gets)
-      g &lt;&lt; foo
-   end
-   g.each do |element|
-      puts element
-   end
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-include-require-local-files/">Ruby Include (Require) Local Files</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-include-require-local-files/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-include-require-local-files/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Also a <a href="http://gist.github.com/341255">gist</a> on github. This is an example of how you can require files in a relative path to the script. As Ruby scripts execute from which ever path they were called.</p>
-
-<pre><code>#!/usr/bin/env ruby
-
-#A way of including local functions in sub folders 
-path = File.expand_path $0
-path = File.dirname(path)
-
-require "#{path}/SubDir/function_1.rb"
-require "#{path}/SubDir/function_2.rb"
-require "#{path}/SubDir/function_3.rb"
-
-#or change working dir of script
-Dir.chdir(path) 
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/35/">&larr; Older</a>
@@ -792,11 +819,19 @@ Dir.chdir(path)
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (243)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/vim-macro/">Vim: Macro</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/find-your-ruby-gems-path/">Find Your Ruby Gems Path</a>
+      </li>
     
       <li class="post">
         <a href="/blog/cooking/bread-doves-gluten-free/">Bread: Doves Gluten Free</a>
@@ -808,14 +843,6 @@ Dir.chdir(path)
     
       <li class="post">
         <a href="/blog/tech/tcsh-remove-trailing-slash/">Tcsh Remove Trailing /</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/f-stop-loka-and-tripod/">F-Stop Loka &amp; Tripod</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/word-word-the-difference/">Word WORD the Difference</a>
       </li>
     
   </ul>
@@ -857,7 +884,7 @@ Dir.chdir(path)
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Morgan Prior -
+  Copyright &copy; 2015 - Morgan Prior -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

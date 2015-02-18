@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="If a torrent application has been running and torrents start showing a status of &lsquo;unregistered torrent&rsquo; a likely cause is that the server &hellip;">
+  <meta name="description" content="I recently heard about the Schwartzian transform, which is a sorting idiom from perl. It allows an array of objects to be efficiently sorted by any &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,120 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/schwartzian-transform/">Schwartzian Transform</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-08T10:37:44+01:00" pubdate data-updated="true">Apr 8<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/schwartzian-transform/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/schwartzian-transform/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently heard about the Schwartzian transform, which is a sorting idiom from perl. It allows an array of objects to be efficiently sorted by any property. Part of the cleverness is the use of anonymous arrays which allows them to be garbage collected quickly.</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Schwartzian_transform">Wikipedia</a> has a detailed description, however the general form (in perl) is:</p>
+
+<pre><code>@sorted = map  { $_-&gt;[0] }
+          sort { $a-&gt;[1] cmp $b-&gt;[1] }
+          map  { [$_, foo($_)] }
+              @unsorted;
+</code></pre>
+
+<p>A good history of it can be <a href="http://www.stonehenge.com/merlyn/UnixReview/col64.html">read here</a>.</p>
+
+<p>My point of bring all of this up other than pointing out a cool sorting algorithm is that any <strong>ruby</strong> class including <a href="http://ruby-doc.org/core/classes/Enumerable.html">Enumerable</a> (Arrays, Hashes etc) has this built in with the <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001481"><strong>.sort_by</strong></a> method.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/reading-list/">Reading List</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-08T10:19:56+01:00" pubdate data-updated="true">Apr 8<span>th</span>, 2011</time>
+        
+           | <a href="/blog/photography/reading-list/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/reading-list/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>My <a href="http://www.shelfari.com/o1514252429/shelf">Shelfari</a></p>
+
+<h2>To Read</h2>
+
+<p>Photoshop CS5 and Lightroom 3, ISBN 978-1-933952-67-2<br/>
+Developing Vision and Style, ISBN 978-1-9025 38495<br/>
+Pragmatic Thinking and Learning, ISBN 978-1934356050<br/>
+Pragmatic Guide to Git,<br/>
+The RSpec Book,<br/>
+Ruby Best Practises,<br/>
+The Agile Samurai, <br/>
+jQuery Novice to Ninja,<br/>
+Structure and Interpretation of Computer Programming,<br/>
+Metaprogramming Ruby,</p>
+
+<h2>Recommended Computing</h2>
+
+<p>Classic Shell Scripting, ISBN 0-596-00595-4<br/>
+The Passionate Programmer, ISBN 978-1-934356-34-0</p>
+
+<h2>Recommended Photography</h2>
+
+<p>Lightroom 2 Adventure, ISBN 978-0-596-52101-1<br/>
+Black and White, ISBN 978-1-904705-57-4<br/>
+First Light, ISBN 1-902538-24-2</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -614,133 +728,6 @@ RubyGems Environment:
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-regex-routes/">Sinatra Regex Routes</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-12T06:41:10+00:00" pubdate data-updated="true">Feb 12<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/sinatra-regex-routes/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-regex-routes/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The routes for my site have been growing since adding pagination (/articles/older/) and tag filtering. As well as the small amount of logic for each route was getting duplicated.</p>
-
-<p>I have been experimenting with real regex routes, so far some thing like this looks like it could be a good solution:</p>
-
-<pre><code>$items_per_page = 10
-get /^\/article(\/older(\/\d+)?)?(\/tag\/\w*)?\/?$/ do |pagination, page, tag|
-
-if pagination.nil?
-   @offset = 0
-  else
-    if page.nil?
-      @offset = $items_per_page
-    else
-      @offset = page.gsub(/^\//, "").to_i
-  end
-
-  if not tag.nil?
-   tag.gsub!(/\/tag\//, "")
-  end
-
-  result = "Pagination #{@offset} &lt;br  /&gt;"
-  result &lt;&lt; "Tag #{tag} &lt;br  /&gt;"
-  result &lt;&lt; "captures #{ params[:captures] }"
-  return result 
-end
-</code></pre>
-
-<p>This means the following routes will be handled:<br/>
-/article<br/>
-/article/<br/>
-/article/older/<br/>
-/article/older/10<br/>
-/article/tag/Ruby<br/>
-/article/older/10/tag/Ruby<br/>
-/article/older/tag/Ruby</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/mac-mini-mid-2010-8gb-memory-upgrade/">Mac Mini (Mid 2010) 8GB Memory Upgrade</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-02T08:30:24+00:00" pubdate data-updated="true">Feb 2<span>nd</span>, 2011</time>
-        
-           | <a href="/blog/tech/mac-mini-mid-2010-8gb-memory-upgrade/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mac-mini-mid-2010-8gb-memory-upgrade/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Finally got my mac mini to accept the 8GB kit I bought from <a href="http://www.crucial.com/uk/">Crucial</a> for £74 (apple upgrade is £409).</p>
-
-<p>The Mac mini since mid 2010 has been designed to have user upgradable
- memory. I however ran in to some issues with it not recognising the new memory, not quite which step fixed it:</p>
-
-<p>First reboot, while switching back on press and hold cmd-opt-p-r <a href="http://support.apple.com/kb/ht1379">Resetting PRAM and NVRAM</a>. This will causes it to continuously reboot, switch off after a cylce not letting it boot up.</p>
-
-<p>Second, Disconnect all cables, open up the back and take the old memory out. pulling the clips to the side the memory pops up at about 45degrees.</p>
-
-<p>Third, insert lower memory, really make sure this is firmly in place by pushing in firmly while at 45-30Degeees,then press down to clip into place. non of the metal from the contacts should be showing. I think this was my main mistake when inserting this memory the first few times. Then insert the second RMA module in the higher position, this seats much easier.</p>
-
-<p>Fourth, Replace back/bottom of mac mini then hold the power button down/in for 4 seconds. This causes a <a href="http://support.apple.com/kb/HT3964">SMC reset</a>.</p>
-
-<p>Last reconnect cables and power up. You can use /Applications/Utilities/Activity Monitor.app to check how much memory you now have.</p>
-
-<p>If the mac just beeps, it is quite likely that the memory is not seated correctly. On a very rare occasion it would be due to a faulty memory chip. They should work one at a time in the top position though so you could test them that way.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/27/">&larr; Older</a>
@@ -755,11 +742,19 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (241)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (37)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (243)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/tech/vim-macro/">Vim: Macro</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/tech/find-your-ruby-gems-path/">Find Your Ruby Gems Path</a>
+      </li>
     
       <li class="post">
         <a href="/blog/cooking/bread-doves-gluten-free/">Bread: Doves Gluten Free</a>
@@ -771,14 +766,6 @@ end
     
       <li class="post">
         <a href="/blog/tech/tcsh-remove-trailing-slash/">Tcsh Remove Trailing /</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/photography/f-stop-loka-and-tripod/">F-Stop Loka &amp; Tripod</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/word-word-the-difference/">Word WORD the Difference</a>
       </li>
     
   </ul>
@@ -820,7 +807,7 @@ end
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Morgan Prior -
+  Copyright &copy; 2015 - Morgan Prior -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
