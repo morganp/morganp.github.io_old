@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="In Active Record when updating records I used to have an very manual process to this some thing like: @todo.done = params['post']['done']
-@todo.desc &hellip;">
+  <meta name="description" content="I have previously mentioned I installed Homebrew for installing unix packages, I left Ports in place, but removed from my path, just incase. I have &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,66 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/removing-ports-os-x/">Removing Ports OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-17T12:18:48+01:00" pubdate data-updated="true">Aug 17<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/removing-ports-os-x/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/removing-ports-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have previously mentioned I installed <a href="http://amaras-tech.co.uk/people/morgan/article/44">Homebrew</a> for installing unix packages, I left Ports in place, but removed from my path, just incase. I have tonight noticed that the Mac ports directory is eating up 1.7GB of space and I want it back.</p>
+
+<pre><code>$ du -s -h /opt/local/var/macports
+</code></pre>
+
+<p>Following this <a href="http://guide.macports.org/chunked/installing.macports.uninstalling.html">guide to remove ports</a> I ran:</p>
+
+<pre><code>$ sudo /opt/local/bin/port -f uninstall installed
+$ sudo rm -rf \
+    /opt/local \
+    /Applications/DarwinPorts \
+    /Applications/MacPorts \
+    /Library/LaunchDaemons/org.macports.* \
+    /Library/Receipts/DarwinPorts*.pkg \
+    /Library/Receipts/MacPorts*.pkg \
+    /Library/StartupItems/DarwinPortsStartup \
+    /Library/Tcl/darwinports1.0 \
+    /Library/Tcl/macports1.0 \
+    ~/.macports
+</code></pre>
+
+<p>Now After emptying Trash, probably not necessary though, you should see quite a bit of harddrive space freed up.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -751,49 +810,6 @@ git --version
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/get-client-ip-on-heroku/">Get Client IP on Heroku</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-12T07:41:32+01:00" pubdate data-updated="true">Jul 12<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/get-client-ip-on-heroku/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/get-client-ip-on-heroku/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have been trying to use the <a href="http://coderack.org/users/hosiawak/middlewares/36-geoip-country">GeoIP Rack App</a>, by copying this <a href="http://gist.github.com/208774">gist</a> in my Rack stack with a Sinatra Application. Heroku has a lot of redirection in there Server farm so I have added the following lines to my instance of GeoIP:Rack to make it Heroku safe.</p>
-
-<pre><code>env['HTTP_X_REAL_IP'] ||= env['REMOTE_ADDR']
-res = @db.country(env['HTTP_X_REAL_IP'])
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/31/">&larr; Older</a>
@@ -808,11 +824,15 @@ res = @db.country(env['HTTP_X_REAL_IP'])
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (39)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (39)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a>
@@ -828,10 +848,6 @@ res = @db.country(env['HTTP_X_REAL_IP'])
     
       <li class="post">
         <a href="/blog/tech/vim-macro/">Vim: Macro</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/find-your-ruby-gems-path/">Find Your Ruby Gems Path</a>
       </li>
     
   </ul>

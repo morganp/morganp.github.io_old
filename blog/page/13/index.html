@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="On the continuous search for a decent ADSL, Router and Wireless access point. I have tried many (unscientifically). Finding that many fall over when &hellip;">
+  <meta name="description" content="I have decided to clean up my vim colorschemes. I have been using ir_black for sometime but it does not look the same as others who use it. I think I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,84 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/terminal-colours/">Terminal Colours</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-12T19:16:31+01:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/terminal-colours/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/terminal-colours/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have decided to clean up my vim colorschemes. I have been using ir_black for sometime but it does not look the same as others who use it. I think I was forcing it into 256 or 16 color mode.</p>
+
+<p>Some vim command line on some terminals looked awful and I had to switch to another colorscheme just so I could see the text.</p>
+
+<p>I have decided to pick an 8,16,256 and full color scheme and load them automatically, rather than trying to find a colorscheme which degraded gracefully, they just never seemed to do it that well.</p>
+
+<p>From <a href="http://blog.sanctum.geek.nz/tag/xterm-256color/">sanctum.geek.nz</a> I discovered the <code>tput colors</code> command. Vims <code>&amp;t_Co</code> will reflect this value.  But it only reflects the calling terminals capabilities, so calling gvim or mvim from an 8 bit color terminal your &amp;t_Co will still be 8.</p>
+
+<p>After some trouble getting the 8 colour scheme to work posted a question on <a href="http://superuser.com/questions/604589/vim-non-gui-background-will-not-go-white">superuser</a>.</p>
+
+<p>The main solution seems to be to append your TERM envar with -256color to force 256 Colour detection.  I was originally hesitant to blindly apply 256 color to any system I may be working on, but I think it would be rare to come across a terminal that does not support 256 colors these days. This would also have to be a system/network where I have already set-up my dotfiles.</p>
+
+<p>Adding -256color to term makes tput return 256 and makes vim t_Co 256 as well.
+For csh:</p>
+
+<pre><code>setenv TERM $TERM-256color
+</code></pre>
+
+<p>For a bit more protection you should stop multiple -256colors being appended i.e. stop xterm-256color-256color if called from bash with 256color extension already applied.</p>
+
+<pre><code>if ($TERM =~ *256color*) then
+  #Already 256color
+else
+  setenv TERM $TERM-256color
+endif
+</code></pre>
+
+<p>For Bash:</p>
+
+<pre><code>if [[ "$TERM" != *256color* ]]
+then
+  export TERM=$TERM-256color
+fi
+</code></pre>
+
+<p>Using a <a href="https://github.com/wardi/xterm_colour_chart">python script</a> you can display color charts in the terminal. It should be clear if 256 colors is not working, you would only see 16 colour blocks.</p>
+
+<p><a href="http://flickr.com/gp/morgan_prior/45kh8P"> <img src="http://farm6.staticflickr.com/5542/9272025578_7a86fc474c_n.jpg" alt="colour block" /> </a></p>
+
+<p>After all of this instead of getting my vim colour schemes to degrade gracefully I force everything into 256 colours mode. Which I think is actually ok and I get to use better colour schemes all/more of the time.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -533,52 +611,6 @@ footer: true
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/cooking/black-forest-gateau/">Black Forest Gateau</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-07T12:29:00+01:00" pubdate data-updated="true">May 7<span>th</span>, 2013</time>
-        
-           | <a href="/blog/cooking/black-forest-gateau/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/cooking/black-forest-gateau/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Cake (£1.23 a portion) time to table  ~1 hour 30 minutes.</p>
-
-<p><img class="left" src="/images/BlackForestGateau/morganp-20130505-BlackForestGateau-IMG_0770-Cake2.jpg"></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/cooking/black-forest-gateau/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/14/">&larr; Older</a>
@@ -593,11 +625,15 @@ footer: true
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (39)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (39)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a>
@@ -613,10 +649,6 @@ footer: true
     
       <li class="post">
         <a href="/blog/tech/vim-macro/">Vim: Macro</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/find-your-ruby-gems-path/">Find Your Ruby Gems Path</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="When creating applications normal messages should go to stdout and error messages should go to stderr, unfortunately there is not a nice ruby way the &hellip;">
+  <meta name="description" content="There does not appear to be a nice way to get a current users real name in ruby. The best way I have found on *nix systems (Not windows) is: %x{ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-get-a-users-real-name/">Ruby Get a Users Real Name</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-22T12:06:08+00:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2011</time>
+        
+           | <a href="/blog/tech/ruby-get-a-users-real-name/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-get-a-users-real-name/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>There does not appear to be a nice way to get a current users real name in ruby. The best way I have found on *nix systems (Not windows) is:</p>
+
+<pre><code>%x{finger `whoami`}.match(/Name: ([\w ]*)/)
+real_username = $1
+</code></pre>
+
+<p>There are other ways including parsing the git profile if it exists. At some point I will try to get these packaged up into a gem which can work its way through a list of possible sources.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -709,49 +754,6 @@ ruby-1.9.2-p290 :002 &gt; require 'fileutils'
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/homebrew-list-outdated-packages/">Homebrew List Outdated Packages</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-21T21:58:22+01:00" pubdate data-updated="true">Sep 21<span>st</span>, 2011</time>
-        
-           | <a href="/blog/tech/homebrew-list-outdated-packages/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/homebrew-list-outdated-packages/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>brew update
-brew outdated
-</code></pre>
-
-<p><a href="https://github.com/Homebrew/homebrew/wiki/FAQ">Homebrew</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/24/">&larr; Older</a>
@@ -766,11 +768,15 @@ brew outdated
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (39)</a></li><li><a href='/blog/garden'>Garden (14)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (39)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
+      </li>
     
       <li class="post">
         <a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a>
@@ -786,10 +792,6 @@ brew outdated
     
       <li class="post">
         <a href="/blog/tech/vim-macro/">Vim: Macro</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/find-your-ruby-gems-path/">Find Your Ruby Gems Path</a>
       </li>
     
   </ul>
