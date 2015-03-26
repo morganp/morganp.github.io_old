@@ -9,7 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Time can be displayed during simulation using %t. $display("%t", $realtime); Timeformat is used to control the way (%t) this is displayed: //$ &hellip;">
+  <meta name="description" content="The next practice is to use a tcl file: shm.tcl database -open waves -shm
+probe -create your_top_level -depth all -all -shm -database waves
+run exit &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +83,69 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-03-26T19:38:29+00:00" pubdate data-updated="true">Mar 26<span>th</span>, 2015</time>
+        
+           | <a href="/blog/engineering/verilog-shm-waveforms/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/verilog-shm-waveforms/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The next practice is to use a tcl file:</p>
+
+<p>shm.tcl</p>
+
+<pre><code>database -open waves -shm
+probe -create your_top_level -depth all -all -shm -database waves
+run 
+exit
+</code></pre>
+
+<p>run with :</p>
+
+<pre><code>irun -access +r testcase.sv -input shm.tcl
+</code></pre>
+
+<p>Alternatively the following can be added to the simulation:</p>
+
+<pre><code>initial begin
+  $shm_open("waves.shm"); $shm_probe("AS");
+end
+</code></pre>
+
+<p>run with <code>irun -access +r testcase.sv</code></p>
+
+<p>NB: I have had trouble getting this last version to work, the tcl file method is more reliable.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -660,53 +725,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/tcsh-remove-trailing-slash/">Tcsh Remove Trailing /</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-10-08T21:15:43+01:00" pubdate data-updated="true">Oct 8<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/tcsh-remove-trailing-slash/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/tcsh-remove-trailing-slash/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>#!/bin/tcsh
-
-set var = "helloworld/"
-
-## http://dbaspot.com/shell/350417-sed-removing-trailing.html
-set var = `echo "$var" | sed -e 's,\(.\)/$,\1,'`
-
-echo $var
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -719,11 +737,15 @@ echo $var
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (40)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (41)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a>
@@ -739,10 +761,6 @@ echo $var
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-thermometer-code/">Verilog: Thermometer Code</a>
       </li>
     
   </ul>

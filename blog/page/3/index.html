@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="To redirect stdout and stderr in bash we use: ./ShellFile.sh &amp;&gt; test.log However in tcsh that results in: Invalid null command. Switch the &hellip;">
+  <meta name="description" content="error: storage class specified for parameter There is probably a missing semicolon ; in a header file! Just written my first C Header and received &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,48 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/error-storage-class-specified-for-parameter/">Error: Storage Class Specified for Parameter</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-19T20:42:33+01:00" pubdate data-updated="true">Jun 19<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/error-storage-class-specified-for-parameter/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/error-storage-class-specified-for-parameter/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>error: storage class specified for parameter
+</code></pre>
+
+<p><a href="http://stackoverflow.com/q/3676969/97073">There is probably a missing semicolon <code>;</code> in a header file!</a> Just written my first C Header and received the above warning. It was indeed due to a missing semicolon.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -587,76 +629,6 @@ world
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Matlab: Listing Field Name Values of a Struct</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-28T19:05:01+01:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-listing-field-name-values-of-a-struct/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-listing-field-name-values-of-a-struct/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>s = struct ;
-s(1).dat =‘a' ;
-s(1).freq=11 ;
-s(2).dat =‘b' ;
-s(2).freq=22 ;
-</code></pre>
-
-<p>Where:</p>
-
-<pre><code>s(1)
-
-ans =
-
-     dat: 'a'
-    freq: 11
-</code></pre>
-
-<p>How do you access [‘a’, ‘b’] and [11, 22]?</p>
-
-<pre><code>[s.dat] , [s.freq]
-</code></pre>
-
-<p>The <code>[]</code> are really important here.</p>
-
-<pre><code>[s.freq]
-
-ans =
-
-    11    22
-</code></pre>
-
-<p><a href="http://blogs.mathworks.com/loren/2007/04/19/vectorizing-access-to-an-array-of-structures/">Solution found on a Loren Post</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -671,11 +643,15 @@ ans =
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (40)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (41)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a>
@@ -691,10 +667,6 @@ ans =
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-thermometer-code/">Verilog: Thermometer Code</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Having a clean build of Mac OS X Snow Leopard I thought I would give the Homebrew method of installing git a try. First of all Install Homebrew. I &hellip;">
+  <meta name="description" content="After adding some USB2 (NTFS formatted) drives to a headless Ubuntu server, they were not auto-mounted so I had to find them and mount them, with &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,60 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/adding-usb-drives-to-a-headless-ubuntu-linux-box/">Adding USB Drives to a Headless Ubuntu Linux Box</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-17T04:03:10+01:00" pubdate data-updated="true">Jul 17<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/adding-usb-drives-to-a-headless-ubuntu-linux-box/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/adding-usb-drives-to-a-headless-ubuntu-linux-box/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After adding some USB2 (NTFS formatted) drives to a headless Ubuntu server, they were not auto-mounted so I had to find them and mount them, with only remote terminal access.</p>
+
+<p>List Hard Drive Devices:</p>
+
+<pre><code>sudo fdisk -l
+</code></pre>
+
+<p>Create a mount point:</p>
+
+<pre><code>sudo mkdir /mnt/starbug1/terra06
+</code></pre>
+
+<p>and run this command to mount (NTFS formatted):</p>
+
+<pre><code>sudo mount /dev/sdc1 /mnt/starbug1/terra06 -t ntfs
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -581,71 +635,6 @@ match OverLength /\%81v.\+/
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vim-search-and-replace/">Vim Search and Replace</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-24T09:37:37+01:00" pubdate data-updated="true">Jun 24<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/vim-search-and-replace/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-search-and-replace/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To search in Vim just press (apple-f for macvim) / then search string.</p>
-
-<pre><code>/search
-</code></pre>
-
-<p>This will highlight all occurrences of &lsquo;search&rsquo;, to clear the highlighting enter:</p>
-
-<pre><code>:let @/ = ""
-</code></pre>
-
-<p>To search and replace the first occurrence on this line only:</p>
-
-<pre><code>:s/search/replace/
-</code></pre>
-
-<p>Lines 1 to 10 all instance per line (thats the /g global):</p>
-
-<pre><code>:1,10 s/search/replace/g 
-</code></pre>
-
-<p>All Lines All instances</p>
-
-<pre><code>:%s/search/replace/g 
-</code></pre>
-
-<p><a href="http://www.linux.com/learn/tutorials/8255-vim-tips-the-basics-of-search-and-replace">Originals source</a><br  />
-<a href="http://stackoverflow.com/questions/657447/vim-clear-last-search-highlighting">Stack overflow vim clear question</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/32/">&larr; Older</a>
@@ -660,11 +649,15 @@ match OverLength /\%81v.\+/
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (40)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (41)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a>
@@ -680,10 +673,6 @@ match OverLength /\%81v.\+/
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-thermometer-code/">Verilog: Thermometer Code</a>
       </li>
     
   </ul>

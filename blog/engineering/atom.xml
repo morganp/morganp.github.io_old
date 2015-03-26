@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Engineering | RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/blog/engineering/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2015-03-26T19:25:13+00:00</updated>
+  <updated>2015-03-26T19:43:59+00:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Verilog: Shm Waveforms]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/verilog-shm-waveforms/"/>
+    <updated>2015-03-26T19:38:29+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/verilog-shm-waveforms</id>
+    <content type="html"><![CDATA[<p>The next practice is to use a tcl file:</p>
+
+<p>shm.tcl</p>
+
+<pre><code>database -open waves -shm
+probe -create your_top_level -depth all -all -shm -database waves
+run 
+exit
+</code></pre>
+
+<p>run with :</p>
+
+<pre><code>irun -access +r testcase.sv -input shm.tcl
+</code></pre>
+
+<p>Alternatively the following can be added to the simulation:</p>
+
+<pre><code>initial begin
+  $shm_open("waves.shm"); $shm_probe("AS");
+end
+</code></pre>
+
+<p>run with <code>irun -access +r testcase.sv</code></p>
+
+<p>NB: I have had trouble getting this last version to work, the tcl file method is more reliable.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Verilog Timeformat]]></title>
@@ -186,30 +219,6 @@ end
 <p><a href="http://www.edaplayground.com/x/BzX">Example on EDA Playground</a>.</p>
 
 <p>This is however just a programming exercise as the resulting hardware is likely substantially bigger than just implementing a look up table to the maxim number of primes you can fit in <code>prime_number</code>. The look up table will also be ready from time zero and not need to recompute every time you power up.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Submit to SGE as if Working Locally]]></title>
-    <link href="http://lizard-spock.co.uk/blog/engineering/submit-to-sge-as-if-working-locally/"/>
-    <updated>2014-07-30T20:13:23+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/engineering/submit-to-sge-as-if-working-locally</id>
-    <content type="html"><![CDATA[<p>Setting an alias in you .tcshrc</p>
-
-<pre><code>alias qrun 'qrsh -V -noshell -cwd !*'
-</code></pre>
-
-<p>or bash</p>
-
-<pre><code>alias qrun='qrsh -V -noshell -cwd !*'
-</code></pre>
-
-<p>Which makes submitting any script to the grid just:</p>
-
-<pre><code>qrun helloworld.sh
-</code></pre>
-
-<p>Originally asked on <a href="http://superuser.com/a/751162/42141">superuser</a>.</p>
 ]]></content>
   </entry>
   

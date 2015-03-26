@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2015-03-26T19:25:13+00:00</updated>
+  <updated>2015-03-26T19:43:59+00:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Verilog: Shm Waveforms]]></title>
+    <link href="http://lizard-spock.co.uk/blog/engineering/verilog-shm-waveforms/"/>
+    <updated>2015-03-26T19:38:29+00:00</updated>
+    <id>http://lizard-spock.co.uk/blog/engineering/verilog-shm-waveforms</id>
+    <content type="html"><![CDATA[<p>The next practice is to use a tcl file:</p>
+
+<p>shm.tcl</p>
+
+<pre><code>database -open waves -shm
+probe -create your_top_level -depth all -all -shm -database waves
+run 
+exit
+</code></pre>
+
+<p>run with :</p>
+
+<pre><code>irun -access +r testcase.sv -input shm.tcl
+</code></pre>
+
+<p>Alternatively the following can be added to the simulation:</p>
+
+<pre><code>initial begin
+  $shm_open("waves.shm"); $shm_probe("AS");
+end
+</code></pre>
+
+<p>run with <code>irun -access +r testcase.sv</code></p>
+
+<p>NB: I have had trouble getting this last version to work, the tcl file method is more reliable.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Verilog Timeformat]]></title>
@@ -493,18 +526,6 @@ for i = 1:length(blks)
 </code></pre>
 
 <p><a href="http://www.mathworks.co.uk/help/simulink/slref/find_system.html">From Mathworks</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Error: Storage Class Specified for Parameter]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/error-storage-class-specified-for-parameter/"/>
-    <updated>2014-06-19T20:42:33+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/error-storage-class-specified-for-parameter</id>
-    <content type="html"><![CDATA[<pre><code>error: storage class specified for parameter
-</code></pre>
-
-<p><a href="http://stackoverflow.com/q/3676969/97073">There is probably a missing semicolon <code>;</code> in a header file!</a> Just written my first C Header and received the above warning. It was indeed due to a missing semicolon.</p>
 ]]></content>
   </entry>
   

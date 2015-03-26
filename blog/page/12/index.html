@@ -9,7 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="The programs available on your Gardener C14e water computer (timer) are: Program Cycle Duration 00 None 0 | 01 Every 6 hours 3 minutes | 02 Every 12 &hellip;">
+  <meta name="description" content="To count from 1 up to 20 in steps of 5 #!/bin/csh
+foreach x (`seq 1 5 20`) echo $x
+end ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +83,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/for-loops-in-cshtcsh/">For Loops in Csh/tcsh</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-11T12:25:42+01:00" pubdate data-updated="true">Oct 11<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/for-loops-in-cshtcsh/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/for-loops-in-cshtcsh/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To count from 1 up to 20 in steps of 5</p>
+
+<pre><code>#!/bin/csh
+foreach x (`seq 1 5 20`)
+  echo $x
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -666,67 +713,6 @@ and optimise the process I purchased the <strong><a href="https://www.amazon.co.
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-evaluate-envvars-in-string/">Ruby Evaluate Envvars in String.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-07-12T22:59:37+01:00" pubdate data-updated="true">Jul 12<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/ruby-evaluate-envvars-in-string/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-evaluate-envvars-in-string/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In ruby Dir.entries takes a path and returns a list of its contents. However it does not deal with paths (strings) which contain Enviroment Variables (envvars), first they need to be expanded.</p>
-
-<p>Given:SHELL:</p>
-
-<pre><code>export DIR=x
-export FILE=y.z
-</code></pre>
-
-<p>Ruby string:</p>
-
-<pre><code>s = "$DIR/test/$FILE"
-puts s
-=&gt; "$DIR/test/$FILE"
-
-def expand_envvars( in_string )
-  return in_string.gsub(/\$(\w+)/) { ENV[$1] }
-end
-
-puts expand_envvars( s )
-=&gt; "x/test/y.z"
-</code></pre>
-
-<p>Based on: <a href="http://www.ruby-forum.com/topic/180340">http://www.ruby-forum.com/topic/180340</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -741,11 +727,15 @@ puts expand_envvars( s )
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (40)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (41)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a>
@@ -761,10 +751,6 @@ puts expand_envvars( s )
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-thermometer-code/">Verilog: Thermometer Code</a>
       </li>
     
   </ul>
