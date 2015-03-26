@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I have been trying to use the GeoIP Rack App, by copying this gist in my Rack stack with a Sinatra Application. Heroku has a lot of redirection in &hellip;">
+  <meta name="description" content="Having a clean build of Mac OS X Snow Leopard I thought I would give the Homebrew method of installing git a try. First of all Install Homebrew. I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,71 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/installing-git-on-a-clean-build-of-os-x/">Installing Git on a Clean Build of OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-16T11:44:11+01:00" pubdate data-updated="true">Jul 16<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/installing-git-on-a-clean-build-of-os-x/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/installing-git-on-a-clean-build-of-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Having a clean build of Mac OS X Snow Leopard I thought I would give the <a href="http://github.com/mxcl/homebrew">Homebrew</a> method of installing git a try.</p>
+
+<p>First of all Install <a href="http://github.com/mxcl/homebrew">Homebrew</a>. I did it by executing:</p>
+
+<pre><code>ruby -e "$(curl -fsS http://gist.github.com/raw/323731/install_homebrew.rb)"
+</code></pre>
+
+<p>This does some commands as sudo but we trust Homebrew right?<br/>
+NB: Since Leopard sudo will require a password if you do not have a password set it will not except empty or no password so you must have a password set for your user account.</p>
+
+<p>Then install <a href="http://developer.apple.com/technologies/xcode.html">Xcode</a>. 3.2.3 was the latest when writing this but came with the iphone 4 sdk (~2GB) I chose to go with the slightly older 3.2.2 at ~750MB.</p>
+
+<p>Last <a href="http://help.github.com/mac-git-installation/">install git via Homebrew</a>:</p>
+
+<pre><code>brew install git
+==&gt; Downloading http://kernel.org/pub/software/scm/git/git-1.7.1.1.tar.bz2
+######################################################################## 100.0%
+==&gt; make prefix=/usr/local/Cellar/git/1.7.1.1 install
+==&gt; Downloading http://kernel.org/pub/software/scm/git/git-manpages-1.7.1.1.tar.bz2
+######################################################################## 100.0%
+==&gt; Downloading http://kernel.org/pub/software/scm/git/git-htmldocs-1.7.1.1.tar.bz2
+######################################################################## 100.0%
+/usr/local/Cellar/git/1.7.1.1: 916 files, 18M, built in 82 seconds
+
+git --version
+&gt; git version 1.7.1.1
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -581,81 +646,6 @@ match OverLength /\%81v.\+/
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/homebrew-package-management-for-mac-os-x/">Homebrew Package Management for Mac OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-22T07:45:14+01:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2010</time>
-        
-           | <a href="/blog/tech/homebrew-package-management-for-mac-os-x/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/homebrew-package-management-for-mac-os-x/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Homebrew is a new package management system for Mac OS X. <a href="http://www.engineyard.com/blog/2010/homebrew-os-xs-missing-package-manager/">A good review/tutorial on EngineYard</a>.</p>
-
-<p>Update 20-August-2010<br/>
-Then method of installation below adds lots (4) extra folders to your home area making it look clutered so I now preffer this method of installation.</p>
-
-<pre><code>ruby -e "$(curl -fsS http://gist.github.com/raw/323731/install_homebrew.rb)";
-</code></pre>
-
-<p>Then just make sure &lsquo;/usr/local/bin/&rsquo; and &lsquo;/usr/local/sbin/&rsquo; are on your path.<br/>
-Update End</p>
-
-<p>Although I do not like the idea of changing permissions on /usr/local/, so I did:</p>
-
-<pre><code>mkdir -p ~/bin/homebrew
-curl -L http://github.com/mxcl/homebrew/tarball/master | tar xz --strip 1 -C ~/bin/homebrew
-ln -s ~/bin/homebrew/bin/brew ~/bin/brew
-
-#and make sure ~/bin is on your path with soem thing like this in your ~/.bashrc
-# export PATH=$PATH:~/bin
-</code></pre>
-
-<p>Now try it out:</p>
-
-<pre><code>$ brew --version
-&gt; 0.6
-$ brew install wget
-Warning: It appears you have Macports or Fink installed
-Although, unlikely, this can break builds or cause obscure runtime issues.
-If you experience problems try uninstalling these tools.
-==&gt; Downloading http://ftp.gnu.org/gnu/wget/wget-1.12.tar.bz2
-######################################################################## 100.0%
-==&gt; ./configure --disable-debug --prefix=/Users/morgy/bin/homebrew/Cellar/wget/1.12 --disable-iri
-==&gt; make install
-/Users/morgy/bin/homebrew/Cellar/wget/1.12: 7 files, 576K, built in 44 seconds
-</code></pre>
-
-<p>Done</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/32/">&larr; Older</a>
@@ -670,11 +660,15 @@ If you experience problems try uninstalling these tools.
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (39)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (40)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
@@ -690,10 +684,6 @@ If you experience problems try uninstalling these tools.
     
       <li class="post">
         <a href="/blog/engineering/verilog-thermometer-code/">Verilog: Thermometer Code</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/vim-macro/">Vim: Macro</a>
       </li>
     
   </ul>

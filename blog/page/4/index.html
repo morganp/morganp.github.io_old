@@ -9,9 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="
-Kettlebell rack with 24kg, 16kg, 8kg, 12kg, 16kg, 20kg. End detail showing bracing. Underside of rack.
-">
+  <meta name="description" content="My large ICU loaded with my Strobies portrait kit and Canon 580EX MKII. The collapsed soft box is folded into the right hand side. Additional &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +81,49 @@ Kettlebell rack with 24kg, 16kg, 8kg, 12kg, 16kg, 20kg. End detail showing braci
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/f-stop-icu-strobies/">F-Stop ICU Strobies</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-28T18:44:55+01:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time>
+        
+           | <a href="/blog/photography/f-stop-icu-strobies/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/f-stop-icu-strobies/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>My large ICU loaded with my <a href="http://www.wexphotographic.com/buy-interfit-strobies-portrait-kit/p1031888">Strobies portrait kit</a> and Canon 580EX MKII.</p>
+
+<p><img src="/images/Photography/fstop_icu_large_lighting/morganp-20140517-FStop-_MG_8927.jpg" alt="" /></p>
+
+<p>The collapsed soft box is folded into the right hand side. Additional accessories are a <a href="https://www.amazon.co.uk/dp/B0007DDK7A?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B0007DDK7A&amp;adid=1VSQ11QZRMHHASH7FHN9&amp;">3M Lastolite off camera cord</a>, <a href="https://www.amazon.co.uk/dp/B002D4AHT0?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B002D4AHT0&amp;adid=0PB41F04SGBY01WKVJYB&amp;">Colorvision SpyderCube</a> and a <a href="https://www.amazon.co.uk/dp/B0007DDK7A?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B0007DDK7A&amp;adid=1VSQ11QZRMHHASH7FHN9&amp;">Stofen</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -641,76 +682,6 @@ available sizes in-line with the Craghoppers staple Classic Kiwi.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/thor-adding-verbose/">Thor Adding &#8211;verbose</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-09T19:26:44+01:00" pubdate data-updated="true">Apr 9<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/thor-adding-verbose/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/thor-adding-verbose/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>With a command line Ruby application using Thor for the option parsing I want to be able to run:</p>
-
-<pre><code>$ thor_app --version
-&gt; thor_app version 1.0.0
-</code></pre>
-
-<p>Create a boolean class option, which does not belong to a task, that can be referenced by other tasks. The often used example for a class option is -v verbose, as all tasks can use this to determine how noisy they should be.</p>
-
-<p>Then create a &lsquo;version&rsquo; task and make it the default task, so when no task is defined the version task is ran and can react to the &mdash;version flag (class option).</p>
-
-<pre><code>class CLI &lt; Thor
-  #include Thor::Actions
-  class_option :version, :type =&gt; :boolean
-
-  desc "version", "Show thor_app version"
-  def version
-    if options[:version]
-      puts "thor_app version #{find_version}"
-    end
-  end
-  default_task :version
-
-  no_tasks do
-    def find_version
-      ## Method can be replaced to look up VERSION
-      '1.0.0'
-    end
-  end
-end
-</code></pre>
-
-<p>This is based on <a href="http://stackoverflow.com/q/22809972/97073">my SO Question</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -725,11 +696,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (39)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (40)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
@@ -745,10 +720,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/verilog-thermometer-code/">Verilog: Thermometer Code</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/vim-macro/">Vim: Macro</a>
       </li>
     
   </ul>

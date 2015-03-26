@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Decorative raised bed for lavender: A couple of images before it was filled: ">
+  <meta name="description" content="Time can be displayed during simulation using %t. $display("%t", $realtime); Timeformat is used to control the way (%t) this is displayed: //$ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,79 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-03-26T19:21:25+00:00" pubdate data-updated="true">Mar 26<span>th</span>, 2015</time>
+        
+           | <a href="/blog/engineering/verilog-timeformat/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/verilog-timeformat/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Time can be displayed during simulation using <code>%t</code>.</p>
+
+<pre><code>$display("%t", $realtime);
+</code></pre>
+
+<p>Timeformat is used to control the way (<code>%t</code>) this is displayed:</p>
+
+<pre><code>//$timeformat(unit#, prec#, "unit", minwidth);
+$timeformat(-3, 2, " ms", 10); // -3 and " ms" give useful display msg
+</code></pre>
+
+<ol>
+<li>unit is the base that time is to be displayed in, from 0 to -15</li>
+<li>precision is the number of decimal points to display.</li>
+<li>&ldquo;unit&rdquo; is a string appended to the time, such as &ldquo; ns&rdquo;.</li>
+<li><p>minwidth is the minimum number of characters that will be displayed.</p>
+
+<p>   0 = 1 sec
+  -1 = 100 ms
+  -2 = 10 ms
+  -3 = 1 ms
+  -4 = 100 us
+  -5 = 10 us
+  -6 = 1 us
+  -7 = 100 ns
+  -8 = 10 ns
+  -9 = 1 ns
+ -10 = 100 ps
+ -11 = 10 ps
+ -12 = 1 ps
+ -13 = 100 fs
+ -14 = 10 fs
+ -15 = 1 fs</p></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -634,52 +707,6 @@ echo $var
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/f-stop-loka-and-tripod/">F-Stop Loka &amp; Tripod</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-09-18T11:28:47+01:00" pubdate data-updated="true">Sep 18<span>th</span>, 2014</time>
-        
-           | <a href="/blog/photography/f-stop-loka-and-tripod/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/f-stop-loka-and-tripod/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>F-stop Loka with side mounted Manfrotto 055XPROB (3 stage carbon), with a Manfrotto 488 rc2 head.</p>
-
-<p><img class="centre" src="/images/Photography/Loka/morganp-20140416-Loka-_MG_7445.jpg">
-<img class="centre" src="/images/Photography/Loka/morganp-20140416-Loka-_MG_7449.jpg"></p>
-
-<p>Tripod relatively secure in this position, although if not tightly strapped down movement does loosen the straps.</p>
-
-<p>NB: also a thinktank skin 50 mounted on the hip belt.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -692,11 +719,15 @@ echo $var
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (39)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (40)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
@@ -712,10 +743,6 @@ echo $var
     
       <li class="post">
         <a href="/blog/engineering/verilog-thermometer-code/">Verilog: Thermometer Code</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/vim-macro/">Vim: Macro</a>
       </li>
     
   </ul>

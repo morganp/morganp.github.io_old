@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Currently OS X 10.6.3 &ndash; 10.6.5 the ncursers library is broken. A hacky fix is to copy the libraries from 10.6.2. I have put my working copies &hellip;">
+  <meta name="description" content="I think it is good practise to create a read only tag when releasing an application. This allows you to create a branch from it at any time or a bug &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,69 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/tagging-a-git-repo-for-a-release-/">Tagging a Git Repo for a Release</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-18T04:07:46+00:00" pubdate data-updated="true">Dec 18<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/tagging-a-git-repo-for-a-release-/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/tagging-a-git-repo-for-a-release-/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I think it is good practise to create a read only tag when releasing an application. This allows you to create a branch from it at any time or a bug fix with out worrying about accidentally mixing in new features from your latest code base.</p>
+
+<h1>Git Tagging</h1>
+
+<p>Lists current tags:</p>
+
+<pre><code>$ git tag 
+</code></pre>
+
+<p>Create tag named gem-0.1.0, code to match the gem 0.1.0 release.</p>
+
+<pre><code>$ git tag gem-0.1.0 
+</code></pre>
+
+<p>Push named tag to the remote repo:</p>
+
+<pre><code>$ git push origin gem-0.1.0
+</code></pre>
+
+<p>Push all tags to repo:</p>
+
+<pre><code>$ git push --tags
+</code></pre>
+
+<p>A very good book covering topics like this and many others <a href="https://www.amazon.co.uk/dp/1934356727?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=1934356727&amp;adid=0C6PBKZXSP31YKZF8BFS&amp;">Pragmatic Guide to Git </a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -611,49 +674,6 @@ sudo /usr/sbin/smbd restart
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/natural-hdr-images-in-lightroom/">Natural HDR Images in Lightroom</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-10-01T16:56:03+01:00" pubdate data-updated="true">Oct 1<span>st</span>, 2010</time>
-        
-           | <a href="/blog/photography/natural-hdr-images-in-lightroom/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/natural-hdr-images-in-lightroom/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>NB: By default the image is only 500pixels on the long edge. By donating to the project you can remove this restriction.</p>
-
-<p>This <a href="http://yanikphotoschool.com/tutorials/video_tutorials/creating-hdr-images-directly-in-lightroom-video-tutorial/">Video</a> demonstrates how to use the <a href="http://photographers-toolbox.com/products/lrenfuse.php">LR/Enfuse plugin</a>. Download the main application automatically from the plugin on <a href="http://enblend.sourceforge.net/">from here</a>.</p>
-
-<p>Instruction is straightforward and if in doubt follow the <a href="http://yanikphotoschool.com/tutorials/video_tutorials/creating-hdr-images-directly-in-lightroom-video-tutorial/">Video</a>. Use is also covered on the <a href="http://blogs.oreilly.com/lightroom/2008/12/blend-with-lightroom-enfuse.html">Oreilly blog</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/29/">&larr; Older</a>
@@ -668,11 +688,15 @@ sudo /usr/sbin/smbd restart
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (39)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (40)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
@@ -688,10 +712,6 @@ sudo /usr/sbin/smbd restart
     
       <li class="post">
         <a href="/blog/engineering/verilog-thermometer-code/">Verilog: Thermometer Code</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/vim-macro/">Vim: Macro</a>
       </li>
     
   </ul>

@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="In ruby we can perform schwartzian transforms easily with the sort_by method. This allows sorting enumerators by any property. For example to do a &hellip;">
+  <meta name="description" content="To wrap a function with variable input arguments and pass them all on to the wrapped function.
+Based on a StackOverflow answer: function varargout = &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,57 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-wrapper-scripts/">Matlab Wrapper Scripts</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-17T19:48:57+00:00" pubdate data-updated="true">Mar 17<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-wrapper-scripts/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-wrapper-scripts/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To wrap a function with variable input arguments and pass them all on to the wrapped function.
+Based on a <a href="http://stackoverflow.com/questions/4895556/how-to-wrap-a-function-using-varargin-and-varargout">StackOverflow answer</a>:</p>
+
+<pre><code>function varargout = wrapper( varargin )
+[varargout{1:nargout}] = someFunction( varargin{:} ); 
+</code></pre>
+
+<p>Used in the <a href="https://github.com/Matlab-Toolbox/printf">printf toolbox</a>: where we wrap fprint to print directly to stdout.</p>
+
+<pre><code>function printf( varargin )
+  fprintf(1, varargin{:}); 
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -548,50 +600,6 @@ possible for the LSB of the required resolution to effect the truncated value.</
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/cooking/spicy-choclate-cake/">Spicy Chocolate Cake</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-08T09:12:04+00:00" pubdate data-updated="true">Mar 8<span>th</span>, 2014</time>
-        
-           | <a href="/blog/cooking/spicy-choclate-cake/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/cooking/spicy-choclate-cake/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/images/Cooking/SpicyChocolateCake/morganp-20131123-SpicyChoclateCake-IMG_5189.jpg" alt="" /></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/cooking/spicy-choclate-cake/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -606,11 +614,15 @@ possible for the LSB of the required resolution to effect the truncated value.</
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (39)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (40)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
@@ -626,10 +638,6 @@ possible for the LSB of the required resolution to effect the truncated value.</
     
       <li class="post">
         <a href="/blog/engineering/verilog-thermometer-code/">Verilog: Thermometer Code</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/vim-macro/">Vim: Macro</a>
       </li>
     
   </ul>
