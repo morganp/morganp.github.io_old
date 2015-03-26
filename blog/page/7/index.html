@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="If we truncate a number, that is to throw away the LSBs (least significant bits) we loose resolution. A 4 bit number truncated to 2 bits: numbers &hellip;">
+  <meta name="description" content="Checkout : Apple support. Disable &lsquo;Adjust keyboard brightness in low light&rsquo;. ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,91 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/macbook-keyboard-light-not-working/">Macbook Keyboard Light Not Working</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-13T20:00:47+00:00" pubdate data-updated="true">Mar 13<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/macbook-keyboard-light-not-working/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/macbook-keyboard-light-not-working/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Checkout : <a href="http://support.apple.com/kb/HT4882">Apple support</a>.</p>
+
+<p>Disable &lsquo;Adjust keyboard brightness in low light&rsquo;.<br/>
+<img src="/images/Tech/Keyboard_low_light.png" alt="" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/git-tag-and-push-to-github/">Git Tag and Push to Github</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-13T19:16:57+00:00" pubdate data-updated="true">Mar 13<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/git-tag-and-push-to-github/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/git-tag-and-push-to-github/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>git tag -a 0.0.1 -m "Tag comment"
+git push --tags
+</code></pre>
+
+<p><em>Note: The use of <a href="http://semver.org/">major.minor.patch Semantic Versioning</a> is a really good idea.</em></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -548,103 +633,6 @@ git gc --prune=now
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/oo-magic-bullet/">OO Magic Bullet?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-01T20:04:06+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
-        
-           | <a href="/blog/engineering/oo-magic-bullet/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/oo-magic-bullet/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I do not think that there are any magic bullets, best practises can minimise risk but you have to fully understand the technique. You can not just switch from procedural code to wrapping everything in an object and claim statements like this from <a href="http://www.mathworks.co.uk/company/newsletters/articles/introduction-to-object-oriented-programming-in-matlab.html">mathworks</a>:</p>
-
-<blockquote><p>Because it was built using OO techniques, the application is now robust enough for others to use and maintain and can be integrated with related applications throughout an organization.</p></blockquote>
-
-<p>Sounds like Object-Oriented programming is a magic bullet to solve all you programming woes!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/edit-octopress-posts/">Edit Octopress Posts</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-01T19:28:17+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
-        
-           | <a href="/blog/tech/edit-octopress-posts/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/edit-octopress-posts/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Creating new posts in Octopress is <code>rake new_post["Edit Posts"]</code> which outputs the created filename.</p>
-
-<p>Posts are prefixed with date, which can make it difficult to find a particular post to edit. Tab completion can help if you known the year of the post but it may still list 100&rsquo;s of posts where you have to spot the title, and narrow it done via month and day. To get around this I use this script to launch matching posts in my editor:</p>
-
-<pre><code>#!/bin/bash
-
-editor="mvim"
-post_path="source/_posts/"
-
-for OUTPUT in $(ls $post_path | grep $1)
-do
-  file_list="$file_list $post_path$OUTPUT"
-done
-
-$editor $file_list
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -659,11 +647,19 @@ $editor $file_list
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (41)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
@@ -675,14 +671,6 @@ $editor $file_list
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="A new very cool plugin for Rubyists using Vim. RubyBlock TextObjects created by Drew Neil from Vimcasts.org. Once installed it will add the commands &hellip;">
+  <meta name="description" content="Considering various raid strategies I decided that Raid 5 would be too limiting and have previously found raid striping systems to be too unreliable &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,162 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/my-backup-strategy/">My Backup Strategy</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-18T10:25:12+00:00" pubdate data-updated="true">Jan 18<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/my-backup-strategy/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/my-backup-strategy/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Considering various raid strategies I decided that Raid 5 would be too limiting and have previously found raid striping systems to be too unreliable. I decided to have a bunch of disks (JBOD if you will) directly connected to a machine. At some point in the future I would like a merged view of the drives, potentially through a fuse file system or a soft linking script.</p>
+
+<p>To protect against hardware failures, firmware updates etc I back up to a server running a different OS, instead of any raid mirroring. My mac mini backups to a headless Ubunutu. This has a power advantage that the backup drives are powered down most of the time.</p>
+
+<p>Whenever I add a drive to the main server I add at least the same size to the backup server. I then run rsync to back each drive up.</p>
+
+<pre><code>$ REMOTE_IP=192.168.0.2
+$ rsync -av --ignore-errors --delete --exclude '.Trashes' --exclude '.Spotlight-V100' --exclude '.DS_Store' /Volumes/Drive1/ $REMOTE_IP:/mnt/backup/drive1/
+</code></pre>
+
+<p>For some reason once it was scripted up it stopped deleting files from the backup drive adding the &lsquo;&mdash;ignore-errors&rsquo; fixed this issue.</p>
+
+<p>The other small gotcha that I ran into was that by default ext3 drives reserve 5% of the space for root. This is so that the main drive does not get so full it stops to function correctly and root can not get in to fix things. I am not sure how useful it is on non-root drives. This had the consequence that when backing up a nearly full drive it would not fit in to the back up drive. NB: 5% of a 2TB drive is 100GB, which is quite a lot of space.</p>
+
+<p>To reset the amount of reserved space I used (for 0%):</p>
+
+<pre><code>$ sudo tune2fs -m 0 /dev/sda1
+</code></pre>
+
+<p>My full backup script</p>
+
+<pre><code>#!/bin/bash
+ARCHIVE_SERVER="192.168.0.2"
+
+disk[0]="/Volumes/disk1/ $ARCHIVE_SERVER:/mnt/archive_server/disk1/"
+disk[1]="/Volumes/disk2/ $ARCHIVE_SERVER:/mnt/archive_server/disk2/"
+disk[2]="/Volumes/disk3/ $ARCHIVE_SERVER:/mnt/archive_server/disk3/"
+
+for backup in "${disk[@]}"
+do
+  #Split in to $1 and $2
+  set -- $backup
+  if [ -d $1 ]
+  then 
+    rsync -av --ignore-errors --delete --exclude '.Trashes'   \
+--exclude '.Spotlight-V100' --exclude '.DS_Store' $1 $2
+  else
+    echo "Drive offline $1 (Not Backed Up)"
+  fi
+done
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/screen-x-not-connecting-when-running-as-an-other-user/">Screen -x Not Connecting When Running as an Other User</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-12-30T13:06:42+00:00" pubdate data-updated="true">Dec 30<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/screen-x-not-connecting-when-running-as-an-other-user/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/screen-x-not-connecting-when-running-as-an-other-user/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have been running into issues with screen when switching to another user:</p>
+
+<pre><code>$ su otheruser
+&gt; password
+$ screen -x
+&gt; Cannot open your terminal '/dev/ttys002' - please check.
+</code></pre>
+
+<p>From <a href="http://www.linuxquestions.org/questions/linux-general-1/problem-using-screen-cannot-open-your-terminal-dev-pts-0-please-check-338313/">this post</a> I have discovered that it was due to a permissions issue.</p>
+
+<pre><code>$ ls -l /dev/ttys002
+&gt; crw--w----  1 user  tty   16,   2 Dec 30 23:34 /dev/ttys002
+</code></pre>
+
+<p>To fix I had to set other permissions.</p>
+
+<pre><code>$ su otheruser
+$ sudo chmod go+wr /dev/ttys002
+</code></pre>
+
+<p>You still have to su to the owners account and therefore it is still secure. ie user can not just connect to a /dev/ttys002 currently in use by otheruser.</p>
+
+<pre><code> #As user, otheruser currently using /dev/ttys002
+ $ screen -x /dev/ttys002
+&gt; Must run suid root for multiuser support. 
+</code></pre>
+
+<p>The issue has kept recurring and I have had to reset the permissions every time I wanted to connect. This could be Mac OS X specific but I edited the root crontab to fix.</p>
+
+<pre><code>$ sudo crontab -e
+# Added the text below
+# MIN   HOUR   MDAY  MON  DOW   COMMAND 
+  0,15,30,45 * * * * chmod o+wr /dev/ttys000
+  0,15,30,45 * * * * chmod o+wr /dev/ttys001
+  0,15,30,45 * * * * chmod o+wr /dev/ttys002
+  0,15,30,45 * * * * chmod o+wr /dev/ttys003
+  0,15,30,45 * * * * chmod o+wr /dev/ttys004
+  0,15,30,45 * * * * chmod o+wr /dev/ttys005
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -594,107 +750,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-reload-source-file-changes-in-development-mode/">Sinatra Reload Source File Changes in Development Mode</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-02T11:03:26+00:00" pubdate data-updated="true">Nov 2<span>nd</span>, 2010</time>
-        
-           | <a href="/blog/tech/sinatra-reload-source-file-changes-in-development-mode/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-reload-source-file-changes-in-development-mode/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://github.com/rkh/sinatra-reloader">Sinatra Reloader</a> is a sinatra extension which reloads source files while in development mode, this functionality was removed from base sinatra in 0.9.2</p>
-
-<pre><code>gem install sinatra-reloader
-</code></pre>
-
-<p>In your app (classy style)</p>
-
-<pre><code>require "sinatra/base"
-require "sinatra/reloader"
-
-class Foo &lt; Sinatra::Base
-  configure(:development) do
-    register Sinatra::Reloader
-    also_reload "models/*.rb"
-    also_reload "helpers/*.rb"
-    #dont_reload "lib/**/*.rb"
-  end
-end
-</code></pre>
-
-<p><a href="http://github.com/rkh/sinatra-reloader">Source</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/os-x-open-finder-from-command-line/">OS X Open Finder from Command Line</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-10-13T11:08:40+01:00" pubdate data-updated="true">Oct 13<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/os-x-open-finder-from-command-line/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/os-x-open-finder-from-command-line/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Just discovered this: from <a href="http://grx.no/kb/2009/01/09/open-finder-for-current-directory-from-command-line/">source</a>.</p>
-
-<pre><code>$ open .
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/29/">&larr; Older</a>
@@ -709,11 +764,19 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (41)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
@@ -725,14 +788,6 @@ end
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
       </li>
     
   </ul>

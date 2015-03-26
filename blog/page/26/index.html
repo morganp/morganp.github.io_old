@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I have captured all 5 lists here, but they are only a ⌘/ away. Library Develop Slideshow Print Web ">
+  <meta name="description" content="recenlty after updating rubygems Istarted getting a lot of warning like this when running ruby or executable gems: NOTE: Gem::Specification# &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,165 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/obnoxious-gem-warnings/">Obnoxious Gem Warnings</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-11T17:11:47+01:00" pubdate data-updated="true">May 11<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/obnoxious-gem-warnings/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/obnoxious-gem-warnings/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>recenlty after updating rubygems Istarted getting a lot of warning like this when running ruby or executable gems:</p>
+
+<p>NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299@global/specifications/rake-0.8.7.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/bundler-1.0.12.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/bundler-1.0.7.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/heroku-1.12.0.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/heroku-2.0.4.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/httparty-0.5.2.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/httparty-0.7.7.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/json-1.4.6.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
+Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/json-1.5.1.gemspec:10.
+NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.</p>
+
+<h2>Using RVM the fix is to run</h2>
+
+<pre><code> rvm rubygems current
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/recent-issue-with-building-gems/">Recent Issue with Building Gems</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-07T23:25:34+01:00" pubdate data-updated="true">May 7<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/recent-issue-with-building-gems/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/recent-issue-with-building-gems/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When running gem build on a new library I have been working on I started getting the following error:</p>
+
+<pre><code>[ruby_svg_light.gemspec] isn't a Gem::Specification (Rake::FileTask instead).
+ERROR:  While executing gem ... (NoMethodError)
+    undefined method `mark_version' for nil:NilClass
+</code></pre>
+
+<p>It was from a gemspec similar to that below</p>
+
+<pre><code>require 'rake/gempackagetask' 
+
+NAME = "ruby_svg_light" 
+Dir.chdir( './lib/')
+require NAME
+Dir.chdir( './../')
+
+spec = Gem::Specification.new do |s|
+  s.name         = NAME
+  s.version      = RubySVGLight::VERSION
+  s.platform     = Gem::Platform::RUBY
+  s.summary      = 'Basic Helper for creating SVG Files'
+  s.homepage     = 'http://amaras-tech.co.uk/software/RubySVGLight'
+  s.authors      = "Morgan Prior"
+  s.email        = NAME + "_gem@amaras-tech.co.uk"
+  s.description  = %{A basic library for building SVG files. Not all properties of SVG are supported}
+  s.files        = [Dir.glob("LICENSE.rtf")]
+  s.files        += Dir.glob("examples/*")
+  s.files        += Dir.glob("lib/**/*")
+  s.files        += Dir.glob("spec/*") 
+end
+Rake::GemPackageTask.new(spec).define
+</code></pre>
+
+<p>The Fix was to change to this (Removing Rake::GemPackageTask):</p>
+
+<pre><code>NAME = "ruby_svg_light"
+Dir.chdir( './lib/')
+require NAME
+Dir.chdir( './../')
+
+Gem::Specification.new do |s|
+  s.name         = NAME
+  s.version      = RubySVGLight::VERSION
+  s.platform     = Gem::Platform::RUBY
+  s.summary      = 'Basic Helper for creating SVG Files'
+  s.homepage     = 'http://amaras-tech.co.uk/software/RubySVGLight'
+  s.authors      = "Morgan Prior"
+  s.email        = NAME + "_gem@amaras-tech.co.uk"
+  s.description  = %{A basic library for building SVG files. Not all properties of SVG are supported}
+  s.files        = [Dir.glob("LICENSE.rtf")]
+  s.files        += Dir.glob("examples/*")
+  s.files        += Dir.glob("lib/**/*")
+  s.files        += Dir.glob("spec/*")
+end
+</code></pre>
+
+<p>It looks like the new format if for the gemspec is to return a Gem::Specification rather than run the task. I do not know when this change happened.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -666,109 +825,6 @@ First Light, ISBN 1-902538-24-2</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/unregistered-torrent-flush-the-dns/">&#8216;Unregistered Torrent&#8217; Flush the DNS</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-31T10:45:20+01:00" pubdate data-updated="true">Mar 31<span>st</span>, 2011</time>
-        
-           | <a href="/blog/tech/unregistered-torrent-flush-the-dns/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/unregistered-torrent-flush-the-dns/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>If a torrent application has been running and torrents start showing a status of &lsquo;unregistered torrent&rsquo; a likely cause is that the server IP address has changed. To fix this you need to close the application and flush the DNS, before starting the application again.</p>
-
-<p>To flush the DNS cache:</p>
-
-<h2>OS X Leopard / Snow Leopard</h2>
-
-<pre><code>$ sudo dscacheutil -flushcache
-</code></pre>
-
-<h2>Windows XP</h2>
-
-<pre><code>$ lookupd -flushcache
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-cli-user-input-using-gets/">Ruby CLI User Input Using Gets</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-03-27T06:04:31+01:00" pubdate data-updated="true">Mar 27<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-cli-user-input-using-gets/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-cli-user-input-using-gets/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Using a while true loop with &lsquo;gets&rsquo; and a case statement, can create a compact command line interface for ruby scripts.</p>
-
-<pre><code>while true
-  puts "'q' to quit, 'c' to continue"
-  command = gets
-  case
-    when command.match(/^q/) then
-      puts "Quit"
-      break
-    when command.match(/^c/) then
-      puts "Continue"
-  end # case
-end # while true
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/27/">&larr; Older</a>
@@ -783,11 +839,19 @@ end # while true
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (41)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
@@ -799,14 +863,6 @@ end # while true
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
       </li>
     
   </ul>

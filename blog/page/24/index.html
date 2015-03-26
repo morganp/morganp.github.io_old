@@ -9,9 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Just making a note to self to check these regularly for updates Joe Cornish 1-2 Day Workshop
-Light and Land
-Lee Filters workshop by Jeremy Walker &hellip;">
+  <meta name="description" content="Previous posts arrays and arrays2 Based on a post by barkingiguana, some idiomatic ruby ways to handle arrays.
+Ruby tries to have a natural language &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +82,137 @@ Lee Filters workshop by Jeremy Walker &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/arrays-3-write-idiomatic-ruby/">Arrays 3, Write Idiomatic Ruby</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-25T12:44:48+01:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/arrays-3-write-idiomatic-ruby/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/arrays-3-write-idiomatic-ruby/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Previous posts <a href="http://amaras-tech.co.uk/people/morgan/article/108">arrays</a> and <a href="http://amaras-tech.co.uk/people/morgan/article/122">arrays2</a></p>
+
+<p>Based on a post by <a href="http://barkingiguana.com/2011/03/14/be-cool-with-arrays/">barkingiguana</a>, some idiomatic ruby ways to handle arrays.
+Ruby tries to have a natural language style, preferring to be more expressive to designers intent rather than close to the computers internal behavior.</p>
+
+<p>Both the statements are the same but the second is preferred.</p>
+
+<pre><code>bookmarks.size == 0
+bookmarks.empty?
+</code></pre>
+
+<p>Ask an array if it has any elements. Don&rsquo;t check if it has a non-zero size.
+for the inverse of the above statement checking that we have elements, again the second statement is preferred.</p>
+
+<pre><code>bookmarks.size &gt; 0 
+bookmarks.any?
+</code></pre>
+
+<p>Other language might have some thing like:</p>
+
+<pre><code>if (bookmarks.size == 0) {
+  # Add first bookmark
+}
+</code></pre>
+
+<p>Ruby</p>
+
+<pre><code>if bookmarks.empty?
+  #Add first bookmark
+end
+</code></pre>
+
+<p>I think the ruby actually reads better and conveys what you are actually trying to do, check the array is empty. With duck typing any object could get passed to this as long as it has the empty? method defined, an object might have header information and a payload. If the payload was implemented as an Array the object could map the empty? onto it.</p>
+
+<p>Previous posts <a href="http://amaras-tech.co.uk/people/morgan/article/108">arrays</a> and <a href="http://amaras-tech.co.uk/people/morgan/article/122">arrays2</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-search-and-replace-script/">Ruby Search and Replace Script.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-25T12:06:36+01:00" pubdate data-updated="true">Oct 25<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/ruby-search-and-replace-script/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-search-and-replace-script/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A small standalone script that search through a file doing text substitutions.</p>
+
+<pre><code>#!/usr/bin/env ruby
+# Usage $ ruby_search_and_replace.rb file_to_update.txt
+
+def update_file( file_name )
+  puts "Updating : #{file_name}"
+  ::File.open( file_name, "rb"){ |f| @contents = f.read }
+
+  ## Replace Renamed thing here
+  #@contents.gsub!("search","replace")
+
+  ::File.open( file_name, "w" ){ |f| f.write @contents }
+end
+
+if $0 == __FILE__
+  #If file is called directly execute
+  update_file( ::File.absolute_path( ARGV[0] ) )
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -627,165 +757,6 @@ gem install bundler
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/using-sshconfig-and-no-passowrds-with-mac-os-x/">Using ~/.ssh/config and No Passowrds with Mac OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-14T21:56:03+01:00" pubdate data-updated="true">Jul 14<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/using-sshconfig-and-no-passowrds-with-mac-os-x/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/using-sshconfig-and-no-passowrds-with-mac-os-x/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Using ssh to securely connect with servers from the terminal is pretty easy. set up a public key and a private key using:</p>
-
-<pre><code>ssh-keygen -t rsa
-</code></pre>
-
-<p>This should save them in ~/.ssh/</p>
-
-<p>However you may want separate keys for work, for home servers and other services like a web server or github. the ~/.ssh/config file is a way to specify a list of possible keys to use and associate them with a host name. I when using this initially Mac OS X always prompted me for my identity file password. instead of acting password-less.</p>
-
-<p>For OS X it looks like you have to add a few more options to get the same behaviour as without the .ssh/config :</p>
-
-<pre><code>Host *
-  RSAAuthentication yes
-  PasswordAuthentication yes
-  ChallengeResponseAuthentication no
-  IdentityFile ~/.ssh/id_rsa
-</code></pre>
-
-<p>Adding more Identity files the first passing will be used</p>
-
-<pre><code>Host *
-  RSAAuthentication yes
-  PasswordAuthentication yes
-  ChallengeResponseAuthentication no
-  IdentityFile ~/.ssh/id_rsa
-  IdentityFile ~/.ssh/id_rsa_work
-  IdentityFile ~/.ssh/id_rsa_github
-</code></pre>
-
-<p>Multiple Identities, using known identity for known location.</p>
-
-<pre><code>Host *.work.com
-  IdentityFile ~/.ssh/id_rsa
-
-Host *.github.com
-  IdentityFile ~/.ssh/id_rsa_github
-
-Host *
-  RSAAuthentication yes
-  PasswordAuthentication yes
-  ChallengeResponseAuthentication no
-  IdentityFile ~/.ssh/id_rsa
-</code></pre>
-
-<p>For more info try looking at <a href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh_config">the man page</a>, from your terminal:</p>
-
-<pre><code>$ man ssh_config
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/using-sshconfig-and-no-passwords-with-mac-os-x/">Using ~/.ssh/config and No Passwords with Mac OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-14T21:55:31+01:00" pubdate data-updated="true">Jul 14<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/using-sshconfig-and-no-passwords-with-mac-os-x/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/using-sshconfig-and-no-passwords-with-mac-os-x/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Using ssh to securely connect with servers from the terminal is pretty easy. set up a public key and a private key using</p>
-
-<p>However you may want separate keys for work, for home servers and other services like a webserver or github. the ~/.ssh /config file is a way to specify a list of possible keys to use and associate them with a host name. I when using this initially Mac OS X always prompted me for my identity file password. instead of acting password-less.</p>
-
-<p>For OS X it looks like you have to add a few more options to get the same behaviour as without the .ssh/config :</p>
-
-<pre><code>Host *
-  RSAAuthentication yes
-  PasswordAuthentication yes
-  IdentityFile ~/.ssh/id_rsa
-</code></pre>
-
-<p>Adding more Identity files the first passing will be used</p>
-
-<pre><code>Host *
-  RSAAuthentication yes
-  PasswordAuthentication yes
-  IdentityFile ~/.ssh/id_rsa
-  IdentityFile ~/.ssh/id_rsa_work
-  IdentityFile ~/.ssh/id_rsa_github
-</code></pre>
-
-<p>Multiple Identities, using known identity for known location.</p>
-
-<pre><code>Host *.work.com
-  IdentityFile ~/.ssh/id_rsa
-
-Host *.github.com
-  IdentityFile ~/.ssh/id_rsa_github
-
-Host *
-  RSAAuthentication yes
-  PasswordAuthentication yes
-  IdentityFile ~/.ssh/id_rsa
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/25/">&larr; Older</a>
@@ -800,11 +771,19 @@ Host *
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (41)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
@@ -816,14 +795,6 @@ Host *
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
       </li>
     
   </ul>

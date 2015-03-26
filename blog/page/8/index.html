@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="In Verilog to output to stdout without a line return use $write(); Equivalent statements : $write("\n");
-$display(""); ">
+  <meta name="description" content="I do not think that there are any magic bullets, best practises can minimise risk but you have to fully understand the technique. You can not just &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,103 @@ $display(""); ">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/oo-magic-bullet/">OO Magic Bullet?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-01T20:04:06+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
+        
+           | <a href="/blog/engineering/oo-magic-bullet/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/oo-magic-bullet/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I do not think that there are any magic bullets, best practises can minimise risk but you have to fully understand the technique. You can not just switch from procedural code to wrapping everything in an object and claim statements like this from <a href="http://www.mathworks.co.uk/company/newsletters/articles/introduction-to-object-oriented-programming-in-matlab.html">mathworks</a>:</p>
+
+<blockquote><p>Because it was built using OO techniques, the application is now robust enough for others to use and maintain and can be integrated with related applications throughout an organization.</p></blockquote>
+
+<p>Sounds like Object-Oriented programming is a magic bullet to solve all you programming woes!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/edit-octopress-posts/">Edit Octopress Posts</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-01T19:28:17+00:00" pubdate data-updated="true">Mar 1<span>st</span>, 2014</time>
+        
+           | <a href="/blog/tech/edit-octopress-posts/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/edit-octopress-posts/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Creating new posts in Octopress is <code>rake new_post["Edit Posts"]</code> which outputs the created filename.</p>
+
+<p>Posts are prefixed with date, which can make it difficult to find a particular post to edit. Tab completion can help if you known the year of the post but it may still list 100&rsquo;s of posts where you have to spot the title, and narrow it done via month and day. To get around this I use this script to launch matching posts in my editor:</p>
+
+<pre><code>#!/bin/bash
+
+editor="mvim"
+post_path="source/_posts/"
+
+for OUTPUT in $(ls $post_path | grep $1)
+do
+  file_list="$file_list $post_path$OUTPUT"
+done
+
+$editor $file_list
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -462,97 +558,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/raised-bed/">Raised Bed</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-18T18:58:30+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/raised-bed/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/raised-bed/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Putting together my first raised bed, 8 foot by 2 foot, 1 plank high.</p>
-
-<p>Cut parts ready for assembly:
-<img src="/images/Gardening/RaisedBed/morganp-20140211-RaisedBed-IMG_6743.jpg" alt="Parts" /></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/garden/raised-bed/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/cooking/beef-wellington/">Beef Wellington</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-17T20:28:28+00:00" pubdate data-updated="true">Feb 17<span>th</span>, 2014</time>
-        
-           | <a href="/blog/cooking/beef-wellington/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/cooking/beef-wellington/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/images/Cooking/BeefWellington/morganp-20140217-BeefWellington-IMG_6820.jpg" alt="Beef Wellington" /></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/cooking/beef-wellington/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/9/">&larr; Older</a>
@@ -567,11 +572,19 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (41)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
@@ -583,14 +596,6 @@ end
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
       </li>
     
   </ul>

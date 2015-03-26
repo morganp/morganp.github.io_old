@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="error: storage class specified for parameter There is probably a missing semicolon ; in a header file! Just written my first C Header and received &hellip;">
+  <meta name="description" content="Select a block ie gain in Simulink then in Matlab type: get(gcbh) This shows the list of properties which can be controlled from Matlab. TO change &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,102 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/simulink-list-programmable-block-properties/">Simulink: List Programmable Block Properties</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-30T20:00:28+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/simulink-list-programmable-block-properties/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/simulink-list-programmable-block-properties/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Select a block ie gain in Simulink then in Matlab type:</p>
+
+<pre><code>get(gcbh)
+</code></pre>
+
+<p>This shows the list of properties which can be controlled from Matlab. TO change one for example changing the gain paramter from double to a 10 bit fixed point number (<code>sfix10_en9</code>).</p>
+
+<pre><code>set_param(gcbh, 'ParamDataTypeStr', 'fixdt(1,10,9)'); 
+</code></pre>
+
+<p><a href="http://www.mathworks.co.uk/matlabcentral/newsreader/view_thread/306640">From Matlab Central</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-find-all-gain-blocks/">Matlab: Find All Gain Blocks</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-30T19:58:53+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-find-all-gain-blocks/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-find-all-gain-blocks/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>find_system('BlockType', 'Gain')
+</code></pre>
+
+<p>This will list all gain blocks in currently loaded models. to limit to a particulat model:</p>
+
+<pre><code>find_system('testharness', 'BlockType', 'Gain')
+</code></pre>
+
+<p><a href="http://www.mathworks.co.uk/help/simulink/slref/find_system.html">From Mathworks</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -533,102 +629,6 @@ a =
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-grid/">Matlab: Grid</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-28T19:49:38+01:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-grid/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-grid/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/images/Engineering/matlab_grid/grid_on.png" alt="" /></p>
-
-<p>To add X and Y grids to plots :</p>
-
-<pre><code>grid on;
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/engineering/matlab-grid/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-linebreaks-in-strings/">Matlab: Line Breaks in Strings</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-28T19:34:30+01:00" pubdate data-updated="true">May 28<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-linebreaks-in-strings/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-linebreaks-in-strings/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Wrap strings with <code>sprintf</code> to allow the <code>\n</code> to be escaped correctly.</p>
-
-<pre><code>&gt;&gt; disp('hello\nworld')
-hello\nworld
-
-&gt;&gt; disp(sprintf('hello\nworld'))
-hello
-world
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -643,11 +643,19 @@ world
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (41)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
@@ -659,14 +667,6 @@ world
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
       </li>
     
   </ul>

@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="[Update]
-As this is a long post I am putting this update at the top. If you just want to install gems that require a newer version of RubyGems please &hellip;">
+  <meta name="description" content="I have just forked and cloned a project on github and discovered *.gemspec files. They are a nice way of specifying the gem dependencies in your &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,121 @@ As this is a long post I am putting this update at the top. If you just want to 
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-and-gemspec/">Ruby and Gemspec</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-16T10:01:58+01:00" pubdate data-updated="true">Apr 16<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-and-gemspec/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-and-gemspec/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have just forked and cloned a project on github and discovered *.gemspec files. They are a nice way of specifying the gem dependencies in your project. once you have the copied/cloned a project before you run it just call:</p>
+
+<pre><code>$ gem build something.gemspec
+</code></pre>
+
+<p>The <a href="http://docs.rubygems.org/read/chapter/20">gemspec documentation</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-nil-tests-fail-you-really-want-/">Ruby .nil? Tests Fail ? You Really Want ||=</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-15T07:43:50+01:00" pubdate data-updated="true">Apr 15<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/ruby-nil-tests-fail-you-really-want-/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-nil-tests-fail-you-really-want-/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I recently discovered ||= in ruby. Its main use is for initialising a variable if it does not already exists, this is great for extending templates with new functions and maintaining backwards compatibility.</p>
+
+<pre><code>irb(main):001:0&gt; x 
+NameError: undefined local variable or method `x' for main:Object
+from (irb):1
+irb(main):002:0&gt; x ||= 0
+=&gt; 0
+irb(main):003:0&gt; x = 10
+=&gt; 10
+irb(main):004:0&gt; x ||= 0
+=&gt; 10
+</code></pre>
+
+<p>I previously used :</p>
+
+<pre><code>if @x.nil? 
+    @x = 10   
+end
+</code></pre>
+
+<p>which is 3 times as many lines of code and does not work with all variable types infact .nil? is only valid for global ($) and instance (@) variables.</p>
+
+<pre><code>irb(main):001:0&gt; $x.nil?
+=&gt; true
+irb(main):002:0&gt; @x.nil?
+=&gt; true
+irb(main):003:0&gt; @@x.nil?
+NameError: uninitialized class variable @@x in Object
+   from (irb):3
+irb(main):004:0&gt; x.nil?
+NameError: undefined local variable or method `x' for main:Object
+   from (irb):4
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -664,105 +778,6 @@ Dir.chdir(path)
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-performance-measure/">Ruby Performance Measure</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-performance-measure/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-performance-measure/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Also available as a <a href="http://gist.github.com/342639">gist</a>. Very simple way of measuring execution time in seconds using Ruby</p>
-
-<pre><code>#!/usr/bin/env ruby
-# Measure performance in seconds of tasks
-# Record Startime For performance measurements
-startTime = Time.now
-
-#Main part of script goes here
-
-#Calculate and Display Execution Time in seconds
-execTime = Time.now - startTime
-puts "Execution time #{execTime} seconds."
-</code></pre>
-
-<p>Matlab has a slightly simpler function for this</p>
-
-<pre><code>tic
-%Main part goes here
-toc
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-logger/">Ruby Logger</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-logger/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-logger/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Ruby has a nice logging function,</p>
-
-<p>Update once example of rotating logs finished</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/36/">&larr; Older</a>
@@ -777,11 +792,19 @@ toc
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (41)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
@@ -793,14 +816,6 @@ toc
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
       </li>
     
   </ul>

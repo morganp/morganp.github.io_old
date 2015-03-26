@@ -9,9 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="The next practice is to use a tcl file: shm.tcl database -open waves -shm
-probe -create your_top_level -depth all -all -shm -database waves
-run exit &hellip;">
+  <meta name="description" content="reg and wire were the original synthesisable types. Wires are constantly assigned and regs are evaluated at particular points, the advantage here is &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +87,140 @@ run exit &hellip;">
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-03-26T20:08:34+00:00" pubdate data-updated="true">Mar 26<span>th</span>, 2015</time>
+        
+           | <a href="/blog/engineering/systemverilog-rtl-types/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/systemverilog-rtl-types/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><code>reg</code> and <code>wire</code> were the original synthesisable types. Wires are constantly assigned and regs are evaluated at particular points, the advantage here is for the simulator to make optimisations.</p>
+
+<pre><code>wire w_data;
+assign w_data = y;
+
+// Same function as above using reg
+reg r_data;
+always @* 
+  r_data = y ;
+</code></pre>
+
+<p>A common mistake when learning Verilog is to assume the reg type implies a register in hardware. The earlier optimisation for the simulator can be done through the context of its usage.</p>
+
+<p>This introduces <code>logic</code> which can be used in place of wire and reg.</p>
+
+<pre><code>logic  w_data;
+assign w_data = y;
+
+// Same function as above using reg
+logic r_data;
+always @* 
+  r_data = y ;
+</code></pre>
+
+<p>The type <code>bit</code> and <code>byte</code> have also been created that can only hold 2 states 0 or 1 no x or z. <code>byte</code> implies <code>bit [7:0]</code>. Using these types offers a small speed improvement but I would recommend not using them in RTL as your verification may miss uninitialized values or critical resets.</p>
+
+<p>The usage of <code>bit</code> and <code>byte</code> would be more common in testbench components, but can lead to issues in case of having to drive x&rsquo;s to stimulate data corruption and recovery.</p>
+
+<hr />
+
+<p><strong>Update</strong></p>
+
+<p>At the time of writing I was under the impression that <code>logic</code> could not be used for tristate, I am unable to find the original paper that I based this on. Until further updates, comments or edits, I revoke my assertion that <em>logic can not be used to create tri-state lines</em>.</p>
+
+<hr />
+
+<p>The <code>tri</code> type has been added, for explicitly defining a tri-state line. It is based on the properties of a <code>wire</code>, <code>logic</code> is based on the properties of a <code>reg</code>.</p>
+
+<pre><code>tri t_data;
+assign t_data = (drive) ? y : 1'bz ;
+</code></pre>
+
+<p>If you no longer have to support backwards compatibility Verilog then I would recommend switching to using <code>logic</code> and <code>tri</code>. Using <code>logic</code> aids re-factoring and and <code>tri</code>  reflects the design intent of a tristate line.</p>
+
+<p>Originally posted as a<a href="http://stackoverflow.com/a/13285242/97073"> SO answer</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-03-26T19:45:10+00:00" pubdate data-updated="true">Mar 26<span>th</span>, 2015</time>
+        
+           | <a href="/blog/engineering/verilog-define-if-not-defined/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/verilog-define-if-not-defined/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To set a default define option while allowing it to be overridden from the command line.</p>
+
+<pre><code>`ifndef mode_sel
+  `define mode_sel 0
+`endif
+</code></pre>
+
+<p>The command line should override testbench defined options but this has proven unreliable.</p>
+
+<p>command line to set value:</p>
+
+<pre><code>irun -define mode_sel=1 ...
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a></h1>
     
     
@@ -115,7 +247,7 @@ run exit &hellip;">
   </header>
 
 
-  <div class="entry-content"><p>The next practice is to use a tcl file:</p>
+  <div class="entry-content"><p>The best practice is to use a tcl file:</p>
 
 <p>shm.tcl</p>
 
@@ -533,198 +665,6 @@ Yank and put line, then repeat 10 times.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/cooking/bread-doves-gluten-free/">Bread: Doves Gluten Free</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-12-21T20:12:44+00:00" pubdate data-updated="true">Dec 21<span>st</span>, 2014</time>
-        
-           | <a href="/blog/cooking/bread-doves-gluten-free/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/cooking/bread-doves-gluten-free/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>For use with the Panasonic Bread Maker SD-2501 &amp; SD-2500.<br/>
-<strong><a href="http://www.lakeland.co.uk/content/documents/Panasonic_Bread_Maker_Instructions_15352.pdf">Online Manual</a>.</strong></p>
-
-<p>Gluten Recipes can not use timer function.</p>
-
-<p>For best results follow this order of ingredients: <br/>
-water, salt, fat, gluten free bread mix.</p>
-
-<h2>Doves Farm Gluten Free (Panasonic recipe)</h2>
-
-<p> SD-2501 Menu 12<br/>
- SD-2500 Menu 11</p>
-
-<p> Dark Crust (1hr 55min)</p>
-
-<pre><code>Water              320ml (330ml for Brown flour)
-Cider Vinegar      1 teaspoon
-Salt               1 teaspoon
-Vegtable Oil       4 tablespoon
-Medium Egg         1
-Medium Egg White   1
-Sugar              1 tablespoon
-Flour              450g
-Yeast              2 teaspoon
-</code></pre>
-
-<h2><a href="http://www.dovesfarm.co.uk/recipes/gluten-free-white-bread-for-bread-machines">Doves farm recommends these ingredients</a>:</h2>
-
-<p> SD-2501 Menu 12<br/>
- SD-2500 Menu 11</p>
-
-<p> Dark Crust (1hr 55min)</p>
-
-<pre><code>         Medium        Large
-Milk     310g          465g
-Vinegar  1 teaspoon    1.5 teaspoon
-Oil      6 tablespoon  9   tablespoon
-Eggs     2             3
-Flour    450g          675g
-Salt     1 teaspoon    1.5 teaspoon
-Sugar    2 tablespoon  3   tablespoon
-Yeast    2 teaspoon    3   teaspoon
-</code></pre>
-
-<ol>
-<li>Mix milk, vinegar, oil and eggs. Pour into the bread machine.</li>
-<li>Add flour, salt and sugar, stir.</li>
-<li>Sprinkle Yeast on top</li>
-<li>Start machine, pausing after a few minutes to scrape down the sides.</li>
-<li>Resume programme until completion</li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/verilog-calculate-primes/">Verilog: Calculate Primes</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-12-20T07:28:41+00:00" pubdate data-updated="true">Dec 20<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/verilog-calculate-primes/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/verilog-calculate-primes/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Based on my answer to <a href="http://stackoverflow.com/q/27461173/97073">this SO Question</a>.</p>
-
-<p><strong><a href="http://www.mathsisfun.com/definitions/prime-number.html">Definition of Prime</a>:</strong></p>
-
-<blockquote><p>A Prime Number can be divided evenly only by 1, or itself.
-And it must be a whole number greater than 1.</p></blockquote>
-
-<p>A simple method would be to iterate over numbers 2 to N, checking if it was divisible by all natural numbers greater than 2, and below the current value.</p>
-
-<p>Once checked that it is not divisible by 2 there is not point checking for 4, 6, 8 etc.
-Remembering the definition of prime all numbers that are not prime are integer multiples of prime. so we have reduced the amount of work involved in testing primality.</p>
-
-<pre><code>parameter        N        = 1000;          
-reg       [31:0] prime_number [0:N-1]; Store 0 to N prime numbers
-integer          test     ; // Result of primality test
-integer          k        ; // Currently looking for k'th prime 
-integer          index    ; // Counts 1 to k, indexing previous primes 
-integer          number_ut; // Number Under test
-
-reg        [1:0] state   ; 
-localparam       S_INC   = 2'b01;
-localparam       S_CHECK = 2'b10;
-
-initial begin
-  prime_number[0] = 'd2; //Preload first Prime
-  state           = S_CHECK; //Check set count first
-  number_ut       = 'd3; // Number Under Test
-  k               = 'd1; // Position 0 preloaded
-  index           = 'd0;
-  test            = 'd1;
-end
-
-always @(posedge clk ) begin
-  if (state == S_INC) begin
-    number_ut &lt;= number_ut+1 ;
-    state     &lt;= S_CHECK ;
-    index     &lt;= 'd0;
-    test      &lt;= 'd1; // Safe default
-  end
-  else if (state == S_CHECK) begin
-    if (test == 0) begin
-      // Failed Prime test (exact divisor found)
-      $display("Reject %3d", number_ut);
-      state           &lt;= S_INC ;
-    end
-    else if (index == k) begin
-      //Passed Prime check
-      //Use k+1 so that 2 is number 1, 3 is 2nd etc
-      $display("Found the %1d th Prime, it is %1d", k+1, number_ut);
-      prime_number[k] &lt;= number_ut;
-      k               &lt;= k + 1;
-      state           &lt;= S_INC ;
-    end
-    else begin
-      test  &lt;= number_ut % prime_number[index] ;
-      index &lt;= index + 1;          
-    end
-  end
-end
-</code></pre>
-
-<p><a href="http://www.edaplayground.com/x/BzX">Example on EDA Playground</a>.</p>
-
-<p>This is however just a programming exercise as the resulting hardware is likely substantially bigger than just implementing a look up table to the maxim number of primes you can fit in <code>prime_number</code>. The look up table will also be ready from time zero and not need to recompute every time you power up.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -737,11 +677,19 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (41)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
@@ -753,14 +701,6 @@ end
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
       </li>
     
   </ul>

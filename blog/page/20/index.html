@@ -9,9 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="In ruby you can catch StandardErrors using begin rescue end begin #Some thing which might fails
-rescue $stderr.puts $!
-end We can add a mnemonic &hellip;">
+  <meta name="description" content="rspec is a testing framework designed to make test-driven development enjoyable and productive. On the recent release of RubyIt I wanted to improve &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +81,103 @@ end We can add a mnemonic &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/rspec-testing-exceptions/">Rspec Testing Exceptions</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-20T15:24:34+01:00" pubdate data-updated="true">May 20<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/rspec-testing-exceptions/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/rspec-testing-exceptions/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://rspec.info/">rspec</a> is a testing framework designed to make test-driven development enjoyable and productive. On the recent release of <a href="http://morganp.github.com/RubyIt/">RubyIt</a> I wanted to improve the error reporting and cover this new functionality with tests.</p>
+
+<p>Do not forget errors should be output to standard error not standard out, ie:</p>
+
+<pre><code>$stderr.puts 'Error Message'
+</code></pre>
+
+<p>The rspec documentation has section on <a href="http://rspec.rubyforge.org/rspec/1.2.9/classes/Spec/Matchers.html#M000176">error testing</a>. This is my format of my current tests:</p>
+
+<pre><code>describe Bowling, "#score" do
+  it "returns 0 for all gutter game" do
+    bowling = Bowling.new
+    error1 = %{The error message}
+    $stderr.should_receive(:puts).with( error1 ) 
+    lambda { bowling.broken_method }.should raise_error(NameError)
+  end
+end
+</code></pre>
+
+<p>The <code>$stderr.should_receive</code> as well as setting up a test suppress the stderr outputting so that the output from the command line regression is clean.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/rspec-testing-exceptions-old-post/">Rspec Testing Exceptions (Old Post)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-20T14:57:39+01:00" pubdate data-updated="true">May 20<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/rspec-testing-exceptions-old-post/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/rspec-testing-exceptions-old-post/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://amaras-tech.co.uk/article/166">Correct Post</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -770,7 +865,7 @@ fatal: The remote end hung up unexpectedly
 
 <h2>Getting it Working</h2>
 
-<p>Last time I ran into these issues I found I could clone as guest, changed <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#109;&#111;&#114;&#x67;&#97;&#x6e;&#112;&#x40;&#103;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#109;">&#x6d;&#x6f;&#x72;&#103;&#97;&#x6e;&#x70;&#x40;&#x67;&#105;&#116;&#104;&#x75;&#98;&#46;&#99;&#x6f;&#x6d;</a> to just github.com. Pushing will then prompt for your github Username and password. Once cloned you can manually update the config file so you do not have to enter your username. Entering your password will still be required.</p>
+<p>Last time I ran into these issues I found I could clone as guest, changed <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#109;&#x6f;&#114;&#103;&#x61;&#110;&#112;&#x40;&#103;&#105;&#116;&#104;&#x75;&#98;&#x2e;&#99;&#x6f;&#x6d;">&#x6d;&#x6f;&#114;&#x67;&#x61;&#110;&#112;&#x40;&#x67;&#105;&#x74;&#104;&#x75;&#98;&#46;&#x63;&#111;&#x6d;</a> to just github.com. Pushing will then prompt for your github Username and password. Once cloned you can manually update the config file so you do not have to enter your username. Entering your password will still be required.</p>
 
 <pre><code>$ git clone https://github.com/morganp/maruku_snippet.git
 Cloning into maruku_snippet...
@@ -1004,136 +1099,6 @@ area = pi *( f/(2*n) )^2
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/syntax-error-not-a-valid-color-stop-sassscriptstring-white/">Syntax Error: Not a Valid Color Stop: Sass::Script::String: White</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-28T19:02:50+01:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/syntax-error-not-a-valid-color-stop-sassscriptstring-white/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/syntax-error-not-a-valid-color-stop-sassscriptstring-white/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After making a few updates to my site it stopped working after deploying. The issue was that the gem version of compass had not been tied down and the server was working with newer version.</p>
-
-<p>The error was coming from this line in my sass file :</p>
-
-<pre><code>$gradient = #FFFFFF // This get converted to  'white' in the error message
-background-image:         linear-gradient(to bottom, #{$gradient}, #{$back})
-</code></pre>
-
-<p>Again the error was:</p>
-
-<pre><code>Syntax error: Not a valid color stop: Sass::Script::String: white
-</code></pre>
-
-<p>To fix the issue I had to revert back to  compass 0.10.6</p>
-
-<h2>Reverting Compass</h2>
-
-<p>Bundler Gemfile <code>gem  "compass", "0.10.6"</code><br/>
-then run <code>$ bundle update</code></p>
-
-<p>Or directly from the command line <code>gem install compass -v 0.10.6</code></p>
-
-<p>Now run <code>gem list</code> and remove the newer versions ie<br/>
-<code>gem uninstall compass -v 0.12.1</code></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/minify-your-html-from-sinatra/">Minify Your HTML from Sinatra</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-26T15:13:49+01:00" pubdate data-updated="true">Apr 26<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/minify-your-html-from-sinatra/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/minify-your-html-from-sinatra/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>There are gzip compression options available but when I looked at this a long time ago I found that the extra server load to compress (with out caching) and the extra delay in the browser to decompress was not worth the few bytes it saved and lead to longer times before seeing the fully rendered page.</p>
-
-<p>Minification or minifying is more about removing white space, in the case of javascript it can also optimise variable names. For html we would not want to do that unless our css was going to be converted to match exactly.</p>
-
-<p>After a little digging and trying a few gems which failed to set there dependancies correctly and even <code>required 'pp'</code>*, I found TidyFFI.</p>
-
-<ul>
-<li>Really useful for debugging but I do not think has a place in deployed code.</li>
-</ul>
-
-
-<h1>Minify HTML</h1>
-
-<pre><code>gem install TidyFFI
-</code></pre>
-
-<p>Before:</p>
-
-<pre><code>get '/' do
-  erb :'about'
-end 
-</code></pre>
-
-<p>After :</p>
-
-<pre><code>require 'tidy_ffi'
-get '/' do
-  TidyFFI::Tidy.new( erb :'about' ).clean 
-end 
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/21/">&larr; Older</a>
@@ -1148,11 +1113,19 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (41)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
@@ -1164,14 +1137,6 @@ end
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
       </li>
     
   </ul>

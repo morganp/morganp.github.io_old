@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="After adding some USB2 (NTFS formatted) drives to a headless Ubuntu server, they were not auto-mounted so I had to find them and mount them, with &hellip;">
+  <meta name="description" content="CSS or Cascading Style Sheets are used for styling html elements. HTML elements can have id&rsquo;s, which must be unique to all other elements on &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,154 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/philip_roberts-taught-me-a-thing-or-two-about-css/">@philip_roberts Taught Me a Thing or Two About CSS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-22T10:15:50+01:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2010</time>
+        
+           | <a href="/blog/tech/philip_roberts-taught-me-a-thing-or-two-about-css/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/philip_roberts-taught-me-a-thing-or-two-about-css/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>CSS or Cascading Style Sheets are used for styling html elements. HTML elements can have id&rsquo;s, which must be unique to all other elements on the page. HTML elements can also have a type class, an item can belong to multiple classes and a page can have multiple items in a class.</p>
+
+<p>Example page:</p>
+
+<pre><code>&lt;html&gt;
+   &lt;head&gt;
+   &lt;/head&gt;
+   &lt;body id="about"&gt;
+      &lt;div id="nav"&gt;
+        &lt;a href="next"&gt;next&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div id="body"&gt;
+        &lt;a class="small, underline"href="a"&gt;something&lt;/a&gt;
+        &lt;a class="small" href="b"&gt;something&lt;/a&gt;
+        &lt;a class="small" href="c"&gt;something&lt;/a&gt;
+      &lt;/div&gt;
+   &lt;/body&gt;
+&lt;html&gt;
+</code></pre>
+
+<p>To refer to id&rsquo;s use a # symbol and . for classes. eg</p>
+
+<pre><code>div#nav
+a.small
+</code></pre>
+
+<p>If you want to apply the same style to multiple elements they can be written in a list before the style. Make h1 h2 and h3 all text 2x normal:</p>
+
+<pre><code>h1, h2, h3 {
+    test-size: 200%;
+}
+</code></pre>
+
+<p>Now for the new stuff, if the &lsquo;,&rsquo; are removed from the list it specifies a hierarchy which for the element which you are matching:</p>
+
+<pre><code>body#about div#nav a {
+   background-color:yellow;
+}
+</code></pre>
+
+<p>The second thing that I had not realised is that the more specific the higher the precedent.</p>
+
+<pre><code>a { 
+  background-color:black;
+}
+body#about div#nav a {
+  background-color:yellow;
+}
+</code></pre>
+
+<p>Will render the same as</p>
+
+<pre><code>body#about div#nav a {
+   background-color:yellow;
+}
+a { 
+   background-color:black;
+}
+</code></pre>
+
+<p>I had previously assumed in the last example that the last a define would have been all encompassing.</p>
+
+<p>NB: For debugging CSS I think that the <a href="http://getfirebug.com/">FireBug plugin</a> for firefox is great. Watch the Video to get the most out of it.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/turn-a-jar-file-into-a-mac-app/">Turn a .jar File Into a Mac .app</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-18T05:59:31+01:00" pubdate data-updated="true">Jul 18<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/turn-a-jar-file-into-a-mac-app/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/turn-a-jar-file-into-a-mac-app/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Following <a href="http://www.centerkey.com/mac/java/">this article</a> lets you turn a executable java .jar into a mac appliction (.app). The Tools are only available on Mac OS with Xcode installed.</p>
+
+<p>Basically create a 512x512px png for your logo. then use &lsquo;/Developer/Applications/Utilities/Icon Composer.app&rsquo; to create a someFileName.icns, Just drag the png into each of the different size boxes and Icon Composer will resize it correctly.
+Then Save.</p>
+
+<p>Second Stage is to start &lsquo;/Developer/Applications/Utilities/Jar Bundler.app&#8217;<br/>
+For the main class choose your executable .jar for the icon load the icns created in the previous step. Then press the create application button, chose location then your .app should be created.</p>
+
+<p>The only complaint I have about these to applications is there is no ability to save the set-up, so every time you want to rebuild you have to enter all the settings again, I do not know many other applications which do not allow you to save.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -537,104 +685,6 @@ arduous_delay( 1ms );
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/webfaction-problems-restarting-nginx/">WebFaction Problems Restarting Nginx</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-27T09:39:48+01:00" pubdate data-updated="true">Jun 27<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/webfaction-problems-restarting-nginx/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/webfaction-problems-restarting-nginx/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After updating my website on <a href="http://www.webfaction.com/?affiliate=morgy">webfaction</a> nginx kept saying permission denied and when I tried to view my site I got a 502 Bad Gateway error page.</p>
-
-<p>To restart nginx I use to call:</p>
-
-<pre><code>  ~/webapps/passenger/bin/restart
-</code></pre>
-
-<p>I had to change this to:</p>
-
-<pre><code>~/webapps/passenger/nginx/sbin/nginx -p ~/webapps/passenger/nginx/ -s stop  
-~/webapps/passenger/nginx/sbin/nginx -p ~/webapps/passenger/nginx/ 
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vim-show-lines-over-80-charaters-long/">Vim Show Lines Over 80 Charaters Long.</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-26T07:13:52+01:00" pubdate data-updated="true">Jun 26<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/vim-show-lines-over-80-charaters-long/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-show-lines-over-80-charaters-long/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This snippet can be added to you ~/.vimrc to highlight long lines.</p>
-
-<pre><code>" Highlight lines over 80 characters long with red background
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
-</code></pre>
-
-<p>When programming it is recommended to keep lines at 80 characters or under. This makes it easier to find the start of the next line, possible to compare two files side by side on modern monitors and source code should print out nicely if required for code reviews.</p>
-
-<p><a href="http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns">source</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/32/">&larr; Older</a>
@@ -649,11 +699,19 @@ match OverLength /\%81v.\+/
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (41)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
@@ -665,14 +723,6 @@ match OverLength /\%81v.\+/
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
       </li>
     
   </ul>

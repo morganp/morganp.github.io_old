@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="When working with HDLs (Hardware Description Languages) there a few things that could be improved/made easier: Renaming a file from an automated tool &hellip;">
+  <meta name="description" content="Using ssh to securely connect with servers from the terminal is pretty easy. set up a public key and a private key using: ssh-keygen -t rsa This &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,165 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/using-sshconfig-and-no-passowrds-with-mac-os-x/">Using ~/.ssh/config and No Passowrds with Mac OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-14T21:56:03+01:00" pubdate data-updated="true">Jul 14<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/using-sshconfig-and-no-passowrds-with-mac-os-x/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/using-sshconfig-and-no-passowrds-with-mac-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Using ssh to securely connect with servers from the terminal is pretty easy. set up a public key and a private key using:</p>
+
+<pre><code>ssh-keygen -t rsa
+</code></pre>
+
+<p>This should save them in ~/.ssh/</p>
+
+<p>However you may want separate keys for work, for home servers and other services like a web server or github. the ~/.ssh/config file is a way to specify a list of possible keys to use and associate them with a host name. I when using this initially Mac OS X always prompted me for my identity file password. instead of acting password-less.</p>
+
+<p>For OS X it looks like you have to add a few more options to get the same behaviour as without the .ssh/config :</p>
+
+<pre><code>Host *
+  RSAAuthentication yes
+  PasswordAuthentication yes
+  ChallengeResponseAuthentication no
+  IdentityFile ~/.ssh/id_rsa
+</code></pre>
+
+<p>Adding more Identity files the first passing will be used</p>
+
+<pre><code>Host *
+  RSAAuthentication yes
+  PasswordAuthentication yes
+  ChallengeResponseAuthentication no
+  IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_rsa_work
+  IdentityFile ~/.ssh/id_rsa_github
+</code></pre>
+
+<p>Multiple Identities, using known identity for known location.</p>
+
+<pre><code>Host *.work.com
+  IdentityFile ~/.ssh/id_rsa
+
+Host *.github.com
+  IdentityFile ~/.ssh/id_rsa_github
+
+Host *
+  RSAAuthentication yes
+  PasswordAuthentication yes
+  ChallengeResponseAuthentication no
+  IdentityFile ~/.ssh/id_rsa
+</code></pre>
+
+<p>For more info try looking at <a href="http://www.openbsd.org/cgi-bin/man.cgi?query=ssh_config">the man page</a>, from your terminal:</p>
+
+<pre><code>$ man ssh_config
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/using-sshconfig-and-no-passwords-with-mac-os-x/">Using ~/.ssh/config and No Passwords with Mac OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-14T21:55:31+01:00" pubdate data-updated="true">Jul 14<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/using-sshconfig-and-no-passwords-with-mac-os-x/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/using-sshconfig-and-no-passwords-with-mac-os-x/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Using ssh to securely connect with servers from the terminal is pretty easy. set up a public key and a private key using</p>
+
+<p>However you may want separate keys for work, for home servers and other services like a webserver or github. the ~/.ssh /config file is a way to specify a list of possible keys to use and associate them with a host name. I when using this initially Mac OS X always prompted me for my identity file password. instead of acting password-less.</p>
+
+<p>For OS X it looks like you have to add a few more options to get the same behaviour as without the .ssh/config :</p>
+
+<pre><code>Host *
+  RSAAuthentication yes
+  PasswordAuthentication yes
+  IdentityFile ~/.ssh/id_rsa
+</code></pre>
+
+<p>Adding more Identity files the first passing will be used</p>
+
+<pre><code>Host *
+  RSAAuthentication yes
+  PasswordAuthentication yes
+  IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_rsa_work
+  IdentityFile ~/.ssh/id_rsa_github
+</code></pre>
+
+<p>Multiple Identities, using known identity for known location.</p>
+
+<pre><code>Host *.work.com
+  IdentityFile ~/.ssh/id_rsa
+
+Host *.github.com
+  IdentityFile ~/.ssh/id_rsa_github
+
+Host *
+  RSAAuthentication yes
+  PasswordAuthentication yes
+  IdentityFile ~/.ssh/id_rsa
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -721,165 +880,6 @@ git config --global github.token your-token-here
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/obnoxious-gem-warnings/">Obnoxious Gem Warnings</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-11T17:11:47+01:00" pubdate data-updated="true">May 11<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/obnoxious-gem-warnings/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/obnoxious-gem-warnings/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>recenlty after updating rubygems Istarted getting a lot of warning like this when running ruby or executable gems:</p>
-
-<p>NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299@global/specifications/rake-0.8.7.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/bundler-1.0.12.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/bundler-1.0.7.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/heroku-1.12.0.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/heroku-2.0.4.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/httparty-0.5.2.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/httparty-0.7.7.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/json-1.4.6.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.
-Gem::Specification#default_executable= called from /Users/morgy/.rvm/gems/ruby-1.8.7-p299/specifications/json-1.5.1.gemspec:10.
-NOTE: Gem::Specification#default_executable= is deprecated with no replacement. It will be removed on or after 2011-10-01.</p>
-
-<h2>Using RVM the fix is to run</h2>
-
-<pre><code> rvm rubygems current
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/recent-issue-with-building-gems/">Recent Issue with Building Gems</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-05-07T23:25:34+01:00" pubdate data-updated="true">May 7<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/recent-issue-with-building-gems/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/recent-issue-with-building-gems/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When running gem build on a new library I have been working on I started getting the following error:</p>
-
-<pre><code>[ruby_svg_light.gemspec] isn't a Gem::Specification (Rake::FileTask instead).
-ERROR:  While executing gem ... (NoMethodError)
-    undefined method `mark_version' for nil:NilClass
-</code></pre>
-
-<p>It was from a gemspec similar to that below</p>
-
-<pre><code>require 'rake/gempackagetask' 
-
-NAME = "ruby_svg_light" 
-Dir.chdir( './lib/')
-require NAME
-Dir.chdir( './../')
-
-spec = Gem::Specification.new do |s|
-  s.name         = NAME
-  s.version      = RubySVGLight::VERSION
-  s.platform     = Gem::Platform::RUBY
-  s.summary      = 'Basic Helper for creating SVG Files'
-  s.homepage     = 'http://amaras-tech.co.uk/software/RubySVGLight'
-  s.authors      = "Morgan Prior"
-  s.email        = NAME + "_gem@amaras-tech.co.uk"
-  s.description  = %{A basic library for building SVG files. Not all properties of SVG are supported}
-  s.files        = [Dir.glob("LICENSE.rtf")]
-  s.files        += Dir.glob("examples/*")
-  s.files        += Dir.glob("lib/**/*")
-  s.files        += Dir.glob("spec/*") 
-end
-Rake::GemPackageTask.new(spec).define
-</code></pre>
-
-<p>The Fix was to change to this (Removing Rake::GemPackageTask):</p>
-
-<pre><code>NAME = "ruby_svg_light"
-Dir.chdir( './lib/')
-require NAME
-Dir.chdir( './../')
-
-Gem::Specification.new do |s|
-  s.name         = NAME
-  s.version      = RubySVGLight::VERSION
-  s.platform     = Gem::Platform::RUBY
-  s.summary      = 'Basic Helper for creating SVG Files'
-  s.homepage     = 'http://amaras-tech.co.uk/software/RubySVGLight'
-  s.authors      = "Morgan Prior"
-  s.email        = NAME + "_gem@amaras-tech.co.uk"
-  s.description  = %{A basic library for building SVG files. Not all properties of SVG are supported}
-  s.files        = [Dir.glob("LICENSE.rtf")]
-  s.files        += Dir.glob("examples/*")
-  s.files        += Dir.glob("lib/**/*")
-  s.files        += Dir.glob("spec/*")
-end
-</code></pre>
-
-<p>It looks like the new format if for the gemspec is to return a Gem::Specification rather than run the task. I do not know when this change happened.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/26/">&larr; Older</a>
@@ -894,11 +894,19 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (41)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
@@ -910,14 +918,6 @@ end
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
       </li>
     
   </ul>

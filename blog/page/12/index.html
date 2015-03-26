@@ -9,9 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="To count from 1 up to 20 in steps of 5 #!/bin/csh
-foreach x (`seq 1 5 20`) echo $x
-end ">
+  <meta name="description" content="Good programming practice is to use spaces to indent code rather than tabs. Due to tabs often being rendered differently by editors and personal &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +81,118 @@ end ">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vim-convert-tabs-to-spaces/">VIM: Convert Tabs to Spaces</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-14T09:23:03+01:00" pubdate data-updated="true">Oct 14<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/vim-convert-tabs-to-spaces/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-convert-tabs-to-spaces/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Good programming practice is to use spaces to indent code rather than tabs. Due to tabs often being rendered differently by editors and personal configurations.</p>
+
+<p>In vim this will convert tabs to space based on your current tab width settings:</p>
+
+<pre><code>:retab
+</code></pre>
+
+<p>To view white space characters (tabs will show as ^I)</p>
+
+<pre><code>:set list
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/set-vs-setenv/">Set vs Setenv</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-11T12:34:15+01:00" pubdate data-updated="true">Oct 11<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/set-vs-setenv/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/set-vs-setenv/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>setenv allows sub shells to inherit the value.</p>
+
+<h2>Set</h2>
+
+<pre><code>set x = "twenty"
+echo $x
+&gt; twenty
+
+## New Shell
+csh
+echo $x
+x: Undefined variable.
+</code></pre>
+
+<h2>Setenv Note missing &lsquo;=&rsquo;</h2>
+
+<pre><code>setenv x "twenty"
+echo $x
+&gt; twenty
+
+##New Shell
+csh
+echo $x
+&gt; twenty
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -621,98 +731,6 @@ endif
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/micro-irrigation/">Micro Irrigation</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-07T00:16:21+01:00" pubdate data-updated="true">Aug 7<span>th</span>, 2013</time>
-        
-           | <a href="/blog/garden/micro-irrigation/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/micro-irrigation/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>As the growhouse stops the plants recieving rain I decided to try micro-irrigtion.
-It comes with a gardnen computer to time the water automation, which feels the direction a geek gardener should go.</p>
-
-<p>My understanding is also that herbs like to be watered in the morning so water can be absorbed during the day, and exess will evaporate in the warmth of the day.
-If watered at night the soil stays water logged overnight and promotes rot. So to try
-and optimise the process I purchased the <strong><a href="https://www.amazon.co.uk/dp/B0001E3SAE?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B0001E3SAE&amp;adid=12WZGMZ9RWMPRQVST5N7&amp;">Gardena Starter Set with C 14e Water Computer</a></strong> for micro-irrigation.</p>
-
-<p><img src="/images/Gardening/morganp-20130806-Gardena-IMG_2623.jpg" alt="Irrigation kit" />
-<img src="/images/Gardening/morganp-20130806-Gardena-IMG_2636.jpg" alt="drip feeder" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/growhouse/">Growhouse</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-04T00:35:29+01:00" pubdate data-updated="true">Aug 4<span>th</span>, 2013</time>
-        
-           | <a href="/blog/garden/growhouse/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/growhouse/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A cheap (~£15) four tier <a href="https://www.amazon.co.uk/dp/B00IA1KI7G?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B00IA1KI7G&amp;adid=117VNH8ZGZJVTEV9GJFD&amp;">Botanico growhouse</a>, with my current selection of potted herbs.</p>
-
-<p><img src="/images/Gardening/morganp-20130803-herbs-IMG_2586.jpg" alt="Growhouse with herbs" /></p>
-
-<p>Over the course of the summer I think the temperatures inside actually became too hot for the plants during midday. I think best to use as an early start on the season and to extend the season for small plants.</p>
-
-<p>NB: The growhouse did not make it through the winter storms.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -727,11 +745,19 @@ and optimise the process I purchased the <strong><a href="https://www.amazon.co.
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (41)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
@@ -743,14 +769,6 @@ and optimise the process I purchased the <strong><a href="https://www.amazon.co.
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
       </li>
     
   </ul>

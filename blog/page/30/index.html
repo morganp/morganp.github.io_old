@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="When running a sequel migration I kept getting this error: Error: NoMethodError: undefined method `compact&#8217; for nil:NilClass My setup looked &hellip;">
+  <meta name="description" content="The Preferences menu in OS x give you the option to turn off Hard Disks whenever possible to save power however the default 10 minutes idle before &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,101 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mac-os-x-harddrive-spin-down-time/">Mac OS X Harddrive Spin Down Time</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-09-01T13:05:32+01:00" pubdate data-updated="true">Sep 1<span>st</span>, 2010</time>
+        
+           | <a href="/blog/tech/mac-os-x-harddrive-spin-down-time/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mac-os-x-harddrive-spin-down-time/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The Preferences menu in OS x give you the option to turn off Hard Disks whenever possible to save power however the default 10 minutes idle before shutdown can not be adjusted from this panel. This could also be causing excessive ware on desktop 3.5&#8221; drives.</p>
+
+<p>If you have the developer tools installed then you should have the SpindownHD tool. located in /Developer &ndash;> Applications &ndash;> Performance Tools &ndash;> CHUD &ndash;> Hardware</p>
+
+<p>If you do not have the developer tools installed there is no need just for this tool the changes can be made manually be editing: Library &ndash;> Preferences &ndash;> SystemConfiguration &ndash;> com.apple.PowerManagement.plist
+under &lsquo;Disk Sleep Timer&rsquo; adjust the minutes of idle time before shutting drives down.</p>
+
+<p><a href="http://hints.macworld.com/article.php?story=20050601044914357">source1</a>
+<a href="http://hints.macworld.com/article.php?story=20060922231408751">source2</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/mac-os-x-default-path/">Mac OS X Default Path</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-26T09:36:06+01:00" pubdate data-updated="true">Aug 26<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/mac-os-x-default-path/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mac-os-x-default-path/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As this seemed to be a useful post on my old blog I am reposting it.
+Just in case the $PATH terminal variable gets corrupted, for MAC OS X 10.5. 10.6.</p>
+
+<pre><code>export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
+</code></pre>
+
+<p>to add to you path</p>
+
+<pre><code>export PATH=$PATH:/usr/local/sbin:/usr/local/bin
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -671,154 +766,6 @@ Percentage of the requests served within a certain time (ms)
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/philip_roberts-taught-me-a-thing-or-two-about-css/">@philip_roberts Taught Me a Thing or Two About CSS</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-22T10:15:50+01:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2010</time>
-        
-           | <a href="/blog/tech/philip_roberts-taught-me-a-thing-or-two-about-css/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/philip_roberts-taught-me-a-thing-or-two-about-css/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>CSS or Cascading Style Sheets are used for styling html elements. HTML elements can have id&rsquo;s, which must be unique to all other elements on the page. HTML elements can also have a type class, an item can belong to multiple classes and a page can have multiple items in a class.</p>
-
-<p>Example page:</p>
-
-<pre><code>&lt;html&gt;
-   &lt;head&gt;
-   &lt;/head&gt;
-   &lt;body id="about"&gt;
-      &lt;div id="nav"&gt;
-        &lt;a href="next"&gt;next&lt;/a&gt;
-      &lt;/div&gt;
-      &lt;div id="body"&gt;
-        &lt;a class="small, underline"href="a"&gt;something&lt;/a&gt;
-        &lt;a class="small" href="b"&gt;something&lt;/a&gt;
-        &lt;a class="small" href="c"&gt;something&lt;/a&gt;
-      &lt;/div&gt;
-   &lt;/body&gt;
-&lt;html&gt;
-</code></pre>
-
-<p>To refer to id&rsquo;s use a # symbol and . for classes. eg</p>
-
-<pre><code>div#nav
-a.small
-</code></pre>
-
-<p>If you want to apply the same style to multiple elements they can be written in a list before the style. Make h1 h2 and h3 all text 2x normal:</p>
-
-<pre><code>h1, h2, h3 {
-    test-size: 200%;
-}
-</code></pre>
-
-<p>Now for the new stuff, if the &lsquo;,&rsquo; are removed from the list it specifies a hierarchy which for the element which you are matching:</p>
-
-<pre><code>body#about div#nav a {
-   background-color:yellow;
-}
-</code></pre>
-
-<p>The second thing that I had not realised is that the more specific the higher the precedent.</p>
-
-<pre><code>a { 
-  background-color:black;
-}
-body#about div#nav a {
-  background-color:yellow;
-}
-</code></pre>
-
-<p>Will render the same as</p>
-
-<pre><code>body#about div#nav a {
-   background-color:yellow;
-}
-a { 
-   background-color:black;
-}
-</code></pre>
-
-<p>I had previously assumed in the last example that the last a define would have been all encompassing.</p>
-
-<p>NB: For debugging CSS I think that the <a href="http://getfirebug.com/">FireBug plugin</a> for firefox is great. Watch the Video to get the most out of it.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/turn-a-jar-file-into-a-mac-app/">Turn a .jar File Into a Mac .app</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-18T05:59:31+01:00" pubdate data-updated="true">Jul 18<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/turn-a-jar-file-into-a-mac-app/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/turn-a-jar-file-into-a-mac-app/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Following <a href="http://www.centerkey.com/mac/java/">this article</a> lets you turn a executable java .jar into a mac appliction (.app). The Tools are only available on Mac OS with Xcode installed.</p>
-
-<p>Basically create a 512x512px png for your logo. then use &lsquo;/Developer/Applications/Utilities/Icon Composer.app&rsquo; to create a someFileName.icns, Just drag the png into each of the different size boxes and Icon Composer will resize it correctly.
-Then Save.</p>
-
-<p>Second Stage is to start &lsquo;/Developer/Applications/Utilities/Jar Bundler.app&#8217;<br/>
-For the main class choose your executable .jar for the icon load the icns created in the previous step. Then press the create application button, chose location then your .app should be created.</p>
-
-<p>The only complaint I have about these to applications is there is no ability to save the set-up, so every time you want to rebuild you have to enter all the settings again, I do not know many other applications which do not allow you to save.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/31/">&larr; Older</a>
@@ -833,11 +780,19 @@ For the main class choose your executable .jar for the icon load the icns create
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (41)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
@@ -849,14 +804,6 @@ For the main class choose your executable .jar for the icon load the icns create
     
       <li class="post">
         <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a>
       </li>
     
   </ul>
