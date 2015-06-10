@@ -9,7 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="reg and wire were the original synthesisable types. Wires are constantly assigned and regs are evaluated at particular points, the advantage here is &hellip;">
+  <meta name="description" content="Progressions can be created using the Colon operator min = 10
+max = 100
+steps = 20 step_size = (max-min)/steps i = min:step_size:max Alternatively &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +83,176 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-06-10T20:19:05+01:00" pubdate data-updated="true">Jun 10<span>th</span>, 2015</time>
+        
+           | <a href="/blog/engineering/matlab-linear-progressions/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-linear-progressions/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Progressions can be created using the <a href="http://uk.mathworks.com/help/matlab/ref/colon.html">Colon</a> operator</p>
+
+<pre><code>min   = 10
+max   = 100
+steps = 20
+
+step_size = (max-min)/steps
+
+i = min:step_size:max
+</code></pre>
+
+<p>Alternatively <a href="http://uk.mathworks.com/help/matlab/ref/linspace.html">linspace</a> can be used:</p>
+
+<pre><code>min   = 10
+max   = 100
+steps = 20
+
+i = linspace(min,max,steps)
+</code></pre>
+
+<p>This also allows for easily switching to a log scale using <a href="http://uk.mathworks.com/help/matlab/ref/logspace.html">logspace</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/">Matlab: Functions Inputs Parsed Based on Outputs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-06-10T20:10:54+01:00" pubdate data-updated="true">Jun 10<span>th</span>, 2015</time>
+        
+           | <a href="/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>It is quite common to detect how many input arguments have been passed to a function, using <code>nargin</code> (N arguments in).  Commonly used to set defaults for arguments not specified.</p>
+
+<pre><code>function result = fun_name(a,b,c);
+  if nargin &lt;1
+    error('a must be supplied');
+  end
+  if nargin &lt;2
+    b = 1; 
+  end
+  if nargin &lt;3
+    c = 1;
+  end
+
+  % ...
+</code></pre>
+
+<p>However I just discovered <code>nargout</code> (N arguments out(.</p>
+
+<p>This allows the scripts to differentiate between:</p>
+
+<pre><code>x     = fun(a)
+[x,y] = fun(a)
+</code></pre>
+
+<p>Example 1:</p>
+
+<pre><code>function [ varargout ] = nargout_test( input_args )
+  disp(['nargout : ', num2str(nargout)])
+
+  % Set outputs
+  for i=1:nargout
+    varargout{i} = 0;
+  end
+end
+</code></pre>
+
+<p>Example 2, changing input args usage based on number of outputs:
+note the input keyword change to the input arguments <code>varargin</code> Variable argument in.</p>
+
+<pre><code>function [ varargout ] = nargout_test( varargin )
+  disp(['nargin : ', num2str(nargin)])
+  disp(['nargout : ', num2str(nargout)])
+
+  if nargout &gt; 2
+    error('Too many output arguments')
+  end
+
+  if nargout == 1
+    % single output first input means something
+    varargout{1} = varargin{1};
+  end
+
+  if nargout == 2
+    % two outputs first input means some thing else
+    varargout{1} = varargin{1} / varargin{2};
+    varargout{2} = varargin{1} * varargin{2};
+  end
+
+end
+</code></pre>
+
+<p>A good example is the <a href="http://uk.mathworks.com/matlabcentral/fileexchange/13792-the-dc-blocking-filter/">dcblock script by J M De Freitas</a>.</p>
+
+<p>Which has this syntax:</p>
+
+<pre><code>% SYNTAX    [a] = dcblock(Fc);  
+%           [a] = dcblock(fc,fs);  
+%           [aQ] = dcblock(fc,fs,B);  
+%           [Fc,fc] = dcblock(a,fs);  
+%           dcblock(Fc)  
+%           dcblock(fc,fs)  
+%           dcblock(fc,fs,B)  
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -563,108 +735,6 @@ therm_code = ~({M{1'b1}} &lt;&lt; val);
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vim-macro/">Vim: Macro</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-02-18T16:41:40+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2015</time>
-        
-           | <a href="/blog/tech/vim-macro/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-macro/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When <code>.</code> just will not do (repeats last action) because you need to capture  a movement as well, macros are quick to create and use.</p>
-
-<pre><code>q&lt;number&gt;&lt;actions&gt;q
-</code></pre>
-
-<p>Replay macro</p>
-
-<pre><code>@&lt;number&gt; 
-</code></pre>
-
-<p>Replay macro 10 times</p>
-
-<pre><code>10@&lt;number&gt;
-</code></pre>
-
-<p>Example
-Yank and put line, then repeat 10 times.</p>
-
-<pre><code>q1 yyP q
-
-10@1
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/find-your-ruby-gems-path/">Find Your Ruby Gems Path</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-02-18T16:39:32+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2015</time>
-        
-           | <a href="/blog/tech/find-your-ruby-gems-path/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/find-your-ruby-gems-path/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code> ruby -r rubygems -e "p Gem.path"
-</code></pre>
-
-<p>From <a href="http://gilesbowkett.blogspot.co.uk/2009/06/find-your-ruby-gems-path.html">Giles Bowkett</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -677,11 +747,19 @@ Yank and put line, then repeat 10 times.</p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/">Matlab: Functions Inputs Parsed Based on Outputs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
@@ -693,14 +771,6 @@ Yank and put line, then repeat 10 times.</p>
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
       </li>
     
   </ul>

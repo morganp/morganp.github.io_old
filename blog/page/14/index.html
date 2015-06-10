@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Cake (£? a portion) time to table ~?. ">
+  <meta name="description" content="I was wanting to use Dir.glob to get a file list and wanted to do Dir.glob( path + '*') but nicely handle when the final &lsquo;/&rsquo; of path was &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,102 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-optionally-add-path-separator/">Ruby: Optionally Add Path Separator</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-05T11:46:58+01:00" pubdate data-updated="true">Jun 5<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/ruby-optionally-add-path-separator/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-optionally-add-path-separator/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I was wanting to use Dir.glob to get a file list and wanted to do <code>Dir.glob( path + '*')</code> but nicely handle when the final &lsquo;/&rsquo; of path was missing.</p>
+
+<p>Instead of doing string manipulation we should just be using the file utilities.</p>
+
+<pre><code>Dir.glob( File.join( path, '*')  ) 
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/navigate-verilog-with-vim/">Navigate Verilog with VIM</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-04T22:08:39+01:00" pubdate data-updated="true">Jun 4<span>th</span>, 2013</time>
+        
+           | <a href="/blog/engineering/navigate-verilog-with-vim/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/navigate-verilog-with-vim/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>Using <code>gf</code></h1>
+
+<p>In your vimrc</p>
+
+<pre><code>" gf goto_file, automatically add search for these file extensions
+:set suffixesadd+=.v
+:set suffixesadd+=.sv
+:set suffixesadd+=.bh.v
+</code></pre>
+
+<p>Now <code>gf</code> on a module name will try to open file.v file.sv and file.bh.v  if they are in the same folder.
+Another good reason to keep module and file names matching.</p>
+
+<p><code>ctrl-6</code> will jump back to the previous file.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -500,90 +596,6 @@ footer: true
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/bt-broadband-messing-around-with-your-dns/">BT Broadband Messing Around with Your DNS</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-25T09:02:48+01:00" pubdate data-updated="true">Apr 25<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/bt-broadband-messing-around-with-your-dns/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/bt-broadband-messing-around-with-your-dns/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>BT broadband has <strong>BT Web Address Help</strong> enabled by default. This allows then to redirect you to another site if they think you typed the URL incorrectly.</p>
-
-<p>This can cause problems when connecting to a VPN, which is setup to no route normal websites through the VPN. When the URL is rejected your VPN then picks it up as a fall back and tries over its connection. However when these Smart systems are enabled by your isp they will never reject them and always try to offer useful content.</p>
-
-<p>To <a href="http://preferences.webaddresshelp.bt.com/selfcare/preferences.cgi">turn off your BT Web Address Help</a> go to : <a href="http://preferences.webaddresshelp.bt.com/selfcare/preferences.cgi">BT Preferences</a>. You can read more about it in <a href="http://bt.custhelp.com/app/answers/detail/a_id/14244/c/346,402,405">this discussion</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/javascript-net-curtain/">JavaScript Net Curtain</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-24T07:44:19+01:00" pubdate data-updated="true">Apr 24<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/javascript-net-curtain/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/javascript-net-curtain/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Normally this would just end up on <a href="http://amaras-tech.co.uk/u">my link blog</a>, but thought it was worthy of a proper mention.</p>
-
-<p><a href="http://amaras-tech.co.uk/u/5m">A JavaScript tear able net curtain</a>, clicking the mouse the moving mouse over curtain the real-time rendering in a browser feels very impressive to me. To see some thing this interactive with out lag being rendered in a browser is quite impressive. Am sure there are still many sites which crash my browser while trying to render little pointless animations.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/15/">&larr; Older</a>
@@ -598,11 +610,19 @@ footer: true
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/">Matlab: Functions Inputs Parsed Based on Outputs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
@@ -614,14 +634,6 @@ footer: true
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
       </li>
     
   </ul>

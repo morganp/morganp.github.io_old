@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="recenlty after updating rubygems Istarted getting a lot of warning like this when running ruby or executable gems: NOTE: Gem::Specification# &hellip;">
+  <meta name="description" content="Some uses of Arrays that were not apparent at first. Enumeration each is the basic enumerator method but there is also each_with_index (and for &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,192 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-arrays-part-1/">Ruby Arrays, Part 1</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-23T23:37:26+01:00" pubdate data-updated="true">May 23<span>rd</span>, 2011</time>
+        
+           | <a href="/blog/tech/ruby-arrays-part-1/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-arrays-part-1/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Some uses of Arrays that were not apparent at first.</p>
+
+<h2>Enumeration</h2>
+
+<p><a href="http://ruby-doc.org/core/classes/Array.html#M000231">each</a> is the basic enumerator method but there is also <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001511">each_with_index</a> (and for hashes <a href="http://ruby-doc.org/core/classes/Hash.html#M000741">each_pair</a>)</p>
+
+<pre><code>['a', 'b', 'c', 'd'].each {|item| puts item }
+['a', 'b', 'c', 'd'].each_with_index {|item,index| puts "#{index}:#{item}" }
+{:a=&gt;1, :b=&gt;2}.each_pair {|key,value| puts "#{key}=&gt;#{value}" }
+</code></pre>
+
+<h2>Sorting</h2>
+
+<p>Sort is very easy with ruby if you want a basic sort [4,5,3,2,7].sort will do. However sorting by any key is possible using sort_by. Sort_by performs a <a href="http://amaras-tech.co.uk/people/morgan/article/98">Schwartzian Transform</a></p>
+
+<pre><code>['a','B','D','c'].sort
+#=&gt; ["B", "D", "a", "c"]
+['a','B','D','c'].sort_by {|x| x.downcase }
+#=&gt; ["a", "B", "c", "D"]    
+</code></pre>
+
+<h2>Return Arrays</h2>
+
+<p>When you want an array, map modifies the contents of each element:</p>
+
+<pre><code>[1,2,3,4].map {|i| i*2 }
+#=&gt; [2,4,6,8]
+# or with any enumerable (Range)
+(1..4).map {|i| i*2 }
+</code></pre>
+
+<p>select and reject can be used to select and remove elements from the enumerable, and return a new enumerable, they are immutable methods.</p>
+
+<pre><code>[0,1,2,3,4,5].select { |x| x &gt; 2 }
+#=&gt; [3,4,5]
+[0,1,2,3,4,5].reject { |x| x &lt; 3 }
+#=&gt; [3,4,5]
+</code></pre>
+
+<p>select! and reject! (bang operators) modify the existing enumerable. They have more natural names that I think should be used when appropriate, keep_if and delete_if.</p>
+
+<pre><code>[0,1,2,3,4,5].keep_if { |x| x &gt; 2 }
+#=&gt; [3,4,5]
+[0,1,2,3,4,5].delete_if { |x| x &lt; 3 }
+#=&gt; [3,4,5]
+</code></pre>
+
+<h2>Reduction to a Single Value</h2>
+
+<p>inject can be called on any enumerable object, it iterates over each item with an accumulator.</p>
+
+<pre><code>[1,2,3,4].inject {|memory, item| memory * (item+1) } 
+</code></pre>
+
+<p>For basic operations there is the reduce method which can be used for summing and multiplying out the arrays.</p>
+
+<p>Sum:</p>
+
+<pre><code> [1,2,3,4].reduce :+
+</code></pre>
+
+<p>Multiply:</p>
+
+<pre><code>[1,2,3,4].reduce :*
+</code></pre>
+
+<h2>Booleans</h2>
+
+<p><a href="http://ruby-doc.org/core/classes/Enumerable.html#M001510">include?</a> is used to check if the array contains the supplied object.</p>
+
+<pre><code>['a','b','c'].include?( 'b' )
+#=&gt; true
+</code></pre>
+
+<p><a href="http://ruby-doc.org/core/classes/Enumerable.html#M001499">all?</a> and <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001500">any?</a> can be used to check if the array matches against given criteria.</p>
+
+<pre><code>[1,2,3,4].any?{|x| x &gt; 3 }
+#=&gt; true
+[1,2,3,4].all?{|x| x &gt; 3 }
+#=&gt; false
+[1,2,3,4].any?{|x| x &gt; 5 }
+#=&gt; false
+[1,2,3,4].all?{|x| x &gt; 0 }
+#=&gt; true
+</code></pre>
+
+<p>I often use <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001500">any?</a> with an array of regular expressions to match a string to any item.</p>
+
+<pre><code>text   = "one"
+search = [/one/, /two/, /three/]
+found  = search.any? { |regexp| text.match( regexp ) }
+#=&gt; true
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/installing-gistvim/">Installing gist.vim</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-05-20T20:32:05+01:00" pubdate data-updated="true">May 20<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/installing-gistvim/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/installing-gistvim/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This vim plugin will allow you to gist directly from vim, simple way is just :Gist to gist entire file more options in the <a href="https://github.com/mattn/gist-vim/blob/master/README.mkd">Full Readme</a>.</p>
+
+<p>If you have not heard of gists or Github. Github is a very popular (especially with in the Ruby community) way of sharing open source code. <a href="https://gist.github.com/">Gists</a> are the easy way to save and share small snippets of code.</p>
+
+<h2>Install</h2>
+
+<pre><code>cd ~/.vim/plugin
+wget --nocheck-certificate https://github.com/mattn/gist-vim/raw/master/plugin/gist.vim
+cd ../doc
+wget --no-check-certificate https://github.com/mattn/gist-vim/raw/master/doc/gist-vim.txt
+
+#Now to set Your env variables
+git config --global github.user your-name-here
+git config --global github.token your-token-here
+</code></pre>
+
+<p>You Github token can be found on the <a href="https://github.com/account">GitHub Admin</a> Account Admin tab.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -711,120 +897,6 @@ $ bundle install
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/schwartzian-transform/">Schwartzian Transform</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-08T10:37:44+01:00" pubdate data-updated="true">Apr 8<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/schwartzian-transform/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/schwartzian-transform/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I recently heard about the Schwartzian transform, which is a sorting idiom from perl. It allows an array of objects to be efficiently sorted by any property. Part of the cleverness is the use of anonymous arrays which allows them to be garbage collected quickly.</p>
-
-<p><a href="http://en.wikipedia.org/wiki/Schwartzian_transform">Wikipedia</a> has a detailed description, however the general form (in perl) is:</p>
-
-<pre><code>@sorted = map  { $_-&gt;[0] }
-          sort { $a-&gt;[1] cmp $b-&gt;[1] }
-          map  { [$_, foo($_)] }
-              @unsorted;
-</code></pre>
-
-<p>A good history of it can be <a href="http://www.stonehenge.com/merlyn/UnixReview/col64.html">read here</a>.</p>
-
-<p>My point of bring all of this up other than pointing out a cool sorting algorithm is that any <strong>ruby</strong> class including <a href="http://ruby-doc.org/core/classes/Enumerable.html">Enumerable</a> (Arrays, Hashes etc) has this built in with the <a href="http://ruby-doc.org/core/classes/Enumerable.html#M001481"><strong>.sort_by</strong></a> method.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/reading-list/">Reading List</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-08T10:19:56+01:00" pubdate data-updated="true">Apr 8<span>th</span>, 2011</time>
-        
-           | <a href="/blog/photography/reading-list/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/reading-list/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>My <a href="http://www.shelfari.com/o1514252429/shelf">Shelfari</a></p>
-
-<h2>To Read</h2>
-
-<p>Photoshop CS5 and Lightroom 3, ISBN 978-1-933952-67-2<br/>
-Developing Vision and Style, ISBN 978-1-9025 38495<br/>
-Pragmatic Thinking and Learning, ISBN 978-1934356050<br/>
-Pragmatic Guide to Git,<br/>
-The RSpec Book,<br/>
-Ruby Best Practises,<br/>
-The Agile Samurai, <br/>
-jQuery Novice to Ninja,<br/>
-Structure and Interpretation of Computer Programming,<br/>
-Metaprogramming Ruby,</p>
-
-<h2>Recommended Computing</h2>
-
-<p>Classic Shell Scripting, ISBN 0-596-00595-4<br/>
-The Passionate Programmer, ISBN 978-1-934356-34-0</p>
-
-<h2>Recommended Photography</h2>
-
-<p>Lightroom 2 Adventure, ISBN 978-0-596-52101-1<br/>
-Black and White, ISBN 978-1-904705-57-4<br/>
-First Light, ISBN 1-902538-24-2</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/27/">&larr; Older</a>
@@ -839,11 +911,19 @@ First Light, ISBN 1-902538-24-2</p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/">Matlab: Functions Inputs Parsed Based on Outputs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
@@ -855,14 +935,6 @@ First Light, ISBN 1-902538-24-2</p>
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
       </li>
     
   </ul>

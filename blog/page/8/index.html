@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I do not think that there are any magic bullets, best practises can minimise risk but you have to fully understand the technique. You can not just &hellip;">
+  <meta name="description" content="In your sources branch, which is the main branch for writing creating posts, create a CNAME file in the sources directory. vim source/CNAME your- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,118 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/octopress/">Octopress, Pages and Custom Domain</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-04T18:19:25+00:00" pubdate data-updated="true">Mar 4<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/octopress/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/octopress/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In your <code>sources</code> branch, which is the main branch for writing creating posts, create a <code>CNAME</code> file in the sources directory.</p>
+
+<p>vim source/CNAME</p>
+
+<pre><code>your-domain.co.uk
+</code></pre>
+
+<p>Then check-in and deploy</p>
+
+<pre><code>git add source/CNAME
+rake deploy
+</code></pre>
+
+<p>Point your domain to github pages:</p>
+
+<pre><code>A record pointing to 204.232.175.78
+</code></pre>
+
+<p>I also redirect www. to the non-www url</p>
+
+<pre><code>CNAME record for www.example.com to example.com  
+</code></pre>
+
+<p><a href="http://octopress.org/docs/deploying/github/">Official Docs</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/revert-in-git/">Revert in Git</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-03T19:42:12+00:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2014</time>
+        
+           | <a href="/blog/tech/revert-in-git/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/revert-in-git/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>and Remove Orphaned Commits.</h1>
+
+<p>I use <code>gitx</code> graphical tool on OS X to find the SHAs for commits. Revert back throwing away all changes:</p>
+
+<pre><code>git reset --hard shaqwerty      
+</code></pre>
+
+<p>Now delete the orphaned commits.</p>
+
+<pre><code>git reflog expire --expire=now --expire-unreachable=now --all
+git gc --prune=now
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -460,104 +572,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/propagator/">Propagator</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-18T20:43:00+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/propagator/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/propagator/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have always had trouble getting seeds to germinate, therefore I have purchased a <a href="https://www.amazon.co.uk/dp/B000YA43HC?tag=morgue-21&amp;camp=2902&amp;creative=19466&amp;linkCode=as4&amp;creativeASIN=B000YA43HC&amp;adid=18Q38Q8QS33XBPP04WNR&amp;">propagator</a> to help. Ideally I would have a thermostatically controlled unit, but they tend to be a bit more expensive, and non-looked like they wood fit nicely on a windowsill.</p>
-
-<p>Garland Super7, should raise soil temperature by 8 degrees but fluctions of indoor temp will be passed on:</p>
-
-<p><img src="/images/Gardening/morganp-20140218-Propagator-IMG_6827.jpg" title="Garland Super7" alt="Propagator" /></p>
-
-<p>Hopefully I will have some better luck in the future.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/monkey-patch-octopress/">Monkey Patch Octopress</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-18T19:46:55+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/monkey-patch-octopress/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/monkey-patch-octopress/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Based on <a href="https://github.com/imathis/octopress/blob/master/plugins/post_filters.rb">post_filters by imathis</a>.</p>
-
-<p>First Move the original method out the way with <code>alias_method</code>  then create a new method with the original name, calling the original now aliased method if required.</p>
-
-<pre><code>module Jekyll
-  class URL
-    alias_method :old_sanitize_url, :sanitize_url
-    def sanitize_url(in_url)
-      old_sanitize_url(in_url).downcase
-    end
-  end
-end
-</code></pre>
-
-<p>This was used to build my <a href="https://github.com/morganp/octopress_url_downcase">Octopress plugin octopress_url_downcase</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/9/">&larr; Older</a>
@@ -572,11 +586,19 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/">Matlab: Functions Inputs Parsed Based on Outputs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
@@ -588,14 +610,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
       </li>
     
   </ul>

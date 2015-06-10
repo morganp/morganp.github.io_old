@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Good programming practice is to use spaces to indent code rather than tabs. Due to tabs often being rendered differently by editors and personal &hellip;">
+  <meta name="description" content="Go to the Videolan website and download and run the libdvdcss.pkg.
+Switch VLC preference, Advanced, uncheck Dvd-Video use libdvdnav (instead of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,130 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/os-x-handbrake-install-libdvdcss-decryption/">OS X Handbrake Install Libdvdcss (Decryption)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-30T12:38:35+00:00" pubdate data-updated="true">Oct 30<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/os-x-handbrake-install-libdvdcss-decryption/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/os-x-handbrake-install-libdvdcss-decryption/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ol>
+<li><p>Go to the <a href="http://amaras-tech.co.uk/u/7h">Videolan</a> website and download and run the libdvdcss.pkg.</p></li>
+<li><p>Switch VLC preference, Advanced, uncheck Dvd-Video use libdvdnav (instead of libdvdread)</p></li>
+</ol>
+
+
+<p>Also see <a href="http://mackonsti.wordpress.com/2013/07/22/create-backup-dvd-using-handbrake-mac/">Mackonsti.wordpress</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-setting-simulink-simulation-stop-time/">Matlab Setting Simulink Simulation Stop Time</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-10-29T19:17:44+00:00" pubdate data-updated="true">Oct 29<span>th</span>, 2013</time>
+        
+           | <a href="/blog/engineering/matlab-setting-simulink-simulation-stop-time/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-setting-simulink-simulation-stop-time/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Running the Simulink model model.mdl from matlab for a specified time:</p>
+
+<pre><code>sim('model', stoptime)
+</code></pre>
+
+<p>Where stoptime is a number. To mix with other options such eg. SimulationMode, things get a little trickier.</p>
+
+<pre><code>sim( 'model', 'SimulationMode', 'normal')
+</code></pre>
+
+<p>you would expect:</p>
+
+<pre><code>sim( 'model', 'SimulationMode', 'normal', 'StopTime', 1)
+</code></pre>
+
+<p>but this results in :</p>
+
+<pre><code>Invalid setting in block_diagram 'model' for parameter 'StopTime'
+</code></pre>
+
+<p>The trick is that parameter, value pairs must be strings, what you actually need to do is:</p>
+
+<pre><code>sim( 'model', 'SimulationMode', 'normal', 'StopTime', num2str(1) )
+</code></pre>
+
+<p>Or you can create an ParameterStruct,</p>
+
+<pre><code>SimOpts.SimulationMode = 'normal';
+SimOpts.StopTime       = num2str(1);
+sim( 'model', SimOpts )
+</code></pre>
+
+<p>Both of these methods change the way in which the to_workspace blocks work, instead of just outputting a variable to the workspace or available in the calling function sim now returns an &lsquo;Simulink.SimulationOutput&rsquo; object.</p>
+
+<p>Instead of just accessing &lsquo;simout&rsquo; you know need to capture the sim output and use the get command to retrieve the data :</p>
+
+<pre><code>simdata = sim( 'model', SimOpts ) ;
+simdata.get('simout' )
+</code></pre>
+
+<p><a href="http://www.mathworks.co.uk/help/simulink/ug/using-the-sim-command.html">Further Info on the sim command</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -643,94 +768,6 @@ secondary path can contain multiple folders.</p></blockquote>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/weather-alerts-via-email-from-the-metoffice/">Weather Alerts via eMail from the MetOffice</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-15T12:17:08+01:00" pubdate data-updated="true">Aug 15<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/weather-alerts-via-email-from-the-metoffice/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/weather-alerts-via-email-from-the-metoffice/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In the UK you can now get regional weather alerts from the
-<a href="https://service.govdelivery.com/service/multi_subscribe.html?code=UKMETOFFICE&amp;origin=http://www.metoffice.gov.uk">Met Office</a>.</p>
-
-<p>Unfortunately it does not break it down any further, all I really wanted was a frost alert to look after my plants, but now I will know about any hazards weather 24 hours in advance.</p>
-
-<p>AdamFoster seems to have set up a free service <a href="http://frostalertemail.com/">FrostAlert</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/tcsh-check-a-var-exists/">Tcsh Check a Var Exists</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-07T07:04:38+01:00" pubdate data-updated="true">Aug 7<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/tcsh-check-a-var-exists/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/tcsh-check-a-var-exists/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To check if an environment variable exists in .mycshrc or shell scripts</p>
-
-<pre><code>if ($?TERM) then
-  echo "TERM is $TERM" 
-endif
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -745,11 +782,19 @@ endif
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/">Matlab: Functions Inputs Parsed Based on Outputs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
@@ -761,14 +806,6 @@ endif
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
       </li>
     
   </ul>

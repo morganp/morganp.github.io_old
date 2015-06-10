@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Checkout : Apple support. Disable &lsquo;Adjust keyboard brightness in low light&rsquo;. ">
+  <meta name="description" content="Not a review, just noting the default position of the velcro hydration loop, before I remove it.
+Left shoulder, under chest harness. ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,93 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/photography/f-stop-loka-hydration/">F-Stop Loka Hydration</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-16T18:13:55+00:00" pubdate data-updated="true">Mar 16<span>th</span>, 2014</time>
+        
+           | <a href="/blog/photography/f-stop-loka-hydration/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/f-stop-loka-hydration/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Not a review, just noting the default position of the velcro hydration loop, before I remove it.
+Left shoulder, under chest harness.</p>
+
+<p><img src="/images/Photography/Loka/morganp-20140315-Loka-IMG_6970.jpg" alt="" />
+<img src="/images/Photography/Loka/morganp-20140315-Loka-IMG_6976.jpg" alt="" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-iterate-over-lines-in-a-string/">Ruby Iterate Over Lines in a String</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-13T21:03:54+00:00" pubdate data-updated="true">Mar 13<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/ruby-iterate-over-lines-in-a-string/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-iterate-over-lines-in-a-string/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>str.each_line do |line|
+  #do something with line
+end
+</code></pre>
+
+<p><a href="http://stackoverflow.com/a/601892/97073">Source</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -521,118 +609,6 @@ The second half <code>$remove</code> does require it.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/octopress/">Octopress, Pages and Custom Domain</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-04T18:19:25+00:00" pubdate data-updated="true">Mar 4<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/octopress/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/octopress/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In your <code>sources</code> branch, which is the main branch for writing creating posts, create a <code>CNAME</code> file in the sources directory.</p>
-
-<p>vim source/CNAME</p>
-
-<pre><code>your-domain.co.uk
-</code></pre>
-
-<p>Then check-in and deploy</p>
-
-<pre><code>git add source/CNAME
-rake deploy
-</code></pre>
-
-<p>Point your domain to github pages:</p>
-
-<pre><code>A record pointing to 204.232.175.78
-</code></pre>
-
-<p>I also redirect www. to the non-www url</p>
-
-<pre><code>CNAME record for www.example.com to example.com  
-</code></pre>
-
-<p><a href="http://octopress.org/docs/deploying/github/">Official Docs</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/revert-in-git/">Revert in Git</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-03T19:42:12+00:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2014</time>
-        
-           | <a href="/blog/tech/revert-in-git/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/revert-in-git/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1>and Remove Orphaned Commits.</h1>
-
-<p>I use <code>gitx</code> graphical tool on OS X to find the SHAs for commits. Revert back throwing away all changes:</p>
-
-<pre><code>git reset --hard shaqwerty      
-</code></pre>
-
-<p>Now delete the orphaned commits.</p>
-
-<pre><code>git reflog expire --expire=now --expire-unreachable=now --all
-git gc --prune=now
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/8/">&larr; Older</a>
@@ -647,11 +623,19 @@ git gc --prune=now
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/">Matlab: Functions Inputs Parsed Based on Outputs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
@@ -663,14 +647,6 @@ git gc --prune=now
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
       </li>
     
   </ul>

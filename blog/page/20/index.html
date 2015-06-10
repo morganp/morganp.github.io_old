@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="rspec is a testing framework designed to make test-driven development enjoyable and productive. On the recent release of RubyIt I wanted to improve &hellip;">
+  <meta name="description" content="While using a pool laptop from work and trying to connect to my home wifi I am prompted for my Device Ownership Password. It will only accept &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,128 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/device-ownership-password/">Device Ownership Password</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-29T09:19:24+01:00" pubdate data-updated="true">May 29<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/device-ownership-password/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/device-ownership-password/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>While using a pool laptop from work and trying to connect to my home wifi I am prompted for my Device Ownership Password. It will only accept numerics, I believe this is requesting the &lsquo;Security Pin&rsquo; which is stamped on the bottom of my netgear router.</p>
+
+<p>This is only happening because the laptop is using Intel&reg; PROSet/Wireless Software, no other devices I have ever ask for this.</p>
+
+<p>It can be disabled by:</p>
+
+<pre><code>Control Panel -&gt; 
+  add or remove programs -&gt; 
+    Intel(R) PROSet/Wireless Software -&gt; 
+      Repair -&gt; 
+        Modify -&gt; 
+          WI-FI PROTECTED SETUP (change to not installed)
+</code></pre>
+
+<p>Now connecting to the WiFi I am just prompted for my network password, like all other devices.</p>
+
+<p>Answer originally found <a href="http://forums.anandtech.com/showthread.php?t=274465">here</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/create-andor-of-multiple-booleans/">Create And,Or of Multiple Booleans</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-21T11:35:19+01:00" pubdate data-updated="true">May 21<span>st</span>, 2012</time>
+        
+           | <a href="/blog/tech/create-andor-of-multiple-booleans/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/create-andor-of-multiple-booleans/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To reduce an array of Booleans to a single Boolean using enumerables reduce method:</p>
+
+<pre><code>[true, true, true].reduce( :| ) ## OR
+=&gt; true
+[true, true, true].reduce( :&amp; ) ## AND
+=&gt; true
+
+[false, false, false].reduce( :| ) ## OR
+=&gt; false
+[false, false, false].reduce( :&amp; ) ## AND
+=&gt; false
+
+[true, true, false].reduce( :| ) ## OR
+=&gt; true
+[true, true, false].reduce( :&amp; ) ## AND
+=&gt; false
+</code></pre>
+
+<h2>Checksums (XOR)</h2>
+
+<pre><code>[false, false].reduce( :^ ) ## XOR
+=&gt; false
+[false, true ].reduce( :^ ) ## XOR
+=&gt; true
+[true, false ].reduce( :^ ) ## XOR
+=&gt; true
+[true, true  ].reduce( :^ ) ## XOR
+=&gt; false
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -865,7 +987,7 @@ fatal: The remote end hung up unexpectedly
 
 <h2>Getting it Working</h2>
 
-<p>Last time I ran into these issues I found I could clone as guest, changed <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#109;&#x6f;&#114;&#103;&#x61;&#110;&#112;&#x40;&#103;&#105;&#116;&#104;&#x75;&#98;&#x2e;&#99;&#x6f;&#x6d;">&#x6d;&#x6f;&#114;&#x67;&#x61;&#110;&#112;&#x40;&#x67;&#105;&#x74;&#104;&#x75;&#98;&#46;&#x63;&#111;&#x6d;</a> to just github.com. Pushing will then prompt for your github Username and password. Once cloned you can manually update the config file so you do not have to enter your username. Entering your password will still be required.</p>
+<p>Last time I ran into these issues I found I could clone as guest, changed <a href="&#109;&#x61;&#x69;&#108;&#x74;&#x6f;&#x3a;&#109;&#111;&#114;&#x67;&#x61;&#x6e;&#x70;&#64;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#x63;&#111;&#109;">&#109;&#111;&#114;&#x67;&#x61;&#110;&#x70;&#64;&#103;&#105;&#x74;&#x68;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;</a> to just github.com. Pushing will then prompt for your github Username and password. Once cloned you can manually update the config file so you do not have to enter your username. Entering your password will still be required.</p>
 
 <pre><code>$ git clone https://github.com/morganp/maruku_snippet.git
 Cloning into maruku_snippet...
@@ -888,217 +1010,6 @@ remote: Total 52 (delta 15), reused 43 (delta 10)
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ubuntu-formatting-a-3tb-drive/">Ubuntu, Formatting a 3TB Drive</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-03T21:34:20+01:00" pubdate data-updated="true">May 3<span>rd</span>, 2012</time>
-        
-           | <a href="/blog/tech/ubuntu-formatting-a-3tb-drive/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ubuntu-formatting-a-3tb-drive/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I started off following <a href="https://help.ubuntu.com/community/InstallingANewHardDrive">the ubuntu guide for installing a new drive</a>, which uses fdsik to create the partitions how ever after formatting and mounting I ran <code>df -h</code>:</p>
-
-<pre><code>Filesystem      Size  Used Avail Use% Mounted on
-/dev/sdb1       2.0T   28G  1.9T   2% /mnt/kryten/disk5
-</code></pre>
-
-<h2>Which is not 3TB</h2>
-
-<p>I then found <a href="http://www.cyberciti.biz/tips/fdisk-unable-to-create-partition-greater-2tb.html">this article</a> which worked in the long run not sure if I typo&rsquo;d a command but similar to <a href="http://archlinuxarm.org/forum/viewtopic.php?t=1935&amp;p=10490">this other user</a> I had to run through the commands a second time for them to work.</p>
-
-<p>To start with use <code>parted</code> instead of fdisk, this allows the gpt partition table that fdisk does not.</p>
-
-<pre><code>(parted) mklabel gpt 
-Warning: The existing disk label on /dev/sdb will be destroyed and all data on
-this disk will be lost. Do you want to continue?
-Yes/No? yes    
-(parted) unit TB 
-(parted) mkpart primary 0.00TB 3.00TB                                     
-Warning: You requested a partition from 0.00TB to 3.00TB.                 
-The closest location we can manage is 0.00TB to 0.00TB.
-Is this still acceptable to you?
-Yes/No? yes
-</code></pre>
-
-<p>basically after this point it showed up as a few KB after formatting, tried it again and it seemed to work much better.</p>
-
-<pre><code>(parted) mklabel gpt                                                       
-Warning: The existing disk label on /dev/sdb will be destroyed and all data on
-this disk will be lost. Do you want to continue?
-Yes/No? yes                                                               
-(parted) unit TB                                                          
-(parted) mkpart primary 0.00TB 3.00TB                                     
-(parted) print                                                            
-odel: Unknown (unknown)
-Disk /dev/sdb1: 3001GB
-Sector size (logical/physical): 512B/4096B
-Partition Table: loop
-
-Number  Start   End     Size    File system  Name     Flags
-1      0.00TB  3.00TB  3.00TB               primary
-
-(parted) quit                                                             
-Information: You may need to update /etc/fstab.                           
-</code></pre>
-
-<h2>Format</h2>
-
-<pre><code>$ sudo mkfs.ext4 /dev/sdb1
-$sudo parted /dev/sdb1
-(parted) print
-Model: Unknown (unknown)
-Disk /dev/sdb1: 3001GB 
-Sector size (logical/physical): 512B/4096B
-Partition Table: loop
-
-Number  Start  End     Size    File system  Flags
-1      0.00B  3001GB  3001GB  ext4
-</code></pre>
-
-<h2>Reduce Reserved Space</h2>
-
-<p>By default 5% is reserved for the root to stop the driving becoming unusable when full, for data and not the main OS drive this does not matter too much, and 5% was decided when drives where much small. 5% of 3TB is 150 GB, way too much.  Turn this down to 1% with:</p>
-
-<pre><code>sudo tune2fs -m 1 /dev/sdb1
-</code></pre>
-
-<h2>Mount </h2>
-
-<pre><code>sudo mkdir /mnt/kryten/disk5 
-sudo mount /dev/sdb1 /mnt/kryten/disk5
-</code></pre>
-
-<h2>Find UUID</h2>
-
-<pre><code>$ sudo blkid
-/dev/sda1: UUID="c41cba49-bd3a-41d7-961c-b4ad45d48ed1" TYPE="ext4" 
-/dev/sdb1: UUID="d822c6af-9802-4d00-8de8-61f1653a854a" TYPE="ext4" 
-/dev/sdc1: UUID="59a61ceb-fee3-460a-97c5-e9f115776daf" TYPE="ext4" 
-/dev/sdc5: UUID="80f9c384-9a5a-4563-921a-5c25628e1b2e" TYPE="swap"
-</code></pre>
-
-<h2>Update /etc/fstab </h2>
-
-<pre><code>$sudo vim /etc/fstab
-
-#/dev/sdb1 3TB drive replacing 1.5TB old UUID Below
-UUID=d822c6af-9802-4d00-8de8-61f1653a854a     /mnt/kryten/disk4 ext4 rw,auto,user,exec,async,errors=remount-ro 0 1
-#UUID=c41cba49-bd3a-41d7-961c-b4ad45d48ed1    /mnt/kryten/disk4 ext4 rw,auto,user,exec,async,errors=remount-ro 0 1
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/camera-apetures-/">Camera Apetures</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-28T22:29:47+01:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time>
-        
-           | <a href="/blog/photography/camera-apetures-/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/camera-apetures-/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The camera aperture is how far the iris is kept open during the exposure. A wide aperture, large opening lets in more light so can have a faster shutter speed but also has a lower depth of field (DOF). That is less of the image will be in sharp focus.</p>
-
-<p>Lens are sold based on there largest aperture, f2.8, f4 etc but how do these relate to each other? Stops are the often used measurement of photographic equipment. Here if a lens is one stop faster it will have an aperture wide enough to half the exposure time.</p>
-
-<p>From f1 the whole stops are:</p>
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th align="center"> 1 </th>
-<th align="center"> 2 </th>
-<th align="center"> 3 </th>
-<th align="center"> 4 </th>
-<th align="center"> 5 </th>
-<th align="center"> 6 </th>
-<th align="center"> 7 </th>
-<th> </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td align="center"> f1.0 </td>
-<td align="center"> f1.4 </td>
-<td align="center"> f2.0 </td>
-<td align="center"> f2.8 </td>
-<td align="center"> f4.0 </td>
-<td align="center"> f5.6 </td>
-<td align="center"> f8.0 </td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-
-<p>There are a few lenses which are rated as f4-5.6 which we can see represents a full stop, which means at it maximum zoom the lens will be even slower. For a fixed aperture the lens would be slower as we increase focal length (zoom in) because we take the centre portion of the light, here we also suffer from a smaller aperture.</p>
-
-<h2>Area</h2>
-
-<p>The area of the size of the aperture changes by square root of 2 (about 1.41) .  <a href="http://en.wikipedia.org/wiki/Aperture#Aperture_area">Wikipedia</a> has an equation which can be used to calculate the amount (area) of light collected from a lens for a given focal length and aperture.</p>
-
-<pre><code>f = focal length, eg 50mm
-n = f-stop, eg 5.6
-area = pi *( f/(2*n) )^2
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/21/">&larr; Older</a>
@@ -1113,11 +1024,19 @@ area = pi *( f/(2*n) )^2
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/">Matlab: Functions Inputs Parsed Based on Outputs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
@@ -1129,14 +1048,6 @@ area = pi *( f/(2*n) )^2
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
       </li>
     
   </ul>

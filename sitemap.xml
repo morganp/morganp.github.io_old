@@ -1565,16 +1565,26 @@
         <lastmod>2015-03-26T20:10:45+00:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://lizard-spock.co.uk/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/
+        </loc>
+        <lastmod>2015-06-10T20:17:40+01:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lizard-spock.co.uk/blog/engineering/matlab-linear-progressions/</loc>
+        <lastmod>2015-06-10T20:25:22+01:00</lastmod>
+    </url>
+    <url>
         <loc>http://lizard-spock.co.uk/about/</loc>
         <lastmod>2014-03-02T10:58:24+00:00</lastmod>
     </url>
     <url>
         <loc>http://lizard-spock.co.uk/blog/archives/</loc>
-        <lastmod>2015-03-26T20:10:45+00:00</lastmod>
+        <lastmod>2015-06-10T20:25:22+01:00</lastmod>
     </url>
     <url>
         <loc>http://lizard-spock.co.uk/</loc>
-        <lastmod>2015-03-26T20:10:45+00:00</lastmod>
+        <lastmod>2015-06-10T20:25:22+01:00</lastmod>
     </url>
     <url>
         <loc>http://lizard-spock.co.uk/license/</loc>

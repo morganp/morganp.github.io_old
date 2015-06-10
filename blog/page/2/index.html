@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="For use with the Panasonic Bread Maker SD-2501 &amp; SD-2500.
-Online Manual. Gluten Recipes can not use timer function. For best results follow this &hellip;">
+  <meta name="description" content="When . just will not do (repeats last action) because you need to capture a movement as well, macros are quick to create and use. q&lt;number&gt;&lt; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,108 @@ Online Manual. Gluten Recipes can not use timer function. For best results follo
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/vim-macro/">Vim: Macro</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-02-18T16:41:40+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2015</time>
+        
+           | <a href="/blog/tech/vim-macro/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-macro/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When <code>.</code> just will not do (repeats last action) because you need to capture  a movement as well, macros are quick to create and use.</p>
+
+<pre><code>q&lt;number&gt;&lt;actions&gt;q
+</code></pre>
+
+<p>Replay macro</p>
+
+<pre><code>@&lt;number&gt; 
+</code></pre>
+
+<p>Replay macro 10 times</p>
+
+<pre><code>10@&lt;number&gt;
+</code></pre>
+
+<p>Example
+Yank and put line, then repeat 10 times.</p>
+
+<pre><code>q1 yyP q
+
+10@1
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/find-your-ruby-gems-path/">Find Your Ruby Gems Path</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-02-18T16:39:32+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2015</time>
+        
+           | <a href="/blog/tech/find-your-ruby-gems-path/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/find-your-ruby-gems-path/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code> ruby -r rubygems -e "p Gem.path"
+</code></pre>
+
+<p>From <a href="http://gilesbowkett.blogspot.co.uk/2009/06/find-your-ruby-gems-path.html">Giles Bowkett</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -554,106 +655,6 @@ can call xkill and get a skull and crossbones cursor to kill the application.</p
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Simulink: Scroll Wheel Erratic Behaviour</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-07-30T20:08:10+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/simulink-scroll-wheel-erratic-behaviour/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/simulink-scroll-wheel-erratic-behaviour/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>On Mac OS X matlab behaves quite oddly with the track pad zooming
-in and out very quickly and erratically to remove this behaviour
-<strong>Disable Mouse Scroll Wheel Zoom Behavior</strong>.</p>
-
-<p>To disable the zoom behavior for the scroll wheel:</p>
-
-<pre><code>File &gt; 
-  Simulink Preferences &gt; 
-    Editor Defaults &gt; 
-      Scroll wheel controls zooming preference.
-</code></pre>
-
-<p>If you hold the Ctrl key and use the scroll wheel, the scroll wheel behavior is the opposite of how the preference is set.</p>
-
-<p><a href="http://www.mathworks.co.uk/help/simulink/ug/zooming-block-diagrams.html">source</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/simulink-globally-set-sample-time/">Simulink: Globally Set Sample Time</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-07-30T20:01:49+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/simulink-globally-set-sample-time/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/simulink-globally-set-sample-time/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To set each constant in a model to sample time -1:</p>
-
-<pre><code>blks = find_system(dut, 'BlockType', 'Constant');
-for i = 1:length(blks)
-    set_param(blks{i}, 'SampleTime', '-1');
- end
-</code></pre>
-
-<p><a href="http://www.mathworks.co.uk/help/hdlcoder/ug/resource-sharing.html#btg_5ht-1">Source</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -668,11 +669,19 @@ for i = 1:length(blks)
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (43)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/">Matlab: Functions Inputs Parsed Based on Outputs</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
@@ -684,14 +693,6 @@ for i = 1:length(blks)
     
       <li class="post">
         <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-timeformat/">Verilog Timeformat</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/garden/tiered-raised-bed/">Tiered Raised Bed</a>
       </li>
     
   </ul>
