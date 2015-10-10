@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Suppressing warnings is usually a bad idea but if you understand the risk and want to carry on regardless. When ruby to call a script then the &hellip;">
+  <meta name="description" content="When creating applications normal messages should go to stdout and error messages should go to stderr, unfortunately there is not a nice ruby way the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,49 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-send-message-to-stderr/">Ruby Send Message to Stderr</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-22T11:56:25+00:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2011</time>
+        
+           | <a href="/blog/tech/ruby-send-message-to-stderr/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-send-message-to-stderr/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When creating applications normal messages should go to <a href="http://en.wikipedia.org/wiki/Standard_streams#Standard_output_.28stdout.29">stdout</a> and error messages should go to <a href="http://en.wikipedia.org/wiki/Standard_streams#Standard_error_.28stderr.29">stderr</a>, unfortunately there is not a nice ruby way the cleanest I have found is:</p>
+
+<pre><code>put "Message displayed in stdout"
+$stderr.puts "Error displayed in stderr"
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -709,86 +752,6 @@ brew outdated
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-arrays-concatenation-and-subtraction/">Ruby Arrays Concatenation and Subtraction</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-08-24T22:08:02+01:00" pubdate data-updated="true">Aug 24<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-arrays-concatenation-and-subtraction/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-arrays-concatenation-and-subtraction/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Building on my <a href="http://amaras-tech.co.uk/people/morgan/article/108">original Ruby Arrays article</a> a few more things you can do with Ruby Arrays.</p>
-
-<p>Concatenation</p>
-
-<pre><code>a = [1,2,3]
-b = [4,5,6]
-c = [a,b]
-&gt; [[1,2,3],[4,5,6]]
-# Not quite what we wanted.
-c = [a,b].flatten
-&gt; [1,2,3,4,5,6]
-</code></pre>
-
-<p>This can be achieved much simpler via addition</p>
-
-<pre><code>a = [1,2,3]
-b = [4,5,6]
-c = a + b
-&gt; [1,2,3,4,5,6]
-</code></pre>
-
-<p>Another cool fact that you can subtract array from each other. It will subtract objects which have matching object ids.</p>
-
-<pre><code>a = [1,2,3]
-b = [4,5,6]
-c = a + b - [3,4]
-&gt; [1,2,5,6]
-</code></pre>
-
-<p>This can also be used to list the unique methods of an object  by subtracting all base methods.</p>
-
-<pre><code>fl = 0.0 # a float
-count_this = fl.methods.sort - Object.methods
-count_this.count
- =&gt; 52
-
- Object.methods.count
- =&gt; 102
-
- fl.methods.count
- =&gt; 127
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/25/">&larr; Older</a>
@@ -803,11 +766,15 @@ count_this.count
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (17)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (18)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/potting-bench/">Potting Bench</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/self-watering-propagator/">Self Watering Propagator</a>
@@ -823,10 +790,6 @@ count_this.count
     
       <li class="post">
         <a href="/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/">Matlab: Functions Inputs Parsed Based on Outputs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
       </li>
     
   </ul>

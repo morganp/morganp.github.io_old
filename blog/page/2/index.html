@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="A minimal example of constrained random to constraining a 4 bit value to 0 to 11 when randomised. module tb; class cr_example_t rand bit val; rand &hellip;">
+  <meta name="description" content="After accidentally scrolling back a page when browsing the web in chrome too many times. Figured out how to disable it: from your terminal defaults &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/os-x-disable-back-gesture/">OS X Disable Back Gesture</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-02-18T18:26:07+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2015</time>
+        
+           | <a href="/blog/tech/os-x-disable-back-gesture/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/os-x-disable-back-gesture/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After accidentally scrolling back a page when browsing the web in chrome too many times. Figured out how to disable it: from your terminal</p>
+
+<pre><code>defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool FALSE
+</code></pre>
+
+<p><a href="http://apple.stackexchange.com/questions/21236/how-do-i-disable-chromes-two-finger-back-forward-navigation">From
+http://apple.stackexchange.com</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -638,48 +683,6 @@ this-is-one-WORD
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/list-files-ignored-by-git/">List Files Ignored by Git</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-07-30T20:18:07+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/list-files-ignored-by-git/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/list-files-ignored-by-git/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="https://www.youtube.com/watch?v=4VBG9FlyiOw">From Github Training &amp; Guides</a>.</p>
-
-<pre><code>git ls-files --others --ignored --exclude-standard
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -694,11 +697,15 @@ this-is-one-WORD
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (17)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (18)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/potting-bench/">Potting Bench</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/self-watering-propagator/">Self Watering Propagator</a>
@@ -714,10 +721,6 @@ this-is-one-WORD
     
       <li class="post">
         <a href="/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/">Matlab: Functions Inputs Parsed Based on Outputs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
       </li>
     
   </ul>

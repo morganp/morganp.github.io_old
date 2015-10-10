@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I have previously mentioned on blogger how to use Compass and SASS with Sinatra for rendering the stylesheets. I have added a few options which are &hellip;">
+  <meta name="description" content="Available as a gist a Sequel Migration to rename a database column. ## Command line to apply Migration
+#sequel -m ./db/migrate/ -M 1 sqlite://db/data &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,65 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/sequel-orm-migrations/">Sequel ORM Migrations</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-31T09:07:51+01:00" pubdate data-updated="true">Mar 31<span>st</span>, 2010</time>
+        
+           | <a href="/blog/tech/sequel-orm-migrations/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sequel-orm-migrations/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Available as a <a href="http://gist.github.com/348121">gist</a> a Sequel Migration to rename a database column.</p>
+
+<pre><code>## Command line to apply Migration
+#sequel -m ./db/migrate/ -M 1 sqlite://db/data.db
+## Command to roll back
+#sequel -m ./db/migrate/ -M 0 sqlite://db/data.db
+
+Class.new(Sequel::Migration) do
+   def up
+      DB.alter_table :aTable do
+         rename_column :old, :new
+      end
+   end
+
+   def down
+     DB.alter_table :aTable do
+        rename_column :new, :old
+     end
+   end
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -564,53 +624,9 @@ ruby app.rb
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-time-formats/">Ruby Time Formats</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-30T14:50:30+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/ruby-time-formats/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-time-formats/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have been playing around with getting my blog posts timestamped I found the <a href="http://ruby-doc.org/core/classes/Time.html#M000298">Ruby Time Docs</a> to be very useful on getting the format I wanted. I settled on :</p>
-
-<pre><code>$date_format = "%I:%M%p %b %d %Y"
-Time.now.strftime($date_format)
-#displays as 07:50PM Mar 30 2010 
-</code></pre>
-
-<p>Having this a a global means I can call it anywhere and teh time stamps will be displayed the same every where.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/37/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -622,11 +638,15 @@ Time.now.strftime($date_format)
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (17)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (18)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/potting-bench/">Potting Bench</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/self-watering-propagator/">Self Watering Propagator</a>
@@ -642,10 +662,6 @@ Time.now.strftime($date_format)
     
       <li class="post">
         <a href="/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/">Matlab: Functions Inputs Parsed Based on Outputs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
       </li>
     
   </ul>
