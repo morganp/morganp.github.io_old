@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Setting an alias in you .tcshrc alias qrun 'qrsh -V -noshell -cwd !*' or bash alias qrun='qrsh -V -noshell -cwd !*' Which makes submitting any script &hellip;">
+  <meta name="description" content="I just discovered the xkill command, when a window has crashed you
+can call xkill and get a skull and crossbones cursor to kill the application. It &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,48 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/xkill/">Xkill</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-30T20:16:39+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/xkill/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/xkill/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I just discovered the <code>xkill</code> command, when a window has crashed you
+can call xkill and get a skull and crossbones cursor to kill the application.</p>
+
+<p>It even works well with remote GUI applications (Sun Grid Engine SGE).</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -542,62 +585,6 @@ The GCC flag <code>-ffast-math</code> optimizes equations as if they were associ
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-14T08:24:01+01:00" pubdate data-updated="true">Jun 14<span>th</span>, 2014</time>
-        
-           | <a href="/blog/tech/octopress-categories-with-different-styles/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/octopress-categories-with-different-styles/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>As I use the code blocks for ingredient lists on my recipe pages I wanted to
-have a different style, lighter background instead of black.</p>
-
-<p>I currently manually set a different layout in the _post header:</p>
-
-<pre><code>layout: post
-categories: 
-- Tech
-
-layout: recipe
-categories: 
-- Cooking
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/tech/octopress-categories-with-different-styles/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -612,11 +599,15 @@ categories:
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (17)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/self-watering-propagator/">Self Watering Propagator</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/planter/">Planter</a>
@@ -632,10 +623,6 @@ categories:
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
       </li>
     
   </ul>

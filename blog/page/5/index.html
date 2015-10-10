@@ -9,9 +9,10 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Using Matlab to splitting data into odd and even samples. A for loop approach: data_odd = [];
-data_even = [];
-for i = 1:length(data) if mod(i,2) %% &hellip;">
+  <meta name="description" content="Checking if an Array contains a number: input = [1,2,3,4];
+check = 4;
+any(input==4) Check if a number is contained in an array: input = 32;
+check = [ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +84,57 @@ for i = 1:length(data) if mod(i,2) %% &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-array-content-check/">Matlab: Array Content Check</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-07T18:13:24+01:00" pubdate data-updated="true">May 7<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-array-content-check/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-array-content-check/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Checking if an Array contains a number:</p>
+
+<pre><code>input = [1,2,3,4];
+check = 4;
+any(input==4)
+</code></pre>
+
+<p>Check if a number is contained in an array:</p>
+
+<pre><code>input = 32;
+check = [32,64,128];
+any( check==input )
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -675,54 +727,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/verilog-importing-envvar/">Verilog Importing Envvar</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-03T18:22:00+01:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2014</time>
-        
-           | <a href="/blog/engineering/verilog-importing-envvar/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/verilog-importing-envvar/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Based on a <a href="http://stackoverflow.com/a/15103561/97073">Stackoverflow answer</a>, to import environment variables into Verilog you can use:</p>
-
-<pre><code>import "DPI-C" function string getenv(input string env_name);
-
-module top;
-  initial begin
-    $write("env = %s\n", {getenv("HOME"), "/FileName"});
-  end
-endmodule
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/6/">&larr; Older</a>
@@ -737,11 +741,15 @@ endmodule
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (17)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/self-watering-propagator/">Self Watering Propagator</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/planter/">Planter</a>
@@ -757,10 +765,6 @@ endmodule
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
       </li>
     
   </ul>

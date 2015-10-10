@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Sinatra 1.0 has been released! When you install the new version the old one are still left behind. This is an example of how to upgrade, and remove &hellip;">
+  <meta name="description" content="I have previously mentioned on blogger how to use Compass and SASS with Sinatra for rendering the stylesheets. I have added a few options which are &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,69 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/sinatra-and-compass-sending-compressed-cached-css/">Sinatra and Compass Sending Compressed Cached CSS</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-30T15:50:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/sinatra-and-compass-sending-compressed-cached-css/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-and-compass-sending-compressed-cached-css/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have previously mentioned on <a href="http://munkymorgy.blogspot.com/">blogger</a> how to use Compass and SASS with Sinatra for rendering the stylesheets.</p>
+
+<p>I have added a few options which are not in the main tutorials. Compress the stylesheet, this removes all the white space saving bandwidth when transmitting the file.</p>
+
+<pre><code>configure do
+....
+
+  ##Compass CSS/SASS stuff below
+  Compass.configuration do |config|
+     config.project_path = File.dirname(__FILE__)
+     config.sass_dir = 'views/stylesheets'
+     config.output_style = :compressed
+  end
+end
+</code></pre>
+
+<p>The second setting is to tell browsers to cache the stylesheet so that passenger does not have to keep building the file via compass.</p>
+
+<pre><code>##CSS rendering
+get '/stylesheets/:name.css' do
+   content_type 'text/css', :charset =&gt; 'utf-8'
+   response['Expires'] = (Time.now + 60*60*24*356*3).httpdate
+   sass(:"stylesheets/#{params[:name]}" )
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -559,11 +622,15 @@ Time.now.strftime($date_format)
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (17)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/self-watering-propagator/">Self Watering Propagator</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/planter/">Planter</a>
@@ -579,10 +646,6 @@ Time.now.strftime($date_format)
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
       </li>
     
   </ul>

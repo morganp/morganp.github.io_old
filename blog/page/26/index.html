@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="An old guide is written on the Apple Developer Forum however if you are using Homebrew it is much simpler. $ brew install postgresql Define a data &hellip;">
+  <meta name="description" content="To connect to a rails style DB config outside of the normal workflow, or using a database.yml in a different workflow: require 'yaml'
+require ' &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,74 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ruby-script-connect-to-db-using-databaseyml/">Ruby Script Connect to DB Using database.yml</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-20T12:07:51+01:00" pubdate data-updated="true">Jun 20<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/ruby-script-connect-to-db-using-databaseyml/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-script-connect-to-db-using-databaseyml/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To connect to a rails style DB config outside of the normal workflow, or using a database.yml in a different workflow:</p>
+
+<pre><code>require 'yaml'
+require 'active_record'
+
+environment = ENV['RACK_ENV'] || 'development'
+dbconfig    = YAML.load(File.read('config/database.yml'))
+ActiveRecord::Base.establish_connection dbconfig[environment]
+
+#Load All models 
+Dir.glob("./app/models/*").each do |file|
+  require file 
+end
+
+#Now use Active record as you normally would
+# @user = User.create( :name =&gt; 'Dave' )
+# @user.save
+# @first_person = User.first
+</code></pre>
+
+<p>An example database.yml</p>
+
+<pre><code>development:
+    adapter: postgresql
+    host: localhost
+    port: 5432
+    username: 
+    password: 
+    database: example_dev
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -780,103 +849,6 @@ map ;g :call Indent()&lt;CR&gt;
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/behaviour-and-state/">Behaviour and State</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-16T17:59:44+01:00" pubdate data-updated="true">Apr 16<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/behaviour-and-state/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/behaviour-and-state/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Classes are a basic Object Orientated Structure which encapsulate state and behaviour. Some times you just require to capture state/storage of a data structure with out any behaviour, in this case Ruby&rsquo;s Stuct can be useful.</p>
-
-<pre><code>class Desk
-  attr_accessor :height, :width, :depth
-
-  def initialize(height=nil, width=nil, depth=nil)
-    @height = height
-    @width = width
-    @depth = depth
-  end
-end
-</code></pre>
-
-<p>Becomes (Is the same as):</p>
-
-<pre><code>DeskS = Struct.new(:height, :width, :depth)
-</code></pre>
-
-<p>Instantiation</p>
-
-<pre><code>a = Desk.new(12, 13, 14)
-b = DeskS.new(12, 13, 14)
-
-a.height
- =&gt; 12
-
-b.height
- =&gt; 12 
-</code></pre>
-
-<p>Taking this further for less code in a basic class. This might be too far!</p>
-
-<pre><code>#In herriting from a Struct
-# class DeskWithBehaviour &lt; DeskS
-class DeskWithBehaviour &lt; Struct.new(:height, :width, :depth)
-  def volume
-    height * width * depth
-  end
-end
-
-# Or Pass Struct a block
-DeskSPlus = Struct.new(:height, :width, :depth) do
-  def volume
-    height * width * depth
-  end
-end
-
-c = DeskWithBehaviour.new(1,2,3)
-c.volume
- =&gt; 6
-c.class
- =&gt; DeskWithBehaviour
-
-d = DeskSPlus.new(1,2,3)
-d.volume
- =&gt; 6
-d.class
- =&gt; DeskSPlus
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/27/">&larr; Older</a>
@@ -891,11 +863,15 @@ d.class
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (17)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/self-watering-propagator/">Self Watering Propagator</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/planter/">Planter</a>
@@ -911,10 +887,6 @@ d.class
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="For ssh and ping to local machines with out the .local extension I added them to my /ets/hosts file. A normal user does not have permission so you &hellip;">
+  <meta name="description" content="R is a language for statistical computing and graphics. It is the choice of Coursera Statistics One. It can be installed on OS X via the pkg &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,93 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/os-x-installing-r/">OS X Installing R</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-03T20:11:46+01:00" pubdate data-updated="true">Sep 3<span>rd</span>, 2012</time>
+        
+           | <a href="/blog/tech/os-x-installing-r/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/os-x-installing-r/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.r-project.org/">R</a> is a language for statistical computing and graphics. It is the choice of <a href="http://coursera.org">Coursera</a> Statistics One.</p>
+
+<p>It can be installed on OS X via the <a href="http://cran.r-project.org/bin/macosx/">pkg</a> available on the main website which is my recommendation or via <a href="http://mxcl.github.com/homebrew/">Homebrew</a>.</p>
+
+<p><em>I have been unable to get the homebrew version to install correctly.</em><br/>
+<em>On Mountain Lion the homebrew install also requires a few additional packages.</em></p>
+
+<h2>Install R with Homebrew</h2>
+
+<p><strong>Update</strong> First run <code>brew tap homebrew/science</code> to make the R package available <strong>/Update</strong></p>
+
+<p>If you run <code>brew install r</code> when you do not have a fortran compiler you will see the following error:</p>
+
+<blockquote><p>This formula requires a fortran compiler, but we could not find one by
+looking at the FC environment variable or searching your PATH for <code>gfortran</code>.
+Please take one of the following actions:</p>
+
+<ul>
+<li><p>Decide to use the build of gfortran 4.2.x provided by Homebrew using
+    <code>brew install gfortran</code></p></li>
+<li><p>Choose another Fortran compiler by setting the FC environment variable:
+    export FC=/path/to/some/fortran/compiler
+Using an alternative compiler may produce more efficient code, but we will
+not be able to provide support for build errors.</p></li>
+</ul>
+</blockquote>
+
+<p>To save time just run :</p>
+
+<pre><code>brew update
+brew install gfortran r
+</code></pre>
+
+<p>Although I ran into some issues with linking libtiff and jpeg and had to run:</p>
+
+<pre><code>brew link -f  libtiff jpeg
+brew install r
+</code></pre>
+
+<p>I still got checksum fails. Might have to wait for a brew update.</p>
+
+<p>If you are running Mountain Lion then you will also run into this:</p>
+
+<blockquote><p>Unsatisfied dependency: XQuartz
+Please install the latest version of XQuartz:
+ <a href="https://xquartz.macosforge.org">https://xquartz.macosforge.org</a>
+Error: An unsatisfied requirement failed this build.</p></blockquote>
+
+<p>The easiest way to install R on OS X really does seem to be just run the <a href="http://cran.r-project.org/bin/macosx/">package</a>. 134MB install size.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -744,100 +831,6 @@ rvm cleanup all
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/mountain-lion-setup-part-1-upgrade-lion/">Mountain Lion Setup, Part 1 : Upgrade Lion</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-16T10:00:14+01:00" pubdate data-updated="true">Aug 16<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/mountain-lion-setup-part-1-upgrade-lion/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/mountain-lion-setup-part-1-upgrade-lion/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>MacBook Pro with Lion arrives, before installing any other software apply for the <a href="http://www.apple.com/uk/osx/uptodate/">Up-to-Date Programme</a> for free a mountain lion upgrade.</p>
-
-<p>Once you have completed the form acceptance email should arrive in about 5 minutes. One email contains a link to a document and the other email contains the password. Once opened the document contains the redemption code.</p>
-
-<p>To redeem upgrade code, /Applications/App Store.app &ndash;> Featured &ndash;> Quick Links, Redeem</p>
-
-<p><a href="http://www.flickr.com/photos/morgan_prior/7794203772/" title="Mac Store Redeem Code by munky morgy, on Flickr"><img src="http://farm8.staticflickr.com/7134/7794203772_c5beb30358.jpg" width="500" height="380" alt="Mac Store Redeem Code"></a></p>
-
-<p>This will Result in a 4.1GB temporary app called <code>/Applications/Install OS X Mountain Lion.app</code> Once finished downloading this will prompt you to run. Which will install Mountain Line reboot and complete the installation and remove the temporary app.</p>
-
-<p>[Optional]
-<em>Note:</em> As XCode no longer ships with command line tools and the gcc that can be installed with it is not compatible with compiling ruby, Xcode is no longer required for Ruby Development.</p>
-
-<p>I then also got Xcode 4 from the app store but have not ran it yet to install the command line tools, this app was:</p>
-
-<pre><code>1.7G    /Applications/Xcode.app
-</code></pre>
-
-<p>[\Optional]</p>
-
-<p>My disk usage looked like this after a Lion to Mountain Lion upgrade with only the xcode 4 app installed:</p>
-
-<pre><code> 29G     / 
-
-5.0G    /Applications
-2.5G    /Library
-  0B    /Network
-3.1G    /System
-4.0K    /User Information
-280M    /Users
-259G    /Volumes
-2.7M    /bin
-  0B    /cores
-4.5K    /dev
-4.0K    /etc
-1.0K    /home
-7.8M    /mach_kernel
-1.0K    /net
- 17G    /private
-1.5M    /sbin
-4.0K    /tmp
-360M    /usr
-4.0K    /var
-</code></pre>
-
-<p>Report generated with <code>$ sudo du -sh /*</code></p>
-
-<p>[Optional]
-XCode is required for OSX and iOS development. <a href="http://developer.apple.com/library/ios/#documentation/DeveloperTools/Conceptual/WhatsNewXcode/Articles/xcode_4_3.html">Here is a useful page about the major changes in xcode 4.3</a>. How ever if you only want to do Ruby development with <a href="https://rvm.io/rvm/">RVM</a> Then there are other tools required see <a href="http://amaras-tech.co.uk/article/182">Mountain Lion setup Part2</a></p>
-
-<p>Run <code>/Applications/Xcode.app</code>, Once started from the Xcode menu goto File &ndash;> Preferences or press &lsquo;⌘,&rsquo;
-Then select Downloads.</p>
-
-<p>You should see Image below, Install the command line tools.
-<a href="http://www.flickr.com/photos/morgan_prior/7794281816/" title="Xcode Preferences by munky morgy, on Flickr"><img src="http://farm9.staticflickr.com/8435/7794281816_b811896edf.jpg" width="500" height="372" alt="Xcode Preferences"></a>
-[\Optional]</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/19/">&larr; Older</a>
@@ -852,11 +845,15 @@ Then select Downloads.</p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (17)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/self-watering-propagator/">Self Watering Propagator</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/planter/">Planter</a>
@@ -872,10 +869,6 @@ Then select Downloads.</p>
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
       </li>
     
   </ul>

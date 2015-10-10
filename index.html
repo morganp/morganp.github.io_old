@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="3 Fence boards used to create planter. ">
+  <meta name="description" content="Propagator hack using some seed trays and capillary matting. ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,50 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/garden/self-watering-propagator/">Self Watering Propagator</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-10-10T12:04:12+01:00" pubdate data-updated="true">Oct 10<span>th</span>, 2015</time>
+        
+           | <a href="/blog/garden/self-watering-propagator/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/self-watering-propagator/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Propagator hack using some seed trays and capillary matting.</p>
+
+<p><img src="/images/Gardening/Propogator/morganp-20150328--IMG_0176.jpg" alt="" />
+<img src="/images/Gardening/Propogator/morganp-20150328--IMG_0178.jpg" alt="" />
+<img src="/images/Gardening/Propogator/morganp-20150328--IMG_0179.jpg" alt="" />
+<img src="/images/Gardening/Propogator/morganp-20150328--IMG_0180.jpg" alt="" /></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -653,69 +697,6 @@ http://apple.stackexchange.com</a>.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/systemverilog-constrained-random/">SystemVerilog: Constrained Random</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-02-18T17:01:56+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2015</time>
-        
-           | <a href="/blog/engineering/systemverilog-constrained-random/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/systemverilog-constrained-random/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A minimal example of constrained random to constraining a 4 bit value to 0 to 11 when randomised.</p>
-
-<pre><code>module tb;
-
-  class cr_example_t
-    rand bit val;
-    rand bit [3:0] sel;
-
-    constrain c1 {
-      sel &lt; 12;
-    }
-  endclass
-
-  cr_example_t cr_example = new;
-
-  initial begin :test_program
-    cr_example.randomise();
-    $display(cr_example.val);
-    $display(cr_example.sel);
-
-    $finish;
-  end
-
-endmodule
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -728,11 +709,15 @@ endmodule
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (17)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/self-watering-propagator/">Self Watering Propagator</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/planter/">Planter</a>
@@ -748,10 +733,6 @@ endmodule
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
       </li>
     
   </ul>

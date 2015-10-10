@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Around up of nice looking ipad docks / cradles From Just Mobile UpStand Encore Desktop Slide [ ][ encore] [ ][ slide ] | £32.50 £48.99 £33.99 | From &hellip;">
+  <meta name="description" content="In iOS 5 If you have iTunes Match enabled ie to download your songs from the iCloud while on the go then you can not have genius. iTunes Match on iOS &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,53 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/itunes-match-and-genius-why-cant-we-have-both/">iTunes Match and Genius, Why Cant We Have Both?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-06T20:54:56+01:00" pubdate data-updated="true">Jun 6<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/itunes-match-and-genius-why-cant-we-have-both/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/itunes-match-and-genius-why-cant-we-have-both/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In iOS 5 If you have iTunes Match enabled ie to download your songs from the iCloud while on the go then you can not have genius.</p>
+
+<p>iTunes Match on iOS does not stream but downloads the song and starts to play it. This minimises your bandwidth usage for repeated plays. I believe that there is some caching limit setup so that once full your device will delete the older songs.</p>
+
+<p>With this setup Genius has been disabled! Genius use to be a great feature that I used a lot, find a song I like then get a new playlist created. I am not sure what the difference from downloading and playing every song in an album is to downloading and playing songs from a playlist. The device already has the full list of tracks and should be abel to get sync genius matches, I do not see any real reason for this.</p>
+
+<p>The only reason I can think of is that if you have downloaded a couple of albums replaying hem uses no bandwidth. but if we had the ability to use genius and refresh the playlist we would be constantly playing new songs. Using lots of bandwidth.</p>
+
+<p>There is a Genius button but does not seem to work with song only in the iCloud, only local which generally means that I do not have enough songs available for Genius to work. Quite disappointed with this set of features. Hoping the iOS 6 Fixes this.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -934,82 +981,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/vim-terminal-colours/">Vim Terminal Colours</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-11T19:55:25+01:00" pubdate data-updated="true">May 11<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/vim-terminal-colours/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/vim-terminal-colours/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I use the <a href="http://blog.infinitered.com/entries/show/8">ir_black</a> for vim (<a href="http://code.google.com/p/macvim/">MacVim</a> mainly). Recently have been doing a lot of work in the terminal over ssh and have constantly been having to switch colouscheme to dessert, just to see the text properly.</p>
-
-<pre><code>:colorscheme desert
-</code></pre>
-
-<p>The vimrc Which I had copied from some one else used:</p>
-
-<pre><code>" 8 Colours Modified to 16 Colors
-if &amp;term =~ "xterm"
-  if has("terminfo")
-    set t_Co=16
-    set t_Sf=^[[3%pl%dm
-    set t_Sb=^[[4%pl%dm
-  else
-    set t_Co=16
-    set t_Sf=^[[3%dm
-    set t_Sb=^[[4%dm
-  endif
-endif
-</code></pre>
-
-<p>It turns out that if I had realised this came from: <code>:help xterm-color</code> and read it. For 16 colours it recommends:</p>
-
-<pre><code>" 16 Colours
-if &amp;term =~ "xterm"
-  if has("terminfo")
-    set t_Co=16
-    set t_AB=%?%p1%{8}%&lt;%t%p1%{40}%+%e%p1%{92}%+%;%dm
-    set t_AF=%?%p1%{8}%&lt;%t%p1%{30}%+%e%p1%{82}%+%;%dm
-  else
-    set t_Co=16
-    set t_Sf=%dm
-    set t_Sb=%dm
-  endif
-endif
-</code></pre>
-
-<p>Which is now working well. It also recommends some things for 256 colour but that just filled my terminal with Color escape codes.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/21/">&larr; Older</a>
@@ -1024,11 +995,15 @@ endif
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (17)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/self-watering-propagator/">Self Watering Propagator</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/planter/">Planter</a>
@@ -1044,10 +1019,6 @@ endif
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
       </li>
     
   </ul>

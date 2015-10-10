@@ -9,7 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="After making a few updates to my site I decided to upgrade the version of sinatra I was using in my web faction account. for some reason I started &hellip;">
+  <meta name="description" content="Using Tags (An active record model) to find tags by the tag property: Tag.find_by_tag("Ruby")
+Ruby Tag.find_by_tag(["Ruby", "Gem"])
+Ruby That did not &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +83,72 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/activerecord-find-allmultiple/">Activerecord Find All/Multiple</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-19T06:31:03+00:00" pubdate data-updated="true">Feb 19<span>th</span>, 2011</time>
+        
+           | <a href="/blog/tech/activerecord-find-allmultiple/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/activerecord-find-allmultiple/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Using Tags (An active record model) to find tags by the tag property:</p>
+
+<pre><code>Tag.find_by_tag("Ruby")
+Ruby
+
+Tag.find_by_tag(["Ruby", "Gem"])
+Ruby
+</code></pre>
+
+<p> That did not return what I expected, find<em> returns one object by default. first</em> last<em> or all</em> modifiers can be used. So to find multiple tags by the same property:</p>
+
+<pre><code>Tag.find_all_by_tag(["Ruby", "Gem"]) 
+Ruby
+Gem
+</code></pre>
+
+<p>Again with slightly less active record magic:<br/>
+Note the = ? for singular items and IN (?) for a list of items.</p>
+
+<pre><code>Tag.find(:all, :conditions =&gt; ["tag = ?", "Ruby"])
+Ruby
+
+Tag.find(:all, :conditions =&gt; ["tag IN (?)", ["Ruby", "Gem"]])
+Ruby
+Gem
+</code></pre>
+
+<p>More info can be read on <a href="http://lenary.co.uk/guides/active_record_querying.html#dynamic-finders">Rails Guides</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -702,69 +770,6 @@ $ sudo wget http://dl.dropbox.com/u/8462176/osx-10-6-working-ncurse/libncurses.5
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/put-methods-not-working-with-classy-sinatra-apps/">Put Methods Not Working with Classy Sinatra Apps</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-12-11T05:38:06+00:00" pubdate data-updated="true">Dec 11<span>th</span>, 2010</time>
-        
-           | <a href="/blog/tech/put-methods-not-working-with-classy-sinatra-apps/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/put-methods-not-working-with-classy-sinatra-apps/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Since moving to Classy Sinatra applications I have not been able to get put and delete methods to work correctly. This is because sinatra/base does not include the rack method override &lsquo;stuff&rsquo;.</p>
-
-<pre><code>require 'rubygems'
-require 'sinatra/base'
-module MyModule
-  class MyApp &lt; Sinatra::Base
-    use Rack::MethodOverride ##&lt;-- Required for put delete
-
-    get '/' do
-    '&lt;form method="post" action="/"&gt;' + 
-    '  &lt;input  type="hidden" name="_method" value="put" /&gt;' +
-    '  &lt;button type="submit"&gt; Test PUT&lt;/button&gt;&lt;br  /&gt;' +
-    '&lt;/form&gt;'
-    end
-
-    put '/' do
-      'PUT works'
-    end
-  end
-end
-
-if $0 == __FILE__
-  MyModule::MyApp.run!
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/29/">&larr; Older</a>
@@ -779,11 +784,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (17)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/self-watering-propagator/">Self Watering Propagator</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/planter/">Planter</a>
@@ -799,10 +808,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
       </li>
     
   </ul>

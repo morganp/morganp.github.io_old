@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="There is a very good presentation Confident Code by Avdi Grimm author of http://exceptionalruby.com/. Previously presented at Cascadia. There are &hellip;">
+  <meta name="description" content="Suppressing warnings is usually a bad idea but if you understand the risk and want to carry on regardless. When ruby to call a script then the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,69 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/suppressing-warnings-in-ruby-scripts/">Suppressing Warnings in Ruby Scripts</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-12-02T10:13:29+00:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2011</time>
+        
+           | <a href="/blog/tech/suppressing-warnings-in-ruby-scripts/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/suppressing-warnings-in-ruby-scripts/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Suppressing warnings is usually a bad idea but if you understand the risk and want to carry on regardless. When ruby to call a script then the warning level can be set via:</p>
+
+<pre><code>$ ruby -W0 ./script.rb
+$ ruby -W1 ./script.rb
+$ ruby -W2 ./script.rb
+</code></pre>
+
+<p>Where 0=silence, 1=medium, 2=verbose</p>
+
+<p>In an executable with a shebang line this is a little harder. This is the method I have found:</p>
+
+<pre><code>#!/usr/bin/env ruby
+##                      $VERBOSE
+## -W0  NO Warnings     nil
+## -W1  Quiet           false
+## -W2  Verbose         true
+BEGIN { $VERBOSE = nil }
+
+#Rest of ruby script
+</code></pre>
+
+<p>The script can then be called directly with the warning level set:</p>
+
+<pre><code>$ executable_ruby_script 
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -726,132 +789,6 @@ count_this.count
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/ruby-blocks-for-better-code-reuse/">Ruby Blocks for Better Code Reuse</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-30T13:51:28+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2011</time>
-        
-           | <a href="/blog/tech/ruby-blocks-for-better-code-reuse/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ruby-blocks-for-better-code-reuse/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>While working on some disk space / folder structure scripts I had several functions which hierarchically search the disk then performed some custom function. When refactoring the code I realised that the specific functions could be contained in a block and passed to a generic search method.</p>
-
-<p>This is one of the original functions</p>
-
-<pre><code>def search_folder( folder )
-  sub_folders = Dir.glob( folder + '*/')
-  sub_files   = Dir.glob( folder + '*.*')
-
-  ## Recursive
-  sub_folders.each do |sub_folder|
-    search_folder( sub_folder )
-  end
-
-  sub_files.each do | sub_file |
-   if sub_file.match(/\.rar$/)
-    puts sub_file    
-    end
-  end
-end
-</code></pre>
-
-<p>Refactored to take a block</p>
-
-<pre><code>def search_folder( folder, &amp;block )
-
-  sub_folders = Dir.glob( folder + '*/')
-  sub_files   = Dir.glob( folder + '*.*')
-
-  ## Recursive
-  sub_folders.each do |sub_folder|
-    search_folder( sub_folder, &amp;block )
-  end
-
-  sub_files.each do | sub_file |
-    yield(sub_file)
-  end
-end
-</code></pre>
-
-<p>And where the original method was called replace with:</p>
-
-<pre><code>search_folder( folder ) do |file|
-  if file.match(/\.rar$/)
-     puts file
-  end
-end
-</code></pre>
-
-<h2>Encapsulate with Modules</h2>
-
-<p>Wrapping the generic methods up into a module and calling local methods from the block.</p>
-
-<pre><code>module GenericStuff
-
-  def self.search_folder( folder, &amp;block )
-    sub_folders = Dir.glob( folder + '*/')
-    sub_files   = Dir.glob( folder + '*.*')
-
-    ## Recursive
-    sub_folders.each do |sub_folder|
-      search_folder( sub_folder, &amp;block )
-    end
-
-    sub_files.each do | sub_file |
-      yield(sub_file)
-    end
-  end
-end
-
-
-def limit
-  @count ||= 1
-  puts "Count is " + @count.to_s
-  if @count &gt; 2
-    exit( -1 )
-  end
-  @count += 1
-end
-
-# Call to generic method, block calls local method
-folder = '/'    
-GenericStuff::search_folder( folder ) do |file|
-  if file.match(/\.rar$/)
-    limit
-    puts file
-  end
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/25/">&larr; Older</a>
@@ -866,11 +803,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (17)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/self-watering-propagator/">Self Watering Propagator</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/planter/">Planter</a>
@@ -886,10 +827,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
       </li>
     
   </ul>

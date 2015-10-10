@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Lightroom 5.3RC The Lightroom 5.3 release candidate will expire on December 31, 2013.
-">
+  <meta name="description" content="repmat(matrix, [repeat_y, repeat_x]) Horizontal repmat([1 2 3],[1,4]) ans = 1 2 3 1 2 3 1 2 3 1 2 3 Vertical repmat([1; 2; 3],[4,1]) ans = 1 2 3 1 2 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,74 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-repeat-a-matrix-n-times/">Matlab Repeat a Matrix N Times</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-27T10:57:36+00:00" pubdate data-updated="true">Nov 27<span>th</span>, 2013</time>
+        
+           | <a href="/blog/engineering/matlab-repeat-a-matrix-n-times/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-repeat-a-matrix-n-times/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>repmat(matrix, [repeat_y, repeat_x])</p>
+
+<p>Horizontal</p>
+
+<pre><code>repmat([1 2 3],[1,4])
+
+ans =
+
+     1     2     3     1     2     3     1     2     3     1     2     3
+</code></pre>
+
+<p>Vertical</p>
+
+<pre><code>repmat([1; 2; 3],[4,1])
+
+ans =
+
+     1
+     2
+     3
+     1
+     2
+     3
+     1
+     2
+     3
+     1
+     2
+     3
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -709,57 +776,6 @@ secondary path can contain multiple folders.</p></blockquote>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/find-redhat-version/">Find RedHat Version</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-09-04T08:13:33+01:00" pubdate data-updated="true">Sep 4<span>th</span>, 2013</time>
-        
-           | <a href="/blog/tech/find-redhat-version/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/find-redhat-version/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>cat /etc/redhat-release
-</code></pre>
-
-<p>Returns some thing like:</p>
-
-<pre><code>Red Hat Enterprise Linux Client release 5.7 (Tikanga)
-</code></pre>
-
-<p>Find Kernel version using :</p>
-
-<pre><code>uname -r
-=&gt; 2.6.18-348.6.1.el5
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/13/">&larr; Older</a>
@@ -774,11 +790,15 @@ secondary path can contain multiple folders.</p></blockquote>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (17)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/self-watering-propagator/">Self Watering Propagator</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/planter/">Planter</a>
@@ -794,10 +814,6 @@ secondary path can contain multiple folders.</p></blockquote>
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
       </li>
     
   </ul>

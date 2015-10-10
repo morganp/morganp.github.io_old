@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="To wait for a maximum of 10ns for positive edge on clk then carry on with simulation. fork : wait_or_timeout begin #10ms; disable wait_or_timeout; &hellip;">
+  <meta name="description" content="As I use the code blocks for ingredient lists on my recipe pages I wanted to
+have a different style, lighter background instead of black. I currently &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,62 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/octopress-categories-with-different-styles/">Octopress Categories with Different Styles</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-06-14T08:24:01+01:00" pubdate data-updated="true">Jun 14<span>th</span>, 2014</time>
+        
+           | <a href="/blog/tech/octopress-categories-with-different-styles/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/octopress-categories-with-different-styles/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As I use the code blocks for ingredient lists on my recipe pages I wanted to
+have a different style, lighter background instead of black.</p>
+
+<p>I currently manually set a different layout in the _post header:</p>
+
+<pre><code>layout: post
+categories: 
+- Tech
+
+layout: recipe
+categories: 
+- Cooking
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/tech/octopress-categories-with-different-styles/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -573,57 +630,6 @@ Underside of rack.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-array-content-check/">Matlab: Array Content Check</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-05-07T18:13:24+01:00" pubdate data-updated="true">May 7<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-array-content-check/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-array-content-check/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Checking if an Array contains a number:</p>
-
-<pre><code>input = [1,2,3,4];
-check = 4;
-any(input==4)
-</code></pre>
-
-<p>Check if a number is contained in an array:</p>
-
-<pre><code>input = 32;
-check = [32,64,128];
-any( check==input )
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -638,11 +644,15 @@ any( check==input )
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (17)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/self-watering-propagator/">Self Watering Propagator</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/planter/">Planter</a>
@@ -658,10 +668,6 @@ any( check==input )
     
       <li class="post">
         <a href="/blog/engineering/systemverilog-rtl-types/">SystemVerilog: RTL Types</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
       </li>
     
   </ul>
