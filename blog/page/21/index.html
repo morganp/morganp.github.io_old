@@ -9,7 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I started off following the ubuntu guide for installing a new drive, which uses fdsik to create the partitions how ever after formatting and mounting &hellip;">
+  <meta name="description" content="When working behind a restrictive firewall, which limits ssh connections you may be running into some of the following errors: Connection refused git &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,95 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/using-github-behind-a-restrictive-firewall/">Using Github Behind a Restrictive Firewall</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-10T20:24:08+01:00" pubdate data-updated="true">May 10<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/using-github-behind-a-restrictive-firewall/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/using-github-behind-a-restrictive-firewall/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When working behind a restrictive firewall, which limits ssh connections you may be running into some of the following errors:</p>
+
+<h2>Connection refused</h2>
+
+<pre><code>git clone git@github.com:morganp/maruku_snippet.git
+Cloning into maruku_snippet...
+ssh: connect to host github.com port 22: Connection refused
+fatal: The remote end hung up unexpectedly
+</code></pre>
+
+<h2>Bad Owner, Using .ssh/config</h2>
+
+<pre><code>git clone git@github.com:morganp/maruku_snippet.git
+Cloning into maruku_snippet...
+Bad owner or permissions on /users/mprior/.ssh/config
+fatal: The remote end hung up unexpectedly
+</code></pre>
+
+<h2>Not a Repository</h2>
+
+<pre><code>$ git pull https://morganp@github.com/morganp/maruku_snippet.git
+fatal: Not a git repository (or any parent up to mount parent /users)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+</code></pre>
+
+<h2>RPC failed</h2>
+
+<pre><code>$ git clone https://morganp@github.com/morganp/maruku_snippet.git
+Cloning into maruku_snippet...
+error: RPC failed; result=22, HTTP code = 405
+fatal: The remote end hung up unexpectedly
+</code></pre>
+
+<h2>Getting it Working</h2>
+
+<p>Last time I ran into these issues I found I could clone as guest, changed <a href="&#109;&#97;&#105;&#x6c;&#x74;&#111;&#x3a;&#109;&#111;&#114;&#x67;&#x61;&#110;&#x70;&#64;&#x67;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#x63;&#x6f;&#x6d;">&#109;&#x6f;&#114;&#103;&#97;&#x6e;&#112;&#64;&#103;&#x69;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#x6d;</a> to just github.com. Pushing will then prompt for your github Username and password. Once cloned you can manually update the config file so you do not have to enter your username. Entering your password will still be required.</p>
+
+<pre><code>$ git clone https://github.com/morganp/maruku_snippet.git
+Cloning into maruku_snippet...
+remote: Counting objects: 52, done.
+remote: Compressing objects: 100% (38/38), done.
+remote: Total 52 (delta 15), reused 43 (delta 10)
+ Unpacking objects: 100% (52/52), done.
+</code></pre>
+
+<p>Modify .git/config back to :</p>
+
+<pre><code>url = https://morganp@github.com/morganp/maruku_snippet.git
+</code></pre>
+
+<p><code>git push</code> will prompt for password via dialog box.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -889,81 +978,6 @@ I would also like to note that I have printed a 10MP image WITHOUT up-sampling a
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-application-in-lib-and-views-public-routes-not-working/">Sinatra Application in ./lib and Views, Public Routes Not Working</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-20T23:26:34+01:00" pubdate data-updated="true">Apr 20<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/sinatra-application-in-lib-and-views-public-routes-not-working/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-application-in-lib-and-views-public-routes-not-working/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I have been setting up my recent Sinatra projects with a standard ruby project layout putting all of the application code within a lib folder. When running locally I have been cding in to the lib folder and just running:</p>
-
-<pre><code>ruby app.rb
-</code></pre>
-
-<p>I often found that when deploying (WebFaction or Heroku) that I had to make several attempts to get the config.ru correct. I then found that thin can load and run using the config.ru.</p>
-
-<pre><code>thin start --port 4567 -R config.ru
-</code></pre>
-
-<p>Which worked until I tried it on a non trivial application which used (erb) templates and then I started seeing these errors, when viewing 127:0.0.1:4567</p>
-
-<pre><code>Errno::ENOENT at /
-No such file or directory - ./views/home.erb
-file: template.rb location: binread line: 67
-</code></pre>
-
-<p>The problem is that we are now a level above where we use to be, not sure whay this has never been a problem in production before.</p>
-
-<pre><code>module AnotherWebApp
-  VERSION = '0.0.1'
-  class App &lt; Sinatra::Base
-    use Rack::MethodOverride
-    #set :public_folder, "public" # &lt;-- Old version
-    set :public_folder, "#{File.dirname(__FILE__)}/public"   # &lt;-- New Version
-
-    # Older ersions of Thin/Sinatra May require
-    set :public, "#{File.dirname(__FILE__)}/public"              # &lt;-- public changed to public_folder in newer release
-    set :views, "#{File.dirname(__FILE__)}/views"                # &lt;-- Need to set View
-
-    get '/' do
-      erb :home
-    end
-
-  end
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/22/">&larr; Older</a>
@@ -978,11 +992,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/planter/">Planter</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
@@ -998,10 +1016,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
       </li>
     
   </ul>

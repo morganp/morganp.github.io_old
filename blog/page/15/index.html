@@ -9,7 +9,9 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="BT broadband has BT Web Address Help enabled by default. This allows then to redirect you to another site if they think you typed the URL incorrectly &hellip;">
+  <meta name="description" content="sudo lshw -class disk -class storage -short Outputs : H/W path Device Class Description
+=====================================================
+/0/100/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +83,61 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/ubuntu-linux-list-disks/">Ubuntu (Linux) List Disks</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-02T13:39:24+01:00" pubdate data-updated="true">May 2<span>nd</span>, 2013</time>
+        
+           | <a href="/blog/tech/ubuntu-linux-list-disks/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/ubuntu-linux-list-disks/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>sudo lshw -class disk -class storage -short
+</code></pre>
+
+<p>Outputs :</p>
+
+<pre><code>H/W path           Device     Class       Description
+=====================================================
+/0/100/1c.3/0      scsi0      storage     JMB363 SATA/IDE Controller
+/0/100/1c.3/0/0    /dev/sda   disk        3TB ST3000DM001-9YN1
+/0/100/1c.3/0/1    /dev/sdb   disk        2TB SAMSUNG HD204UI
+/0/100/1c.3/0.1               storage     JMB368 IDE controller
+/0/100/1f.2        scsi2      storage     N10/ICH7 Family SATA Controller [IDE mode]
+/0/100/1f.2/0      /dev/sdc   disk        3TB ST3000DM001-9YN1
+/0/100/1f.2/1      /dev/sdd   disk        2TB SAMSUNG HD204UI
+/0/1               scsi6      storage
+/0/1/0.0.0         /dev/sde   disk        8019MB SCSI Disk
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -626,47 +683,6 @@ Fold all <code>zm</code></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/nik-hdr-efex-pro-20-8499-even-in-the-uk/">Nik HDR Efex Pro 2.0 $84.99 (Even in the UK)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-29T11:58:24+00:00" pubdate data-updated="true">Dec 29<span>th</span>, 2012</time>
-        
-           | <a href="/blog/photography/nik-hdr-efex-pro-20-8499-even-in-the-uk/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/nik-hdr-efex-pro-20-8499-even-in-the-uk/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Initially Launched at $99 in the US or £99 in the UK. Today they seem to be charging $99 regardless of location.</p>
-
-<p>15% Dicount Code <em>NIKPSS</em> brings total to $84.99 (£53)!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/16/">&larr; Older</a>
@@ -681,11 +697,15 @@ Fold all <code>zm</code></p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/planter/">Planter</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
@@ -701,10 +721,6 @@ Fold all <code>zm</code></p>
     
       <li class="post">
         <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
       </li>
     
   </ul>

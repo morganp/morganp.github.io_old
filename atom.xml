@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2015-06-10T21:24:43+01:00</updated>
+  <updated>2015-10-10T10:59:44+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Planter]]></title>
+    <link href="http://lizard-spock.co.uk/blog/garden/planter/"/>
+    <updated>2015-10-10T10:52:30+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/garden/planter</id>
+    <content type="html"><![CDATA[<p>3 Fence boards used to create planter.</p>
+
+<p><img src="http://lizard-spock.co.uk/images/Gardening/Planter/morganp-20150504-Planter-IMG_0543.jpg" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Matlab: Linear Progressions]]></title>
@@ -610,30 +621,6 @@ this-is-one-WORD
 can call xkill and get a skull and crossbones cursor to kill the application.</p>
 
 <p>It even works well with remote GUI applications (Sun Grid Engine SGE).</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Submit to SGE as if Working Locally]]></title>
-    <link href="http://lizard-spock.co.uk/blog/engineering/submit-to-sge-as-if-working-locally/"/>
-    <updated>2014-07-30T20:13:23+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/engineering/submit-to-sge-as-if-working-locally</id>
-    <content type="html"><![CDATA[<p>Setting an alias in you .tcshrc</p>
-
-<pre><code>alias qrun 'qrsh -V -noshell -cwd !*'
-</code></pre>
-
-<p>or bash</p>
-
-<pre><code>alias qrun='qrsh -V -noshell -cwd !*'
-</code></pre>
-
-<p>Which makes submitting any script to the grid just:</p>
-
-<pre><code>qrun helloworld.sh
-</code></pre>
-
-<p>Originally asked on <a href="http://superuser.com/a/751162/42141">superuser</a>.</p>
 ]]></content>
   </entry>
   

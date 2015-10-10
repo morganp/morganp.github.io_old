@@ -9,9 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="On Mac OS X matlab behaves quite oddly with the track pad zooming
-in and out very quickly and erratically to remove this behaviour
-Disable Mouse &hellip;">
+  <meta name="description" content="Setting an alias in you .tcshrc alias qrun 'qrsh -V -noshell -cwd !*' or bash alias qrun='qrsh -V -noshell -cwd !*' Which makes submitting any script &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +81,60 @@ Disable Mouse &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/submit-to-sge-as-if-working-locally/">Submit to SGE as if Working Locally</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-30T20:13:23+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/submit-to-sge-as-if-working-locally/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/submit-to-sge-as-if-working-locally/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Setting an alias in you .tcshrc</p>
+
+<pre><code>alias qrun 'qrsh -V -noshell -cwd !*'
+</code></pre>
+
+<p>or bash</p>
+
+<pre><code>alias qrun='qrsh -V -noshell -cwd !*'
+</code></pre>
+
+<p>Which makes submitting any script to the grid just:</p>
+
+<pre><code>qrun helloworld.sh
+</code></pre>
+
+<p>Originally asked on <a href="http://superuser.com/a/751162/42141">superuser</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -546,62 +598,6 @@ categories:
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/verilog-timeout/">Verilog: Timeout</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-06-14T08:08:26+01:00" pubdate data-updated="true">Jun 14<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/verilog-timeout/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/verilog-timeout/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>To wait for a maximum of <code>10ns</code> for positive edge on clk then carry on with simulation.</p>
-
-<pre><code>fork : wait_or_timeout
-  begin
-    #10ms;
-    disable wait_or_timeout;
-  end
-  begin
-    @(posedge clk);
-    disable wait_or_timeout;
-  end
-join
-</code></pre>
-
-<p>Often use to fail simulation if the expected signal does not occur,
-this stops simulation hanging and allows status reports to be generated.</p>
-
-<p>Originally posted as <a href="http://stackoverflow.com/a/12372233/97073">SO answer</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -616,11 +612,15 @@ this stops simulation hanging and allows status reports to be generated.</p>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/planter/">Planter</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
@@ -636,10 +636,6 @@ this stops simulation hanging and allows status reports to be generated.</p>
     
       <li class="post">
         <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
       </li>
     
   </ul>

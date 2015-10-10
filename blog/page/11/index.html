@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Here are some aliased commands which stop line wrapping on really long lines, making the output much more readable: # Stop line wrapping
-alias ll '( &hellip;">
+  <meta name="description" content="This is not a foolproof method, as vim colorschemes are just vim commands but by default they set: let g:colors_name = "ir_black" so to find out from &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,58 @@ alias ll '( &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/check-you-current-vim-colorscheme/">Check You Current Vim Colorscheme</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-20T19:43:16+00:00" pubdate data-updated="true">Dec 20<span>th</span>, 2013</time>
+        
+           | <a href="/blog/tech/check-you-current-vim-colorscheme/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/check-you-current-vim-colorscheme/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is not a foolproof method, as vim colorschemes are just vim commands but by default they set:</p>
+
+<pre><code>let g:colors_name = "ir_black"
+</code></pre>
+
+<p>so to find out from vim just run</p>
+
+<pre><code>:echo g:colors_name
+</code></pre>
+
+<p>Or even simpler suggestion from farfanoide</p>
+
+<pre><code>:colorscheme
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -552,47 +603,6 @@ ans =
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/photography/lightroom-53-rc-beta-available/">Lightroom 5.3 RC Beta Available</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-11-23T18:14:24+00:00" pubdate data-updated="true">Nov 23<span>rd</span>, 2013</time>
-        
-           | <a href="/blog/photography/lightroom-53-rc-beta-available/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/photography/lightroom-53-rc-beta-available/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://labs.adobe.com/technologies/lightroom5-3/">Lightroom 5.3RC</a></p>
-
-<p>The Lightroom 5.3 release candidate will expire on December 31, 2013.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/12/">&larr; Older</a>
@@ -607,11 +617,15 @@ ans =
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/planter/">Planter</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
@@ -627,10 +641,6 @@ ans =
     
       <li class="post">
         <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
       </li>
     
   </ul>

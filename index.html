@@ -9,9 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Progressions can be created using the Colon operator min = 10
-max = 100
-steps = 20 step_size = (max-min)/steps i = min:step_size:max Alternatively &hellip;">
+  <meta name="description" content="3 Fence boards used to create planter. ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +81,47 @@ steps = 20 step_size = (max-min)/steps i = min:step_size:max Alternatively &hell
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/garden/planter/">Planter</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-10-10T10:52:30+01:00" pubdate data-updated="true">Oct 10<span>th</span>, 2015</time>
+        
+           | <a href="/blog/garden/planter/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/planter/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>3 Fence boards used to create planter.</p>
+
+<p><img src="/images/Gardening/Planter/morganp-20150504-Planter-IMG_0543.jpg" alt="" /></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -677,64 +716,6 @@ endmodule
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/verilog-thermometer-code/">Verilog: Thermometer Code</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-02-18T16:51:43+00:00" pubdate data-updated="true">Feb 18<span>th</span>, 2015</time>
-        
-           | <a href="/blog/engineering/verilog-thermometer-code/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/verilog-thermometer-code/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Efficiently create a <a href="http://en.wikipedia.org/wiki/Unary_coding">thermometer code</a> in verilog:</p>
-
-<pre><code>localparam M = 32;
-
-function [M-1:0] therm_code;
-  input    [$clog2(M):0] val;
-  begin
-    for (int i = 0; i&lt;M; i++) begin
-      therm_code[i] = (i&lt;val);
-    end
-  end
-endfunction
-</code></pre>
-
-<p>Other methods which do not synthesis as well:</p>
-
-<pre><code>therm_code  = (2**val) - 1;
-
-therm_code = ~({M{1'b1}} &lt;&lt; val);
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -747,11 +728,15 @@ therm_code = ~({M{1'b1}} &lt;&lt; val);
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/planter/">Planter</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
@@ -767,10 +752,6 @@ therm_code = ~({M{1'b1}} &lt;&lt; val);
     
       <li class="post">
         <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
       </li>
     
   </ul>

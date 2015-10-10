@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Thor is a Ruby Gem, which allows you to build command line applications which accept commands, in the same way git accepts add as a command. The &hellip;">
+  <meta name="description" content="When creating my blog I have been inconsistent with the tag command line, Command line and
+Command Line the case in-sensitvities are not picked up in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,85 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/fixing-mangled-octopress-tags/">Fixing Mangled Octopress Tags</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-01T20:59:40+01:00" pubdate data-updated="true">Apr 1<span>st</span>, 2014</time>
+        
+           | <a href="/blog/tech/fixing-mangled-octopress-tags/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/fixing-mangled-octopress-tags/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When creating my blog I have been inconsistent with the tag <code>command line</code>, <code>Command line</code> and
+<code>Command Line</code> the case in-sensitvities are not picked up in Octopress generation. To some
+extent my <a href="">Downcase plugin</a> hides these differences. The tags page only lists those with full
+downcase, but handles all other mixed case tags.</p>
+
+<p>This has lead to some posts dropping off the tag listing, which are just not accessible this way.</p>
+
+<p>The easy fix is to standardise my use of the tag.</p>
+
+<p>First investigate: List posts containing the downcased version:</p>
+
+<pre><code>grep -R '\- command line' *
+</code></pre>
+
+<p>Correct all :</p>
+
+<pre><code>find ./source/_posts -type f -print0 | xargs -I{} sed -i '' 's/\- [Cc]ommand [Ll]ine/\- Command Line/g' {}
+</code></pre>
+
+<p><code>find</code> outputs all files in folder ‘./‘ Actually had some trouble rerunning this find command so simplified it to :</p>
+
+<pre><code>ls source/_posts/*.markdown | xargs -I{} sed -i '' 's/\- [Cc]ommand [Ll]ine/\- Command Line/g' {}
+</code></pre>
+
+<p><strong>xargs</strong> option <code>i{}</code> takes the input argument and repeats it in the following command where the
+<code>{}</code> are placed. <code>find</code> has a built in <code>-exec</code> option but using xargs allows the first <code>find</code>
+command to be replaced with <code>grep</code> or <code>ls</code> if required.</p>
+
+<p><strong>Sed</strong> options</p>
+
+<ol>
+<li><code>g</code> Replace all the instances</li>
+<li><code>-i ‘’</code> Edits inplace without appending a new file extension.</li>
+</ol>
+
+
+<p>On a Mavericks the default see does not support case insensitive search,
+therefore I have enclosed the first letter of each word with options for lower and upper case.</p>
+
+<p>After performing the updates the tag text is updated to <code>Command Line</code> and the url is
+<a href="/tag/command-line/"><code>tag/command-line/</code></a>, which lists all of the tagged posts.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -596,51 +676,6 @@ My version of <a href="http://www.mysquarefootgarden.net/mels-mix/">Mels Mix</a>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/propagator-trays/">Propagator Trays</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-03-16T19:23:48+00:00" pubdate data-updated="true">Mar 16<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/propagator-trays/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/propagator-trays/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sunday trip to <a href="http://www.merryhatton.co.uk/">Marryhatton</a>. Getting serious about propagation now, got these seed trays to move the seedlings to after they have germinated in the heated propagator.</p>
-
-<p><img src="/images/Gardening/morganp-20140316-Garden-_MG_6991.jpg" alt="" /></p>
-
-<p>Saw (&amp; bought) this reed 5m by 2m screen on sale for £12.99!</p>
-
-<p><img src="/images/Gardening/morganp-20140316-Garden-_MG_7002.jpg" alt="" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/7/">&larr; Older</a>
@@ -655,11 +690,15 @@ My version of <a href="http://www.mysquarefootgarden.net/mels-mix/">Mels Mix</a>
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/planter/">Planter</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
@@ -675,10 +714,6 @@ My version of <a href="http://www.mysquarefootgarden.net/mels-mix/">Mels Mix</a>
     
       <li class="post">
         <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
       </li>
     
   </ul>

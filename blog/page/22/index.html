@@ -9,8 +9,7 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="Update RVM $ rvm get head List current versions, and all versions $ rvm list
-$ rvm list known Select the version you want to upgrade to : $ rvm &hellip;">
+  <meta name="description" content="I have been setting up my recent Sinatra projects with a standard ruby project layout putting all of the application code within a lib folder. When &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,81 @@ $ rvm list known Select the version you want to upgrade to : $ rvm &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/sinatra-application-in-lib-and-views-public-routes-not-working/">Sinatra Application in ./lib and Views, Public Routes Not Working</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-20T23:26:34+01:00" pubdate data-updated="true">Apr 20<span>th</span>, 2012</time>
+        
+           | <a href="/blog/tech/sinatra-application-in-lib-and-views-public-routes-not-working/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-application-in-lib-and-views-public-routes-not-working/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have been setting up my recent Sinatra projects with a standard ruby project layout putting all of the application code within a lib folder. When running locally I have been cding in to the lib folder and just running:</p>
+
+<pre><code>ruby app.rb
+</code></pre>
+
+<p>I often found that when deploying (WebFaction or Heroku) that I had to make several attempts to get the config.ru correct. I then found that thin can load and run using the config.ru.</p>
+
+<pre><code>thin start --port 4567 -R config.ru
+</code></pre>
+
+<p>Which worked until I tried it on a non trivial application which used (erb) templates and then I started seeing these errors, when viewing 127:0.0.1:4567</p>
+
+<pre><code>Errno::ENOENT at /
+No such file or directory - ./views/home.erb
+file: template.rb location: binread line: 67
+</code></pre>
+
+<p>The problem is that we are now a level above where we use to be, not sure whay this has never been a problem in production before.</p>
+
+<pre><code>module AnotherWebApp
+  VERSION = '0.0.1'
+  class App &lt; Sinatra::Base
+    use Rack::MethodOverride
+    #set :public_folder, "public" # &lt;-- Old version
+    set :public_folder, "#{File.dirname(__FILE__)}/public"   # &lt;-- New Version
+
+    # Older ersions of Thin/Sinatra May require
+    set :public, "#{File.dirname(__FILE__)}/public"              # &lt;-- public changed to public_folder in newer release
+    set :views, "#{File.dirname(__FILE__)}/views"                # &lt;-- Need to set View
+
+    get '/' do
+      erb :home
+    end
+
+  end
+end
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -829,68 +903,6 @@ No mail for user
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/list_temp_files-script/">List_temp_files Script</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-20T12:18:21+00:00" pubdate data-updated="true">Feb 20<span>th</span>, 2012</time>
-        
-           | <a href="/blog/tech/list_temp_files-script/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/list_temp_files-script/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A simple script for finding temp files from the current directory and below. I often run this before adding a new project to a revision control system to ensure temp files do not get added into the repo.</p>
-
-<pre><code>#!/bin/sh
-
-echo "Searching for temp local files/directories"
-#vim accidental saves
-find . -name "1" -type f 
-
-#Other Temp files
-find . -name "*.log" -type f 
-find . -name "*.key" -type f
-find . -name "*.swp" -type f 
-find . -name "results" -type d 
-find . -name "waveforms" -type d  
-
-echo "Searching for temp links"
-find . -name "results" -type l 
-find . -name "waveforms" -type l 
-
-#Accidental checkins
-find . -name "*.log" -type l
-find . -name "*.key" -type l
-find . -name "*.swp" -type l
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/23/">&larr; Older</a>
@@ -905,11 +917,15 @@ find . -name "*.swp" -type l
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (15)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (16)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/planter/">Planter</a>
+      </li>
     
       <li class="post">
         <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
@@ -925,10 +941,6 @@ find . -name "*.swp" -type l
     
       <li class="post">
         <a href="/blog/engineering/verilog-define-if-not-defined/">Verilog: Define if Not Defined</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/verilog-shm-waveforms/">Verilog: Shm Waveforms</a>
       </li>
     
   </ul>
