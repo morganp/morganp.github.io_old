@@ -9,9 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="To shuffle a: a(randperm(length(a))) Example: a = [10 2 5 20];
-a = a(randperm(length(a))) a = 5 10 2 20 Source.
-">
+  <meta name="description" content="Handling functions with extraneous leading outputs. For example: function [a,b] = dummy_function a = 10; b = 20;
+endfunction [a, b] = dummy_function &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +82,68 @@ a = a(randperm(length(a))) a = 5 10 2 20 Source.
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/engineering/matlab-function-outputs/">Matlab Function Outputs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-08T08:02:27+00:00" pubdate data-updated="true">Mar 8<span>th</span>, 2014</time>
+        
+           | <a href="/blog/engineering/matlab-function-outputs/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-function-outputs/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Handling functions with extraneous leading outputs. For example:</p>
+
+<pre><code>function [a,b] = dummy_function
+  a = 10;
+  b = 20;
+endfunction
+
+
+[a, b] = dummy_function
+
+a =
+    10
+
+b =
+    20
+</code></pre>
+
+<p>If <code>a</code> is not required it can be replaced with a tilda <code>~</code>.</p>
+
+<pre><code>[~, b] = dummy_function
+
+b =
+    20
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -551,53 +612,6 @@ end
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/garden/rocket-and-chilli/">Rocket &amp; Chilli</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-25T21:23:40+00:00" pubdate data-updated="true">Feb 25<span>th</span>, 2014</time>
-        
-           | <a href="/blog/garden/rocket-and-chilli/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/rocket-and-chilli/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The first batch of seeds in the propagator are off to a good start.</p>
-
-<p>Rocket:
-<img src="/images/Gardening/morganp-20140225-Garden-IMG_6843.jpg" title="Rocket" alt="" /></p>
-
-<p>De Cayenne, Chilli Peppers:
-<img src="/images/Gardening/morganp-20140225-Garden-IMG_6848.jpg" title="De Cayenne, Chilli Peppers" alt="" /></p>
-
-<p>Soon will re-pot and start <a href="http://apps.rhs.org.uk/advicesearch/profile.aspx?pid=386">hardening off</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/9/">&larr; Older</a>
@@ -612,11 +626,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (18)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (19)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/japanesegarden/">JapaneseGarden</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/potting-bench/">Potting Bench</a>
@@ -632,10 +650,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/">Matlab: Functions Inputs Parsed Based on Outputs</a>
       </li>
     
   </ul>

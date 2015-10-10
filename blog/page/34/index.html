@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="I do not like having to use sudo to run development servers for testing web applications. sudo should be reserved for commands that really need that &hellip;">
+  <meta name="description" content="A very simple Ruby way for listing files in a directory is the glob function: #!/usr/bin/env ruby @directory_to_list = '/some/path/'
+files = Dir.glob &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,64 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/tech/super-simple-ruby-list-directory-contents/">Super Simple Ruby List Directory Contents</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-16T08:14:52+01:00" pubdate data-updated="true">May 16<span>th</span>, 2010</time>
+        
+           | <a href="/blog/tech/super-simple-ruby-list-directory-contents/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/super-simple-ruby-list-directory-contents/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A very simple Ruby way for listing files in a directory is the glob function:</p>
+
+<pre><code>#!/usr/bin/env ruby
+
+@directory_to_list = '/some/path/'
+files = Dir.glob(@directory_to_list + '*')
+
+files.each do |x|
+   puts x
+end
+</code></pre>
+
+<p>To avoid the separate each block, select could be used to iterate over the results. Used below with entries instead of glob.</p>
+
+<pre><code>Dir.entries(@directory_to_list).select do |f| 
+  puts f
+end
+</code></pre>
+
+<p>NB Dir.glob takes a pattern as an argument, Dir.entries takes a path.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -653,62 +712,6 @@ set(gca, 'XMinorTick','on')
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/tech/sinatra-file-upload/">Sinatra File Upload</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-05-01T07:54:03+01:00" pubdate data-updated="true">May 1<span>st</span>, 2010</time>
-        
-           | <a href="/blog/tech/sinatra-file-upload/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/tech/sinatra-file-upload/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A simple Sinatra web app to upload a single file. Also available as a <a href="http://gist.github.com/386495">gist</a>, based on <a href="http://pastie.caboo.se/134681">http://pastie.caboo.se/134681</a></p>
-
-<pre><code>require 'rubygems'
-require 'sinatra'
-
-get '/upload' do
-   erb '&lt;form action="upload" method="post" enctype="multipart/form-data" accept-charset="utf-8"&gt;
-   &lt;input type="file" name="uploaded_data" id="uploaded_data"&gt;
-   &lt;p&gt;&lt;input type="submit" value="Continue"&gt;&lt;/p&gt;
-   &lt;/form&gt;'
-end
-
-post '/upload' do
-   FileUtils.mkdir_p('./Uploads/')
-   FileUtils.mv(params[:uploaded_data][:tempfile].path, "./Uploads/#{params[:uploaded_data][:filename]}")
-   erb 'Upload Complete'
-end
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/35/">&larr; Older</a>
@@ -723,11 +726,15 @@ end
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (18)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (19)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/japanesegarden/">JapaneseGarden</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/potting-bench/">Potting Bench</a>
@@ -743,10 +750,6 @@ end
     
       <li class="post">
         <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/">Matlab: Functions Inputs Parsed Based on Outputs</a>
       </li>
     
   </ul>

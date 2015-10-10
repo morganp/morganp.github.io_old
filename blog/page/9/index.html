@@ -9,7 +9,8 @@
   <meta name="author" content="Morgan Prior">
 
   
-  <meta name="description" content="First signs of spring, bulbs starting to show growth. ">
+  <meta name="description" content="The first batch of seeds in the propagator are off to a good start. Rocket: De Cayenne, Chilli Peppers: Soon will re-pot and start hardening off.
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +82,53 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/garden/rocket-and-chilli/">Rocket &amp; Chilli</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-25T21:23:40+00:00" pubdate data-updated="true">Feb 25<span>th</span>, 2014</time>
+        
+           | <a href="/blog/garden/rocket-and-chilli/#disqus_thread"
+             data-disqus-identifier="http://lizard-spock.co.uk/blog/garden/rocket-and-chilli/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The first batch of seeds in the propagator are off to a good start.</p>
+
+<p>Rocket:
+<img src="/images/Gardening/morganp-20140225-Garden-IMG_6843.jpg" title="Rocket" alt="" /></p>
+
+<p>De Cayenne, Chilli Peppers:
+<img src="/images/Gardening/morganp-20140225-Garden-IMG_6848.jpg" title="De Cayenne, Chilli Peppers" alt="" /></p>
+
+<p>Soon will re-pot and start <a href="http://apps.rhs.org.uk/advicesearch/profile.aspx?pid=386">hardening off</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -538,60 +586,6 @@ set(objh,'linewidth',2);
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/engineering/matlab-benchmarking/">Matlab Benchmarking</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-12T20:55:42+00:00" pubdate data-updated="true">Feb 12<span>th</span>, 2014</time>
-        
-           | <a href="/blog/engineering/matlab-benchmarking/#disqus_thread"
-             data-disqus-identifier="http://lizard-spock.co.uk/blog/engineering/matlab-benchmarking/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In the following example we test the allocation speed of different types:</p>
-
-<pre><code>samples_to_avg = 10000;
-for i=1:samples_to_avg
-  tic; t = int8(zeros(32,2^16)); b(i) = toc;
-end
-avg_int8 = mean(b);
-
-for i=1:samples_to_avg
-  tic; t = zeros(32,2^16); b(i) = toc;
-end
-avg_double = mean(b);
-
-%int 8 is
-disp(['int8 pre-allocation is ', num2str(1 - avg_double/avg_int8), ' times faster than doubles'])
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/10/">&larr; Older</a>
@@ -606,11 +600,15 @@ disp(['int8 pre-allocation is ', num2str(1 - avg_double/avg_int8), ' times faste
   
     <section>
   <h1>Categories</h1>
-    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (18)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/cooking'>Cooking (12)</a></li><li><a href='/blog/engineering'>Engineering (45)</a></li><li><a href='/blog/garden'>Garden (19)</a></li><li><a href='/blog/home'>Home (5)</a></li><li><a href='/blog/outdoor'>Outdoor (1)</a></li><li><a href='/blog/photography'>Photography (37)</a></li><li><a href='/blog/tech'>Tech (244)</a></li></ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/garden/japanesegarden/">JapaneseGarden</a>
+      </li>
     
       <li class="post">
         <a href="/blog/garden/potting-bench/">Potting Bench</a>
@@ -626,10 +624,6 @@ disp(['int8 pre-allocation is ', num2str(1 - avg_double/avg_int8), ' times faste
     
       <li class="post">
         <a href="/blog/engineering/matlab-linear-progressions/">Matlab: Linear Progressions</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/engineering/matlab-functions-inputs-parsed-based-on-outputs/">Matlab: Functions Inputs Parsed Based on Outputs</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[RockPaperScissors]]></title>
   <link href="http://lizard-spock.co.uk/atom.xml" rel="self"/>
   <link href="http://lizard-spock.co.uk/"/>
-  <updated>2015-10-10T12:34:16+01:00</updated>
+  <updated>2015-10-10T12:53:15+01:00</updated>
   <id>http://lizard-spock.co.uk/</id>
   <author>
     <name><![CDATA[Morgan Prior]]></name>
@@ -12,6 +12,24 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[JapaneseGarden]]></title>
+    <link href="http://lizard-spock.co.uk/blog/garden/japanesegarden/"/>
+    <updated>2015-10-10T12:50:55+01:00</updated>
+    <id>http://lizard-spock.co.uk/blog/garden/japanesegarden</id>
+    <content type="html"><![CDATA[<p>First step creating the retaining wall, to become a raised bed.</p>
+
+<p><img src="http://lizard-spock.co.uk/images/Gardening/JapaneseGarden/morganp-20140616--_MG_9132.jpg" alt="" />
+<img src="http://lizard-spock.co.uk/images/Gardening/JapaneseGarden/morganp-20141025-Garden-IMG_9608.jpg" alt="" />
+<img src="http://lizard-spock.co.uk/images/Gardening/JapaneseGarden/morganp-20150306--IMG_0145.jpg" alt="" />
+<img src="http://lizard-spock.co.uk/images/Gardening/JapaneseGarden/morganp-20150306--IMG_0149.jpg" alt="" />
+<img src="http://lizard-spock.co.uk/images/Gardening/JapaneseGarden/morganp-20150309--IMG_0158.jpg" alt="" />
+<img src="http://lizard-spock.co.uk/images/Gardening/JapaneseGarden/morganp-20150420--IMG_0417.jpg" alt="" />
+<img src="http://lizard-spock.co.uk/images/Gardening/JapaneseGarden/morganp-20150420--IMG_0418.jpg" alt="" />
+<img src="http://lizard-spock.co.uk/images/Gardening/JapaneseGarden/morganp-20150420--IMG_0419.jpg" alt="" /></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Potting Bench]]></title>
@@ -607,24 +625,6 @@ echo $var
 <p>Tripod relatively secure in this position, although if not tightly strapped down movement does loosen the straps.</p>
 
 <p>NB: also a thinktank skin 50 mounted on the hip belt.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Word WORD the Difference]]></title>
-    <link href="http://lizard-spock.co.uk/blog/tech/word-word-the-difference/"/>
-    <updated>2014-08-19T06:27:30+01:00</updated>
-    <id>http://lizard-spock.co.uk/blog/tech/word-word-the-difference</id>
-    <content type="html"><![CDATA[<p>Just realised there is a difference between word and WORD in Vim.</p>
-
-<p>WORD is non-blank delimited by whitespace.
-word is alpha-numeric and other non-blank characters delimited by whitespace and punctuation. &lsquo;iskeyword&rsquo; can be used to move delimiters in to part of the selection of the word.</p>
-
-<p>by default :</p>
-
-<pre><code>this-is-four-words
-this-is-one-WORD
-</code></pre>
 ]]></content>
   </entry>
   
