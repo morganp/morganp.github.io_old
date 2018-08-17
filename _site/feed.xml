@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-08-17T16:27:13+01:00</updated><id>http://localhost:4000/</id><title type="html">Lizard-Spock</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Woodworking Links</title><link href="http://localhost:4000/blog/home/woodworking-links.html" rel="alternate" type="text/html" title="Woodworking Links" /><published>2018-04-25T13:46:00+01:00</published><updated>2018-04-25T13:46:00+01:00</updated><id>http://localhost:4000/blog/home/woodworking-links</id><content type="html" xml:base="http://localhost:4000/blog/home/woodworking-links.html">&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/2018/woodwork-clem-onojeghuo-119593.jpg&quot; alt=&quot;Wood shavings&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Tools
+  &lt;a href=&quot;http://www.workshopheaven.com/&quot;&gt;Workshop Heaven&lt;/a&gt;
+  &lt;a href=&quot;http://www.axminster.co.uk/&quot;&gt;Axminster&lt;/a&gt;
+  &lt;a href=&quot;http://www.rutlands.co.uk/&quot;&gt;Rutlands&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Materials
+  &lt;a href=&quot;http://www.brodiestimber.co.uk/&quot;&gt;Brodies Timber&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="DIY" /><category term="Woodwork" /><summary type="html"></summary></entry><entry><title type="html">Jeykll Categories</title><link href="http://localhost:4000/blog/tech/jeykll-catagories.html" rel="alternate" type="text/html" title="Jeykll Categories" /><published>2018-04-24T15:48:00+01:00</published><updated>2018-04-24T15:48:00+01:00</updated><id>http://localhost:4000/blog/tech/jeykll-catagories</id><content type="html" xml:base="http://localhost:4000/blog/tech/jeykll-catagories.html">&lt;p&gt;Moving from Octopress to a more modern version of Jeykll, getting categories up and working again has been a bit of a learning curve.&lt;/p&gt;
+
+&lt;p&gt;I want the urls to be human editable with something present at every level. I forego the usual url post structure for something simpler. In _config.yml I define :&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;permalink: /blog/:categories/:title:output_ext
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The standard recommendation for Jeykll is to manually write the pages for your categories, I do not want to have to manage keeping those files in sync and adding or removing pages as Categories get updated. Therefor I am using the &lt;a href=&quot;https://github.com/zroger/jekyll-categories&quot;&gt;‘jekyll-categories’&lt;/a&gt; gem.&lt;/p&gt;
+
+&lt;p&gt;In _config.yml the category_dir variable needs to be set for this plugin.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;category_dir: &quot;blog&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Gemfile&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;group :jekyll_plugins do
+  gem &quot;jekyll-categories&quot;, &quot;~&amp;gt; 0.0.2&quot;
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;then run&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; bundle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Create the post list for each category (_layouts/category__index.html)
+This will be used for pages matching  /blog/:categories&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+layout: page
+---
+
+&amp;lt;ul&amp;gt;
+{% for post in site.categories[page.category] %}
+&amp;lt;li&amp;gt;&amp;lt;a href=&quot;{{ post.url | absolute_url }}&quot;&amp;gt;
+      {{ post.title }}
+  &amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+{% endfor %}
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;My top level categories page does not use the plugin. Create a Categories index, categories.html
+This will be used for URLS matching  /blog&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+layout: default
+title: Categories
+permalink: /blog/
+---
+&amp;lt;ul&amp;gt;
+{% for category in site.categories %}
+&amp;lt;li&amp;gt;&amp;lt;a href=&quot;{{ site.url }}/blog/{{ category | first | downcase | url_encode }}/&quot;&amp;gt;{{ category | first }}&amp;lt;/a&amp;gt; ({{ category[1].size }})&amp;lt;/li&amp;gt;
+{% endfor %}
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="Web" /><summary type="html">Moving from Octopress to a more modern version of Jeykll, getting categories up and working again has been a bit of a learning curve.</summary></entry><entry><title type="html">Lagom</title><link href="http://localhost:4000/blog/home/Lagom.html" rel="alternate" type="text/html" title="Lagom" /><published>2018-01-22T12:46:00+00:00</published><updated>2018-01-22T12:46:00+00:00</updated><id>http://localhost:4000/blog/home/Lagom</id><content type="html" xml:base="http://localhost:4000/blog/home/Lagom.html">&lt;p&gt;&lt;img src=&quot;http://localhost:4000/images/2018/lagom_5f468e98.jpg&quot; alt=&quot;Peaceful&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;“not too little, not too much, just right”&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Thinking about:&lt;/strong&gt; 
+LAGOM The Swedish Art of Balanced Living by Linnea Dunne&lt;/p&gt;
+
+&lt;p&gt;Great book, worth the £3 just for the art work.&lt;/p&gt;
+
+&lt;h2 id=&quot;benefits-of-lagom&quot;&gt;Benefits of Lagom&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Physical Space (minimal design)&lt;/li&gt;
+  &lt;li&gt;Mental Space (balanced life)&lt;/li&gt;
+  &lt;li&gt;Improved Finances (not materialistic)&lt;/li&gt;
+  &lt;li&gt;A Sense of Belonging (community orientated)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;living-lagom&quot;&gt;Living Lagom&lt;/h2&gt;
+&lt;p&gt;I try to balance work and life. Work took over for a while but having kids helps keep the focus on a balance. &lt;/p&gt;
+
+&lt;p&gt;Home made chandelier with 40 tea light lanterns, replaces the tradition fire place.&lt;/p&gt;
+
+&lt;p&gt;Would have loved the paternity working rights in Sweden 3 months off for each parent. Vard av barn, paid time off to look after sick kids.&lt;/p&gt;
+
+&lt;h2 id=&quot;eating-lagom&quot;&gt;Eating Lagom&lt;/h2&gt;
+&lt;p&gt;fredagsmys, simple, easy and cosy Friday nights. We might take this too far Friday nights to Sunday nights are relaxed and cosy for us.&lt;/p&gt;
+
+&lt;p&gt;Fika, Coffee breaks at work where time is taken out to connect with colleagues. Could do it better at the weekends with friends and cakes.&lt;/p&gt;
+
+&lt;p&gt;Trying to grow our own vegetables and herbs. Have a break from this while re-landscaping the garden. &lt;/p&gt;
+
+&lt;h2 id=&quot;styling&quot;&gt;Styling&lt;/h2&gt;
+&lt;p&gt;Woodwork as a hobby and building my own furniture.&lt;/p&gt;
+
+&lt;h2 id=&quot;lagom-for-the-planet&quot;&gt;Lagom for the Planet&lt;/h2&gt;</content><author><name></name></author><category term="Nordic" /><summary type="html"></summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/blog/jekyll/update/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2017-11-15T13:53:53+00:00</published><updated>2017-11-15T13:53:53+00:00</updated><id>http://localhost:4000/blog/jekyll/update/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/blog/jekyll/update/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful sup&lt;img src=&quot;http://&quot; alt=&quot;&quot; /&gt;port for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry><entry><title type="html">Home Directory File Structure</title><link href="http://localhost:4000/blog/tech/home-directory-file-structure.html" rel="alternate" type="text/html" title="Home Directory File Structure" /><published>2015-10-22T10:32:44+01:00</published><updated>2015-10-22T10:32:44+01:00</updated><id>http://localhost:4000/blog/tech/home-directory-file-structure</id><content type="html" xml:base="http://localhost:4000/blog/tech/home-directory-file-structure.html">&lt;p&gt;Apples default directory structure is :&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/Users/username
+├── Desktop
+├── Documents
+├── Downloads
+├── Library   # Hidden by default
+├── Movies
+├── Music
+├── Pictures
+├── Public
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;My current setup After adding Dropbox, dotfiles stored on github, Code, and user level applications folder:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/Users/username
+├── Applications
+├── Code
+├── Desktop
+├── Documents
+├── Downloads
+├── Dropbox
+├── Library
+├── Movies
+├── Music
+├── Pictures
+├── Public
+├── dotfiles
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;At present though my Dropbox is a mess of some documents, some code and lots of ebooks. Free Dropbox does not have enough space for me to the entire home directory. Considering a BtSync pro account which allows selective sync. BtSync will allow me to set the root as my home directory and select which folders from that to sync.&lt;/p&gt;
+
+&lt;p&gt;I have started using USB flash drives again, and have found &lt;a href=&quot;http://www.cis.upenn.edu/~bcpierce/unison&quot;&gt;unison&lt;/a&gt; to be a useful tool for syncing local drives to each other.&lt;/p&gt;
+
+&lt;p&gt;Me example unison sync (USB drive is called ‘Dropbox’):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;unison ~/ /Volumes/Dropbox/Unison/ -fat -auto -links true \
+-path Code      \
+-path Documents \
+-path Dropbox 
+
+#-fat Work With FAT filesystem (ThumbDrive)
+#-auto Accept default action for non-merges
+#-links true follow symlinks 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now that the ‘Dropbox’ root is my home directory I can reorganise. Books should become a top level folder, and share a place along side Music and Movies.&lt;/p&gt;
+
+&lt;p&gt;Dropbox is kept but mainly used for sharing temporary files with others.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/Users/username
+├── Applications
+├── Books
+├── Code
+├── Desktop
+├── Documents
+├── Downloads
+├── Dropbox
+├── Library
+├── Movies
+├── Music
+├── Pictures
+├── Public
+├── dotfiles
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Dropbox: sending large files
+BT Sync: Synchronising files (eBook collection)
+Unison: Synchronising local drives (Thumbdrive to local documents/ebooks)
+ReadyNAS: Remote access to larger volume drives (Movies and TV Collections)
+ Above could be a BT Sync non populated folder&lt;/p&gt;</content><author><name></name></author><category term="Filesystem" /><category term="Organised" /><summary type="html">Apples default directory structure is :</summary></entry><entry><title type="html">Japanese Garden</title><link href="http://localhost:4000/blog/home/japanesegarden.html" rel="alternate" type="text/html" title="Japanese Garden" /><published>2015-10-10T12:50:55+01:00</published><updated>2015-10-10T12:50:55+01:00</updated><id>http://localhost:4000/blog/home/japanesegarden</id><content type="html" xml:base="http://localhost:4000/blog/home/japanesegarden.html">&lt;p&gt;First step creating the retaining wall, to become a raised bed.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Gardening/JapaneseGarden/morganp-20140616--_MG_9132.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/images/Gardening/JapaneseGarden/morganp-20141025-Garden-IMG_9608.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/images/Gardening/JapaneseGarden/morganp-20150306--IMG_0145.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/images/Gardening/JapaneseGarden/morganp-20150306--IMG_0149.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/images/Gardening/JapaneseGarden/morganp-20150309--IMG_0158.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/images/Gardening/JapaneseGarden/morganp-20150420--IMG_0417.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/images/Gardening/JapaneseGarden/morganp-20150420--IMG_0418.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/images/Gardening/JapaneseGarden/morganp-20150420--IMG_0419.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="Garden" /><category term="DIY" /><summary type="html">First step creating the retaining wall, to become a raised bed.</summary></entry><entry><title type="html">Potting Bench</title><link href="http://localhost:4000/blog/home/potting-bench.html" rel="alternate" type="text/html" title="Potting Bench" /><published>2015-10-10T12:23:15+01:00</published><updated>2015-10-10T12:23:15+01:00</updated><id>http://localhost:4000/blog/home/potting-bench</id><content type="html" xml:base="http://localhost:4000/blog/home/potting-bench.html">&lt;p&gt;Homemade potting bench, using 15 2.4M Fence boards (£45).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Gardening/PottingBench/morganp-20150414--IMG_0330.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/images/Gardening/PottingBench/morganp-20150414--IMG_0332.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Note for ease of building the height was 1.2M, half a 2.4 meter board, this is too high.&lt;/p&gt;</content><author><name></name></author><category term="Garden" /><category term="DIY" /><summary type="html">Homemade potting bench, using 15 2.4M Fence boards (£45).</summary></entry><entry><title type="html">Self Watering Propagator</title><link href="http://localhost:4000/blog/home/self-watering-propagator.html" rel="alternate" type="text/html" title="Self Watering Propagator" /><published>2015-10-10T12:04:12+01:00</published><updated>2015-10-10T12:04:12+01:00</updated><id>http://localhost:4000/blog/home/self-watering-propagator</id><content type="html" xml:base="http://localhost:4000/blog/home/self-watering-propagator.html">&lt;p&gt;Propagator hack using some seed trays and capillary matting.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Gardening/Propogator/morganp-20150328--IMG_0176.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/images/Gardening/Propogator/morganp-20150328--IMG_0178.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/images/Gardening/Propogator/morganp-20150328--IMG_0179.jpg&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;/images/Gardening/Propogator/morganp-20150328--IMG_0180.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="Garden" /><category term="DIY" /><summary type="html">Propagator hack using some seed trays and capillary matting.</summary></entry><entry><title type="html">Planter</title><link href="http://localhost:4000/blog/home/planter.html" rel="alternate" type="text/html" title="Planter" /><published>2015-10-10T10:52:30+01:00</published><updated>2015-10-10T10:52:30+01:00</updated><id>http://localhost:4000/blog/home/planter</id><content type="html" xml:base="http://localhost:4000/blog/home/planter.html">&lt;p&gt;3 Fence boards used to create planter.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/Gardening/Planter/morganp-20150504-Planter-IMG_0543.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="Garden" /><category term="DIY" /><summary type="html">3 Fence boards used to create planter.</summary></entry><entry><title type="html">Matlab: linear progressions</title><link href="http://localhost:4000/blog/engineering/matlab-linear-progressions.html" rel="alternate" type="text/html" title="Matlab: linear progressions" /><published>2015-06-10T20:19:05+01:00</published><updated>2015-06-10T20:19:05+01:00</updated><id>http://localhost:4000/blog/engineering/matlab-linear-progressions</id><content type="html" xml:base="http://localhost:4000/blog/engineering/matlab-linear-progressions.html">&lt;p&gt;Progressions can be created using the &lt;a href=&quot;http://uk.mathworks.com/help/matlab/ref/colon.html&quot;&gt;Colon&lt;/a&gt; operator&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;min   = 10
+max   = 100
+steps = 20
+
+step_size = (max-min)/steps
+
+i = min:step_size:max
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Alternatively &lt;a href=&quot;http://uk.mathworks.com/help/matlab/ref/linspace.html&quot;&gt;linspace&lt;/a&gt; can be used:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;min   = 10
+max   = 100
+steps = 20
+
+i = linspace(min,max,steps)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This also allows for easily switching to a log scale using &lt;a href=&quot;http://uk.mathworks.com/help/matlab/ref/logspace.html&quot;&gt;logspace&lt;/a&gt;.&lt;/p&gt;</content><author><name></name></author><category term="Matlab" /><summary type="html">Progressions can be created using the Colon operator</summary></entry></feed>

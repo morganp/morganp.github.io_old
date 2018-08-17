@@ -1,0 +1,10 @@
+---
+layout: default
+title: Categories
+permalink: /blog/
+---
+<ul>
+{% for category in site.categories %}
+<li><a href="{{ site.url }}/blog/{{ category | first | downcase | url_encode }}/">{{ category | first }}</a> ({{ category[1].size }})</li>
+{% endfor %}
+</ul>

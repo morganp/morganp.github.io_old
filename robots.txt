@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /blog/page/
-
-Sitemap: http://lizard-spock.co.uk/sitemap.xml 
