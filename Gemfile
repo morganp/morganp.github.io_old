@@ -11,7 +11,6 @@ source "https://rubygems.org"
 #gem "jekyll", "~> 3.6.2"
 
 #Tag clouds etc
-gem 'jekyll-tagging'
 
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
 gem "minima", "~> 2.0"
@@ -26,6 +25,7 @@ group :jekyll_plugins do
   #gem 'jekyll-admin'
   gem "jekyll-feed", "~> 0.6"
   gem "jekyll-categories", "~> 0.0.2"
+  gem 'jekyll-tagging'
   #gem 'jekyll-compose'
 end
 
