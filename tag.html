@@ -3,7 +3,11 @@ layout: default
 title: Tags
 permalink: /tag/
 ---
+<h1> latest </h1>
+{% include tag_cloud.html %}
 
+<h1>Old</h1>
 <div id="tag-cloud">
   {{ site | tag_cloud }}
 </div>
+
