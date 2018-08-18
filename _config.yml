@@ -41,7 +41,8 @@ theme: minima
 #theme: jekyll-theme-chalk
 plugins:
   - jekyll-feed
-
+  - jekyll-tagging
+  - jekyll-categories
 # Frontmatter defaults
 #defaults:
 #  - 
