@@ -27,8 +27,8 @@ github_username:  morganp
 
 # Build settings
 markdown: kramdown
-tag_page_layout: tag_page
-tag_page_dir: tag
+#tag_page_layout: tag_page
+#tag_page_dir: tag
 #rdiscount:
 #  extensions:
 #    - autolink      # greedily urlify links
@@ -41,12 +41,17 @@ theme: minima
 #theme: jekyll-theme-chalk
 plugins:
   - jekyll-feed
-  - jekyll-tagging
-  - jekyll-categories
+    #- jekyll-tagging
+    #- jekyll-categories
 
 collections:
   blog_tags:
+    permalink: /:collection/:name
     title: Tags
+    output: true
+  blog_categories:
+    permalink: /blog/:name
+    title: Category
     output: true
 
 
