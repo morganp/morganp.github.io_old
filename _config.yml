@@ -43,7 +43,15 @@ plugins:
   - jekyll-feed
   - jekyll-tagging
   - jekyll-categories
-# Frontmatter defaults
+
+collections:
+  blog_tags:
+    title: Tags
+    output: true
+
+
+
+    # Frontmatter defaults
 #defaults:
 #  - 
 #    scope:
