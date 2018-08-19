@@ -1,6 +1,6 @@
 ---
 layout: categorypage
 title: Engineering
-permalink: /blog/Engineering
+permalink: /blog/engineering/
 categories: Engineering
 ---

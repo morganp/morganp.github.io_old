@@ -1,6 +1,6 @@
 ---
 layout: categorypage
 title: Photography
-permalink: /blog/Photography
+permalink: /blog/photography/
 categories: Photography
 ---

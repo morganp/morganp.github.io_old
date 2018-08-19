@@ -46,11 +46,11 @@ plugins:
 
 collections:
   blog_tags:
-    permalink: /:collection/:name
+    #permalink: /:collection/:name
     title: Tags
     output: true
   blog_categories:
-    permalink: /blog/:name
+    #permalink: /blog/:name
     title: Category
     output: true
 

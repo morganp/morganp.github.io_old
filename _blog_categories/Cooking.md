@@ -1,6 +1,6 @@
 ---
 layout: categorypage
 title: Cooking
-permalink: /blog/Cooking
+permalink: /blog/cooking/
 categories: Cooking
 ---

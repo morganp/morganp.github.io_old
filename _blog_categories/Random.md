@@ -1,6 +1,6 @@
 ---
 layout: categorypage
 title: Random
-permalink: /blog/Random
+permalink: /blog/random/
 categories: Random
 ---

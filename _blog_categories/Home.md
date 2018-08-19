@@ -1,6 +1,6 @@
 ---
 layout: categorypage
 title: Home
-permalink: /blog/Home
+permalink: /blog/home/
 categories: Home
 ---
